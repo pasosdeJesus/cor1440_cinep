@@ -1,0 +1,12 @@
+
+es:
+  attributes:
+    fechacreacion: Creación
+    fechadeshabilitacion: Deshabilitación 
+    regionsjr: Dependencia
+  activerecord:
+    attributes:
+      "sivel2_gen/actividad":
+        regionsjr: Dependencia
+        minutos: Horas
+
