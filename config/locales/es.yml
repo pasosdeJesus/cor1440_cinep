@@ -6,7 +6,13 @@ es:
     regionsjr: Dependencia
   activerecord:
     attributes:
-      "sivel2_gen/actividad":
+      "cor1440_gen/actividad":
         regionsjr: Dependencia
         minutos: Horas
+      "cor1440_gen/actividadarea":
+        Actividadarea: Componente Plan Trienal 
+        Actividadareas: Componentes Plan Trienal 
+      "cor1440_gen/proyecto":
+        Proyecto: Programa/Servicio/Producto
+        Proyectos: Programas/Servicios/Productos
 
