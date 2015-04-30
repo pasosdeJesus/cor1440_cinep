@@ -1,3 +1,4 @@
+require 'sip/version'
 
 Sip.setup do |config|
       config.ruta_anexos = "/var/www/resbase/cor1440_cinep/"
