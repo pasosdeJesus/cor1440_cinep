@@ -21,7 +21,13 @@ Puede seguir las mismas instrucciones de sivel2:
 Los cambios son:
 
 * El usuario por defecto para la base de datos es cor1440cinep
-* Al iniciar una nueva aplicación se crea usuario bdcinep con clave
-  bdcinep
+* Al iniciar una nueva aplicación se crea usuario cor1440cinep con clave
+  cor1440cinep
+* La aplicacion se monta sobre /act, si se necesita redirigir / 
+  copiar y cambiar plantilla
+  ```
+	cp app/views/redirige/index.html.erb.plantilla app/views/redirige/index.html.erb
+	vim app/views/redirige/index.html.erb
+  ```
 
 
