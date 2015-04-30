@@ -18,4 +18,5 @@ Rails.application.routes.draw do
 		mount Sip::Engine, at: "/"
 		mount Cor1440Gen::Engine, at: "/"
 	end
+  get '/' => 'redirige#index'
 end
