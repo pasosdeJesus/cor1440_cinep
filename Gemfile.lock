@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 878fd76956b0fab3885227630206c9d135d311bd
+  revision: 2a1bd73c6538992e5abc303779cc49b7b0e1731d
   specs:
     cor1440_gen (1.0.a3)
       devise
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 698cd16a8cd507a86207dde824f7251556011121
+  revision: cef5e2e177b7ff927338ad07b67491636bafaf9e
   specs:
     sip (2.0.a6)
       devise
@@ -157,7 +157,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    pg (0.18.1)
+    pg (0.18.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)

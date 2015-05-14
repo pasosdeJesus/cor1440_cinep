@@ -29,6 +29,18 @@
       r },
     value_method: :id 
   %>
+  <%=
+    f.association :usuario,
+      collection: Usuario.where(fechadeshabilitacion: nil).order(:nombre),
+      include_blank: false,
+      label: "Corresponsables",
+      label_method: lambda { |t|
+      r = t.nusuario
+      if t.nombre then r += " - " + t.nombre end
+      r
+    },
+      value_method: :id
+  %>
   <!-- incluido en actividadtipo %= f.input :papel,
     label: 'Papel en la Actividad'
   %-->
