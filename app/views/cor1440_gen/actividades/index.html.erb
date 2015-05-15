@@ -33,12 +33,29 @@
         <td><%= actividad.fecha %></td>
         <td><%= actividad.responsable.nusuario if actividad.responsable %></td>
         <td><%= actividad.nombre if actividad.nombre %></td>
-        <td><%= actividad.actividadareas.map { |i| i.nombre} %></td>
-        <td><%= actividad.actividadtipo.map { |i| i.nombre} %></td>
+        <td><%= actividad.actividadareas.inject("") { |memo, i|
+          (memo == "" ? "" : memo + "; ") + i.nombre
+        }
+        %> </td>
+        <td><%= actividad.actividadtipo.inject("") { |memo, i|
+          (memo == "" ? "" : memo + "; ") + i.nombre
+        }
+        %> </td>
         <td><%= actividad.objetivo %></td>
-        <td><%= actividad.proyecto.map { |i| i.nombre} %></td>
+        <td><%= actividad.proyecto.inject("") { |memo, i|
+          (memo == "" ? "" : memo + "; ") + i.nombre
+        }
+        %> </td>
         <td><%= actividad.resultado %></td>
-        <td></td>
+        <td>
+          <%
+            sep=""
+            actividad.sip_anexo.each do |i| %>
+              <%= link_to(image_tag("cor1440_gen/clip.svg", size: "16"),
+                          sip.descarga_anexo_path(i.id))
+          %>
+          <% end %>
+        </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       cor1440_gen.edit_actividad_path(actividad), :class => 'btn btn-xs' %>
