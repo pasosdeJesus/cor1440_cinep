@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: a32f3ded17b528c406f2bda0e9bc6a4fb6572a16
+  revision: f12673ee4af8990c11c62712825e29c98d3e0148
   specs:
-    cor1440_gen (1.0.a4)
+    cor1440_gen (1.0.a5)
       devise
       jquery-rails
       paperclip
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: d28a2653190c173d7f2418a565c6c6396edb45d3
+  revision: 861a37afbfa45140a26613ea1082c6e34851814e
   specs:
     sip (2.0.a6)
       devise
@@ -76,7 +76,7 @@ GEM
     bootstrap-datepicker-rails (1.4.0)
       railties (>= 3.0)
     builder (3.2.2)
-    byebug (4.0.5)
+    byebug (5.0.0)
       columnize (= 0.9.0)
     camertron-eprun (1.1.0)
     cancancan (1.10.1)
@@ -127,7 +127,7 @@ GEM
       activesupport (>= 4.1.0)
     i18n (0.7.0)
     interception (0.5)
-    jbuilder (2.2.13)
+    jbuilder (2.2.16)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (4.0.3)
