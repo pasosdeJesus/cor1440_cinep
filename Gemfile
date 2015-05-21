@@ -4,13 +4,16 @@ source 'https://rubygems.org'
 gem "rails", '~> 4.2.0'
 gem "rails-i18n"
 
+# CSS
 gem 'sass'
+
+# Generación de PDF
+gem "prawn"
+gem "prawnto_2",  :require => "prawnto"
+gem "prawn-table"
 
 # Postgresql
 gem "pg"
-
-# Maneja variables de ambiente (como claves y secretos) en .env
-#gem "foreman"
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
@@ -61,12 +64,12 @@ gem "tzinfo"
 gem "tzinfo-data"
 
 # Motor generico
-gem 'sip', github: 'pasosdeJesus/sip'
-#gem 'sip', path: '../sip'
+#gem 'sip', github: 'pasosdeJesus/sip'
+gem 'sip', path: '../sip'
 
 # Motor Cor1440_gen
-gem 'cor1440_gen', github: 'pasosdeJesus/cor1440_gen'
-#gem "cor1440_gen", path: '../cor1440_gen'
+#gem 'cor1440_gen', github: 'pasosdeJesus/cor1440_gen'
+gem "cor1440_gen", path: '../cor1440_gen'
 
 group :doc do
     # Genera documentación en doc/api con bundle exec rake doc:rails

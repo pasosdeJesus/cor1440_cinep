@@ -59,7 +59,7 @@
     label_method: :nombre, 
     value_method: :id 
   %>
-  <%= f.input :objetivo %>
+  <%= f.input :objetivo, as: :text %>
 
   <%= f.input :resultado, label: "Resultado" %>
 
@@ -77,7 +77,8 @@
   %>
 
   <%= f.input :participantes,
-    label: 'Organizaciones, Instituciones o Personas Participantes'
+    label: 'Organizaciones, Instituciones o Personas Participantes',
+    as: :text
   %>
   <%= f.input :totorg,
     label: 'Total organizaciones'
@@ -104,7 +105,8 @@
       label: 'Desarrollo de la Actividad'
   %>
   <%= f.input :observaciones,
-    label: 'Compromisos / Observaciones'
+    label: 'Compromisos / Observaciones',
+    as: :text
   %>
   <%= f.input :valora,
     label: 'Valore la actividad en términos de importancia, efecto y proyección (1-5)'
