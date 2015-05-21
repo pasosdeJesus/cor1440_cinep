@@ -4,6 +4,10 @@ es:
     fechacreacion: Creación
     fechadeshabilitacion: Deshabilitación 
     regionsjr: Dependencia
+    pais: País
+    telefono: Teléfono
+    direccion: Dirección
+    sectoractor: Sector del Actor
   activerecord:
     attributes:
       "cor1440_gen/actividad":
@@ -16,6 +20,12 @@ es:
         Proyecto: Programa/Servicio/Producto
         Proyectos: Programas/Servicios/Productos
       "sectoractor":
-        Sectoractor: Sector de Actor
+        Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
         enplantrienal: En Glosario del Plan Trienal
+      "actor":
+        Actor: Actor
+        Actores: Actores
+        personacontacto: Persona Contacto
+        pais_id: País
+        sectoractor_id: Sector del Actor

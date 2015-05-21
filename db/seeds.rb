@@ -9,7 +9,6 @@ l = File.readlines(
 connection.execute(l.join("\n"))
 
 # Cambios a básicas existentes
-  
 if File.exists?(Gem.loaded_specs['cor1440_gen'].full_gem_path + 
                 "/db/cambios-basicas.sql") then
 	l = File.readlines(Gem.loaded_specs['cor1440_gen'].full_gem_path + 
@@ -17,13 +16,27 @@ if File.exists?(Gem.loaded_specs['cor1440_gen'].full_gem_path +
 	connection.execute(l.join("\n"))
 end
 
-# Nuevas basicas de este motor 
+# Nuevas basicas de cor1440_gen
 if File.exists?(Gem.loaded_specs['cor1440_gen'].full_gem_path + 
                 "/db/datos-basicas.sql") then
 	l = File.readlines(Gem.loaded_specs['cor1440_gen'].full_gem_path + 
                 "/db/datos-basicas.sql")
 	connection.execute(l.join("\n"))
 end
+
+
+# Cambios a básicas existentes
+if File.exists?("db/cambios-basicas.sql") then
+	l = File.readlines("db/cambios-basicas.sql")
+	connection.execute(l.join("\n"))
+end
+
+# Nuevas basicas de este
+if File.exists?("db/datos-basicas.sql") then
+	l = File.readlines("db/datos-basicas.sql")
+	connection.execute(l.join("\n"));
+end
+
 
 # cor1440, cor1440
 connection.execute("INSERT INTO usuario 

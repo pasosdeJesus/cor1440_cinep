@@ -178,6 +178,54 @@ CREATE SEQUENCE acto_seq
     CACHE 1;
 
 
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: actor; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE actor (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    sectoractor_id integer,
+    personacontacto character varying(100),
+    cargo character varying(100),
+    correo character varying(100),
+    telefono character varying(100),
+    fax character varying(100),
+    celular character varying(100),
+    direccion character varying(200),
+    ciudad character varying(100),
+    pais_id integer,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: actor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE actor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: actor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE actor_id_seq OWNED BY actor.id;
+
+
 --
 -- Name: anexo_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
@@ -249,10 +297,6 @@ CREATE SEQUENCE contexto_seq
     NO MAXVALUE
     CACHE 1;
 
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
 
 --
 -- Name: cor1440_gen_actividad; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -1493,6 +1537,13 @@ CREATE SEQUENCE vinculoestado_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY actor ALTER COLUMN id SET DEFAULT nextval('actor_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY cor1440_gen_actividad ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_actividad_id_seq'::regclass);
 
 
@@ -1592,6 +1643,14 @@ ALTER TABLE ONLY sip_pais ALTER COLUMN id SET DEFAULT nextval('sip_pais_id_seq':
 --
 
 ALTER TABLE ONLY sip_tdocumento ALTER COLUMN id SET DEFAULT nextval('sip_tdocumento_id_seq'::regclass);
+
+
+--
+-- Name: actor_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY actor
+    ADD CONSTRAINT actor_pkey PRIMARY KEY (id);
 
 
 --
@@ -1883,6 +1942,20 @@ ALTER TABLE ONLY usuario
 
 
 --
+-- Name: index_actor_on_pais_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_actor_on_pais_id ON actor USING btree (pais_id);
+
+
+--
+-- Name: index_actor_on_sectoractor_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_actor_on_sectoractor_id ON actor USING btree (sectoractor_id);
+
+
+--
 -- Name: index_cor1440_gen_actividad_sip_anexo_on_anexo_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2017,11 +2090,27 @@ ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
 
 
 --
+-- Name: fk_rails_59462e2800; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor
+    ADD CONSTRAINT fk_rails_59462e2800 FOREIGN KEY (sectoractor_id) REFERENCES sectoractor(id);
+
+
+--
 -- Name: fk_rails_cc9d44f9de; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
     ADD CONSTRAINT fk_rails_cc9d44f9de FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
+-- Name: fk_rails_cf09fb308c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor
+    ADD CONSTRAINT fk_rails_cf09fb308c FOREIGN KEY (pais_id) REFERENCES sip_pais(id);
 
 
 --
@@ -2351,4 +2440,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150521181918');
 INSERT INTO schema_migrations (version) VALUES ('20150521191227');
 
 INSERT INTO schema_migrations (version) VALUES ('20150521193040');
+
+INSERT INTO schema_migrations (version) VALUES ('20150521203631');
 

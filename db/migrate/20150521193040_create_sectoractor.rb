@@ -25,25 +25,23 @@ class CreateSectoractor < ActiveRecord::Migration
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
         VALUES (7,'OTRAS ONGS INTERNACIONALES', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (8,'OTRAS ONGS INTERNACIONALES', 't', '2015-05-21', '2015-05-21', '2015-05-21');
+        VALUES (8,'GREMIOS', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (9,'GREMIOS', 't', '2015-05-21', '2015-05-21', '2015-05-21');
+        VALUES (9,'OBSERVATORIOS DE PROGRAMAS DE PAZ Y DESARROLLO', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (10,'OBSERVATORIOS DE PROGRAMAS DE PAZ Y DESARROLLO', 't', '2015-05-21', '2015-05-21', '2015-05-21');
+        VALUES (10,'EMPRESA PRIVADA', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (11,'EMPRESA PRIVADA', 't', '2015-05-21', '2015-05-21', '2015-05-21');
+        VALUES (11,'ORGANIZACIÓN SINDICAL', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (12,'ORGANIZACIÓN SINDICAL', 't', '2015-05-21', '2015-05-21', '2015-05-21');
+        VALUES (12,'ORGANIZACIÓN ESTUDIANTIL', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (13,'ORGANIZACIÓN ESTUDIANTIL', 't', '2015-05-21', '2015-05-21', '2015-05-21');
+        VALUES (13,'POBLADORES URBANOS', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (14,'POBLADORES URBANOS', 't', '2015-05-21', '2015-05-21', '2015-05-21');
+        VALUES (14,'ESTUDIANTES', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (15,'ESTUDIANTES', 't', '2015-05-21', '2015-05-21', '2015-05-21');
+        VALUES (15, 'MEDIOS DE COMUNICACIÓN', 'f', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (16, 'MEDIOS DE COMUNICACIÓN', 'f', '2015-05-21', '2015-05-21', '2015-05-21');
-      INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (17, 'ORGANIZACIÓN RELIGIOSA', 'f', '2015-05-21', '2015-05-21', '2015-05-21');
+        VALUES (16, 'ORGANIZACIÓN RELIGIOSA', 'f', '2015-05-21', '2015-05-21', '2015-05-21');
     SQL
   end
 
