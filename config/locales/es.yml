@@ -15,4 +15,7 @@ es:
       "cor1440_gen/proyecto":
         Proyecto: Programa/Servicio/Producto
         Proyectos: Programas/Servicios/Productos
-
+      "sectoractor":
+        Sectoractor: Sector de Actor
+        Sectoresactores: Sectores de Actores
+        enplantrienal: En Glosario del Plan Trienal
