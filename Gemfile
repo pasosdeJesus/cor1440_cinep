@@ -93,7 +93,7 @@ group :development, :test do
   gem "launchy"
 
   # Depurar
-  #gem 'byebug'
+  gem 'byebug'
 
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas
   gem 'web-console', '~> 2.1.0'

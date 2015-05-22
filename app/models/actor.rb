@@ -7,11 +7,10 @@ class Actor < ActiveRecord::Base
   belongs_to :pais, class_name: 'Sip::Pais',
             foreign_key: "pais_id", validate: true
 
- # has_many :actividad_actor, dependent: :delete_all,
- #   class_name: '::ActividadActor',
- #   foreign_key: 'actor_id'
- # has_many :actividad, through: :actividad_actor,
- #   class_name: 'Cor1440Gen::Actividad'
+  has_many :actividad_actor, dependent: :delete_all,
+    class_name: '::ActividadActor', foreign_key: 'actor_id'
+  has_many :actividad, through: :actividad_actor,
+    class_name: 'Cor1440Gen::Actividad'
 
   validates :personacontacto, length: { maximum: 100 }
   validates :cargo, length: { maximum: 100 }

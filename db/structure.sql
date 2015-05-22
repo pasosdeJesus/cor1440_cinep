@@ -154,6 +154,20 @@ END;
 $$;
 
 
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: actividad_actor; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE actividad_actor (
+    actividad_id integer NOT NULL,
+    actor_id integer NOT NULL
+);
+
+
 --
 -- Name: actividadoficio_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
@@ -177,10 +191,6 @@ CREATE SEQUENCE acto_seq
     NO MAXVALUE
     CACHE 1;
 
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
 
 --
 -- Name: actor; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -2090,11 +2100,27 @@ ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
 
 
 --
+-- Name: fk_rails_56bdc49b83; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actividad_actor
+    ADD CONSTRAINT fk_rails_56bdc49b83 FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
 -- Name: fk_rails_59462e2800; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actor
     ADD CONSTRAINT fk_rails_59462e2800 FOREIGN KEY (sectoractor_id) REFERENCES sectoractor(id);
+
+
+--
+-- Name: fk_rails_7ebb208867; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actividad_actor
+    ADD CONSTRAINT fk_rails_7ebb208867 FOREIGN KEY (actor_id) REFERENCES actor(id);
 
 
 --
@@ -2442,4 +2468,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150521191227');
 INSERT INTO schema_migrations (version) VALUES ('20150521193040');
 
 INSERT INTO schema_migrations (version) VALUES ('20150521203631');
+
+INSERT INTO schema_migrations (version) VALUES ('20150521223501');
 

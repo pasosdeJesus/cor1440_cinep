@@ -75,14 +75,17 @@
     label: '¿Quién convocó la actividad?',
     include_blank: false ) 
   %>
-
+  <%= f.association :actor, 
+    collection: ::Actor.habilitados,
+    label: "Actores institucionales que participan",
+    label_method: :nombre, 
+    value_method: :id 
+  %>
   <%= f.input :participantes,
-    label: 'Organizaciones, Instituciones o Personas Participantes',
+    label: 'Actores Individuales que participantes',
     as: :text
   %>
-  <%= f.input :totorg,
-    label: 'Total organizaciones'
-  %>
+  <!--%= f.input :totorg, label: 'Total organizaciones' %-->
   <%= f.input :mujeres,
     label: 'Mujeres'
   %>

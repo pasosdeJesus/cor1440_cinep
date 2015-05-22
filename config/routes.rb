@@ -14,10 +14,6 @@ Rails.application.routes.draw do
 		end
 		resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' } 
 
-		root 'cor1440_gen/hogar#index'
-		mount Sip::Engine, at: "/"
-		mount Cor1440Gen::Engine, at: "/"
-
     namespace :admin do
       Ability.tablasbasicas.each do |t|
         if (t[0] == "") 
@@ -27,6 +23,13 @@ Rails.application.routes.draw do
         end
       end
     end
+    # No poner mount aqui para evitar bug en tablas definidas en
+    # la aplicación que desde sus vistas daran actividades_path en /actividades
+    # en lugar de /act/actividades
+		root 'cor1440_gen/hogar#index'
 	end
+	mount Sip::Engine, at: "/act", as: "sip"
+	mount Cor1440Gen::Engine, at: "/act", as: "cor1440_gen"
+
   get '/' => 'redirige#index'
 end

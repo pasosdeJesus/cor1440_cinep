@@ -3,14 +3,14 @@ module Admin
   class SectoresactoresController < Sip::Admin::BasicasController
     before_action :set_sectoractor, 
       only: [:show, :edit, :update, :destroy]
-    load_and_authorize_resource  class: ::Sectoractor
+    load_and_authorize_resource  class: Sectoractor
 
     def clase 
       "::Sectoractor"
     end
 
     def set_sectoractor
-      @basica = Sectoractor.find(params[:id])
+      @basica = ::Sectoractor.find(params[:id])
     end
 
     def genclase

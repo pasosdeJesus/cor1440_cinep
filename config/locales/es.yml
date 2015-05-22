@@ -8,6 +8,9 @@ es:
     telefono: Teléfono
     direccion: Dirección
     sectoractor: Sector del Actor
+    actividadarea: Componente Plan Trienal 
+    actividadareas: Componentes Plan Trienal 
+    proyectos: Programas / Servicios/ Productos
   activerecord:
     attributes:
       "cor1440_gen/actividad":
@@ -17,8 +20,8 @@ es:
         Actividadarea: Componente Plan Trienal 
         Actividadareas: Componentes Plan Trienal 
       "cor1440_gen/proyecto":
-        Proyecto: Programa/Servicio/Producto
-        Proyectos: Programas/Servicios/Productos
+        Proyecto: Programa / Servicio / Producto
+        Proyectos: Programas / Servicios / Productos
       "sectoractor":
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores

@@ -18,7 +18,7 @@ RSpec.describe Actor, :type => :model do
 
   it "existente" do
     actor = ::Actor.where(id: 1).take
-    expect(actor.nombre).to eq("CINEP")
+    expect(actor.nombre).to eq("Pasos de Jesús")
   end
 
 end

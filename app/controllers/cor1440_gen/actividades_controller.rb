@@ -67,7 +67,7 @@ module Cor1440Gen
         @actividades.human_attribute_name(:fecha),
         @actividades.human_attribute_name(:responsable),
         @actividades.human_attribute_name(:nombre),
-        @actividades.human_attribute_name(:areas),
+        @actividades.human_attribute_name(:actividadareas),
         @actividades.human_attribute_name(:tipos),
         @actividades.human_attribute_name(:objetivo),
         @actividades.human_attribute_name(:proyectos),
@@ -116,6 +116,7 @@ module Cor1440Gen
         :actividadarea_ids => [],
         :actividadtipo_ids => [],
         :proyecto_ids => [],
+        :actor_ids => [],
         :actividad_rangoedadac_attributes => [
           :id, :rangoedadac_id, :fl, :fr, :ml, :mr, :_destroy
       ],

@@ -21,9 +21,9 @@ class CreateSectoractor < ActiveRecord::Migration
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
         VALUES (5,'GOBIERNO', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (6,'OTRAS ONGS NACIONALES', 't', '2015-05-21', '2015-05-21', '2015-05-21');
+        VALUES (6,'ONG NACIONAL', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
-        VALUES (7,'OTRAS ONGS INTERNACIONALES', 't', '2015-05-21', '2015-05-21', '2015-05-21');
+        VALUES (7,'ONG INTERNACIONAL', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
         VALUES (8,'GREMIOS', 't', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
@@ -42,6 +42,8 @@ class CreateSectoractor < ActiveRecord::Migration
         VALUES (15, 'MEDIOS DE COMUNICACIÓN', 'f', '2015-05-21', '2015-05-21', '2015-05-21');
       INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
         VALUES (16, 'ORGANIZACIÓN RELIGIOSA', 'f', '2015-05-21', '2015-05-21', '2015-05-21');
+      INSERT INTO sectoractor(id, nombre, enplantrienal, fechacreacion, created_at, updated_at) 
+        VALUES (17, 'AGENCIA FINANCIADORA', 'f', '2015-05-21', '2015-05-21', '2015-05-21');
     SQL
   end
 
