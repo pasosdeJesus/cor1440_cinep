@@ -61,7 +61,7 @@
   %>
   <%= f.input :objetivo, as: :text %>
 
-  <%= f.input :resultado, label: "Resultado" %>
+  <%= f.input :resultado, label: "Resultado", as: :text %>
 
   <%= f.input(:convocante, collection: [
               "El Banco de Datos",
@@ -105,7 +105,8 @@
     label: 'Blancos'
   %>
   <%= f.input :desarrollo,
-      label: 'Desarrollo de la Actividad'
+    label: 'Desarrollo de la Actividad',
+    as: :text
   %>
   <%= f.input :observaciones,
     label: 'Compromisos / Observaciones',

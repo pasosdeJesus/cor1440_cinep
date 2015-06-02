@@ -42,8 +42,8 @@ end
 connection.execute("INSERT INTO usuario 
 	(nusuario, email, encrypted_password, password, 
   fechacreacion, created_at, updated_at, rol) 
-	VALUES ('bdcinep', 'bd@localhost', 
-	'$2a$10$jMRQtFukTd/i00nt7RBcCe5rQ.2.0nFeVNjtXvJOPQBmF6la8ft4m',
+	VALUES ('cor1440', 'bd@localhost', 
+	'$2a$10$q0KcAa.H6.3VrXeKTJHa/ue8uT0y7WVKKHlAVor.Nejpz1OAgAQOq',
 	'', '2014-08-14', '2014-08-14', '2014-08-14', 1);")
 
 
