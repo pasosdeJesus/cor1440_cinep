@@ -1,0 +1,6 @@
+<%= f.association :pais,
+  collection: (Sip::Pais.habilitados), 
+  #label: "Sector",
+  label_method: :nombre,
+  value_method: :id 
+%>

@@ -154,6 +154,20 @@ END;
 $$;
 
 
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: actividad_actor; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE actividad_actor (
+    actividad_id integer NOT NULL,
+    actor_id integer NOT NULL
+);
+
+
 --
 -- Name: actividadoficio_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
@@ -176,6 +190,50 @@ CREATE SEQUENCE acto_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: actor; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE actor (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    sectoractor_id integer,
+    personacontacto character varying(100),
+    cargo character varying(100),
+    correo character varying(100),
+    telefono character varying(100),
+    fax character varying(100),
+    celular character varying(100),
+    direccion character varying(200),
+    ciudad character varying(100),
+    pais_id integer,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: actor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE actor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: actor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE actor_id_seq OWNED BY actor.id;
 
 
 --
@@ -249,10 +307,6 @@ CREATE SEQUENCE contexto_seq
     NO MAXVALUE
     CACHE 1;
 
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
 
 --
 -- Name: cor1440_gen_actividad; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -923,6 +977,41 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: sectoractor; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sectoractor (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    enplantrienal boolean,
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sectoractor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sectoractor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sectoractor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sectoractor_id_seq OWNED BY sectoractor.id;
+
+
+--
 -- Name: sectorsocial_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1458,6 +1547,13 @@ CREATE SEQUENCE vinculoestado_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY actor ALTER COLUMN id SET DEFAULT nextval('actor_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY cor1440_gen_actividad ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_actividad_id_seq'::regclass);
 
 
@@ -1528,6 +1624,13 @@ ALTER TABLE ONLY cor1440_gen_rangoedadac ALTER COLUMN id SET DEFAULT nextval('co
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY sectoractor ALTER COLUMN id SET DEFAULT nextval('sectoractor_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY sip_anexo ALTER COLUMN id SET DEFAULT nextval('sip_anexo_id_seq'::regclass);
 
 
@@ -1550,6 +1653,14 @@ ALTER TABLE ONLY sip_pais ALTER COLUMN id SET DEFAULT nextval('sip_pais_id_seq':
 --
 
 ALTER TABLE ONLY sip_tdocumento ALTER COLUMN id SET DEFAULT nextval('sip_tdocumento_id_seq'::regclass);
+
+
+--
+-- Name: actor_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY actor
+    ADD CONSTRAINT actor_pkey PRIMARY KEY (id);
 
 
 --
@@ -1638,6 +1749,14 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 ALTER TABLE ONLY sip_oficina
     ADD CONSTRAINT regionsjr_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sectoractor_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sectoractor
+    ADD CONSTRAINT sectoractor_pkey PRIMARY KEY (id);
 
 
 --
@@ -1833,6 +1952,20 @@ ALTER TABLE ONLY usuario
 
 
 --
+-- Name: index_actor_on_pais_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_actor_on_pais_id ON actor USING btree (pais_id);
+
+
+--
+-- Name: index_actor_on_sectoractor_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_actor_on_sectoractor_id ON actor USING btree (sectoractor_id);
+
+
+--
 -- Name: index_cor1440_gen_actividad_sip_anexo_on_anexo_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1967,11 +2100,43 @@ ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
 
 
 --
+-- Name: fk_rails_56bdc49b83; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actividad_actor
+    ADD CONSTRAINT fk_rails_56bdc49b83 FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
+-- Name: fk_rails_59462e2800; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor
+    ADD CONSTRAINT fk_rails_59462e2800 FOREIGN KEY (sectoractor_id) REFERENCES sectoractor(id);
+
+
+--
+-- Name: fk_rails_7ebb208867; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actividad_actor
+    ADD CONSTRAINT fk_rails_7ebb208867 FOREIGN KEY (actor_id) REFERENCES actor(id);
+
+
+--
 -- Name: fk_rails_cc9d44f9de; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
     ADD CONSTRAINT fk_rails_cc9d44f9de FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
+-- Name: fk_rails_cf09fb308c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor
+    ADD CONSTRAINT fk_rails_cf09fb308c FOREIGN KEY (pais_id) REFERENCES sip_pais(id);
 
 
 --
@@ -2299,4 +2464,10 @@ INSERT INTO schema_migrations (version) VALUES ('20150521092657');
 INSERT INTO schema_migrations (version) VALUES ('20150521181918');
 
 INSERT INTO schema_migrations (version) VALUES ('20150521191227');
+
+INSERT INTO schema_migrations (version) VALUES ('20150521193040');
+
+INSERT INTO schema_migrations (version) VALUES ('20150521203631');
+
+INSERT INTO schema_migrations (version) VALUES ('20150521223501');
 

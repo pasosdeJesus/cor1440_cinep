@@ -29,6 +29,18 @@
       r },
     value_method: :id 
   %>
+  <%=
+    f.association :usuario,
+      collection: Usuario.where(fechadeshabilitacion: nil).order(:nombre),
+      include_blank: false,
+      label: "Corresponsables",
+      label_method: lambda { |t|
+      r = t.nusuario
+      if t.nombre then r += " - " + t.nombre end
+      r
+    },
+      value_method: :id
+  %>
   <!-- incluido en actividadtipo %= f.input :papel,
     label: 'Papel en la Actividad'
   %-->
@@ -47,7 +59,7 @@
     label_method: :nombre, 
     value_method: :id 
   %>
-  <%= f.input :objetivo %>
+  <%= f.input :objetivo, as: :text %>
 
   <%= f.input :resultado, label: "Resultado" %>
 
@@ -63,13 +75,17 @@
     label: '¿Quién convocó la actividad?',
     include_blank: false ) 
   %>
-
+  <%= f.association :actor, 
+    collection: ::Actor.habilitados,
+    label: "Actores institucionales que participan",
+    label_method: :nombre, 
+    value_method: :id 
+  %>
   <%= f.input :participantes,
-    label: 'Organizaciones, Instituciones o Personas Participantes'
+    label: 'Actores Individuales que participantes',
+    as: :text
   %>
-  <%= f.input :totorg,
-    label: 'Total organizaciones'
-  %>
+  <!--%= f.input :totorg, label: 'Total organizaciones' %-->
   <%= f.input :mujeres,
     label: 'Mujeres'
   %>
@@ -92,7 +108,8 @@
       label: 'Desarrollo de la Actividad'
   %>
   <%= f.input :observaciones,
-    label: 'Compromisos / Observaciones'
+    label: 'Compromisos / Observaciones',
+    as: :text
   %>
   <%= f.input :valora,
     label: 'Valore la actividad en términos de importancia, efecto y proyección (1-5)'
