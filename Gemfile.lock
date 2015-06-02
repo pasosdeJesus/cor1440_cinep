@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: fa3ae9ee5c8c1bb9009a16648fe1eb78cb6c3435
+  revision: f78475962512fc2c8ba1329d45518d32342c2a99
   specs:
     cor1440_gen (1.0.a5)
       devise
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 934cfcb2c9c2dfa966c845fc8abad9ca1c8cec44
+  revision: 1a762b3f1d26bcc03717477a5b3545c0495b4663
   specs:
     sip (2.0.a6)
       devise
@@ -249,7 +249,7 @@ GEM
     spring (1.3.6)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.1.0)
+    sprockets (3.2.0)
       rack (~> 1.0)
     sprockets-rails (2.3.1)
       actionpack (>= 3.0)
