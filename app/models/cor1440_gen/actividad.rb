@@ -12,6 +12,7 @@ module Cor1440Gen
       class_name: '::Actor'
 
     validates :desarrollo, length: { maximum: 5000 }
+    validates :resultado, length: { maximum: 5000 }
     validates :papel, length: { maximum: 5000 }
     validates :participantes, length: { maximum: 5000 }
     validates :lugar, length: { maximum: 5000 }

@@ -2,7 +2,24 @@
   :url => cor1440_gen.actividades_path(@actividad).sub(/\./,"/"), 
   :html => { :class => 'form-horizontal' } do |f| 
 %>
-  <%= f.error_notification %>
+<div data-role="content" class="form-inputs">
+  <div id="errores">
+    <% if f.object.errors.any? %>
+      <div id="error_explanation">
+        <div class="alert alert-error">
+          El formulario tiene 
+          <%= pluralize(f.object.errors.count, "error") %>.
+        </div>
+        <ul>
+          <% f.object.errors.full_messages.each do |msg| %>
+            <li>* <%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.error_notification %>
+  </div>
+
   <div class="panel panel-default">
     <div class="panel-heading">Planeación</div><div class="panel-body">
       <%= f.input :nombre %>
