@@ -30,3 +30,4 @@ tmp/
 
 # particulares de esta aplicacion
 app/views/redirige/index.html
+public/act/assets/
