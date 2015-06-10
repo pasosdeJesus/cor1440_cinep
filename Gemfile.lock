@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 518970635ff16094d4b95cef230c68596b12631b
+  revision: 21a35865d5c9e220cc006c0362906ece4c901f4f
   specs:
     cor1440_gen (1.0.a5)
       devise
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 6001c4d40687af6b59d7393fba3ac295777ab00f
+  revision: 1bf655851aebdf67adeaeb5d04a646371235b7b2
   specs:
     sip (2.0.a6)
       devise
@@ -104,6 +104,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    colorize (0.7.7)
     columnize (0.9.0)
     debug_inspector (0.0.2)
     devise (3.5.1)
@@ -152,7 +153,7 @@ GEM
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
-    paperclip (4.2.1)
+    paperclip (4.2.2)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
@@ -224,7 +225,7 @@ GEM
     rspec-mocks (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
-    rspec-rails (3.2.2)
+    rspec-rails (3.2.3)
       actionpack (>= 3.0, < 4.3)
       activesupport (>= 3.0, < 4.3)
       railties (>= 3.0, < 4.3)
@@ -305,6 +306,7 @@ DEPENDENCIES
   cocoon!
   codeclimate-test-reporter
   coffee-rails (~> 4.1.0)
+  colorize
   cor1440_gen!
   devise
   devise-i18n

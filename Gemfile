@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 gem "rails", '~> 4.2.0'
 gem "rails-i18n"
 
+# Color en terminal
+gem 'colorize'
+
 # CSS
 gem 'sass'
 
