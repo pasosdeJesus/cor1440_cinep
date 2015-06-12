@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: c2937954376b88caa02a7e4b2a5fcc345639d78b
+  revision: f7bc8078aaf50325d94025eb4c1d0b56873ed778
   specs:
     cor1440_gen (1.0.a5)
       devise
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 247a2d72aa2de90748ab5fc3920abd76ab60d79d
+  revision: e93549b9415afb41bdfea8a42ae558b4c78ce21b
   specs:
     sip (2.0.a6)
       devise
@@ -217,23 +217,23 @@ GEM
     rdoc (4.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rspec-core (3.2.3)
-      rspec-support (~> 3.2.0)
-    rspec-expectations (3.2.1)
+    rspec-core (3.3.0)
+      rspec-support (~> 3.3.0)
+    rspec-expectations (3.3.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.2.0)
-    rspec-mocks (3.2.1)
+      rspec-support (~> 3.3.0)
+    rspec-mocks (3.3.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.2.0)
-    rspec-rails (3.2.3)
+      rspec-support (~> 3.3.0)
+    rspec-rails (3.3.0)
       actionpack (>= 3.0, < 4.3)
       activesupport (>= 3.0, < 4.3)
       railties (>= 3.0, < 4.3)
-      rspec-core (~> 3.2.0)
-      rspec-expectations (~> 3.2.0)
-      rspec-mocks (~> 3.2.0)
-      rspec-support (~> 3.2.0)
-    rspec-support (3.2.2)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
+      rspec-support (~> 3.3.0)
+    rspec-support (3.3.0)
     sass (3.4.14)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)

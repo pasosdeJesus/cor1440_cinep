@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     # No poner mount aqui para evitar bug en tablas definidas en
     # la aplicación que desde sus vistas daran actividades_path en /actividades
     # en lugar de /act/actividades
+   
+    # Se define root aqui para que tras ingresos y salidas llegue a /act
 		root 'cor1440_gen/hogar#index'
 	end
 	mount Sip::Engine, at: "/act", as: "sip"
