@@ -16,6 +16,7 @@ es:
       "cor1440_gen/actividad":
         regionsjr: Dependencia
         minutos: Horas
+        observaciones: Compromisos/Observaciones
       "cor1440_gen/actividadarea":
         Actividadarea: Componente Plan Trienal 
         Actividadareas: Componentes Plan Trienal 
