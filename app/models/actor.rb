@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 class Actor < ActiveRecord::Base
 	include Sip::Basica
 

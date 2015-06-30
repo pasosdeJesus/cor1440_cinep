@@ -8,6 +8,8 @@ module Cor1440Gen
 
     belongs_to :departamento, class_name: 'Sip::Departamento'
     belongs_to :municipio, class_name: 'Sip::Municipio'
+    belongs_to :redactor, class_name: '::Redactor'
+    belongs_to :nucleoconflicto, class_name: '::Nucleoconflicto'
 
     has_many :actividad_actor, dependent: :delete_all,
       class_name: '::ActividadActor', foreign_key: 'actividad_id'

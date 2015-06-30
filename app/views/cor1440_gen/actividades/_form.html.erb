@@ -128,15 +128,12 @@
         label_method: :nombre, 
         value_method: :id 
       %>
-      Principal núcleo de conflico que transforma<br>
-      <!--%= f.input(:nucleoprincipal, collection: [
-                  "Culturas Políticas, Identidades y DD-HH",
-                  "Relaciones Estado y Sociedad",
-                  "Alternativas al Desarrollo Regional"
-      ], 
-        label: 'Principal núcleo de conflico que transforma',
-        include_blank: false ) 
-      %-->
+      <%= f.association :nucleoconflicto, 
+        collection: ::Nucleoconflicto.habilitados,
+        label_method: :nombre, 
+        value_method: :id,
+        label: 'Principal núcleo de conflico que transforma'
+      %>
       Otros núcleos<br>
       <!--%= f.input(:otrosnucleos, collection: [
                   "Culturas Políticas, Identidades y DD-HH",
@@ -161,27 +158,12 @@
       <div class="panel panel-default">
         <div class="panel-heading">Plan Trienal: Objetivo Específico 1</div>
         <div class="panel-body">
-          Red<br>
-          <!--%= f.input(:red, collection: [
-          "Red Prodepaz",
-          "Coordinación Europa-Estados Unidos",
-          "Alianza Post-Londres",
-          "Red de ONG por la Transparencia",
-          "Mesa Ambiental de los Cerros Orientales  Bogotá",
-          "Sinergia",
-          "Viva la Ciudadanía",
-          "Instituto Interamericano de Derechos Humanos",
-          "Red de Centros Sociales de la Compañía de Jesús en America Latina",
-          "International Coalition for the Responsability  to Protect",
-          "International Land Coalition",
-          "Asociación Latinoamericana de Organizaciones de Promoción al Desarrollo A.C",
-          "Consejo Latinoamericano  de Ciencias Sociales",
-          "No aplica",
-          "Otra"
-          ], 
-          label: 'Red a la que se víncula Escenario de Toma de Decisión',
-          include_blank: true ) 
-          %-->
+          <%= f.association :redactor, 
+            collection: ::Redactor.habilitados,
+            label_method: :nombre, 
+            value_method: :id,
+            label: 'Red de Actores a la que se víncula Escenario de Toma de Decisión'
+          %>
           <%= f.input(:alcance, collection: [ "Local",
                       "Regional",
                       "Nacional",

@@ -347,7 +347,9 @@ CREATE TABLE cor1440_gen_actividad (
     alcance character varying(50),
     accionincidencia boolean,
     accioncgenero boolean,
-    accioncetnia boolean
+    accioncetnia boolean,
+    nucleoconflicto_id integer,
+    redactor_id integer
 );
 
 
@@ -881,6 +883,40 @@ CREATE SEQUENCE maternidad_seq
 
 
 --
+-- Name: nucleoconflicto; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE nucleoconflicto (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nucleoconflicto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE nucleoconflicto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nucleoconflicto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE nucleoconflicto_id_seq OWNED BY nucleoconflicto.id;
+
+
+--
 -- Name: organizacion_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -941,6 +977,40 @@ CREATE SEQUENCE profesion_seq
 
 
 --
+-- Name: publicacion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE publicacion (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: publicacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE publicacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: publicacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE publicacion_id_seq OWNED BY publicacion.id;
+
+
+--
 -- Name: rangoedad_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -950,6 +1020,40 @@ CREATE SEQUENCE rangoedad_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: redactor; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE redactor (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: redactor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE redactor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: redactor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE redactor_id_seq OWNED BY redactor.id;
 
 
 --
@@ -1663,6 +1767,27 @@ ALTER TABLE ONLY cor1440_gen_rangoedadac ALTER COLUMN id SET DEFAULT nextval('co
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY nucleoconflicto ALTER COLUMN id SET DEFAULT nextval('nucleoconflicto_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY publicacion ALTER COLUMN id SET DEFAULT nextval('publicacion_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY redactor ALTER COLUMN id SET DEFAULT nextval('redactor_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY sectoractor ALTER COLUMN id SET DEFAULT nextval('sectoractor_id_seq'::regclass);
 
 
@@ -1767,6 +1892,14 @@ ALTER TABLE ONLY sip_etiqueta
 
 
 --
+-- Name: nucleoconflicto_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY nucleoconflicto
+    ADD CONSTRAINT nucleoconflicto_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: persona_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1780,6 +1913,22 @@ ALTER TABLE ONLY sip_persona
 
 ALTER TABLE ONLY sip_persona_trelacion
     ADD CONSTRAINT persona_trelacion_pkey PRIMARY KEY (persona1, persona2, id_trelacion);
+
+
+--
+-- Name: publicacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY publicacion
+    ADD CONSTRAINT publicacion_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: redactor_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY redactor
+    ADD CONSTRAINT redactor_pkey PRIMARY KEY (id);
 
 
 --
@@ -2127,6 +2276,22 @@ ALTER TABLE ONLY cor1440_gen_actividad_actividadtipo
 
 ALTER TABLE ONLY sip_departamento
     ADD CONSTRAINT departamento_id_pais_fkey FOREIGN KEY (id_pais) REFERENCES sip_pais(id);
+
+
+--
+-- Name: fk_rails_20940a21f8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_actividad
+    ADD CONSTRAINT fk_rails_20940a21f8 FOREIGN KEY (nucleoconflicto_id) REFERENCES nucleoconflicto(id);
+
+
+--
+-- Name: fk_rails_2983c828da; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_actividad
+    ADD CONSTRAINT fk_rails_2983c828da FOREIGN KEY (redactor_id) REFERENCES redactor(id);
 
 
 --
@@ -2544,4 +2709,12 @@ INSERT INTO schema_migrations (version) VALUES ('20150630042537');
 INSERT INTO schema_migrations (version) VALUES ('20150630130814');
 
 INSERT INTO schema_migrations (version) VALUES ('20150630214251');
+
+INSERT INTO schema_migrations (version) VALUES ('20150630221321');
+
+INSERT INTO schema_migrations (version) VALUES ('20150630221909');
+
+INSERT INTO schema_migrations (version) VALUES ('20150630222017');
+
+INSERT INTO schema_migrations (version) VALUES ('20150630224704');
 

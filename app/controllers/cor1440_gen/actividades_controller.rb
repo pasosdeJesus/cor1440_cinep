@@ -122,6 +122,8 @@ module Cor1440Gen
         :accionincidencia,
         :accioncgenero,
         :accioncetnia,
+        :nucleoconflicto_id,
+        :redactor_id,
         :actividadarea_ids => [],
         :actividadtipo_ids => [],
         :proyecto_ids => [],
