@@ -101,6 +101,8 @@ module Cor1440Gen
         :objetivo, :proyecto, :resultado,
         :fecha, :actividad, :observaciones, 
         :usuario_id,
+        :departamento_id,
+        :municipio_id,
         :lugar, 
         :convocante, 
         :participantes, 
@@ -113,10 +115,14 @@ module Cor1440Gen
         :blancos, 
         :desarrollo, 
         :valora,
+        :contexto,
+        :duracion,
+        :mduracion,
         :actividadarea_ids => [],
         :actividadtipo_ids => [],
         :proyecto_ids => [],
         :actor_ids => [],
+        :usuario_ids => [],
         :actividad_rangoedadac_attributes => [
           :id, :rangoedadac_id, :fl, :fr, :ml, :mr, :_destroy
       ],

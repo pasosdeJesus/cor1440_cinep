@@ -10,7 +10,21 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require cor1440_gen/application
+//= require sip/motor
+//= require cor1440_gen/motor
 //= require_tree .
+
+$(document).on('ready page:load', function() {
+	var root;
+	root = typeof exports !== "undefined" && exports !== null ? exports : this;
+	sip_prepara_eventos_comunes(root, '/act');
+	cor1440_gen_prepara_eventos_comunes(root);
+        $("input[data-behaviour='datepicker']").datepicker({
+          format: 'yyyy-mm-dd',
+          autoclose: true,
+          todayHighlight: true,
+          language: 'es'
+        })
+});
 
 

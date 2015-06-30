@@ -338,7 +338,12 @@ CREATE TABLE cor1440_gen_actividad (
     convocante character varying(500),
     lugar character varying(500),
     valora integer,
-    usuario_id integer
+    usuario_id integer,
+    departamento_id integer,
+    municipio_id integer,
+    contexto character varying(5000),
+    duracion integer,
+    mduracion character varying(50)
 );
 
 
@@ -1218,6 +1223,36 @@ CREATE TABLE sip_municipio (
 
 
 --
+-- Name: sip_mundep_sinorden; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW sip_mundep_sinorden AS
+ SELECT ((sip_departamento.id_deplocal * 1000) + sip_municipio.id_munlocal) AS idlocal,
+    (((sip_municipio.nombre)::text || ' / '::text) || (sip_departamento.nombre)::text) AS nombre
+   FROM (sip_municipio
+     JOIN sip_departamento ON ((sip_municipio.id_departamento = sip_departamento.id)))
+  WHERE (sip_departamento.id_pais = 170)
+UNION
+ SELECT sip_departamento.id_deplocal AS idlocal,
+    sip_departamento.nombre
+   FROM sip_departamento
+  WHERE (sip_departamento.id_pais = 170);
+
+
+--
+-- Name: sip_mundep; Type: MATERIALIZED VIEW; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE MATERIALIZED VIEW sip_mundep AS
+ SELECT sip_mundep_sinorden.idlocal,
+    sip_mundep_sinorden.nombre,
+    to_tsvector('spanish'::regconfig, unaccent(sip_mundep_sinorden.nombre)) AS mundep
+   FROM sip_mundep_sinorden
+  ORDER BY (sip_mundep_sinorden.nombre COLLATE es_co_utf_8)
+  WITH NO DATA;
+
+
+--
 -- Name: sip_oficina_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -2022,6 +2057,13 @@ CREATE UNIQUE INDEX index_usuario_on_reset_password_token ON usuario USING btree
 
 
 --
+-- Name: sip_busca_mundep; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX sip_busca_mundep ON sip_mundep USING gin (mundep);
+
+
+--
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2124,6 +2166,14 @@ ALTER TABLE ONLY actividad_actor
 
 
 --
+-- Name: fk_rails_8196c53609; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_actividad
+    ADD CONSTRAINT fk_rails_8196c53609 FOREIGN KEY (departamento_id) REFERENCES sip_departamento(id);
+
+
+--
 -- Name: fk_rails_cc9d44f9de; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2145,6 +2195,14 @@ ALTER TABLE ONLY actor
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyecto
     ADD CONSTRAINT fk_rails_cf5d592625 FOREIGN KEY (proyecto_id) REFERENCES cor1440_gen_proyecto(id);
+
+
+--
+-- Name: fk_rails_f2cb2f1031; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_actividad
+    ADD CONSTRAINT fk_rails_f2cb2f1031 FOREIGN KEY (municipio_id) REFERENCES sip_municipio(id);
 
 
 --
@@ -2419,6 +2477,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150413160157');
 
 INSERT INTO schema_migrations (version) VALUES ('20150413160158');
 
+INSERT INTO schema_migrations (version) VALUES ('20150413160159');
+
 INSERT INTO schema_migrations (version) VALUES ('20150416074423');
 
 INSERT INTO schema_migrations (version) VALUES ('20150416090140');
@@ -2470,4 +2530,12 @@ INSERT INTO schema_migrations (version) VALUES ('20150521193040');
 INSERT INTO schema_migrations (version) VALUES ('20150521203631');
 
 INSERT INTO schema_migrations (version) VALUES ('20150521223501');
+
+INSERT INTO schema_migrations (version) VALUES ('20150528100944');
+
+INSERT INTO schema_migrations (version) VALUES ('20150624200701');
+
+INSERT INTO schema_migrations (version) VALUES ('20150630042537');
+
+INSERT INTO schema_migrations (version) VALUES ('20150630130814');
 

@@ -27,6 +27,36 @@
         :input_html => { "data-behaviour" => "datepicker"}, 
         :as => :string 
       %>
+      <%= f.input :duracion, 
+        label: 'Duración estimada'
+       %>
+      <%= f.input(:mduracion, collection: [
+                  "Minutos",
+                  "Horas",
+                  "Días",
+                  "Meses"
+        ], 
+        label: 'Unida de duración'
+        ) 
+      %>
+
+
+      <%= f.association :departamento,
+        collection: (Sip::Departamento.where(
+          id_pais: 170,
+          fechadeshabilitacion: nil).order(:nombre)),
+          label: "Departamento",
+          label_method: :nombre,
+          value_method: :id 
+      %>
+      <%= f.association :municipio,
+        collection: (Sip::Municipio.where(
+          id_departamento: f.object.departamento_id,
+          fechadeshabilitacion: nil).order(:nombre)),
+          label: "Municipio",
+          label_method: :nombre,
+          value_method: :id 
+      %>
       <%= f.input :lugar,
         label: 'Lugar'
       %>
@@ -136,6 +166,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">Evaluación/Seguimiento</div><div class="panel-body">
       <%= f.input :resultado, as: :text %>
+      <%= f.input :contexto, as: :text %>
       <%= f.input :observaciones,
         label: 'Compromisos / Observaciones',
         as: :text
