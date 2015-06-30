@@ -14,6 +14,7 @@ SET client_min_messages = warning;
 SET search_path = public, pg_catalog;
 
 
+DELETE FROM cor1440_gen_actividadarea;
 INSERT INTO cor1440_gen_actividadarea (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (105, 'C1 INVESTIGACIÓN E INCIDENCIA', '', '2014-02-08', NULL, '2014-05-15 21:54:52.38907', '2015-02-17 18:47:57.539324');
 INSERT INTO cor1440_gen_actividadarea (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (109, 'C2 EDUCACIÓN POPULAR, FORMACIÓN, ACOMPAÑAMIENTO E INCIDENCIA', '', '2014-09-29', NULL, '2014-09-29 14:14:53.534761', '2015-02-17 18:49:35.559975');
 INSERT INTO cor1440_gen_actividadarea (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (107, 'OE.1 I.1 AUMENTO ANUAL DEL 30% EN EL NÚMERO DE ESCENARIOS DE TOMA DE DECISIÓN EN LOS CUALES SE PARTICIPA CON LOS INSUMOS DE LAS INVESTIGACIONES Y/O LOS ANÁLISIS ORIENTADOS A LA TRANSFORMACIÓN DE LOS NÚCLEOS DE CONFLICTOS.', 'Aumento anual del 30% en el número de escenarios de toma de decisión en los cuales se participa con los insumos de las investigaciones y/o los análisis orientados a la transformación de los núcleos de conflictos.', '2014-09-29', NULL, '2014-09-29 14:08:40.721678', '2015-04-08 10:57:23.224326');
