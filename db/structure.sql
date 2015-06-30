@@ -343,7 +343,11 @@ CREATE TABLE cor1440_gen_actividad (
     municipio_id integer,
     contexto character varying(5000),
     duracion integer,
-    mduracion character varying(50)
+    mduracion character varying(50),
+    alcance character varying(50),
+    accionincidencia boolean,
+    accioncgenero boolean,
+    accioncetnia boolean
 );
 
 
@@ -2538,4 +2542,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150624200701');
 INSERT INTO schema_migrations (version) VALUES ('20150630042537');
 
 INSERT INTO schema_migrations (version) VALUES ('20150630130814');
+
+INSERT INTO schema_migrations (version) VALUES ('20150630214251');
 

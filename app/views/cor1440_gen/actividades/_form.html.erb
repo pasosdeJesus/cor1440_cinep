@@ -22,7 +22,9 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">Planeación</div><div class="panel-body">
-      <%= f.input :nombre %>
+      <%= f.input :nombre,
+        label: 'Nombre / Escenario de toma de decisión / Acción'
+      %>
       <%= f.input :fecha, 
         :input_html => { "data-behaviour" => "datepicker"}, 
         :as => :string 
@@ -36,11 +38,9 @@
                   "Días",
                   "Meses"
         ], 
-        label: 'Unida de duración'
+        label: 'Unidad de duración'
         ) 
       %>
-
-
       <%= f.association :departamento,
         collection: (Sip::Departamento.where(
           id_pais: 170,
@@ -61,17 +61,18 @@
         label: 'Lugar'
       %>
       <!--%= f.input :duracion %-->
-      <%= f.association :oficina,
+      <%= f.input :oficina_id, as: :hidden, value: 101 %>
+      <!--%= f.association :oficina,
         collection: Sip::Oficina.habilitados,
         label_method: :nombre, 
         value_method: :id,
         include_blank: false
-      %>
+        %-->
       <%= 
         f.association :responsable,
         collection: Usuario.all.order(:nombre),
         include_blank: false,
-        label: "Responsable",
+        label: "Responsable del equipo",
         label_method: lambda { |t| 
           r = t.nusuario
           if t.nombre then r += " - " + t.nombre end
@@ -82,7 +83,7 @@
         f.association :usuario,
           collection: Usuario.where(fechadeshabilitacion: nil).order(:nombre),
           include_blank: false,
-          label: "Corresponsables",
+          label: "Corresponsables del equipo",
           label_method: lambda { |t|
           r = t.nusuario
           if t.nombre then r += " - " + t.nombre end
@@ -100,11 +101,6 @@
       %>
       <%= f.association :proyecto,
         collection: Cor1440Gen::Proyecto.habilitados,
-        label_method: :nombre, 
-        value_method: :id 
-      %>
-      <%= f.association :actividadareas, 
-        collection: Cor1440Gen::Actividadarea.habilitados,
         label_method: :nombre, 
         value_method: :id 
       %>
@@ -126,16 +122,104 @@
     </div> <!-- panel-body -->
   </div> <!-- panel panel-default -->
   <div class="panel panel-default">
+    <div class="panel-heading">Plan Trienal.</div><div class="panel-body">
+      <%= f.association :actividadareas, 
+        collection: Cor1440Gen::Actividadarea.habilitados,
+        label_method: :nombre, 
+        value_method: :id 
+      %>
+      Principal núcleo de conflico que transforma<br>
+      <!--%= f.input(:nucleoprincipal, collection: [
+                  "Culturas Políticas, Identidades y DD-HH",
+                  "Relaciones Estado y Sociedad",
+                  "Alternativas al Desarrollo Regional"
+      ], 
+        label: 'Principal núcleo de conflico que transforma',
+        include_blank: false ) 
+      %-->
+      Otros núcleos<br>
+      <!--%= f.input(:otrosnucleos, collection: [
+                  "Culturas Políticas, Identidades y DD-HH",
+                  "Relaciones Estado y Sociedad",
+                  "Alternativas al Desarrollo Regional"
+      ], 
+        label: 'Otros núcleos de conflico que transforma',
+        include_blank: false ) 
+      %-->
+
+    </div> <!-- panel-body -->
+  </div> <!-- panel panel-default -->
+  <div class="panel panel-default">
     <div class="panel-heading">Desarrollo</div><div class="panel-body">
 
       <%= f.association :actor, 
         collection: ::Actor.habilitados,
-        label: "Actores institucionales que participan",
+        label: "Actores sociales/institucionales acompañados o que participan",
         label_method: :nombre, 
         value_method: :id 
       %>
+      <div class="panel panel-default">
+        <div class="panel-heading">Plan Trienal: Objetivo Específico 1</div>
+        <div class="panel-body">
+          Red<br>
+          <!--%= f.input(:red, collection: [
+          "Red Prodepaz",
+          "Coordinación Europa-Estados Unidos",
+          "Alianza Post-Londres",
+          "Red de ONG por la Transparencia",
+          "Mesa Ambiental de los Cerros Orientales  Bogotá",
+          "Sinergia",
+          "Viva la Ciudadanía",
+          "Instituto Interamericano de Derechos Humanos",
+          "Red de Centros Sociales de la Compañía de Jesús en America Latina",
+          "International Coalition for the Responsability  to Protect",
+          "International Land Coalition",
+          "Asociación Latinoamericana de Organizaciones de Promoción al Desarrollo A.C",
+          "Consejo Latinoamericano  de Ciencias Sociales",
+          "No aplica",
+          "Otra"
+          ], 
+          label: 'Red a la que se víncula Escenario de Toma de Decisión',
+          include_blank: true ) 
+          %-->
+          <%= f.input(:alcance, collection: [ "Local",
+                      "Regional",
+                      "Nacional",
+                      "Internacional"
+          ], 
+            label: 'Alcance',
+            include_blank: false ) 
+          %>
+          Insumos<br>
+          <!--%= f.input(:insumos, collection: [
+          "NOCHE Y NIEBLA 50",
+          "NOCHE Y NIEBLA 51",
+          "CASO TIPO TRUJILLO" 
+          ], 
+          label: 'Publicaciones con las que participa en Escenario de Toma de Decisión',
+          include_blank: true ) 
+          %-->
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Plan Trienal: Objetivo Específico 2</div>
+        <div class="panel-body">
+          <%= f.input :accionincidencia, 
+            boolean_style: :nested,
+            inline_label: '¿Incide en Transformación de Nucleos de Conflicto?'
+          %>
+          <%= f.input :accioncgenero, 
+            boolean_style: :nested,
+            inline_label: '¿Acción colectiva vinculada a Derechos de Género?'
+          %>
+          <%= f.input :accioncetnia, 
+            boolean_style: :nested,
+            inline_label: '¿Acción colectiva vinculada a Derecho de Étnia?'
+          %>
+        </div>
+      </div>
       <%= f.input :participantes,
-        label: 'Actores Individuales que participan',
+        label: 'Actores Individuales acompañados o que participan',
         as: :text
       %>
       <!--%= f.input :totorg, label: 'Total organizaciones' %-->
@@ -158,10 +242,10 @@
         label: 'Blancos'
       %>
       <%= f.input :desarrollo,
-        label: 'Desarrollo de la Actividad',
+        label: 'Desarrollo de la Actividad / Acción colectiva realizada',
         as: :text
       %>
-        </div> <!-- panel-body -->
+    </div> <!-- panel-body -->
   </div> <!-- panel panel-default -->
   <div class="panel panel-default">
     <div class="panel-heading">Evaluación/Seguimiento</div><div class="panel-body">
