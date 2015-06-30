@@ -126,8 +126,10 @@ module Cor1440Gen
         :redactor_id,
         :actividadarea_ids => [],
         :actividadtipo_ids => [],
-        :proyecto_ids => [],
         :actor_ids => [],
+        :otronucleoconflicto_ids => [],
+        :publicacion_ids => [],
+        :proyecto_ids => [],
         :usuario_ids => [],
         :actividad_rangoedadac_attributes => [
           :id, :rangoedadac_id, :fl, :fr, :ml, :mr, :_destroy

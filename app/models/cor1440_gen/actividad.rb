@@ -15,6 +15,14 @@ module Cor1440Gen
       class_name: '::ActividadActor', foreign_key: 'actividad_id'
     has_many :actor, through: :actividad_actor,
       class_name: '::Actor'
+    has_many :actividad_nucleoconflicto, dependent: :delete_all,
+      class_name: '::ActividadNucleoconflicto', foreign_key: 'actividad_id'
+    has_many :otronucleoconflicto, through: :actividad_nucleoconflicto,
+      class_name: '::Nucleoconflicto'
+    has_many :actividad_publicacion, dependent: :delete_all,
+      class_name: '::ActividadPublicacion', foreign_key: 'actividad_id'
+    has_many :publicacion, through: :actividad_publicacion,
+      class_name: '::Publicacion'
 
     validates :desarrollo, length: { maximum: 5000 }
     validates :resultado, length: { maximum: 5000 }

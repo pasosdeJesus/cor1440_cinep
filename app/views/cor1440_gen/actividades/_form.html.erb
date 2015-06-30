@@ -134,16 +134,12 @@
         value_method: :id,
         label: 'Principal núcleo de conflico que transforma'
       %>
-      Otros núcleos<br>
-      <!--%= f.input(:otrosnucleos, collection: [
-                  "Culturas Políticas, Identidades y DD-HH",
-                  "Relaciones Estado y Sociedad",
-                  "Alternativas al Desarrollo Regional"
-      ], 
-        label: 'Otros núcleos de conflico que transforma',
-        include_blank: false ) 
-      %-->
-
+      <%= f.association :otronucleoconflicto, 
+        collection: ::Nucleoconflicto.habilitados,
+        label: "Otros núcleos de conflico que transforma",
+        label_method: :nombre, 
+        value_method: :id 
+      %>
     </div> <!-- panel-body -->
   </div> <!-- panel panel-default -->
   <div class="panel panel-default">
@@ -172,15 +168,12 @@
             label: 'Alcance',
             include_blank: false ) 
           %>
-          Insumos<br>
-          <!--%= f.input(:insumos, collection: [
-          "NOCHE Y NIEBLA 50",
-          "NOCHE Y NIEBLA 51",
-          "CASO TIPO TRUJILLO" 
-          ], 
-          label: 'Publicaciones con las que participa en Escenario de Toma de Decisión',
-          include_blank: true ) 
-          %-->
+          <%= f.association :publicacion, 
+            collection: ::Publicacion.habilitados,
+            label: "Publicaciones/Insumos CINEP usados en Escenario de Toma de Decisión",
+            label_method: :nombre, 
+            value_method: :id 
+          %>
         </div>
       </div>
       <div class="panel panel-default">

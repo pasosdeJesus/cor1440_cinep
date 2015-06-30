@@ -169,6 +169,26 @@ CREATE TABLE actividad_actor (
 
 
 --
+-- Name: actividad_nucleoconflicto; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE actividad_nucleoconflicto (
+    actividad_id integer NOT NULL,
+    nucleoconflicto_id integer NOT NULL
+);
+
+
+--
+-- Name: actividad_publicacion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE actividad_publicacion (
+    actividad_id integer NOT NULL,
+    publicacion_id integer NOT NULL
+);
+
+
+--
 -- Name: actividadoficio_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -2311,6 +2331,14 @@ ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
 
 
 --
+-- Name: fk_rails_55868fbce2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actividad_nucleoconflicto
+    ADD CONSTRAINT fk_rails_55868fbce2 FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
 -- Name: fk_rails_56bdc49b83; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2327,6 +2355,14 @@ ALTER TABLE ONLY actor
 
 
 --
+-- Name: fk_rails_60dbe4c315; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actividad_publicacion
+    ADD CONSTRAINT fk_rails_60dbe4c315 FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
 -- Name: fk_rails_7ebb208867; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2340,6 +2376,22 @@ ALTER TABLE ONLY actividad_actor
 
 ALTER TABLE ONLY cor1440_gen_actividad
     ADD CONSTRAINT fk_rails_8196c53609 FOREIGN KEY (departamento_id) REFERENCES sip_departamento(id);
+
+
+--
+-- Name: fk_rails_afe68ea314; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actividad_publicacion
+    ADD CONSTRAINT fk_rails_afe68ea314 FOREIGN KEY (publicacion_id) REFERENCES publicacion(id);
+
+
+--
+-- Name: fk_rails_cb90ade2a0; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actividad_nucleoconflicto
+    ADD CONSTRAINT fk_rails_cb90ade2a0 FOREIGN KEY (nucleoconflicto_id) REFERENCES nucleoconflicto(id);
 
 
 --
@@ -2717,4 +2769,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150630221909');
 INSERT INTO schema_migrations (version) VALUES ('20150630222017');
 
 INSERT INTO schema_migrations (version) VALUES ('20150630224704');
+
+INSERT INTO schema_migrations (version) VALUES ('20150630230130');
+
+INSERT INTO schema_migrations (version) VALUES ('20150630230134');
 
