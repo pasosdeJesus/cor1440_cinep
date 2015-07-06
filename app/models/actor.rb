@@ -27,12 +27,10 @@ class Actor < ActiveRecord::Base
 
   def presenta(atr)
     case atr.to_s
-    when "sectoractor_id" 
-      self[atr] ? ::Sectoractor.find(self[atr]).nombre : ""
     when "pais_id" 
       self[atr] ? Sip::Pais.find(self[atr]).nombre : ""
     else
-      self[atr].to_s
+      presenta_gen(atr)
     end
   end
 
