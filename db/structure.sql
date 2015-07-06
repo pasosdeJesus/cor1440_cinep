@@ -219,7 +219,6 @@ CREATE SEQUENCE acto_seq
 CREATE TABLE actor (
     id integer NOT NULL,
     nombre character varying(500) NOT NULL,
-    sectoractor_id integer,
     personacontacto character varying(100),
     cargo character varying(100),
     correo character varying(100),
@@ -254,6 +253,16 @@ CREATE SEQUENCE actor_id_seq
 --
 
 ALTER SEQUENCE actor_id_seq OWNED BY actor.id;
+
+
+--
+-- Name: actor_sectoractor; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE actor_sectoractor (
+    actor_id integer NOT NULL,
+    sectoractor_id integer NOT NULL
+);
 
 
 --
@@ -2167,13 +2176,6 @@ CREATE INDEX index_actor_on_pais_id ON actor USING btree (pais_id);
 
 
 --
--- Name: index_actor_on_sectoractor_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_actor_on_sectoractor_id ON actor USING btree (sectoractor_id);
-
-
---
 -- Name: index_cor1440_gen_actividad_sip_anexo_on_anexo_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2299,6 +2301,14 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
+-- Name: fk_rails_01abd767ad; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor_sectoractor
+    ADD CONSTRAINT fk_rails_01abd767ad FOREIGN KEY (sectoractor_id) REFERENCES sectoractor(id);
+
+
+--
 -- Name: fk_rails_20940a21f8; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2347,14 +2357,6 @@ ALTER TABLE ONLY actividad_actor
 
 
 --
--- Name: fk_rails_59462e2800; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY actor
-    ADD CONSTRAINT fk_rails_59462e2800 FOREIGN KEY (sectoractor_id) REFERENCES sectoractor(id);
-
-
---
 -- Name: fk_rails_60dbe4c315; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2376,6 +2378,14 @@ ALTER TABLE ONLY actividad_actor
 
 ALTER TABLE ONLY cor1440_gen_actividad
     ADD CONSTRAINT fk_rails_8196c53609 FOREIGN KEY (departamento_id) REFERENCES sip_departamento(id);
+
+
+--
+-- Name: fk_rails_8718e4c155; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor_sectoractor
+    ADD CONSTRAINT fk_rails_8718e4c155 FOREIGN KEY (actor_id) REFERENCES actor(id);
 
 
 --
@@ -2773,4 +2783,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150630224704');
 INSERT INTO schema_migrations (version) VALUES ('20150630230130');
 
 INSERT INTO schema_migrations (version) VALUES ('20150630230134');
+
+INSERT INTO schema_migrations (version) VALUES ('20150706172733');
+
+INSERT INTO schema_migrations (version) VALUES ('20150706173649');
 
