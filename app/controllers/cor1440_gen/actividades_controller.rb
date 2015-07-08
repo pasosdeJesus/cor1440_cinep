@@ -72,10 +72,10 @@ module Cor1440Gen
         @actividades.human_attribute_name(:proyectos),
         @actividades.human_attribute_name(:resultado),
         @actividades.human_attribute_name(:mujeres),
-        @actividades.human_attribute_name(:hombres)
-        @actividades.human_attribute_name(:blancos)
-        @actividades.human_attribute_name(:mestizos)
-        @actividades.human_attribute_name(:indigenas)
+        @actividades.human_attribute_name(:hombres),
+        @actividades.human_attribute_name(:blancos),
+        @actividades.human_attribute_name(:mestizos),
+        @actividades.human_attribute_name(:indigenas),
         @actividades.human_attribute_name(:negros)
       ]
     end
