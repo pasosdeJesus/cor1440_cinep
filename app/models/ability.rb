@@ -1,17 +1,17 @@
 # encoding: UTF-8
 class Ability  < Cor1440Gen::Ability
 
-  @@tablasbasicas = Cor1440Gen::Ability::BASICAS + [
+  @@tablasbasicas += [
     ['', 'actor'],
     ['', 'sectoractor']
   ]
   
-  @@basicas_seq_con_id = Cor1440Gen::Ability::BASICAS_SID + [
+  @@basicas_seq_con_id += [
     ['', 'actor'],
     ['', 'sectoractor']
   ]
 
-  @@tablasbasicas_prio = BASICAS_PRIO + [
+  @@tablasbasicas_prio += [
     ['', 'sectoractor']
   ]
 end
