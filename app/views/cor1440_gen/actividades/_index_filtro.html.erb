@@ -31,14 +31,6 @@
     %>
   </th>
   <th>
-    <%= select_tag "busarea", 
-      options_from_collection_for_select(
-        Cor1440Gen::Actividadarea.habilitados, 
-        "id", "nombre"), {include_blank: true,
-          "data-enviarautomatico" => "", style: "width: 10em"
-    } %>
-  </th>
-  <th>
     <%= select_tag "bustipo", 
       options_from_collection_for_select(
         Cor1440Gen::Actividadtipo.habilitados, 
@@ -68,7 +60,15 @@
       "placeholder" => model_class.human_attribute_name(:resultado) 
     %>
   </th>
-  <th></th>
+  <th></th> <!-- hombres -->
+  <th></th> <!-- mujeres -->
+
+  <th></th> <!-- blancos -->
+  <th></th> <!-- mestizos -->
+  <th></th> <!-- indigenas -->
+  <th></th> <!-- negros -->
+
+  <th></th> <!-- acciones -->
   <th><%= submit_tag("Filtrar", class: 'envia_filtrar') %>
     <%= submit_tag("Generar PDF", class: 'envia_generar_pdf') %>
   </th>

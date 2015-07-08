@@ -67,11 +67,16 @@ module Cor1440Gen
         @actividades.human_attribute_name(:fecha),
         @actividades.human_attribute_name(:responsable),
         @actividades.human_attribute_name(:nombre),
-        @actividades.human_attribute_name(:actividadareas),
         @actividades.human_attribute_name(:tipos),
         @actividades.human_attribute_name(:objetivo),
         @actividades.human_attribute_name(:proyectos),
-        @actividades.human_attribute_name(:resultado)
+        @actividades.human_attribute_name(:resultado),
+        @actividades.human_attribute_name(:mujeres),
+        @actividades.human_attribute_name(:hombres)
+        @actividades.human_attribute_name(:blancos)
+        @actividades.human_attribute_name(:mestizos)
+        @actividades.human_attribute_name(:indigenas)
+        @actividades.human_attribute_name(:negros)
       ]
     end
 
@@ -80,9 +85,6 @@ module Cor1440Gen
         actividad.fecha , 
         actividad.responsable ? actividad.responsable.nusuario : "",
         actividad.nombre ? actividad.nombre : "",
-        actividad.actividadareas.inject("") { |memo, i| 
-          (memo == "" ? "" : memo + "; ") + i.nombre 
-        },
           actividad.actividadtipo.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre 
         },
@@ -90,7 +92,13 @@ module Cor1440Gen
           actividad.proyecto.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre 
         },
-          actividad.resultado
+          actividad.resultado,
+          actividad.mujeres,
+          actividad.hombres,
+          actividad.blancos,
+          actividad.mestizos,
+          actividad.indigenas,
+          actividad.negros
       ]
     end
 
