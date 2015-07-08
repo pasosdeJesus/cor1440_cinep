@@ -1,0 +1,38 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <% @enctabla.try(:each) do |enc| %>
+        <th><%= CGI.escapeHTML(enc) %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @acciones = {};
+       @etnia = {};
+       @genero = {};
+       #byebug
+       @cuerpotabla.try(:each) do |fila| %>
+      <tr>
+        <% 
+          idac = fila['id'].to_i
+          @acciones[idac] = idac
+          if fila['genero'] == 'X'
+            @genero[idac] = idac
+          end
+          if fila['etnia'] == 'X'
+            @etnia[idac] = idac
+          end
+          i=0; fila.try(:each) do |campo| %>
+          <td style="text-align:center"><%= CGI.escapeHTML(campo[1]) if campo[1] %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>Número de Actores y Acciones: <%= @cuerpotabla.count %></p>
+<p>Acciones de Incidencia: <%= @acciones.count %></p>
+<p>Acciones vinculadas a Género: <%= @genero.count %> 
+  ( <%= @genero.count * 100 / @acciones.count%>% )</p>
+<p>Acciones vinculadas a Étnia: <%= @etnia.count %>
+  ( <%= @etnia.count * 100 / @acciones.count %>% )</p>
