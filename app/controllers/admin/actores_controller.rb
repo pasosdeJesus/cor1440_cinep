@@ -16,9 +16,10 @@ module Admin
     def atributos_index
       [
         "id", 
-        "nombre", 
-        "sectoractor_id",
-        "personacontacto",
+        "nombre"
+        ] +
+        [ :sectoractor_ids =>  [] ] +
+        [ "personacontacto",
         "cargo",
         "correo",
         "telefono",
