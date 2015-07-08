@@ -2,6 +2,8 @@
 
 class ReportesController < ::ApplicationController
 
+  load_and_authorize_resource class: Cor1440Gen::Actividad
+  
   include Sip::ConsultasHelper
 
   # Indicador 1.1
@@ -106,16 +108,20 @@ class ReportesController < ::ApplicationController
         ON sip_departamento.id=cor1440_gen_actividad.departamento_id
       LEFT JOIN nucleoconflicto 
         ON cor1440_gen_actividad.nucleoconflicto_id=nucleoconflicto.id
+    WHERE actor.id <> 102 AND actor.id <> 103
+    AND actor.id IN (SELECT DISTINCT actor_id FROM actor_sectoractor, sectoractor
+      WHERE actor_sectoractor.sectoractor_id=sectoractor.id 
+      AND sectoractor.enplantrienal)
     "
     where = ''
     if (pFaini != '') 
-      where = " WHERE cor1440_gen_actividad.fecha >= '#{pFaini}'"
+      where = " cor1440_gen_actividad.fecha >= '#{pFaini}'"
     end
     if (pFafin != '')
       if where == ''
         where += ' AND '
       else
-        where = ' WHERE '
+        where = ' '
       end
       where += "cor1440_gen_actividad.fecha <= '#{pFafin}'"
     end
