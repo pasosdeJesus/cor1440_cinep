@@ -14,6 +14,13 @@ Rails.application.routes.draw do
 		end
 		resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' } 
 
+    get "/reportes/indicador11" => "reportes#indicador11", 
+      as: :reportes_indicador11
+    get "/reportes/objetivoe2" => "reportes#objetivoe2", 
+      as: :reportes_objetivoe2
+    get "/reportes/cuadroactividades" => "reportes#cuadroactividades", 
+      as: :reportes_cuadroactividades
+
     namespace :admin do
       Ability.tablasbasicas.each do |t|
         if (t[0] == "") 
@@ -30,8 +37,8 @@ Rails.application.routes.draw do
     # Se define root aqui para que tras ingresos y salidas llegue a /act
 		root 'cor1440_gen/hogar#index'
 	end
-	mount Sip::Engine, at: "/act", as: "sip"
 	mount Cor1440Gen::Engine, at: "/act", as: "cor1440_gen"
+	mount Sip::Engine, at: "/act", as: "sip"
 
   get '/' => 'redirige#index'
 end
