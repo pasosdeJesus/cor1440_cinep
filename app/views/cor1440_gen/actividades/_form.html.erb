@@ -152,7 +152,7 @@
         value_method: :id 
       %>
       <div class="panel panel-default">
-        <div class="panel-heading">Plan Trienal: Objetivo Específico 1</div>
+        <div class="panel-heading">Plan Trienal: Objetivo Específico 1. Participación en Escenarios de Toma de Decisión</div>
         <div class="panel-body">
           <%= f.association :redactor, 
             collection: ::Redactor.habilitados,
@@ -177,7 +177,7 @@
         </div>
       </div>
       <div class="panel panel-default">
-        <div class="panel-heading">Plan Trienal: Objetivo Específico 2</div>
+        <div class="panel-heading">Plan Trienal: Objetivo Específico 2.  Acompañamiento a Actores Sociales e Incidencia.</div>
         <div class="panel-body">
           <%= f.input :accionincidencia, 
             boolean_style: :nested,
@@ -194,7 +194,7 @@
         </div>
       </div>
       <%= f.input :participantes,
-        label: 'Actores Individuales acompañados o que participan',
+        label: 'Personas acompañadas o que participan',
         as: :text
       %>
       <!--%= f.input :totorg, label: 'Total organizaciones' %-->
