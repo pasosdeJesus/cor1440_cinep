@@ -27,7 +27,7 @@
       %>
       <%= f.input :fecha, 
         :input_html => { "data-behaviour" => "datepicker"}, 
-        :as => :string 
+        :as => :string
       %>
       <%= f.input :duracion, 
         label: 'Duración estimada'
@@ -122,9 +122,15 @@
     </div> <!-- panel-body -->
   </div> <!-- panel panel-default -->
   <div class="panel panel-default">
-    <div class="panel-heading">Plan Trienal.</div><div class="panel-body">
-      <%= f.association :actividadareas, 
+    <div class="panel-heading">Plan Trienal CINEP</div><div class="panel-body">
+      <!--%= f.association :actividadareas, 
         collection: Cor1440Gen::Actividadarea.habilitados,
+        label_method: :nombre, 
+        value_method: :id 
+        %-->
+      <%= f.association :actor, 
+        collection: ::Actor.habilitados.where.not(id: 102).where.not(id: 103),
+        label: "Otros actores sociales/institucionales acompañados o que participan",
         label_method: :nombre, 
         value_method: :id 
       %>
@@ -140,20 +146,15 @@
         label_method: :nombre, 
         value_method: :id 
       %>
-    </div> <!-- panel-body -->
-  </div> <!-- panel panel-default -->
-  <div class="panel panel-default">
-    <div class="panel-heading">Desarrollo</div><div class="panel-body">
-
-      <%= f.association :actor, 
-        collection: ::Actor.habilitados,
-        label: "Actores sociales/institucionales acompañados o que participan",
-        label_method: :nombre, 
-        value_method: :id 
-      %>
       <div class="panel panel-default">
-        <div class="panel-heading">Plan Trienal: Objetivo Específico 1. Participación en Escenarios de Toma de Decisión</div>
+        <div class="panel-heading">Objetivo Específico 1. Participación en Escenarios de Toma de Decisión con Publicaciones CINEP</div>
         <div class="panel-body">
+          <%= f.association :publicacion, 
+            collection: ::Publicacion.habilitados,
+            label: "Publicaciones/Insumos CINEP usados en Escenario de Toma de Decisión",
+            label_method: :nombre, 
+            value_method: :id 
+          %>
           <%= f.association :redactor, 
             collection: ::Redactor.habilitados,
             label_method: :nombre, 
@@ -168,31 +169,30 @@
             label: 'Alcance',
             include_blank: false ) 
           %>
-          <%= f.association :publicacion, 
-            collection: ::Publicacion.habilitados,
-            label: "Publicaciones/Insumos CINEP usados en Escenario de Toma de Decisión",
-            label_method: :nombre, 
-            value_method: :id 
-          %>
         </div>
       </div>
       <div class="panel panel-default">
-        <div class="panel-heading">Plan Trienal: Objetivo Específico 2.  Acompañamiento a Actores Sociales e Incidencia.</div>
+        <div class="panel-heading">Objetivo Específico 2.  Acompañamiento a Actores Sociales e Incidencia.</div>
         <div class="panel-body">
           <%= f.input :accionincidencia, 
             boolean_style: :nested,
-            inline_label: '¿Incide en Transformación de Nucleos de Conflicto?'
+            inline_label: '¿Es Accion Colectiva que incide en Transformación de Nucleos de Conflicto?'
           %>
           <%= f.input :accioncgenero, 
             boolean_style: :nested,
-            inline_label: '¿Acción colectiva vinculada a Derechos de Género?'
+            inline_label: '¿Es Acción Colectiva vinculada a Derechos de Género?'
           %>
           <%= f.input :accioncetnia, 
             boolean_style: :nested,
-            inline_label: '¿Acción colectiva vinculada a Derecho de Étnia?'
+            inline_label: '¿Es Acción Colectiva vinculada a Derecho de Étnia?'
           %>
         </div>
       </div>
+
+    </div> <!-- panel-body -->
+  </div> <!-- panel panel-default -->
+  <div class="panel panel-default">
+    <div class="panel-heading">Desarrollo</div><div class="panel-body">
       <%= f.input :participantes,
         label: 'Personas acompañadas o que participan',
         as: :text
