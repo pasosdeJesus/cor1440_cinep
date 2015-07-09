@@ -6,10 +6,20 @@ class ReportesController < ::ApplicationController
   
   include Sip::ConsultasHelper
 
+  # Inicializa @fechaini y @fechafin
+  def carga_fechas
+    if params[:fechaini] || params[:fechafin]
+      @fechaini = param_escapa('fechaini')
+      @fechafin = param_escapa('fechafin')
+    else
+      @fechaini = inicio_semestre_ant()
+      @fechafin = fin_semestre_ant()
+    end
+  end
+
   # Indicador 1.1
   def indicador11
-    pFaini = param_escapa('fechaini')
-    pFafin = param_escapa('fechafin')
+    carga_fechas
 
     cons = "SELECT DISTINCT cor1440_gen_actividad.id, usuario.nusuario,
     cor1440_gen_actividad.nombre as act_nombre, 
@@ -43,16 +53,16 @@ class ReportesController < ::ApplicationController
       LEFT JOIN nucleoconflicto
         ON cor1440_gen_actividad.nucleoconflicto_id=nucleoconflicto.id"
     where = ''
-    if (pFaini != '') 
-      where = " WHERE cor1440_gen_actividad.fecha >= '#{pFaini}'"
+    if (@fechaini != '') 
+      where = " WHERE cor1440_gen_actividad.fecha >= '#{@fechaini}'"
     end
-    if (pFafin != '')
+    if (@fechafin != '')
       if where == ''
         where += ' AND '
       else
         where = ' WHERE '
       end
-      where += "cor1440_gen_actividad.fecha <= '#{pFafin}'"
+      where += "cor1440_gen_actividad.fecha <= '#{@fechafin}'"
     end
     cons += where + " ORDER BY 1"
 
@@ -75,8 +85,7 @@ class ReportesController < ::ApplicationController
 
   # Objetivo Especifico 2
   def objetivoe2 
-    pFaini = param_escapa('fechaini')
-    pFafin = param_escapa('fechafin')
+    carga_fechas
 
     cons = "SELECT DISTINCT cor1440_gen_actividad.id, usuario.nusuario,
     actor.nombre AS nombre_actor, sip_municipio.nombre AS municipio,
@@ -114,16 +123,11 @@ class ReportesController < ::ApplicationController
       AND sectoractor.enplantrienal)
     "
     where = ''
-    if (pFaini != '') 
-      where = " cor1440_gen_actividad.fecha >= '#{pFaini}'"
+    if (@fechaini != '') 
+      where += " AND cor1440_gen_actividad.fecha >= '#{@fechaini}'"
     end
-    if (pFafin != '')
-      if where == ''
-        where += ' AND '
-      else
-        where = ' '
-      end
-      where += "cor1440_gen_actividad.fecha <= '#{pFafin}'"
+    if (@fechafin != '')
+      where += " AND cor1440_gen_actividad.fecha <= '#{@fechafin}'"
     end
     cons += where + " ORDER BY 1"
 
@@ -145,8 +149,19 @@ class ReportesController < ::ApplicationController
 
   # Cuadro actividades
   def cuadroactividades
-    pFaini = param_escapa('fechaini')
-    pFafin = param_escapa('fechafin')
+    carga_fechas
+
+    wheref = ''
+    if (@fechaini != '') 
+      wheref = "cor1440_gen_actividad.fecha >= '#{@fechaini}'"
+    end
+    if (@fechafin != '')
+      if wheref != ''
+        wheref += ' AND '
+      end
+      wheref += "cor1440_gen_actividad.fecha <= '#{@fechafin}'"
+    end
+
     filas = [["Participación en espacios estratégicos para el centro  (foros, conversatorios, debates, seminarios, cátedras etc.)",
       [2, #PARTICIPACIÓN EN ACTIVIDAD DE FORMACIÓN
         3, #PARTICIPACIÓN EN REUNIÓN EXTERNA
@@ -191,31 +206,31 @@ class ReportesController < ::ApplicationController
       tac = Cor1440Gen::Actividad.all.joins(
         :actividad_actividadtipo).where(
         "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
-      ).count()
+      ).where(wheref).count()
       tm = Cor1440Gen::Actividad.all.joins(
         :actividad_actividadtipo).where(
         "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
-      ).sum(:mujeres)
+      ).where(wheref).sum(:mujeres)
       th = Cor1440Gen::Actividad.all.joins(
         :actividad_actividadtipo).where(
         "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
-      ).sum(:hombres)
+      ).where(wheref).sum(:hombres)
       tbl = Cor1440Gen::Actividad.all.joins(
         :actividad_actividadtipo).where(
         "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
-      ).sum(:blancos)
+      ).where(wheref).sum(:blancos)
       tme = Cor1440Gen::Actividad.all.joins(
         :actividad_actividadtipo).where(
         "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
-      ).sum(:mestizos)
+      ).where(wheref).sum(:mestizos)
       tin = Cor1440Gen::Actividad.all.joins(
         :actividad_actividadtipo).where(
         "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
-      ).sum(:indigenas)
+      ).where(wheref).sum(:indigenas)
       tne = Cor1440Gen::Actividad.all.joins(
         :actividad_actividadtipo).where(
         "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
-      ).sum(:negros)
+      ).where(wheref).sum(:negros)
   
       @cuerpotabla << {"desc": f[0], "tac": tac, "tm": tm, "th": th, 
         "perf": "Blancos: #{tbl}, Mestizos: #{tme}" +
@@ -229,7 +244,7 @@ class ReportesController < ::ApplicationController
     respond_to do |format|
       format.html {  }
       format.json { head :no_content }
-      format.js   { render 'sip/reportes/tabla' }
+      format.js   { render 'sip/reportes/cambiatabla' }
     end
   end
 

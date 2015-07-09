@@ -69,5 +69,34 @@ module Sip
       params[p] ? Sip::Pais.connection.quote_string(params[p]) : ''
     end
 
+    ##
+    # Retorna fecha inicial del semestre anterior
+    ##
+    def inicio_semestre_ant
+      hoy = Date.today 
+      anio = hoy.year
+      if hoy.mon >= 7
+        ini = anio.to_s + "-" + "01-01"
+      else
+        anio -= 1
+        ini = anio.to_s + "-" + "07-01"
+      end
+      return ini
+    end
+
+    ##
+    # Retorna fecha final del semestre anterior
+    ##
+    def fin_semestre_ant 
+      hoy = Date.today 
+      anio = hoy.year
+      if hoy.mon >= 7
+        fin = anio.to_s + "-" + "06-30"
+      else
+        anio -= 1
+        fin = anio.to_s + "-" + "12-31"
+      end
+      return fin
+    end
   end
 end
