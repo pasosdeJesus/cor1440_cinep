@@ -54,10 +54,22 @@ module Cor1440Gen
           @busproyecto.to_i
         )
       end
+      @busproyectofinanciero = param_escapa('busproyectofinanciero')
+      if @busproyectofinanciero != '' then
+        ac = ac.joins(:actividad_proyectofinanciero).where(
+          "cor1440_gen_actividad_proyectofinanciero.proyectofinanciero_id= ?",
+          @busproyectofinanciero.to_i
+        )
+      end
       @busresultado = param_escapa('busresultado')
       if @busresultado != '' then
         ac = ac.where("resultado ILIKE '%#{@busresultado}%'")
       end
+      @buscontexto = param_escapa('buscontexto')
+      if @buscontexto != '' then
+        ac = ac.where("contexto ILIKE '%#{@buscontexto}%'")
+      end
+
       return ac
     end
 
@@ -70,7 +82,9 @@ module Cor1440Gen
         @actividades.human_attribute_name(:tipos),
         @actividades.human_attribute_name(:objetivo),
         @actividades.human_attribute_name(:proyectos),
+        @actividades.human_attribute_name(:proyectosfinancieros),
         @actividades.human_attribute_name(:resultado),
+        @actividades.human_attribute_name(:contexto),
         @actividades.human_attribute_name(:mujeres),
         @actividades.human_attribute_name(:hombres),
         @actividades.human_attribute_name(:blancos),
@@ -82,7 +96,7 @@ module Cor1440Gen
 
     def fila_comun(actividad)
       return [actividad.id,
-        actividad.fecha , 
+        actividad.fecha, 
         actividad.responsable ? actividad.responsable.nusuario : "",
         actividad.nombre ? actividad.nombre : "",
           actividad.actividadtipo.inject("") { |memo, i| 
@@ -92,7 +106,11 @@ module Cor1440Gen
           actividad.proyecto.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre 
         },
+          actividad.proyectofinanciero.inject("") { |memo, i| 
+          (memo == "" ? "" : memo + "; ") + i.nombre 
+        },
           actividad.resultado,
+          actividad.contexto,
           actividad.mujeres,
           actividad.hombres,
           actividad.blancos,

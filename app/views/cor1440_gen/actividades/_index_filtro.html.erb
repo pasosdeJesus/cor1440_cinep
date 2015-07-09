@@ -54,10 +54,25 @@
     } %>
   </th>
   <th>
+    <%= select_tag "busproyectofinanciero", 
+      options_from_collection_for_select(
+        Cor1440Gen::Proyectofinanciero.habilitados, 
+        "id", "nombre"), {include_blank: true,
+          "data-enviarautomatico" => "", style: "width: 10em"
+    } %>
+  </th>
+  <th>
     <%= text_field_tag 'busresultado', @busresultado, 
       maxlength: 10, size: 12,
       "data-enviarautomatico" => "", 
       "placeholder" => model_class.human_attribute_name(:resultado) 
+    %>
+  </th>
+  <th>
+    <%= text_field_tag 'buscontexto', @buscontexto, 
+      maxlength: 10, size: 12,
+      "data-enviarautomatico" => "", 
+      "placeholder" => model_class.human_attribute_name(:contexto) 
     %>
   </th>
   <th></th> <!-- hombres -->
