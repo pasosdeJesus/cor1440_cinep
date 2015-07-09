@@ -12,10 +12,10 @@
        @actores = {};
        @etnia = {};
        @genero = {};
-       #byebug
        @cuerpotabla.try(:each) do |fila| %>
       <tr>
         <% 
+          #byebug
           idac = fila['id'].to_i
           @acciones[idac] = idac
           if fila['genero'] == 'X'
@@ -27,7 +27,7 @@
           if fila['incidencia'] == 'X'
             @incidencia[idac] = idac
           end
-          @actores[fila['actor']] = fila['actor']
+          @actores[fila['nombre_actor']] = fila['nombre_actor']
           i=0; fila.try(:each) do |campo| %>
           <td style="text-align:center"><%= CGI.escapeHTML(campo[1]) if campo[1] %></td>
         <% end %>
@@ -37,9 +37,9 @@
 </table>
 
 <p>Número de Actuaciones (Actores y Acciones): <%= @cuerpotabla.count %></p>
-<p>Número de Actores: <%= @cuerpotabla.count %></p>
-<p>Número de Acciones: <%= @cuerpotabla.count %></p>
-<p>Acciones de Incidencia: <%= @acciones.count %></p>
+<p>Número de Actores: <%= @actores.count %></p>
+<p>Número de Acciones: <%= @acciones.count %></p>
+<p>Acciones de Incidencia: <%= @incidencia.count %></p>
 <p>Acciones vinculadas a Género: <%= @genero.count %> 
 ( <%= @acciones.count > 0 ? @genero.count * 100 / @acciones.count : nil %>% )
 </p>
