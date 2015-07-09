@@ -442,6 +442,16 @@ ALTER SEQUENCE cor1440_gen_actividad_proyecto_id_seq OWNED BY cor1440_gen_activi
 
 
 --
+-- Name: cor1440_gen_actividad_proyectofinanciero; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE cor1440_gen_actividad_proyectofinanciero (
+    actividad_id integer NOT NULL,
+    proyectofinanciero_id integer NOT NULL
+);
+
+
+--
 -- Name: cor1440_gen_actividad_rangoedadac; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2341,6 +2351,14 @@ ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
 
 
 --
+-- Name: fk_rails_524486e06b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_actividad_proyectofinanciero
+    ADD CONSTRAINT fk_rails_524486e06b FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
 -- Name: fk_rails_55868fbce2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2386,6 +2404,14 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 ALTER TABLE ONLY actor_sectoractor
     ADD CONSTRAINT fk_rails_8718e4c155 FOREIGN KEY (actor_id) REFERENCES actor(id);
+
+
+--
+-- Name: fk_rails_a8489e0d62; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_actividad_proyectofinanciero
+    ADD CONSTRAINT fk_rails_a8489e0d62 FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
 
 
 --
@@ -2789,4 +2815,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150706172733');
 INSERT INTO schema_migrations (version) VALUES ('20150706173649');
 
 INSERT INTO schema_migrations (version) VALUES ('20150707164448');
+
+INSERT INTO schema_migrations (version) VALUES ('20150709203137');
 

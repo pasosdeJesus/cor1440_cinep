@@ -100,8 +100,15 @@
         label_method: :nombre, 
         value_method: :id 
       %>
+      <%= f.association :proyectofinanciero,
+        collection: Cor1440Gen::Proyectofinanciero.habilitados,
+        label_method: :nombre, 
+        value_method: :id,
+        label: 'Convenio Financiero'
+      %>
       <%= f.association :proyecto,
         collection: Cor1440Gen::Proyecto.habilitados,
+        label: 'Programa/Servicio/Producto',
         label_method: :nombre, 
         value_method: :id 
       %>
