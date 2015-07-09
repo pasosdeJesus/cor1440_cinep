@@ -8,6 +8,8 @@
   </thead>
   <tbody>
     <% @acciones = {};
+       @incidencia = {};
+       @actores = {};
        @etnia = {};
        @genero = {};
        #byebug
@@ -22,6 +24,10 @@
           if fila['etnia'] == 'X'
             @etnia[idac] = idac
           end
+          if fila['incidencia'] == 'X'
+            @incidencia[idac] = idac
+          end
+          @actores[fila['actor']] = fila['actor']
           i=0; fila.try(:each) do |campo| %>
           <td style="text-align:center"><%= CGI.escapeHTML(campo[1]) if campo[1] %></td>
         <% end %>
@@ -30,9 +36,12 @@
   </tbody>
 </table>
 
-<p>Número de Actores y Acciones: <%= @cuerpotabla.count %></p>
+<p>Número de Actuaciones (Actores y Acciones): <%= @cuerpotabla.count %></p>
+<p>Número de Actores: <%= @cuerpotabla.count %></p>
+<p>Número de Acciones: <%= @cuerpotabla.count %></p>
 <p>Acciones de Incidencia: <%= @acciones.count %></p>
 <p>Acciones vinculadas a Género: <%= @genero.count %> 
-  ( <%= @genero.count * 100 / @acciones.count%>% )</p>
+( <%= @acciones.count > 0 ? @genero.count * 100 / @acciones.count : nil %>% )
+</p>
 <p>Acciones vinculadas a Étnia: <%= @etnia.count %>
-  ( <%= @etnia.count * 100 / @acciones.count %>% )</p>
+( <%= @acciones.count > 0 ? @etnia.count * 100 / @acciones.count : nil %>% )
