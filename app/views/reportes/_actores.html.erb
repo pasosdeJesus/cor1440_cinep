@@ -7,11 +7,14 @@
     </tr>
   </thead>
   <tbody>
-    <% @acciones = {};
-       @incidencia = {};
-       @actores = {};
-       @etnia = {};
-       @genero = {};
+    <% @acciones = {}
+       @incidencia = {}
+       @actores = {}
+       @etnia = {}
+       @genero = {}
+       @aincidencia = 0
+       @agenero = 0
+       @aetnia = 0
        @cuerpotabla.try(:each) do |fila| %>
       <tr>
         <% 
@@ -20,12 +23,15 @@
           @acciones[idac] = idac
           if fila['genero'] == 'X'
             @genero[idac] = idac
+            @agenero += 1
           end
           if fila['etnia'] == 'X'
             @etnia[idac] = idac
+            @aetnia += 1
           end
           if fila['incidencia'] == 'X'
             @incidencia[idac] = idac
+            @aincidencia += 1
           end
           @actores[fila['nombre_actor']] = fila['nombre_actor']
           i=0; fila.try(:each) do |campo| %>
@@ -39,9 +45,22 @@
 <p>Número de Actuaciones (Actores y Acciones): <%= @cuerpotabla.count %></p>
 <p>Número de Actores: <%= @actores.count %></p>
 <p>Número de Acciones: <%= @acciones.count %></p>
-<p>Acciones de Incidencia: <%= @incidencia.count %></p>
+<hr>
+<p>Acciones de Incidencia: <%= @incidencia.count %>
+( <%= @acciones.count > 0 ? @incidencia.count * 100 / @acciones.count : nil %>% )
+</p>
 <p>Acciones vinculadas a Género: <%= @genero.count %> 
 ( <%= @acciones.count > 0 ? @genero.count * 100 / @acciones.count : nil %>% )
 </p>
 <p>Acciones vinculadas a Étnia: <%= @etnia.count %>
 ( <%= @acciones.count > 0 ? @etnia.count * 100 / @acciones.count : nil %>% )
+<hr>
+<p>Actuaciones de Incidencia: <%= @aincidencia %>
+( <%= @cuerpotabla.count > 0 ? @aincidencia * 100 / @cuerpotabla.count : nil %>% )
+</p>
+<p>Actuaciones vinculadas a Género: <%= @agenero %> 
+( <%= @cuerpotabla.count > 0 ? @agenero * 100 / @cuerpotabla.count : nil %>% )
+</p>
+<p>Actuaciones vinculadas a Étnia: <%= @aetnia %>
+( <%= @cuerpotabla.count > 0 ? @aetnia * 100 / @cuerpotabla.count : nil %>% )
+

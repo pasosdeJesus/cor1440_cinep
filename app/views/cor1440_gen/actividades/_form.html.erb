@@ -23,14 +23,15 @@
   <div class="panel panel-default">
     <div class="panel-heading">Planeación</div><div class="panel-body">
       <%= f.input :nombre,
-        label: 'Nombre / Escenario de toma de decisión / Acción'
+        label: 'Nombre / Escenario de toma de decisión / Acción Colectiva'
       %>
       <%= f.input :fecha, 
         :input_html => { "data-behaviour" => "datepicker"}, 
         :as => :string
       %>
       <%= f.input :duracion, 
-        label: 'Duración estimada'
+        label: 'Duración estimada',
+        as: :integer
        %>
       <%= f.input(:mduracion, collection: [
                   "Minutos",
@@ -172,19 +173,19 @@
         </div>
       </div>
       <div class="panel panel-default">
-        <div class="panel-heading">Objetivo Específico 2.  Acompañamiento a Actores Sociales e Incidencia.</div>
+        <div class="panel-heading">Objetivo Específico 2.  Acompañamiento a Actores Sociales en Acciones Colectivas e Incidencia</div>
         <div class="panel-body">
           <%= f.input :accionincidencia, 
             boolean_style: :nested,
-            inline_label: '¿Es Accion Colectiva que incide en Transformación de Nucleos de Conflicto?'
+            inline_label: '¿Incide en Transformación de Nucleos de Conflicto?'
           %>
           <%= f.input :accioncgenero, 
             boolean_style: :nested,
-            inline_label: '¿Es Acción Colectiva vinculada a Derechos de Género?'
+            inline_label: '¿Acción Colectiva vinculada a Derechos de Género?'
           %>
           <%= f.input :accioncetnia, 
             boolean_style: :nested,
-            inline_label: '¿Es Acción Colectiva vinculada a Derecho de Étnia?'
+            inline_label: '¿Acción Colectiva vinculada a Derecho de Étnia?'
           %>
         </div>
       </div>
@@ -217,7 +218,7 @@
         label: 'Blancos'
       %>
       <%= f.input :desarrollo,
-        label: 'Desarrollo de la Actividad / Acción colectiva realizada',
+        label: 'Desarrollo de la Actividad',
         as: :text
       %>
     </div> <!-- panel-body -->
