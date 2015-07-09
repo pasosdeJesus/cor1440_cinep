@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <% @enctabla.try(:each) do |enc| %>
-        <th><%= CGI.escapeHTML(enc) %></th>
+        <th><%= CGI.escapeHTML(enc.to_s) %></th>
       <% end %>
     </tr>
   </thead>
@@ -21,7 +21,7 @@
              end
              i += 1
            %>
-          <td><%= CGI.escapeHTML(campo[1]) if campo[1] %></td>
+          <td><%= CGI.escapeHTML(campo[1].to_s) if campo[1] %></td>
         <% end %>
       </tr>
     <% end %>

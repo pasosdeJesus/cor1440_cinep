@@ -143,5 +143,96 @@ class ReportesController < ::ApplicationController
     end
   end
 
+  # Cuadro actividades
+  def cuadroactividades
+    pFaini = param_escapa('fechaini')
+    pFafin = param_escapa('fechafin')
+    filas = [["Participación en espacios estratégicos para el centro  (foros, conversatorios, debates, seminarios, cátedras etc.)",
+      [2, #PARTICIPACIÓN EN ACTIVIDAD DE FORMACIÓN
+        3, #PARTICIPACIÓN EN REUNIÓN EXTERNA
+        4, #PARTICIPACIÓN EN ESPACIO ESTRATÉGICO
+        8, #RESPUESTA A SOLICITUD DE INFORMACIÓN
+        116, #RESPUESTA A CONSULTA EXTERNA
+        117 #RESPUESTA A CONSULTA INTERNA CINEP
+    ]],
+      ["Organización o co-organización de talleres, actividades de capacitación y/o formación",
+        [1 #ORGANIZACIÓN DE ACTIVIDAD DE FORMACIÓN
+    ]],
+      ["Visitas de campo (VINCULADAS A UN PROYECTO DE INVESTIGACIÓN)",
+        [11, #MISIÓN HUMANITARIA / TRABAJO DE CAMPO
+          15, #  TI: VISITA TÉCNICA 
+          108 # VISITAS DE CAMPO 
+    ]],
+      ["Ponencias en eventos (foros, conversatorios, debates, seminarios, cátedras etc.).",
+        [122 #PONENCIA/CONFERENCIA/CHARLA
+    ]],
+      ["Organización de eventos",
+        [ 9, #ORGANIZACIÓN DE ACTIVIDAD CULTURA/ARTÍSTICA
+          10, #ORGANIZACIÓN DE CAMPAÑA
+          7 #ORGANIZACIÓN DE EVENTO
+    ]],
+      ["Publicación de libros. EXTERNOS",
+        [ 124 # "PUBLICACIÓN DE LIBRO EXTERNO AL CINEP
+    ]],
+      ["Capítulos de libros.  EXTERNOS",
+        [ 125 # PUBLICACIÓN DE CAPÍTULO DE LIBRO EXTERNO AL CINEP
+    ]],
+      ["Artículos en publicaciones externas",
+        [ 112, # PUBLICACIÓN DE ARTÍCULO EN REVISTA EXTERNA AL CINEP
+    ]]
+    ]
+
+    @cuerpotabla = []
+    filas.each do |f|
+      puts f[0]
+      tipos = f[1].inject("") { |memo, i| 
+        (memo == "" ? "" : memo + ", ") + "'" + i.to_i.to_s + "'"
+      }
+      tac = Cor1440Gen::Actividad.all.joins(
+        :actividad_actividadtipo).where(
+        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      ).count()
+      tm = Cor1440Gen::Actividad.all.joins(
+        :actividad_actividadtipo).where(
+        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      ).sum(:mujeres)
+      th = Cor1440Gen::Actividad.all.joins(
+        :actividad_actividadtipo).where(
+        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      ).sum(:hombres)
+      tbl = Cor1440Gen::Actividad.all.joins(
+        :actividad_actividadtipo).where(
+        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      ).sum(:blancos)
+      tme = Cor1440Gen::Actividad.all.joins(
+        :actividad_actividadtipo).where(
+        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      ).sum(:mestizos)
+      tin = Cor1440Gen::Actividad.all.joins(
+        :actividad_actividadtipo).where(
+        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      ).sum(:indigenas)
+      tne = Cor1440Gen::Actividad.all.joins(
+        :actividad_actividadtipo).where(
+        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      ).sum(:negros)
+  
+      @cuerpotabla << {"desc": f[0], "tac": tac, "tm": tm, "th": th, 
+        "perf": "Blancos: #{tbl}, Mestizos: #{tme}" +
+      ", Indigenas: #{tin}, Negros: #{tne}"}
+    end
+    @coltotales = [1, 2, 3]
+    @enctabla = ['Actividades', 'Total', 'Total Mujeres',
+      'Total Hombres', 'Perfiles'
+    ]
+
+    respond_to do |format|
+      format.html {  }
+      format.json { head :no_content }
+      format.js   { render 'sip/reportes/tabla' }
+    end
+  end
+
+
 
 end
