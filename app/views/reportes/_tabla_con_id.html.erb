@@ -22,7 +22,11 @@
              i += 1
            %>
            <td>
-             <%= CGI.escapeHTML(campo[1].to_s) if campo[1] %>
+             <% if i == 1 %>
+               <%= link_to campo[1], cor1440_gen.actividad_path(campo[1]) %>
+             <% else %>
+               <%= CGI.escapeHTML(campo[1].to_s) if campo[1] %>
+             <% end %>
            </td>
         <% end %>
       </tr>

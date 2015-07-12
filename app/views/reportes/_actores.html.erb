@@ -34,8 +34,17 @@
             @aincidencia += 1
           end
           @actores[fila['nombre_actor']] = fila['nombre_actor']
-          i=0; fila.try(:each) do |campo| %>
-          <td style="text-align:center"><%= CGI.escapeHTML(campo[1]) if campo[1] %></td>
+          i = 0; 
+        %>
+        <% fila.try(:each) do |campo| %> 
+          <td style="text-align:center">
+            <% if (i == 0) %>
+              <%= link_to campo[1], cor1440_gen.actividad_path(campo[1]) %></td>
+            <% else %>
+              <%= CGI.escapeHTML(campo[1]) if campo[1] %>
+            <% end %>
+            <% i += 1 %>
+          </td>
         <% end %>
       </tr>
     <% end %>

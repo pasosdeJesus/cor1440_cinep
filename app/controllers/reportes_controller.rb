@@ -58,9 +58,9 @@ class ReportesController < ::ApplicationController
     end
     if (@fechafin != '')
       if where == ''
-        where += ' AND '
-      else
         where = ' WHERE '
+      else
+        where += ' AND '
       end
       where += "cor1440_gen_actividad.fecha <= '#{@fechafin}'"
     end
