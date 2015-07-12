@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: b17380faeefb322e928bf15deb0f7ce37ca7ac11
+  revision: 2b94b0961bf237e0df0db18ee33f4c3bc3a13c00
   specs:
     sip (2.0.a6)
       devise
@@ -69,7 +69,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    arel (6.0.0)
+    arel (6.0.2)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -233,7 +233,7 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    sass (3.4.15)
+    sass (3.4.16)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
