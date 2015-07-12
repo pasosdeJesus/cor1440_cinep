@@ -11,6 +11,7 @@ es:
     actividadarea: Componente Plan Trienal 
     actividadareas: Componentes Plan Trienal 
     proyectos: Programas / Servicios/ Productos
+    proyectofinanciero: Convenio Financiero
     proyectosfinancieros: Convenios Financieros
   activerecord:
     attributes:
@@ -25,8 +26,8 @@ es:
         Proyecto: Programa / Servicio / Producto
         Proyectos: Programas / Servicios / Productos
       "cor1440_gen/proyectofinanciero":
-        Proyecto: Convenio Financiero
-        Proyectos: Convenios Financieros
+        Proyectofinanciero: Convenio Financiero
+        Proyectosfinancieros: Convenios Financieros
       "sectoractor":
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
