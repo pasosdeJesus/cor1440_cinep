@@ -655,6 +655,50 @@ ALTER SEQUENCE cor1440_gen_financiador_id_seq OWNED BY cor1440_gen_financiador.i
 
 
 --
+-- Name: cor1440_gen_informe; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE cor1440_gen_informe (
+    id integer NOT NULL,
+    titulo character varying(500) NOT NULL,
+    filtrofechaini date NOT NULL,
+    filtrofechafin date NOT NULL,
+    filtroproyecto integer,
+    filtroactividadarea integer,
+    columnanombre boolean,
+    columnatipo boolean,
+    columnaobjetivo boolean,
+    columnaproyecto boolean,
+    columnapoblacion boolean,
+    recomendaciones character varying(5000),
+    avances character varying(5000),
+    logros character varying(5000),
+    dificultades character varying(5000),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: cor1440_gen_informe_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cor1440_gen_informe_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_informe_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cor1440_gen_informe_id_seq OWNED BY cor1440_gen_informe.id;
+
+
+--
 -- Name: cor1440_gen_proyecto; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1785,6 +1829,13 @@ ALTER TABLE ONLY cor1440_gen_financiador ALTER COLUMN id SET DEFAULT nextval('co
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY cor1440_gen_informe ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_informe_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY cor1440_gen_proyecto ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_proyecto_id_seq'::regclass);
 
 
@@ -1904,6 +1955,14 @@ ALTER TABLE ONLY cor1440_gen_actividadtipo
 
 ALTER TABLE ONLY cor1440_gen_financiador
     ADD CONSTRAINT cor1440_gen_financiador_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cor1440_gen_informe_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY cor1440_gen_informe
+    ADD CONSTRAINT cor1440_gen_informe_pkey PRIMARY KEY (id);
 
 
 --
@@ -2327,6 +2386,14 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
+-- Name: fk_rails_294895347e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_informe
+    ADD CONSTRAINT fk_rails_294895347e FOREIGN KEY (filtroproyecto) REFERENCES cor1440_gen_proyecto(id);
+
+
+--
 -- Name: fk_rails_2983c828da; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2420,6 +2487,14 @@ ALTER TABLE ONLY cor1440_gen_actividad_proyectofinanciero
 
 ALTER TABLE ONLY actividad_publicacion
     ADD CONSTRAINT fk_rails_afe68ea314 FOREIGN KEY (publicacion_id) REFERENCES publicacion(id);
+
+
+--
+-- Name: fk_rails_c02831dd89; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_informe
+    ADD CONSTRAINT fk_rails_c02831dd89 FOREIGN KEY (filtroactividadarea) REFERENCES cor1440_gen_actividadarea(id);
 
 
 --
@@ -2817,4 +2892,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150706173649');
 INSERT INTO schema_migrations (version) VALUES ('20150707164448');
 
 INSERT INTO schema_migrations (version) VALUES ('20150709203137');
+
+INSERT INTO schema_migrations (version) VALUES ('20150710012947');
+
+INSERT INTO schema_migrations (version) VALUES ('20150710114451');
 
