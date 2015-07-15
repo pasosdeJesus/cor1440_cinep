@@ -23,12 +23,6 @@ module Cor1440Gen
       class_name: '::ActividadPublicacion', foreign_key: 'actividad_id'
     has_many :publicacion, through: :actividad_publicacion,
       class_name: '::Publicacion'
-    has_many :actividad_proyectofinanciero, dependent: :delete_all,
-      class_name: 'Cor1440Gen::ActividadProyectofinanciero', 
-      foreign_key: 'actividad_id'
-    has_many :proyectofinanciero, through: :actividad_proyectofinanciero,
-      class_name: 'Cor1440Gen::Proyectofinanciero'
-
 
     validates :desarrollo, length: { maximum: 5000 }
     validates :resultado, length: { maximum: 5000 }
