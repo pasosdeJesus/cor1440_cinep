@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: a757d0e7d9621a8d4d1513b6cf1b252e67d31b49
+  revision: 6c36aa19671331aea4b3318ab5af263fe18a8ada
   specs:
     cor1440_gen (1.0.a5)
       devise
@@ -157,12 +157,13 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
-    pdf-core (0.5.1)
+    pdf-core (0.6.0)
     pg (0.18.2)
-    prawn (2.0.1)
-      pdf-core (~> 0.5.1)
+    prawn (2.0.2)
+      pdf-core (~> 0.6.0)
       ttfunk (~> 1.4.0)
-    prawn-table (0.2.1)
+    prawn-table (0.2.2)
+      prawn (>= 1.3.0, < 3.0.0)
     prawnto_2 (0.2.6)
       prawn (>= 0.6.0)
       rails (>= 3.1)
