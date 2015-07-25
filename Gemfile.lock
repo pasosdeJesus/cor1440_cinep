@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 6c36aa19671331aea4b3318ab5af263fe18a8ada
+  revision: 665acb19a7091da8ce7a57db0c3a79c80417d1a2
   specs:
     cor1440_gen (1.0.a5)
       devise
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: dd219944c0350d65cb561955eeb9934531c3eb81
+  revision: 315e6b1f94e130fa276670e82e0de0cd8a1ac2c0
   specs:
     sip (2.0.a6)
       devise
@@ -212,7 +212,7 @@ GEM
       activesupport (= 4.2.3)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.14.0)
+    raindrops (0.15.0)
     rake (10.4.2)
     rdoc (4.2.0)
     responders (2.1.0)

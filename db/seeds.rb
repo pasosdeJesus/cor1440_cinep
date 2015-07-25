@@ -1,45 +1,16 @@
 # encoding: UTF-8
 
-connection = ActiveRecord::Base.connection();
+conexion = ActiveRecord::Base.connection();
 
-# Básicas de motor sip
-l = File.readlines(
-  Gem.loaded_specs['sip'].full_gem_path + "/db/datos-basicas.sql"
-)
-connection.execute(l.join("\n"))
-
-# Cambios a básicas existentes
-if File.exists?(Gem.loaded_specs['cor1440_gen'].full_gem_path + 
-                "/db/cambios-basicas.sql") then
-	l = File.readlines(Gem.loaded_specs['cor1440_gen'].full_gem_path + 
-                "/db/cambios-basicas.sql")
-	connection.execute(l.join("\n"))
+# De motores y finalmente de este
+motor = ['sip', 'cor1440_gen', nil]
+motor.each do |m|
+    Sip::carga_semillas_sql(conexion, m, :cambios)
+    Sip::carga_semillas_sql(conexion, m, :datos)
 end
 
-# Nuevas basicas de cor1440_gen
-if File.exists?(Gem.loaded_specs['cor1440_gen'].full_gem_path + 
-                "/db/datos-basicas.sql") then
-	l = File.readlines(Gem.loaded_specs['cor1440_gen'].full_gem_path + 
-                "/db/datos-basicas.sql")
-	connection.execute(l.join("\n"))
-end
-
-
-# Cambios a básicas existentes
-if File.exists?("db/cambios-basicas.sql") then
-	l = File.readlines("db/cambios-basicas.sql")
-	connection.execute(l.join("\n"))
-end
-
-# Nuevas basicas de este
-if File.exists?("db/datos-basicas.sql") then
-	l = File.readlines("db/datos-basicas.sql")
-	connection.execute(l.join("\n"));
-end
-
-
-# cor1440, cor1440
-connection.execute("INSERT INTO usuario 
+# Usuario y clave cor1440, cor1440
+conexion.execute("INSERT INTO usuario 
 	(nusuario, email, encrypted_password, password, 
   fechacreacion, created_at, updated_at, rol) 
 	VALUES ('cor1440', 'bd@localhost', 

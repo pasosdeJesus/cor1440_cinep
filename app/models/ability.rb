@@ -9,14 +9,6 @@ class Ability  < Cor1440Gen::Ability
     ['', 'sectoractor']
   ]
   
-  @@basicas_seq_con_id += [
-    ['', 'actor'],
-    ['', 'nucleoconflicto'],
-    ['', 'publicacion'],
-    ['', 'redactor'],
-    ['', 'sectoractor']
-  ]
-
   @@tablasbasicas_prio += [
     ['', 'sectoractor']
   ]
