@@ -655,6 +655,16 @@ ALTER SEQUENCE cor1440_gen_financiador_id_seq OWNED BY cor1440_gen_financiador.i
 
 
 --
+-- Name: cor1440_gen_financiador_proyectofinanciero; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE cor1440_gen_financiador_proyectofinanciero (
+    financiador_id integer NOT NULL,
+    proyectofinanciero_id integer NOT NULL
+);
+
+
+--
 -- Name: cor1440_gen_informe; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -675,7 +685,8 @@ CREATE TABLE cor1440_gen_informe (
     logros character varying(5000),
     dificultades character varying(5000),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    filtroproyectofinanciero integer
 );
 
 
@@ -752,7 +763,6 @@ CREATE TABLE cor1440_gen_proyecto_proyectofinanciero (
 CREATE TABLE cor1440_gen_proyectofinanciero (
     id integer NOT NULL,
     nombre character varying(1000),
-    financiador_id integer,
     observaciones character varying(5000),
     fechainicio date,
     fechacierre date,
@@ -1422,12 +1432,12 @@ CREATE VIEW sip_mundep_sinorden AS
     (((sip_municipio.nombre)::text || ' / '::text) || (sip_departamento.nombre)::text) AS nombre
    FROM (sip_municipio
      JOIN sip_departamento ON ((sip_municipio.id_departamento = sip_departamento.id)))
-  WHERE (sip_departamento.id_pais = 170)
+  WHERE (((sip_departamento.id_pais = 170) AND (sip_municipio.fechadeshabilitacion IS NULL)) AND (sip_departamento.fechadeshabilitacion IS NULL))
 UNION
  SELECT sip_departamento.id_deplocal AS idlocal,
     sip_departamento.nombre
    FROM sip_departamento
-  WHERE (sip_departamento.id_pais = 170);
+  WHERE ((sip_departamento.id_pais = 170) AND (sip_departamento.fechadeshabilitacion IS NULL));
 
 
 --
@@ -1554,6 +1564,18 @@ CREATE TABLE sip_persona (
 
 
 --
+-- Name: sip_persona_trelacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sip_persona_trelacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
 -- Name: sip_persona_trelacion; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1563,7 +1585,8 @@ CREATE TABLE sip_persona_trelacion (
     id_trelacion character(2) DEFAULT 'SI'::bpchar NOT NULL,
     observaciones character varying(200),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    id integer DEFAULT nextval('sip_persona_trelacion_id_seq'::regclass) NOT NULL
 );
 
 
@@ -1741,7 +1764,7 @@ CREATE TABLE usuario (
     regionsjr_id integer,
     oficina_id integer,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
-    CONSTRAINT usuario_rol_check CHECK (((rol >= 1) AND (rol <= 6)))
+    CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
 
 
@@ -2006,14 +2029,6 @@ ALTER TABLE ONLY sip_persona
 
 
 --
--- Name: persona_trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY sip_persona_trelacion
-    ADD CONSTRAINT persona_trelacion_pkey PRIMARY KEY (persona1, persona2, id_trelacion);
-
-
---
 -- Name: publicacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2131,6 +2146,30 @@ ALTER TABLE ONLY sip_municipio
 
 ALTER TABLE ONLY sip_municipio
     ADD CONSTRAINT sip_municipio_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sip_persona_trelacion_id_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sip_persona_trelacion
+    ADD CONSTRAINT sip_persona_trelacion_id_key UNIQUE (id);
+
+
+--
+-- Name: sip_persona_trelacion_persona1_persona2_id_trelacion_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sip_persona_trelacion
+    ADD CONSTRAINT sip_persona_trelacion_persona1_persona2_id_trelacion_key UNIQUE (persona1, persona2, id_trelacion);
+
+
+--
+-- Name: sip_persona_trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sip_persona_trelacion
+    ADD CONSTRAINT sip_persona_trelacion_pkey PRIMARY KEY (id);
 
 
 --
@@ -2378,6 +2417,14 @@ ALTER TABLE ONLY actor_sectoractor
 
 
 --
+-- Name: fk_rails_0cd09d688c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_financiador_proyectofinanciero
+    ADD CONSTRAINT fk_rails_0cd09d688c FOREIGN KEY (financiador_id) REFERENCES cor1440_gen_financiador(id);
+
+
+--
 -- Name: fk_rails_20940a21f8; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2407,6 +2454,14 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyecto
     ADD CONSTRAINT fk_rails_395faa0882 FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
+-- Name: fk_rails_40cb623d50; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_informe
+    ADD CONSTRAINT fk_rails_40cb623d50 FOREIGN KEY (filtroproyectofinanciero) REFERENCES cor1440_gen_proyectofinanciero(id);
 
 
 --
@@ -2498,6 +2553,14 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 
 --
+-- Name: fk_rails_ca93eb04dc; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_financiador_proyectofinanciero
+    ADD CONSTRAINT fk_rails_ca93eb04dc FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
 -- Name: fk_rails_cb90ade2a0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2543,14 +2606,6 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 ALTER TABLE ONLY usuario
     ADD CONSTRAINT fk_rails_ff046f92e5 FOREIGN KEY (oficina_id) REFERENCES sip_oficina(id);
-
-
---
--- Name: lf_proyectofinanciero_financiador; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY cor1440_gen_proyectofinanciero
-    ADD CONSTRAINT lf_proyectofinanciero_financiador FOREIGN KEY (financiador_id) REFERENCES cor1440_gen_financiador(id);
 
 
 --
@@ -2896,4 +2951,20 @@ INSERT INTO schema_migrations (version) VALUES ('20150709203137');
 INSERT INTO schema_migrations (version) VALUES ('20150710012947');
 
 INSERT INTO schema_migrations (version) VALUES ('20150710114451');
+
+INSERT INTO schema_migrations (version) VALUES ('20150716085420');
+
+INSERT INTO schema_migrations (version) VALUES ('20150717101243');
+
+INSERT INTO schema_migrations (version) VALUES ('20150720115701');
+
+INSERT INTO schema_migrations (version) VALUES ('20150720120236');
+
+INSERT INTO schema_migrations (version) VALUES ('20150724003736');
+
+INSERT INTO schema_migrations (version) VALUES ('20150803082520');
+
+INSERT INTO schema_migrations (version) VALUES ('20150809032138');
+
+INSERT INTO schema_migrations (version) VALUES ('20150819173047');
 
