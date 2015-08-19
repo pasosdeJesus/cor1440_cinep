@@ -115,13 +115,14 @@
       <%= f.input :objetivo, as: :text %>
     
       <%= f.input(:convocante, collection: [
-                  "El Banco de Datos",
-                  "El Cinep/PPP",
-                  "Una agencia financiadora",
+                  "COMPAÑIA DE JESÚS",
+                  "ENTIDAD ESTATAL",
+                  "EL BANCO DE DATOS",
+                  "EL CINEP/PPP",
                   "ONG",
-                  "Sistema ONU",
-                  "Entidad estatal",
-                  "Otro"
+                  "OTRO",
+                  "UNA AGENCIA FINANCIADORA",
+                  "SISTEMA ONU"
         ], 
         label: '¿Quién convocó la actividad?',
         include_blank: false ) 
