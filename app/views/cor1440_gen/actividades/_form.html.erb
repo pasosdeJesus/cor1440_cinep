@@ -116,13 +116,13 @@
     
       <%= f.input(:convocante, collection: [
                   "COMPAÑIA DE JESÚS",
-                  "ENTIDAD ESTATAL",
                   "EL BANCO DE DATOS",
                   "EL CINEP/PPP",
+                  "ENTIDAD ESTATAL",
                   "ONG",
                   "OTRO",
-                  "UNA AGENCIA FINANCIADORA",
-                  "SISTEMA ONU"
+                  "SISTEMA ONU",
+                  "UNA AGENCIA FINANCIADORA"
         ], 
         label: '¿Quién convocó la actividad?',
         include_blank: false ) 
@@ -239,10 +239,17 @@
         label: 'Compromisos / Observaciones',
         as: :text
       %>
-      <%= f.input :valora,
-        label: 'Valore la actividad en términos de importancia, efecto y proyección (1-5)'
+      <%= f.input(:valora, collection: [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+        ], 
+        label: 'Valore la actividad en términos de importancia, efecto y proyección (1-5)',
+        include_blank: true) 
       %>
-         </div> <!-- panel-body -->
+    </div> <!-- panel-body -->
   </div> <!-- panel panel-default -->
   <div class="panel panel-default">
     <div class="panel-heading">Medios de Verificación / Anexos</div><div class="panel-body">
