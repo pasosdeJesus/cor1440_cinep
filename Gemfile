@@ -102,8 +102,8 @@ group :development, :test do
   gem 'web-console'
 
   # Para examinar errores, usar "rescue rspec" en lugar de "rspec"
-  gem 'pry-rescue'
-  gem 'pry-stack_explorer'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 
 
 end
