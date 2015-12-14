@@ -29,6 +29,9 @@ module Cor1440Gen
         @actividades.human_attribute_name(:fecha),
         @actividades.human_attribute_name(:responsable),
         @actividades.human_attribute_name(:nombre),
+        @actividades.human_attribute_name(:departamento),
+        @actividades.human_attribute_name(:municipio),
+        @actividades.human_attribute_name(:lugar),
         @actividades.human_attribute_name(:tipos),
         @actividades.human_attribute_name(:objetivo),
         @actividades.human_attribute_name(:proyectos),
@@ -49,24 +52,28 @@ module Cor1440Gen
         actividad.fecha, 
         actividad.responsable ? actividad.responsable.nusuario : "",
         actividad.nombre ? actividad.nombre : "",
-          actividad.actividadtipo.inject("") { |memo, i| 
+        actividad.departamento ? actividad.departamento.nombre : "",
+        actividad.municipio ? actividad.municipio.nombre : "",
+        actividad.lugar ? actividad.lugar : "",
+
+        actividad.actividadtipo.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre 
         },
-          actividad.objetivo , 
-          actividad.proyecto.inject("") { |memo, i| 
+        actividad.objetivo , 
+        actividad.proyecto.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre 
         },
-          actividad.proyectofinanciero.inject("") { |memo, i| 
+        actividad.proyectofinanciero.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre 
         },
-          actividad.resultado,
-          actividad.contexto,
-          actividad.mujeres,
-          actividad.hombres,
-          actividad.blancos,
-          actividad.mestizos,
-          actividad.indigenas,
-          actividad.negros
+        actividad.resultado,
+        actividad.contexto,
+        actividad.mujeres,
+        actividad.hombres,
+        actividad.blancos,
+        actividad.mestizos,
+        actividad.indigenas,
+        actividad.negros
       ]
     end
 

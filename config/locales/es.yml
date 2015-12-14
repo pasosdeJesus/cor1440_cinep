@@ -13,6 +13,7 @@ es:
     proyectos: Programas / Servicios/ Productos
     proyectofinanciero: Convenio Financiero
     proyectosfinancieros: Convenios Financieros
+    departamento: Departamento
   activerecord:
     attributes:
       "cor1440_gen/actividad":
