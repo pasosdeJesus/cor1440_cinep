@@ -1,0 +1,22 @@
+<%= f.input :nombre %>
+
+<%= f.association :financiador,
+  collection: Cor1440Gen::Financiador.habilitados,
+  label_method: :nombre,
+  value_method: :id 
+%>
+
+<%= f.input :fechainicio, :input_html => { 
+  "data-behaviour" => "datepicker" },
+  :as => :string
+%>
+
+<%= f.input :fechacierre, :input_html => { 
+  "data-behaviour" => "datepicker" },
+  :as => :string
+%>
+
+<%= f.input :compromisos %>
+
+<%= f.input :observaciones %>
+

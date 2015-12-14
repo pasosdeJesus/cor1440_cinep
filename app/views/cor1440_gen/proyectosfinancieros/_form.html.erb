@@ -1,0 +1,94 @@
+<%- if current_usuario.nil?  %>
+  <li><a href="usuarios/sign_in">Iniciar Sesión</a>
+<%- else  %>
+  <article>
+  <%= simple_form_for @proyectofinanciero, 
+    :url => proyectofinanciero_ruta(@proyectofinanciero),
+    :html => { :class => 'form-horizontal' } do |f| 
+  %>
+    <div data-role="content" class="form-inputs">
+      <div id="errores">
+        <% if f.object.errors.any? %>
+          <div id="error_explanation">
+            <div class="alert alert-error">
+              <!--%= pluralize(f.object.errors.count, "error") %-->.
+            </div>
+            <ul>
+              <% f.object.errors.messages.each do |msg| %>
+                <li>* <%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= f.error_notification %>
+      </div>
+
+      <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#basicos" 
+            class="fichacambia" aria-controls="basicos" role="tab" 
+            data-toggle="tab">Datos Básicos</a></li>
+          <li role="presentation"><a href="#recursoshumanos" 
+            class="fichacambia" aria-controls="recursoshumanos" role="tab" 
+            data-toggle="tab">Recursos Humanos</a></li>
+          <li role="presentation"><a href="#recursoseconomicos" 
+            class="fichacambia" aria-controls="recursoseconomicos" role="tab" 
+            data-toggle="tab">Recursos Económicos y Desembolsos</a></li>
+          <li role="presentation"><a href="#informes" 
+            class="fichacambia" aria-controls="informes" role="tab" 
+            data-toggle="tab">Informes y Auditorias</a></li>
+          <li role="presentation"><a href="#anexos" 
+            class="fichacambia" aria-controls="anexos" role="tab" 
+            data-toggle="tab">Soportes, Plantillas y Anexos</a></li>
+          <li role="presentation"><a href="#contabilidad" 
+            class="fichacambia" aria-controls="contabilidad" role="tab" 
+            data-toggle="tab">Contabilidad</a></li>
+          <li role="presentation"><a href="#etiquetas" 
+            class="fichacambia" aria-controls="etiquetas" role="tab" 
+          data-toggle="tab">Etiquetas</a></li>
+
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="basicos">
+            <%= render 'basicos', :f => f %>
+          </div> 
+
+          <div role="tabpanel" class="tab-pane" id="recursoshumanos">
+            <%= render 'recursoshumanos', :f => f %>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="recursoseconomicos">
+            <%= render 'recursoseconomicos', :f => f %>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="informes">
+            <%= render 'informes', :f => f %>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="anexos">
+            <%= render 'anexos', :f => f %> 
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="contabilidad">
+            <%= render 'contabilidad', :f => f %>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="etiquetas">
+            <%= render 'etiquetas', :f => f %>
+          </div>
+
+
+        </div> <!-- tab-content -->
+      </div> <!-- tabpanel -->
+    </div> <!-- form-inputs -->
+
+    <div class="form-actions" style="text-align: center">
+      <%= f.button :submit, 'Validar y Guardar', :class => 'btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+        proyectosfinancieros_ruta, :class => 'btn' 
+      %>
+    </div> <!-- form-action -->
+  <% end %> <!-- simple_form_for @proyectofinanciero -->
+  </article>
+<% end -%> <!-- else -->
+
