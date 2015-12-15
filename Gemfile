@@ -105,7 +105,6 @@ group :test do
   # Lanza programas para examinar resultados
   gem "launchy"
 
-
   # Pruebas de regresión que no requieren javascript
   gem "capybara"
   
