@@ -8,5 +8,5 @@ Sip.setup do |config|
       if ENV["HEROKU_POSTGRESQL_MAUVE_URL"]
         config.ruta_anexos = "#{Rails.root}/tmp/"
       end
-      config.titulo = "Cor1440 Bandatos CINEP " + Cor1440Cinep::VERSION
+      config.titulo = "Cor1440 CINEP " + Cor1440Cinep::VERSION
 end
