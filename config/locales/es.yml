@@ -15,6 +15,7 @@ es:
     proyectofinanciero: Convenio Financiero
     proyectosfinancieros: Convenios Financieros
     departamento: Departamento
+    oficina: Área
   activerecord:
     attributes:
       "cor1440_gen/actividad":
