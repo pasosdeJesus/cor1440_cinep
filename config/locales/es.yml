@@ -12,8 +12,8 @@ es:
     actividadareas: Componentes Plan Trienal 
     proyectos: Programas / Servicios / Productos
     proyecto: Programa / Servicio / Producto
-    proyectofinanciero: Convenio Financiero
-    proyectosfinancieros: Convenios Financieros
+    proyectofinanciero: Contrato Institucional
+    proyectosfinancieros: Contratos Institucionales
     departamento: Departamento
     oficina: Área
   activerecord:
@@ -35,8 +35,8 @@ es:
         Proyecto: Programa / Servicio / Producto
         Proyectos: Programas / Servicios / Productos
       "cor1440_gen/proyectofinanciero":
-        Proyectofinanciero: Convenio Financiero
-        Proyectosfinancieros: Convenios Financieros
+        Proyectofinanciero: Contrato Institucional
+        Proyectosfinancieros: Contratos Institucionales
       "nucleoconflicto":
         Nucleoconflict: Núcleo de Conflicto
         Nucleosconflicto: Núcleos de Conflicto
