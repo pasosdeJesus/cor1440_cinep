@@ -18,6 +18,12 @@ es:
     oficina: Área
   activerecord:
     attributes:
+      "actor":
+        Actor: Actor
+        Actores: Actores
+        personacontacto: Persona Contacto
+        pais_id: País
+        sectoractor_id: Sector del Actor
       "cor1440_gen/actividad":
         regionsjr: Dependencia
         minutos: Horas
@@ -31,22 +37,20 @@ es:
       "cor1440_gen/proyectofinanciero":
         Proyectofinanciero: Convenio Financiero
         Proyectosfinancieros: Convenios Financieros
+      "nucleoconflicto":
+        Nucleoconflict: Núcleo de Conflicto
+        Nucleosconflicto: Núcleos de Conflicto
+      "publicacion":
+        Publicacion: Publicación CINEP
+        Publicaciones: Publicaciones CINEP
+      "redactor":
+        Redactor: Red de Actores
+        Redesactor: Redes de Actores
       "sectoractor":
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
         enplantrienal: En Glosario del Plan Trienal
-      "actor":
-        Actor: Actor
-        Actores: Actores
-        personacontacto: Persona Contacto
-        pais_id: País
-        sectoractor_id: Sector del Actor
-      "nucleoconflicto":
-        Nucleoconflict: Núcleo de Conflicto
-        Nucleosconflicto: Núcleos de Conflicto
-      "redactor":
-        Redactor: Red de Actores
-        Redesactor: Redes de Actores
-      "publicacion":
-        Publicacion: Publicación CINEP
-        Publicaciones: Publicaciones CINEP
+      "sip/oficina":
+        Oficinas: Áreas
+        Oficina: Área
+
