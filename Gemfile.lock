@@ -319,6 +319,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
+  byebug
   cancancan
   capybara
   capybara-webkit
