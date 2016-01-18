@@ -9,7 +9,7 @@
 listen 2021 # by default Unicorn listens on port 8080
 APP_PATH = "/var/www/htdocs/cor1440_cinep"
 working_directory APP_PATH
-worker_processes 6 # this should be >= nr_cpus
+worker_processes 3 # this should be >= nr_cpus
 pid APP_PATH + "/tmp/pids/unicorn.pid"
 stderr_path APP_PATH + "/log/unicorn.log"
 stdout_path APP_PATH + "/log/unicorn.log"
