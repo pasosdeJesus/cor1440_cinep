@@ -1,6 +1,14 @@
 # encoding: UTF-8
 class Ability  < Cor1440Gen::Ability
 
+  ROLOPERADOR = 5
+
+  ROLES = [
+    ["Administrador", ROLADMIN], 
+    ["Directivo", ROLDIR],
+    ["Operador", ROLOPERADOR]
+  ]
+
   @@tablasbasicas -=   [ ['Cor1440Gen', 'proyectofinanciero'] ]
 
   @@tablasbasicas += [
