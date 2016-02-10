@@ -10,13 +10,16 @@ es:
     sectoractor: Sector del Actor
     actividadarea: Componente Plan Trienal 
     actividadareas: Componentes Plan Trienal 
-    proyectos: Programas / Servicios / Productos
-    proyecto: Programa / Servicio / Producto
-    proyectofinanciero: Contrato Institucional
-    proyectosfinancieros: Contratos Institucionales
     departamento: Departamento
     oficina: Área
   activerecord:
+    models:
+      "cor1440_gen/proyectofinanciero": 
+        one: "Contrato Institucional"
+        other: "Contratos Institucionales"
+      "cor1440_gen/proyecto": 
+        one: "Programa / Servicio / Producto"
+        other: "Programas / Servicios / Productos"
     attributes:
       "actor":
         Actor: Actor
@@ -37,6 +40,16 @@ es:
       "cor1440_gen/proyectofinanciero":
         Proyectofinanciero: Contrato Institucional
         Proyectosfinancieros: Contratos Institucionales
+        referencia: "Referencia"
+        referenciacinep: "Referencia Cinep"
+        fuentefinanciacion: "Fuente de Financiación"
+        respagencia: "Responsable de la Agencia"
+        emailrespagencia: "Correo Resp. Agencia"
+        telrespagencia: "Teléfono Resp. Agencia"
+        fechainicio: "Inicia"
+        fechacierre: "Termina"
+        fechaliquidacion: "Fecha de Liquidación"
+        duracion: "Fecha de Liquidación"
       "nucleoconflicto":
         Nucleoconflict: Núcleo de Conflicto
         Nucleosconflicto: Núcleos de Conflicto

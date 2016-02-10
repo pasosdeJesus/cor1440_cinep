@@ -1,17 +1,24 @@
-<% content_for :title do %>
+<% content_for :titulo do %>
     <%= Sip.titulo %>
 <% end %>
+
+<% content_for :linkhref do %>
+  <link href='https://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
+<% end %>
+
 
 <% content_for :menu do %>
   <%= menu_group do %>
     <% if !current_usuario.nil? %>
-      <% if current_usuario.oficina_id != 27 %>
+      <% if can? :read, Cor1440Gen::Actividad %>
         <%= drop_down "Actividades" do %>
           <%= menu_item "Listado", cor1440_gen.actividades_path %>
           <%= menu_item "Reporte Trienal 2015-2017 Indicador 1.1", '/act/reportes/indicador11' %>
           <%= menu_item "Reporte Trienal 2015-2017 Objetivo Especifico 2", '/act/reportes/objetivoe2' %>
           <%= menu_item "Reporte Trienal 2015-2017 Cuadro Actividades", "/act/reportes/cuadroactividades" %>
-          <%= menu_item "Informes", cor1440_gen.informes_path %>
+          <% if can? :read, Cor1440Gen::Informe %>
+            <%= menu_item "Informes", cor1440_gen.informes_path %>
+          <% end %>
         <% end %>
       <% end %>
       <%= menu_item "Contratos Institucionales", '/act/proyectosfinancieros' %>

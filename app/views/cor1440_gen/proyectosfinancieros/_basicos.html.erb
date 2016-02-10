@@ -1,10 +1,16 @@
 <%= f.input :nombre %>
+<%= f.input :referencia %>
+<%= f.input :referenciacinep %>
 
 <%= f.association :financiador,
   collection: Cor1440Gen::Financiador.habilitados,
   label_method: :nombre,
   value_method: :id 
 %>
+<%= f.input :fuentefinanciacion %>
+<%= f.input :respagencia %>
+<%= f.input :emailrespagencia %>
+<%= f.input :telrespagencia %>
 
 <%= f.input :fechainicio, :input_html => { 
   "data-behaviour" => "datepicker" },
@@ -16,7 +22,16 @@
   :as => :string
 %>
 
-<%= f.input :compromisos %>
+<div>
+  Duración: por calcular
+</div>
+<!--%= f.input :duracion, :readonly, value: "100 dias" %-->
 
+<%= f.input :fechaliquidacion, :input_html => { 
+  "data-behaviour" => "datepicker" },
+  :as => :string
+%>
+
+<%= f.input :compromisos %>
 <%= f.input :observaciones %>
 

@@ -772,7 +772,14 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     compromisos character varying(5000),
-    monto integer
+    monto integer,
+    referencia character varying(1000),
+    referenciacinep character varying(1000),
+    fuentefinanciacion character varying(1000),
+    respagencia character varying(100),
+    emailrespagencia character varying(100),
+    telrespagencia character varying(100),
+    fechaliquidacion date
 );
 
 
@@ -2971,4 +2978,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150819173047');
 INSERT INTO schema_migrations (version) VALUES ('20151020203421');
 
 INSERT INTO schema_migrations (version) VALUES ('20160118101511');
+
+INSERT INTO schema_migrations (version) VALUES ('20160202103751');
 

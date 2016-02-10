@@ -91,9 +91,16 @@ module Cor1440Gen
     def proyectofinanciero_params
       params.require(:proyectofinanciero).permit(
         :nombre, 
+        :referencia, 
+        :referenciacinep, 
         :financiador,
+        :fuentefinanciacion, 
+        :respagencia, 
+        :emailrespagencia, 
+        :telrespagencia, 
         :fechainicio,
         :fechacierre,
+        :fechaliquidacion,
         :responsable_id,
         :compromisos,
         :monto,

@@ -1,6 +1,18 @@
 GIT
-  remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 9ada582a85ae6aaff581357c0ed2633d1ba78783
+  remote: git://github.com/vtamara/cocoon.git
+  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
+  specs:
+    cocoon (1.2.6)
+
+GIT
+  remote: https://github.com/kristianmandrup/jquery-ui-bootstrap-rails
+  revision: 944cf4164ea511a2977f91031cc7f69d3e06e6cb
+  specs:
+    jquery-ui-bootstrap-rails (0.1.1)
+      rails
+
+PATH
+  remote: ../cor1440_gen
   specs:
     cor1440_gen (1.0.a5)
       devise
@@ -8,9 +20,8 @@ GIT
       paperclip
       rails
 
-GIT
-  remote: git://github.com/pasosdeJesus/sip.git
-  revision: e940c5ea9e8743f5b61cb1b872fe04ead46bd015
+PATH
+  remote: ../sip
   specs:
     sip (2.0.a7)
       bootstrap-datepicker-rails
@@ -28,19 +39,6 @@ GIT
       twitter-bootstrap-rails
       twitter_cldr
       will_paginate
-
-GIT
-  remote: git://github.com/vtamara/cocoon.git
-  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
-  specs:
-    cocoon (1.2.6)
-
-GIT
-  remote: https://github.com/kristianmandrup/jquery-ui-bootstrap-rails
-  revision: 944cf4164ea511a2977f91031cc7f69d3e06e6cb
-  specs:
-    jquery-ui-bootstrap-rails (0.1.1)
-      rails
 
 GEM
   remote: https://rubygems.org/
@@ -86,7 +84,7 @@ GEM
     bootstrap-datepicker-rails (1.5.0)
       railties (>= 3.0)
     builder (3.2.2)
-    byebug (8.2.1)
+    byebug (8.2.2)
     camertron-eprun (1.1.0)
     cancancan (1.13.1)
     capybara (2.6.2)
@@ -118,7 +116,7 @@ GEM
     commonjs (0.2.7)
     concurrent-ruby (1.0.0)
     debug_inspector (0.0.2)
-    devise (3.5.5)
+    devise (3.5.6)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -132,7 +130,7 @@ GEM
     execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.5.0)
+    factory_girl_rails (4.6.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
     globalid (0.3.6)
@@ -171,7 +169,7 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
-    paperclip (4.3.3)
+    paperclip (4.3.4)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
@@ -224,7 +222,7 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_serve_static_assets (0.0.4)
+    rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.4)
     railties (4.2.5.1)
       actionpack (= 4.2.5.1)
@@ -245,7 +243,7 @@ GEM
     rspec-mocks (3.4.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
-    rspec-rails (3.4.1)
+    rspec-rails (3.4.2)
       actionpack (>= 3.0, < 4.3)
       activesupport (>= 3.0, < 4.3)
       railties (>= 3.0, < 4.3)
@@ -261,13 +259,13 @@ GEM
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
-    simplecov (0.11.1)
+    simplecov (0.11.2)
       docile (~> 1.1.0)
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    spring (1.6.2)
+    spring (1.6.3)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (3.5.2)
@@ -304,7 +302,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    warden (1.2.5)
+    warden (1.2.6)
       rack (>= 1.0)
     web-console (3.1.1)
       activemodel (>= 4.2)
@@ -320,6 +318,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
+  byebug
   cancancan
   capybara
   capybara-webkit
