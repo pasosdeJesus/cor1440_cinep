@@ -1,18 +1,6 @@
 GIT
-  remote: git://github.com/vtamara/cocoon.git
-  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
-  specs:
-    cocoon (1.2.6)
-
-GIT
-  remote: https://github.com/kristianmandrup/jquery-ui-bootstrap-rails
-  revision: 944cf4164ea511a2977f91031cc7f69d3e06e6cb
-  specs:
-    jquery-ui-bootstrap-rails (0.1.1)
-      rails
-
-PATH
-  remote: ../cor1440_gen
+  remote: git://github.com/pasosdeJesus/cor1440_gen.git
+  revision: ffcf6ede1e2ddeeecc30224ee23772499c492011
   specs:
     cor1440_gen (1.0.a5)
       devise
@@ -20,8 +8,9 @@ PATH
       paperclip
       rails
 
-PATH
-  remote: ../sip
+GIT
+  remote: git://github.com/pasosdeJesus/sip.git
+  revision: 0863ff92df85e27180c54c0a73a7281c6d29803f
   specs:
     sip (2.0.a7)
       bootstrap-datepicker-rails
@@ -39,6 +28,19 @@ PATH
       twitter-bootstrap-rails
       twitter_cldr
       will_paginate
+
+GIT
+  remote: git://github.com/vtamara/cocoon.git
+  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
+  specs:
+    cocoon (1.2.6)
+
+GIT
+  remote: https://github.com/kristianmandrup/jquery-ui-bootstrap-rails
+  revision: 944cf4164ea511a2977f91031cc7f69d3e06e6cb
+  specs:
+    jquery-ui-bootstrap-rails (0.1.1)
+      rails
 
 GEM
   remote: https://rubygems.org/
@@ -136,7 +138,7 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
-    jbuilder (2.4.0)
+    jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jquery-rails (4.1.0)
@@ -172,7 +174,7 @@ GEM
       nokogiri (>= 1.5.0)
       rubyzip (~> 1.1.0)
     orm_adapter (0.5.0)
-    paperclip (4.3.4)
+    paperclip (4.3.5)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
@@ -234,7 +236,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.15.0)
     rake (10.5.0)
-    rdoc (4.2.1)
+    rdoc (4.2.2)
       json (~> 1.4)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
@@ -322,7 +324,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
-  byebug
   cancancan
   capybara
   capybara-webkit
