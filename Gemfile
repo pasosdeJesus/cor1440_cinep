@@ -15,6 +15,9 @@ gem "prawn"
 gem "prawnto_2",  :require => "prawnto"
 gem "prawn-table"
 
+# Plantilla ODT
+gem "odf-report"
+
 # Postgresql
 gem "pg"
 

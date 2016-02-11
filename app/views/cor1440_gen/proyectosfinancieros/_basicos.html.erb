@@ -22,10 +22,17 @@
   :as => :string
 %>
 
-<div>
-  Duración: por calcular
-</div>
-<!--%= f.input :duracion, :readonly, value: "100 dias" %-->
+<%
+  f.object.duracion = ''
+  if f.object.fechainicio && f.object.fechacierre then
+    f.object.duracion = f.object.fechacierre - f.object.fechainicio
+    f.object.duracion = f.object.duracion.round.to_s
+  end
+%>
+<%= f.input :duracion,
+  label: 'Duración en días',
+  :input_html => { 'readonly' => 'readonly' }
+%>
 
 <%= f.input :fechaliquidacion, :input_html => { 
   "data-behaviour" => "datepicker" },

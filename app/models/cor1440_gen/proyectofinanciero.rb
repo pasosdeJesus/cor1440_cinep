@@ -6,6 +6,7 @@ module Cor1440Gen
   class Proyectofinanciero < ActiveRecord::Base
     @current_usuario = nil
     attr_accessor :current_usuario
+    attr_accessor :duracion
 
     include Cor1440Gen::Concerns::Models::Proyectofinanciero
     

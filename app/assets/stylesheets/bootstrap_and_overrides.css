@@ -42,3 +42,15 @@ h1 {
 	background-repeat: repeat-x;
 /*	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); */
 }
+
+.alert-success {
+	background-color: #D6F3F0;
+	color: #316986; 
+	border-color: #316986; 
+}
+
+
+.alert-info {
+	background-color: #DDD;
+	color: #777;
+}
