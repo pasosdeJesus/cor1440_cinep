@@ -50,6 +50,10 @@ es:
         fechacierre: "Termina"
         fechaliquidacion: "Fecha de Liquidación"
         duracion: "Fecha de Liquidación"
+        tipomoneda: "Tipo de moneda"
+        centrocosto: "Centro de costo"
+        cuentasbancarias: "Cuentas Bancarias"
+        rendimientosfinancieros: "Rendimientos Financieros"
       "nucleoconflicto":
         Nucleoconflict: Núcleo de Conflicto
         Nucleosconflicto: Núcleos de Conflicto
@@ -63,6 +67,11 @@ es:
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
         enplantrienal: En Glosario del Plan Trienal
+      "tipomoneda":
+        Tipomoneda: Tipo de Moneda
+        Tiposmoneda: Tipos de Moneda
+        codiso4217: "Código ISO 4217"
+        simbolo: "Símbolo"
       "sip/oficina":
         Oficinas: Áreas
         Oficina: Área

@@ -97,9 +97,13 @@ group :test do
   # Acelera ejecutando en fondo.  https://github.com/jonleighton/spring
   gem "spring"
 
+  gem 'minitest'
+  gem 'minitest-rails'
+  gem 'turn', :require => false
+
   # Pruebas con rspec
-  gem 'spring-commands-rspec'
-  gem 'rspec-rails'
+  #gem 'spring-commands-rspec'
+  #gem 'rspec-rails'
 
   # Maneja datos de prueba
   gem "factory_girl_rails", "~> 4.0", group: [:development, :test]

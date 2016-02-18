@@ -16,7 +16,8 @@ class Ability  < Cor1440Gen::Ability
     ['', 'nucleoconflicto'],
     ['', 'publicacion'],
     ['', 'redactor'],
-    ['', 'sectoractor']
+    ['', 'sectoractor'],
+    ['', 'tipomoneda']
   ]
   
   @@tablasbasicas_prio += [
@@ -37,6 +38,7 @@ class Ability  < Cor1440Gen::Ability
       when Ability::ROLOPERADOR
         if usuario && usuario.rol && usuario.oficina_id == 27
           can :manage, Cor1440Gen::Proyectofinanciero
+          can :manage, ::Tipomoneda
         else
           #can :manage, Cor1440Gen::Actividad
           can :read, Cor1440Gen::Proyectofinanciero

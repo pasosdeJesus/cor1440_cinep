@@ -9,7 +9,10 @@ module Cor1440Gen
     attr_accessor :duracion
 
     include Cor1440Gen::Concerns::Models::Proyectofinanciero
-    
+   
+    belongs_to :tipomoneda, class_name: '::Tipomoneda',
+      foreign_key: 'tipomoneda_id'
+
     validates :referencia, presence: true, allow_blank: false,
       length: { maximum: 1000 }
     validates :referenciacinep, presence: true, allow_blank: false,
