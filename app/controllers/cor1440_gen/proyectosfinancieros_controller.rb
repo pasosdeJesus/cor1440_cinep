@@ -37,13 +37,20 @@ module Cor1440Gen
         r.add_field(:referenciacinep,         @proyectofinanciero.referenciacinep)
 #        r.add_field(:financiador, @proyectofinanciero.financiador.nombre)
         r.add_field(:fechainicio, @proyectofinanciero.fechainicio)
-        r.add_field(:fechacierre,    @proyectofinanciero.fechacierre)
+        r.add_field(:fechacierre, @proyectofinanciero.fechacierre)
         r.add_field(:duracion,    @proyectofinanciero.fechacierre - @proyectofinanciero.fechainicio)
         r.add_field(:respagencia,      @proyectofinanciero.respagencia)
         r.add_field(:emailrespagencia,      @proyectofinanciero.emailrespagencia)
         r.add_field(:telrespagencia,      @proyectofinanciero.telrespagencia)
         r.add_field(:fuentefinanciacion,      @proyectofinanciero.fuentefinanciacion)
         r.add_field(:observaciones,      @proyectofinanciero.observaciones)
+        r.add_field(:monto,      @proyectofinanciero.monto)
+        r.add_field(:tipomoneda,      @proyectofinanciero.tipomoneda.nombre)
+        r.add_field(:saldo,      @proyectofinanciero.saldo)
+        r.add_field(:acuse,      @proyectofinanciero.acuse)
+        r.add_field(:centrocosto,      @proyectofinanciero.centrocosto)
+        r.add_field(:cuentasbancarias,      @proyectofinanciero.cuentasbancarias)
+        r.add_field(:rendimientosfinancieros,      @proyectofinanciero.rendimientosfinancieros)
       end
 
       send_data report.generate, type: 'application/vnd.oasis.opendocument.text',
