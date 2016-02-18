@@ -779,7 +779,14 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     respagencia character varying(100),
     emailrespagencia character varying(100),
     telrespagencia character varying(100),
-    fechaliquidacion date
+    fechaliquidacion date,
+    tipomoneda_id integer,
+    saldo numeric(20,2),
+    acuse boolean,
+    sucursal character varying(500),
+    centrocosto character varying(500),
+    cuentasbancarias character varying(500),
+    rendimientosfinancieros numeric(20,2)
 );
 
 
@@ -1728,6 +1735,43 @@ CREATE TABLE sip_ubicacion (
 
 
 --
+-- Name: tipomoneda; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tipomoneda (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    codiso4217 character varying(3) NOT NULL,
+    simbolo character varying(10),
+    pais_id integer,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: tipomoneda_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tipomoneda_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tipomoneda_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tipomoneda_id_seq OWNED BY tipomoneda.id;
+
+
+--
 -- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1937,6 +1981,13 @@ ALTER TABLE ONLY sip_pais ALTER COLUMN id SET DEFAULT nextval('sip_pais_id_seq':
 --
 
 ALTER TABLE ONLY sip_tdocumento ALTER COLUMN id SET DEFAULT nextval('sip_tdocumento_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipomoneda ALTER COLUMN id SET DEFAULT nextval('tipomoneda_id_seq'::regclass);
 
 
 --
@@ -2252,6 +2303,14 @@ ALTER TABLE ONLY sip_tclase
 
 
 --
+-- Name: tipomoneda_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY tipomoneda
+    ADD CONSTRAINT tipomoneda_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2512,6 +2571,14 @@ ALTER TABLE ONLY actividad_publicacion
 
 
 --
+-- Name: fk_rails_70898623bb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipomoneda
+    ADD CONSTRAINT fk_rails_70898623bb FOREIGN KEY (pais_id) REFERENCES sip_pais(id);
+
+
+--
 -- Name: fk_rails_7ebb208867; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2597,6 +2664,14 @@ ALTER TABLE ONLY actor
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyecto
     ADD CONSTRAINT fk_rails_cf5d592625 FOREIGN KEY (proyecto_id) REFERENCES cor1440_gen_proyecto(id);
+
+
+--
+-- Name: fk_rails_d0ff83bfc6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_proyectofinanciero
+    ADD CONSTRAINT fk_rails_d0ff83bfc6 FOREIGN KEY (tipomoneda_id) REFERENCES tipomoneda(id);
 
 
 --
@@ -2980,4 +3055,10 @@ INSERT INTO schema_migrations (version) VALUES ('20151020203421');
 INSERT INTO schema_migrations (version) VALUES ('20160118101511');
 
 INSERT INTO schema_migrations (version) VALUES ('20160202103751');
+
+INSERT INTO schema_migrations (version) VALUES ('20160218102246');
+
+INSERT INTO schema_migrations (version) VALUES ('20160218103000');
+
+INSERT INTO schema_migrations (version) VALUES ('20160218144545');
 

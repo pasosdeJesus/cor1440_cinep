@@ -129,6 +129,13 @@ module Cor1440Gen
         :responsable_id,
         :compromisos,
         :monto,
+        :tipomoneda_id,
+        :saldo,
+        :acuse,
+        :sucursal,
+        :centrocosto,
+        :cuentasbancarias,
+        :rendimientosfinancieros,
         :observaciones,
         :financiador_ids => []
       )
