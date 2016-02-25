@@ -775,7 +775,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     monto integer,
     referencia character varying(1000),
     referenciacinep character varying(1000),
-    fuentefinanciacion character varying(1000),
+    fuentefinanciador character varying(1000),
     respagencia character varying(100),
     emailrespagencia character varying(100),
     telrespagencia character varying(100),
@@ -786,7 +786,17 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     sucursal character varying(500),
     centrocosto character varying(500),
     cuentasbancarias character varying(500),
-    rendimientosfinancieros numeric(20,2)
+    rendimientosfinancieros character varying(500),
+    contrapartida boolean,
+    informesnarrativos character varying(500),
+    informesfinancieros character varying(500),
+    informesauditoria character varying(500),
+    formatosespecificos character varying(500),
+    formatossolicitudpago character varying(500),
+    anotacionescontab character varying(5000),
+    gestiones character varying(5000),
+    copiasdesoporte character varying(5000),
+    autenticarcompulsar character varying(5000)
 );
 
 
@@ -3061,4 +3071,8 @@ INSERT INTO schema_migrations (version) VALUES ('20160218102246');
 INSERT INTO schema_migrations (version) VALUES ('20160218103000');
 
 INSERT INTO schema_migrations (version) VALUES ('20160218144545');
+
+INSERT INTO schema_migrations (version) VALUES ('20160223140842');
+
+INSERT INTO schema_migrations (version) VALUES ('20160225093706');
 

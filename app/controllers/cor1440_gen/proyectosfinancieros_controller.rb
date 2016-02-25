@@ -31,29 +31,45 @@ module Cor1440Gen
 
       # Ejemplo de https://github.com/sandrods/odf-report
       report = ODFReport::Report.new("#{Rails.root}/app/reportes/Plantilla-RE-FG-07.odt") do |r|
-
-        r.add_field(:nombre,         @proyectofinanciero.nombre)
-        r.add_field(:referencia,         @proyectofinanciero.referencia)
-        r.add_field(:referenciacinep,         @proyectofinanciero.referenciacinep)
-#        r.add_field(:financiador, @proyectofinanciero.financiador.nombre)
-        r.add_field(:fechainicio, @proyectofinanciero.fechainicio)
-        r.add_field(:fechacierre, @proyectofinanciero.fechacierre)
+        cn = [:nombre, :referencia, :referenciacinep, :fechainicio,
+              :fechacierre, :respagencia, :emailrespagencia,
+              :telrespagencia, :fuentefinanciador, :observaciones,
+              :monto, :tipomoneda, :saldo,
+              :acuse, :centrocosto, :cuentasbancarias,
+              :rendimientosfinancieros,
+              :contrapartida, :informesnarrativos, :informesfinancieros,
+              :informesauditoria, :informesespecificos, 
+              :informessolicitudpago, :anotacionescontab,
+              :gestiones, :copiasdesoporte, :autenticarcompulsar,
+              :formatosespecificos, :formatossolicitudpago ]
+        cn.each do |s|
+          r.add_field(s, @proyectofinanciero[s])
+        end
         r.add_field(:duracion,    @proyectofinanciero.fechacierre - @proyectofinanciero.fechainicio)
-        r.add_field(:respagencia,      @proyectofinanciero.respagencia)
-        r.add_field(:emailrespagencia,      @proyectofinanciero.emailrespagencia)
-        r.add_field(:telrespagencia,      @proyectofinanciero.telrespagencia)
-        r.add_field(:fuentefinanciacion,      @proyectofinanciero.fuentefinanciacion)
-        r.add_field(:observaciones,      @proyectofinanciero.observaciones)
-        r.add_field(:monto,      @proyectofinanciero.monto)
-        r.add_field(:tipomoneda,      @proyectofinanciero.tipomoneda.nombre)
-        r.add_field(:saldo,      @proyectofinanciero.saldo)
-        r.add_field(:acuse,      @proyectofinanciero.acuse)
-        r.add_field(:centrocosto,      @proyectofinanciero.centrocosto)
-        r.add_field(:cuentasbancarias,      @proyectofinanciero.cuentasbancarias)
-        r.add_field(:rendimientosfinancieros,      @proyectofinanciero.rendimientosfinancieros)
+
+
+#        r.add_field(:nombre,         @proyectofinanciero.nombre)
+#        r.add_field(:referencia,         @proyectofinanciero.referencia)
+#        r.add_field(:referenciacinep,         @proyectofinanciero.referenciacinep)
+#        r.add_field(:financiador, @proyectofinanciero.financiador.nombre)
+#        r.add_field(:fechainicio, @proyectofinanciero.fechainicio)
+#        r.add_field(:fechacierre,    @proyectofinanciero.fechacierre)
+#        r.add_field(:respagencia,      @proyectofinanciero.respagencia)
+#        r.add_field(:emailrespagencia,      @proyectofinanciero.emailrespagencia)
+#        r.add_field(:telrespagencia,      @proyectofinanciero.telrespagencia)
+#        r.add_field(:fuentefinanciacion,      @proyectofinanciero.fuentefinanciacion)
+#        r.add_field(:observaciones,      @proyectofinanciero.observaciones)
+#        r.add_field(:monto,      @proyectofinanciero.monto)
+#        r.add_field(:tipomoneda,      @proyectofinanciero.tipomoneda.nombre)
+#        r.add_field(:saldo,      @proyectofinanciero.saldo)
+#        r.add_field(:acuse,      @proyectofinanciero.acuse)
+#        r.add_field(:centrocosto,      @proyectofinanciero.centrocosto)
+#        r.add_field(:cuentasbancarias,      @proyectofinanciero.cuentasbancarias)
+#        r.add_field(:rendimientosfinancieros,      @proyectofinanciero.rendimientosfinancieros)
       end
 
-      send_data report.generate, type: 'application/vnd.oasis.opendocument.text',
+      send_data report.generate, 
+        type: 'application/vnd.oasis.opendocument.text',
         disposition: 'attachment',
         filename: 'RE-FG-07.odt'
     end
@@ -126,7 +142,7 @@ module Cor1440Gen
         :referencia, 
         :referenciacinep, 
         :financiador,
-        :fuentefinanciacion, 
+        :fuentefinanciador, 
         :respagencia, 
         :emailrespagencia, 
         :telrespagencia, 
@@ -144,6 +160,18 @@ module Cor1440Gen
         :cuentasbancarias,
         :rendimientosfinancieros,
         :observaciones,
+        :contrapartida,
+        :informesnarrativos,
+        :informesfinancieros,
+        :informesauditoria,
+        :informesespecificos,
+        :informessolicitudpago,
+        :anotacionescontab,
+        :gestiones,
+        :copiasdesoporte,
+        :autenticarcompulsar,
+        :formatosespecificos,
+        :formatossolicitudpago,
         :financiador_ids => []
       )
     end

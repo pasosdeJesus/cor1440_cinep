@@ -1,5 +1,3 @@
-<%= f.input :id, label: "Código", readonly: true %>
-
 <%= f.association :responsable,
   collection: Usuario.habilitados,
   label_method: :nusuario,

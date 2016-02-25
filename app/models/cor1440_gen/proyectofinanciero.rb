@@ -17,7 +17,7 @@ module Cor1440Gen
       length: { maximum: 1000 }
     validates :referenciacinep, presence: true, allow_blank: false,
       length: { maximum: 1000 }
-    validates :fuentefinanciacion, length: { maximum: 1000 }
+    validates :fuentefinanciador, length: { maximum: 1000 }
     validates :respagencia, length: { maximum: 100}
     validates :emailrespagencia, length: { maximum: 100}
     validates :telrespagencia, length: { maximum: 100}
