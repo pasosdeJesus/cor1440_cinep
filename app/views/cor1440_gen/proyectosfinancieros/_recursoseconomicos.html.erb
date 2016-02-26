@@ -7,14 +7,14 @@
   label_method: :nombre,
   value_method: :id
 %-->
-<%= f.input :saldo %>
 <%= f.input :acuse,
       boolean_style: :nested,
       inline_label: "Acuse"
 %>
-<%= f.input :sucursal %>
-<%= f.input :centrocosto %>
-<%= f.input :cuentasbancarias %>
 <%= f.input :rendimientosfinancieros %>
+<%= f.input :contrapartida,
+      boolean_style: :nested,
+      inline_label: "Contrapartida"
+%>
 
 
