@@ -22,8 +22,8 @@ class ExtiendeProyectofinancieroContinfo < ActiveRecord::Migration
     add_column :cor1440_gen_proyectofinanciero, :gestiones, 
      :string, limit: 5000
     add_column :cor1440_gen_proyectofinanciero, :copiasdesoporte, 
-     :string, limit: 5000
+     :string, limit: 500
     add_column :cor1440_gen_proyectofinanciero, :autenticarcompulsar, 
-     :string, limit: 5000
+     :string, limit: 500
   end
 end

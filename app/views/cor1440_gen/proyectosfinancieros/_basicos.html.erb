@@ -25,12 +25,13 @@
 <%
   f.object.duracion = ''
   if f.object.fechainicio && f.object.fechacierre then
-    f.object.duracion = f.object.fechacierre - f.object.fechainicio
-    f.object.duracion = f.object.duracion.round.to_s
+    f.object.duracion = dif_meses_dias(
+      f.object.fechainicio, f.object.fechacierre
+    )
   end
 %>
 <%= f.input :duracion,
-  label: 'Duración en días',
+  label: 'Duración',
   :input_html => { 'readonly' => 'readonly' }
 %>
 
@@ -39,6 +40,6 @@
   :as => :string
 %>
 
-<%= f.input :compromisos %>
-<%= f.input :observaciones %>
+<%= f.input :compromisos, as: :text, input_html: { rows: 5 } %>
+<%= f.input :observaciones, as: :text, input_html: { rows: 5 } %>
 

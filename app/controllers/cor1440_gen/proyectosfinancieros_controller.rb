@@ -18,7 +18,8 @@ module Cor1440Gen
         :page => params[:pagina], per_page: 20
       )
       @numproyectosfinancieros = @proyectosfinancieros.count();
-      @incluir = ['id', 'nombre', 'fechainicio', 'fechacierre', 'responsable_id', 'compromisos', 'monto' ]
+      @incluir = ['id', 'nombre', 'fechainicio', 'fechacierre', 
+                  'responsable_id', 'compromisos', 'monto' ]
       respond_to do |format|
         format.html {  }
         format.json { head :no_content }
@@ -34,9 +35,9 @@ module Cor1440Gen
         cn = [:nombre, :referencia, :referenciacinep, :fechainicio,
               :fechacierre, :respagencia, :emailrespagencia,
               :telrespagencia, :fuentefinanciador, :observaciones,
-              :monto, :tipomoneda, :saldo,
-              :acuse, :centrocosto, :cuentasbancarias,
-              :rendimientosfinancieros,
+              :monto, :saldo,
+              :centrocosto, :cuentasbancarias, 
+              :sucursal, :rendimientosfinancieros,
               :contrapartida, :informesnarrativos, :informesfinancieros,
               :informesauditoria, :informesespecificos, 
               :informessolicitudpago, :anotacionescontab,
@@ -45,8 +46,17 @@ module Cor1440Gen
         cn.each do |s|
           r.add_field(s, @proyectofinanciero[s])
         end
-        r.add_field(:duracion,    @proyectofinanciero.fechacierre - @proyectofinanciero.fechainicio)
-
+        r.add_field(:responsable, @proyectofinanciero.responsable.nombre ?
+          @proyectofinanciero.responsable.nombre : '')
+        r.add_field(:tipomoneda, @proyectofinanciero.tipomoneda.nombre)
+        r.add_field(:duracion, dif_meses_dias(@proyectofinanciero.fechainicio, 
+                                @proyectofinanciero.fechacierre))
+        r.add_field(:acuse, @proyectofinanciero.acuse ? 'Si' : 'No')
+        r.add_field(:contrapartida, @proyectofinanciero.contrapartida ? 
+                    'Si' : 'No')
+        r.add_field(:financiador, 
+                    @proyectofinanciero.financiador.inject('') { |memo, i|
+          (memo == '' ? '' : memo + ' - ') + i.nombre })
 
 #        r.add_field(:nombre,         @proyectofinanciero.nombre)
 #        r.add_field(:referencia,         @proyectofinanciero.referencia)

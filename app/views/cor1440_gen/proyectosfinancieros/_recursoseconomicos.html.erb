@@ -12,6 +12,9 @@
       inline_label: "Acuse"
 %>
 <%= f.input :rendimientosfinancieros %>
-<%= f.input :contrapartida %>
+<%= f.input :contrapartida,
+      boolean_style: :nested,
+      inline_label: "Contrapartida"
+%>
 
 

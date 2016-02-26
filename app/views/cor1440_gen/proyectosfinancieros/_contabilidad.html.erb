@@ -1,6 +1,6 @@
 <%= f.input :saldo %>
-<%= f.input :anotacionescontab %>
-<%= f.input :gestiones %>
+<%= f.input :anotacionescontab, as: :text, input_html: { rows: 5 } %>
+<%= f.input :gestiones, as: :text, input_html: { rows: 5 } %>
 <%= f.input :sucursal %>
 <%= f.input :centrocosto %>
 <%= f.input :copiasdesoporte %>
