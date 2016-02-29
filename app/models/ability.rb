@@ -13,6 +13,7 @@ class Ability  < Cor1440Gen::Ability
 
   @@tablasbasicas += [
     ['', 'actor'],
+    ['', 'cargo'],
     ['', 'nucleoconflicto'],
     ['', 'publicacion'],
     ['', 'redactor'],

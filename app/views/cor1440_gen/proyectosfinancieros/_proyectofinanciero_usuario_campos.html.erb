@@ -1,0 +1,20 @@
+<div class='control-group nested-fields'>
+  <div class="controls">
+    <%= f.association :usuario,
+      collection: ::Usuario.habilitados,
+      label_method: :nombre, #lambda { |n| n ? n.nombre : 'POR CONTRATAR' },
+      value_method: :id,
+      include_blank: "POR CONTRATAR"
+    %>
+
+    <%= f.association :cargo,
+      collection: ::Cargo.habilitados,
+      label_method: :nombre,
+      value_method: :id
+    %>
+
+    <%= link_to_remove_association "Eliminar Cargo", f, 
+      :class => 'btn-danger' 
+    %> 
+  </div>
+</div>

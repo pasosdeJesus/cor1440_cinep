@@ -12,7 +12,22 @@ module Cor1440Gen
    
     belongs_to :tipomoneda, class_name: '::Tipomoneda',
       foreign_key: 'tipomoneda_id'
-    
+
+    has_many :oficina_proyectofinanciero, dependent: :delete_all,
+      class_name: '::OficinaProyectofinanciero',
+      foreign_key: 'proyectofinanciero_id'
+    has_many :oficina, through: :oficina_proyectofinanciero,
+      class_name: 'Sip::Oficina'
+
+    # Equipo de trabajo incluyendo coordinador
+    has_many :proyectofinanciero_usuario, dependent: :delete_all,
+      class_name: '::ProyectofinancieroUsuario',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    accepts_nested_attributes_for :proyectofinanciero_usuario, 
+      allow_destroy: true, reject_if: :all_blank
+    has_many :usuario, through: :proyectofinanciero_usuario,
+      class_name: '::Usuario'
+
     validates :anotacionescontab, length: { maximum: 5000}
     validates :autenticarcompulsar, length: { maximum: 500}
     validates :copiasdesoporte, length: { maximum: 500}
@@ -39,6 +54,15 @@ module Cor1440Gen
                    "La fecha de cierre debe ser posterior a la de inicio")
       end
     end
+
+#    validate :tiene_coordinador
+#    def tiene_coordinador
+#      if fechainicio && fechacierre && fechainicio > fechacierre
+#        errors.add(:fechacierre, 
+#                   "La fecha de cierre debe ser posterior a la de inicio")
+#      end
+#    end
+
 
   end
 end

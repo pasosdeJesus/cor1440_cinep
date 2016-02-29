@@ -4,4 +4,25 @@
   value_method: :id 
 %>
 
+<%= f.association :oficina,
+  collection: Sip::Oficina.habilitados,
+  label_method: :nombre,
+  value_method: :id 
+%>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Cargos (elija por lo menos un coordinador)</div>
+  <div class="panel-body">
+
+    <%= f.simple_fields_for :proyectofinanciero_usuario do |proyectofinanciero| %>
+      <%= render 'proyectofinanciero_usuario_campos', :f => proyectofinanciero %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'Añadir Cargo', f, :proyectofinanciero_usuario,
+        partial: 'proyectofinanciero_usuario_campos',
+        :class => 'btn-primary'
+      %>
+    </div>
+  </div>
+</div>
 

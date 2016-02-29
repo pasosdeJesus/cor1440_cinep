@@ -38,7 +38,7 @@ module Cor1440Gen
               :monto, :saldo,
               :centrocosto, :cuentasbancarias, 
               :sucursal, :rendimientosfinancieros,
-              :contrapartida, :informesnarrativos, :informesfinancieros,
+              :informesnarrativos, :informesfinancieros,
               :informesauditoria, :informesespecificos, 
               :informessolicitudpago, :anotacionescontab,
               :gestiones, :copiasdesoporte, :autenticarcompulsar,
@@ -52,8 +52,8 @@ module Cor1440Gen
         r.add_field(:duracion, dif_meses_dias(@proyectofinanciero.fechainicio, 
                                 @proyectofinanciero.fechacierre))
         r.add_field(:acuse, @proyectofinanciero.acuse ? 'Si' : 'No')
-        r.add_field(:contrapartida, @proyectofinanciero.contrapartida ? 
-                    'Si' : 'No')
+        r.add_field(:contrapartida, 
+                    @proyectofinanciero.contrapartida ?  'Si' : 'No')
         r.add_field(:financiador, 
                     @proyectofinanciero.financiador.inject('') { |memo, i|
           (memo == '' ? '' : memo + ' - ') + i.nombre })
@@ -148,41 +148,48 @@ module Cor1440Gen
     # No confiar parametros a Internet, sólo permitir lista blanca
     def proyectofinanciero_params
       params.require(:proyectofinanciero).permit(
-        :nombre, 
-        :referencia, 
-        :referenciacinep, 
-        :financiador,
-        :fuentefinanciador, 
-        :respagencia, 
-        :emailrespagencia, 
-        :telrespagencia, 
-        :fechainicio,
-        :fechacierre,
-        :fechaliquidacion,
-        :responsable_id,
-        :compromisos,
-        :monto,
-        :tipomoneda_id,
-        :saldo,
         :acuse,
-        :sucursal,
+        :anotacionescontab,
+        :autenticarcompulsar,
         :centrocosto,
-        :cuentasbancarias,
-        :rendimientosfinancieros,
-        :observaciones,
+        :compromisos,
         :contrapartida,
+        :copiasdesoporte,
+        :cuentasbancarias,
+        :emailrespagencia, 
+        :fechacierre,
+        :fechainicio,
+        :fechaliquidacion,
+        :financiador,
+        :formatosespecificos,
+        :formatossolicitudpago,
+        :fuentefinanciador, 
+        :gestiones,
         :informesnarrativos,
         :informesfinancieros,
         :informesauditoria,
         :informesespecificos,
         :informessolicitudpago,
-        :anotacionescontab,
-        :gestiones,
-        :copiasdesoporte,
-        :autenticarcompulsar,
-        :formatosespecificos,
-        :formatossolicitudpago,
-        :financiador_ids => []
+        :monto,
+        :nombre, 
+        :observaciones,
+        :referencia, 
+        :referenciacinep, 
+        :rendimientosfinancieros,
+        :respagencia, 
+        :responsable_id,
+        :telrespagencia, 
+        :tipomoneda_id,
+        :saldo,
+        :sucursal,
+        :financiador_ids => [],
+        :oficina_ids => [],
+        :proyectofinanciero_usuario_attributes => [
+          :id,
+          :usuario_id,
+          :cargo_id,
+          :_destroy
+        ]
       )
     end
   end

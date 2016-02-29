@@ -27,22 +27,26 @@
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a href="#basicos" 
             class="fichacambia" aria-controls="basicos" role="tab" 
-            data-toggle="tab">Datos Básicos</a></li>
+            data-toggle="tab">Datos básicos</a></li>
           <li role="presentation"><a href="#recursoshumanos" 
             class="fichacambia" aria-controls="recursoshumanos" role="tab" 
-            data-toggle="tab">Recursos Humanos</a></li>
+            data-toggle="tab">Recursos humanos</a></li>
           <li role="presentation"><a href="#recursoseconomicos" 
             class="fichacambia" aria-controls="recursoseconomicos" role="tab" 
-            data-toggle="tab">Recursos Económicos y Desembolsos</a></li>
+            data-toggle="tab">Recursos económicos y desembolsos</a></li>
           <li role="presentation"><a href="#informes" 
             class="fichacambia" aria-controls="informes" role="tab" 
-            data-toggle="tab">Informes y Auditorias</a></li>
+            data-toggle="tab">Informes, auditorias y formatos</a></li>
           <!--li role="presentation"><a href="#anexos" 
             class="fichacambia" aria-controls="anexos" role="tab" 
             data-toggle="tab">Soportes, Plantillas y Anexos</a></li-->
           <li role="presentation"><a href="#contabilidad" 
             class="fichacambia" aria-controls="contabilidad" role="tab" 
             data-toggle="tab">Contabilidad</a></li>
+          <li role="presentation"><a href="#datosfinanciador" 
+            class="fichacambia" aria-controls="datosfinanciador" role="tab" 
+            data-toggle="tab">Datos del financiador</a></li>
+
 
         </ul>
         <div class="tab-content">
@@ -68,6 +72,10 @@
 
           <div role="tabpanel" class="tab-pane" id="contabilidad">
             <%= render 'contabilidad', :f => f %>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="datosfinanciador">
+            <%= render 'datosfinanciador', :f => f %>
           </div>
 
         </div> <!-- tab-content -->

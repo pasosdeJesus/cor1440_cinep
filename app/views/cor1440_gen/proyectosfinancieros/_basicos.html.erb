@@ -8,9 +8,6 @@
   value_method: :id 
 %>
 <%= f.input :fuentefinanciador %>
-<%= f.input :respagencia %>
-<%= f.input :emailrespagencia %>
-<%= f.input :telrespagencia %>
 
 <%= f.input :fechainicio, :input_html => { 
   "data-behaviour" => "datepicker" },
@@ -40,6 +37,5 @@
   :as => :string
 %>
 
-<%= f.input :compromisos, as: :text, input_html: { rows: 5 } %>
-<%= f.input :observaciones, as: :text, input_html: { rows: 5 } %>
+<%= f.input :anotacionescontab, as: :text, input_html: { rows: 5 } %>
 
