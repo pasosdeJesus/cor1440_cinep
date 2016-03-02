@@ -13,6 +13,7 @@ class Ability  < Cor1440Gen::Ability
 
   @@tablasbasicas += [
     ['', 'actor'],
+    ['', 'cargo'],
     ['', 'nucleoconflicto'],
     ['', 'publicacion'],
     ['', 'redactor'],
@@ -36,7 +37,7 @@ class Ability  < Cor1440Gen::Ability
       can :nuevo, Cor1440Gen::Actividad
       case usuario.rol 
       when Ability::ROLOPERADOR
-        if usuario && usuario.rol && usuario.oficina == 27
+        if usuario && usuario.rol && usuario.oficina_id == 27
           can :manage, Cor1440Gen::Proyectofinanciero
           can :manage, ::Tipomoneda
         else
@@ -44,10 +45,10 @@ class Ability  < Cor1440Gen::Ability
           can :read, Cor1440Gen::Proyectofinanciero
           can :manage, Cor1440Gen::Informe
           can [:update, :create, :destroy], Cor1440Gen::Actividad, 
-            oficina: { id: usuario.oficina_id}
+            oficina_id: { id: usuario.oficina_id}
         end
         #can :new, Usuario
-        can [:read, :manage], Usuario, oficina: { id: usuario.oficina_id}
+        can [:read, :manage], Usuario, oficina_id: { id: usuario.oficina_id}
       when Ability::ROLADMIN, Ability::ROLDIR
         can :manage, Cor1440Gen::Proyectofinanciero
         can :manage, Cor1440Gen::Actividad

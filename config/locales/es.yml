@@ -15,8 +15,8 @@ es:
   activerecord:
     models:
       "cor1440_gen/proyectofinanciero": 
-        one: "Contrato Institucional"
-        other: "Contratos Institucionales"
+        one: "Compromiso institucional"
+        other: "Compromisos institucionales"
       "cor1440_gen/proyecto": 
         one: "Programa / Servicio / Producto"
         other: "Programas / Servicios / Productos"
@@ -38,28 +38,39 @@ es:
         Proyecto: Programa / Servicio / Producto
         Proyectos: Programas / Servicios / Productos
       "cor1440_gen/proyectofinanciero":
-        Proyectofinanciero: Contrato Institucional
-        Proyectosfinancieros: Contratos Institucionales
-        referencia: "Referencia"
-        referenciacinep: "Referencia Cinep"
-        fuentefinanciacion: "Fuente de Financiación"
-        respagencia: "Responsable de la Agencia"
-        emailrespagencia: "Correo Resp. Agencia"
-        telrespagencia: "Teléfono Resp. Agencia"
-        fechainicio: "Inicia"
-        fechacierre: "Termina"
-        fechaliquidacion: "Fecha de Liquidación"
-        duracion: "Fecha de Liquidación"
-        tipomoneda: "Tipo de moneda"
+        Proyectofinanciero: "Compromiso institucional"
+        Proyectosfinancieros: "Compromisos institucionales"
+        anotacionescontab: "Anotaciones"
+        autenticarcompulsar: "Autenticar, compulsar copias"
         centrocosto: "Centro de costo"
-        cuentasbancarias: "Cuentas Bancarias"
-        rendimientosfinancieros: "Rendimientos Financieros"
+        copiasdesoporte: "Copias de soporte"
+        compromisos: "Publicaciones (compromisos, productos y actividades)"
+        cuentasbancarias: "Cuentas bancarias"
+        duracion: "Fecha de liquidación"
+        emailrespagencia: "Correo resp. agencia"
+        fechacierre: "Termina"
+        fechainicio: "Inicia"
+        fechaliquidacion: "Fecha de liquidación"
+        fuentefinanciador: "Fuente de financiacion"
+        formatosespecificos: "Formatos específicos"
+        formatossolicitudpago: "Formatos de solicitud de pago"
+        informesnarrativos: "Informes narrativos"
+        informesfinancieros: "Informes financieros"
+        informesauditoria: "Informes auditoria/Verificación de gastos/Controles del financiador"
+        monto: "Aporte financiador"
+        oficina: "Organigrama CINEP/PPP"
+        referencia: "Referencia"
+        referenciacinep: "Referencia CINEP/PPP"
+        rendimientosfinancieros: "Rendimientos financieros"
+        respagencia: "Responsable de la agencia"
+        telrespagencia: "Teléfono resp. agencia"
+        tipomoneda: "Tipo de moneda"
       "nucleoconflicto":
-        Nucleoconflict: Núcleo de Conflicto
-        Nucleosconflicto: Núcleos de Conflicto
+        Nucleoconflict: Núcleo de conflicto
+        Nucleosconflicto: Núcleos de conflicto
       "publicacion":
-        Publicacion: Publicación CINEP
-        Publicaciones: Publicaciones CINEP
+        Publicacion: Publicación CINEP/PPP
+        Publicaciones: Publicaciones CINEP/PPP
       "redactor":
         Redactor: Red de Actores
         Redesactor: Redes de Actores
@@ -68,8 +79,8 @@ es:
         Sectoresactores: Sectores de Actores
         enplantrienal: En Glosario del Plan Trienal
       "tipomoneda":
-        Tipomoneda: Tipo de Moneda
-        Tiposmoneda: Tipos de Moneda
+        Tipomoneda: Tipo de moneda
+        Tiposmoneda: Tipos de moneda
         codiso4217: "Código ISO 4217"
         simbolo: "Símbolo"
       "sip/oficina":

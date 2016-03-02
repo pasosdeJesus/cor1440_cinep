@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 049f3aa9afd5c2f4cfb8f419032d65a8f4216baa
+  revision: 0ba7966c97bd308267185056534e401ec187d064
   specs:
     cor1440_gen (1.0.a5)
       devise
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: a6055a221831f6ba918451c71c1bebd3bd5bf0ab
+  revision: 177f74a0e0a651a3a95d9a54983637b9241858bf
   specs:
     sip (2.0.a7)
       bootstrap-datepicker-rails
@@ -107,7 +107,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (0.4.8)
       simplecov (>= 0.7.1, < 1.0.0)
-    coderay (1.1.0)
+    coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -117,7 +117,7 @@ GEM
     coffee-script-source (1.10.0)
     colorize (0.7.7)
     commonjs (0.2.7)
-    concurrent-ruby (1.0.0)
+    concurrent-ruby (1.0.1)
     debug_inspector (0.0.2)
     devise (3.5.6)
       bcrypt (~> 3.0)
@@ -163,7 +163,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
-    mime-types (2.99)
+    mime-types (2.99.1)
     mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
@@ -183,7 +183,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
-    pdf-core (0.6.0)
+    pdf-core (0.6.1)
     pg (0.18.4)
     prawn (2.0.2)
       pdf-core (~> 0.6.0)
@@ -257,11 +257,11 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    spring (1.6.3)
+    spring (1.6.4)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.0.1)
+    sprockets-rails (3.0.3)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
