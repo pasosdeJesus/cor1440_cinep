@@ -39,6 +39,8 @@ module Cor1440Gen
     validates :informesnarrativos, length: { maximum: 500}
     validates :informesfinancieros, length: { maximum: 500}
     validates :informesauditoria, length: { maximum: 500}
+    validates :monto, numericality: { greater_than: 0, less_than: 1000000000000000000 }
+    validates :saldo, numericality: { greater_than: 0, less_than: 1000000000000000000 }
     validates :referencia, presence: true, allow_blank: false,
       length: { maximum: 1000 }
     validates :referenciacinep, presence: true, allow_blank: false,
@@ -55,13 +57,19 @@ module Cor1440Gen
       end
     end
 
-#    validate :tiene_coordinador
-#    def tiene_coordinador
-#      if fechainicio && fechacierre && fechainicio > fechacierre
-#        errors.add(:fechacierre, 
-#                   "La fecha de cierre debe ser posterior a la de inicio")
-#      end
-#    end
+    validate :tiene_coordinador
+    def tiene_coordinador
+      tiene = false 
+      proyectofinanciero_usuario.each {|x| 
+        if (x.cargo_id == 2) then 
+          tiene = true 
+        end
+      }
+      if (!tiene)
+        errors.add(:cargos, 
+                   "Debe haber por lo menos un coordinador en la pestaña Recursos Humanos")
+      end
+    end
 
 
   end
