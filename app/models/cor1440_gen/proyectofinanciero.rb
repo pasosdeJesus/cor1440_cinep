@@ -54,7 +54,7 @@ module Cor1440Gen
 
     validates :anotacionescontab, length: { maximum: 5000}
     validates :aportecinep, numericality: 
-      { greater_than: 0, less_than: 1000000000000000000 }
+      { less_than: 1000000000000000000 }
     validates :autenticarcompulsar, length: { maximum: 500}
     validates :emailrespagencia, length: { maximum: 100}
     validates :formatosespecificos, length: { maximum: 500}
