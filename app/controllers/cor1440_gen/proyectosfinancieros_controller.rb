@@ -1,6 +1,5 @@
 # encoding: UTF-8
 
-
 module Cor1440Gen
   class ProyectosfinancierosController < ::ApplicationController
 
@@ -33,49 +32,93 @@ module Cor1440Gen
       # Ejemplo de https://github.com/sandrods/odf-report
       report = ODFReport::Report.new("#{Rails.root}/app/reportes/Plantilla-RE-FG-07.odt") do |r|
         cn = [:nombre, :referencia, :referenciacinep, :fechainicio,
-              :fechacierre, :respagencia, :emailrespagencia,
+              :fechacierre, 
+              :respagencia, :emailrespagencia,
               :telrespagencia, :fuentefinanciador, :observaciones,
-              :monto, :saldo,
+              :saldo, :presupuestototal, :otrosaportescinep,
+              :fechaliquidacion, :empresaauditoria,
               :centrocosto, :cuentasbancarias, 
               :sucursal, :rendimientosfinancieros,
-              :informesnarrativos, :informesfinancieros,
-              :informesauditoria, :informesespecificos, 
+              :informesespecificos, 
               :informessolicitudpago, :anotacionescontab,
               :gestiones, :copiasdesoporte, :autenticarcompulsar,
               :formatosespecificos, :formatossolicitudpago ]
         cn.each do |s|
           r.add_field(s, @proyectofinanciero[s])
         end
+        # Renombrados
+        r.add_field(:anotaciones, @proyectofinanciero[:anotacionescontab])
+        r.add_field(:aportefinanciador, @proyectofinanciero[:monto])
+        r.add_field(:aportefinancierocinep, @proyectofinanciero[:aportecinep])
+        r.add_field(:publicaciones, @proyectofinanciero[:compromisos])
+
+        # Booleanos
+        r.add_field(:acuse, @proyectofinanciero.acuse ? 'Si' : 'No')
+        r.add_field(:copiasdesoporte, 
+                    @proyectofinanciero.copiasdesoporte ?  'Si' : 'No')
+        # Calculados
+        r.add_field(:duracion, dif_meses_dias(@proyectofinanciero.fechainicio, 
+                                @proyectofinanciero.fechacierre))
+
+        # Referencian otra
         r.add_field(:responsable, @proyectofinanciero.responsable.nombre ?
           @proyectofinanciero.responsable.nombre : '')
         r.add_field(:tipomoneda, @proyectofinanciero.tipomoneda.nombre)
-        r.add_field(:duracion, dif_meses_dias(@proyectofinanciero.fechainicio, 
-                                @proyectofinanciero.fechacierre))
-        r.add_field(:acuse, @proyectofinanciero.acuse ? 'Si' : 'No')
-        r.add_field(:contrapartida, 
-                    @proyectofinanciero.contrapartida ?  'Si' : 'No')
         r.add_field(:financiador, 
                     @proyectofinanciero.financiador.inject('') { |memo, i|
           (memo == '' ? '' : memo + ' - ') + i.nombre })
+        r.add_field(:organigramacinep, 
+                    @proyectofinanciero.oficina.inject('') { |memo, i|
+          (memo == '' ? '' : memo + ' - ') + i.nombre })
 
-#        r.add_field(:nombre,         @proyectofinanciero.nombre)
-#        r.add_field(:referencia,         @proyectofinanciero.referencia)
-#        r.add_field(:referenciacinep,         @proyectofinanciero.referenciacinep)
-#        r.add_field(:financiador, @proyectofinanciero.financiador.nombre)
-#        r.add_field(:fechainicio, @proyectofinanciero.fechainicio)
-#        r.add_field(:fechacierre,    @proyectofinanciero.fechacierre)
-#        r.add_field(:respagencia,      @proyectofinanciero.respagencia)
-#        r.add_field(:emailrespagencia,      @proyectofinanciero.emailrespagencia)
-#        r.add_field(:telrespagencia,      @proyectofinanciero.telrespagencia)
-#        r.add_field(:fuentefinanciacion,      @proyectofinanciero.fuentefinanciacion)
-#        r.add_field(:observaciones,      @proyectofinanciero.observaciones)
-#        r.add_field(:monto,      @proyectofinanciero.monto)
-#        r.add_field(:tipomoneda,      @proyectofinanciero.tipomoneda.nombre)
-#        r.add_field(:saldo,      @proyectofinanciero.saldo)
-#        r.add_field(:acuse,      @proyectofinanciero.acuse)
-#        r.add_field(:centrocosto,      @proyectofinanciero.centrocosto)
-#        r.add_field(:cuentasbancarias,      @proyectofinanciero.cuentasbancarias)
-#        r.add_field(:rendimientosfinancieros,      @proyectofinanciero.rendimientosfinancieros)
+        r.add_field(:coordinador, 
+                   @proyectofinanciero.proyectofinanciero_usuario.where(cargo_id: 2).inject('') { |memo, i|
+          (memo == '' ? '' : memo + ' - ') + i.usuario.nombre })
+        r.add_field(:equipotrabajo, 
+                    @proyectofinanciero.proyectofinanciero_usuario.inject('') { |memo, i|
+          (memo == '' ? '' : memo + ' - ') + i.usuario.nombre + " / " + i.cargo.nombre})
+
+        r.add_field(:desembolsos, 
+                    @proyectofinanciero.desembolso.inject('') { |memo, i|
+          (memo == '' ? '' : memo + '. ') + i.detalle + ", " + 
+            i.fechaplaneada.to_s + ", " + i.valorplaneado.to_s })
+
+        r.add_field(:informesnarrativos, 
+                    @proyectofinanciero.informenarrativo.inject('') { |memo, i|
+          (memo == '' ? '' : memo + ' -  ') + i.detalle + ", " + 
+            i.fechaplaneada.to_s })
+
+        r.add_field(:informesfinancieros, 
+                    @proyectofinanciero.informefinanciero.inject('') { |memo, i|
+          (memo == '' ? '' : memo + ' - ') + i.detalle + ", " + 
+            i.fechaplaneada.to_s })
+
+        r.add_field(:informesauditorias, 
+                    @proyectofinanciero.informeauditoria.inject('') { |memo, i|
+          (memo == '' ? '' : memo + ' - ') + i.detalle
+        })
+
+
+        # Tablas
+#        r.add_table("DESEMBOLSOS", @proyectofinanciero.desembolso) do |i|
+#          i.add_column(:detalle) { |r| r.detalle }
+#          i.add_column(:fechaplaneada) { |r| r.fechaplaneada}
+#          i.add_column(:valorplaneado) { |r| r.valorplaneado}
+#        end
+#
+#        r.add_table("INFORMESNARRATIVOS", @proyectofinanciero.informenarrativo) do |i|
+#          i.add_column(:detalle) { |r| r.detalle }
+#          i.add_column(:fechaplaneada) { |r| r.fechaplaneada}
+#        end
+#
+#        r.add_table("INFORMESFINANCIEROS", @proyectofinanciero.informefinanciero) do |i|
+#          i.add_column(:detalle) { |r| r.detalle }
+#          i.add_column(:fechaplaneada) { |r| r.fechaplaneada}
+#        end
+# 
+#        r.add_table("INFORMESAUDITORIA", @proyectofinanciero.informeauditoria) do |i|
+#          i.add_column(:detalle) { |r| r.detalle }
+#        end
       end
 
       send_data report.generate, 
@@ -149,14 +192,15 @@ module Cor1440Gen
     def proyectofinanciero_params
       params.require(:proyectofinanciero).permit(
         :acuse,
+        :aportecinep,
         :anotacionescontab,
         :autenticarcompulsar,
         :centrocosto,
         :compromisos,
-        :contrapartida,
         :copiasdesoporte,
         :cuentasbancarias,
         :emailrespagencia, 
+        :empresaauditoria,
         :fechacierre,
         :fechainicio,
         :fechaliquidacion,
@@ -165,14 +209,13 @@ module Cor1440Gen
         :formatossolicitudpago,
         :fuentefinanciador, 
         :gestiones,
-        :informesnarrativos,
-        :informesfinancieros,
-        :informesauditoria,
         :informesespecificos,
         :informessolicitudpago,
         :monto,
         :nombre, 
         :observaciones,
+        :otrosaportescinep,
+        :presupuestototal,
         :referencia, 
         :referenciacinep, 
         :rendimientosfinancieros,
@@ -183,6 +226,30 @@ module Cor1440Gen
         :saldo,
         :sucursal,
         :financiador_ids => [],
+        :desembolso_attributes => [
+          :id,
+          :detalle,
+          :fechaplaneada,
+          :valorplaneado,
+          :_destroy
+        ],
+        :informeauditoria_attributes => [
+          :id,
+          :detalle,
+          :_destroy
+        ],
+        :informefinanciero_attributes => [
+          :id,
+          :detalle,
+          :fechaplaneada,
+          :_destroy
+        ],
+        :informenarrativo_attributes => [
+          :id,
+          :detalle,
+          :fechaplaneada,
+          :_destroy
+        ],
         :oficina_ids => [],
         :proyectofinanciero_usuario_attributes => [
           :id,

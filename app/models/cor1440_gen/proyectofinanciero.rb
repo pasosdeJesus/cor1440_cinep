@@ -28,25 +28,52 @@ module Cor1440Gen
     has_many :usuario, through: :proyectofinanciero_usuario,
       class_name: '::Usuario'
 
+    has_many :desembolso, dependent: :delete_all,
+      class_name: '::Desembolso',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    accepts_nested_attributes_for :desembolso, 
+      allow_destroy: true, reject_if: :all_blank
+
+    has_many :informenarrativo, dependent: :delete_all,
+      class_name: '::Informenarrativo',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    accepts_nested_attributes_for :informenarrativo, 
+      allow_destroy: true, reject_if: :all_blank
+
+    has_many :informefinanciero, dependent: :delete_all,
+      class_name: '::Informefinanciero',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    accepts_nested_attributes_for :informefinanciero, 
+      allow_destroy: true, reject_if: :all_blank
+
+    has_many :informeauditoria, dependent: :delete_all,
+      class_name: '::Informeauditoria',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    accepts_nested_attributes_for :informeauditoria, 
+      allow_destroy: true, reject_if: :all_blank
+
     validates :anotacionescontab, length: { maximum: 5000}
+    validates :aportecinep, numericality: 
+      { greater_than: 0, less_than: 1000000000000000000 }
     validates :autenticarcompulsar, length: { maximum: 500}
-    validates :copiasdesoporte, length: { maximum: 500}
     validates :emailrespagencia, length: { maximum: 100}
     validates :formatosespecificos, length: { maximum: 500}
     validates :formatossolicitudpago, length: { maximum: 500}
     validates :fuentefinanciador, length: { maximum: 1000 }
     validates :gestiones, length: { maximum: 5000}
-    validates :informesnarrativos, length: { maximum: 500}
-    validates :informesfinancieros, length: { maximum: 500}
-    validates :informesauditoria, length: { maximum: 500}
-    validates :monto, numericality: { greater_than: 0, less_than: 1000000000000000000 }
-    validates :saldo, numericality: { greater_than: 0, less_than: 1000000000000000000 }
+    validates :monto, numericality: 
+      { greater_than: 0, less_than: 1000000000000000000 }
+    validates :otrosaportescinep, length: { maximum: 500}
+    validates :presupuestototal, numericality: 
+      { greater_than: 0, less_than: 1000000000000000000 }
     validates :referencia, presence: true, allow_blank: false,
       length: { maximum: 1000 }
     validates :referenciacinep, presence: true, allow_blank: false,
       length: { maximum: 1000 }
     validates :rendimientosfinancieros, length: { maximum: 500}
     validates :respagencia, length: { maximum: 100}
+    validates :saldo, numericality: 
+      { greater_than: 0, less_than: 1000000000000000000 }
     validates :telrespagencia, length: { maximum: 100}
 
     validate :fechas_ordenadas
@@ -67,7 +94,7 @@ module Cor1440Gen
       }
       if (!tiene)
         errors.add(:cargos, 
-                   "Debe haber por lo menos un coordinador en la pestaña Recursos Humanos")
+                   "Falta un coordinador en la pestaña Recursos Humanos")
       end
     end
 

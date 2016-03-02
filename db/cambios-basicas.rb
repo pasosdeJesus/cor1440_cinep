@@ -1,4 +1,4 @@
-
+puts "
 INSERT INTO sip_oficina (id, nombre, fechacreacion, created_at) 
   VALUES ('20', 'COMUNICACIONES', '2016-01-18', '2016-01-18');
 INSERT INTO sip_oficina (id, nombre, fechacreacion, created_at) 
@@ -21,4 +21,4 @@ INSERT INTO sip_oficina (id, nombre, fechacreacion, created_at)
 INSERT INTO sip_oficina (id, nombre, fechacreacion, created_at) 
   VALUES ('28', 'SISTEMA DE INFORMACIÓN GEOREFERENCIADA', 
         '2016-01-18', '2016-01-18');
-
+"

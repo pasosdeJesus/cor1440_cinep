@@ -20,7 +20,6 @@ module ApplicationHelper
         d = fechafin.day - fechaini.day
       end
     end
-    r = ""
     if (m == 0) then
       return d.to_s + " días"
     elsif (d == 0) then
