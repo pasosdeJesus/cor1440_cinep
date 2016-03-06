@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 0ba7966c97bd308267185056534e401ec187d064
+  revision: 894387f85b18be46af4660f07e73a693edd522f4
   specs:
     cor1440_gen (1.0.a5)
       devise
@@ -83,8 +83,8 @@ GEM
     addressable (2.4.0)
     ansi (1.5.0)
     arel (6.0.3)
-    bcrypt (3.1.10)
-    bootstrap-datepicker-rails (1.5.0)
+    bcrypt (3.1.11)
+    bootstrap-datepicker-rails (1.6.0)
       railties (>= 3.0)
     builder (3.2.2)
     byebug (8.2.2)
