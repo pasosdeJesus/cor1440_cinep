@@ -73,11 +73,15 @@ module Cor1440Gen
 
         r.add_field(:coordinador, 
                    @proyectofinanciero.proyectofinanciero_usuario.where(cargo_id: 2).inject('') { |memo, i|
-          (memo == '' ? '' : memo + ' - ') + i.usuario.nombre })
+          (memo == '' ? '' : memo + ' - ') + (i.usuario ? i.usuario.nombre : "POR CONTRATAR") })
         r.add_field(:equipotrabajo, 
                     @proyectofinanciero.proyectofinanciero_usuario.inject('') { |memo, i|
-          (memo == '' ? '' : memo + ' - ') + i.usuario.nombre + " / " + i.cargo.nombre})
-
+          if i.cargo_id != 2
+            (memo == '' ? '' : memo + ' - ') + (i.usuario ? i.usuario.nombre : "POR CONTRATAR") + " / " + i.cargo.nombre
+          else
+            memo
+          end
+        })
         r.add_field(:desembolsos, 
                     @proyectofinanciero.desembolso.inject('') { |memo, i|
           (memo == '' ? '' : memo + '. ') + i.detalle + ", " + 
