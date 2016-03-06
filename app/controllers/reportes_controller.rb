@@ -51,18 +51,21 @@ class ReportesController < ::ApplicationController
       LEFT JOIN sip_departamento
         ON cor1440_gen_actividad.departamento_id=sip_departamento.id
       LEFT JOIN nucleoconflicto
-        ON cor1440_gen_actividad.nucleoconflicto_id=nucleoconflicto.id"
+        ON cor1440_gen_actividad.nucleoconflicto_id=nucleoconflicto.id
+    WHERE cor1440_gen_actividad.id 
+      IN (SELECT actividad_id FROM actividad_actor)
+    "
     where = ''
     if (@fechaini != '') 
-      where = " WHERE cor1440_gen_actividad.fecha >= '#{@fechaini}'"
+      where = " AND cor1440_gen_actividad.fecha >= '#{@fechaini}'"
     end
     if (@fechafin != '')
-      if where == ''
-        where = ' WHERE '
-      else
-        where += ' AND '
-      end
-      where += "cor1440_gen_actividad.fecha <= '#{@fechafin}'"
+#      if where == ''
+#        where = ' WHERE '
+#      else
+#        where += ' AND '
+#      end
+      where += " AND cor1440_gen_actividad.fecha <= '#{@fechafin}'"
     end
     cons += where + " ORDER BY 1"
 
