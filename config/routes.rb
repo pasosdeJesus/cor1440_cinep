@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       path_names: { new: 'nuevo', edit: 'edita' }
 
     #get "/proyectosfinancieros" => "cor1440_gen/proyectosfinancieros#index", as: :proyectosfinancieros
+    get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :fichaimp
 
     namespace :admin do
       Ability.tablasbasicas.each do |t|

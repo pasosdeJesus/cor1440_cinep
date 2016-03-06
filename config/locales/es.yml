@@ -10,13 +10,23 @@ es:
     sectoractor: Sector del Actor
     actividadarea: Componente Plan Trienal 
     actividadareas: Componentes Plan Trienal 
-    proyectos: Programas / Servicios / Productos
-    proyecto: Programa / Servicio / Producto
-    proyectofinanciero: Convenio Financiero
-    proyectosfinancieros: Convenios Financieros
     departamento: Departamento
+    oficina: Área
   activerecord:
+    models:
+      "cor1440_gen/proyectofinanciero": 
+        one: "Compromiso institucional"
+        other: "Compromisos institucionales"
+      "cor1440_gen/proyecto": 
+        one: "Programa / Servicio / Producto"
+        other: "Programas / Servicios / Productos"
     attributes:
+      "actor":
+        Actor: Actor
+        Actores: Actores
+        personacontacto: Persona Contacto
+        pais_id: País
+        sectoractor_id: Sector del Actor
       "cor1440_gen/actividad":
         regionsjr: Dependencia
         minutos: Horas
@@ -28,24 +38,56 @@ es:
         Proyecto: Programa / Servicio / Producto
         Proyectos: Programas / Servicios / Productos
       "cor1440_gen/proyectofinanciero":
-        Proyectofinanciero: Convenio Financiero
-        Proyectosfinancieros: Convenios Financieros
+        Proyectofinanciero: "Compromiso institucional"
+        Proyectosfinancieros: "Compromisos institucionales"
+        anotacionescontab: "Anotaciones"
+        aportecinep: "Aporte financiero CINEP/PPP"
+        autenticarcompulsar: "Autenticar, compulsar copias"
+        centrocosto: "Centro de costo"
+        copiasdesoporte: "Copias de soporte"
+        compromisos: "Publicaciones (compromisos, productos y actividades)"
+        cuentasbancarias: "Cuentas bancarias"
+        duracion: "Fecha de liquidación"
+        emailrespagencia: "Correo resp. agencia"
+        empresaauditoria: "Empresa de Auditorias y Relacionados"
+        fechacierre: "Termina"
+        fechainicio: "Inicia"
+        fechaliquidacion: "Fecha de liquidación"
+        fuentefinanciador: "Fuente de financiacion"
+        formatosespecificos: "Formatos específicos"
+        formatossolicitudpago: "Formatos de solicitud de pago"
+        informesnarrativos: "Informes narrativos"
+        informesfinancieros: "Informes financieros"
+        informesauditoria: "Informes auditoria/Verificación de gastos/Controles del financiador"
+        monto: "Aporte financiador"
+        oficina: "Organigrama CINEP/PPP"
+        otrosaportescinep: "Otros aportes CINEP/PPP"
+        presupuestototal: "Presupuesto total"
+        referencia: "Referencia"
+        referenciacinep: "Referencia CINEP/PPP"
+        rendimientosfinancieros: "Rendimientos financieros"
+        respagencia: "Responsable de la agencia"
+        telrespagencia: "Teléfono resp. agencia"
+        tipomoneda: "Tipo de moneda"
+      "nucleoconflicto":
+        Nucleoconflict: Núcleo de conflicto
+        Nucleosconflicto: Núcleos de conflicto
+      "publicacion":
+        Publicacion: Publicación CINEP/PPP
+        Publicaciones: Publicaciones CINEP/PPP
+      "redactor":
+        Redactor: Red de Actores
+        Redesactor: Redes de Actores
       "sectoractor":
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
         enplantrienal: En Glosario del Plan Trienal
-      "actor":
-        Actor: Actor
-        Actores: Actores
-        personacontacto: Persona Contacto
-        pais_id: País
-        sectoractor_id: Sector del Actor
-      "nucleoconflicto":
-        Nucleoconflict: Núcleo de Conflicto
-        Nucleosconflicto: Núcleos de Conflicto
-      "redactor":
-        Redactor: Red de Actores
-        Redesactor: Redes de Actores
-      "publicacion":
-        Publicacion: Publicación CINEP
-        Publicaciones: Publicaciones CINEP
+      "tipomoneda":
+        Tipomoneda: Tipo de moneda
+        Tiposmoneda: Tipos de moneda
+        codiso4217: "Código ISO 4217"
+        simbolo: "Símbolo"
+      "sip/oficina":
+        Oficinas: Áreas
+        Oficina: Área
+

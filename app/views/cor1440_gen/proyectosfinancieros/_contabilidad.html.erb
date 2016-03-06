@@ -1,3 +1,13 @@
-<%= f.input :id, label: "Código", readonly: true %>
+<%= f.input :centrocosto %>
+<%= f.input :copiasdesoporte,
+      boolean_style: :nested,
+      inline_label: "Copias de soporte"
+%>
+<%= f.input :cuentasbancarias %>
+<%= f.input :autenticarcompulsar %>
+
+<%= f.input :saldo %>
+<!--%= f.input :sucursal %-->
+<%= f.input :gestiones, as: :text, input_html: { rows: 5 } %>
 
 

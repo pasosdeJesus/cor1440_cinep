@@ -21,6 +21,9 @@
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
     edita_proyectofinanciero_ruta(@proyectofinanciero), :class => 'btn' 
   %>
+  <%= link_to t('.imprimir', :default => 'Ficha para Imprimir'),
+    proyectofinanciero_ruta(@proyectofinanciero) + "/fichaimp", :class => 'btn' 
+  %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
     proyectofinanciero_ruta(@proyectofinanciero),
     :method => 'delete',

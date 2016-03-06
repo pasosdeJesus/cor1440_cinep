@@ -1,10 +1,13 @@
 <%= f.input :nombre %>
+<%= f.input :referencia %>
+<%= f.input :referenciacinep %>
 
 <%= f.association :financiador,
   collection: Cor1440Gen::Financiador.habilitados,
   label_method: :nombre,
   value_method: :id 
 %>
+<%= f.input :fuentefinanciador %>
 
 <%= f.input :fechainicio, :input_html => { 
   "data-behaviour" => "datepicker" },
@@ -16,7 +19,23 @@
   :as => :string
 %>
 
-<%= f.input :compromisos %>
+<%
+  f.object.duracion = ''
+  if f.object.fechainicio && f.object.fechacierre then
+    f.object.duracion = dif_meses_dias(
+      f.object.fechainicio, f.object.fechacierre
+    )
+  end
+%>
+<%= f.input :duracion,
+  label: 'Duración',
+  :input_html => { 'readonly' => 'readonly' }
+%>
 
-<%= f.input :observaciones %>
+<%= f.input :fechaliquidacion, :input_html => { 
+  "data-behaviour" => "datepicker" },
+  :as => :string
+%>
+
+<%= f.input :anotacionescontab, as: :text, input_html: { rows: 5 } %>
 

@@ -15,6 +15,9 @@ gem "prawn"
 gem "prawnto_2",  :require => "prawnto"
 gem "prawn-table"
 
+# Plantilla ODT
+gem "odf-report"
+
 # Postgresql
 gem "pg"
 
@@ -94,9 +97,13 @@ group :test do
   # Acelera ejecutando en fondo.  https://github.com/jonleighton/spring
   gem "spring"
 
+  gem 'minitest'
+  gem 'minitest-rails'
+  gem 'turn', :require => false
+
   # Pruebas con rspec
-  gem 'spring-commands-rspec'
-  gem 'rspec-rails'
+  #gem 'spring-commands-rspec'
+  #gem 'rspec-rails'
 
   # Maneja datos de prueba
   gem "factory_girl_rails", "~> 4.0", group: [:development, :test]
@@ -109,7 +116,7 @@ group :test do
   gem "capybara"
   
   # Pruebas de regresión que requieren javascript
-  gem "capybara-webkit", '1.4.1'
+  gem "capybara-webkit"
 
   # Envia resultados de pruebas desde travis a codeclimate
   gem "codeclimate-test-reporter", require: nil

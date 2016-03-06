@@ -11,6 +11,11 @@ module Cor1440Gen
       if @busresponsable != '' then
         ac = ac.where(responsable: @busresponsable)
       end
+
+      @busdepartamento = param_escapa(par, 'busdepartamento')
+      if @busdepartamento != '' then
+        ac = ac.where(departamento_id: @busdepartamento)
+      end
       @busresultado = param_escapa(par, 'busresultado')
       if @busresultado != '' then
         ac = ac.where("unaccent(resultado) ILIKE unaccent(?)", "%#{@busresultado}%")
@@ -30,8 +35,6 @@ module Cor1440Gen
         @actividades.human_attribute_name(:responsable),
         @actividades.human_attribute_name(:nombre),
         @actividades.human_attribute_name(:departamento),
-        @actividades.human_attribute_name(:municipio),
-        @actividades.human_attribute_name(:lugar),
         @actividades.human_attribute_name(:tipos),
         @actividades.human_attribute_name(:objetivo),
         @actividades.human_attribute_name(:proyectos),
@@ -53,9 +56,6 @@ module Cor1440Gen
         actividad.responsable ? actividad.responsable.nusuario : "",
         actividad.nombre ? actividad.nombre : "",
         actividad.departamento ? actividad.departamento.nombre : "",
-        actividad.municipio ? actividad.municipio.nombre : "",
-        actividad.lugar ? actividad.lugar : "",
-
         actividad.actividadtipo.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre 
         },

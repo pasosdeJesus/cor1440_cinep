@@ -290,6 +290,40 @@ CREATE SEQUENCE antecedente_seq
 
 
 --
+-- Name: cargo; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE cargo (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: cargo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cargo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cargo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cargo_id_seq OWNED BY cargo.id;
+
+
+--
 -- Name: caso_etiqueta_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -772,7 +806,32 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     compromisos character varying(5000),
-    monto integer
+    monto numeric(20,2),
+    referencia character varying(1000),
+    referenciacinep character varying(1000),
+    fuentefinanciador character varying(1000),
+    respagencia character varying(100),
+    emailrespagencia character varying(100),
+    telrespagencia character varying(100),
+    fechaliquidacion date,
+    tipomoneda_id integer,
+    saldo numeric(20,2),
+    acuse boolean,
+    sucursal character varying(500),
+    centrocosto character varying(500),
+    cuentasbancarias character varying(500),
+    rendimientosfinancieros character varying(500),
+    contrapartida boolean,
+    formatosespecificos character varying(500),
+    formatossolicitudpago character varying(500),
+    anotacionescontab character varying(5000),
+    gestiones character varying(5000),
+    autenticarcompulsar character varying(5000),
+    presupuestototal numeric(20,2),
+    aportecinep numeric(20,2),
+    otrosaportescinep character varying(500),
+    empresaauditoria character varying(500),
+    copiasdesoporte boolean
 );
 
 
@@ -829,6 +888,40 @@ CREATE SEQUENCE cor1440_gen_rangoedadac_id_seq
 --
 
 ALTER SEQUENCE cor1440_gen_rangoedadac_id_seq OWNED BY cor1440_gen_rangoedadac.id;
+
+
+--
+-- Name: desembolso; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE desembolso (
+    id integer NOT NULL,
+    proyectofinanciero_id integer NOT NULL,
+    detalle character varying(500),
+    fechaplaneada date,
+    valorplaneado numeric(20,2),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: desembolso_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE desembolso_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: desembolso_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE desembolso_id_seq OWNED BY desembolso.id;
 
 
 --
@@ -940,6 +1033,104 @@ CREATE SEQUENCE iglesia_seq
 
 
 --
+-- Name: informeauditoria; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE informeauditoria (
+    id integer NOT NULL,
+    proyectofinanciero_id integer NOT NULL,
+    detalle character varying(500),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: informeauditoria_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE informeauditoria_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: informeauditoria_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE informeauditoria_id_seq OWNED BY informeauditoria.id;
+
+
+--
+-- Name: informefinanciero; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE informefinanciero (
+    id integer NOT NULL,
+    proyectofinanciero_id integer NOT NULL,
+    detalle character varying(500),
+    fechaplaneada date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: informefinanciero_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE informefinanciero_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: informefinanciero_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE informefinanciero_id_seq OWNED BY informefinanciero.id;
+
+
+--
+-- Name: informenarrativo; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE informenarrativo (
+    id integer NOT NULL,
+    proyectofinanciero_id integer NOT NULL,
+    detalle character varying(500),
+    fechaplaneada date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: informenarrativo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE informenarrativo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: informenarrativo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE informenarrativo_id_seq OWNED BY informenarrativo.id;
+
+
+--
 -- Name: instanciader_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1010,6 +1201,16 @@ ALTER SEQUENCE nucleoconflicto_id_seq OWNED BY nucleoconflicto.id;
 
 
 --
+-- Name: oficina_proyectofinanciero; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE oficina_proyectofinanciero (
+    oficina_id integer NOT NULL,
+    proyectofinanciero_id integer NOT NULL
+);
+
+
+--
 -- Name: organizacion_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1067,6 +1268,39 @@ CREATE SEQUENCE profesion_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: proyectofinanciero_usuario; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE proyectofinanciero_usuario (
+    id integer NOT NULL,
+    proyectofinanciero_id integer NOT NULL,
+    usuario_id integer,
+    cargo_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: proyectofinanciero_usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE proyectofinanciero_usuario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: proyectofinanciero_usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE proyectofinanciero_usuario_id_seq OWNED BY proyectofinanciero_usuario.id;
 
 
 --
@@ -1721,6 +1955,43 @@ CREATE TABLE sip_ubicacion (
 
 
 --
+-- Name: tipomoneda; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tipomoneda (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    codiso4217 character varying(3) NOT NULL,
+    simbolo character varying(10),
+    pais_id integer,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: tipomoneda_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tipomoneda_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tipomoneda_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tipomoneda_id_seq OWNED BY tipomoneda.id;
+
+
+--
 -- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1797,6 +2068,13 @@ CREATE SEQUENCE vinculoestado_seq
 --
 
 ALTER TABLE ONLY actor ALTER COLUMN id SET DEFAULT nextval('actor_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cargo ALTER COLUMN id SET DEFAULT nextval('cargo_id_seq'::regclass);
 
 
 --
@@ -1880,7 +2158,42 @@ ALTER TABLE ONLY cor1440_gen_rangoedadac ALTER COLUMN id SET DEFAULT nextval('co
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY desembolso ALTER COLUMN id SET DEFAULT nextval('desembolso_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY informeauditoria ALTER COLUMN id SET DEFAULT nextval('informeauditoria_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY informefinanciero ALTER COLUMN id SET DEFAULT nextval('informefinanciero_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY informenarrativo ALTER COLUMN id SET DEFAULT nextval('informenarrativo_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY nucleoconflicto ALTER COLUMN id SET DEFAULT nextval('nucleoconflicto_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY proyectofinanciero_usuario ALTER COLUMN id SET DEFAULT nextval('proyectofinanciero_usuario_id_seq'::regclass);
 
 
 --
@@ -1933,11 +2246,26 @@ ALTER TABLE ONLY sip_tdocumento ALTER COLUMN id SET DEFAULT nextval('sip_tdocume
 
 
 --
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipomoneda ALTER COLUMN id SET DEFAULT nextval('tipomoneda_id_seq'::regclass);
+
+
+--
 -- Name: actor_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY actor
     ADD CONSTRAINT actor_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cargo_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY cargo
+    ADD CONSTRAINT cargo_pkey PRIMARY KEY (id);
 
 
 --
@@ -2005,11 +2333,43 @@ ALTER TABLE ONLY cor1440_gen_proyectofinanciero
 
 
 --
+-- Name: desembolso_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY desembolso
+    ADD CONSTRAINT desembolso_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: etiqueta_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sip_etiqueta
     ADD CONSTRAINT etiqueta_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: informeauditoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY informeauditoria
+    ADD CONSTRAINT informeauditoria_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: informefinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY informefinanciero
+    ADD CONSTRAINT informefinanciero_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: informenarrativo_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY informenarrativo
+    ADD CONSTRAINT informenarrativo_pkey PRIMARY KEY (id);
 
 
 --
@@ -2026,6 +2386,14 @@ ALTER TABLE ONLY nucleoconflicto
 
 ALTER TABLE ONLY sip_persona
     ADD CONSTRAINT persona_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: proyectofinanciero_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY proyectofinanciero_usuario
+    ADD CONSTRAINT proyectofinanciero_usuario_pkey PRIMARY KEY (id);
 
 
 --
@@ -2245,6 +2613,14 @@ ALTER TABLE ONLY sip_tclase
 
 
 --
+-- Name: tipomoneda_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY tipomoneda
+    ADD CONSTRAINT tipomoneda_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2417,6 +2793,14 @@ ALTER TABLE ONLY actor_sectoractor
 
 
 --
+-- Name: fk_rails_01cc410e26; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY oficina_proyectofinanciero
+    ADD CONSTRAINT fk_rails_01cc410e26 FOREIGN KEY (oficina_id) REFERENCES sip_oficina(id);
+
+
+--
 -- Name: fk_rails_0cd09d688c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2425,11 +2809,27 @@ ALTER TABLE ONLY cor1440_gen_financiador_proyectofinanciero
 
 
 --
+-- Name: fk_rails_1f7068d549; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY informefinanciero
+    ADD CONSTRAINT fk_rails_1f7068d549 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
 -- Name: fk_rails_20940a21f8; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad
     ADD CONSTRAINT fk_rails_20940a21f8 FOREIGN KEY (nucleoconflicto_id) REFERENCES nucleoconflicto(id);
+
+
+--
+-- Name: fk_rails_28225d4dc2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY proyectofinanciero_usuario
+    ADD CONSTRAINT fk_rails_28225d4dc2 FOREIGN KEY (usuario_id) REFERENCES usuario(id);
 
 
 --
@@ -2457,6 +2857,14 @@ ALTER TABLE ONLY cor1440_gen_actividad_proyecto
 
 
 --
+-- Name: fk_rails_3f5055fb42; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY proyectofinanciero_usuario
+    ADD CONSTRAINT fk_rails_3f5055fb42 FOREIGN KEY (cargo_id) REFERENCES cargo(id);
+
+
+--
 -- Name: fk_rails_40cb623d50; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2465,11 +2873,27 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 
 --
+-- Name: fk_rails_473bd646f9; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY informenarrativo
+    ADD CONSTRAINT fk_rails_473bd646f9 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
 -- Name: fk_rails_49ec1ae361; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
     ADD CONSTRAINT fk_rails_49ec1ae361 FOREIGN KEY (anexo_id) REFERENCES sip_anexo(id);
+
+
+--
+-- Name: fk_rails_4a1ff4a976; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY oficina_proyectofinanciero
+    ADD CONSTRAINT fk_rails_4a1ff4a976 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
 
 
 --
@@ -2502,6 +2926,22 @@ ALTER TABLE ONLY actividad_actor
 
 ALTER TABLE ONLY actividad_publicacion
     ADD CONSTRAINT fk_rails_60dbe4c315 FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
+-- Name: fk_rails_67f52ffcf6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY informeauditoria
+    ADD CONSTRAINT fk_rails_67f52ffcf6 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: fk_rails_70898623bb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipomoneda
+    ADD CONSTRAINT fk_rails_70898623bb FOREIGN KEY (pais_id) REFERENCES sip_pais(id);
 
 
 --
@@ -2553,6 +2993,14 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 
 --
+-- Name: fk_rails_c719ad1d65; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY proyectofinanciero_usuario
+    ADD CONSTRAINT fk_rails_c719ad1d65 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
 -- Name: fk_rails_ca93eb04dc; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2590,6 +3038,22 @@ ALTER TABLE ONLY actor
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyecto
     ADD CONSTRAINT fk_rails_cf5d592625 FOREIGN KEY (proyecto_id) REFERENCES cor1440_gen_proyecto(id);
+
+
+--
+-- Name: fk_rails_d0ff83bfc6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_proyectofinanciero
+    ADD CONSTRAINT fk_rails_d0ff83bfc6 FOREIGN KEY (tipomoneda_id) REFERENCES tipomoneda(id);
+
+
+--
+-- Name: fk_rails_df556dc8d1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY desembolso
+    ADD CONSTRAINT fk_rails_df556dc8d1 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
 
 
 --
@@ -2969,4 +3433,44 @@ INSERT INTO schema_migrations (version) VALUES ('20150809032138');
 INSERT INTO schema_migrations (version) VALUES ('20150819173047');
 
 INSERT INTO schema_migrations (version) VALUES ('20151020203421');
+
+INSERT INTO schema_migrations (version) VALUES ('20160118101511');
+
+INSERT INTO schema_migrations (version) VALUES ('20160202103751');
+
+INSERT INTO schema_migrations (version) VALUES ('20160218102246');
+
+INSERT INTO schema_migrations (version) VALUES ('20160218103000');
+
+INSERT INTO schema_migrations (version) VALUES ('20160218144545');
+
+INSERT INTO schema_migrations (version) VALUES ('20160223140842');
+
+INSERT INTO schema_migrations (version) VALUES ('20160225093706');
+
+INSERT INTO schema_migrations (version) VALUES ('20160225110056');
+
+INSERT INTO schema_migrations (version) VALUES ('20160228133005');
+
+INSERT INTO schema_migrations (version) VALUES ('20160229033451');
+
+INSERT INTO schema_migrations (version) VALUES ('20160229081458');
+
+INSERT INTO schema_migrations (version) VALUES ('20160229082436');
+
+INSERT INTO schema_migrations (version) VALUES ('20160302142500');
+
+INSERT INTO schema_migrations (version) VALUES ('20160302151832');
+
+INSERT INTO schema_migrations (version) VALUES ('20160302162638');
+
+INSERT INTO schema_migrations (version) VALUES ('20160302164308');
+
+INSERT INTO schema_migrations (version) VALUES ('20160302164823');
+
+INSERT INTO schema_migrations (version) VALUES ('20160302164858');
+
+INSERT INTO schema_migrations (version) VALUES ('20160302165021');
+
+INSERT INTO schema_migrations (version) VALUES ('20160302175724');
 

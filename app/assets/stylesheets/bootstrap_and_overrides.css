@@ -5,3 +5,52 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
+
+/* Agradecimientos a Blanca Acosta y Omar Baracaldo por diseño cedido al dominio público */
+
+/*body */
+body {
+	background-color: #F6F6F6;
+	font-family: Helvetica;
+	font-size: 13px;
+	color: #777777;	
+}
+
+/*pestañas */
+.nav-tabs > li > a {
+	padding: 10px 12px;
+	border-radius: 8px 8px 0 0;
+	margin-right: 2px;
+	background-color: #FFF;
+	border: 1px solid #E4E4E4;
+	border-bottom-color: transparent;
+	color: #239CD3;	
+}
+
+/* letra titulos*/
+h1 {
+	color:#333;
+	font-size: 24px;
+	font-family: "Crete Round", serif; 
+	font-weight: bold;
+}
+
+
+.btn-primary {
+	background-color: #239CD3;	
+	background-image: linear-gradient(to bottom, #33ACE3, #138CC3);
+	background-repeat: repeat-x;
+/*	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); */
+}
+
+.alert-success {
+	background-color: #D6F3F0;
+	color: #316986; 
+	border-color: #316986; 
+}
+
+
+.alert-info {
+	background-color: #DDD;
+	color: #777;
+}

@@ -1,3 +1,79 @@
-<%= f.input :id, label: "Código", readonly: true %>
 
+<table border=1 width="100%">
+  <thead>
+    <tr>
+      <th>Informe Narrativo</th>
+      <th>Fecha Planeada</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="informenarrativo">
+    <%= f.simple_fields_for :informenarrativo do |d| %>
+      <%= render 'informenarrativo_campos', :f => d %>
+    <% end %>
+  </tbody>
+</table>
+<div class="links">
+  <%= link_to_add_association 'Añadir Informe Narrativo', f, 
+    :informenarrativo,
+    :"data-association-insertion-node" => "tbody#informenarrativo", 
+    :"data-association-insertion-method" => "append", 
+    partial: 'informenarrativo_campos',
+    :class => 'btn-primary'
+  %>
+</div>
+
+<table border=1 width="100%">
+  <thead>
+    <tr>
+      <th>Informe Financiero</th>
+      <th>Fecha Planeada</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="informefinanciero">
+    <%= f.simple_fields_for :informefinanciero do |d| %>
+      <%= render 'informefinanciero_campos', :f => d %>
+    <% end %>
+  </tbody>
+</table>
+<div class="links">
+  <%= link_to_add_association 'Añadir Informe Financiero', f, 
+    :informefinanciero,
+    :"data-association-insertion-node" => "tbody#informefinanciero", 
+    :"data-association-insertion-method" => "append", 
+    partial: 'informefinanciero_campos',
+    :class => 'btn-primary'
+  %>
+</div>
+
+
+<%= f.input :compromisos, as: :text, input_html: { rows: 5 } %>
+
+<table border=1 width="100%">
+  <thead>
+    <tr>
+      <th>Informe Auditoria</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="informeauditoria">
+    <%= f.simple_fields_for :informeauditoria do |d| %>
+      <%= render 'informeauditoria_campos', :f => d %>
+    <% end %>
+  </tbody>
+</table>
+<div class="links">
+  <%= link_to_add_association 'Añadir Informe Auditoria', f, 
+    :informeauditoria,
+    :"data-association-insertion-node" => "tbody#informeauditoria", 
+    :"data-association-insertion-method" => "append", 
+    partial: 'informeauditoria_campos',
+    :class => 'btn-primary'
+  %>
+</div>
+
+<%= f.input :empresaauditoria %>
+<%= f.input :formatosespecificos%>
+<%= f.input :formatossolicitudpago %>
 

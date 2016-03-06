@@ -1,5 +1,47 @@
-<%= f.input :id, label: "Código", readonly: true %>
 
+<%= f.association :tipomoneda,
+  label_method: :nombre
+%>
+<%= f.input :presupuestototal %>
 <%= f.input :monto %>
+<%= f.input :aportecinep %>
+<%= f.input :otrosaportescinep %>
+<!--  include_blank: false,
+  label_method: :nombre,
+  value_method: :id
+%-->
+<%= f.input :acuse,
+      boolean_style: :nested,
+      inline_label: "Acuse recibido"
+%>
+<%= f.input :rendimientosfinancieros %>
+<!--%= f.input :contrapartida,
+      boolean_style: :nested,
+      inline_label: "Contrapartida"
+%-->
 
+<table border=1 width="100%">
+  <thead>
+    <tr>
+      <th>Desembolso</th>
+      <th>Fecha Planeada</th>
+      <th>Valor Planeado</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="desembolso">
+    <%= f.simple_fields_for :desembolso do |d| %>
+      <%= render 'desembolso_campos', :f => d %>
+    <% end %>
+  </tbody>
+</table>
+<div class="links">
+  <%= link_to_add_association 'Añadir Desembolso', f, 
+    :desembolso,
+    :"data-association-insertion-node" => "tbody#desembolso", 
+    :"data-association-insertion-method" => "append", 
+    partial: 'desembolso_campos',
+    :class => 'btn-primary'
+  %>
+</div>
 
