@@ -33,7 +33,7 @@
   <th>
     <%= select_tag "busdepartamento", 
       options_from_collection_for_select(
-        Sip::Departamento.habilitados, "id", "nombre",
+        Sip::Departamento.habilitados.where(id_pais: 170), "id", "nombre",
         params[:busdepartamento]), 
       { include_blank: true,
         "data-enviarautomatico" => "", style: "width: 10em" }
