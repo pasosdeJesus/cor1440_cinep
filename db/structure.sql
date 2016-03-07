@@ -826,7 +826,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     formatossolicitudpago character varying(500),
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    autenticarcompulsar character varying(5000),
+    autenticarcompulsar character varying(500),
     presupuestototal numeric(20,2),
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
