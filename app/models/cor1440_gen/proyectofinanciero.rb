@@ -28,6 +28,16 @@ module Cor1440Gen
     has_many :usuario, through: :proyectofinanciero_usuario,
       class_name: '::Usuario'
 
+    has_many :anexo_proyectofinanciero, dependent: :delete_all,
+      class_name: '::AnexoProyectofinanciero',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    accepts_nested_attributes_for :anexo_proyectofinanciero, 
+      allow_destroy: true, reject_if: :all_blank
+    has_many :sip_anexo, :through => :anexo_caso, 
+            class_name: 'Sip::Anexo'
+    accepts_nested_attributes_for :sip_anexo,  reject_if: :all_blank
+
+
     has_many :desembolso, dependent: :delete_all,
       class_name: '::Desembolso',
       foreign_key: 'proyectofinanciero_id', validate: true
@@ -62,7 +72,7 @@ module Cor1440Gen
     validates :fuentefinanciador, length: { maximum: 1000 }
     validates :gestiones, length: { maximum: 5000}
     validates :monto, numericality: 
-      { greater_than: 0, less_than: 1000000000000000000 }
+      { less_than: 1000000000000000000 }
     validates :otrosaportescinep, length: { maximum: 500}
     validates :presupuestototal, numericality: 
       { greater_than: 0, less_than: 1000000000000000000 }
@@ -73,7 +83,7 @@ module Cor1440Gen
     validates :rendimientosfinancieros, length: { maximum: 500}
     validates :respagencia, length: { maximum: 100}
     validates :saldo, numericality: 
-      { greater_than: 0, less_than: 1000000000000000000 }
+      { less_than: 1000000000000000000 }
     validates :telrespagencia, length: { maximum: 100}
 
     validate :fechas_ordenadas

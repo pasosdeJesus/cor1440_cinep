@@ -99,8 +99,8 @@ module Cor1440Gen
 
         r.add_field(:informesauditorias, 
                     @proyectofinanciero.informeauditoria.inject('') { |memo, i|
-          (memo == '' ? '' : memo + ' - ') + i.detalle
-        })
+          (memo == '' ? '' : memo + ' - ') + i.detalle + ", " +
+            i.fechaplaneada.to_s })
 
 
         # Tablas
@@ -229,7 +229,15 @@ module Cor1440Gen
         :tipomoneda_id,
         :saldo,
         :sucursal,
-        :financiador_ids => [],
+        :anexo_proyectofinanciero_attributes => [
+          :id,
+          :proyectofinanciero_id,
+          :tipoanexo_id,
+          :_destroy,
+          :sip_anexo_attributes => [
+            :id, :descripcion, :adjunto, :_destroy
+          ]
+        ],
         :desembolso_attributes => [
           :id,
           :detalle,
@@ -237,9 +245,11 @@ module Cor1440Gen
           :valorplaneado,
           :_destroy
         ],
+        :financiador_ids => [],
         :informeauditoria_attributes => [
           :id,
           :detalle,
+          :fechaplaneada,
           :_destroy
         ],
         :informefinanciero_attributes => [

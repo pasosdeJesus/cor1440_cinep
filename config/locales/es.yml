@@ -69,6 +69,7 @@ es:
         respagencia: "Responsable de la agencia"
         telrespagencia: "Teléfono resp. agencia"
         tipomoneda: "Tipo de moneda"
+        tipoanexo: "Tipo de anexo"
       "nucleoconflicto":
         Nucleoconflict: Núcleo de conflicto
         Nucleosconflicto: Núcleos de conflicto
@@ -82,11 +83,12 @@ es:
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
         enplantrienal: En Glosario del Plan Trienal
+      "tipoanexo":
+        Tipoanexo: Tipo de anexo 
+        Tiposanexo: Tipos de anexo
       "tipomoneda":
         Tipomoneda: Tipo de moneda
         Tiposmoneda: Tipos de moneda
-        codiso4217: "Código ISO 4217"
-        simbolo: "Símbolo"
       "sip/oficina":
         Oficinas: Áreas
         Oficina: Área
