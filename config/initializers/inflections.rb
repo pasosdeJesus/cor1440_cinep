@@ -1,7 +1,8 @@
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'actor', 'actores'
-  inflect.irregular 'sectoractor', 'sectoresactores'
-  inflect.irregular 'redactor', 'redesactor'
+  inflect.irregular 'informeauditoria', 'informeauditorias'
   inflect.irregular 'nucleoconflicto', 'nucleosconflicto'
+  inflect.irregular 'redactor', 'redesactor'
+  inflect.irregular 'sectoractor', 'sectoresactores'
   inflect.irregular 'tipomoneda', 'tiposmoneda'
 end

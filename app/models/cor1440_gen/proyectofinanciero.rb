@@ -33,7 +33,7 @@ module Cor1440Gen
       foreign_key: 'proyectofinanciero_id', validate: true
     accepts_nested_attributes_for :anexo_proyectofinanciero, 
       allow_destroy: true, reject_if: :all_blank
-    has_many :sip_anexo, :through => :anexo_caso, 
+    has_many :sip_anexo, :through => :anexo_proyectofinanciero, 
             class_name: 'Sip::Anexo'
     accepts_nested_attributes_for :sip_anexo,  reject_if: :all_blank
 

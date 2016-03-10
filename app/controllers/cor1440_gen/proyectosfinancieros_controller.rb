@@ -46,19 +46,45 @@ module Cor1440Gen
         cn.each do |s|
           r.add_field(s, @proyectofinanciero[s])
         end
+
+        # Booleanos
+        bn = [:acuse, :copiasdesoporte, :reportarrendimientosfinancieros,
+              :reinvertirrendimientosfinancieros]
+        bn.each do |b|
+          r.add_field(b, @proyectofinanciero[b] ? 'Si' : 'No')
+        end
+
         # Renombrados
-        r.add_field(:anotaciones, @proyectofinanciero[:anotacionescontab])
         r.add_field(:aportefinanciador, @proyectofinanciero[:monto])
         r.add_field(:aportefinancierocinep, @proyectofinanciero[:aportecinep])
         r.add_field(:publicaciones, @proyectofinanciero[:compromisos])
 
-        # Booleanos
-        r.add_field(:acuse, @proyectofinanciero.acuse ? 'Si' : 'No')
-        r.add_field(:copiasdesoporte, 
-                    @proyectofinanciero.copiasdesoporte ?  'Si' : 'No')
         # Calculados
         r.add_field(:duracion, dif_meses_dias(@proyectofinanciero.fechainicio, 
                                 @proyectofinanciero.fechacierre))
+        ca = [:anotacionesdb, :anotacionesrh, :anotacionesre,
+              :anotacionesinf, :anotacionescontab]
+        an = ""
+        sep = ""
+        ca.each do |a|
+          if @proyectofinanciero[a] then
+            nan = @proyectofinanciero[a].strip
+            if (nan != '' && !nan.end_with?(".")) then
+              nan += "."
+            end
+            an += sep + nan
+            sep = "   "
+          end
+        end
+        r.add_field(:anotaciones, an)
+        cf = @proyectofinanciero.sip_anexo.inject(0) do |memo, a|
+          if (a.tipoanexo_id != 5) then
+            memo + 1
+          else 
+            memo
+          end
+        end
+        r.add_field(:formatosespecificos, cf > 0 ? 'Si' : 'No')
 
         # Referencian otra
         r.add_field(:responsable, @proyectofinanciero.responsable.nombre ?
