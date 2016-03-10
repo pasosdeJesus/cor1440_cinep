@@ -77,7 +77,7 @@ module Cor1440Gen
           end
         end
         r.add_field(:anotaciones, an)
-        cf = @proyectofinanciero.sip_anexo.inject(0) do |memo, a|
+        cf = @proyectofinanciero.anexo_proyectofinanciero.inject(0) do |memo, a|
           if (a.tipoanexo_id != 5) then
             memo + 1
           else 
