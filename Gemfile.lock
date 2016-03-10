@@ -271,7 +271,7 @@ GEM
     ttfunk (1.4.0)
     turbolinks (2.5.3)
       coffee-rails
-    turn (0.9.6)
+    turn (0.9.7)
       ansi
     twitter-bootstrap-rails (3.2.2)
       actionpack (>= 3.1)

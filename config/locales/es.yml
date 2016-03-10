@@ -40,7 +40,11 @@ es:
       "cor1440_gen/proyectofinanciero":
         Proyectofinanciero: "Compromiso institucional"
         Proyectosfinancieros: "Compromisos institucionales"
-        anotacionescontab: "Anotaciones"
+        anotacionescontab: "Anotaciones Contabilidad"
+        anotacionesdb: "Anotaciones Datos Básicos"
+        anotacionesrh: "Anotaciones Recursos Humanos"
+        anotacionesre: "Anotaciones Recursos Económicos y Financieros"
+        anotacionesinf: "Anotaciones Informes y Auditorias"
         aportecinep: "Aporte financiero CINEP/PPP"
         autenticarcompulsar: "Autenticar, compulsar copias"
         centrocosto: "Centro de costo"

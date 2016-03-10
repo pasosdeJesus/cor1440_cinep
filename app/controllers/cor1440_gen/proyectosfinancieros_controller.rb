@@ -41,8 +41,8 @@ module Cor1440Gen
               :sucursal, :rendimientosfinancieros,
               :informesespecificos, 
               :informessolicitudpago, :anotacionescontab,
-              :gestiones, :copiasdesoporte, :autenticarcompulsar,
-              :formatosespecificos, :formatossolicitudpago ]
+              :gestiones, :copiasdesoporte, :autenticarcompulsar]
+              #:formatosespecificos, :formatossolicitudpago ]
         cn.each do |s|
           r.add_field(s, @proyectofinanciero[s])
         end
@@ -198,6 +198,10 @@ module Cor1440Gen
         :acuse,
         :aportecinep,
         :anotacionescontab,
+        :anotacionesdb,
+        :anotacionesinf,
+        :anotacionesre,
+        :anotacionesrh,
         :autenticarcompulsar,
         :centrocosto,
         :compromisos,
@@ -209,8 +213,8 @@ module Cor1440Gen
         :fechainicio,
         :fechaliquidacion,
         :financiador,
-        :formatosespecificos,
-        :formatossolicitudpago,
+        #:formatosespecificos,
+        #:formatossolicitudpago,
         :fuentefinanciador, 
         :gestiones,
         :informesespecificos,
@@ -222,7 +226,8 @@ module Cor1440Gen
         :presupuestototal,
         :referencia, 
         :referenciacinep, 
-        :rendimientosfinancieros,
+        :reportarrendimientosfinancieros,
+        :reinvertirrendimientosfinancieros,
         :respagencia, 
         :responsable_id,
         :telrespagencia, 

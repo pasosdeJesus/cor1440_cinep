@@ -64,11 +64,11 @@ module Cor1440Gen
 
     validates :anotacionescontab, length: { maximum: 5000}
     validates :aportecinep, numericality: 
-      { less_than: 1000000000000000000 }
-    validates :autenticarcompulsar, length: { maximum: 500}
+      { allow_blank: true, less_than: 1000000000000000000 }
+    #validates :autenticarcompulsar, length: { maximum: 500}
     validates :emailrespagencia, length: { maximum: 100}
-    validates :formatosespecificos, length: { maximum: 500}
-    validates :formatossolicitudpago, length: { maximum: 500}
+    #validates :formatosespecificos, length: { maximum: 500}
+    #validates :formatossolicitudpago, length: { maximum: 500}
     validates :fuentefinanciador, length: { maximum: 1000 }
     validates :gestiones, length: { maximum: 5000}
     validates :monto, numericality: 
@@ -80,10 +80,10 @@ module Cor1440Gen
       length: { maximum: 1000 }
     validates :referenciacinep, presence: true, allow_blank: false,
       length: { maximum: 1000 }
-    validates :rendimientosfinancieros, length: { maximum: 500}
+    #validates :rendimientosfinancieros, length: { maximum: 500}
     validates :respagencia, length: { maximum: 100}
-    validates :saldo, numericality: 
-      { less_than: 1000000000000000000 }
+    validates :saldo, numericality: {allow_blank: true,
+                                     less_than: 1000000000000000000 }
     validates :telrespagencia, length: { maximum: 100}
 
     validate :fechas_ordenadas
