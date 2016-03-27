@@ -44,7 +44,7 @@ module Cor1440Gen
               :gestiones, :copiasdesoporte, :autenticarcompulsar]
               #:formatosespecificos, :formatossolicitudpago ]
         cn.each do |s|
-          r.add_field(s, @proyectofinanciero[s])
+          r.add_field(s, @proyectofinanciero[s] ? @proyectofinanciero[s] : '')
         end
 
         # Booleanos
@@ -89,7 +89,8 @@ module Cor1440Gen
         # Referencian otra
         r.add_field(:responsable, @proyectofinanciero.responsable.nombre ?
           @proyectofinanciero.responsable.nombre : '')
-        r.add_field(:tipomoneda, @proyectofinanciero.tipomoneda.nombre)
+        r.add_field(:tipomoneda, @proyectofinanciero.tipomoneda ? 
+                    @proyectofinanciero.tipomoneda.nombre : '')
         r.add_field(:financiador, 
                     @proyectofinanciero.financiador.inject('') { |memo, i|
           (memo == '' ? '' : memo + ' - ') + i.nombre })

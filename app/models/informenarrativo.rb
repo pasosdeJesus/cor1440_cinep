@@ -8,7 +8,10 @@ class Informenarrativo < ActiveRecord::Base
   validate :fechaplaneada_posterior_inicio
 
   def fechaplaneada_posterior_inicio
-    if fechaplaneada && fechaplaneada < proyectofinanciero.fechainicio then
+    if fechaplaneada && 
+            proyectofinanciero &&
+            proyectofinanciero.fechainicio &&
+            fechaplaneada < proyectofinanciero.fechainicio then
       errors.add(:fechaplaneada,
                  "La fecha planeada debe ser posterior a la de inicio")
     end
