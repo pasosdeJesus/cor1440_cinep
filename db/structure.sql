@@ -696,7 +696,8 @@ CREATE TABLE cor1440_gen_financiador (
     fechacreacion date,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    pais_id integer
 );
 
 
@@ -3102,6 +3103,14 @@ ALTER TABLE ONLY actor_sectoractor
 
 
 --
+-- Name: fk_rails_9daa099154; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_financiador
+    ADD CONSTRAINT fk_rails_9daa099154 FOREIGN KEY (pais_id) REFERENCES sip_pais(id);
+
+
+--
 -- Name: fk_rails_a8489e0d62; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3626,4 +3635,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160308115001');
 INSERT INTO schema_migrations (version) VALUES ('20160308135905');
 
 INSERT INTO schema_migrations (version) VALUES ('20160308213334');
+
+INSERT INTO schema_migrations (version) VALUES ('20160328153309');
 

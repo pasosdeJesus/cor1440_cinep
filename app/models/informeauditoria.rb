@@ -5,6 +5,8 @@ class Informeauditoria < ActiveRecord::Base
     foreign_key: 'proyectofinanciero_id'
 
   validates :detalle, length: { maximum: 500}
+  
+  fecha_ddMyyyy :fechaplaneada
   validate :fechaplaneada_posterior_inicio
 
   def fechaplaneada_posterior_inicio

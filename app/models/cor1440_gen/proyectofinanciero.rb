@@ -63,6 +63,7 @@ module Cor1440Gen
       allow_destroy: true, reject_if: :all_blank
 
     validates :anotacionescontab, length: { maximum: 5000}
+    flotante_localizado :aportecinep
     validates :aportecinep, numericality: 
       { allow_blank: true, less_than: 1000000000000000000 }
     #validates :autenticarcompulsar, length: { maximum: 500}
@@ -71,9 +72,11 @@ module Cor1440Gen
     #validates :formatossolicitudpago, length: { maximum: 500}
     validates :fuentefinanciador, length: { maximum: 1000 }
     validates :gestiones, length: { maximum: 5000}
+    flotante_localizado :monto
     validates :monto, numericality: 
       { less_than: 1000000000000000000 }
     validates :otrosaportescinep, length: { maximum: 500}
+    flotante_localizado :presupuestototal
     validates :presupuestototal, numericality: 
       { greater_than: 0, less_than: 1000000000000000000 }
     validates :referencia, presence: true, allow_blank: false,
@@ -82,10 +85,14 @@ module Cor1440Gen
       length: { maximum: 1000 }
     #validates :rendimientosfinancieros, length: { maximum: 500}
     validates :respagencia, length: { maximum: 100}
+    flotante_localizado :saldo
     validates :saldo, numericality: {allow_blank: true,
                                      less_than: 1000000000000000000 }
     validates :telrespagencia, length: { maximum: 100}
 
+    fecha_ddMyyyy :fechaliquidacion
+    fecha_ddMyyyy :fechainicio
+    fecha_ddMyyyy :fechacierre
     validate :fechas_ordenadas
     def fechas_ordenadas
       if fechainicio && fechacierre && fechainicio > fechacierre

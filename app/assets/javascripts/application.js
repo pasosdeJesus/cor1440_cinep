@@ -19,12 +19,17 @@ $(document).on('ready page:load', function() {
 	root = typeof exports !== "undefined" && exports !== null ? exports : this;
 	sip_prepara_eventos_comunes(root, '/act');
 	cor1440_gen_prepara_eventos_comunes(root);
-        $("input[data-behaviour='datepicker']").datepicker({
-          format: 'yyyy-mm-dd',
-          autoclose: true,
-          todayHighlight: true,
-          language: 'es'
-        })
+
+	formato_fecha = 'dd/M/yyyy'
+	if ($('meta[name=formato_fecha]').size() != 0) {
+		formato_fecha = $('meta[name=formato_fecha]').attr('content')
+	}
+	$('[data-behaviour~=datepicker]').datepicker({
+		format: formato_fecha,
+		autoclose: true,
+		todayHighlight: true,
+		language: 'es'	
+	});
 });
 
 

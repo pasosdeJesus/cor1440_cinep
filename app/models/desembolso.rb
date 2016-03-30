@@ -5,8 +5,11 @@ class Desembolso < ActiveRecord::Base
     foreign_key: 'proyectofinanciero_id'
 
   validates :detalle, length: { maximum: 500}
+  flotante_localizado :valorplaneado
   validates :valorplaneado, numericality:
     { greater_than: 0, less_than: 1000000000000000000 }
+
+  fecha_ddMyyyy :fechaplaneada
   validate :fechaplaneada_posterior_inicio
 
   def fechaplaneada_posterior_inicio
