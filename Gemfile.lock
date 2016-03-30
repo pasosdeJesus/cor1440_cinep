@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 1d675812a7b66948f247434ac9175050a3956f7f
+  revision: 4ad90cff70bf4d81e55689968edba5410e257f2f
   specs:
     cor1440_gen (1.0.a6)
       devise
@@ -9,20 +9,8 @@ GIT
       rails
 
 GIT
-  remote: git://github.com/vtamara/cocoon.git
-  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
-  specs:
-    cocoon (1.2.6)
-
-GIT
-  remote: https://github.com/kristianmandrup/jquery-ui-bootstrap-rails
-  revision: 944cf4164ea511a2977f91031cc7f69d3e06e6cb
-  specs:
-    jquery-ui-bootstrap-rails (0.1.1)
-      rails
-
-PATH
-  remote: ../sip
+  remote: git://github.com/pasosdeJesus/sip.git
+  revision: f0057b044849d36a0c0ef2a65dd13d6b02205c80
   specs:
     sip (2.0.a7)
       bootstrap-datepicker-rails
@@ -40,6 +28,19 @@ PATH
       twitter-bootstrap-rails
       twitter_cldr
       will_paginate
+
+GIT
+  remote: git://github.com/vtamara/cocoon.git
+  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
+  specs:
+    cocoon (1.2.6)
+
+GIT
+  remote: https://github.com/kristianmandrup/jquery-ui-bootstrap-rails
+  revision: 944cf4164ea511a2977f91031cc7f69d3e06e6cb
+  specs:
+    jquery-ui-bootstrap-rails (0.1.1)
+      rails
 
 GEM
   remote: https://rubygems.org/
@@ -83,7 +84,7 @@ GEM
     ansi (1.5.0)
     arel (6.0.3)
     bcrypt (3.1.11)
-    bootstrap-datepicker-rails (1.6.0)
+    bootstrap-datepicker-rails (1.6.0.1)
       railties (>= 3.0)
     builder (3.2.2)
     byebug (8.2.2)
@@ -96,7 +97,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.8.0)
+    capybara-webkit (1.9.0)
       capybara (>= 2.3.0, < 2.7.0)
       json
     cldr-plurals-runtime-rb (1.0.1)
@@ -159,10 +160,12 @@ GEM
       tilt
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.3)
-      mime-types (>= 1.16, < 3)
+    mail (2.6.4)
+      mime-types (>= 1.16, < 4)
     method_source (0.8.2)
-    mime-types (2.99.1)
+    mime-types (3.0)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0221)
     mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
@@ -176,7 +179,7 @@ GEM
       nokogiri (>= 1.5.0)
       rubyzip (~> 1.1.0)
     orm_adapter (0.5.0)
-    paperclip (4.3.5)
+    paperclip (4.3.6)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
@@ -230,7 +233,7 @@ GEM
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.4)
+    rails_stdout_logging (0.0.5)
     railties (4.2.6)
       actionpack (= 4.2.6)
       activesupport (= 4.2.6)
@@ -240,10 +243,10 @@ GEM
     rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
-    responders (2.1.1)
+    responders (2.1.2)
       railties (>= 4.2.0, < 5.1)
     rubyzip (1.1.7)
-    sass (3.4.21)
+    sass (3.4.22)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -270,25 +273,24 @@ GEM
     ttfunk (1.4.0)
     turbolinks (2.5.3)
       coffee-rails
-    turn (0.9.7)
+    turn (0.9.6)
       ansi
     twitter-bootstrap-rails (3.2.2)
       actionpack (>= 3.1)
       execjs (>= 2.2.2, >= 2.2)
       less-rails (>= 2.5.0)
       railties (>= 3.1)
-    twitter_cldr (3.2.1)
+    twitter_cldr (3.3.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0.0)
       json
       tzinfo
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2016.1)
+    tzinfo-data (1.2016.3)
       tzinfo (>= 1.0.0)
-    uglifier (2.7.2)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
+    uglifier (3.0.0)
+      execjs (>= 0.3.0, < 3)
     unicorn (5.0.1)
       kgio (~> 2.6)
       rack
