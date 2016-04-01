@@ -73,8 +73,10 @@ module Cor1440Gen
                     @proyectofinanciero.fechaliquidacion_ddMyyyy)
 
         # Calculados
-        r.add_field(:duracion, dif_meses_dias(@proyectofinanciero.fechainicio, 
-                                @proyectofinanciero.fechacierre))
+        if @proyectofinanciero.fechainicio && @proyectofinanciero.fechacierre
+          r.add_field(:duracion, dif_meses_dias(@proyectofinanciero.fechainicio, 
+                                                @proyectofinanciero.fechacierre))
+        end
         ca = [:anotacionesdb, :anotacionesrh, :anotacionesre,
               :anotacionesinf, :anotacionescontab]
         an = ""
