@@ -1,0 +1,20 @@
+<div class='control-group nested-fields'>
+  <div class="controls">
+
+    <%  f.object.sip_anexo = Sip::Anexo.new if !f.object.sip_anexo %>
+
+    <%= f.association :tipoanexo,
+      collection: ::Tipoanexo.habilitados,
+      label_method: :nombre,
+      value_method: :id 
+    %>
+
+    <%= f.simple_fields_for :sip_anexo do |a| %>
+      <%= render 'sip/anexos/anexo_campos', a: a %>
+    <% end %>
+
+    <%= link_to_remove_association "Eliminar Anexo", f, 
+      :class => 'btn-danger' 
+    %> 
+  </div>
+</div>

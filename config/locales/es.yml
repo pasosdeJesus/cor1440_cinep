@@ -40,19 +40,27 @@ es:
       "cor1440_gen/proyectofinanciero":
         Proyectofinanciero: "Compromiso institucional"
         Proyectosfinancieros: "Compromisos institucionales"
-        anotacionescontab: "Anotaciones"
+        anotacionescontab: "Anotaciones Contabilidad"
+        anotacionesdb: "Anotaciones Datos Básicos"
+        anotacionesrh: "Anotaciones Recursos Humanos"
+        anotacionesre: "Anotaciones Recursos Económicos y Financieros"
+        anotacionesinf: "Anotaciones Informes y Auditorias"
         aportecinep: "Aporte financiero CINEP/PPP"
+        aportecinep_localizado: "Aporte financiero CINEP/PPP"
         autenticarcompulsar: "Autenticar, compulsar copias"
         centrocosto: "Centro de costo"
         copiasdesoporte: "Copias de soporte"
         compromisos: "Publicaciones (compromisos, productos y actividades)"
         cuentasbancarias: "Cuentas bancarias"
         duracion: "Fecha de liquidación"
-        emailrespagencia: "Correo resp. agencia"
+        emailrespagencia: "Correo responsable"
         empresaauditoria: "Empresa de Auditorias y Relacionados"
         fechacierre: "Termina"
+        fechacierre_ddMyyyy: "Termina"
         fechainicio: "Inicia"
+        fechainicio_ddMyyyy: "Inicia"
         fechaliquidacion: "Fecha de liquidación"
+        fechaliquidacion_ddMyyyy: "Fecha de liquidación"
         fuentefinanciador: "Fuente de financiacion"
         formatosespecificos: "Formatos específicos"
         formatossolicitudpago: "Formatos de solicitud de pago"
@@ -60,15 +68,19 @@ es:
         informesfinancieros: "Informes financieros"
         informesauditoria: "Informes auditoria/Verificación de gastos/Controles del financiador"
         monto: "Aporte financiador"
+        monto_localizado: "Aporte financiador"
         oficina: "Organigrama CINEP/PPP"
         otrosaportescinep: "Otros aportes CINEP/PPP"
         presupuestototal: "Presupuesto total"
+        presupuestototal_localizado: "Presupuesto total"
         referencia: "Referencia"
         referenciacinep: "Referencia CINEP/PPP"
         rendimientosfinancieros: "Rendimientos financieros"
-        respagencia: "Responsable de la agencia"
-        telrespagencia: "Teléfono resp. agencia"
+        respagencia: "Responsable"
+        saldo_localizado: "Saldo"
+        telrespagencia: "Teléfono responsable"
         tipomoneda: "Tipo de moneda"
+        tipoanexo: "Tipo de anexo"
       "nucleoconflicto":
         Nucleoconflict: Núcleo de conflicto
         Nucleosconflicto: Núcleos de conflicto
@@ -82,11 +94,12 @@ es:
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
         enplantrienal: En Glosario del Plan Trienal
+      "tipoanexo":
+        Tipoanexo: Tipo de anexo 
+        Tiposanexo: Tipos de anexo
       "tipomoneda":
         Tipomoneda: Tipo de moneda
         Tiposmoneda: Tipos de moneda
-        codiso4217: "Código ISO 4217"
-        simbolo: "Símbolo"
       "sip/oficina":
         Oficinas: Áreas
         Oficina: Área

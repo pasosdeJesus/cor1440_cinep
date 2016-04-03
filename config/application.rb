@@ -26,5 +26,7 @@ module Cor1440Cinep
     config.active_record.raise_in_transactional_callbacks = true
 
     config.active_record.schema_format = :sql
+
+    config.x.formato_fecha = 'dd/M/yyyy'
   end
 end

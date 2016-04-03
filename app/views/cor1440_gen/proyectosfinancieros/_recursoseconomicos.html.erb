@@ -2,9 +2,9 @@
 <%= f.association :tipomoneda,
   label_method: :nombre
 %>
-<%= f.input :presupuestototal %>
-<%= f.input :monto %>
-<%= f.input :aportecinep %>
+<%= f.input :presupuestototal_localizado %>
+<%= f.input :monto_localizado, as: :string %>
+<%= f.input :aportecinep_localizado, as: :string %>
 <%= f.input :otrosaportescinep %>
 <!--  include_blank: false,
   label_method: :nombre,
@@ -14,7 +14,20 @@
       boolean_style: :nested,
       inline_label: "Acuse recibido"
 %>
-<%= f.input :rendimientosfinancieros %>
+<%= f.input :reportarrendimientosfinancieros,
+      boolean_style: :nested,
+      inline_label: "Reportar rendimientos financieros"
+%>
+
+<%= f.input :reinvertirrendimientosfinancieros,
+      boolean_style: :nested,
+      inline_label: "Reinvertir rendimientos financieros"
+%>
+<%= f.input :autenticarcompulsar,
+      boolean_style: :nested,
+      inline_label: "Autenticar compulsar"
+%>
+
 <!--%= f.input :contrapartida,
       boolean_style: :nested,
       inline_label: "Contrapartida"
@@ -45,3 +58,4 @@
   %>
 </div>
 
+<%= f.input :anotacionesre, as: :text, input_html: { rows: 5 } %>

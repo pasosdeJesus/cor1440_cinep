@@ -18,6 +18,7 @@ class Ability  < Cor1440Gen::Ability
     ['', 'publicacion'],
     ['', 'redactor'],
     ['', 'sectoractor'],
+    ['', 'tipoanexo'],
     ['', 'tipomoneda']
   ]
   
@@ -38,8 +39,12 @@ class Ability  < Cor1440Gen::Ability
       case usuario.rol 
       when Ability::ROLOPERADOR
         if usuario && usuario.rol && usuario.oficina_id == 27
+          # Oficina Gerencia de Proyectos
           can :manage, Cor1440Gen::Proyectofinanciero
+          can :manage, Cor1440Gen::Financiador
           can :manage, ::Tipomoneda
+          can :manage, ::Tipoanexo
+          can :manage, :tablasbasicas
         else
           #can :manage, Cor1440Gen::Actividad
           can :read, Cor1440Gen::Proyectofinanciero

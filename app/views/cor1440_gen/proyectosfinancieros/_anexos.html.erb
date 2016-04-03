@@ -1,11 +1,12 @@
 <div class="anexos-div anexosdiv">
-  <!--%= f.simple_fields_for :actividad_sip_anexo do |a| %-->
-    <!--%= render 'actividad_sip_anexo_fields', :f => a %-->
-  <!--% end %-->
+  <%= f.simple_fields_for :anexo_proyectofinanciero do |a| %>
+    <%= render 'anexo_proyectofinanciero_campos', :f => a %>
+  <% end %>
   <div class="links">
-    <!--%= link_to_add_association 'Añadir Anexo', f, 
-      :actividad_sip_anexo, :class => 'btn-primary' 
-    %-->
+    <%= link_to_add_association 'Añadir Anexo', f, 
+      :anexo_proyectofinanciero, :class => 'btn-primary',
+      partial: 'anexo_proyectofinanciero_campos'
+    %>
   </div>
 </div> <!-- anexos-div -->
 

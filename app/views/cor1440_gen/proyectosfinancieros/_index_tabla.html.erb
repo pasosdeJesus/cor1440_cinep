@@ -14,6 +14,13 @@
           <td>
             <% if i == 'id' %>
               <%= link_to proyectof.id, proyectofinanciero_ruta(proyectof.id) %>
+            <% elsif i == 'responsable' %>
+              <%= proyectof.responsable.nombre if proyectof.responsable %>
+            <% elsif i == 'tipomoneda'  %>
+              <%= proyectof.tipomoneda.nombre if proyectof.tipomoneda %>
+            <% elsif i == 'monto' || i == 'presupuestototal' || 
+              i == 'aportecinep' then %>
+              <%= number_with_delimiter(proyectof[i])  %>
             <% else %>
               <%= proyectof.send(i) %>
             <% end %>

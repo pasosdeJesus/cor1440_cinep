@@ -9,12 +9,12 @@
 %>
 <%= f.input :fuentefinanciador %>
 
-<%= f.input :fechainicio, :input_html => { 
+<%= f.input :fechainicio_ddMyyyy, :input_html => { 
   "data-behaviour" => "datepicker" },
   :as => :string
 %>
 
-<%= f.input :fechacierre, :input_html => { 
+<%= f.input :fechacierre_ddMyyyy, :input_html => { 
   "data-behaviour" => "datepicker" },
   :as => :string
 %>
@@ -32,10 +32,10 @@
   :input_html => { 'readonly' => 'readonly' }
 %>
 
-<%= f.input :fechaliquidacion, :input_html => { 
+<%= f.input :fechaliquidacion_ddMyyyy, :input_html => { 
   "data-behaviour" => "datepicker" },
   :as => :string
 %>
 
-<%= f.input :anotacionescontab, as: :text, input_html: { rows: 5 } %>
+<%= f.input :anotacionesdb, as: :text, input_html: { rows: 5 } %>
 

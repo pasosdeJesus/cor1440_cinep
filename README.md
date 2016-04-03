@@ -4,15 +4,20 @@
 Sistema para planeación y seguimiento de actividades e informes en el CINEP.
 
 ### Requerimientos
-* Ruby version >= 2.2
+* Ruby version >= 2.3
+* Ruby on Rails 4.2.x
 * PostgreSQL >= 9.4 con extensión unaccent disponible
-* Recomendado sobre adJ 5.6 (que incluye todos los componentes mencionados).  
-  Las siguientes instrucciones suponen que opera en este ambiente.
+* Recomendado sobre adJ 5.8 (que incluye todos los componentes mencionados).  
+
+Estas instrucciones suponen que opera en este ambiente, puedes ver más sobre
+la instalación de Ruby on Rails en adJ en 
+[http://dhobsd.pasosdejesus.org/Ruby_on_Rails_en_OpenBSD.html]
+
 
 ### Arquitectura
 Es una aplicación que emplea el motor genérico estilo Pasos de Jesús ```sip```
- https://github.com/pasosdeJesus/sip
-y el motor cor1440_gen https://github.com/pasosdeJesus/cor1440_gen
+ [https://github.com/pasosdeJesus/sip]
+y el motor cor1440_gen [https://github.com/pasosdeJesus/cor1440_gen]
 
 ### Configuracion, uso, desarrollo
 
