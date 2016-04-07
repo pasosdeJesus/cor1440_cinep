@@ -7,4 +7,6 @@ class ProyectofinancieroUsuario < ActiveRecord::Base
     foreign_key: 'usuario_id'
   belongs_to :cargo, class_name: '::Cargo',
     foreign_key: 'cargo_id'
+
+  default_scope { joins(:usuario).order("usuario.nombre") }
 end

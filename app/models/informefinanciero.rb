@@ -6,6 +6,8 @@ class Informefinanciero < ActiveRecord::Base
 
   validates :detalle, length: { maximum: 500}
 
+  default_scope { order(:id) }
+
   fecha_ddMyyyy :fechaplaneada
   validate :fechaplaneada_posterior_inicio
 

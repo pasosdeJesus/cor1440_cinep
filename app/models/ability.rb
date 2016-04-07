@@ -44,6 +44,7 @@ class Ability  < Cor1440Gen::Ability
           can :manage, Cor1440Gen::Financiador
           can :manage, ::Tipomoneda
           can :manage, ::Tipoanexo
+          can :manage, ::Cargo
           can :manage, :tablasbasicas
         else
           #can :manage, Cor1440Gen::Actividad

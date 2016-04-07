@@ -21,4 +21,7 @@ class Desembolso < ActiveRecord::Base
     end
   end
 
+  default_scope { order(:id) }
+
+
 end
