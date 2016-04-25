@@ -102,58 +102,91 @@ module Cor1440Gen
         r.add_field(:formatosespecificos, cf > 0 ? 'Si' : 'No')
 
         # Referencian otra
-        r.add_field(:responsable, @proyectofinanciero.responsable.nombre ?
-          @proyectofinanciero.responsable.nombre : '')
-        r.add_field(:tipomoneda, @proyectofinanciero.tipomoneda ? 
+        r.add_field(:responsable, 
+                   @proyectofinanciero.responsable && 
+                   @proyectofinanciero.responsable.nombre ?
+                    @proyectofinanciero.responsable.nombre : '')
+        r.add_field(:tipomoneda, @proyectofinanciero.tipomoneda &&
+                    @proyectofinanciero.tipomoneda ? 
                     @proyectofinanciero.tipomoneda.nombre : '')
-        r.add_field(:financiador, 
-                    @proyectofinanciero.financiador.inject('') { |memo, i|
-          (memo == '' ? '' : memo + ' - ') + i.nombre })
-        r.add_field(:paisfinanciador, 
-                    @proyectofinanciero.financiador.inject('') { |memo, i|
-          i.pais && i.pais.nombre ? (memo == '' ? '' : memo + ' - ') + i.pais.nombre : memo})
-
-        r.add_field(:organigramacinep, 
-                    @proyectofinanciero.oficina.inject('') { |memo, i|
-          (memo == '' ? '' : memo + ' - ') + i.nombre })
-
-        r.add_field(:coordinador, 
-                   @proyectofinanciero.proyectofinanciero_usuario.where(cargo_id: 2).inject('') { |memo, i|
-          (memo == '' ? '' : memo + ' - ') + (i.usuario ? i.usuario.nombre : "POR CONTRATAR") })
-        r.add_field(:equipotrabajo, 
-                    @proyectofinanciero.proyectofinanciero_usuario.inject('') { |memo, i|
-          if i.cargo_id != 2
-            (memo == '' ? '' : memo + "\n") + (i.usuario ? i.usuario.nombre : "POR CONTRATAR") + " / " + i.cargo.nombre
-          else
-            memo
+        if @proyectofinanciero.financiador
+          r.add_field(:financiador, 
+                      @proyectofinanciero.financiador.inject('') { 
+            |memo, i|
+            (memo == '' ? '' : memo + ' - ') + i.nombre 
+          })
+          r.add_field(:paisfinanciador, 
+                      @proyectofinanciero.financiador.inject('') { 
+            |memo, i|
+            i.pais && i.pais.nombre ? 
+              (memo == '' ? '' : 
+               memo + ' - ') + i.pais.nombre : memo
+          })
+        end
+        if @proyectofinanciero.oficina
+          r.add_field(:organigramacinep, 
+                      @proyectofinanciero.oficina.inject('') { 
+            |memo, i|
+            (memo == '' ? '' : memo + ' - ') + i.nombre 
+          })
+        end
+        if @proyectofinanciero.proyectofinanciero_usuario
+          r.add_field(:coordinador, 
+                      @proyectofinanciero.proyectofinanciero_usuario.where(cargo_id: 2).inject('') { |memo, i|
+            (memo == '' ? '' : memo + ' - ') + (i.usuario ? i.usuario.nombre : "POR CONTRATAR") })
+          r.add_field(:equipotrabajo, 
+                      @proyectofinanciero.proyectofinanciero_usuario.inject('') { |memo, i|
+            if i.cargo_id != 2
+              (memo == '' ? '' : memo + "\n") + 
+                (i.usuario ? i.usuario.nombre : "Por contratar") +
+                " (" + i.cargo.nombre.capitalize + ")"
+            else
+              memo
+            end
+          })
+        end
+        if @proyectofinanciero.desembolso
+          tm =  @proyectofinanciero.tipomoneda.nombre ?
+            @proyectofinanciero.tipomoneda.codiso4217 : ''
+          r.add_field(:desembolsos, 
+                      @proyectofinanciero.desembolso.inject('') { 
+            |memo, i| (memo == '' ? '' : memo + "\n") + 
+            i.detalle + ", Fecha: " + 
+            i.fechaplaneada_ddMyyyy.to_s +
+            ' (' + i.valorplaneado_localizado.to_s + ' ' + tm +
+            ')'
+            })
+        end
+        inarr = ''
+        if @proyectofinanciero.informenarrativo
+          inarr = @proyectofinanciero.informenarrativo.inject('') do |memo, i|
+            (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
+              i.fechaplaneada_ddMyyyy.to_s 
           end
-        })
-        r.add_field(:desembolsos, 
-                    @proyectofinanciero.desembolso.inject('') { |memo, i|
-          (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
-            i.fechaplaneada_ddMyyyy.to_s + ", " + i.valorplaneado_localizado.to_s })
-
-        inarr = @proyectofinanciero.informenarrativo.inject('') do |memo, i|
-          (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
-            i.fechaplaneada_ddMyyyy.to_s 
         end
         if (inarr == '') 
           inarr = 'N/A'
         end
         r.add_field(:informesnarrativos, inarr)
 
-        ifin = @proyectofinanciero.informefinanciero.inject('') do |memo, i|
-          (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
-            i.fechaplaneada_ddMyyyy.to_s 
+        ifin = ''
+        if @proyectofinanciero.informefinanciero
+          ifin = @proyectofinanciero.informefinanciero.inject('') do |memo, i|
+            (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
+              i.fechaplaneada_ddMyyyy.to_s 
+          end
         end
         if (ifin == '') 
           ifin = 'N/A'
         end
         r.add_field(:informesfinancieros, ifin)
 
-        iaud = @proyectofinanciero.informeauditoria.inject('') do |memo, i|
-          (memo == '' ? '' : memo + "\n") + i.detalle + ", " +
-            i.fechaplaneada_ddMyyyy.to_s 
+        iaud = ''
+        if @proyectofinanciero.informeauditoria
+          iaud = @proyectofinanciero.informeauditoria.inject('') do |memo, i|
+            (memo == '' ? '' : memo + "\n") + i.detalle + ", " +
+              i.fechaplaneada_ddMyyyy.to_s 
+          end
         end
         if (iaud == '') 
           iaud = 'N/A'
