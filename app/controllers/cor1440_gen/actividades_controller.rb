@@ -82,7 +82,7 @@ module Cor1440Gen
       params.require(:actividad).permit(
         :oficina_id, :minutos, :nombre, 
         :objetivo, :proyecto, :resultado,
-        :fecha, :actividad, :observaciones, 
+        :fecha_ddMyyyy, :actividad, :observaciones, 
         :usuario_id,
         :departamento_id,
         :municipio_id,
