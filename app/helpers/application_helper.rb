@@ -12,6 +12,7 @@ module ApplicationHelper
         m += 12 - fechaini.month + fechafin.month
       else
         m = (fechafin.year - fechaini.year)*12
+        m += fechafin.month - fechaini.month
       end
       if (fechafin.day < fechaini.day)
         m = m - 1
