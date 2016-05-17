@@ -151,7 +151,7 @@ module Cor1440Gen
           r.add_table('TDESEMBOLSOS', @proyectofinanciero.desembolso, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLANEADA') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
             d.add_column('VALORPLANEADO'){|i| i.valorplaneado_localizado.to_s +
                                           ' ' + tm }
           end
@@ -174,7 +174,7 @@ module Cor1440Gen
                       @proyectofinanciero.informenarrativo, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLANEADA') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
           end
         end
         if (inarr == '') 
@@ -188,7 +188,7 @@ module Cor1440Gen
                       @proyectofinanciero.informefinanciero, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLANEADA') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
           end
           #ifin = @proyectofinanciero.informefinanciero.inject('') do |memo, i|
           #  (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
@@ -206,7 +206,7 @@ module Cor1440Gen
                       @proyectofinanciero.informeauditoria, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLANEADA') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
           end
           #iaud = @proyectofinanciero.informeauditoria.inject('') do |memo, i|
           #  (memo == '' ? '' : memo + "\n") + i.detalle + ", " +
