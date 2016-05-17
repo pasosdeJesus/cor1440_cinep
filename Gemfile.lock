@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 1d185b1f3d32e07d8600f59c18fcd21412ea5f64
+  revision: a39897ee78d358b3fae2ff3d9860345b4ba24639
   specs:
     cor1440_gen (1.0.a6)
       devise
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 99893c18ed3461902eb4e7335ed738f689b6f5d6
+  revision: 6af482ba8a6e1c3bcd342edad4b12d783f020ae6
   specs:
     sip (2.0.a7)
       bootstrap-datepicker-rails
@@ -84,21 +84,21 @@ GEM
     ansi (1.5.0)
     arel (6.0.3)
     bcrypt (3.1.11)
-    bootstrap-datepicker-rails (1.6.0.1)
+    bootstrap-datepicker-rails (1.6.1.1)
       railties (>= 3.0)
     builder (3.2.2)
-    byebug (8.2.2)
+    byebug (9.0.3)
     camertron-eprun (1.1.0)
-    cancancan (1.13.1)
-    capybara (2.6.2)
+    cancancan (1.14.0)
+    capybara (2.7.1)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.9.0)
-      capybara (>= 2.3.0, < 2.7.0)
+    capybara-webkit (1.11.1)
+      capybara (>= 2.3.0, < 2.8.0)
       json
     cldr-plurals-runtime-rb (1.0.1)
     climate_control (0.0.3)
@@ -117,23 +117,22 @@ GEM
     coffee-script-source (1.10.0)
     colorize (0.7.7)
     commonjs (0.2.7)
-    concurrent-ruby (1.0.1)
+    concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
-    devise (3.5.6)
+    devise (4.1.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
+      railties (>= 4.1.0, < 5.1)
       responders
-      thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise-i18n (1.0.0)
+    devise-i18n (1.0.1)
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.6.0)
-    factory_girl (4.5.0)
+    factory_girl (4.7.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.6.0)
-      factory_girl (~> 4.5.0)
+    factory_girl_rails (4.7.0)
+      factory_girl (~> 4.7.0)
       railties (>= 3.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -168,11 +167,11 @@ GEM
     mime-types-data (3.2016.0221)
     mimemagic (0.3.0)
     mini_portile2 (2.0.0)
-    minitest (5.8.4)
-    minitest-rails (2.2.0)
+    minitest (5.9.0)
+    minitest-rails (2.2.1)
       minitest (~> 5.7)
       railties (~> 4.1)
-    multi_json (1.11.2)
+    multi_json (1.12.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     odf-report (0.5.1)
@@ -199,8 +198,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.3.0)
-      byebug (~> 8.0)
+    pry-byebug (3.4.0)
+      byebug (~> 9.0)
       pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
@@ -243,7 +242,7 @@ GEM
     rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
-    responders (2.1.2)
+    responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
     rubyzip (1.1.7)
     sass (3.4.22)
@@ -259,8 +258,8 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    spring (1.6.4)
-    sprockets (3.5.2)
+    spring (1.7.1)
+    sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.0.4)
@@ -269,7 +268,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.2)
+    tilt (2.0.4)
     ttfunk (1.4.0)
     turbolinks (2.5.3)
       coffee-rails
@@ -287,7 +286,7 @@ GEM
       tzinfo
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2016.3)
+    tzinfo-data (1.2016.4)
       tzinfo (>= 1.0.0)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)

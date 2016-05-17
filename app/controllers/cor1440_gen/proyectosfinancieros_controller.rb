@@ -148,20 +148,33 @@ module Cor1440Gen
         if @proyectofinanciero.desembolso
           tm =  @proyectofinanciero.tipomoneda.nombre ?
             @proyectofinanciero.tipomoneda.codiso4217 : ''
-          r.add_field(:desembolsos, 
-                      @proyectofinanciero.desembolso.inject('') { 
-            |memo, i| (memo == '' ? '' : memo + "\n") + 
-            i.detalle + ", Fecha: " + 
-            i.fechaplaneada_ddMyyyy.to_s +
-            ' (' + i.valorplaneado_localizado.to_s + ' ' + tm +
-            ')'
-            })
+          r.add_table('TDESEMBOLSOS', @proyectofinanciero.desembolso, 
+                      :header=>false) do |d|
+            d.add_column('DESCRIPCION', :detalle)
+            d.add_column('FECHAPLANEADA') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('VALORPLANEADO'){|i| i.valorplaneado_localizado.to_s +
+                                          ' ' + tm }
+          end
+#          r.add_field(:desembolsos, 
+#                      @proyectofinanciero.desembolso.inject('') { 
+#            |memo, i| (memo == '' ? '' : memo + "\n") + 
+#            i.detalle + ", Fecha: " + 
+#            i.fechaplaneada_ddMyyyy.to_s +
+#            ' (' + i.valorplaneado_localizado.to_s + ' ' + tm +
+#            ')'
+#            })
         end
         inarr = ''
         if @proyectofinanciero.informenarrativo
-          inarr = @proyectofinanciero.informenarrativo.inject('') do |memo, i|
-            (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
-              i.fechaplaneada_ddMyyyy.to_s 
+#          inarr = @proyectofinanciero.informenarrativo.inject('') do |memo, i|
+#            (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
+#              i.fechaplaneada_ddMyyyy.to_s 
+#          end
+          r.add_table('INFORMESNARRATIVOS', 
+                      @proyectofinanciero.informenarrativo, 
+                      :header=>false) do |d|
+            d.add_column('DESCRIPCION', :detalle)
+            d.add_column('FECHAPLANEADA') {|i| i.fechaplaneada_ddMyyyy.to_s}
           end
         end
         if (inarr == '') 
@@ -171,10 +184,16 @@ module Cor1440Gen
 
         ifin = ''
         if @proyectofinanciero.informefinanciero
-          ifin = @proyectofinanciero.informefinanciero.inject('') do |memo, i|
-            (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
-              i.fechaplaneada_ddMyyyy.to_s 
+          r.add_table('INFORMESFINANCIEROS', 
+                      @proyectofinanciero.informefinanciero, 
+                      :header=>false) do |d|
+            d.add_column('DESCRIPCION', :detalle)
+            d.add_column('FECHAPLANEADA') {|i| i.fechaplaneada_ddMyyyy.to_s}
           end
+          #ifin = @proyectofinanciero.informefinanciero.inject('') do |memo, i|
+          #  (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
+          #    i.fechaplaneada_ddMyyyy.to_s 
+          #end
         end
         if (ifin == '') 
           ifin = 'N/A'
@@ -183,10 +202,16 @@ module Cor1440Gen
 
         iaud = ''
         if @proyectofinanciero.informeauditoria
-          iaud = @proyectofinanciero.informeauditoria.inject('') do |memo, i|
-            (memo == '' ? '' : memo + "\n") + i.detalle + ", " +
-              i.fechaplaneada_ddMyyyy.to_s 
+          r.add_table('INFORMESAUDITORIAS', 
+                      @proyectofinanciero.informeauditoria, 
+                      :header=>false) do |d|
+            d.add_column('DESCRIPCION', :detalle)
+            d.add_column('FECHAPLANEADA') {|i| i.fechaplaneada_ddMyyyy.to_s}
           end
+          #iaud = @proyectofinanciero.informeauditoria.inject('') do |memo, i|
+          #  (memo == '' ? '' : memo + "\n") + i.detalle + ", " +
+          #    i.fechaplaneada_ddMyyyy.to_s 
+          #end
         end
         if (iaud == '') 
           iaud = 'N/A'
