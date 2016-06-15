@@ -22,6 +22,16 @@ class Ability  < Cor1440Gen::Ability
     ['', 'tipomoneda']
   ]
   
+  # Tablas no básicas pero que tienen índice
+  NOBASICAS_INDSEQID =  [
+    ['', 'proyectofinanciero_usuario'], 
+  ]
+
+		# Tablas no básicas pero que tienen índice con secuencia id_seq
+    @@nobasicas_indice_seq_con_id = Sip::Ability::NOBASICAS_INDSEQID +
+      Cor1440Gen::Ability::NOBASICAS_INDSEQID +
+      NOBASICAS_INDSEQID
+
   @@tablasbasicas_prio += [
     ['', 'sectoractor']
   ]

@@ -8,5 +8,5 @@ class ProyectofinancieroUsuario < ActiveRecord::Base
   belongs_to :cargo, class_name: '::Cargo',
     foreign_key: 'cargo_id'
 
-  default_scope { joins(:usuario).order("usuario.nombre") }
+#  default_scope { joins(:usuario).order("usuario.nombre") }
 end
