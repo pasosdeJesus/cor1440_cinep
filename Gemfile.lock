@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/pasosdeJesus/sip.git
-  revision: 0611837fa82b20d37f5de47227cb0a337a359651
+  revision: b6a29b83499f7639eb68b119bfcd593f3c79172b
   specs:
     sip (2.0.a7)
       bootstrap-datepicker-rails
@@ -297,7 +297,7 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.6)
       rack (>= 1.0)
-    web-console (3.2.1)
+    web-console (3.3.0)
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
