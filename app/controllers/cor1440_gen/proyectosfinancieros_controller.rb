@@ -130,10 +130,12 @@ module Cor1440Gen
             (memo == '' ? '' : memo + ' - ') + i.nombre 
           })
         end
-        if @proyectofinanciero.proyectofinanciero_usuario
+        if @proyectofinanciero.coordinador_proyectofinanciero
           r.add_field(:coordinador, 
-                      @proyectofinanciero.proyectofinanciero_usuario.where(cargo_id: 2).inject('') { |memo, i|
-            (memo == '' ? '' : memo + ' - ') + (i.usuario ? i.usuario.nombre : "POR CONTRATAR") })
+                      @proyectofinanciero.coordinador_proyectofinanciero.inject('') { |memo, i|
+            (memo == '' ? '' : memo + '; ') + (i.coordinador ? i.coordinador.nombre : "") })
+        end
+        if @proyectofinanciero.proyectofinanciero_usuario
           r.add_field(:equipotrabajo, 
                       @proyectofinanciero.proyectofinanciero_usuario.inject('') { |memo, i|
             if i.cargo_id != 2
@@ -328,6 +330,7 @@ module Cor1440Gen
         :tipomoneda_id,
         :saldo_localizado,
         :sucursal,
+        :coordinador_ids => [],
         :anexo_proyectofinanciero_attributes => [
           :id,
           :proyectofinanciero_id,

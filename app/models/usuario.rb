@@ -10,4 +10,8 @@ class Usuario < Cor1440Gen::Usuario
   has_many :proyectofinanciero, through: :proyectofinanciero_usuario,
     class_name: 'Cor1440Gen::Proyectofinanciero'
 
+  has_many :coordinador_proyectofinanciero, #dependent: :destroy,
+    class_name: '::CoordinadorProyectofinanciero',
+    foreign_key: 'coordinador_id'
+
 end

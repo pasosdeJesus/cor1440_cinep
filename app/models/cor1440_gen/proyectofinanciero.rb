@@ -19,7 +19,7 @@ module Cor1440Gen
     has_many :oficina, through: :oficina_proyectofinanciero,
       class_name: 'Sip::Oficina'
 
-    # Equipo de trabajo incluyendo coordinador
+    # Equipo de trabajo 
     has_many :proyectofinanciero_usuario, dependent: :delete_all,
       class_name: '::ProyectofinancieroUsuario',
       foreign_key: 'proyectofinanciero_id', validate: true
@@ -28,6 +28,13 @@ module Cor1440Gen
     has_many :usuario, through: :proyectofinanciero_usuario,
       class_name: '::Usuario'
 
+    # Coordinador(es)
+     has_many :coordinador_proyectofinanciero, dependent: :delete_all,
+      class_name: '::CoordinadorProyectofinanciero',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    has_many :coordinador, through: :coordinador_proyectofinanciero,
+      class_name: '::Usuario'
+   
     has_many :anexo_proyectofinanciero, dependent: :delete_all,
       class_name: '::AnexoProyectofinanciero',
       foreign_key: 'proyectofinanciero_id', validate: true
@@ -103,14 +110,8 @@ module Cor1440Gen
 
     validate :tiene_coordinador
     def tiene_coordinador
-      tiene = false 
-      proyectofinanciero_usuario.each {|x| 
-        if (x.cargo_id == 2) then 
-          tiene = true 
-        end
-      }
-      if (!tiene)
-        errors.add(:cargos, 
+      if coordinador_proyectofinanciero.count == 0
+        errors.add(:coordinador, 
                    "Falta un coordinador en la pestaña Recursos Humanos")
       end
     end

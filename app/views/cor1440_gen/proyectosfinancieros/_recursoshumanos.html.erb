@@ -10,6 +10,18 @@
   value_method: :id 
 %>
 
+<%=
+  f.association :coordinador,
+    collection: Usuario.where(fechadeshabilitacion: nil).order(:nusuario),
+    include_blank: false,
+    label_method: lambda { |t|
+      r = t.nusuario
+      if t.nombre then r += " - " + t.nombre end
+      r
+    },
+    value_method: :id
+%>
+
 <table border=1 width="100%">
   <thead>
     <tr>
