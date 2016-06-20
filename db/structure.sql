@@ -848,7 +848,6 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     observaciones character varying(5000),
     fechainicio date,
     fechacierre date,
-    responsable_id integer,
     fechacreacion date,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
@@ -1320,6 +1319,39 @@ CREATE SEQUENCE profesion_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: proyectofinanciero_uresponsable; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE proyectofinanciero_uresponsable (
+    id integer NOT NULL,
+    proyectofinanciero_id integer,
+    uresponsable_id integer,
+    porcentaje numeric,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: proyectofinanciero_uresponsable_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE proyectofinanciero_uresponsable_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: proyectofinanciero_uresponsable_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE proyectofinanciero_uresponsable_id_seq OWNED BY proyectofinanciero_uresponsable.id;
 
 
 --
@@ -2286,6 +2318,13 @@ ALTER TABLE ONLY nucleoconflicto ALTER COLUMN id SET DEFAULT nextval('nucleoconf
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY proyectofinanciero_uresponsable ALTER COLUMN id SET DEFAULT nextval('proyectofinanciero_uresponsable_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY proyectofinanciero_usuario ALTER COLUMN id SET DEFAULT nextval('proyectofinanciero_usuario_id_seq'::regclass);
 
 
@@ -2494,6 +2533,14 @@ ALTER TABLE ONLY nucleoconflicto
 
 ALTER TABLE ONLY sip_persona
     ADD CONSTRAINT persona_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: proyectofinanciero_uresponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY proyectofinanciero_uresponsable
+    ADD CONSTRAINT proyectofinanciero_uresponsable_pkey PRIMARY KEY (id);
 
 
 --
@@ -2949,6 +2996,14 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
+-- Name: fk_rails_272a913d18; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY proyectofinanciero_uresponsable
+    ADD CONSTRAINT fk_rails_272a913d18 FOREIGN KEY (uresponsable_id) REFERENCES usuario(id);
+
+
+--
 -- Name: fk_rails_28225d4dc2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3117,6 +3172,14 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
+-- Name: fk_rails_824959275e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY proyectofinanciero_uresponsable
+    ADD CONSTRAINT fk_rails_824959275e FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
 -- Name: fk_rails_8718e4c155; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3250,14 +3313,6 @@ ALTER TABLE ONLY coordinador_proyectofinanciero
 
 ALTER TABLE ONLY usuario
     ADD CONSTRAINT fk_rails_ff046f92e5 FOREIGN KEY (oficina_id) REFERENCES sip_oficina(id);
-
-
---
--- Name: lf_proyectofinanciero_responsable; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY cor1440_gen_proyectofinanciero
-    ADD CONSTRAINT lf_proyectofinanciero_responsable FOREIGN KEY (responsable_id) REFERENCES usuario(id);
 
 
 --
@@ -3671,4 +3726,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160328153309');
 INSERT INTO schema_migrations (version) VALUES ('20160519195544');
 
 INSERT INTO schema_migrations (version) VALUES ('20160616024857');
+
+INSERT INTO schema_migrations (version) VALUES ('20160617030012');
 

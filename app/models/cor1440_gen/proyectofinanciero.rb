@@ -19,6 +19,20 @@ module Cor1440Gen
     has_many :oficina, through: :oficina_proyectofinanciero,
       class_name: 'Sip::Oficina'
 
+    # Coordinador(es)
+    has_many :coordinador_proyectofinanciero, dependent: :delete_all,
+      class_name: '::CoordinadorProyectofinanciero',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    has_many :coordinador, through: :coordinador_proyectofinanciero,
+      class_name: '::Usuario'
+ 
+    # Responsable(s) 
+    has_many :proyectofinanciero_uresponsable, dependent: :delete_all,
+      class_name: '::ProyectofinancieroUresponsable',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    has_many :uresponsable, through: :proyectofinanciero_uresponsable,
+      class_name: '::Usuario'
+ 
     # Equipo de trabajo 
     has_many :proyectofinanciero_usuario, dependent: :delete_all,
       class_name: '::ProyectofinancieroUsuario',
@@ -28,13 +42,7 @@ module Cor1440Gen
     has_many :usuario, through: :proyectofinanciero_usuario,
       class_name: '::Usuario'
 
-    # Coordinador(es)
-     has_many :coordinador_proyectofinanciero, dependent: :delete_all,
-      class_name: '::CoordinadorProyectofinanciero',
-      foreign_key: 'proyectofinanciero_id', validate: true
-    has_many :coordinador, through: :coordinador_proyectofinanciero,
-      class_name: '::Usuario'
-   
+ 
     has_many :anexo_proyectofinanciero, dependent: :delete_all,
       class_name: '::AnexoProyectofinanciero',
       foreign_key: 'proyectofinanciero_id', validate: true

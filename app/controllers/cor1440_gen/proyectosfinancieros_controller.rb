@@ -331,6 +331,7 @@ module Cor1440Gen
         :saldo_localizado,
         :sucursal,
         :coordinador_ids => [],
+        :uresponsabl_ids => [],
         :anexo_proyectofinanciero_attributes => [
           :id,
           :proyectofinanciero_id,
