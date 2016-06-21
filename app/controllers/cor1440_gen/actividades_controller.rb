@@ -6,7 +6,7 @@ module Cor1440Gen
     include Cor1440Gen::Concerns::Controllers::ActividadesController
 
 
-    def self.filtramas(par, ac)
+    def self.filtramas(par, ac, current_usuario = nil)
       @busresponsable = param_escapa(par, 'busresponsable')
       if @busresponsable != '' then
         ac = ac.where(responsable: @busresponsable)
@@ -24,6 +24,8 @@ module Cor1440Gen
       if @buscontexto != '' then
         ac = ac.where("unaccent(contexto) ILIKE unaccent(?)", "%#{@buscontexto}%")
       end
+      #puts current_usuario.oficina
+      #byebug
 
       return ac
     end
