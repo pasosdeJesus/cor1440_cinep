@@ -903,7 +903,9 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     anotacionesdb character varying(5000),
     anotacionesrh character varying(5000),
     anotacionesre character varying(5000),
-    anotacionesinf character varying(5000)
+    anotacionesinf character varying(5000),
+    apresupuesto character varying(5000),
+    aaportes character varying(5000)
 );
 
 
@@ -1351,7 +1353,7 @@ CREATE TABLE proyectofinanciero_uresponsable (
     id integer NOT NULL,
     proyectofinanciero_id integer,
     uresponsable_id integer,
-    porcentaje numeric,
+    porcentaje integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1386,7 +1388,8 @@ CREATE TABLE proyectofinanciero_usuario (
     usuario_id integer,
     cargo_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    porcentaje integer
 );
 
 
@@ -3765,4 +3768,8 @@ INSERT INTO schema_migrations (version) VALUES ('20160519195544');
 INSERT INTO schema_migrations (version) VALUES ('20160616024857');
 
 INSERT INTO schema_migrations (version) VALUES ('20160617030012');
+
+INSERT INTO schema_migrations (version) VALUES ('20160621113440');
+
+INSERT INTO schema_migrations (version) VALUES ('20160621125127');
 

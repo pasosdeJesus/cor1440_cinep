@@ -3,7 +3,7 @@ class CreateProyectofinancieroUresponsable < ActiveRecord::Migration
     create_table :proyectofinanciero_uresponsable do |t|
       t.integer :proyectofinanciero_id
       t.integer :uresponsable_id
-      t.decimal :porcentaje
+      t.integer :porcentaje
       t.timestamps null:false
     end
     add_foreign_key :proyectofinanciero_uresponsable, 

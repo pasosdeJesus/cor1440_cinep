@@ -11,4 +11,8 @@ class ProyectofinancieroUresponsable < ActiveRecord::Base
     scope: :proyectofinanciero_id,
     message: 'no puede repetirse responsable'
   }
+
+  validates :porcentaje, numericality: {
+    greater_than: 0, less_than_or_equal_to: 100 
+  }
 end

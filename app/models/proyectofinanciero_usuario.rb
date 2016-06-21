@@ -8,5 +8,8 @@ class ProyectofinancieroUsuario < ActiveRecord::Base
   belongs_to :cargo, class_name: '::Cargo',
     foreign_key: 'cargo_id'
 
+  validates :porcentaje, numericality: {
+    greater_than: 0, less_than_or_equal_to: 100 
+  }
 #  default_scope { joins(:usuario).order("usuario.nombre") }
 end
