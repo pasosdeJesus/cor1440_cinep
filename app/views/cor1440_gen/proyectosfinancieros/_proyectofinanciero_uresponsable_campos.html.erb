@@ -8,6 +8,8 @@
     %>
   </td>
   <td>
+    <% @porc = *(1..100) %>
+    <%= f.input :porcentaje, collection: @porc, label: false %>
   </td>
   <td>
     <%= f.input :id, as: :hidden %>
