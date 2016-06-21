@@ -68,7 +68,7 @@
     <%= select_tag "busproyectofinanciero", 
       options_from_collection_for_select(
         Cor1440Gen::Proyectofinanciero.habilitados, 
-        "id", "nombre", 
+        "id", "referenciacinep", 
         params[:busproyectofinanciero]), 
       {include_blank: true,
        "data-enviarautomatico" => "", style: "width: 10em" } 

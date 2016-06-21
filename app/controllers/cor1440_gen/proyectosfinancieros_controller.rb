@@ -17,8 +17,9 @@ module Cor1440Gen
         :page => params[:pagina], per_page: 20
       )
       @numproyectosfinancieros = @proyectosfinancieros.count();
-      @incluir = ['id', 'nombre', 'fechainicio_ddMyyyy', 'fechacierre_ddMyyyy', 
-                  'responsable', 'presupuestototal_localizado', 
+      @incluir = ['id', 'nombre', 'referenciacinep', 
+                  'fechainicio_ddMyyyy', 'fechacierre_ddMyyyy', 
+                  'presupuestototal_localizado', 
                   'aportecinep_localizado', 'monto_localizado', 'tipomoneda']
       respond_to do |format|
         format.html {  }
@@ -293,11 +294,13 @@ module Cor1440Gen
       params.require(:proyectofinanciero).permit(
         :acuse,
         :aportecinep_localizado,
+        :aaportes,
         :anotacionescontab,
         :anotacionesdb,
         :anotacionesinf,
         :anotacionesre,
         :anotacionesrh,
+        :apresupuesto,
         :autenticarcompulsar,
         :centrocosto,
         :compromisos,
@@ -367,13 +370,15 @@ module Cor1440Gen
         :oficina_ids => [],
         :proyectofinanciero_usuario_attributes => [
           :id,
-          :usuario_id,
           :cargo_id,
+          :usuario_id,
+          :porcentaje,
           :_destroy
         ],
         :proyectofinanciero_uresponsable_attributes => [
           :id,
           :uresponsable_id,
+          :porcentaje,
           :_destroy
         ],
         :coordinador_proyectofinanciero_attributes => [

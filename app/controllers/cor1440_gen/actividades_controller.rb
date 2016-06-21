@@ -64,7 +64,7 @@ module Cor1440Gen
           (memo == "" ? "" : memo + "; ") + i.nombre 
         },
         actividad.proyectofinanciero.inject("") { |memo, i| 
-          (memo == "" ? "" : memo + "; ") + i.nombre 
+          (memo == "" ? "" : memo + "; ") + i.referenciacinep
         },
         actividad.resultado,
         actividad.contexto,
