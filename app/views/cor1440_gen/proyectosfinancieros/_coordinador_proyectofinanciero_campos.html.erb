@@ -1,0 +1,17 @@
+<tr class='nested-fields'>
+  <td>
+    <%= f.association :coordinador,
+      collection: ::Usuario.habilitados.order(:nombre),
+      label: false,
+      label_method: :nombre,
+      value_method: :id
+    %>
+  </td>
+  <td>
+    <%= f.input :id, as: :hidden %>
+    <%= link_to_remove_association "Eliminar", f, 
+        :class => 'btn-danger' 
+    %>
+    <div><%= f.error_notification %></div>
+  </td>
+</tr>

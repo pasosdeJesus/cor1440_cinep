@@ -411,9 +411,31 @@ CREATE SEQUENCE contexto_seq
 --
 
 CREATE TABLE coordinador_proyectofinanciero (
+    id integer NOT NULL,
     proyectofinanciero_id integer,
-    coordinador_id integer
+    coordinador_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
+
+
+--
+-- Name: coordinador_proyectofinanciero_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE coordinador_proyectofinanciero_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: coordinador_proyectofinanciero_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE coordinador_proyectofinanciero_id_seq OWNED BY coordinador_proyectofinanciero.id;
 
 
 --
@@ -2206,6 +2228,13 @@ ALTER TABLE ONLY cargo ALTER COLUMN id SET DEFAULT nextval('cargo_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY coordinador_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('coordinador_proyectofinanciero_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY cor1440_gen_actividad ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_actividad_id_seq'::regclass);
 
 
@@ -2413,6 +2442,14 @@ ALTER TABLE ONLY anexo_proyectofinanciero
 
 ALTER TABLE ONLY cargo
     ADD CONSTRAINT cargo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: coordinador_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY coordinador_proyectofinanciero
+    ADD CONSTRAINT coordinador_proyectofinanciero_pkey PRIMARY KEY (id);
 
 
 --

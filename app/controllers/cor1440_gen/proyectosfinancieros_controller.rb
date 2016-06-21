@@ -325,13 +325,10 @@ module Cor1440Gen
         :reportarrendimientosfinancieros,
         :reinvertirrendimientosfinancieros,
         :respagencia, 
-        :responsable_id,
         :telrespagencia, 
         :tipomoneda_id,
         :saldo_localizado,
         :sucursal,
-        :coordinador_ids => [],
-        :uresponsabl_ids => [],
         :anexo_proyectofinanciero_attributes => [
           :id,
           :proyectofinanciero_id,
@@ -373,7 +370,18 @@ module Cor1440Gen
           :usuario_id,
           :cargo_id,
           :_destroy
+        ],
+        :proyectofinanciero_uresponsable_attributes => [
+          :id,
+          :uresponsable_id,
+          :_destroy
+        ],
+        :coordinador_proyectofinanciero_attributes => [
+          :id,
+          :coordinador_id,
+          :_destroy
         ]
+
       )
     end
   end

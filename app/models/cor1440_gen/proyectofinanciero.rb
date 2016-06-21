@@ -23,6 +23,8 @@ module Cor1440Gen
     has_many :coordinador_proyectofinanciero, dependent: :delete_all,
       class_name: '::CoordinadorProyectofinanciero',
       foreign_key: 'proyectofinanciero_id', validate: true
+    accepts_nested_attributes_for :coordinador_proyectofinanciero, 
+      allow_destroy: true, reject_if: :all_blank
     has_many :coordinador, through: :coordinador_proyectofinanciero,
       class_name: '::Usuario'
  
@@ -30,6 +32,8 @@ module Cor1440Gen
     has_many :proyectofinanciero_uresponsable, dependent: :delete_all,
       class_name: '::ProyectofinancieroUresponsable',
       foreign_key: 'proyectofinanciero_id', validate: true
+    accepts_nested_attributes_for :proyectofinanciero_uresponsable, 
+      allow_destroy: true, reject_if: :all_blank
     has_many :uresponsable, through: :proyectofinanciero_uresponsable,
       class_name: '::Usuario'
  
@@ -116,13 +120,13 @@ module Cor1440Gen
       end
     end
 
-    validate :tiene_coordinador
-    def tiene_coordinador
-      if coordinador_proyectofinanciero.count == 0
-        errors.add(:coordinador, 
-                   "Falta un coordinador en la pestaña Recursos Humanos")
-      end
-    end
+#    validate :tiene_coordinador
+#    def tiene_coordinador
+#      if coordinador_proyectofinanciero.count == 0
+#        errors.add(:coordinador, 
+#                   "Falta un coordinador en la pestaña Recursos Humanos")
+#      end
+#    end
 
 
   end

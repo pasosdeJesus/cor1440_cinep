@@ -6,4 +6,9 @@ class ProyectofinancieroUresponsable < ActiveRecord::Base
   belongs_to :uresponsable, class_name: '::Usuario',
     foreign_key: 'uresponsable_id', 
     inverse_of: :proyectofinanciero_uresponsable
+
+  validates :uresponsable_id, uniqueness: {
+    scope: :proyectofinanciero_id,
+    message: 'no puede repetirse responsable'
+  }
 end

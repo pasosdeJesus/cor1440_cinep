@@ -28,5 +28,7 @@ module Cor1440Cinep
     config.active_record.schema_format = :sql
 
     config.x.formato_fecha = 'dd/M/yyyy'
+
+    #config.console.whitelisted_ips = '186.29.40.148'
   end
 end
