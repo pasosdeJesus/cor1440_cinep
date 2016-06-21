@@ -12,7 +12,7 @@ DOAS=`which doas 2>/dev/null`
 if (test "$DOAS" = "") then {
 	DOAS=sudo
 } fi;
-$DOAS su ${USUARIO_AP} -c "cd /var/www/htdocs/cor1440_cinep;  rake assets:precompile RAILS_RELATIVE_URL_ROOT=/act; echo \"Iniciando unicorn...\"; SECRET_KEY_BASE=${SECRET_KEY_BASE} bundle exec unicorn_rails -c ../cor1440_cinep/config/unicorn.conf.minimal.rb  -E production -D"
+$DOAS su ${USUARIO_AP} -c "cd /var/www/htdocs/cor1440_cinep;  bundle exec rake assets:precompile RAILS_RELATIVE_URL_ROOT=/act; echo \"Iniciando unicorn...\"; SECRET_KEY_BASE=${SECRET_KEY_BASE} bundle exec unicorn_rails -c ../cor1440_cinep/config/unicorn.conf.minimal.rb  -E production -D"
 
 
   

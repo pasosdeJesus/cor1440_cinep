@@ -149,7 +149,8 @@ module Cor1440Gen
           })
         end
         if @proyectofinanciero.desembolso
-          tm =  @proyectofinanciero.tipomoneda.nombre ?
+          tm =  @proyectofinanciero.tipomoneda &&
+            @proyectofinanciero.tipomoneda.nombre ?
             @proyectofinanciero.tipomoneda.codiso4217 : ''
           r.add_table('TDESEMBOLSOS', @proyectofinanciero.desembolso, 
                       :header=>false) do |d|
