@@ -35,4 +35,14 @@ Los cambios son:
 	vim app/views/redirige/index.html.erb
   ```
 
+### Plantilla
+
+En app/reportes encuentra una plantilla por llenar con datos de convenios financieros
+
+Debe guardarse en útlimas con LibreOffice (o OpenOffice) porque Word 2013 no soporta 
+tablas con nombres y los nombres de las tablas para informes deben ser:
+DESEMBOLSOS
+INFORMESNARRATIVOS
+INFORMESFINANCIEROS
+INFORMESAUDITORIA
 
