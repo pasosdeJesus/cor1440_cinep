@@ -103,13 +103,17 @@ module Cor1440Gen
         r.add_field(:formatosespecificos, cf > 0 ? 'Si' : 'No')
 
         # Referencian otra
-        r.add_field(:responsable, 
-                   @proyectofinanciero.responsable && 
-                   @proyectofinanciero.responsable.nombre ?
-                    @proyectofinanciero.responsable.nombre : '')
         r.add_field(:tipomoneda, @proyectofinanciero.tipomoneda &&
                     @proyectofinanciero.tipomoneda ? 
                     @proyectofinanciero.tipomoneda.nombre : '')
+        if @proyectofinanciero.uresponsable
+          r.add_field(:responsable, 
+                      @proyectofinanciero.proyectofinanciero_uresponsable.inject('') { |memo, i|
+              (memo == '' ? '' : memo + "\n") + 
+                (i.uresponsable ? i.uresponsable.nombre : "Por contratar") +
+                " " + i.porcentaje.to_s + "%"
+          })
+        end
         if @proyectofinanciero.financiador
           r.add_field(:financiador, 
                       @proyectofinanciero.financiador.inject('') { 
@@ -134,18 +138,16 @@ module Cor1440Gen
         if @proyectofinanciero.coordinador_proyectofinanciero
           r.add_field(:coordinador, 
                       @proyectofinanciero.coordinador_proyectofinanciero.inject('') { |memo, i|
-            (memo == '' ? '' : memo + '; ') + (i.coordinador ? i.coordinador.nombre : "") })
+            (memo == '' ? '' : memo + '; ') + 
+              (i.coordinador ? i.coordinador.nombre : "") })
         end
         if @proyectofinanciero.proyectofinanciero_usuario
           r.add_field(:equipotrabajo, 
                       @proyectofinanciero.proyectofinanciero_usuario.inject('') { |memo, i|
-            if i.cargo_id != 2
               (memo == '' ? '' : memo + "\n") + 
                 (i.usuario ? i.usuario.nombre : "Por contratar") +
-                " (" + i.cargo.nombre.capitalize + ")"
-            else
-              memo
-            end
+                " (" + i.cargo.nombre.capitalize + ") " + 
+                i.porcentaje.to_s + "%"
           })
         end
         if @proyectofinanciero.desembolso
