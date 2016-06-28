@@ -4,7 +4,7 @@ class Informenarrativo < ActiveRecord::Base
   belongs_to :proyectofinanciero, class_name: 'Cor1440Gen::Proyectofinanciero', 
     foreign_key: 'proyectofinanciero_id'
 
-  validates :detalle, length: { maximum: 500}
+  validates :detalle, length: { maximum: 5000}
 
   default_scope { order(:id) }
 

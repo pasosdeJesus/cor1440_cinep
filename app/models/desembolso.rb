@@ -4,7 +4,7 @@ class Desembolso < ActiveRecord::Base
   belongs_to :proyectofinanciero, class_name: 'Cor1440Gen::Proyectofinanciero', 
     foreign_key: 'proyectofinanciero_id'
 
-  validates :detalle, length: { maximum: 500}
+  validates :detalle, length: { maximum: 5000}
   flotante_localizado :valorplaneado
   validates :valorplaneado, numericality:
     { greater_than: 0, less_than: 1000000000000000000 }
