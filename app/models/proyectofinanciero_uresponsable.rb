@@ -12,6 +12,7 @@ class ProyectofinancieroUresponsable < ActiveRecord::Base
   }
 
   validates :porcentaje, numericality: {
-    greater_than: 0, less_than_or_equal_to: 100 
-  }
+    greater_than_or_equal: 0, less_than_or_equal_to: 100
+  }, allow_blank: true
+
 end

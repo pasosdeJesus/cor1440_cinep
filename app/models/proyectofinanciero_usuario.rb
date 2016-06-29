@@ -9,7 +9,7 @@ class ProyectofinancieroUsuario < ActiveRecord::Base
     foreign_key: 'cargo_id'
 
   validates :porcentaje, numericality: {
-    greater_than: 0, less_than_or_equal_to: 100 
-  }
+    greater_than_or_equal: 0, less_than_or_equal_to: 100 
+  }, allow_blank: true
 #  default_scope { joins(:usuario).order("usuario.nombre") }
 end
