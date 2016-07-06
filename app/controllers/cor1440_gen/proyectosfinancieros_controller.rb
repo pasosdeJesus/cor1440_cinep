@@ -107,11 +107,11 @@ module Cor1440Gen
                     @proyectofinanciero.tipomoneda ? 
                     @proyectofinanciero.tipomoneda.nombre : '')
         if @proyectofinanciero.uresponsable
+          ipor = i.porcentaje ? " " + i.porcentaje.to_s + "%" : ''
           r.add_field(:responsable, 
                       @proyectofinanciero.proyectofinanciero_uresponsable.inject('') { |memo, i|
               (memo == '' ? '' : memo + "\n") + 
-                (i.uresponsable ? i.uresponsable.nombre : "Por contratar") +
-                " " + i.porcentaje.to_s + "%"
+                (i.uresponsable ? i.uresponsable.nombre : "Por contratar") + ipor
           })
         end
         if @proyectofinanciero.financiador
@@ -142,12 +142,12 @@ module Cor1440Gen
               (i.coordinador ? i.coordinador.nombre : "") })
         end
         if @proyectofinanciero.proyectofinanciero_usuario
+          ipor = i.porcentaje ? " " + i.porcentaje.to_s + "%" : ''
           r.add_field(:equipotrabajo, 
                       @proyectofinanciero.proyectofinanciero_usuario.inject('') { |memo, i|
               (memo == '' ? '' : memo + "\n") + 
                 (i.usuario ? i.usuario.nombre : "Por contratar") +
-                " (" + i.cargo.nombre.capitalize + ") " + 
-                i.porcentaje.to_s + "%"
+                " (" + i.cargo.nombre.capitalize + ")" + ipor
           })
         end
         if @proyectofinanciero.desembolso
