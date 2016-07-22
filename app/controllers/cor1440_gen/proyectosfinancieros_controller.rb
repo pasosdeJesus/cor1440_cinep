@@ -32,7 +32,7 @@ module Cor1440Gen
         id: @proyectofinanciero.id)
 
       # Ejemplo de https://github.com/sandrods/odf-report
-      report = ODFReport::Report.new("#{Rails.root}/app/reportes/Plantilla-RE-FG-07.odt") do |r|
+      report = ODFReport::Report.new("#{Rails.root}/app/reportes/Plantilla-RE-SC-07.odt") do |r|
         cn = [:nombre, :referencia, :referenciacinep, 
               :respagencia, :emailrespagencia,
               :telrespagencia, :fuentefinanciador, :observaciones,
@@ -230,7 +230,7 @@ module Cor1440Gen
       send_data report.generate, 
         type: 'application/vnd.oasis.opendocument.text',
         disposition: 'attachment',
-        filename: 'RE-FG-07.odt'
+        filename: 'RE-SC-07.odt'
     end
 
     def show
