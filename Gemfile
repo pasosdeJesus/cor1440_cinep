@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
 # Rails (internacionalización)
-gem "rails", '~> 4.2.3.rc1'
+gem "rails", '~> 5.0.0'
 gem "rails-i18n"
 
 # Color en terminal
 gem 'colorize'
+
+gem 'puma'
 
 # CSS
 gem 'sass'
@@ -25,17 +27,15 @@ gem "pg"
 gem "jbuilder"
 
 # Uglifier comprime recursos Javascript
-gem "uglifier", '>= 1.3.0'
+gem "uglifier"
 
 # CoffeeScript para recuersos .js.coffee y vistas
-gem "coffee-rails", '~> 4.1.0'
+gem "coffee-rails"
 
 # jquery como librería JavaScript
 gem "jquery-rails"
-# Problema al actualiza a 4.0.0, al lanzar servidor reporta que jquery no existe
 
 gem "jquery-ui-rails"
-gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery-ui-bootstrap-rails"
 
 # Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
 gem "turbolinks", "2.5.3"
@@ -63,7 +63,7 @@ gem "will_paginate"
 gem 'twitter_cldr'
 
 # Maneja adjuntos
-gem "paperclip", "~> 4.1"
+gem "paperclip"
 
 # Zonas horarias
 gem "tzinfo"
@@ -106,11 +106,13 @@ group :test do
   #gem 'rspec-rails'
 
   # Maneja datos de prueba
-  gem "factory_girl_rails", "~> 4.0", group: [:development, :test]
+  gem "factory_girl_rails", group: [:development, :test]
 
   # https://www.relishapp.com/womply/rails-style-guide/docs/developing-rails-applications/bundler
   # Lanza programas para examinar resultados
   gem "launchy"
+
+  gem 'rails-controller-testing'
 
   # Pruebas de regresión que no requieren javascript
   gem "capybara"
