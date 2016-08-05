@@ -1,4 +1,6 @@
-require File.expand_path('../boot', __FILE__)
+# encoding: UTF-8
+
+require_relative 'boot'
 
 require 'rails/all'
 
@@ -21,9 +23,6 @@ module Cor1440Cinep
     config.i18n.default_locale = :es
 
     config.relative_url_root = "/act"
-
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
 
     config.active_record.schema_format = :sql
 
