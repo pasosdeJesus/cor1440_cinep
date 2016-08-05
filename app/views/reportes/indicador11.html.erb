@@ -6,11 +6,11 @@
 <div sytle="text-align: right">
   <%= form_tag(reportes_indicador11_path, method: "get", remote: true) do %>
     Periodo (fecha de inicio de actividad):
-    <%= text_field_tag 'fechaini', @fechaini, maxlength: 10, size: 12, 
+    <%= text_field_tag 'fechaini', @fechaini, maxlength: 11, size: 12, 
     "data-behaviour" => "datepicker", "data-contarautomatico" => "" 
     %> 
     -
-    <%= text_field_tag 'fechafin', @fechafin, maxlength: 10, size: 12, 
+    <%= text_field_tag 'fechafin', @fechafin, maxlength: 11, size: 12, 
     "data-behaviour" => "datepicker", "data-contarautomatico" => "" 
     %>
     <%= submit_tag("Contar") %>

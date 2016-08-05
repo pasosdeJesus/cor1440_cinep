@@ -57,15 +57,20 @@ class ReportesController < ::ApplicationController
     "
     where = ''
     if (@fechaini != '') 
-      where = " AND cor1440_gen_actividad.fecha >= '#{@fechaini}'"
+      if Rails.application.config.x.formato_fecha == 'dd-mm-yyyy'
+        pfid = Date.strptime(@fechaini, '%d-%m-%Y')
+      else
+        pfid = Date.strptime(@fechaini, '%Y-%m-%d')
+      end
+      where = " AND cor1440_gen_actividad.fecha >= '#{pfid}'"
     end
     if (@fechafin != '')
-#      if where == ''
-#        where = ' WHERE '
-#      else
-#        where += ' AND '
-#      end
-      where += " AND cor1440_gen_actividad.fecha <= '#{@fechafin}'"
+      if Rails.application.config.x.formato_fecha == 'dd-mm-yyyy'
+        pffd = Date.strptime(@fechafin, '%d-%m-%Y')
+      else
+        pffd = Date.strptime(@fechafin, '%Y-%m-%d')
+      end
+      where += " AND cor1440_gen_actividad.fecha <= '#{pffd}'"
     end
     cons += where + " ORDER BY 1"
 
