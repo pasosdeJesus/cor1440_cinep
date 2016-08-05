@@ -6,14 +6,18 @@ class ReportesController < ::ApplicationController
   
   include Sip::ConsultasHelper
 
-  # Inicializa @fechaini y @fechafin
+  include Sip::FormatoFechaHelper
+ 
+  # Inicializa @fechaini y @fechafin en formato local
   def carga_fechas
     if params[:fechaini] || params[:fechafin]
       @fechaini = param_escapa('fechaini')
       @fechafin = param_escapa('fechafin')
     else
-      @fechaini = inicio_semestre_ant()
-      @fechafin = fin_semestre_ant()
+      fi = inicio_semestre_ant
+      @fechaini = fecha_estandar_local fi
+      ff = fin_semestre_ant
+      @fechafin = fecha_estandar_local ff
     end
   end
 
@@ -57,20 +61,12 @@ class ReportesController < ::ApplicationController
     "
     where = ''
     if (@fechaini != '') 
-      if Rails.application.config.x.formato_fecha == 'dd-mm-yyyy'
-        pfid = Date.strptime(@fechaini, '%d-%m-%Y')
-      else
-        pfid = Date.strptime(@fechaini, '%Y-%m-%d')
-      end
-      where = " AND cor1440_gen_actividad.fecha >= '#{pfid}'"
+      pfi = fecha_local_estandar @fechaini
+      where = " AND cor1440_gen_actividad.fecha >= '#{pfi}'"
     end
     if (@fechafin != '')
-      if Rails.application.config.x.formato_fecha == 'dd-mm-yyyy'
-        pffd = Date.strptime(@fechafin, '%d-%m-%Y')
-      else
-        pffd = Date.strptime(@fechafin, '%Y-%m-%d')
-      end
-      where += " AND cor1440_gen_actividad.fecha <= '#{pffd}'"
+      pff = fecha_local_estandar @fechafin
+      where += " AND cor1440_gen_actividad.fecha <= '#{pff}'"
     end
     cons += where + " ORDER BY 1"
 
@@ -132,10 +128,12 @@ class ReportesController < ::ApplicationController
     "
     where = ''
     if (@fechaini != '') 
-      where += " AND cor1440_gen_actividad.fecha >= '#{@fechaini}'"
+      pfi = fecha_local_estandar @fechaini
+      where += " AND cor1440_gen_actividad.fecha >= '#{pfi}'"
     end
     if (@fechafin != '')
-      where += " AND cor1440_gen_actividad.fecha <= '#{@fechafin}'"
+      pff = fecha_local_estandar @fechafin
+      where += " AND cor1440_gen_actividad.fecha <= '#{pff}'"
     end
     cons += where + " ORDER BY 1"
 
@@ -161,13 +159,15 @@ class ReportesController < ::ApplicationController
 
     wheref = ''
     if (@fechaini != '') 
-      wheref = "cor1440_gen_actividad.fecha >= '#{@fechaini}'"
+      pfi = fecha_local_estandar @fechaini
+      wheref = "cor1440_gen_actividad.fecha >= '#{pfi}'"
     end
     if (@fechafin != '')
+      pff = fecha_local_estandar @fechafin
       if wheref != ''
         wheref += ' AND '
       end
-      wheref += "cor1440_gen_actividad.fecha <= '#{@fechafin}'"
+      wheref += "cor1440_gen_actividad.fecha <= '#{pff}'"
     end
 
     filas = [["Participación en espacios estratégicos para el centro  (foros, conversatorios, debates, seminarios, cátedras etc.)",
