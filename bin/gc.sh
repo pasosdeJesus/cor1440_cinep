@@ -40,21 +40,21 @@ if (test "$SININS" != "1") then {
 	} fi;
 } fi;
 
-PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY rake db:migrate sip:indices db:structure:dump
+PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY bundle exec rake db:migrate sip:indices db:structure:dump
 
-PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY RAILS_ENV=test rake db:drop db:setup db:migrate sip:indices
+PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY RAILS_ENV=test bundle exec rake db:drop db:setup db:migrate sip:indices
 if (test "$?" != "0") then {
 	echo "No puede preparse base de prueba";
 	exit 1;
 } fi;
 
-PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY rake test
+PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY bundle exec rake test
 if (test "$?" != "0") then {
 	echo "No pasaron pruebas";
 	exit 1;
 } fi;
 
-PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY RAILS_ENV=test rake db:structure:dump
+PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY RAILS_ENV=test bundle exec rake db:structure:dump
 b=`git branch | grep "^*" | sed -e  "s/^* //g"`
 git status -s
 if (test "$MENSCONS" = "") then {

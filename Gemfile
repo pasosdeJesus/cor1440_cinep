@@ -96,6 +96,8 @@ end
 group :test do
   # Acelera ejecutando en fondo.  https://github.com/jonleighton/spring
   gem "spring"
+  
+  gem "spork"
 
   gem 'minitest'
   gem 'minitest-rails'
