@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem "rails", '~> 5.0.0'
 gem "rails-i18n"
 
+gem 'net-ldap'
+
 # Color en terminal
 gem 'colorize'
 
@@ -85,7 +87,7 @@ end
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development do
   # Depurar
-  #gem 'byebug'
+  gem 'byebug'
 
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas
   gem 'web-console'

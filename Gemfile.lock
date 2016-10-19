@@ -166,6 +166,7 @@ GEM
       minitest (~> 5.8)
       railties (~> 5.0)
     multi_json (1.12.1)
+    net-ldap (0.15.0)
     nio4r (1.2.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -314,6 +315,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
+  byebug
   cancancan
   capybara
   capybara-webkit
@@ -331,6 +333,7 @@ DEPENDENCIES
   launchy
   minitest
   minitest-rails
+  net-ldap
   odf-report
   paperclip
   pg
