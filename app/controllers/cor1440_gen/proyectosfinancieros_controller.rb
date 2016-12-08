@@ -13,14 +13,15 @@ module Cor1440Gen
 
     def index
       @proyectosfinancieros = Cor1440Gen::Proyectofinanciero.all
-      @proyectosfinancieros = @proyectosfinancieros.paginate(
-        :page => params[:pagina], per_page: 20
-      )
+      #@proyectosfinancieros = @proyectosfinancieros.paginate(
+      #  :page => params[:pagina], per_page: 20
+      #)
       @numproyectosfinancieros = @proyectosfinancieros.count();
       @incluir = ['id', 'nombre', 'referenciacinep', 
                   'fechainicio_ddMyyyy', 'fechacierre_ddMyyyy', 
                   'presupuestototal_localizado', 
-                  'aportecinep_localizado', 'monto_localizado', 'tipomoneda']
+                  'aportecinep_localizado', 'monto_localizado', 
+                  'tipomoneda']
       respond_to do |format|
         format.html {  }
         format.json { head :no_content }
