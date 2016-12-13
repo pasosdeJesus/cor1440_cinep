@@ -34,13 +34,13 @@ class Actor < ActiveRecord::Base
     end
   end
 
-  def self.human_attribute_name(atr)
+  def self.human_attribute_name(atr, options = {})
     if (atr.to_s == "{:actor_ids=>[]}")
       "Actores"
     elsif (atr.to_s == "{:sectoractor_ids=>[]}")
       "Sectores"
     else
-      super(atr)
+      super(atr, options)
     end
   end
 

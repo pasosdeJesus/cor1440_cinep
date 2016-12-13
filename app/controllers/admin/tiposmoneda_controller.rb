@@ -16,8 +16,9 @@ module Admin
 
     def atributos_index
       [
-        "id", "nombre", "codiso4217", "simbolo", "pais_id", "observaciones", "fechacreacion", 
-        "fechadeshabilitacion"
+        "id", "nombre", "codiso4217", "simbolo", "pais_id", 
+        "observaciones", "fechacreacion_localizada", 
+        "fechadeshabilitacion_localizada"
       ]
     end
 

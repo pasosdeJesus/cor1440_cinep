@@ -29,8 +29,8 @@ module Admin
         "ciudad",
         "pais_id",
         "observaciones", 
-        "fechacreacion", 
-        "fechadeshabilitacion"
+        "fechacreacion_localizada", 
+        "fechadeshabilitacion_localizada"
       ]
     end
 
