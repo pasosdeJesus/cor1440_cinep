@@ -54,7 +54,7 @@ module Cor1440Gen
 
     def fila_comun(actividad)
       return [actividad.id,
-        actividad.fecha, 
+        actividad.fecha_localizado, 
         actividad.responsable ? actividad.responsable.nusuario : "",
         actividad.nombre ? actividad.nombre : "",
         actividad.departamento ? actividad.departamento.nombre : "",
@@ -84,7 +84,7 @@ module Cor1440Gen
       params.require(:actividad).permit(
         :oficina_id, :minutos, :nombre, 
         :objetivo, :proyecto, :resultado,
-        :fecha_ddMyyyy, :actividad, :observaciones, 
+        :fecha_localizado, :actividad, :observaciones, 
         :usuario_id,
         :departamento_id,
         :municipio_id,

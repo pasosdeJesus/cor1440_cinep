@@ -24,7 +24,7 @@ module Cor1440Gen
     has_many :publicacion, through: :actividad_publicacion,
       class_name: '::Publicacion'
 
-    fecha_ddMyyyy :fecha
+    campofecha_localizado :fecha
 
     validates :desarrollo, length: { maximum: 5000 }
     validates :resultado, length: { maximum: 5000 }
