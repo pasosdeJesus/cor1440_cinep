@@ -31,3 +31,9 @@ tmp/
 # particulares de esta aplicacion
 app/views/redirige/index.html
 public/act/assets/
+archivo/
+config/initializers/sip.rb
+herram/
+.env
+*#
+.byebug_history

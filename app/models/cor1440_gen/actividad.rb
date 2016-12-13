@@ -5,6 +5,7 @@ require 'cor1440_gen/concerns/models/actividad'
 module Cor1440Gen
   class Actividad < ActiveRecord::Base
     include Cor1440Gen::Concerns::Models::Actividad
+    include Sip::Localizacion
 
     belongs_to :departamento, class_name: 'Sip::Departamento'
     belongs_to :municipio, class_name: 'Sip::Municipio'
