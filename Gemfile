@@ -12,6 +12,10 @@ gem 'puma'
 # CSS
 gem 'sass'
 
+
+# Cuadros de selección potenciados
+gem 'chosen-rails'
+
 # Generación de PDF
 gem "prawn"
 gem "prawnto_2",  :require => "prawnto"
