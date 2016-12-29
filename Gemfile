@@ -12,6 +12,8 @@ gem 'puma'
 # CSS
 gem 'sass'
 
+# Mientras solucionan https://github.com/sparklemotion/nokogiri/issues/1569
+gem 'nokogiri', '1.6.8.1' 
 
 # Cuadros de selección potenciados
 gem 'chosen-rails'
@@ -81,10 +83,6 @@ gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
 gem 'cor1440_gen', git: "https://github.com/pasosdeJesus/cor1440_gen.git"
 #gem "cor1440_gen", path: '../cor1440_gen'
 
-group :doc do
-    # Genera documentación en doc/api con bundle exec rake doc:rails
-    gem "sdoc", require: false
-end
 
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development do
