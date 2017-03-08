@@ -29,9 +29,13 @@ Rails.application.routes.draw do
       as: :reportes_objetivoe2
     get "/reportes/cuadroactividades" => "reportes#cuadroactividades", 
       as: :reportes_cuadroactividades
-    resources :proyectosfinancieros, as: 'proyectosfinancieros', 
-      controller: 'cor1440_gen/proyectosfinancieros',
-      path_names: { new: 'nuevo', edit: 'edita' }
+#    resources :proyectosfinancieros, as: 'proyectosfinancieros', 
+#      controller: 'cor1440_gen/proyectosfinancieros',
+#      path_names: { new: 'nuevo', edit: 'edita' }
+
+  resources :proyectosfinancieros, 
+    controller: 'cor1440_gen/proyectosfinancieros', 
+    path_names: { new: 'nuevo', edit: 'edita' }
 
     #get "/proyectosfinancieros" => "cor1440_gen/proyectosfinancieros#index", as: :proyectosfinancieros
     get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :fichaimp

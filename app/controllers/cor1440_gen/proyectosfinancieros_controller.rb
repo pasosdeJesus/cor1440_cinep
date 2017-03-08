@@ -1,9 +1,11 @@
 # encoding: UTF-8
 
-module Cor1440Gen
-  class ProyectosfinancierosController < ::ApplicationController
+require 'cor1440_gen/concerns/controllers/proyectosfinancieros_controller'
 
+module Cor1440Gen
+  class ProyectosfinancierosController < Sip::Admin::BasicasController
     include ApplicationHelper
+    include Cor1440Gen::Concerns::Controllers::ProyectosfinancierosController
 
      before_action :set_proyectofinanciero, 
        only: [:show, :edit, :update, :destroy]
@@ -11,23 +13,28 @@ module Cor1440Gen
 
     include Sip::ConsultasHelper
 
-    def index
-      @proyectosfinancieros = Cor1440Gen::Proyectofinanciero.all
-      #@proyectosfinancieros = @proyectosfinancieros.paginate(
-      #  :page => params[:pagina], per_page: 20
-      #)
-      @numproyectosfinancieros = @proyectosfinancieros.count();
-      @incluir = ['id', 'nombre', 'referenciacinep', 
-                  'fechainicio_ddMyyyy', 'fechacierre_ddMyyyy', 
-                  'presupuestototal_localizado', 
-                  'aportecinep_localizado', 'monto_localizado', 
-                  'tipomoneda']
-      respond_to do |format|
-        format.html {  }
-        format.json { head :no_content }
-      end
-    end
-
+#    def index
+#      @proyectosfinancieros = Cor1440Gen::Proyectofinanciero.all
+#      #@proyectosfinancieros = @proyectosfinancieros.paginate(
+#      #  :page => params[:pagina], per_page: 20
+#      #)
+#      @numproyectosfinancieros = @proyectosfinancieros.count();
+#      @incluir = ['id', 'nombre', 'referenciacinep', 
+#                  'fechainicio_ddMyyyy', 'fechacierre_ddMyyyy', 
+#                  'presupuestototal_localizado', 
+#                  'aportecinep_localizado', 'monto_localizado', 
+#                  'tipomoneda']
+#      respond_to do |format|
+#        format.html { 
+#          @proyectosfinancieros = @proyectosfinancieros.paginate(
+#            :page => params[:pagina], per_page: 20
+#          )
+#          render "index", layout: "application"
+#        }
+#        format.json { head :no_content }
+#      end
+#    end
+#
     def fichaimp
       @proyectosfinancieros = Proyectofinanciero.where(
         id: @proyectofinanciero.id)
@@ -235,7 +242,8 @@ module Cor1440Gen
     end
 
     def show
-      @proyectosfinancieros = Proyectofinanciero.where(
+      byebug
+      @basica = Proyectofinanciero.where(
         id: @proyectofinanciero.id)
 
       render layout: "application"
