@@ -37,3 +37,5 @@ herram/
 .env
 *#
 .byebug_history
+coverage
+

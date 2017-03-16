@@ -103,13 +103,6 @@ group :test do
   gem 'minitest-rails'
   gem 'turn', :require => false
 
-  # Pruebas con rspec
-  #gem 'spring-commands-rspec'
-  #gem 'rspec-rails'
-
-  # Maneja datos de prueba
-  gem "factory_girl_rails", group: [:development, :test]
-
   # https://www.relishapp.com/womply/rails-style-guide/docs/developing-rails-applications/bundler
   # Lanza programas para examinar resultados
   gem "launchy"
@@ -122,6 +115,7 @@ group :test do
   # Pruebas de regresión que requieren javascript
   gem "capybara-webkit"
 
+  gem 'simplecov'
   # Envia resultados de pruebas desde travis a codeclimate
   gem "codeclimate-test-reporter", require: nil
 
