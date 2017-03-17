@@ -17,8 +17,6 @@ before_install:
         - bundle install
         - cp db/structure.sql db/structure.sql.conlock
         - sed -e "s/SET lock_timeout = 0;//g" db/structure.sql.conlock >db/structure.sql
-        - cp db/cambios-basicas.sql db/cambios-basicas.sql.conlock
-        - sed -e "s/SET lock_timeout = 0;//g" db/cambios-basicas.sql.conlock >db/cambios-basicas.sql
         - cp db/datos-basicas.sql db/datos-basicas.sql.conlock
         - sed -e "s/SET lock_timeout = 0;//g" db/datos-basicas.sql.conlock >db/datos-basicas.sql
         - cp config/database.travis.yml config/database.yml
