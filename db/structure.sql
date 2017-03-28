@@ -2168,9 +2168,8 @@ CREATE SEQUENCE usuario_id_seq
 CREATE TABLE usuario (
     nusuario character varying(15) NOT NULL,
     password character varying(64) DEFAULT ''::character varying NOT NULL,
-    nombre character varying(50) COLLATE public.es_co_utf_8,
     descripcion character varying(50),
-    rol integer DEFAULT 4,
+    rol integer DEFAULT 5,
     idioma character varying(6) DEFAULT 'es_CO'::character varying NOT NULL,
     id integer DEFAULT nextval('usuario_id_seq'::regclass) NOT NULL,
     fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
@@ -2192,6 +2191,8 @@ CREATE TABLE usuario (
     updated_at timestamp without time zone,
     regionsjr_id integer,
     oficina_id integer,
+    nombres character varying(50) COLLATE public.es_co_utf_8,
+    apellidos character varying(50) COLLATE public.es_co_utf_8,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -3602,7 +3603,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20150521203631'),
 ('20150521223501'),
 ('20150528100944'),
-('201506242007'),
 ('20150624200701'),
 ('20150630042537'),
 ('20150630130814'),
@@ -3662,6 +3662,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20160621125127'),
 ('20160628222616'),
 ('20160805103310'),
-('20161108102349');
+('20161019185830'),
+('20161108102349'),
+('20170327132108');
 
 
