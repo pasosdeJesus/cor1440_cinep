@@ -118,6 +118,7 @@ group :test do
   gem "capybara"
   
   gem 'simplecov'
+
   # Envia resultados de pruebas desde travis a codeclimate
   gem "codeclimate-test-reporter", require: nil
 
