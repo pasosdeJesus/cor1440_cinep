@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: ffb924c7074bfd33b393114a2e97eb7f8b5b547f
+  revision: f00060fb8ee4d0b5da159c1f0c46b5c000c8f909
   specs:
     cor1440_gen (1.0.b1)
       devise
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: fc64534b203a156dfe233d864b7f33317da22860
+  revision: 2d70875489549accb4154547886dd2891123a01a
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -83,7 +83,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.0)
+    addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     ansi (1.5.0)
     arel (7.1.4)
@@ -323,7 +323,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
-  byebug
   cancancan
   capybara
   chosen-rails
