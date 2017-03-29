@@ -109,16 +109,7 @@ module Cor1440Gen
                                      less_than: 1000000000000000000 }
     validates :telrespagencia, length: { maximum: 100}
 
-    fecha_ddMyyyy :fechaliquidacion
-    fecha_ddMyyyy :fechainicio
-    fecha_ddMyyyy :fechacierre
-    validate :fechas_ordenadas
-    def fechas_ordenadas
-      if fechainicio && fechacierre && fechainicio > fechacierre
-        errors.add(:fechacierre, 
-                   "La fecha de cierre debe ser posterior a la de inicio")
-      end
-    end
+    campofecha_localizado:fechaliquidacion
 
 #    validate :tiene_coordinador
 #    def tiene_coordinador

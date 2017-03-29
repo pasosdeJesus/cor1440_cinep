@@ -1,8 +1,19 @@
 # encoding: UTF-8
 
-class Usuario < Cor1440Gen::Usuario
+require 'sip/concerns/models/usuario'
+require 'jn316_gen/concerns/models/usuario'
+require 'cor1440_gen/concerns/models/usuario'
 
-  validates_presence_of :nombre
+class Usuario < ActiveRecord::Base
+  include Sip::Concerns::Models::Usuario
+  include Jn316Gen::Concerns::Models::Usuario
+  include Cor1440Gen::Concerns::Models::Usuario
+
+  devise :database_authenticatable, :rememberable, 
+    :trackable, :lockable
+
+  validates_presence_of :nombres
+  validates_presence_of :apellidos
  
   has_many :proyectofinanciero_usuario, #dependent: :destroy,
     class_name: '::ProyectofinancieroUsuario',

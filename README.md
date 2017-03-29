@@ -4,10 +4,10 @@
 Sistema para planeación y seguimiento de actividades e informes en el CINEP.
 
 ### Requerimientos
-* Ruby version >= 2.3
-* Ruby on Rails 4.2.x
-* PostgreSQL >= 9.4 con extensión unaccent disponible
-* Recomendado sobre adJ 5.8 (que incluye todos los componentes mencionados).  
+* Ruby version >= 2.4
+* Ruby on Rails 5.0.x
+* PostgreSQL >= 9.6 con extensión unaccent disponible
+* Recomendado sobre adJ 6.0 (que incluye todos los componentes mencionados).  
 
 Estas instrucciones suponen que opera en este ambiente, puedes ver más sobre
 la instalación de Ruby on Rails en adJ en 
@@ -34,6 +34,12 @@ Los cambios son:
 	cp app/views/redirige/index.html.erb.plantilla app/views/redirige/index.html.erb
 	vim app/views/redirige/index.html.erb
   ```
+
+* La conexión LDAP si la hace cifrada requiere un certificao firmado cuyo
+  subject sea el nombre del servidor al que se conecta y con una autoridad
+  ceritificadora reconocida por el servidor donde reside la aplicación.
+  Si usa su propia autoridad certificadora asegurese de incluir la llave
+  pública entre las conocidas por el sistema (en adJ /etc/ssl/cert.pem).
 
 ### Plantilla
 

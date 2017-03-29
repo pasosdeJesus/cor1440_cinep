@@ -2,8 +2,8 @@
 require 'cor1440_cinep/version'
 
 Sip.setup do |config|
-      config.ruta_anexos = "/var/www/resbase/cor1440_cinep/"
-      config.ruta_volcados = "/var/www/resbase/cor1440_cinep/"
+      config.ruta_anexos = "#{Rails.root}/archivos/anexos/"
+      config.ruta_volcados = "#{Rails.root}/archivos/bd/"
       # En heroku los anexos son super-temporales
       if ENV["HEROKU_POSTGRESQL_MAUVE_URL"]
         config.ruta_anexos = "#{Rails.root}/tmp/"

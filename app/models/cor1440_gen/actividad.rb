@@ -5,6 +5,7 @@ require 'cor1440_gen/concerns/models/actividad'
 module Cor1440Gen
   class Actividad < ActiveRecord::Base
     include Cor1440Gen::Concerns::Models::Actividad
+    include Sip::Localizacion
 
     belongs_to :departamento, class_name: 'Sip::Departamento'
     belongs_to :municipio, class_name: 'Sip::Municipio'
@@ -23,8 +24,6 @@ module Cor1440Gen
       class_name: '::ActividadPublicacion', foreign_key: 'actividad_id'
     has_many :publicacion, through: :actividad_publicacion,
       class_name: '::Publicacion'
-
-    fecha_ddMyyyy :fecha
 
     validates :desarrollo, length: { maximum: 5000 }
     validates :resultado, length: { maximum: 5000 }

@@ -18,8 +18,8 @@ Rails.application.routes.draw do
 		as :usuario do
 			get 'usuarios/edit' => 'devise/registrations#edit', 
 				:as => 'editar_registro_usuario'    
-			put 'usuarios/:id' => 'devise/registrations#update', 
-				:as => 'registro_usuario'            
+      put 'usuarios/:id' => 'jn316_gen/registrations#update', 
+      :as => 'registro_usuario'            
 		end
 		resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' } 
 
@@ -29,15 +29,20 @@ Rails.application.routes.draw do
       as: :reportes_objetivoe2
     get "/reportes/cuadroactividades" => "reportes#cuadroactividades", 
       as: :reportes_cuadroactividades
-    resources :proyectosfinancieros, as: 'proyectosfinancieros', 
-      controller: 'cor1440_gen/proyectosfinancieros',
-      path_names: { new: 'nuevo', edit: 'edita' }
+#    resources :proyectosfinancieros, as: 'proyectosfinancieros', 
+#      controller: 'cor1440_gen/proyectosfinancieros',
+#      path_names: { new: 'nuevo', edit: 'edita' }
+
+  resources :proyectosfinancieros, 
+    controller: 'cor1440_gen/proyectosfinancieros', 
+    path_names: { new: 'nuevo', edit: 'edita' }
 
     #get "/proyectosfinancieros" => "cor1440_gen/proyectosfinancieros#index", as: :proyectosfinancieros
     get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :fichaimp
 
     namespace :admin do
-      Ability.tablasbasicas.each do |t|
+      ab = ::Ability.new
+      ab.tablasbasicas.each do |t|
         if (t[0] == "") 
           c = t[1].pluralize
           resources c.to_sym, 

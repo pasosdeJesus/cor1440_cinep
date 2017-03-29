@@ -28,6 +28,18 @@ module Cor1440Cinep
 
     config.x.formato_fecha = 'dd/M/yyyy'
 
+    config.x.jn316_base = "ou=gente,dc=cinep,dc=org,dc=co"
+    config.x.jn316_admin = "cn=admin,dc=cinep,dc=org,dc=co"
+    config.x.jn316_servidor = "apbd2.cinep.org.co"
+    config.x.jn316_puerto = 389
+#    config.x.jn316_opcon = {
+#      encryption: {
+#        method: :start_tls,
+#        tls_options: OpenSSL::SSL::SSLContext::DEFAULT_PARAMS
+#      }
+#    }
+
+
     #config.console.whitelisted_ips = '186.29.40.148'
   end
 end

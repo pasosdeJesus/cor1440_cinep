@@ -17,9 +17,8 @@
   </th>
   <th>
     <%= select_tag "busresponsable", 
-      options_from_collection_for_select(
-        Usuario.where(fechadeshabilitacion: nil), "id", "nombre",
-        params[:busresponsable]),
+      options_for_select(::Usuario.habilitados.collect { |u| [
+        u.presenta_nombre, u.id] }, params[:busresponsable]),
       { include_blank: true, 
         "data-enviarautomatico" => "", style: "width: 10em" } 
       %>

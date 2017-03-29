@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem "rails", '~> 5.0.0'
 gem "rails-i18n"
 
-gem 'net-ldap'
+#gem 'net-ldap'
 
 # Color en terminal
 gem 'colorize'
@@ -13,6 +13,9 @@ gem 'puma'
 
 # CSS
 gem 'sass'
+
+# Cuadros de selección potenciados
+gem 'chosen-rails'
 
 # Generación de PDF
 gem "prawn"
@@ -44,6 +47,7 @@ gem "turbolinks", "2.5.3"
 
 # Ambiente de CSS
 gem "twitter-bootstrap-rails"
+gem "font-awesome-rails"
 gem "bootstrap-datepicker-rails"
 
 # Formularios simples 
@@ -79,10 +83,9 @@ gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
 gem 'cor1440_gen', git: "https://github.com/pasosdeJesus/cor1440_gen.git"
 #gem "cor1440_gen", path: '../cor1440_gen'
 
-group :doc do
-    # Genera documentación en doc/api con bundle exec rake doc:rails
-    gem "sdoc", require: false
-end
+# Motor Jn316_gen
+#gem 'jn316_gen', git: "https://github.com/pasosdeJesus/jn316_gen.git"
+gem "jn316_gen", path: '../jn316_gen'
 
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development do
@@ -105,13 +108,6 @@ group :test do
   gem 'minitest-rails'
   gem 'turn', :require => false
 
-  # Pruebas con rspec
-  #gem 'spring-commands-rspec'
-  #gem 'rspec-rails'
-
-  # Maneja datos de prueba
-  gem "factory_girl_rails", group: [:development, :test]
-
   # https://www.relishapp.com/womply/rails-style-guide/docs/developing-rails-applications/bundler
   # Lanza programas para examinar resultados
   gem "launchy"
@@ -121,9 +117,7 @@ group :test do
   # Pruebas de regresión que no requieren javascript
   gem "capybara"
   
-  # Pruebas de regresión que requieren javascript
-  gem "capybara-webkit"
-
+  gem 'simplecov'
   # Envia resultados de pruebas desde travis a codeclimate
   gem "codeclimate-test-reporter", require: nil
 

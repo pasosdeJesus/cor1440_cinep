@@ -2,11 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.4
--- Dumped by pg_dump version 9.5.4
+-- Dumped from database version 9.6.1
+-- Dumped by pg_dump version 9.6.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -2167,7 +2168,6 @@ CREATE SEQUENCE usuario_id_seq
 CREATE TABLE usuario (
     nusuario character varying(15) NOT NULL,
     password character varying(64) DEFAULT ''::character varying NOT NULL,
-    nombre character varying(50) COLLATE public.es_co_utf_8,
     descripcion character varying(50),
     rol integer DEFAULT 5,
     idioma character varying(6) DEFAULT 'es_CO'::character varying NOT NULL,
@@ -2190,7 +2190,10 @@ CREATE TABLE usuario (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     regionsjr_id integer,
-    oficina_id integer,
+    oficina_id integer DEFAULT 1,
+    nombres character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying,
+    apellidos character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying,
+    ultimasincldap date,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -2221,224 +2224,224 @@ CREATE SEQUENCE vinculoestado_seq
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: actor id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actor ALTER COLUMN id SET DEFAULT nextval('actor_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: anexo_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY anexo_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('anexo_proyectofinanciero_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cargo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cargo ALTER COLUMN id SET DEFAULT nextval('cargo_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: coordinador_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY coordinador_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('coordinador_proyectofinanciero_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_actividad_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_proyecto id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyecto ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_actividad_proyecto_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_rangoedadac id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_rangoedadac ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_actividad_rangoedadac_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividadarea id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividadarea ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_actividadarea_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividadareas_actividad id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividadareas_actividad ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_actividadareas_actividad_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividadtipo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividadtipo ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_actividadtipo_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cor1440_gen_financiador id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_financiador ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_financiador_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cor1440_gen_informe id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_informe ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_informe_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyecto id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_proyecto ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_proyecto_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_proyectofinanciero_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cor1440_gen_rangoedadac id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_rangoedadac ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_rangoedadac_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: desembolso id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY desembolso ALTER COLUMN id SET DEFAULT nextval('desembolso_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: informeauditoria id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY informeauditoria ALTER COLUMN id SET DEFAULT nextval('informeauditoria_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: informefinanciero id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY informefinanciero ALTER COLUMN id SET DEFAULT nextval('informefinanciero_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: informenarrativo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY informenarrativo ALTER COLUMN id SET DEFAULT nextval('informenarrativo_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: nucleoconflicto id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY nucleoconflicto ALTER COLUMN id SET DEFAULT nextval('nucleoconflicto_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: proyectofinanciero_uresponsable id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY proyectofinanciero_uresponsable ALTER COLUMN id SET DEFAULT nextval('proyectofinanciero_uresponsable_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: proyectofinanciero_usuario id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY proyectofinanciero_usuario ALTER COLUMN id SET DEFAULT nextval('proyectofinanciero_usuario_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: publicacion id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY publicacion ALTER COLUMN id SET DEFAULT nextval('publicacion_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: redactor id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY redactor ALTER COLUMN id SET DEFAULT nextval('redactor_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: sectoractor id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sectoractor ALTER COLUMN id SET DEFAULT nextval('sectoractor_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: sip_anexo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_anexo ALTER COLUMN id SET DEFAULT nextval('sip_anexo_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: sip_fuenteprensa id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_fuenteprensa ALTER COLUMN id SET DEFAULT nextval('sip_fuenteprensa_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: sip_pais id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_pais ALTER COLUMN id SET DEFAULT nextval('sip_pais_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: sip_tdocumento id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_tdocumento ALTER COLUMN id SET DEFAULT nextval('sip_tdocumento_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: tipoanexo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tipoanexo ALTER COLUMN id SET DEFAULT nextval('tipoanexo_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: tipomoneda id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tipomoneda ALTER COLUMN id SET DEFAULT nextval('tipomoneda_id_seq'::regclass);
 
 
 --
--- Name: actor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: actor actor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actor
@@ -2446,7 +2449,7 @@ ALTER TABLE ONLY actor
 
 
 --
--- Name: anexo_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: anexo_proyectofinanciero anexo_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY anexo_proyectofinanciero
@@ -2454,7 +2457,7 @@ ALTER TABLE ONLY anexo_proyectofinanciero
 
 
 --
--- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY ar_internal_metadata
@@ -2462,7 +2465,7 @@ ALTER TABLE ONLY ar_internal_metadata
 
 
 --
--- Name: cargo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cargo cargo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cargo
@@ -2470,7 +2473,7 @@ ALTER TABLE ONLY cargo
 
 
 --
--- Name: coordinador_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: coordinador_proyectofinanciero coordinador_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY coordinador_proyectofinanciero
@@ -2478,7 +2481,7 @@ ALTER TABLE ONLY coordinador_proyectofinanciero
 
 
 --
--- Name: cor1440_gen_actividad_proyecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_proyecto cor1440_gen_actividad_proyecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyecto
@@ -2486,7 +2489,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_proyecto
 
 
 --
--- Name: cor1440_gen_actividad_sip_anexo_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_sip_anexo cor1440_gen_actividad_sip_anexo_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
@@ -2494,7 +2497,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
 
 
 --
--- Name: cor1440_gen_actividad_sip_anexo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_sip_anexo cor1440_gen_actividad_sip_anexo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
@@ -2502,7 +2505,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
 
 
 --
--- Name: cor1440_gen_actividadtipo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividadtipo cor1440_gen_actividadtipo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividadtipo
@@ -2510,7 +2513,7 @@ ALTER TABLE ONLY cor1440_gen_actividadtipo
 
 
 --
--- Name: cor1440_gen_financiador_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_financiador cor1440_gen_financiador_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_financiador
@@ -2518,7 +2521,7 @@ ALTER TABLE ONLY cor1440_gen_financiador
 
 
 --
--- Name: cor1440_gen_informe_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_informe cor1440_gen_informe_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_informe
@@ -2526,7 +2529,7 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 
 --
--- Name: cor1440_gen_proyecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyecto cor1440_gen_proyecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_proyecto
@@ -2534,7 +2537,7 @@ ALTER TABLE ONLY cor1440_gen_proyecto
 
 
 --
--- Name: cor1440_gen_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero cor1440_gen_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_proyectofinanciero
@@ -2542,7 +2545,7 @@ ALTER TABLE ONLY cor1440_gen_proyectofinanciero
 
 
 --
--- Name: desembolso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: desembolso desembolso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY desembolso
@@ -2550,7 +2553,7 @@ ALTER TABLE ONLY desembolso
 
 
 --
--- Name: etiqueta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_etiqueta etiqueta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_etiqueta
@@ -2558,7 +2561,7 @@ ALTER TABLE ONLY sip_etiqueta
 
 
 --
--- Name: informeauditoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: informeauditoria informeauditoria_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY informeauditoria
@@ -2566,7 +2569,7 @@ ALTER TABLE ONLY informeauditoria
 
 
 --
--- Name: informefinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: informefinanciero informefinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY informefinanciero
@@ -2574,7 +2577,7 @@ ALTER TABLE ONLY informefinanciero
 
 
 --
--- Name: informenarrativo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: informenarrativo informenarrativo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY informenarrativo
@@ -2582,7 +2585,7 @@ ALTER TABLE ONLY informenarrativo
 
 
 --
--- Name: nucleoconflicto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: nucleoconflicto nucleoconflicto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY nucleoconflicto
@@ -2590,7 +2593,7 @@ ALTER TABLE ONLY nucleoconflicto
 
 
 --
--- Name: persona_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona persona_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona
@@ -2598,7 +2601,7 @@ ALTER TABLE ONLY sip_persona
 
 
 --
--- Name: proyectofinanciero_uresponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: proyectofinanciero_uresponsable proyectofinanciero_uresponsable_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY proyectofinanciero_uresponsable
@@ -2606,7 +2609,7 @@ ALTER TABLE ONLY proyectofinanciero_uresponsable
 
 
 --
--- Name: proyectofinanciero_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: proyectofinanciero_usuario proyectofinanciero_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY proyectofinanciero_usuario
@@ -2614,7 +2617,7 @@ ALTER TABLE ONLY proyectofinanciero_usuario
 
 
 --
--- Name: publicacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: publicacion publicacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY publicacion
@@ -2622,7 +2625,7 @@ ALTER TABLE ONLY publicacion
 
 
 --
--- Name: redactor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: redactor redactor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY redactor
@@ -2630,7 +2633,7 @@ ALTER TABLE ONLY redactor
 
 
 --
--- Name: regionsjr_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_oficina regionsjr_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_oficina
@@ -2638,7 +2641,7 @@ ALTER TABLE ONLY sip_oficina
 
 
 --
--- Name: sectoractor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sectoractor sectoractor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sectoractor
@@ -2646,7 +2649,7 @@ ALTER TABLE ONLY sectoractor
 
 
 --
--- Name: sip_clase_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_clase sip_clase_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_clase
@@ -2654,7 +2657,7 @@ ALTER TABLE ONLY sip_clase
 
 
 --
--- Name: sip_clase_id_municipio_id_clalocal_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_clase sip_clase_id_municipio_id_clalocal_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_clase
@@ -2662,7 +2665,7 @@ ALTER TABLE ONLY sip_clase
 
 
 --
--- Name: sip_clase_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_clase sip_clase_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_clase
@@ -2670,7 +2673,7 @@ ALTER TABLE ONLY sip_clase
 
 
 --
--- Name: sip_departamento_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_departamento sip_departamento_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_departamento
@@ -2678,7 +2681,7 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
--- Name: sip_departamento_id_pais_id_deplocal_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_departamento sip_departamento_id_pais_id_deplocal_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_departamento
@@ -2686,7 +2689,7 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
--- Name: sip_departamento_id_pais_id_deplocal_key1; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_departamento sip_departamento_id_pais_id_deplocal_key1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_departamento
@@ -2694,7 +2697,7 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
--- Name: sip_departamento_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_departamento sip_departamento_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_departamento
@@ -2702,7 +2705,7 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
--- Name: sip_fuenteprensa_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_fuenteprensa sip_fuenteprensa_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_fuenteprensa
@@ -2710,7 +2713,7 @@ ALTER TABLE ONLY sip_fuenteprensa
 
 
 --
--- Name: sip_municipio_id_departamento_id_munlocal_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_municipio sip_municipio_id_departamento_id_munlocal_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_municipio
@@ -2718,7 +2721,7 @@ ALTER TABLE ONLY sip_municipio
 
 
 --
--- Name: sip_municipio_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_municipio sip_municipio_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_municipio
@@ -2726,7 +2729,7 @@ ALTER TABLE ONLY sip_municipio
 
 
 --
--- Name: sip_municipio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_municipio sip_municipio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_municipio
@@ -2734,7 +2737,7 @@ ALTER TABLE ONLY sip_municipio
 
 
 --
--- Name: sip_persona_trelacion_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona_trelacion sip_persona_trelacion_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona_trelacion
@@ -2742,7 +2745,7 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 
 --
--- Name: sip_persona_trelacion_persona1_persona2_id_trelacion_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona_trelacion sip_persona_trelacion_persona1_persona2_id_trelacion_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona_trelacion
@@ -2750,7 +2753,7 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 
 --
--- Name: sip_persona_trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona_trelacion sip_persona_trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona_trelacion
@@ -2758,7 +2761,7 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 
 --
--- Name: sivel2_gen_actividad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad sivel2_gen_actividad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad
@@ -2766,7 +2769,7 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
--- Name: sivel2_gen_actividad_rangoedadac_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_rangoedadac sivel2_gen_actividad_rangoedadac_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_rangoedadac
@@ -2774,7 +2777,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_rangoedadac
 
 
 --
--- Name: sivel2_gen_actividadarea_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividadarea sivel2_gen_actividadarea_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividadarea
@@ -2782,7 +2785,7 @@ ALTER TABLE ONLY cor1440_gen_actividadarea
 
 
 --
--- Name: sivel2_gen_actividadareas_actividad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividadareas_actividad sivel2_gen_actividadareas_actividad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividadareas_actividad
@@ -2790,7 +2793,7 @@ ALTER TABLE ONLY cor1440_gen_actividadareas_actividad
 
 
 --
--- Name: sivel2_gen_anexoactividad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_anexo sivel2_gen_anexoactividad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_anexo
@@ -2798,7 +2801,7 @@ ALTER TABLE ONLY sip_anexo
 
 
 --
--- Name: sivel2_gen_pais_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_pais sivel2_gen_pais_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_pais
@@ -2806,7 +2809,7 @@ ALTER TABLE ONLY sip_pais
 
 
 --
--- Name: sivel2_gen_rangoedadac_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_rangoedadac sivel2_gen_rangoedadac_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_rangoedadac
@@ -2814,7 +2817,7 @@ ALTER TABLE ONLY cor1440_gen_rangoedadac
 
 
 --
--- Name: sivel2_gen_tdocumento_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_tdocumento sivel2_gen_tdocumento_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_tdocumento
@@ -2822,7 +2825,7 @@ ALTER TABLE ONLY sip_tdocumento
 
 
 --
--- Name: tclase_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_tclase tclase_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_tclase
@@ -2830,7 +2833,7 @@ ALTER TABLE ONLY sip_tclase
 
 
 --
--- Name: tipoanexo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: tipoanexo tipoanexo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tipoanexo
@@ -2838,7 +2841,7 @@ ALTER TABLE ONLY tipoanexo
 
 
 --
--- Name: tipomoneda_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: tipomoneda tipomoneda_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tipomoneda
@@ -2846,7 +2849,7 @@ ALTER TABLE ONLY tipomoneda
 
 
 --
--- Name: trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_trelacion trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_trelacion
@@ -2854,7 +2857,7 @@ ALTER TABLE ONLY sip_trelacion
 
 
 --
--- Name: tsitio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_tsitio tsitio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_tsitio
@@ -2862,7 +2865,7 @@ ALTER TABLE ONLY sip_tsitio
 
 
 --
--- Name: ubicacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_ubicacion ubicacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_ubicacion
@@ -2870,7 +2873,7 @@ ALTER TABLE ONLY sip_ubicacion
 
 
 --
--- Name: usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY usuario
@@ -2962,7 +2965,7 @@ CREATE UNIQUE INDEX usuario_nusuario ON usuario USING btree (nusuario);
 
 
 --
--- Name: actividad_regionsjr_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad actividad_regionsjr_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad
@@ -2970,7 +2973,7 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
--- Name: clase_id_tclase_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_clase clase_id_tclase_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_clase
@@ -2978,7 +2981,7 @@ ALTER TABLE ONLY sip_clase
 
 
 --
--- Name: cor1440_gen_actividad_usuario_lf; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad cor1440_gen_actividad_usuario_lf; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad
@@ -2986,7 +2989,7 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
--- Name: cor1440_gen_actividadtipo_actividad_actividad_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_actividadtipo cor1440_gen_actividadtipo_actividad_actividad_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_actividadtipo
@@ -2994,7 +2997,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_actividadtipo
 
 
 --
--- Name: cor1440_gen_actividadtipo_actividad_actividadtipo_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_actividadtipo cor1440_gen_actividadtipo_actividad_actividadtipo_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_actividadtipo
@@ -3002,7 +3005,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_actividadtipo
 
 
 --
--- Name: departamento_id_pais_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_departamento departamento_id_pais_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_departamento
@@ -3010,7 +3013,7 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
--- Name: fk_rails_01abd767ad; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: actor_sectoractor fk_rails_01abd767ad; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actor_sectoractor
@@ -3018,7 +3021,7 @@ ALTER TABLE ONLY actor_sectoractor
 
 
 --
--- Name: fk_rails_01cc410e26; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: oficina_proyectofinanciero fk_rails_01cc410e26; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY oficina_proyectofinanciero
@@ -3026,7 +3029,7 @@ ALTER TABLE ONLY oficina_proyectofinanciero
 
 
 --
--- Name: fk_rails_0cd09d688c; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_financiador_proyectofinanciero fk_rails_0cd09d688c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_financiador_proyectofinanciero
@@ -3034,7 +3037,7 @@ ALTER TABLE ONLY cor1440_gen_financiador_proyectofinanciero
 
 
 --
--- Name: fk_rails_0ea362f58d; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: anexo_proyectofinanciero fk_rails_0ea362f58d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY anexo_proyectofinanciero
@@ -3042,7 +3045,7 @@ ALTER TABLE ONLY anexo_proyectofinanciero
 
 
 --
--- Name: fk_rails_1f7068d549; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: informefinanciero fk_rails_1f7068d549; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY informefinanciero
@@ -3050,7 +3053,7 @@ ALTER TABLE ONLY informefinanciero
 
 
 --
--- Name: fk_rails_20940a21f8; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad fk_rails_20940a21f8; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad
@@ -3058,7 +3061,7 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
--- Name: fk_rails_272a913d18; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: proyectofinanciero_uresponsable fk_rails_272a913d18; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY proyectofinanciero_uresponsable
@@ -3066,7 +3069,7 @@ ALTER TABLE ONLY proyectofinanciero_uresponsable
 
 
 --
--- Name: fk_rails_28225d4dc2; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: proyectofinanciero_usuario fk_rails_28225d4dc2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY proyectofinanciero_usuario
@@ -3074,7 +3077,7 @@ ALTER TABLE ONLY proyectofinanciero_usuario
 
 
 --
--- Name: fk_rails_294895347e; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_informe fk_rails_294895347e; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_informe
@@ -3082,7 +3085,7 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 
 --
--- Name: fk_rails_2983c828da; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad fk_rails_2983c828da; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad
@@ -3090,7 +3093,7 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
--- Name: fk_rails_2bd685d2b3; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_informe fk_rails_2bd685d2b3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_informe
@@ -3098,7 +3101,7 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 
 --
--- Name: fk_rails_395faa0882; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_proyecto fk_rails_395faa0882; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyecto
@@ -3106,7 +3109,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_proyecto
 
 
 --
--- Name: fk_rails_3b2f5808be; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: anexo_proyectofinanciero fk_rails_3b2f5808be; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY anexo_proyectofinanciero
@@ -3114,7 +3117,7 @@ ALTER TABLE ONLY anexo_proyectofinanciero
 
 
 --
--- Name: fk_rails_3f5055fb42; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: proyectofinanciero_usuario fk_rails_3f5055fb42; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY proyectofinanciero_usuario
@@ -3122,7 +3125,7 @@ ALTER TABLE ONLY proyectofinanciero_usuario
 
 
 --
--- Name: fk_rails_40cb623d50; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_informe fk_rails_40cb623d50; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_informe
@@ -3130,7 +3133,7 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 
 --
--- Name: fk_rails_473bd646f9; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: informenarrativo fk_rails_473bd646f9; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY informenarrativo
@@ -3138,7 +3141,7 @@ ALTER TABLE ONLY informenarrativo
 
 
 --
--- Name: fk_rails_49ec1ae361; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_sip_anexo fk_rails_49ec1ae361; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
@@ -3146,7 +3149,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
 
 
 --
--- Name: fk_rails_4a1ff4a976; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: oficina_proyectofinanciero fk_rails_4a1ff4a976; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY oficina_proyectofinanciero
@@ -3154,7 +3157,7 @@ ALTER TABLE ONLY oficina_proyectofinanciero
 
 
 --
--- Name: fk_rails_524486e06b; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_proyectofinanciero fk_rails_524486e06b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyectofinanciero
@@ -3162,7 +3165,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_proyectofinanciero
 
 
 --
--- Name: fk_rails_55868fbce2; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: actividad_nucleoconflicto fk_rails_55868fbce2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actividad_nucleoconflicto
@@ -3170,7 +3173,7 @@ ALTER TABLE ONLY actividad_nucleoconflicto
 
 
 --
--- Name: fk_rails_56bdc49b83; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: actividad_actor fk_rails_56bdc49b83; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actividad_actor
@@ -3178,7 +3181,7 @@ ALTER TABLE ONLY actividad_actor
 
 
 --
--- Name: fk_rails_5a7dd1dd10; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: coordinador_proyectofinanciero fk_rails_5a7dd1dd10; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY coordinador_proyectofinanciero
@@ -3186,7 +3189,7 @@ ALTER TABLE ONLY coordinador_proyectofinanciero
 
 
 --
--- Name: fk_rails_60dbe4c315; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: actividad_publicacion fk_rails_60dbe4c315; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actividad_publicacion
@@ -3194,7 +3197,7 @@ ALTER TABLE ONLY actividad_publicacion
 
 
 --
--- Name: fk_rails_67f52ffcf6; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: informeauditoria fk_rails_67f52ffcf6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY informeauditoria
@@ -3202,7 +3205,7 @@ ALTER TABLE ONLY informeauditoria
 
 
 --
--- Name: fk_rails_70898623bb; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: tipomoneda fk_rails_70898623bb; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tipomoneda
@@ -3210,7 +3213,7 @@ ALTER TABLE ONLY tipomoneda
 
 
 --
--- Name: fk_rails_756688ae2b; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: anexo_proyectofinanciero fk_rails_756688ae2b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY anexo_proyectofinanciero
@@ -3218,7 +3221,7 @@ ALTER TABLE ONLY anexo_proyectofinanciero
 
 
 --
--- Name: fk_rails_7ebb208867; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: actividad_actor fk_rails_7ebb208867; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actividad_actor
@@ -3226,7 +3229,7 @@ ALTER TABLE ONLY actividad_actor
 
 
 --
--- Name: fk_rails_8196c53609; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad fk_rails_8196c53609; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad
@@ -3234,7 +3237,7 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
--- Name: fk_rails_824959275e; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: proyectofinanciero_uresponsable fk_rails_824959275e; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY proyectofinanciero_uresponsable
@@ -3242,7 +3245,7 @@ ALTER TABLE ONLY proyectofinanciero_uresponsable
 
 
 --
--- Name: fk_rails_8718e4c155; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: actor_sectoractor fk_rails_8718e4c155; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actor_sectoractor
@@ -3250,7 +3253,7 @@ ALTER TABLE ONLY actor_sectoractor
 
 
 --
--- Name: fk_rails_9daa099154; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_financiador fk_rails_9daa099154; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_financiador
@@ -3258,7 +3261,7 @@ ALTER TABLE ONLY cor1440_gen_financiador
 
 
 --
--- Name: fk_rails_a8489e0d62; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_proyectofinanciero fk_rails_a8489e0d62; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyectofinanciero
@@ -3266,7 +3269,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_proyectofinanciero
 
 
 --
--- Name: fk_rails_afe68ea314; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: actividad_publicacion fk_rails_afe68ea314; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actividad_publicacion
@@ -3274,7 +3277,7 @@ ALTER TABLE ONLY actividad_publicacion
 
 
 --
--- Name: fk_rails_c02831dd89; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_informe fk_rails_c02831dd89; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_informe
@@ -3282,7 +3285,7 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 
 --
--- Name: fk_rails_c719ad1d65; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: proyectofinanciero_usuario fk_rails_c719ad1d65; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY proyectofinanciero_usuario
@@ -3290,7 +3293,7 @@ ALTER TABLE ONLY proyectofinanciero_usuario
 
 
 --
--- Name: fk_rails_ca93eb04dc; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_financiador_proyectofinanciero fk_rails_ca93eb04dc; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_financiador_proyectofinanciero
@@ -3298,7 +3301,7 @@ ALTER TABLE ONLY cor1440_gen_financiador_proyectofinanciero
 
 
 --
--- Name: fk_rails_cb90ade2a0; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: actividad_nucleoconflicto fk_rails_cb90ade2a0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actividad_nucleoconflicto
@@ -3306,7 +3309,7 @@ ALTER TABLE ONLY actividad_nucleoconflicto
 
 
 --
--- Name: fk_rails_cc9d44f9de; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_sip_anexo fk_rails_cc9d44f9de; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
@@ -3314,7 +3317,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
 
 
 --
--- Name: fk_rails_cf09fb308c; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: actor fk_rails_cf09fb308c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY actor
@@ -3322,7 +3325,7 @@ ALTER TABLE ONLY actor
 
 
 --
--- Name: fk_rails_cf5d592625; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad_proyecto fk_rails_cf5d592625; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyecto
@@ -3330,7 +3333,7 @@ ALTER TABLE ONLY cor1440_gen_actividad_proyecto
 
 
 --
--- Name: fk_rails_d0ff83bfc6; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero fk_rails_d0ff83bfc6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_proyectofinanciero
@@ -3338,7 +3341,7 @@ ALTER TABLE ONLY cor1440_gen_proyectofinanciero
 
 
 --
--- Name: fk_rails_daf0af8605; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_informe fk_rails_daf0af8605; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_informe
@@ -3346,7 +3349,7 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 
 --
--- Name: fk_rails_df556dc8d1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: desembolso fk_rails_df556dc8d1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY desembolso
@@ -3354,7 +3357,7 @@ ALTER TABLE ONLY desembolso
 
 
 --
--- Name: fk_rails_f2cb2f1031; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actividad fk_rails_f2cb2f1031; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_actividad
@@ -3362,7 +3365,7 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
--- Name: fk_rails_fab0c162ed; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: coordinador_proyectofinanciero fk_rails_fab0c162ed; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY coordinador_proyectofinanciero
@@ -3370,7 +3373,7 @@ ALTER TABLE ONLY coordinador_proyectofinanciero
 
 
 --
--- Name: fk_rails_ff046f92e5; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: usuario fk_rails_ff046f92e5; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY usuario
@@ -3378,7 +3381,7 @@ ALTER TABLE ONLY usuario
 
 
 --
--- Name: persona_id_pais_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona persona_id_pais_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona
@@ -3386,7 +3389,7 @@ ALTER TABLE ONLY sip_persona
 
 
 --
--- Name: persona_nacionalde_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona persona_nacionalde_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona
@@ -3394,7 +3397,7 @@ ALTER TABLE ONLY sip_persona
 
 
 --
--- Name: persona_tdocumento_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona persona_tdocumento_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona
@@ -3402,7 +3405,7 @@ ALTER TABLE ONLY sip_persona
 
 
 --
--- Name: persona_trelacion_id_trelacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona_trelacion persona_trelacion_id_trelacion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona_trelacion
@@ -3410,7 +3413,7 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 
 --
--- Name: persona_trelacion_persona1_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona_trelacion persona_trelacion_persona1_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona_trelacion
@@ -3418,7 +3421,7 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 
 --
--- Name: persona_trelacion_persona2_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona_trelacion persona_trelacion_persona2_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona_trelacion
@@ -3426,7 +3429,7 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 
 --
--- Name: sip_clase_id_municipio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_clase sip_clase_id_municipio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_clase
@@ -3434,7 +3437,7 @@ ALTER TABLE ONLY sip_clase
 
 
 --
--- Name: sip_municipio_id_departamento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_municipio sip_municipio_id_departamento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_municipio
@@ -3442,7 +3445,7 @@ ALTER TABLE ONLY sip_municipio
 
 
 --
--- Name: sip_persona_id_clase_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona sip_persona_id_clase_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona
@@ -3450,7 +3453,7 @@ ALTER TABLE ONLY sip_persona
 
 
 --
--- Name: sip_persona_id_departamento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona sip_persona_id_departamento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona
@@ -3458,7 +3461,7 @@ ALTER TABLE ONLY sip_persona
 
 
 --
--- Name: sip_persona_id_municipio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_persona sip_persona_id_municipio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_persona
@@ -3466,7 +3469,7 @@ ALTER TABLE ONLY sip_persona
 
 
 --
--- Name: sip_ubicacion_id_clase_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_ubicacion sip_ubicacion_id_clase_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_ubicacion
@@ -3474,7 +3477,7 @@ ALTER TABLE ONLY sip_ubicacion
 
 
 --
--- Name: sip_ubicacion_id_departamento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_ubicacion sip_ubicacion_id_departamento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_ubicacion
@@ -3482,7 +3485,7 @@ ALTER TABLE ONLY sip_ubicacion
 
 
 --
--- Name: sip_ubicacion_id_municipio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_ubicacion sip_ubicacion_id_municipio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_ubicacion
@@ -3490,7 +3493,7 @@ ALTER TABLE ONLY sip_ubicacion
 
 
 --
--- Name: trelacion_inverso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_trelacion trelacion_inverso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_trelacion
@@ -3498,7 +3501,7 @@ ALTER TABLE ONLY sip_trelacion
 
 
 --
--- Name: ubicacion_id_pais_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_ubicacion ubicacion_id_pais_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_ubicacion
@@ -3506,7 +3509,7 @@ ALTER TABLE ONLY sip_ubicacion
 
 
 --
--- Name: ubicacion_id_tsitio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sip_ubicacion ubicacion_id_tsitio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_ubicacion
@@ -3519,6 +3522,151 @@ ALTER TABLE ONLY sip_ubicacion
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20131128151014'), ('20131204135932'), ('20131204140000'), ('20131204143718'), ('20131204183530'), ('20131206081531'), ('20131210221541'), ('20131220103409'), ('20131223175141'), ('20140117212555'), ('20140129151136'), ('20140207102709'), ('20140207102739'), ('20140211162355'), ('20140211164659'), ('20140211172443'), ('20140313012209'), ('20140514142421'), ('20140518120059'), ('20140527110223'), ('20140528043115'), ('20140613044320'), ('20140704035033'), ('20140804194616'), ('20140804200235'), ('20140804202100'), ('20140804202101'), ('20140804202958'), ('20140804210000'), ('20140815111351'), ('20140815111352'), ('20140815121224'), ('20140815123542'), ('20140815124157'), ('20140815124606'), ('20140827142659'), ('20140901105741'), ('20140901106000'), ('20140909165233'), ('20140918115412'), ('20140922102737'), ('20140922110956'), ('20141002140242'), ('20141111102451'), ('20141111203313'), ('20141126085907'), ('20150217185859'), ('20150217195008'), ('20150217215359'), ('20150413000000'), ('20150413160156'), ('20150413160157'), ('20150413160158'), ('20150413160159'), ('20150416074423'), ('20150416090140'), ('20150416095646'), ('20150416101228'), ('20150417071153'), ('20150417180000'), ('20150417180314'), ('20150419000000'), ('20150420104520'), ('20150420110000'), ('20150420125522'), ('20150420153835'), ('20150420200255'), ('20150503120915'), ('20150510125926'), ('20150513112126'), ('20150513130058'), ('20150513130510'), ('20150513160835'), ('20150520115257'), ('20150521092657'), ('20150521181918'), ('20150521191227'), ('20150521193040'), ('20150521203631'), ('20150521223501'), ('20150528100944'), ('20150624200701'), ('20150630042537'), ('20150630130814'), ('20150630214251'), ('20150630221321'), ('20150630221909'), ('20150630222017'), ('20150630224704'), ('20150630230130'), ('20150630230134'), ('20150706172733'), ('20150706173649'), ('20150707164448'), ('20150709203137'), ('20150710012947'), ('20150710114451'), ('20150716085420'), ('20150717101243'), ('20150720115701'), ('20150720120236'), ('20150724003736'), ('20150803082520'), ('20150809032138'), ('20150819173047'), ('20151020203421'), ('20160118101511'), ('20160202103751'), ('20160218102246'), ('20160218103000'), ('20160218144545'), ('20160223140842'), ('20160225093706'), ('20160225110056'), ('20160228133005'), ('20160229033451'), ('20160229081458'), ('20160229082436'), ('20160302142500'), ('20160302151832'), ('20160302162638'), ('20160302164308'), ('20160302164823'), ('20160302164858'), ('20160302165021'), ('20160302175724'), ('20160308104749'), ('20160308110000'), ('20160308115000'), ('20160308115001'), ('20160308135905'), ('20160308213334'), ('20160328153309'), ('20160519195544'), ('20160616024857'), ('20160617030012'), ('20160621113440'), ('20160621125127'), ('20160628222616'), ('20160805103310'), ('20161019185830');
+INSERT INTO "schema_migrations" (version) VALUES
+('20131128151014'),
+('20131204135932'),
+('20131204140000'),
+('20131204143718'),
+('20131204183530'),
+('20131206081531'),
+('20131210221541'),
+('20131220103409'),
+('20131223175141'),
+('20140117212555'),
+('20140129151136'),
+('20140207102709'),
+('20140207102739'),
+('20140211162355'),
+('20140211164659'),
+('20140211172443'),
+('20140313012209'),
+('20140514142421'),
+('20140518120059'),
+('20140527110223'),
+('20140528043115'),
+('20140613044320'),
+('20140704035033'),
+('20140804194616'),
+('20140804200235'),
+('20140804202100'),
+('20140804202101'),
+('20140804202958'),
+('20140804210000'),
+('20140815111351'),
+('20140815111352'),
+('20140815121224'),
+('20140815123542'),
+('20140815124157'),
+('20140815124606'),
+('20140827142659'),
+('20140901105741'),
+('20140901106000'),
+('20140909165233'),
+('20140918115412'),
+('20140922102737'),
+('20140922110956'),
+('20141002140242'),
+('20141111102451'),
+('20141111203313'),
+('20141126085907'),
+('20150217185859'),
+('20150217195008'),
+('20150217215359'),
+('20150413000000'),
+('20150413160156'),
+('20150413160157'),
+('20150413160158'),
+('20150413160159'),
+('20150416074423'),
+('20150416090140'),
+('20150416095646'),
+('20150416101228'),
+('20150417071153'),
+('20150417180000'),
+('20150417180314'),
+('20150419000000'),
+('20150420104520'),
+('20150420110000'),
+('20150420125522'),
+('20150420153835'),
+('20150420200255'),
+('20150503120915'),
+('20150510125926'),
+('20150513112126'),
+('20150513130058'),
+('20150513130510'),
+('20150513160835'),
+('20150520115257'),
+('20150521092657'),
+('20150521181918'),
+('20150521191227'),
+('20150521193040'),
+('20150521203631'),
+('20150521223501'),
+('20150528100944'),
+('20150624200701'),
+('20150630042537'),
+('20150630130814'),
+('20150630214251'),
+('20150630221321'),
+('20150630221909'),
+('20150630222017'),
+('20150630224704'),
+('20150630230130'),
+('20150630230134'),
+('20150706172733'),
+('20150706173649'),
+('20150707164448'),
+('20150709203137'),
+('20150710012947'),
+('20150710114451'),
+('20150716085420'),
+('20150717101243'),
+('20150720115701'),
+('20150720120236'),
+('20150724003736'),
+('20150803082520'),
+('20150809032138'),
+('20150819173047'),
+('20151020203421'),
+('20160118101511'),
+('20160202103751'),
+('20160218102246'),
+('20160218103000'),
+('20160218144545'),
+('20160223140842'),
+('20160225093706'),
+('20160225110056'),
+('20160228133005'),
+('20160229033451'),
+('20160229081458'),
+('20160229082436'),
+('20160302142500'),
+('20160302151832'),
+('20160302162638'),
+('20160302164308'),
+('20160302164823'),
+('20160302164858'),
+('20160302165021'),
+('20160302175724'),
+('20160308104749'),
+('20160308110000'),
+('20160308115000'),
+('20160308115001'),
+('20160308135905'),
+('20160308213334'),
+('20160328153309'),
+('20160519195544'),
+('20160616024857'),
+('20160617030012'),
+('20160621113440'),
+('20160621125127'),
+('20160628222616'),
+('20160805103310'),
+('20161019185830'),
+('20161108102349'),
+('20170327132108'),
+('20170328172001'),
+('20170329153630');
 
 

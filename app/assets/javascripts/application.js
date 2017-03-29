@@ -12,11 +12,13 @@
 //
 //= require sip/motor
 //= require cor1440_gen/motor
+//= require chosen-jquery
 //= require_tree .
 
 $(document).on('turbolinks:load ready page:load', function() {
 	var root;
-	root = typeof exports !== "undefined" && exports !== null ? exports : this;
+  	root = typeof exports !== "undefined" && exports !== null ? 
+	  exports : window;
 	sip_prepara_eventos_comunes(root, '/act');
 	cor1440_gen_prepara_eventos_comunes(root);
 
@@ -30,6 +32,14 @@ $(document).on('turbolinks:load ready page:load', function() {
 		todayHighlight: true,
 		language: 'es'	
 	});
+	$('.chosen-select').chosen({
+		allow_single_deselect: true,
+		no_results_text: 'No hay opciones',
+		placeholder_text_multiple: 'Eleja una o más opciones',
+		placeholder_text_single: 'Elija una opción',
+		width: '200px'
+	});
+
 });
 
 

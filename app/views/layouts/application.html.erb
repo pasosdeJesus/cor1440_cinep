@@ -29,10 +29,13 @@
     <% if !current_usuario.nil? %>
       <%= drop_down "Administrar" do %>
         <%= menu_item "Clave", main_app.editar_registro_usuario_path %>
-        <% if current_usuario.rol == Ability::ROLADMIN || current_usuario.rol == Ability::ROLDIR %>
+        <% if current_usuario.rol == Ability::ROLADMIN || 
+             current_usuario.rol == Ability::ROLDIR %>
           <%= menu_item "Usuarios", main_app.usuarios_path %>
         <% end %>
-        <%= menu_item "Tablas Básicas", sip.tablasbasicas_path %>
+        <% if can? :manage, :tablasbasicas %>
+          <%= menu_item "Tablas Básicas", sip.tablasbasicas_path %>
+        <% end %>
       <% end %>
       <%= menu_item "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
     <% else %>
