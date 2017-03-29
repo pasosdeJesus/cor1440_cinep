@@ -84,8 +84,8 @@ gem 'cor1440_gen', git: "https://github.com/pasosdeJesus/cor1440_gen.git"
 #gem "cor1440_gen", path: '../cor1440_gen'
 
 # Motor Jn316_gen
-#gem 'jn316_gen', git: "https://github.com/pasosdeJesus/jn316_gen.git"
-gem "jn316_gen", path: '../jn316_gen'
+gem 'jn316_gen', git: "https://github.com/pasosdeJesus/jn316_gen.git"
+#gem "jn316_gen", path: '../jn316_gen'
 
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development do

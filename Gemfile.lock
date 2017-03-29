@@ -9,6 +9,15 @@ GIT
       rails
 
 GIT
+  remote: https://github.com/pasosdeJesus/jn316_gen.git
+  revision: fc64534b203a156dfe233d864b7f33317da22860
+  specs:
+    jn316_gen (1.0.a1)
+      net-ldap
+      rails
+      sip
+
+GIT
   remote: https://github.com/pasosdeJesus/sip.git
   revision: 6efa709f297a8efc731e76d0b4cbe1a855562504
   specs:
@@ -33,14 +42,6 @@ GIT
   revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
   specs:
     cocoon (1.2.6)
-
-PATH
-  remote: ../jn316_gen
-  specs:
-    jn316_gen (1.0.a1)
-      net-ldap
-      rails
-      sip
 
 GEM
   remote: https://rubygems.org/
