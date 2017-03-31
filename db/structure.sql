@@ -2190,9 +2190,10 @@ CREATE TABLE usuario (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     regionsjr_id integer,
-    oficina_id integer,
-    nombres character varying(50) COLLATE public.es_co_utf_8,
-    apellidos character varying(50) COLLATE public.es_co_utf_8,
+    oficina_id integer DEFAULT 1,
+    nombres character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying,
+    apellidos character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying,
+    ultimasincldap date,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -3664,6 +3665,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20160805103310'),
 ('20161019185830'),
 ('20161108102349'),
-('20170327132108');
+('20170327132108'),
+('20170328172001'),
+('20170329153630');
 
 
