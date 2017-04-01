@@ -4,7 +4,7 @@ require 'cor1440_gen/concerns/controllers/proyectosfinancieros_controller'
 
 module Cor1440Gen
   class ProyectosfinancierosController < Sip::Admin::BasicasController
-    include ApplicationHelper
+    helper ::ApplicationHelper
     include Cor1440Gen::Concerns::Controllers::ProyectosfinancierosController
 
      before_action :set_proyectofinanciero, 

@@ -1,9 +1,9 @@
 <tr class='nested-fields'>
   <td>
     <%= f.association :coordinador,
-      collection: ::Usuario.habilitados.order(:nombre),
+      collection: ::Usuario.habilitados.order(:nombres, :apellidos),
       label: false,
-      label_method: :nombre,
+      label_method: lambda {|t| t.nombres + ' ' + t.apellidos},
       value_method: :id
     %>
   </td>
