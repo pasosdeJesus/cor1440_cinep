@@ -15,6 +15,8 @@ gem 'sass'
 # Cuadros de selección potenciados
 gem 'chosen-rails'
 
+gem 'rspreadsheet'
+
 # Generación de PDF
 gem "prawn"
 gem "prawnto_2",  :require => "prawnto"
@@ -76,6 +78,10 @@ gem "tzinfo-data"
 # Motor generico
 gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
 #gem 'sip', path: '../sip'
+
+# Motor heb412_gen
+gem 'heb412_gen', git: "https://github.com/pasosdeJesus/heb412_gen.git"
+#gem 'heb412_gen', path: '../heb412_gen'
 
 # Motor Cor1440_gen
 gem 'cor1440_gen', git: "https://github.com/pasosdeJesus/cor1440_gen.git"
