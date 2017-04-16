@@ -9,7 +9,7 @@ module Cor1440Gen
 
      before_action :set_proyectofinanciero, 
        only: [:show, :edit, :update, :destroy]
-    load_and_authorize_resource class: Cor1440Gen::Proyectofinanciero
+     load_and_authorize_resource class: Cor1440Gen::Proyectofinanciero
 
     include Sip::ConsultasHelper
 
@@ -242,7 +242,6 @@ module Cor1440Gen
     end
 
     def show
-      byebug
       @basica = Proyectofinanciero.where(
         id: @proyectofinanciero.id)
 
