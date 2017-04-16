@@ -6,9 +6,10 @@ module Cor1440Gen
   class ProyectosfinancierosController < Sip::Admin::BasicasController
     helper ::ApplicationHelper
     include Cor1440Gen::Concerns::Controllers::ProyectosfinancierosController
+    include ::Sip::Admin::BasicasHelpers
 
-     before_action :set_proyectofinanciero, 
-       only: [:show, :edit, :update, :destroy]
+    before_action :set_proyectofinanciero, 
+      only: [:show, :edit, :update, :destroy]
     load_and_authorize_resource class: Cor1440Gen::Proyectofinanciero
 
     include Sip::ConsultasHelper
@@ -36,7 +37,7 @@ module Cor1440Gen
 #    end
 #
     def fichaimp
-      @proyectosfinancieros = Proyectofinanciero.where(
+      @basica = @proyectosfinancieros = Proyectofinanciero.where(
         id: @proyectofinanciero.id)
 
       # Ejemplo de https://github.com/sandrods/odf-report
@@ -75,11 +76,11 @@ module Cor1440Gen
         r.add_field(:publicaciones, 
                     @proyectofinanciero[:compromisos])
         r.add_field(:fechainicio, 
-                    @proyectofinanciero.fechainicio_ddMyyyy)
+                    @proyectofinanciero.fechainicio_localizada)
         r.add_field(:fechacierre, 
-                    @proyectofinanciero.fechacierre_ddMyyyy)
+                    @proyectofinanciero.fechacierre_localizada)
         r.add_field(:fechaliquidacion, 
-                    @proyectofinanciero.fechaliquidacion_ddMyyyy)
+                    @proyectofinanciero.fechaliquidacion_localizada)
 
         # Calculados
         if @proyectofinanciero.fechainicio && @proyectofinanciero.fechacierre
@@ -241,17 +242,17 @@ module Cor1440Gen
         filename: 'RE-SC-07.odt'
     end
 
-    def show
-      byebug
-      @basica = Proyectofinanciero.where(
-        id: @proyectofinanciero.id)
+#    def show
+#      byebug
+#      @basica = Proyectofinanciero.where(
+#        id: @proyectofinanciero.id)
 
-      render layout: "application"
-    end
+#      render layout: "application"
+#    end
 
 
     def new
-      @proyectofinanciero = Proyectofinanciero.new
+      @basica = @proyectofinanciero = Proyectofinanciero.new
       #@proyectofinanciero.current_usuario = current_usuario
       #@proyectofinanciero.oficina_id = 1
       #render layout: "application"
@@ -262,13 +263,14 @@ module Cor1440Gen
 
 
     def create
-      @proyectofinanciero = Proyectofinanciero.new(proyectofinanciero_params)
+      @basica = @proyectofinanciero = Proyectofinanciero.new(proyectofinanciero_params)
       @proyectofinanciero.fechacreacion =  DateTime.now.strftime('%Y-%m-%d') 
       #@proyectofinanciero.current_usuario = current_usuario
       #
       
       if @proyectofinanciero.save
-        redirect_to proyectofinanciero_ruta(@proyectofinanciero), 
+        redirect_to admin_basica_ruta(
+          @proyectofinanciero), 
           notice: 'Proyecto creado.'
       else
         render :new
@@ -278,7 +280,7 @@ module Cor1440Gen
 
     def update
       if @proyectofinanciero.update(proyectofinanciero_params)
-        redirect_to proyectofinanciero_ruta(@proyectofinanciero), 
+        redirect_to admin_basica_ruta(@proyectofinanciero),
               notice: 'Proyecto actualizado.' 
       else
         render :edit
@@ -289,7 +291,7 @@ module Cor1440Gen
       @proyectofinanciero.destroy
       respond_to do |format|
         format.html { 
-          redirect_to proyectosfinancieros_ruta, notice: 'Proyecto eliminado' }
+          redirect_to proyectosfinancieros_path, notice: 'Proyecto eliminado' }
         format.json { head :no_content }
       end
     end
@@ -297,7 +299,7 @@ module Cor1440Gen
     private
 
     def set_proyectofinanciero
-      @proyectofinanciero = Proyectofinanciero.find(
+      @basica = @proyectofinanciero = Proyectofinanciero.find(
         Proyectofinanciero.connection.quote_string(params[:id]).to_i
       )
       #@proyectofinanciero.current_usuario = current_usuario
