@@ -11,7 +11,7 @@
     <%= f.association :usuario,
       collection: ::Usuario.habilitados,
       label: false,
-      label_method: lambda { |n| n.nombres + ' ' + n.apellidos },
+      label_method: lambda { |n| n.nombres.to_s + ' ' + n.apellidos.to_s },
       value_method: :id,
       include_blank: "POR CONTRATAR"
     %>

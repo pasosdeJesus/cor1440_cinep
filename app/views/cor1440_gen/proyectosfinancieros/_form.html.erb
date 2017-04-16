@@ -2,9 +2,9 @@
   <li><a href="usuarios/sign_in">Iniciar Sesión</a>
 <%- else  %>
   <article>
-  <%= simple_form_for @proyectofinanciero, 
-    :url => cor1440_gen.proyectofinanciero_path(@proyectofinanciero),
-    :html => { :class => 'form-horizontal' } do |f| 
+  <%= simple_form_for @basica, 
+    url: admin_basica_path(@basica),
+    html: { class: 'form-horizontal' } do |f| 
   %>
     <div data-role="content" class="form-inputs">
       <div id="errores">

@@ -1,12 +1,14 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: f00060fb8ee4d0b5da159c1f0c46b5c000c8f909
+  revision: 8d90f4322bf1fa1aa7dcaca352b72c1d59b28ef6
   specs:
     cor1440_gen (1.0.b1)
       devise
+      heb412_gen
       jquery-rails
       paperclip
       rails
+      sip
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
@@ -19,11 +21,12 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 6efa709f297a8efc731e76d0b4cbe1a855562504
+  revision: 3ed95de0d8aff70017c643e100643b8f05a8ef65
   specs:
-    sip (2.0.b2)
+    sip (2.0.b3)
       bootstrap-datepicker-rails
       cancancan
+      chosen-rails
       colorize
       devise
       devise-i18n
@@ -42,6 +45,15 @@ GIT
   revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
   specs:
     cocoon (1.2.6)
+
+PATH
+  remote: ../heb412_gen
+  specs:
+    heb412_gen (1.0.a1)
+      chosen-rails
+      font-awesome-rails
+      rspreadsheet
+      sip
 
 GEM
   remote: https://rubygems.org/
@@ -85,6 +97,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    andand (1.3.3)
     ansi (1.5.0)
     arel (7.1.4)
     bcrypt (3.1.11)
@@ -135,8 +148,8 @@ GEM
     execjs (2.7.0)
     font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
-    globalid (0.3.7)
-      activesupport (>= 4.1.0)
+    globalid (0.4.0)
+      activesupport (>= 4.2.0)
     i18n (0.8.1)
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
@@ -147,7 +160,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.0.3)
+    json (2.0.4)
     kgio (2.11.0)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -158,6 +171,7 @@ GEM
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
+    libxml-ruby (2.8.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -250,6 +264,10 @@ GEM
     rake (12.0.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
+    rspreadsheet (0.4.3)
+      andand (~> 1.3)
+      libxml-ruby (= 2.8)
+      rubyzip (~> 1.1)
     rubyzip (1.1.7)
     sass (3.4.23)
     sass-rails (5.0.6)
@@ -280,7 +298,7 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.7)
-    ttfunk (1.5.0)
+    ttfunk (1.5.1)
     turbolinks (2.5.3)
       coffee-rails
     turn (0.9.6)
@@ -298,9 +316,9 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2017.2)
       tzinfo (>= 1.0.0)
-    uglifier (3.1.11)
+    uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
-    unicorn (5.2.0)
+    unicorn (5.3.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.7)
@@ -334,6 +352,7 @@ DEPENDENCIES
   devise
   devise-i18n
   font-awesome-rails
+  heb412_gen!
   jbuilder
   jn316_gen!
   jquery-rails

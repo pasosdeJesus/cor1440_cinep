@@ -3,7 +3,7 @@
     <%= f.association :uresponsable,
       collection: ::Usuario.habilitados.order(:nombres, :apellidos),
       label: false,
-      label_method: lambda {|t| t.nombres + ' ' + t.apellidos}, 
+      label_method: lambda {|t| t.nombres.to_s + ' ' + t.apellidos.to_s}, 
       value_method: :id
     %>
   </td>
