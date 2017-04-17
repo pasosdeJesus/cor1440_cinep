@@ -1905,7 +1905,8 @@ CREATE TABLE sip_grupo (
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    ultimasincldap date
 );
 
 
@@ -3988,6 +3989,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170329153630'),
 ('20170405104322'),
 ('20170413185012'),
-('20170414035328');
+('20170414035328'),
+('20170417131432');
 
 
