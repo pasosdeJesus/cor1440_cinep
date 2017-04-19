@@ -25,4 +25,7 @@ class Usuario < ActiveRecord::Base
     class_name: '::CoordinadorProyectofinanciero',
     foreign_key: 'coordinador_id'
 
+  def rol_usuario
+    # No se verifica rol y oficina como hace cor1440_gen
+  end
 end

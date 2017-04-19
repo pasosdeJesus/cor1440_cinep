@@ -33,7 +33,7 @@ es:
         regionsjr: Dependencia
         minutos: Horas
         observaciones: Compromisos/Observaciones
-        fecha_ddMyyyy: Fecha
+        fecha_localizada: Fecha
       "cor1440_gen/actividadarea":
         Actividadarea: Componente Plan Trienal 
         Actividadareas: Componentes Plan Trienal 
@@ -63,11 +63,11 @@ es:
         emailrespagencia: "Correo responsable"
         empresaauditoria: "Empresa de Auditorias y Relacionados"
         fechacierre: "Termina"
-        fechacierre_ddMyyyy: "Termina"
+        fechacierre_localizada: "Termina"
         fechainicio: "Inicia"
-        fechainicio_ddMyyyy: "Inicia"
+        fechainicio_localizada: "Inicia"
         fechaliquidacion: "Fecha de liquidación"
-        fechaliquidacion_ddMyyyy: "Fecha de liquidación"
+        fechaliquidacion_localizada: "Fecha de liquidación"
         fuentefinanciador: "Fuente de financiacion"
         formatosespecificos: "Formatos específicos"
         formatossolicitudpago: "Formatos de solicitud de pago"

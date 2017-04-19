@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: e41e4dcadc11be209023b8c4b8f84db9868230c9
+  revision: 8291649bce8bec8535ec3ad08ff83186ba878e74
   specs:
     cor1440_gen (1.0.b1)
       devise
@@ -11,8 +11,18 @@ GIT
       sip
 
 GIT
+  remote: https://github.com/pasosdeJesus/heb412_gen.git
+  revision: e35e627482f6fb60a1a2474d80eb98ec41a1fd68
+  specs:
+    heb412_gen (1.0.a1)
+      chosen-rails
+      font-awesome-rails
+      rspreadsheet
+      sip
+
+GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 940f3fc1249b4487f9e0be6e6bfe9116a8def74d
+  revision: 02e5f011306c57ac86cd4b6363801135a14b9edb
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -21,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: a02e39e5f01fa0892ae544083a89a399221310ba
+  revision: 9745b2ccb637ef5580e47b865e21557cfb7d9bcb
   specs:
     sip (2.0.b3)
       bootstrap-datepicker-rails
@@ -45,15 +55,6 @@ GIT
   revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
   specs:
     cocoon (1.2.6)
-
-PATH
-  remote: ../heb412_gen
-  specs:
-    heb412_gen (1.0.a1)
-      chosen-rails
-      font-awesome-rails
-      rspreadsheet
-      sip
 
 GEM
   remote: https://rubygems.org/
@@ -160,7 +161,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.0.4)
+    json (2.1.0)
     kgio (2.11.0)
     launchy (2.4.3)
       addressable (~> 2.3)

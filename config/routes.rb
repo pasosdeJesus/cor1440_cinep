@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 		root 'cor1440_gen/hogar#index'
 	end
 	mount Cor1440Gen::Engine, at: "/act", as: "cor1440_gen"
+	mount Jn316Gen::Engine, at: "/act", as: "jn316_gen"
 	mount Sip::Engine, at: "/act", as: "sip"
 
   get '/' => 'redirige#index'

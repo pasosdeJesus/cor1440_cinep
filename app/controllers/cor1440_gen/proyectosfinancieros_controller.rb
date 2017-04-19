@@ -5,6 +5,7 @@ require 'cor1440_gen/concerns/controllers/proyectosfinancieros_controller'
 module Cor1440Gen
   class ProyectosfinancierosController < Sip::Admin::BasicasController
     helper ::ApplicationHelper
+    include ::ApplicationHelper
     include Cor1440Gen::Concerns::Controllers::ProyectosfinancierosController
     include ::Sip::Admin::BasicasHelpers
 
@@ -251,51 +252,51 @@ module Cor1440Gen
 #    end
 
 
-    def new
-      @basica = @proyectofinanciero = Proyectofinanciero.new
+#    def new
+#      @basica = @proyectofinanciero = Proyectofinanciero.new
       #@proyectofinanciero.current_usuario = current_usuario
       #@proyectofinanciero.oficina_id = 1
       #render layout: "application"
-    end
+#    end
 
-    def edit
-    end
-
-
-    def create
-      @basica = @proyectofinanciero = Proyectofinanciero.new(proyectofinanciero_params)
-      @proyectofinanciero.fechacreacion =  DateTime.now.strftime('%Y-%m-%d') 
-      #@proyectofinanciero.current_usuario = current_usuario
-      #
-      
-      if @proyectofinanciero.save
-        redirect_to admin_basica_ruta(
-          @proyectofinanciero), 
-          notice: 'Proyecto creado.'
-      else
-        render :new
-      end
-    end
+#    def edit
+#    end
 
 
-    def update
-      if @proyectofinanciero.update(proyectofinanciero_params)
-        redirect_to admin_basica_ruta(@proyectofinanciero),
-              notice: 'Proyecto actualizado.' 
-      else
-        render :edit
-      end
-    end
-
-    def destroy
-      @proyectofinanciero.destroy
-      respond_to do |format|
-        format.html { 
-          redirect_to proyectosfinancieros_path, notice: 'Proyecto eliminado' }
-        format.json { head :no_content }
-      end
-    end
-
+#    def create
+#      @basica = @proyectofinanciero = Proyectofinanciero.new(proyectofinanciero_params)
+#      @proyectofinanciero.fechacreacion =  DateTime.now.strftime('%Y-%m-%d') 
+#      #@proyectofinanciero.current_usuario = current_usuario
+#      #
+#      
+#      if @proyectofinanciero.save
+#        redirect_to admin_basica_ruta(
+#          @proyectofinanciero), 
+#          notice: 'Proyecto creado.'
+#      else
+#        render :new
+#      end
+#    end
+#
+#
+#    def update
+#      if @proyectofinanciero.update(proyectofinanciero_params)
+#        redirect_to admin_basica_ruta(@proyectofinanciero),
+#              notice: 'Proyecto actualizado.' 
+#      else
+#        render :edit
+#      end
+#    end
+#
+#    def destroy
+#      @proyectofinanciero.destroy
+#      respond_to do |format|
+#        format.html { 
+#          redirect_to proyectosfinancieros_path, notice: 'Proyecto eliminado' }
+#        format.json { head :no_content }
+#      end
+#    end
+#
     private
 
     def set_proyectofinanciero
