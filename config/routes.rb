@@ -21,7 +21,13 @@ Rails.application.routes.draw do
       put 'usuarios/:id' => 'jn316_gen/registrations#update', 
       :as => 'registro_usuario'            
 		end
-		resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' } 
+#    get '/usuarios', to: 'jn316_gen/usuarios#index', as: 'usuarios_path'
+#    get '/usuarios/:id/edita', to: 'jn316_gen/usuarios#edit', as: 'edit_usuario_path'
+#    get '/usuarios/:id', to: 'jn316_gen/usuarios#show', as: 'usuario_path'
+		resources :usuarios, 
+      controller: 'usuarios',
+      path_names: { new: 'nuevo', edit: 'edita' }
+
 
     get "/reportes/indicador11" => "reportes#indicador11", 
       as: :reportes_indicador11
