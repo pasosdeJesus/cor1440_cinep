@@ -1,7 +1,8 @@
 <tr class='nested-fields'>
   <td>
+    <% col =  ::Usuario.order(:nombres, :apellidos).habilitados %>
     <%= f.association :uresponsable,
-      collection: ::Usuario.habilitados.order(:nombres, :apellidos),
+      collection: col,
       label: false,
       label_method: lambda {|t| t.nombres.to_s + ' ' + t.apellidos.to_s}, 
       value_method: :id

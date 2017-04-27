@@ -74,12 +74,14 @@
         include_blank: false
         %-->
         <%= f.association :responsable,
-          collection: Usuario.all.order(:nombre),
+          collection: Usuario.all.order(:nombres, :apellidos, :nusuario),
           include_blank: false,
           label: "Responsable del equipo",
           label_method: lambda { |t| 
-            r = t.nusuario
-            if t.nombre then r += " - " + t.nombre end
+            r = ""
+            r += t.nombres + " " if t.nombres
+            r += t.apellidos if t.apellidos
+            r += ' -  ' + t.nusuario
             r 
           },
           value_method: :id,
@@ -87,13 +89,15 @@
           input_html: { class: 'chosen-select' } %>
 
         <%= f.association :usuario,
-          collection: Usuario.where(fechadeshabilitacion: nil).order(:nombre),
+          collection: Usuario.where(fechadeshabilitacion: nil).order(:nombres, :apellidos, :nusuario),
           include_blank: false,
           label: "Corresponsables del equipo",
-          label_method: lambda { |t|
-            r = t.nusuario
-            if t.nombre then r += " - " + t.nombre end
-            r
+          label_method: lambda { |t| 
+            r = ""
+            r += t.nombres + " " if t.nombres
+            r += t.apellidos if t.apellidos
+            r += ' -  ' + t.nusuario
+            r 
           },
           value_method: :id,
           input_html: { class: 'chosen-select' }

@@ -65,6 +65,7 @@ Rails.application.routes.draw do
 	end
 	mount Cor1440Gen::Engine, at: "/act", as: "cor1440_gen"
 	mount Jn316Gen::Engine, at: "/act", as: "jn316_gen"
+	mount Heb412Gen::Engine, at: "/act", as: "heb412_gen"
 	mount Sip::Engine, at: "/act", as: "sip"
 
   get '/' => 'redirige#index'

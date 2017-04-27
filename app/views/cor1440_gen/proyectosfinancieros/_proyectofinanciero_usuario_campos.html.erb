@@ -8,8 +8,9 @@
     %>
   </td>
   <td>
+    <% col = ::Usuario.order(:nombres, :apellidos).habilitados %>
     <%= f.association :usuario,
-      collection: ::Usuario.habilitados,
+      collection: col,
       label: false,
       label_method: lambda { |n| n.nombres.to_s + ' ' + n.apellidos.to_s },
       value_method: :id,
