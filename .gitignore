@@ -38,4 +38,5 @@ herram/
 *#
 .byebug_history
 coverage
-
+archivos
+config/application.rb

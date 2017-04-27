@@ -21,6 +21,15 @@ GIT
       sip
 
 GIT
+  remote: https://github.com/pasosdeJesus/jn316_gen.git
+  revision: 27df560fb9f00c56a051bce3db408ebb8a98c46a
+  specs:
+    jn316_gen (1.0.a1)
+      net-ldap
+      rails
+      sip
+
+GIT
   remote: https://github.com/pasosdeJesus/sip.git
   revision: 9f6834d8bf46ac1e75daa05da186d4e7c0bc1f64
   specs:
@@ -179,6 +188,7 @@ GEM
       minitest (~> 5.8)
       railties (~> 5.0)
     multi_json (1.12.1)
+    net-ldap (0.16.0)
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
@@ -345,6 +355,7 @@ DEPENDENCIES
   font-awesome-rails
   heb412_gen!
   jbuilder
+  jn316_gen!
   jquery-rails
   jquery-ui-rails
   launchy

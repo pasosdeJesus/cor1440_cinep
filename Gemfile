@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem "rails", '~> 5.0.0'
 gem "rails-i18n"
 
+#gem 'net-ldap'
+
 # Color en terminal
 gem 'colorize'
 
@@ -87,6 +89,10 @@ gem 'heb412_gen', git: "https://github.com/pasosdeJesus/heb412_gen.git"
 gem 'cor1440_gen', git: "https://github.com/pasosdeJesus/cor1440_gen.git"
 #gem "cor1440_gen", path: '../cor1440_gen'
 
+
+# Motor Jn316_gen
+gem 'jn316_gen', git: "https://github.com/pasosdeJesus/jn316_gen.git"
+#gem "jn316_gen", path: '../jn316_gen'
 
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development do

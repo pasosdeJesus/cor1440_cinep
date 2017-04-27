@@ -18,10 +18,16 @@ Rails.application.routes.draw do
 		as :usuario do
 			get 'usuarios/edit' => 'devise/registrations#edit', 
 				:as => 'editar_registro_usuario'    
-			put 'usuarios/:id' => 'devise/registrations#update', 
-				:as => 'registro_usuario'            
+      put 'usuarios/:id' => 'jn316_gen/registrations#update', 
+      :as => 'registro_usuario'            
 		end
-		resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' } 
+#    get '/usuarios', to: 'jn316_gen/usuarios#index', as: 'usuarios_path'
+#    get '/usuarios/:id/edita', to: 'jn316_gen/usuarios#edit', as: 'edit_usuario_path'
+#    get '/usuarios/:id', to: 'jn316_gen/usuarios#show', as: 'usuario_path'
+		resources :usuarios, 
+      controller: 'usuarios',
+      path_names: { new: 'nuevo', edit: 'edita' }
+
 
     get "/reportes/indicador11" => "reportes#indicador11", 
       as: :reportes_indicador11
@@ -58,6 +64,8 @@ Rails.application.routes.draw do
 		root 'cor1440_gen/hogar#index'
 	end
 	mount Cor1440Gen::Engine, at: "/act", as: "cor1440_gen"
+	mount Jn316Gen::Engine, at: "/act", as: "jn316_gen"
+	mount Heb412Gen::Engine, at: "/act", as: "heb412_gen"
 	mount Sip::Engine, at: "/act", as: "sip"
 
   get '/' => 'redirige#index'

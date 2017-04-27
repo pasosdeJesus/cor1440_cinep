@@ -2,6 +2,7 @@
 
 module ApplicationHelper
   include Sip::ConsultasHelper
+  include FontAwesome::Rails::IconHelper 
 
   def dif_meses_dias(fechaini, fechafin) 
     m = 0
