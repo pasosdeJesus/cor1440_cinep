@@ -17,6 +17,8 @@ gem 'sass'
 # Cuadros de selección potenciados
 gem 'chosen-rails'
 
+gem 'rspreadsheet'
+
 # Generación de PDF
 gem "prawn"
 gem "prawnto_2",  :require => "prawnto"

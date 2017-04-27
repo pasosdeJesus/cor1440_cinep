@@ -25,8 +25,10 @@
     <% end %>
   <% end %>
   <%= menu_group :pull => :right do %>
-    <%= menu_item "Documentacion", sip.acercade_path %>
     <% if !current_usuario.nil? %>
+      <%= drop_down "Documentos" do %>
+        <%= menu_item "Nube", heb412_gen.sisini_path %>
+      <%end %>
       <%= drop_down "Administrar" do %>
         <%= menu_item "Clave", main_app.editar_registro_usuario_path %>
         <% if current_usuario.rol == Ability::ROLADMIN || 

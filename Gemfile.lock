@@ -374,6 +374,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-i18n
   rails_12factor
+  rspreadsheet
   sass
   simple_form
   simplecov

@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require sip/motor
+//= require heb412_gen/motor
 //= require cor1440_gen/motor
 //= require chosen-jquery
 //= require_tree .
@@ -20,6 +21,7 @@ $(document).on('turbolinks:load ready page:load', function() {
   	root = typeof exports !== "undefined" && exports !== null ? 
 	  exports : window;
 	sip_prepara_eventos_comunes(root, '/act');
+	heb412_gen_prepara_eventos_comunes(root);
 	cor1440_gen_prepara_eventos_comunes(root);
 
 	formato_fecha = 'dd/M/yyyy'
