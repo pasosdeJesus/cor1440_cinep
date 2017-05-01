@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 
     #get "/proyectosfinancieros" => "cor1440_gen/proyectosfinancieros#index", as: :proyectosfinancieros
     get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :fichaimp
+    get "/proyectosfinancieros/:id/fichapdf" => "cor1440_gen/proyectosfinancieros#fichapdf", as: :fichapdf
 
     namespace :admin do
       ab = ::Ability.new

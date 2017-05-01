@@ -43,12 +43,14 @@ es:
       "cor1440_gen/proyectofinanciero":
         Proyectofinanciero: "Compromiso institucional"
         Proyectosfinancieros: "Compromisos institucionales"
-        aaportes: "Anotaciones aportes financierso CINEP/Otros Donantes"
+        aaportes: "Anotaciones aportes financieros CINEP/Otros Donantes"
         anotacionescontab: "Anotaciones Contabilidad"
         anotacionesdb: "Anotaciones Datos Básicos"
         anotacionesrh: "Anotaciones Recursos Humanos"
         anotacionesre: "Anotaciones Recursos Económicos y Financieros"
         anotacionesinf: "Anotaciones Informes y Auditorias"
+        aotrosfin_localizado: 'Aportes financieros otros donantes'
+        aotrosesp: 'Aportes en especies otros donantes'
         aportecinep: "Aporte financiero CINEP/PPP - Otros donantes"
         aportecinep_localizado: "Aporte financiero CINEP/PPP"
         apresupuesto: "Anotaciones presupuesto"

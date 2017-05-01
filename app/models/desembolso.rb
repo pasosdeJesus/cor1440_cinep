@@ -1,7 +1,10 @@
 # encoding: UTF-8
 
 class Desembolso < ActiveRecord::Base
-  belongs_to :proyectofinanciero, class_name: 'Cor1440Gen::Proyectofinanciero', 
+  include Sip::Localizacion
+
+  belongs_to :proyectofinanciero, 
+    class_name: 'Cor1440Gen::Proyectofinanciero', 
     foreign_key: 'proyectofinanciero_id'
 
   validates :detalle, length: { maximum: 5000}
@@ -9,7 +12,8 @@ class Desembolso < ActiveRecord::Base
   validates :valorplaneado, numericality:
     { greater_than: 0, less_than: 1000000000000000000 }
 
-  fecha_ddMyyyy :fechaplaneada
+  campofecha_localizado :fechaplaneada
+
   validate :fechaplaneada_posterior_inicio
 
   def fechaplaneada_posterior_inicio

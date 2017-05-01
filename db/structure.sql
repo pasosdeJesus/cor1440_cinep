@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.4
+-- Dumped from database version 9.6.1
 -- Dumped by pg_dump version 9.6.1
 
 SET statement_timeout = 0;
@@ -920,7 +920,9 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     anotacionesre character varying(5000),
     anotacionesinf character varying(5000),
     apresupuesto character varying(5000),
-    aaportes character varying(5000)
+    aaportes character varying(5000),
+    aotrosfin numeric,
+    aotrosesp character varying(500)
 );
 
 
@@ -3997,6 +3999,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170418143627'),
 ('20170419010845'),
 ('20170419135948'),
-('20170422182531');
+('20170422182531'),
+('20170429035047');
 
 

@@ -23,6 +23,7 @@ $(document).on('turbolinks:load ready page:load', function() {
 	sip_prepara_eventos_comunes(root, '/act');
 	heb412_gen_prepara_eventos_comunes(root);
 	cor1440_gen_prepara_eventos_comunes(root);
+	cor1440_cinep_prepara_eventos_unicos(root);
 
 	formato_fecha = 'dd/M/yyyy'
 	if ($('meta[name=formato_fecha]').size() != 0) {
