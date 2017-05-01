@@ -37,10 +37,8 @@ module Cor1440Gen
 #      end
 #    end
 #
-    def fichaimp
-      @basica = @proyectosfinancieros = Proyectofinanciero.where(
-        id: @proyectofinanciero.id)
-
+    
+    def genera_odf
       # Ejemplo de https://github.com/sandrods/odf-report
       report = ODFReport::Report.new("#{Rails.root}/app/reportes/Plantilla-RE-SC-07.odt") do |r|
         cn = [:nombre, :referencia, :referenciacinep, 
@@ -121,7 +119,7 @@ module Cor1440Gen
           r.add_field(:responsable, 
                       @proyectofinanciero.proyectofinanciero_uresponsable.inject('') { |memo, i|
               (memo == '' ? '' : memo + "\n") + 
-                (i.uresponsable ? i.uresponsable.nombre : "Por contratar") +
+                (i.uresponsable ? i.uresponsable.nombres + ' ' + i.uresponsable.apellidos : "Por contratar") +
                 (i.porcentaje ? " " + i.porcentaje.to_s + "%" : '')
           })
         end
@@ -150,7 +148,8 @@ module Cor1440Gen
           r.add_field(:coordinador, 
                       @proyectofinanciero.coordinador_proyectofinanciero.inject('') { |memo, i|
             (memo == '' ? '' : memo + '; ') + 
-              (i.coordinador ? i.coordinador.nombre : "") })
+              (i.coordinador ? i.coordinador.nombres + ' ' + 
+               i.coordinador.apellidos : "") })
         end
         if @proyectofinanciero.proyectofinanciero_usuario
           
@@ -169,7 +168,7 @@ module Cor1440Gen
           r.add_table('TDESEMBOLSOS', @proyectofinanciero.desembolso, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
             d.add_column('VALORPLANEADO'){|i| i.valorplaneado_localizado.to_s +
                                           ' ' + tm }
           end
@@ -192,7 +191,7 @@ module Cor1440Gen
                       @proyectofinanciero.informenarrativo, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
           end
         end
         if (inarr == '') 
@@ -206,7 +205,7 @@ module Cor1440Gen
                       @proyectofinanciero.informefinanciero, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
           end
           #ifin = @proyectofinanciero.informefinanciero.inject('') do |memo, i|
           #  (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
@@ -224,7 +223,7 @@ module Cor1440Gen
                       @proyectofinanciero.informeauditoria, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
           end
           #iaud = @proyectofinanciero.informeauditoria.inject('') do |memo, i|
           #  (memo == '' ? '' : memo + "\n") + i.detalle + ", " +
@@ -236,12 +235,39 @@ module Cor1440Gen
         end
         r.add_field(:informesauditorias, iaud)
       end
+      return report
+    end
 
+    def fichaimp
+      @basica = @proyectosfinancieros = Proyectofinanciero.where(
+        id: @proyectofinanciero.id)
+
+      report = genera_odf
       send_data report.generate, 
         type: 'application/vnd.oasis.opendocument.text',
         disposition: 'attachment',
         filename: 'RE-SC-07.odt'
     end
+
+    def fichapdf
+      @basica = @proyectosfinancieros = Proyectofinanciero.where(
+        id: @proyectofinanciero.id)
+
+      report = genera_odf
+      report.generate("/tmp/RE-SC-07.odt")
+      if File.exist?('/tmp/RE-SC-07.pdf')
+        File.delete('/tmp/RE-SC-07.pdf')
+      end
+      res = `libreoffice --headless --convert-to pdf /tmp/RE-SC-07.odt --outdir /tmp/`
+      puts res
+      if File.exist?('/tmp/RE-SC-07.pdf')
+        send_file '/tmp/RE-SC-07.pdf',
+          type: 'application/pdf',
+          disposition: 'attachment',
+          filename: 'RE-SC-07.pdf'
+      end
+    end
+
 
 #    def show
 #      byebug
@@ -316,6 +342,8 @@ module Cor1440Gen
         :anotacionesinf,
         :anotacionesre,
         :anotacionesrh,
+        :aotrosfin_localizado,
+        :aotrosesp,
         :apresupuesto,
         :autenticarcompulsar,
         :centrocosto,
@@ -324,9 +352,9 @@ module Cor1440Gen
         :cuentasbancarias,
         :emailrespagencia, 
         :empresaauditoria,
-        :fechacierre_ddMyyyy,
-        :fechainicio_ddMyyyy,
-        :fechaliquidacion_ddMyyyy,
+        :fechacierre_localizada,
+        :fechainicio_localizada,
+        :fechaliquidacion_localizada,
         :financiador,
         #:formatosespecificos,
         #:formatossolicitudpago,
@@ -360,7 +388,7 @@ module Cor1440Gen
         :desembolso_attributes => [
           :id,
           :detalle,
-          :fechaplaneada_ddMyyyy,
+          :fechaplaneada_localizada,
           :valorplaneado_localizado,
           :_destroy
         ],
@@ -368,19 +396,19 @@ module Cor1440Gen
         :informeauditoria_attributes => [
           :id,
           :detalle,
-          :fechaplaneada_ddMyyyy,
+          :fechaplaneada_localizada,
           :_destroy
         ],
         :informefinanciero_attributes => [
           :id,
           :detalle,
-          :fechaplaneada_ddMyyyy,
+          :fechaplaneada_localizada,
           :_destroy
         ],
         :informenarrativo_attributes => [
           :id,
           :detalle,
-          :fechaplaneada_ddMyyyy,
+          :fechaplaneada_localizada,
           :_destroy
         ],
         :oficina_ids => [],
