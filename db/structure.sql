@@ -889,7 +889,6 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    compromisos character varying(5000),
     monto numeric(20,2),
     referencia character varying(1000),
     referenciacinep character varying(1000),
@@ -1493,6 +1492,43 @@ CREATE SEQUENCE presponsable_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: productopf; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE productopf (
+    id integer NOT NULL,
+    proyectofinanciero_id integer NOT NULL,
+    tipoproductopf_id integer NOT NULL,
+    detalle character varying(5000),
+    fechaplaneada date,
+    fechareal date,
+    devoluciones boolean,
+    seguimiento character varying(5000),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: productopf_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE productopf_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: productopf_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE productopf_id_seq OWNED BY productopf.id;
 
 
 --
@@ -2344,6 +2380,40 @@ ALTER SEQUENCE tipomoneda_id_seq OWNED BY tipomoneda.id;
 
 
 --
+-- Name: tipoproductopf; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE tipoproductopf (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: tipoproductopf_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tipoproductopf_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tipoproductopf_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tipoproductopf_id_seq OWNED BY tipoproductopf.id;
+
+
+--
 -- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -2587,6 +2657,13 @@ ALTER TABLE ONLY nucleoconflicto ALTER COLUMN id SET DEFAULT nextval('nucleoconf
 
 
 --
+-- Name: productopf id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY productopf ALTER COLUMN id SET DEFAULT nextval('productopf_id_seq'::regclass);
+
+
+--
 -- Name: proyectofinanciero_uresponsable id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2668,6 +2745,13 @@ ALTER TABLE ONLY tipoanexo ALTER COLUMN id SET DEFAULT nextval('tipoanexo_id_seq
 --
 
 ALTER TABLE ONLY tipomoneda ALTER COLUMN id SET DEFAULT nextval('tipomoneda_id_seq'::regclass);
+
+
+--
+-- Name: tipoproductopf id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipoproductopf ALTER COLUMN id SET DEFAULT nextval('tipoproductopf_id_seq'::regclass);
 
 
 --
@@ -2860,6 +2944,14 @@ ALTER TABLE ONLY nucleoconflicto
 
 ALTER TABLE ONLY sip_persona
     ADD CONSTRAINT persona_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: productopf productopf_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY productopf
+    ADD CONSTRAINT productopf_pkey PRIMARY KEY (id);
 
 
 --
@@ -3119,6 +3211,14 @@ ALTER TABLE ONLY tipomoneda
 
 
 --
+-- Name: tipoproductopf tipoproductopf_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipoproductopf
+    ADD CONSTRAINT tipoproductopf_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sip_trelacion trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3290,6 +3390,14 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
+-- Name: productopf fk_rails_005c6efcb9; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY productopf
+    ADD CONSTRAINT fk_rails_005c6efcb9 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
 -- Name: actor_sectoractor fk_rails_01abd767ad; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3399,6 +3507,14 @@ ALTER TABLE ONLY heb412_gen_doc
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyecto
     ADD CONSTRAINT fk_rails_395faa0882 FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
+-- Name: productopf fk_rails_3abca040a4; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY productopf
+    ADD CONSTRAINT fk_rails_3abca040a4 FOREIGN KEY (tipoproductopf_id) REFERENCES tipoproductopf(id);
 
 
 --
@@ -4000,6 +4116,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170419010845'),
 ('20170419135948'),
 ('20170422182531'),
-('20170429035047');
+('20170429035047'),
+('20170501142000'),
+('20170501142001'),
+('20170501142638'),
+('20170501144508');
 
 

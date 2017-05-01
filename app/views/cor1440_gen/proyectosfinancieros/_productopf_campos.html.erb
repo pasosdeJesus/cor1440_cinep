@@ -1,0 +1,49 @@
+<tr class='nested-fields'>
+  <td>
+    <%= f.association :tipoproductopf,
+      collection: ::Tipoproductopf.habilitados,
+      label_method: :nombre,
+      value_method: :id,
+      label: false
+    %>
+  </td>
+  <td>
+    <%= f.input :fechaplaneada_localizada, 
+      label: false,
+      :input_html => { "data-behaviour" => "datepicker" },
+      :as => :string 
+    %>
+  </td>
+  <td>
+    <%= f.input :fechareal_localizada, 
+      label: false,
+      :input_html => { "data-behaviour" => "datepicker" },
+      :as => :string
+    %>
+  </td>
+  <td>
+    <%= f.input :devoluciones,
+      boolean_style: :nested,
+      label: false
+    %>
+  </td>
+  <td>
+    <%= f.input :detalle, 
+      label: false, 
+      as: :text, 
+      input_html: { rows: 2 } %>
+  </td>
+  <td>
+    <%= f.input :seguimiento, 
+      label: false, 
+      as: :text, 
+      input_html: { rows: 2 } %>
+  </td>
+  <td>
+    <%= f.input :id, as: :hidden %>
+    <%= link_to_remove_association "Eliminar", f, 
+        :class => 'btn-danger' 
+    %>
+    <div><%= f.error_notification %></div>
+  </td>
+</tr>

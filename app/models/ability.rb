@@ -22,6 +22,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'sectoractor'],
         ['', 'tipoanexo'],
         ['', 'tipomoneda'],
+        ['', 'tipoproductopf'],
         ['Sip', 'grupo']
     ]
   end

@@ -86,8 +86,8 @@ gem 'heb412_gen', git: "https://github.com/pasosdeJesus/heb412_gen.git"
 #gem 'heb412_gen', path: '../heb412_gen'
 
 # Motor Cor1440_gen
-gem 'cor1440_gen', git: "https://github.com/pasosdeJesus/cor1440_gen.git"
-#gem "cor1440_gen", path: '../cor1440_gen'
+#gem 'cor1440_gen', git: "https://github.com/pasosdeJesus/cor1440_gen.git"
+gem "cor1440_gen", path: '../cor1440_gen'
 
 
 # Motor Jn316_gen
@@ -97,7 +97,7 @@ gem 'jn316_gen', git: "https://github.com/pasosdeJesus/jn316_gen.git"
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development do
   # Depurar
-  #gem 'byebug'
+  gem 'byebug'
 
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas
   gem 'web-console'

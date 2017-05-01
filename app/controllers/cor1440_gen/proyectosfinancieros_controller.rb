@@ -15,29 +15,21 @@ module Cor1440Gen
 
     include Sip::ConsultasHelper
 
-#    def index
-#      @proyectosfinancieros = Cor1440Gen::Proyectofinanciero.all
-#      #@proyectosfinancieros = @proyectosfinancieros.paginate(
-#      #  :page => params[:pagina], per_page: 20
-#      #)
-#      @numproyectosfinancieros = @proyectosfinancieros.count();
-#      @incluir = ['id', 'nombre', 'referenciacinep', 
-#                  'fechainicio_ddMyyyy', 'fechacierre_ddMyyyy', 
-#                  'presupuestototal_localizado', 
-#                  'aportecinep_localizado', 'monto_localizado', 
-#                  'tipomoneda']
-#      respond_to do |format|
-#        format.html { 
-#          @proyectosfinancieros = @proyectosfinancieros.paginate(
-#            :page => params[:pagina], per_page: 20
-#          )
-#          render "index", layout: "application"
-#        }
-#        format.json { head :no_content }
-#      end
-#    end
-#
-    
+    def atributos_index
+      [ "id", 
+        "nombre" ] +
+        [ :financiador_ids =>  [] ] +
+        [ "fechainicio_localizada",
+          "fechacierre_localizada",
+          "responsable_id"
+      ] +
+      [ :proyecto_ids =>  [] ] +
+      [ 
+        "monto",
+        "observaciones"
+      ] 
+    end
+
     def genera_odf
       # Ejemplo de https://github.com/sandrods/odf-report
       report = ODFReport::Report.new("#{Rails.root}/app/reportes/Plantilla-RE-SC-07.odt") do |r|
@@ -207,10 +199,6 @@ module Cor1440Gen
             d.add_column('DESCRIPCION', :detalle)
             d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
           end
-          #ifin = @proyectofinanciero.informefinanciero.inject('') do |memo, i|
-          #  (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
-          #    i.fechaplaneada_ddMyyyy.to_s 
-          #end
         end
         if (ifin == '') 
           ifin = 'N/A'
@@ -225,15 +213,21 @@ module Cor1440Gen
             d.add_column('DESCRIPCION', :detalle)
             d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
           end
-          #iaud = @proyectofinanciero.informeauditoria.inject('') do |memo, i|
-          #  (memo == '' ? '' : memo + "\n") + i.detalle + ", " +
-          #    i.fechaplaneada_ddMyyyy.to_s 
-          #end
         end
         if (iaud == '') 
           iaud = 'N/A'
         end
         r.add_field(:informesauditorias, iaud)
+
+        if @proyectofinanciero.productopf
+          r.add_table('PRODUCTOS', 
+                      @proyectofinanciero.productopf, 
+                      :header=>false) do |d|
+            d.add_column('DESCRIPCION') { |i| i.tipoproductopf.nombre.to_s + ' ' + i.detalle.to_s }
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
+          end
+        end
+
       end
       return report
     end
@@ -269,59 +263,6 @@ module Cor1440Gen
     end
 
 
-#    def show
-#      byebug
-#      @basica = Proyectofinanciero.where(
-#        id: @proyectofinanciero.id)
-#      render layout: "application"
-#    end
-
-
-#    def new
-#      @basica = @proyectofinanciero = Proyectofinanciero.new
-      #@proyectofinanciero.current_usuario = current_usuario
-      #@proyectofinanciero.oficina_id = 1
-      #render layout: "application"
-#    end
-
-#    def edit
-#    end
-
-
-#    def create
-#      @basica = @proyectofinanciero = Proyectofinanciero.new(proyectofinanciero_params)
-#      @proyectofinanciero.fechacreacion =  DateTime.now.strftime('%Y-%m-%d') 
-#      #@proyectofinanciero.current_usuario = current_usuario
-#      #
-#      
-#      if @proyectofinanciero.save
-#        redirect_to admin_basica_ruta(
-#          @proyectofinanciero), 
-#          notice: 'Proyecto creado.'
-#      else
-#        render :new
-#      end
-#    end
-#
-#
-#    def update
-#      if @proyectofinanciero.update(proyectofinanciero_params)
-#        redirect_to admin_basica_ruta(@proyectofinanciero),
-#              notice: 'Proyecto actualizado.' 
-#      else
-#        render :edit
-#      end
-#    end
-#
-#    def destroy
-#      @proyectofinanciero.destroy
-#      respond_to do |format|
-#        format.html { 
-#          redirect_to proyectosfinancieros_path, notice: 'Proyecto eliminado' }
-#        format.json { head :no_content }
-#      end
-#    end
-#
     private
 
     def set_proyectofinanciero
@@ -347,7 +288,6 @@ module Cor1440Gen
         :apresupuesto,
         :autenticarcompulsar,
         :centrocosto,
-        :compromisos,
         :copiasdesoporte,
         :cuentasbancarias,
         :emailrespagencia, 
@@ -412,6 +352,16 @@ module Cor1440Gen
           :_destroy
         ],
         :oficina_ids => [],
+        :productopf_attributes => [
+          :fechaplaneada_localizada,
+          :fechareal_localizada,
+          :id,
+          :detalle,
+          :devoluciones,
+          :seguimiento,
+          :tipoproductopf_id,
+          :_destroy
+        ],
         :proyectofinanciero_usuario_attributes => [
           :id,
           :cargo_id,
