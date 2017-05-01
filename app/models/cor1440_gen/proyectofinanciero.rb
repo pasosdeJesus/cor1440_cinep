@@ -95,6 +95,8 @@ module Cor1440Gen
     validates :monto, numericality: 
       { less_than: 1000000000000000000 }
     validates :otrosaportescinep, length: { maximum: 500}
+    flotante_localizado :aotrosfin
+    validates :aotrosesp, length: { maximum: 500}
     flotante_localizado :presupuestototal
     validates :presupuestototal, numericality: 
       { greater_than: 0, less_than: 1000000000000000000 }
@@ -109,7 +111,7 @@ module Cor1440Gen
                                      less_than: 1000000000000000000 }
     validates :telrespagencia, length: { maximum: 100}
 
-    campofecha_localizado:fechaliquidacion
+    campofecha_localizado :fechaliquidacion
 
 #    validate :tiene_coordinador
 #    def tiene_coordinador
