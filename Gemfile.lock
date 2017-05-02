@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 794a01986c782e35d3b7bae5b8f06c132fb18a09
+  revision: c96dfafda2a1c69bd4c64f612ab9aaf0b31913a4
   specs:
     cor1440_gen (1.0.b1)
       devise
@@ -109,7 +109,7 @@ GEM
     byebug (9.0.6)
     camertron-eprun (1.1.1)
     cancancan (1.16.0)
-    capybara (2.13.0)
+    capybara (2.14.0)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -343,7 +343,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
-  byebug
   cancancan
   capybara
   chosen-rails
