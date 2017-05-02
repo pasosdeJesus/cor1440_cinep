@@ -1277,7 +1277,10 @@ CREATE TABLE informeauditoria (
     detalle character varying(5000),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    fechaplaneada date
+    fechaplaneada date,
+    fechareal date,
+    devoluciones boolean,
+    seguimiento character varying(5000)
 );
 
 
@@ -1310,7 +1313,10 @@ CREATE TABLE informefinanciero (
     detalle character varying(5000),
     fechaplaneada date,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    fechareal date,
+    devoluciones boolean,
+    seguimiento character varying(5000)
 );
 
 
@@ -1343,7 +1349,10 @@ CREATE TABLE informenarrativo (
     detalle character varying(5000),
     fechaplaneada date,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    fechareal date,
+    devoluciones boolean,
+    seguimiento character varying(5000)
 );
 
 
@@ -4120,6 +4129,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170501142000'),
 ('20170501142001'),
 ('20170501142638'),
-('20170501144508');
+('20170501144508'),
+('20170501215130');
 
 

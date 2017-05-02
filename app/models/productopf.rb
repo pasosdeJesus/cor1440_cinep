@@ -39,7 +39,6 @@ class Productopf < ActiveRecord::Base
     end
   end
 
-
   validate :fechareal_posterior_inicio
   def fechareal_posterior_inicio
     if fechareal && 

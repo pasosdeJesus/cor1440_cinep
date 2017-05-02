@@ -8,12 +8,14 @@ class Informenarrativo < ActiveRecord::Base
     foreign_key: 'proyectofinanciero_id'
 
   validates :detalle, length: { maximum: 5000}
+  validates :seguimiento, length: { maximum: 5000}
 
   default_scope { order(:id) }
 
   campofecha_localizado :fechaplaneada
-  validate :fechaplaneada_posterior_inicio
+  campofecha_localizado :fechareal
 
+  validate :fechaplaneada_posterior_inicio
   def fechaplaneada_posterior_inicio
     if fechaplaneada && 
             proyectofinanciero &&
@@ -21,6 +23,17 @@ class Informenarrativo < ActiveRecord::Base
             fechaplaneada < proyectofinanciero.fechainicio then
       errors.add(:fechaplaneada,
                  "La fecha planeada debe ser posterior a la de inicio")
+    end
+  end
+
+  validate :fechareal_posterior_inicio
+  def fechareal_posterior_inicio
+    if fechareal && 
+      proyectofinanciero &&
+      proyectofinanciero.fechainicio &&
+      fechareal < proyectofinanciero.fechainicio then
+      errors.add(:fechareal,
+                 "La fecha de envío debe ser posterior a la de inicio")
     end
   end
 
