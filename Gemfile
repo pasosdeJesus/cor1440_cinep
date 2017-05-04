@@ -18,6 +18,7 @@ gem 'sass'
 gem 'chosen-rails'
 
 gem 'rspreadsheet'
+gem 'libxml-ruby'
 
 # Generación de PDF
 gem "prawn"
