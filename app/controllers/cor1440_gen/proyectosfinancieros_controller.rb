@@ -246,7 +246,8 @@ module Cor1440Gen
           r.add_field(:equipotrabajo, 
                       @proyectofinanciero.proyectofinanciero_usuario.inject('') { |memo, i|
               (memo == '' ? '' : memo + "\n") + 
-                (i.usuario ? i.usuario.nombre : "Por contratar") +
+                (i.usuario ? i.usuario.nombres + ' ' +
+                i.usuario.apellidos : "Por contratar") +
                 " (" + i.cargo.nombre.capitalize + ")" + 
                 (i.porcentaje ? " " + i.porcentaje.to_s + "%" : '')
           })
