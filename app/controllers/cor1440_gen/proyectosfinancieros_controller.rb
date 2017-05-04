@@ -331,7 +331,7 @@ module Cor1440Gen
     end
 
     def fichaimp
-      @basica = @proyectosfinancieros = Proyectofinanciero.where(
+      @registro = @basica = @proyectosfinancieros = Proyectofinanciero.where(
         id: @proyectofinanciero.id)
 
       report = genera_odf
@@ -342,7 +342,7 @@ module Cor1440Gen
     end
 
     def fichapdf
-      @basica = @proyectosfinancieros = Proyectofinanciero.where(
+      @registro = @basica = @proyectosfinancieros = Proyectofinanciero.where(
         id: @proyectofinanciero.id)
 
       report = genera_odf
@@ -364,7 +364,7 @@ module Cor1440Gen
     private
 
     def set_proyectofinanciero
-      @basica = @proyectofinanciero = Proyectofinanciero.find(
+      @registro = @basica = @proyectofinanciero = Proyectofinanciero.find(
         Proyectofinanciero.connection.quote_string(params[:id]).to_i
       )
       #@proyectofinanciero.current_usuario = current_usuario
