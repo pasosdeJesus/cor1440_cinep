@@ -1,9 +1,12 @@
-
+<p>
 <table border=1 width="100%">
   <thead>
     <tr>
       <th>Informe Narrativo</th>
       <th>Fecha Planeada</th>
+      <th>Fecha Envío</th>
+      <th>Devoluciones</th>
+      <th>Seguimiento</th>
       <th></th>
     </tr>
   </thead>
@@ -22,12 +25,17 @@
     :class => 'btn-primary'
   %>
 </div>
+</p>
 
+<p>
 <table border=1 width="100%">
   <thead>
     <tr>
       <th>Informe Financiero</th>
       <th>Fecha Planeada</th>
+      <th>Fecha Envío</th>
+      <th>Devoluciones</th>
+      <th>Seguimiento</th>
       <th></th>
     </tr>
   </thead>
@@ -46,15 +54,48 @@
     :class => 'btn-primary'
   %>
 </div>
+</p>
 
+<p>
+<table border=1 width="100%">
+  <thead>
+    <tr><th colspan='7'>Productos</th></tr>
+    <tr>
+      <th>Tipo de producto</th>
+      <th>Fecha Planeada</th>
+      <th>Fecha envío real</th>
+      <th>Devoluciones</th>
+      <th>Detalle</th>
+      <th>Seguimiento</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="productopf">
+    <%= f.simple_fields_for :productopf do |d| %>
+      <%= render 'productopf_campos', :f => d %>
+    <% end %>
+  </tbody>
+</table>
+<div class="links">
+  <%= link_to_add_association 'Añadir Producto', f, 
+    :productopf,
+    :"data-association-insertion-node" => "tbody#productopf", 
+    :"data-association-insertion-method" => "append", 
+    partial: 'productopf_campos',
+    :class => 'btn-primary'
+  %>
+</div>
+</p>
 
-<%= f.input :compromisos, as: :text, input_html: { rows: 5 } %>
-
+<p>
 <table border=1 width="100%">
   <thead>
     <tr>
       <th>Informe Auditoria</th>
       <th>Fecha Planeada</th>
+      <th>Fecha Envío</th>
+      <th>Devoluciones</th>
+      <th>Seguimiento</th>
       <th></th>
     </tr>
   </thead>
@@ -73,6 +114,7 @@
     :class => 'btn-primary'
   %>
 </div>
+</p>
 
 <%= f.input :empresaauditoria %>
 <!--%= f.input :formatosespecificos%-->

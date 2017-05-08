@@ -22,6 +22,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'sectoractor'],
         ['', 'tipoanexo'],
         ['', 'tipomoneda'],
+        ['', 'tipoproductopf'],
         ['Sip', 'grupo']
     ]
   end
@@ -42,6 +43,24 @@ class Ability  < Cor1440Gen::Ability
     super() + [
       ['', 'sectoractor']
     ]
+  end
+
+  CAMPOS_PLANTILLAS_PROPIAS = {
+    'Solicitud de Informe' => { 
+      campos: [
+        'compromiso_id',  'titulo', 
+        'coordinador', 'responsable', 
+        'fechaplaneada', 'fechareal', 
+        'devoluciones', 'observaciones', 'seguimiento',
+        'a_tiempo'
+      ],
+      controlador: 'Cor1440Gen::Proyectofinanciero'
+    }
+  }
+
+  def campos_plantillas 
+    Heb412Gen::Ability::CAMPOS_PLANTILLAS_PROPIAS.
+      clone.merge(CAMPOS_PLANTILLAS_PROPIAS)
   end
 
   # Ver documentacion de este metodo en app/models/ability de sip
@@ -83,6 +102,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, Cor1440Gen::Actividad
         can :manage, Cor1440Gen::Informe
         can :manage, ::Usuario
+        can :manage, Heb412Gen::Doc
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|
           c = Ability.tb_clase(t)

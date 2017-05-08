@@ -3,11 +3,11 @@
 require 'cor1440_gen/concerns/controllers/proyectosfinancieros_controller'
 
 module Cor1440Gen
-  class ProyectosfinancierosController < Sip::Admin::BasicasController
+  class ProyectosfinancierosController < Sip::ModelosController
     helper ::ApplicationHelper
     include ::ApplicationHelper
     include Cor1440Gen::Concerns::Controllers::ProyectosfinancierosController
-    include ::Sip::Admin::BasicasHelpers
+    include ::Sip::ModeloHelper
 
     before_action :set_proyectofinanciero, 
       only: [:show, :edit, :update, :destroy]
@@ -15,32 +15,120 @@ module Cor1440Gen
 
     include Sip::ConsultasHelper
 
-#    def index
-#      @proyectosfinancieros = Cor1440Gen::Proyectofinanciero.all
-#      #@proyectosfinancieros = @proyectosfinancieros.paginate(
-#      #  :page => params[:pagina], per_page: 20
-#      #)
-#      @numproyectosfinancieros = @proyectosfinancieros.count();
-#      @incluir = ['id', 'nombre', 'referenciacinep', 
-#                  'fechainicio_ddMyyyy', 'fechacierre_ddMyyyy', 
-#                  'presupuestototal_localizado', 
-#                  'aportecinep_localizado', 'monto_localizado', 
-#                  'tipomoneda']
-#      respond_to do |format|
-#        format.html { 
-#          @proyectosfinancieros = @proyectosfinancieros.paginate(
-#            :page => params[:pagina], per_page: 20
-#          )
-#          render "index", layout: "application"
-#        }
-#        format.json { head :no_content }
-#      end
-#    end
-#
-    def fichaimp
-      @basica = @proyectosfinancieros = Proyectofinanciero.where(
-        id: @proyectofinanciero.id)
+    def atributos_index
+      [ "id", 
+        "nombre" ] +
+        [ :financiador_ids =>  [] ] +
+        [ "fechainicio_localizada",
+          "fechacierre_localizada",
+          "responsable_id"
+      ] +
+      [ :proyecto_ids =>  [] ] +
+      [ 
+        "monto",
+        "observaciones"
+      ] 
+    end
 
+    def vista_solicitud_informes
+      cons = ""
+      pre = ""
+      [['informenarrativo','INFOMRE NARRATIVO'], 
+       ['informefinanciero', 'INFORME FINANCIERO'],
+       ['informeauditoria', 'INFORME DE AUDITORÍA']].each do |i|
+        cons += pre 
+        cons += "SELECT proyectofinanciero_id, fechaplaneada, fechareal, 
+          devoluciones,
+          '#{i[1]}: ' || detalle as observaciones, seguimiento
+          FROM #{i[0]}"
+        pre = " UNION "
+      end
+
+      cons += pre 
+      cons += "SELECT proyectofinanciero_id, fechaplaneada, fechareal, 
+        devoluciones,
+        tipoproductopf.nombre || ': ' || detalle as observaciones, 
+        seguimiento
+        FROM productopf JOIN tipoproductopf
+        ON productopf.tipoproductopf_id=tipoproductopf.id"
+
+      Heb412Gen::Plantillahcm.connection.execute <<-SQL
+      DROP VIEW IF EXISTS v_solicitud_informes ;
+      DROP VIEW IF EXISTS v_solicitud_informes1 ;
+      CREATE VIEW v_solicitud_informes1 AS (#{cons});
+      CREATE VIEW v_solicitud_informes AS (
+      SELECT p.id AS compromiso_id, p.referenciacinep AS titulo, 
+      ARRAY_TO_STRING(ARRAY(SELECT nombres || ' ' || apellidos FROM 
+        usuario JOIN coordinador_proyectofinanciero 
+        ON usuario.id=coordinador_proyectofinanciero.coordinador_id
+        WHERE proyectofinanciero_id=p.id), ', ') AS coordinador,
+      ARRAY_TO_STRING(ARRAY(SELECT nombres || ' ' || apellidos FROM 
+        usuario JOIN proyectofinanciero_uresponsable
+        ON usuario.id=proyectofinanciero_uresponsable.uresponsable_id
+        WHERE proyectofinanciero_id=p.id), ', ') AS responsable,
+      fechaplaneada, fechareal,
+      CASE WHEN devoluciones THEN 'SI' 
+        WHEN devoluciones IS NULL THEN '' 
+        ELSE 'NO' END AS devoluciones,
+      s.observaciones as observaciones, seguimiento, 
+      CASE WHEN fechareal<=fechaplaneada THEN 'SI'
+        WHEN fechareal>fechaplaneada THEN 'NO'
+        WHEN fechareal IS NULL AND CURRENT_DATE>fechaplaneada THEN 'NO'
+        ELSE '' END AS a_tiempo
+      FROM cor1440_gen_proyectofinanciero AS p
+      JOIN v_solicitud_informes1 AS s
+      ON p.id=s.proyectofinanciero_id
+      ORDER BY s.fechaplaneada
+      )
+      SQL
+      return Heb412Gen::Plantillahcm.find_by_sql(
+        'SELECT * FROM v_solicitud_informes')
+    end
+
+    def index(c = nil)
+      if (c == nil) 
+        c = clase.constantize
+      end
+      @plantillas = Heb412Gen::Plantillahcm.where(
+        vista: 'Solicitud de Informe').
+        select('nombremenu, id').map { 
+          |co| [co.nombremenu, co.id] 
+        }
+      respond_to do |format|
+       format.html {  
+         @registros = @registro = c.paginate(
+           :page => params[:pagina], per_page: 20
+         );
+        render :index, layout: 'application'
+       }
+       format.json {
+         @registros = @registro = c.all
+         render :index, json: @registro
+       }
+       format.js {
+         @registros = @registro = c.all
+         render :index, json: @registro
+       }
+       format.ods {
+         if params[:idplantilla].nil? or
+           params[:idplantilla].to_i <= 0 then
+           head :no_content 
+         elsif Heb412Gen::Plantillahcm.where(
+           id: params[:idplantilla].to_i).take.nil?
+           head :no_content 
+         else
+           @vista = vista_solicitud_informes
+           pl = Heb412Gen::Plantillahcm.find(
+             params[:idplantilla].to_i)
+           n = Heb412Gen::PlantillahcmController.
+             llena_plantilla_multiple_fd(pl, @vista)
+           send_file n, x_sendfile: true
+         end
+       }
+      end
+    end
+
+    def genera_odf
       # Ejemplo de https://github.com/sandrods/odf-report
       report = ODFReport::Report.new("#{Rails.root}/app/reportes/Plantilla-RE-SC-07.odt") do |r|
         cn = [:nombre, :referencia, :referenciacinep, 
@@ -121,7 +209,7 @@ module Cor1440Gen
           r.add_field(:responsable, 
                       @proyectofinanciero.proyectofinanciero_uresponsable.inject('') { |memo, i|
               (memo == '' ? '' : memo + "\n") + 
-                (i.uresponsable ? i.uresponsable.nombre : "Por contratar") +
+                (i.uresponsable ? i.uresponsable.nombres + ' ' + i.uresponsable.apellidos : "Por contratar") +
                 (i.porcentaje ? " " + i.porcentaje.to_s + "%" : '')
           })
         end
@@ -150,14 +238,16 @@ module Cor1440Gen
           r.add_field(:coordinador, 
                       @proyectofinanciero.coordinador_proyectofinanciero.inject('') { |memo, i|
             (memo == '' ? '' : memo + '; ') + 
-              (i.coordinador ? i.coordinador.nombre : "") })
+              (i.coordinador ? i.coordinador.nombres + ' ' + 
+               i.coordinador.apellidos : "") })
         end
         if @proyectofinanciero.proyectofinanciero_usuario
           
           r.add_field(:equipotrabajo, 
                       @proyectofinanciero.proyectofinanciero_usuario.inject('') { |memo, i|
               (memo == '' ? '' : memo + "\n") + 
-                (i.usuario ? i.usuario.nombre : "Por contratar") +
+                (i.usuario ? i.usuario.nombres + ' ' +
+                i.usuario.apellidos : "Por contratar") +
                 " (" + i.cargo.nombre.capitalize + ")" + 
                 (i.porcentaje ? " " + i.porcentaje.to_s + "%" : '')
           })
@@ -169,7 +259,7 @@ module Cor1440Gen
           r.add_table('TDESEMBOLSOS', @proyectofinanciero.desembolso, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
             d.add_column('VALORPLANEADO'){|i| i.valorplaneado_localizado.to_s +
                                           ' ' + tm }
           end
@@ -192,7 +282,7 @@ module Cor1440Gen
                       @proyectofinanciero.informenarrativo, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
           end
         end
         if (inarr == '') 
@@ -206,12 +296,8 @@ module Cor1440Gen
                       @proyectofinanciero.informefinanciero, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
           end
-          #ifin = @proyectofinanciero.informefinanciero.inject('') do |memo, i|
-          #  (memo == '' ? '' : memo + "\n") + i.detalle + ", " + 
-          #    i.fechaplaneada_ddMyyyy.to_s 
-          #end
         end
         if (ifin == '') 
           ifin = 'N/A'
@@ -224,82 +310,62 @@ module Cor1440Gen
                       @proyectofinanciero.informeauditoria, 
                       :header=>false) do |d|
             d.add_column('DESCRIPCION', :detalle)
-            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_ddMyyyy.to_s}
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
           end
-          #iaud = @proyectofinanciero.informeauditoria.inject('') do |memo, i|
-          #  (memo == '' ? '' : memo + "\n") + i.detalle + ", " +
-          #    i.fechaplaneada_ddMyyyy.to_s 
-          #end
         end
         if (iaud == '') 
           iaud = 'N/A'
         end
         r.add_field(:informesauditorias, iaud)
-      end
 
+        if @proyectofinanciero.productopf
+          r.add_table('PRODUCTOS', 
+                      @proyectofinanciero.productopf, 
+                      :header=>false) do |d|
+            d.add_column('DESCRIPCION') { |i| i.tipoproductopf.nombre.to_s + ' ' + i.detalle.to_s }
+            d.add_column('FECHAPLAN') {|i| i.fechaplaneada_localizada.to_s}
+          end
+        end
+
+      end
+      return report
+    end
+
+    def fichaimp
+      @registro = @basica = @proyectosfinancieros = Proyectofinanciero.where(
+        id: @proyectofinanciero.id)
+
+      report = genera_odf
       send_data report.generate, 
         type: 'application/vnd.oasis.opendocument.text',
         disposition: 'attachment',
         filename: 'RE-SC-07.odt'
     end
 
-#    def show
-#      byebug
-#      @basica = Proyectofinanciero.where(
-#        id: @proyectofinanciero.id)
-#      render layout: "application"
-#    end
+    def fichapdf
+      @registro = @basica = @proyectosfinancieros = Proyectofinanciero.where(
+        id: @proyectofinanciero.id)
+
+      report = genera_odf
+      report.generate("/tmp/RE-SC-07.odt")
+      if File.exist?('/tmp/RE-SC-07.pdf')
+        File.delete('/tmp/RE-SC-07.pdf')
+      end
+      res = `libreoffice --headless --convert-to pdf /tmp/RE-SC-07.odt --outdir /tmp/`
+      puts res
+      if File.exist?('/tmp/RE-SC-07.pdf')
+        send_file '/tmp/RE-SC-07.pdf',
+          type: 'application/pdf',
+          disposition: 'attachment',
+          filename: 'RE-SC-07.pdf'
+      end
+    end
 
 
-#    def new
-#      @basica = @proyectofinanciero = Proyectofinanciero.new
-      #@proyectofinanciero.current_usuario = current_usuario
-      #@proyectofinanciero.oficina_id = 1
-      #render layout: "application"
-#    end
-
-#    def edit
-#    end
-
-
-#    def create
-#      @basica = @proyectofinanciero = Proyectofinanciero.new(proyectofinanciero_params)
-#      @proyectofinanciero.fechacreacion =  DateTime.now.strftime('%Y-%m-%d') 
-#      #@proyectofinanciero.current_usuario = current_usuario
-#      #
-#      
-#      if @proyectofinanciero.save
-#        redirect_to admin_basica_ruta(
-#          @proyectofinanciero), 
-#          notice: 'Proyecto creado.'
-#      else
-#        render :new
-#      end
-#    end
-#
-#
-#    def update
-#      if @proyectofinanciero.update(proyectofinanciero_params)
-#        redirect_to admin_basica_ruta(@proyectofinanciero),
-#              notice: 'Proyecto actualizado.' 
-#      else
-#        render :edit
-#      end
-#    end
-#
-#    def destroy
-#      @proyectofinanciero.destroy
-#      respond_to do |format|
-#        format.html { 
-#          redirect_to proyectosfinancieros_path, notice: 'Proyecto eliminado' }
-#        format.json { head :no_content }
-#      end
-#    end
-#
     private
 
     def set_proyectofinanciero
-      @basica = @proyectofinanciero = Proyectofinanciero.find(
+      @registro = @basica = @proyectofinanciero = Proyectofinanciero.find(
         Proyectofinanciero.connection.quote_string(params[:id]).to_i
       )
       #@proyectofinanciero.current_usuario = current_usuario
@@ -316,17 +382,18 @@ module Cor1440Gen
         :anotacionesinf,
         :anotacionesre,
         :anotacionesrh,
+        :aotrosfin_localizado,
+        :aotrosesp,
         :apresupuesto,
         :autenticarcompulsar,
         :centrocosto,
-        :compromisos,
         :copiasdesoporte,
         :cuentasbancarias,
         :emailrespagencia, 
         :empresaauditoria,
-        :fechacierre_ddMyyyy,
-        :fechainicio_ddMyyyy,
-        :fechaliquidacion_ddMyyyy,
+        :fechacierre_localizada,
+        :fechainicio_localizada,
+        :fechaliquidacion_localizada,
         :financiador,
         #:formatosespecificos,
         #:formatossolicitudpago,
@@ -360,30 +427,49 @@ module Cor1440Gen
         :desembolso_attributes => [
           :id,
           :detalle,
-          :fechaplaneada_ddMyyyy,
+          :fechaplaneada_localizada,
           :valorplaneado_localizado,
           :_destroy
         ],
         :financiador_ids => [],
         :informeauditoria_attributes => [
-          :id,
           :detalle,
-          :fechaplaneada_ddMyyyy,
+          :devoluciones,
+          :seguimiento,
+          :fechaplaneada_localizada,
+          :fechareal_localizada,
+          :id,
           :_destroy
         ],
         :informefinanciero_attributes => [
-          :id,
           :detalle,
-          :fechaplaneada_ddMyyyy,
+          :devoluciones,
+          :seguimiento,
+          :fechaplaneada_localizada,
+          :fechareal_localizada,
+          :id,
           :_destroy
         ],
         :informenarrativo_attributes => [
-          :id,
           :detalle,
-          :fechaplaneada_ddMyyyy,
+          :devoluciones,
+          :seguimiento,
+          :fechaplaneada_localizada,
+          :fechareal_localizada,
+          :id,
           :_destroy
         ],
         :oficina_ids => [],
+        :productopf_attributes => [
+          :fechaplaneada_localizada,
+          :fechareal_localizada,
+          :id,
+          :detalle,
+          :devoluciones,
+          :seguimiento,
+          :tipoproductopf_id,
+          :_destroy
+        ],
         :proyectofinanciero_usuario_attributes => [
           :id,
           :cargo_id,

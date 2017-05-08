@@ -81,6 +81,13 @@ module Cor1440Gen
     accepts_nested_attributes_for :informeauditoria, 
       allow_destroy: true, reject_if: :all_blank
 
+    has_many :productopf, dependent: :delete_all,
+      class_name: '::Productopf',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    accepts_nested_attributes_for :productopf, 
+      allow_destroy: true, reject_if: :all_blank
+
+
     validates :anotacionescontab, length: { maximum: 5000}
     flotante_localizado :aportecinep
     validates :aportecinep, numericality: 
@@ -95,6 +102,8 @@ module Cor1440Gen
     validates :monto, numericality: 
       { less_than: 1000000000000000000 }
     validates :otrosaportescinep, length: { maximum: 500}
+    flotante_localizado :aotrosfin
+    validates :aotrosesp, length: { maximum: 500}
     flotante_localizado :presupuestototal
     validates :presupuestototal, numericality: 
       { greater_than: 0, less_than: 1000000000000000000 }
@@ -109,7 +118,7 @@ module Cor1440Gen
                                      less_than: 1000000000000000000 }
     validates :telrespagencia, length: { maximum: 100}
 
-    campofecha_localizado:fechaliquidacion
+    campofecha_localizado :fechaliquidacion
 
 #    validate :tiene_coordinador
 #    def tiene_coordinador
