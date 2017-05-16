@@ -75,8 +75,10 @@ class Ability  < Cor1440Gen::Ability
     can :descarga_anexo, Sip::Anexo
     if !usuario.nil? && !usuario.rol.nil? then
       can :nuevo, Cor1440Gen::Actividad
+      can :new, Cor1440Gen::Actividad
       case usuario.rol 
       when Ability::ROLOPERADOR
+        can :manage, Cor1440Gen::Actividad
         if grupos.include?(GRUPO_COMPROMISOS)
           # Oficina Gerencia de Proyectos
           can :manage, Cor1440Gen::Proyectofinanciero
