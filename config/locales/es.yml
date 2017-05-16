@@ -98,8 +98,13 @@ es:
         Publicacion: Publicación CINEP/PPP
         Publicaciones: Publicaciones CINEP/PPP
       "redactor":
-        Redactor: Red de Actores
-        Redesactor: Redes de Actores
+        Redactor: Red de actores
+        Redesactor: Redes de actores
+      "regiongrupo":
+        Regionesgrupo: Región para un grupo
+        Regiongrupo: Regiones para un grupo
+        "{:departamento_ids=>[]}": Departamentos completos
+        "{:municipios_ids=>[]}": Otros municipios
       "sectoractor":
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
@@ -110,6 +115,9 @@ es:
       "tipomoneda":
         Tipomoneda: Tipo de moneda
         Tiposmoneda: Tipos de moneda
+      "tipoproductopf":
+        Tipoproductopf: Tipo de producto de un compromiso institucional
+        Tiposproductospf: Tipos de productos de un compromiso institucional
       "sip/oficina":
         Oficinas: Áreas
         Oficina: Área

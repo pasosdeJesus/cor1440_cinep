@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.4
+-- Dumped from database version 9.6.1
 -- Dumped by pg_dump version 9.6.1
 
 SET statement_timeout = 0;
@@ -420,6 +420,39 @@ CREATE SEQUENCE contexto_seq
 
 
 --
+-- Name: contextoinv; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE contextoinv (
+    id integer NOT NULL,
+    usuario_id integer,
+    fechainicio date,
+    fechafin date,
+    regiongrupo_id integer,
+    contexto text
+);
+
+
+--
+-- Name: contextoinv_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE contextoinv_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: contextoinv_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE contextoinv_id_seq OWNED BY contextoinv.id;
+
+
+--
 -- Name: coordinador_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -492,7 +525,8 @@ CREATE TABLE cor1440_gen_actividad (
     accioncgenero boolean,
     accioncetnia boolean,
     nucleoconflicto_id integer,
-    redactor_id integer
+    redactor_id integer,
+    contextoinv_id integer
 );
 
 
@@ -1724,6 +1758,61 @@ CREATE SEQUENCE region_seq
 
 
 --
+-- Name: regiongrupo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE regiongrupo (
+    id integer NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    grupo_id integer,
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: regiongrupo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE regiongrupo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: regiongrupo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE regiongrupo_id_seq OWNED BY regiongrupo.id;
+
+
+--
+-- Name: regiongrupo_sip_departamento; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE regiongrupo_sip_departamento (
+    regiongrupo_id integer NOT NULL,
+    sip_departamento_id integer NOT NULL
+);
+
+
+--
+-- Name: regiongrupo_sip_municipio; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE regiongrupo_sip_municipio (
+    regiongrupo_id integer NOT NULL,
+    sip_municipio_id integer NOT NULL
+);
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2474,6 +2563,80 @@ CREATE TABLE usuario (
 
 
 --
+-- Name: v_solicitud_informes1; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW v_solicitud_informes1 AS
+ SELECT informenarrativo.proyectofinanciero_id,
+    informenarrativo.fechaplaneada,
+    informenarrativo.fechareal,
+    informenarrativo.devoluciones,
+    ('INFOMRE NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
+    informenarrativo.seguimiento
+   FROM informenarrativo
+UNION
+ SELECT informefinanciero.proyectofinanciero_id,
+    informefinanciero.fechaplaneada,
+    informefinanciero.fechareal,
+    informefinanciero.devoluciones,
+    ('INFORME FINANCIERO: '::text || (informefinanciero.detalle)::text) AS observaciones,
+    informefinanciero.seguimiento
+   FROM informefinanciero
+UNION
+ SELECT informeauditoria.proyectofinanciero_id,
+    informeauditoria.fechaplaneada,
+    informeauditoria.fechareal,
+    informeauditoria.devoluciones,
+    ('INFORME DE AUDITORÍA: '::text || (informeauditoria.detalle)::text) AS observaciones,
+    informeauditoria.seguimiento
+   FROM informeauditoria
+UNION
+ SELECT productopf.proyectofinanciero_id,
+    productopf.fechaplaneada,
+    productopf.fechareal,
+    productopf.devoluciones,
+    (((tipoproductopf.nombre)::text || ': '::text) || (productopf.detalle)::text) AS observaciones,
+    productopf.seguimiento
+   FROM (productopf
+     JOIN tipoproductopf ON ((productopf.tipoproductopf_id = tipoproductopf.id)));
+
+
+--
+-- Name: v_solicitud_informes; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW v_solicitud_informes AS
+ SELECT p.id AS compromiso_id,
+    p.referenciacinep AS titulo,
+    array_to_string(ARRAY( SELECT (((usuario.nombres)::text || ' '::text) || (usuario.apellidos)::text)
+           FROM (usuario
+             JOIN coordinador_proyectofinanciero ON ((usuario.id = coordinador_proyectofinanciero.coordinador_id)))
+          WHERE (coordinador_proyectofinanciero.proyectofinanciero_id = p.id)), ', '::text) AS coordinador,
+    array_to_string(ARRAY( SELECT (((usuario.nombres)::text || ' '::text) || (usuario.apellidos)::text)
+           FROM (usuario
+             JOIN proyectofinanciero_uresponsable ON ((usuario.id = proyectofinanciero_uresponsable.uresponsable_id)))
+          WHERE (proyectofinanciero_uresponsable.proyectofinanciero_id = p.id)), ', '::text) AS responsable,
+    s.fechaplaneada,
+    s.fechareal,
+        CASE
+            WHEN s.devoluciones THEN 'SI'::text
+            WHEN (s.devoluciones IS NULL) THEN ''::text
+            ELSE 'NO'::text
+        END AS devoluciones,
+    s.observaciones,
+    s.seguimiento,
+        CASE
+            WHEN (s.fechareal <= s.fechaplaneada) THEN 'SI'::text
+            WHEN (s.fechareal > s.fechaplaneada) THEN 'NO'::text
+            WHEN ((s.fechareal IS NULL) AND (('now'::text)::date > s.fechaplaneada)) THEN 'NO'::text
+            ELSE ''::text
+        END AS a_tiempo
+   FROM (cor1440_gen_proyectofinanciero p
+     JOIN v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
+  ORDER BY s.fechaplaneada;
+
+
+--
 -- Name: victima_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -2516,6 +2679,13 @@ ALTER TABLE ONLY anexo_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('a
 --
 
 ALTER TABLE ONLY cargo ALTER COLUMN id SET DEFAULT nextval('cargo_id_seq'::regclass);
+
+
+--
+-- Name: contextoinv id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY contextoinv ALTER COLUMN id SET DEFAULT nextval('contextoinv_id_seq'::regclass);
 
 
 --
@@ -2701,6 +2871,13 @@ ALTER TABLE ONLY redactor ALTER COLUMN id SET DEFAULT nextval('redactor_id_seq':
 
 
 --
+-- Name: regiongrupo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY regiongrupo ALTER COLUMN id SET DEFAULT nextval('regiongrupo_id_seq'::regclass);
+
+
+--
 -- Name: sectoractor id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2793,6 +2970,14 @@ ALTER TABLE ONLY ar_internal_metadata
 
 ALTER TABLE ONLY cargo
     ADD CONSTRAINT cargo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: contextoinv contextoinv_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY contextoinv
+    ADD CONSTRAINT contextoinv_pkey PRIMARY KEY (id);
 
 
 --
@@ -2993,6 +3178,14 @@ ALTER TABLE ONLY publicacion
 
 ALTER TABLE ONLY redactor
     ADD CONSTRAINT redactor_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: regiongrupo regiongrupo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY regiongrupo
+    ADD CONSTRAINT regiongrupo_pkey PRIMARY KEY (id);
 
 
 --
@@ -3439,6 +3632,14 @@ ALTER TABLE ONLY anexo_proyectofinanciero
 
 
 --
+-- Name: contextoinv fk_rails_0fa44160c3; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY contextoinv
+    ADD CONSTRAINT fk_rails_0fa44160c3 FOREIGN KEY (usuario_id) REFERENCES usuario(id);
+
+
+--
 -- Name: heb412_gen_campohc fk_rails_1e5f26c999; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3548,6 +3749,14 @@ ALTER TABLE ONLY proyectofinanciero_usuario
 
 ALTER TABLE ONLY cor1440_gen_informe
     ADD CONSTRAINT fk_rails_40cb623d50 FOREIGN KEY (filtroproyectofinanciero) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: cor1440_gen_actividad fk_rails_45dcda8048; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_actividad
+    ADD CONSTRAINT fk_rails_45dcda8048 FOREIGN KEY (contextoinv_id) REFERENCES contextoinv(id);
 
 
 --
@@ -3687,6 +3896,14 @@ ALTER TABLE ONLY sip_grupo_usuario
 
 
 --
+-- Name: regiongrupo fk_rails_907d221630; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY regiongrupo
+    ADD CONSTRAINT fk_rails_907d221630 FOREIGN KEY (grupo_id) REFERENCES sip_grupo(id);
+
+
+--
 -- Name: cor1440_gen_financiador fk_rails_9daa099154; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3716,6 +3933,14 @@ ALTER TABLE ONLY actividad_publicacion
 
 ALTER TABLE ONLY cor1440_gen_informe
     ADD CONSTRAINT fk_rails_c02831dd89 FOREIGN KEY (filtroactividadarea) REFERENCES cor1440_gen_actividadarea(id);
+
+
+--
+-- Name: contextoinv fk_rails_c2808a2b4f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY contextoinv
+    ADD CONSTRAINT fk_rails_c2808a2b4f FOREIGN KEY (regiongrupo_id) REFERENCES regiongrupo(id);
 
 
 --
@@ -4130,6 +4355,11 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170501142001'),
 ('20170501142638'),
 ('20170501144508'),
-('20170501215130');
+('20170501215130'),
+('20170509120707'),
+('20170509124538'),
+('20170509133803'),
+('20170509140334'),
+('20170509140949');
 
 

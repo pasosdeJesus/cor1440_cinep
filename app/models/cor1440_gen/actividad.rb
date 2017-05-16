@@ -7,6 +7,9 @@ module Cor1440Gen
     include Cor1440Gen::Concerns::Models::Actividad
     include Sip::Localizacion
 
+    belongs_to :contextoinv, class_name: '::Contextoinv'
+    accepts_nested_attributes_for :contextoinv
+    
     belongs_to :departamento, class_name: 'Sip::Departamento'
     belongs_to :municipio, class_name: 'Sip::Municipio'
     belongs_to :redactor, class_name: '::Redactor'

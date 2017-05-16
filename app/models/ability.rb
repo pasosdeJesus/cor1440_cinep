@@ -19,6 +19,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'nucleoconflicto'],
         ['', 'publicacion'],
         ['', 'redactor'],
+        ['', 'regiongrupo'],
         ['', 'sectoractor'],
         ['', 'tipoanexo'],
         ['', 'tipomoneda'],

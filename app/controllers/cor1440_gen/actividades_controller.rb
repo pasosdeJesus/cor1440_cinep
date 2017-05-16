@@ -119,7 +119,11 @@ module Cor1440Gen
         :usuario_ids => [],
         :actividad_rangoedadac_attributes => [
           :id, :rangoedadac_id, :fl, :fr, :ml, :mr, :_destroy
-      ],
+        ],
+        :contextoinv_attributes => [
+          :id, :fechainicio, :fechafin, :usuario_id,
+          :regiongrupo_id
+        ],
         :actividad_sip_anexo_attributes => [
           :id,
           :id_actividad, 

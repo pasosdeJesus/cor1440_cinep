@@ -30,8 +30,13 @@ GIT
       sip
 
 GIT
-  remote: https://github.com/pasosdeJesus/sip.git
-  revision: ea79ff2bbe5ca48c71ddca38b063f4559ace950f
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
+  specs:
+    cocoon (1.2.6)
+
+PATH
+  remote: ../sip
   specs:
     sip (2.0.b3)
       bootstrap-datepicker-rails
@@ -49,12 +54,6 @@ GIT
       twitter-bootstrap-rails
       twitter_cldr
       will_paginate
-
-GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
-  specs:
-    cocoon (1.2.6)
 
 GEM
   remote: https://rubygems.org/
@@ -342,6 +341,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
+  byebug
   cancancan
   capybara
   chosen-rails

@@ -79,8 +79,8 @@ gem "tzinfo"
 gem "tzinfo-data"
 
 # Motor generico
-gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
-#gem 'sip', path: '../sip'
+#gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
+gem 'sip', path: '../sip'
 
 # Motor heb412_gen
 gem 'heb412_gen', git: "https://github.com/pasosdeJesus/heb412_gen.git"
@@ -97,12 +97,14 @@ gem 'jn316_gen', git: "https://github.com/pasosdeJesus/jn316_gen.git"
 
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development do
-  # Depurar
-  #gem 'byebug'
-
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas
   gem 'web-console'
 
+end
+
+group :test, :development do
+  # Depurar
+  gem 'byebug'
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo
