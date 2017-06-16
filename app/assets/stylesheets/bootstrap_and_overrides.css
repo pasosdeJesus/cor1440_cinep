@@ -52,3 +52,8 @@ h1 {
 	background-color: #DDD;
 	color: #777;
 }
+
+.disabled {
+	pointer-events: none;
+	cursor: default;
+}
