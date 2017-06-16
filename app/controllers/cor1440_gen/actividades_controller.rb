@@ -16,16 +16,17 @@ module Cor1440Gen
       if @busdepartamento != '' then
         ac = ac.where(departamento_id: @busdepartamento)
       end
+
       @busresultado = param_escapa(par, 'busresultado')
       if @busresultado != '' then
         ac = ac.where("unaccent(resultado) ILIKE unaccent(?)", "%#{@busresultado}%")
       end
+
       @buscontexto = param_escapa(par, 'buscontexto')
       if @buscontexto != '' then
         ac = ac.where("unaccent(contexto) ILIKE unaccent(?)", "%#{@buscontexto}%")
       end
       #puts current_usuario.oficina
-      #byebug
 
       return ac
     end
@@ -37,7 +38,7 @@ module Cor1440Gen
         @actividades.human_attribute_name(:responsable),
         @actividades.human_attribute_name(:nombre),
         @actividades.human_attribute_name(:departamento),
-        @actividades.human_attribute_name(:tipos),
+        @actividades.human_attribute_name(:actividadtipo),
         @actividades.human_attribute_name(:objetivo),
         @actividades.human_attribute_name(:proyectos),
         @actividades.human_attribute_name(:proyectosfinancieros),
