@@ -8,6 +8,15 @@ if (test "${USUARIO_AP}" = "") then {
 	echo "Definir usuario con el que se ejecuta en USUARIO_AP"
 	exit 1;
 } fi;
+if (test "${DIRAP}" = "") then {
+	echo "Definir directorio de aplicacion en DIRAP"
+	exit 1;
+} fi;
+if (test "${RAILS_RELATIVE_URL_ROOT}" = "") then {
+	echo "Definir ruta relativa en URL en RAILS_RELATIVE_URL_ROOT"
+	exit 1;
+} fi;
+
 if (test "${PGSSLCERT}" = "") then {
 	PGSSLCERT=~/.postgresql/postgresql.crt
 } fi;
@@ -19,6 +28,5 @@ DOAS=`which doas 2>/dev/null`
 if (test "$DOAS" = "") then {
 	DOAS=sudo
 } fi;
-
-$DOAS su ${USUARIO_AP} -c "cd /var/www/htdocs/cor1440_cinep;  bundle exec rake assets:precompile RAILS_RELATIVE_URL_ROOT=/act; echo \"Iniciando unicorn...\"; PGSSLCERT=${PGSSLCERT} PGSSLKEY=${PGSSLKEY} SECRET_KEY_BASE=${SECRET_KEY_BASE} bundle exec unicorn_rails -c ../cor1440_cinep/config/unicorn.conf.minimal.rb  -E production -D"
+$DOAS su ${USUARIO_AP} -c "cd ${DIRAP};  bundle exec rake assets:precompile RAILS_RELATIVE_URL_ROOT=${RAILS_RELATIVE_URL_ROOT}; echo \"Iniciando unicorn...\"; PGSSLCERT=${PGSSLCERT} PGSSLKEY=${PGSSLKEY} SECRET_KEY_BASE=${SECRET_KEY_BASE} bundle exec unicorn_rails -c ./config/unicorn.conf.minimal.rb  -E ensayo -D "
 
