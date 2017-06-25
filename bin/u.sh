@@ -28,5 +28,6 @@ DOAS=`which doas 2>/dev/null`
 if (test "$DOAS" = "") then {
 	DOAS=sudo
 } fi;
-$DOAS su ${USUARIO_AP} -c "cd ${DIRAP};  bundle exec rake assets:precompile RAILS_RELATIVE_URL_ROOT=${RAILS_RELATIVE_URL_ROOT}; echo \"Iniciando unicorn...\"; PGSSLCERT=${PGSSLCERT} PGSSLKEY=${PGSSLKEY} SECRET_KEY_BASE=${SECRET_KEY_BASE} bundle exec unicorn_rails -c ./config/unicorn.conf.minimal.rb  -E ensayo -D "
+dfap=`basename ${DIRAP}`
+$DOAS su ${USUARIO_AP} -c "cd ${DIRAP};  bundle exec rake assets:precompile RAILS_RELATIVE_URL_ROOT=${RAILS_RELATIVE_URL_ROOT}; echo \"Iniciando unicorn...\"; PGSSLCERT=${PGSSLCERT} PGSSLKEY=${PGSSLKEY} SECRET_KEY_BASE=${SECRET_KEY_BASE} bundle exec unicorn_rails -c ../$dfap/config/unicorn.conf.minimal.rb  -E ${RAILS_ENV} -D "
 

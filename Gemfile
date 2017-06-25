@@ -102,7 +102,7 @@ group :development do
 
 end
 
-group :test, :development do
+group :test, :development, :ensayo do
   # Depurar
   #gem 'byebug'
 end
