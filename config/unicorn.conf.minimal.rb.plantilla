@@ -6,7 +6,7 @@
 # See also http://unicorn.bogomips.org/examples/unicorn.conf.rb for
 # a more verbose configuration using more features.
 
-listen 2023 # by default Unicorn listens on port 8080
+listen 2021 # by default Unicorn listens on port 8080
 APP_PATH = "/var/www/htdocs/cor1440_cinep"
 working_directory APP_PATH
 worker_processes 3 # this should be >= nr_cpus
