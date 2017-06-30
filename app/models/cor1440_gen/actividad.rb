@@ -19,6 +19,10 @@ module Cor1440Gen
       class_name: '::ActividadActor', foreign_key: 'actividad_id'
     has_many :actor, through: :actividad_actor,
       class_name: '::Actor'
+    has_many :actividad_grupo, dependent: :delete_all,
+      class_name: '::ActividadGrupo', foreign_key: 'actividad_id'
+    has_many :grupo, through: :actividad_grupo,
+      class_name: 'Sip::Grupo'
     has_many :actividad_nucleoconflicto, dependent: :delete_all,
       class_name: '::ActividadNucleoconflicto', foreign_key: 'actividad_id'
     has_many :otronucleoconflicto, through: :actividad_nucleoconflicto,

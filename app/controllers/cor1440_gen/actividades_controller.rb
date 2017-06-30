@@ -113,6 +113,7 @@ module Cor1440Gen
         :actividadarea_ids => [],
         :actividadtipo_ids => [],
         :actor_ids => [],
+        :grupo_ids => [],
         :otronucleoconflicto_ids => [],
         :publicacion_ids => [],
         :proyecto_ids => [],

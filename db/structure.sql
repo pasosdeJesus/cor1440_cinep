@@ -174,6 +174,16 @@ CREATE TABLE actividad_actor (
 
 
 --
+-- Name: actividad_grupo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE actividad_grupo (
+    actividad_id integer NOT NULL,
+    grupo_id integer NOT NULL
+);
+
+
+--
 -- Name: actividad_nucleoconflicto; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3664,6 +3674,14 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
+-- Name: actividad_grupo fk_rails_214969d697; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actividad_grupo
+    ADD CONSTRAINT fk_rails_214969d697 FOREIGN KEY (grupo_id) REFERENCES sip_grupo(id);
+
+
+--
 -- Name: proyectofinanciero_uresponsable fk_rails_272a913d18; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3733,6 +3751,14 @@ ALTER TABLE ONLY productopf
 
 ALTER TABLE ONLY anexo_proyectofinanciero
     ADD CONSTRAINT fk_rails_3b2f5808be FOREIGN KEY (tipoanexo_id) REFERENCES tipoanexo(id);
+
+
+--
+-- Name: actividad_grupo fk_rails_3d3c43f06c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actividad_grupo
+    ADD CONSTRAINT fk_rails_3d3c43f06c FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
 
 
 --
@@ -4361,6 +4387,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170509133803'),
 ('20170509140334'),
 ('20170509140949'),
-('20170516152206');
+('20170516152206'),
+('20170629211019');
 
 
