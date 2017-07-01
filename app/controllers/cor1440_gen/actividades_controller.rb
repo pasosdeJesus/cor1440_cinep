@@ -5,8 +5,11 @@ module Cor1440Gen
   class ActividadesController < ApplicationController
     include Cor1440Gen::Concerns::Controllers::ActividadesController
 
+    helper Cor1440Gen::GruposHelper
 
     def self.filtramas(par, ac, current_usuario = nil)
+      ac = ac.where("id in (SELECT actividad_id FROM actividad_grupo WHERE 
+             grupo_id IN (#{Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).map(&:id).join(', ')}))")
       @busresponsable = param_escapa(par, 'busresponsable')
       if @busresponsable != '' then
         ac = ac.where(responsable: @busresponsable)

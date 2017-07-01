@@ -77,7 +77,7 @@
       <% end %>
 
       <%= f.association :grupo,
-        collection: misgrupossinu,
+        collection: Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario),
         label: 'Equipo',
         label_method: :nombre, 
         value_method: :id,
@@ -86,7 +86,7 @@
       <% usmisgrupossinu = Sip::Usuario.where("
            fechadeshabilitacion IS NULL AND
            id IN (SELECT usuario_id FROM sip_grupo_usuario WHERE 
-             (sip_grupo_id IN (#{misgrupossinu.map(&:id).join(', ')})))").
+             (sip_grupo_id IN (#{Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).map(&:id).join(', ')})))").
         order(:nombres, :apellidos, :nusuario) %>
       <%= f.association :responsable,
         collection: usmisgrupossinu,
