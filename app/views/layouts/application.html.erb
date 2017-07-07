@@ -14,15 +14,15 @@
         <%= drop_down "Actividades" do %>
           <%= menu_item "Listado", cor1440_gen.actividades_path %>
           <%= menu_item "Nueva Actividad", cor1440_gen.new_actividad_path %>
-          <%= menu_item "Reporte Trienal 2015-2017 Indicador 1.1", '/act/reportes/indicador11' %>
-          <%= menu_item "Reporte Trienal 2015-2017 Objetivo Especifico 2", '/act/reportes/objetivoe2' %>
-          <%= menu_item "Reporte Trienal 2015-2017 Cuadro Actividades", "/act/reportes/cuadroactividades" %>
+          <%= menu_item "Reporte Trienal 2015-2017 Indicador 1.1", main_app.reportes_indicador11_path %>
+          <%= menu_item "Reporte Trienal 2015-2017 Objetivo Especifico 2", main_app.reportes_objetivoe2_path %>
+          <%= menu_item "Reporte Trienal 2015-2017 Cuadro Actividades", main_app.reportes_cuadroactividades_path %>
           <% if can? :read, Cor1440Gen::Informe %>
             <%= menu_item "Informes", cor1440_gen.informes_path %>
           <% end %>
         <% end %>
       <% end %>
-      <%= menu_item "Compromisos Institucionales", '/act/proyectosfinancieros' %>
+      <%= menu_item "Compromisos Institucionales", cor1440_gen.proyectosfinancieros_path %>
     <% end %>
   <% end %>
   <%= menu_group :pull => :right do %>
