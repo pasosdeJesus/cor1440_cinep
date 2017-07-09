@@ -29,6 +29,8 @@ es:
         personacontacto: Persona Contacto
         pais_id: País
         sectoractor_id: Sector del Actor
+      "contextoinv":
+        regiongrupo: Región
       "cor1440_gen/actividad":
         regionsjr: Dependencia
         minutos: Horas

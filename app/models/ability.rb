@@ -76,6 +76,10 @@ class Ability  < Cor1440Gen::Ability
     if !usuario.nil? && !usuario.rol.nil? then
       can :nuevo, Cor1440Gen::Actividad
       can :new, Cor1440Gen::Actividad
+      # Contexto es para equipo derechos humanos 
+      if Cor1440Gen::GruposHelper.mis_grupos_sinus(usuario).where(cn: 'EquipoDerechosHumanos').count > 0
+        can :edit, :contextoac
+      end
       case usuario.rol 
       when Ability::ROLOPERADOR
         can :manage, Cor1440Gen::Actividad
@@ -99,10 +103,11 @@ class Ability  < Cor1440Gen::Ability
         can [:read, :manage], Usuario, 
           oficina_id: { id: usuario.oficina_id}
       when Ability::ROLADMIN, Ability::ROLDIR
+        can :edit, :contextoac
+        can :manage, ::Usuario
         can :manage, Cor1440Gen::Proyectofinanciero
         can :manage, Cor1440Gen::Actividad
         can :manage, Cor1440Gen::Informe
-        can :manage, ::Usuario
         can :manage, Heb412Gen::Doc
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|

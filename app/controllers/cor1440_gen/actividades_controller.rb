@@ -8,8 +8,14 @@ module Cor1440Gen
     helper Cor1440Gen::GruposHelper
 
     def self.filtramas(par, ac, current_usuario = nil)
-      ac = ac.where("id in (SELECT actividad_id FROM actividad_grupo WHERE 
-             grupo_id IN (#{Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).map(&:id).join(', ')}))")
+      mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).
+        map(&:id).join(', ')
+      if mg == ''
+        ac = ac.where('TRUE=FALSE')
+      else
+        ac = ac.where("id in (SELECT actividad_id FROM actividad_grupo WHERE 
+             grupo_id IN (#{mg}))")
+      end
       @busresponsable = param_escapa(par, 'busresponsable')
       if @busresponsable != '' then
         ac = ac.where(responsable: @busresponsable)

@@ -68,28 +68,27 @@
       <!--%= f.input :duracion %-->
       <%= f.input :oficina_id, as: :hidden, value: 101 %>
 
-      <% if current_usuario.rol == Ability::ROLADMIN || 
-           current_usuario.rol == Ability::ROLDIR %>
-        <% misgrupossinu = Sip::Grupo.habilitados %>
-      <% else %>
-        <% misgrupossinu = current_usuario.sip_grupo.where(
-          "nombre<>'usuario'") %>
-      <% end %>
+      <% mgu = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario) %>
 
       <%= f.association :grupo,
-        collection: Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario),
+        collection: mgu,
         label: 'Equipo',
         label_method: :nombre, 
         value_method: :id,
         include_blank: false %>
 
-      <% usmisgrupossinu = Sip::Usuario.where("
-           fechadeshabilitacion IS NULL AND
-           id IN (SELECT usuario_id FROM sip_grupo_usuario WHERE 
-             (sip_grupo_id IN (#{Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).map(&:id).join(', ')})))").
+      <% wu = mgu.count == 0 ?  'TRUE=FALSE' : 
+        "fechadeshabilitacion IS NULL 
+         AND  id IN (SELECT usuario_id FROM sip_grupo_usuario WHERE 
+         (sip_grupo_id IN (#{mgu.map(&:id).join(', ')})))
+        " 
+      %>
+
+      <% umgu = Sip::Usuario.where(wu).
         order(:nombres, :apellidos, :nusuario) %>
+
       <%= f.association :responsable,
-        collection: usmisgrupossinu,
+        collection: umgu,
         include_blank: false,
         label: "Responsable del equipo",
         label_method: lambda { |t| 
@@ -100,11 +99,12 @@
           r 
         },
         value_method: :id,
-        selected:  f.object.usuario_id ? f.object.usuario_id : current_usuario.id,
+        selected:  f.object.usuario_id ? f.object.usuario_id : 
+        current_usuario.id,
         input_html: { class: 'chosen-select' } %>
 
       <%= f.association :usuario,
-        collection: usmisgrupossinu,
+        collection: umgu,
         include_blank: false,
         label: "Corresponsables del equipo",
         label_method: lambda { |t| 
@@ -288,31 +288,33 @@
     </div> <!-- panel-body -->
   </div> <!-- panel panel-default -->
 
-  <div class="panel panel-default">
-    <div class="panel-heading">Contexto</div><div class="panel-body">
-      <!--%= f.input :contexto, as: :text %-->
-      <%= f.simple_fields_for :contextoinv, 
-          ::Contextoinv.new do |c| %>
-        <%= c.input :id, as: :hidden %>
-        <%= c.input :usuario_id, as: :hidden, input_html: { 
-          value: f.object.usuario_id ? f.object.usuario_id : 
-          current_usuario
-        } %>
-        <%= c.input :fechainicio,
-          :input_html => { 
-          "data-behaviour" => "datepicker" },
-          :as => :string, :label => "Fecha Inicial" 
-        %>
-        <%= c.input :fechafin,
-          :input_html => { 
-          "data-behaviour" => "datepicker" },
-          :as => :string, :label => "Fecha Final" 
-        %>
-        <%= c.association :regiongrupo %>
-        <%= c.input :contexto %>
-      <% end %>
-    </div> <!-- panel-body -->
-  </div> <!-- panel panel-default -->
+  <% if can? :edit, :contextoac %>
+    <div class="panel panel-default">
+      <div class="panel-heading">Contexto</div><div class="panel-body">
+        <!--%= f.input :contexto, as: :text %-->
+        <%= f.simple_fields_for :contextoinv, 
+            ::Contextoinv.new do |c| %>
+          <%= c.input :id, as: :hidden %>
+          <%= c.input :usuario_id, as: :hidden, input_html: { 
+            value: f.object.usuario_id ? f.object.usuario_id : 
+            current_usuario
+          } %>
+          <%= c.input :fechainicio,
+            :input_html => { 
+            "data-behaviour" => "datepicker" },
+            :as => :string, :label => "Fecha Inicial" 
+          %>
+          <%= c.input :fechafin,
+            :input_html => { 
+            "data-behaviour" => "datepicker" },
+            :as => :string, :label => "Fecha Final" 
+          %>
+          <%= c.association :regiongrupo %>
+          <%= c.input :contexto %>
+        <% end %>
+      </div> <!-- panel-body -->
+    </div> <!-- panel panel-default -->
+  <% end %>
 
   <div class="panel panel-default">
     <div class="panel-heading">Medios de Verificación / Anexos</div><div class="panel-body">
