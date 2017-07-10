@@ -10,6 +10,8 @@ module Cor1440Gen
 
     include Cor1440Gen::Concerns::Models::Proyectofinanciero
    
+    belongs_to :respgp, class_name: '::Usuario',
+      foreign_key: 'respgp_id'
     belongs_to :tipomoneda, class_name: '::Tipomoneda',
       foreign_key: 'tipomoneda_id'
 
@@ -89,21 +91,19 @@ module Cor1440Gen
 
 
     validates :anotacionescontab, length: { maximum: 5000}
+    validates :aotrosesp, length: { maximum: 500}
+    flotante_localizado :aotrosfin
     flotante_localizado :aportecinep
     validates :aportecinep, numericality: 
       { allow_blank: true, less_than: 1000000000000000000 }
-    #validates :autenticarcompulsar, length: { maximum: 500}
     validates :emailrespagencia, length: { maximum: 100}
-    #validates :formatosespecificos, length: { maximum: 500}
-    #validates :formatossolicitudpago, length: { maximum: 500}
+    campofecha_localizado :fechaliquidacion
     validates :fuentefinanciador, length: { maximum: 1000 }
     validates :gestiones, length: { maximum: 5000}
     flotante_localizado :monto
     validates :monto, numericality: 
       { less_than: 1000000000000000000 }
     validates :otrosaportescinep, length: { maximum: 500}
-    flotante_localizado :aotrosfin
-    validates :aotrosesp, length: { maximum: 500}
     flotante_localizado :presupuestototal
     validates :presupuestototal, numericality: 
       { greater_than: 0, less_than: 1000000000000000000 }
@@ -111,15 +111,27 @@ module Cor1440Gen
       length: { maximum: 1000 }
     validates :referenciacinep, presence: true, allow_blank: false,
       length: { maximum: 1000 }
-    #validates :rendimientosfinancieros, length: { maximum: 500}
     validates :respagencia, length: { maximum: 100}
     flotante_localizado :saldo
     validates :saldo, numericality: {allow_blank: true,
                                      less_than: 1000000000000000000 }
     validates :telrespagencia, length: { maximum: 100}
 
-    campofecha_localizado :fechaliquidacion
 
+    validate :dificultad_valida
+    def dificultad_valida
+      if dificultad != 'B' && dificultad != 'M' && dificultad != 'A' && 
+        dificultad != 'N'
+        errors.add(:dificultad, 'Dificultad no es válida')
+      end
+    end
+
+    validate :estado_valido
+    def estado_valido
+      if estado != 'E' && estado != 'R' && estado != 'J' && estado != 'T'
+        errors.add(:estado, 'Estado no es válido')
+      end
+    end
 #    validate :tiene_coordinador
 #    def tiene_coordinador
 #      if coordinador_proyectofinanciero.count == 0
