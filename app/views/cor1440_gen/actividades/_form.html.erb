@@ -75,7 +75,8 @@
         label: 'Equipo',
         label_method: :nombre, 
         value_method: :id,
-        include_blank: false %>
+        include_blank: false,
+        input_html: { class: 'chosen-select' } %>
 
       <% wu = mgu.count == 0 ?  'TRUE=FALSE' : 
         "fechadeshabilitacion IS NULL 
