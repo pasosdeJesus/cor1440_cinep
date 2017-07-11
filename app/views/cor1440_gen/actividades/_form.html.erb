@@ -70,12 +70,15 @@
 
       <% mgu = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario) %>
 
+      <% gd = f.object.grupo.count > 0 ? f.object.grupo.map(&:id) : 
+        (mgu.count > 0 ? mgu.first.id : nil) %>
       <%= f.association :grupo,
         collection: mgu,
         label: 'Equipo',
         label_method: :nombre, 
         value_method: :id,
         include_blank: false,
+        selected:  gd,
         input_html: { class: 'chosen-select' } %>
 
       <% wu = mgu.count == 0 ?  'TRUE=FALSE' : 
