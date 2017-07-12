@@ -4,32 +4,29 @@ source 'https://rubygems.org'
 gem "rails", '~> 5.1.0'
 gem "rails-i18n"
 
-#gem 'net-ldap'
-
-# Color en terminal
-gem 'colorize'
+# Postgresql
+gem "pg"
 
 gem 'puma'
 
 # CSS
 gem 'sass'
 
-# Cuadros de selección potenciados
-gem 'chosen-rails'
-
-gem 'rspreadsheet'
-gem 'libxml-ruby'
+# Color en terminal
+gem 'colorize'
 
 # Generación de PDF
 gem "prawn"
 gem "prawnto_2",  :require => "prawnto"
 gem "prawn-table"
-
 # Plantilla ODT
 gem "odf-report"
 
-# Postgresql
-gem "pg"
+gem 'rspreadsheet'
+gem 'libxml-ruby'
+
+# Cuadros de selección potenciados
+gem 'chosen-rails'
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
@@ -42,7 +39,6 @@ gem "coffee-rails"
 
 # jquery como librería JavaScript
 gem "jquery-rails"
-
 gem "jquery-ui-rails"
 
 # Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
@@ -90,7 +86,6 @@ gem 'heb412_gen', git: "https://github.com/pasosdeJesus/heb412_gen.git"
 gem 'cor1440_gen', git: "https://github.com/pasosdeJesus/cor1440_gen.git"
 #gem "cor1440_gen", path: '../cor1440_gen'
 
-
 # Motor Jn316_gen
 gem 'jn316_gen', git: "https://github.com/pasosdeJesus/jn316_gen.git"
 #gem "jn316_gen", path: '../jn316_gen'
@@ -109,29 +104,27 @@ end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo
 group :test do
-  # Acelera ejecutando en fondo.  https://github.com/jonleighton/spring
-  gem "spring"
-  
-  gem "spork"
-
-  gem 'minitest'
-  gem 'minitest-rails'
-  gem 'turn', :require => false
-
-  # https://www.relishapp.com/womply/rails-style-guide/docs/developing-rails-applications/bundler
-  # Lanza programas para examinar resultados
-  gem "launchy"
+  gem 'simplecov'
 
   gem 'rails-controller-testing'
+
+  # Acelera ejecutando en fondo.  https://github.com/jonleighton/spring
+  gem "spring"
+  gem 'connection_pool'
+  gem 'minitest'
+  gem 'minitest-reporters'
+  gem 'poltergeist'
+  gem 'minitest-rails-capybara'
+
+  gem "spork"
+
 
   # Pruebas de regresión que no requieren javascript
   gem "capybara"
   
-  gem 'simplecov'
-
   # Para examinar errores, usar "rescue rspec" en lugar de "rspec"
-  gem 'pry-rails'
-  gem 'pry-byebug'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end
 
 
