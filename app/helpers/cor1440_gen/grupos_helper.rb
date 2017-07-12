@@ -6,7 +6,7 @@ module Cor1440Gen
     def self.mis_grupos_sinus(current_usuario)
       if current_usuario.rol == Ability::ROLADMIN || 
            current_usuario.rol == Ability::ROLDIR
-        misgrupossinu = Sip::Grupo.habilitados
+        misgrupossinu = Sip::Grupo.habilitados.where("nombre<>'usuario'")
       else
         misgrupossinu = current_usuario.sip_grupo.where("nombre<>'usuario'")
       end

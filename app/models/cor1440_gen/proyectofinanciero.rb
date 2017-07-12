@@ -140,6 +140,13 @@ module Cor1440Gen
 #      end
 #    end
 
+    def filtra_acceso(current_usuario, pf)
+      mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
+      if mg.count == 0
+        pf = pf.where('TRUE=FALSE')
+      end
+      return pf
+    end
 
   end
 end
