@@ -13,8 +13,8 @@ module Cor1440Gen
       if mg == ''
         ac = ac.where('TRUE=FALSE')
       else
-        ac = ac.where("id in (SELECT actividad_id FROM actividad_grupo WHERE 
-             grupo_id IN (#{mg}))")
+        ac = ac.where("cor1440_gen_actividad.id in 
+        (SELECT actividad_id FROM actividad_grupo WHERE grupo_id IN (#{mg}))")
       end
       @busresponsable = param_escapa(par, 'busresponsable')
       if @busresponsable != '' then
