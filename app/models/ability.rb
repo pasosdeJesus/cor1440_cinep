@@ -61,7 +61,8 @@ class Ability  < Cor1440Gen::Ability
 
   def campos_plantillas 
     Heb412Gen::Ability::CAMPOS_PLANTILLAS_PROPIAS.
-      clone.merge(CAMPOS_PLANTILLAS_PROPIAS)
+      clone.merge(CAMPOS_PLANTILLAS_PROPIAS).merge(
+        Cor1440Gen::Ability::CAMPOS_PLANTILLAS_PROPIAS)
   end
 
   # Ver documentacion de este metodo en app/models/ability de sip
@@ -82,8 +83,8 @@ class Ability  < Cor1440Gen::Ability
       end
       case usuario.rol 
       when Ability::ROLOPERADOR
-        can :manage, Cor1440Gen::Actividad
         if grupos.include?(GRUPO_COMPROMISOS)
+          can :manage, Cor1440Gen::Actividad
           # Oficina Gerencia de Proyectos
           can :manage, Cor1440Gen::Proyectofinanciero
           can :manage, Cor1440Gen::Financiador
@@ -92,16 +93,13 @@ class Ability  < Cor1440Gen::Ability
           can :manage, ::Cargo
           can :manage, :tablasbasicas
         else
-          can :read, Cor1440Gen::Actividad
+          can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
           can :read, Cor1440Gen::Proyectofinanciero
-          #can :manage, Cor1440Gen::Informe
-          can :manage, Cor1440Gen::Informe,
-            oficina_id: { id: usuario.oficina_id}
+          can :manage, Cor1440Gen::Informe # limitar a oficina?
           #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
         end
         #can :new, Usuario
-        can [:read, :manage], Usuario, 
-          oficina_id: { id: usuario.oficina_id}
+        can [:read], Usuario # Limita a oficina?
       when Ability::ROLADMIN, Ability::ROLDIR
         can :edit, :contextoac
         can :manage, ::Usuario
