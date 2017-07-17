@@ -84,22 +84,23 @@ class Ability  < Cor1440Gen::Ability
       case usuario.rol 
       when Ability::ROLOPERADOR
         if grupos.include?(GRUPO_COMPROMISOS)
-          can :manage, Cor1440Gen::Actividad
-          # Oficina Gerencia de Proyectos
-          can :manage, Cor1440Gen::Proyectofinanciero
-          can :manage, Cor1440Gen::Financiador
           can :manage, ::Tipomoneda
           can :manage, ::Tipoanexo
           can :manage, ::Cargo
           can :manage, :tablasbasicas
+          can :manage, Cor1440Gen::Actividad
+          # Oficina Gerencia de Proyectos
+          can :manage, Cor1440Gen::Proyectofinanciero
+          can :manage, Cor1440Gen::Financiador
         else
+          can :manage, ::Actor
+          can :manage, :tablasbasicas
+          can [:read], ::Usuario # Limita a oficina?
           can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
           can :read, Cor1440Gen::Proyectofinanciero
           can :manage, Cor1440Gen::Informe # limitar a oficina?
           #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
         end
-        #can :new, Usuario
-        can [:read], Usuario # Limita a oficina?
       when Ability::ROLADMIN, Ability::ROLDIR
         can :edit, :contextoac
         can :manage, ::Usuario
