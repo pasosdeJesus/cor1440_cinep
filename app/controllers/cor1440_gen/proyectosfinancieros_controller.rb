@@ -336,7 +336,8 @@ module Cor1440Gen
         id: @proyectofinanciero.id)
 
       report = genera_odf
-      send_data report.generate, 
+      # El enlace en la vista debe tener data-turbolinks=false
+      send_data report.generate,
         type: 'application/vnd.oasis.opendocument.text',
         disposition: 'attachment',
         filename: 'RE-SC-07.odt'
