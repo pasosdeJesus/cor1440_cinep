@@ -5,53 +5,56 @@
 %>
 
 <p>
-<table border=1 width="100%">
-  <thead>
-    <tr>
-      <th>Coordinador</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody id="coordinador_proyectofinanciero">
-    <%= f.simple_fields_for :coordinador_proyectofinanciero do |cp| %>
-      <%= render 'coordinador_proyectofinanciero_campos', :f => cp %>
-    <% end %>
-  </tbody>
-</table>
-<div class="links">
-  <%= link_to_add_association 'Añadir Coordinador ', f, 
-    :coordinador_proyectofinanciero,
-    :"data-association-insertion-node" => "tbody#coordinador_proyectofinanciero", 
-    :"data-association-insertion-method" => "append", 
-    partial: 'coordinador_proyectofinanciero_campos',
-    :class => 'btn-primary'
-  %>
-</div>
-</p>
 
-<p>
-<table border=1 width="100%">
-  <thead>
-    <tr>
-      <th>Responsable</th>
-      <th>Porcentaje</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody id="proyectofinanciero_uresponsable">
-    <%= f.simple_fields_for :proyectofinanciero_uresponsable do |pu| %>
-      <%= render 'proyectofinanciero_uresponsable_campos', :f => pu %>
-    <% end %>
-  </tbody>
-</table>
-<div class="links">
-  <%= link_to_add_association 'Añadir Responsable', f, 
-    :proyectofinanciero_uresponsable,
-    :"data-association-insertion-node" => "tbody#proyectofinanciero_uresponsable", 
-    :"data-association-insertion-method" => "append", 
-    partial: 'proyectofinanciero_uresponsable_campos',
-    :class => 'btn-primary'
-  %>
+<div class='row'>
+  <div class="col-sm-offset-0 col-sm-6">
+    <table border=1 width="100%">
+      <thead>
+        <tr>
+          <th>Coordinador</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="coordinador_proyectofinanciero">
+        <%= f.simple_fields_for :coordinador_proyectofinanciero do |cp| %>
+          <%= render 'coordinador_proyectofinanciero_campos', :f => cp %>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="links">
+      <%= link_to_add_association 'Añadir Coordinador ', f, 
+        :coordinador_proyectofinanciero,
+        :"data-association-insertion-node" => "tbody#coordinador_proyectofinanciero", 
+        :"data-association-insertion-method" => "append", 
+        partial: 'coordinador_proyectofinanciero_campos',
+        :class => 'btn-primary' %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <table border=1 width="100%">
+      <thead>
+        <tr>
+          <th>Responsable</th>
+          <th>Porcentaje</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="proyectofinanciero_uresponsable">
+        <%= f.simple_fields_for :proyectofinanciero_uresponsable do |pu| %>
+          <%= render 'proyectofinanciero_uresponsable_campos', :f => pu %>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="links">
+      <%= link_to_add_association 'Añadir Responsable', f, 
+        :proyectofinanciero_uresponsable,
+        :"data-association-insertion-node" => "tbody#proyectofinanciero_uresponsable", 
+        :"data-association-insertion-method" => "append", 
+        partial: 'proyectofinanciero_uresponsable_campos',
+        :class => 'btn-primary'
+      %>
+    </div>
+  </div>
 </div>
 </p>
 

@@ -17,17 +17,28 @@ module Cor1440Gen
 
     def atributos_index
       [ "id", 
-        "nombre" ] +
+        "referenciacinep",
+        "nombre",
+      ] +
         [ :financiador_ids =>  [] ] +
         [ "fechainicio_localizada",
           "fechacierre_localizada",
           "responsable_id"
       ] +
-      [ :proyecto_ids =>  [] ] +
+      #[ :proyecto_ids =>  [] ] +
       [ 
-        "monto",
-        "observaciones"
+        "monto"
       ] 
+    end
+
+    def new
+      @registro = clase.constantize.new
+      @registro.monto = 1
+      @registro.montopesos = 1
+      @registro.presupuestototal = 1
+      @registro.tipomoneda = ::Tipomoneda.where(codiso4217: 'COP').take
+      #@registro.tasacambio = 1
+      render layout: 'application'
     end
 
     def vista_solicitud_informes
@@ -89,6 +100,7 @@ module Cor1440Gen
       if (c == nil) 
         c = clase.constantize
       end
+      c.reorder(:referenciacinep)
       @plantillas = Heb412Gen::Plantillahcm.where(
         vista: 'Solicitud de Informe').
         select('nombremenu, id').map { 
@@ -395,6 +407,7 @@ module Cor1440Gen
         :empresaauditoria,
         :estado,
         :fechacierre_localizada,
+        :fechaformulacion_localizada,
         :fechainicio_localizada,
         :fechaliquidacion_localizada,
         :financiador,
@@ -405,8 +418,13 @@ module Cor1440Gen
         :informesespecificos,
         :informessolicitudpago,
         :monto_localizado,
+        :montopesos_localizado,
         :nombre, 
+        :objeto,
         :observaciones,
+        :observacionescierre,
+        :observacionesejecucion,
+        :observacionestramite,
         :otrosaportescinep,
         :presupuestototal_localizado,
         :referencia, 
@@ -415,6 +433,7 @@ module Cor1440Gen
         :respgp_id,
         :reinvertirrendimientosfinancieros,
         :respagencia, 
+        :tasaformulacion, 
         :telrespagencia, 
         :tipomoneda_id,
         :saldo_localizado,

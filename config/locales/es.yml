@@ -29,6 +29,8 @@ es:
         personacontacto: Persona Contacto
         pais_id: País
         sectoractor_id: Sector del Actor
+      "anexo_proyectofinanciero":
+        tipoanexo: Tipo de anexo
       "contextoinv":
         regiongrupo: Región
       "cor1440_gen/actividad":
@@ -69,6 +71,8 @@ es:
         empresaauditoria: "Empresa de Auditorias y Relacionados"
         fechacierre: "Termina"
         fechacierre_localizada: "Termina"
+        fechaformulacion: "Fecha de formulación"
+        fechaformulacion_localizada: "Fecha de formulación"
         fechainicio: "Inicia"
         fechainicio_localizada: "Inicia"
         fechaliquidacion: "Fecha de liquidación"
@@ -81,7 +85,12 @@ es:
         informesauditoria: "Informes auditoria/Verificación de gastos/Controles del financiador"
         monto: "Aporte financiador"
         monto_localizado: "Aporte financiador"
+        montopesos: "Aporte financiador en pesos"
+        montopesos_localizado: "Aporte financiador en pesos (durante formulación)"
         nombre: 'Titulo'
+        observacionestramite: "Observaciones durante el trámite"
+        observacionesejecucion: "Observaciones durante la ejecución"
+        observacionescierre: "Observaciones durante el cierre"
         oficina: "Organigrama CINEP/PPP"
         otrosaportescinep: "Otros aportes CINEP/PPP"
         presupuestototal: "Presupuesto total"
@@ -91,6 +100,8 @@ es:
         rendimientosfinancieros: "Rendimientos financieros"
         respagencia: "Responsable"
         saldo_localizado: "Saldo"
+        tasaformulacion: "Tasa de cambio durante formulación"
+        tasaformulacion_localizado: "Tasa de cambio durante formulación"
         telrespagencia: "Teléfono responsable"
         tipomoneda: "Tipo de moneda"
         tipoanexo: "Tipo de anexo"

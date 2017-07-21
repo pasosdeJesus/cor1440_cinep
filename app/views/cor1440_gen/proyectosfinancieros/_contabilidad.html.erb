@@ -1,13 +1,25 @@
-<%= f.input :centrocosto %>
 
-<%= f.input :copiasdesoporte,
+<div class='row'>
+  <div class="col-sm-offset-0 col-sm-6">
+    <%= f.input :centrocosto %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :copiasdesoporte,
       boolean_style: :nested,
       inline_label: "Copias de soporte"
-%>
+    %>
+  </div>
+</div>
 
+<div class='row'>
+  <div class="col-sm-offset-0 col-sm-6">
 <%= f.input :cuentasbancarias %>
-
+  </div>
+  <div class="col-sm-6">
 <%= f.input :saldo_localizado %>
+  </div>
+</div>
+
 <!--%= f.input :sucursal %-->
 <%= f.input :gestiones, as: :text, input_html: { rows: 5 } %>
 

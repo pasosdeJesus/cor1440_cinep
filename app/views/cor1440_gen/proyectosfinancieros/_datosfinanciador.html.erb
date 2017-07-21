@@ -1,5 +1,11 @@
 <%= f.input :respagencia %>
-<%= f.input :emailrespagencia %>
-<%= f.input :telrespagencia %>
+<div class='row'>
+  <div class="col-sm-offset-0 col-sm-6">
+    <%= f.input :emailrespagencia %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :telrespagencia %>
+  </div>
+</div>
 <%= f.input :observaciones, as: :text, input_html: { rows: 5 } %>
 

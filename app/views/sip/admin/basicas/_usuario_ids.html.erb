@@ -1,0 +1,6 @@
+<%= f.association :usuario,
+  collection: ::Usuario.all,
+  label_method: lambda {|reg| reg.presenta_nombre },
+  value_method: :id ,
+  input_html: { class: 'chosen-select' }
+%>

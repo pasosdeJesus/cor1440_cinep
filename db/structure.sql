@@ -961,7 +961,13 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     aotrosesp character varying(500),
     respgp_id integer,
     estado character varying(1),
-    dificultad character varying(1)
+    dificultad character varying(1),
+    objeto character varying(5000),
+    observacionestramite character varying(5000),
+    observacionesejecucion character varying(5000),
+    observacionescierre character varying(5000),
+    fechaformulacion date,
+    montopesos numeric
 );
 
 
@@ -4393,6 +4399,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170509140949'),
 ('20170516152206'),
 ('20170629211019'),
-('20170710082318');
+('20170710082318'),
+('20170720185946');
 
 

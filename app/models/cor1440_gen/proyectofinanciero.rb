@@ -7,6 +7,7 @@ module Cor1440Gen
     @current_usuario = nil
     attr_accessor :current_usuario
     attr_accessor :duracion
+    attr_accessor :tasaformulacion
 
     include Cor1440Gen::Concerns::Models::Proyectofinanciero
    
@@ -98,11 +99,19 @@ module Cor1440Gen
       { allow_blank: true, less_than: 1000000000000000000 }
     validates :emailrespagencia, length: { maximum: 100}
     campofecha_localizado :fechaliquidacion
+    campofecha_localizado :fechaformulacion
     validates :fuentefinanciador, length: { maximum: 1000 }
     validates :gestiones, length: { maximum: 5000}
     flotante_localizado :monto
     validates :monto, numericality: 
-      { less_than: 1000000000000000000 }
+      { greater_than: 0, less_than: 1000000000000000000 }
+    flotante_localizado :montopesos
+    validates :montopesos, numericality: 
+      { greater_than: 0, less_than: 1000000000000000000 }
+    validates :objeto, length: { maximum: 5000}
+    validates :observacionestramite, length: { maximum: 5000}
+    validates :observacionesejecucion, length: { maximum: 5000}
+    validates :observacionescierre, length: { maximum: 5000}
     validates :otrosaportescinep, length: { maximum: 500}
     flotante_localizado :presupuestototal
     validates :presupuestototal, numericality: 
@@ -115,6 +124,7 @@ module Cor1440Gen
     flotante_localizado :saldo
     validates :saldo, numericality: {allow_blank: true,
                                      less_than: 1000000000000000000 }
+    flotante_localizado :tasaformulacion
     validates :telrespagencia, length: { maximum: 100}
 
 
