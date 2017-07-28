@@ -7,7 +7,7 @@ class Actor < ActiveRecord::Base
             foreign_key: "pais_id", validate: true
 
   has_many :actor_sectoractor, class_name: '::ActorSectoractor',
-    foreign_key: "actor_id", validate: true
+    foreign_key: "actor_id", validate: true, dependent: :delete_all
   has_many :sectoractor, class_name: '::Sectoractor',
     through: :actor_sectoractor
 
