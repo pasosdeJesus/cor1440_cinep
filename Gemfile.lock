@@ -11,16 +11,6 @@ GIT
       sip
 
 GIT
-  remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: f50086157e19b4e512b2094d963d718cc289d07d
-  specs:
-    heb412_gen (1.0.a1)
-      chosen-rails
-      font-awesome-rails
-      rspreadsheet
-      sip
-
-GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
   revision: 88e19fa6ef104970b126f40bee6008dde9dce0be
   specs:
@@ -56,6 +46,15 @@ GIT
   revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
   specs:
     cocoon (1.2.6)
+
+PATH
+  remote: ../heb412_gen
+  specs:
+    heb412_gen (1.0.a1)
+      chosen-rails
+      font-awesome-rails
+      rspreadsheet
+      sip
 
 GEM
   remote: https://rubygems.org/
