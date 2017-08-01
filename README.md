@@ -5,7 +5,7 @@ Sistema para planeación y seguimiento de actividades e informes en el CINEP.
 
 ### Requerimientos
 * Ruby version >= 2.4
-* Ruby on Rails 5.0.x
+* Ruby on Rails 5.1.x
 * PostgreSQL >= 9.6 con extensión unaccent disponible
 * Recomendado sobre adJ 6.0 (que incluye todos los componentes mencionados).  
 
