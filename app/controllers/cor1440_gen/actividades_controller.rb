@@ -35,7 +35,6 @@ module Cor1440Gen
       if @buscontexto != '' then
         ac = ac.where("unaccent(contexto) ILIKE unaccent(?)", "%#{@buscontexto}%")
       end
-      #puts current_usuario.oficina
 
       return ac
     end
@@ -92,7 +91,7 @@ module Cor1440Gen
     # No confiar parametros a Internet, sólo permitir lista blanca
     def actividad_params
       params.require(:actividad).permit(
-        :oficina_id, :minutos, :nombre, 
+        :grupo_id, :minutos, :nombre, 
         :objetivo, :proyecto, :resultado,
         :fecha_localizada, :actividad, :observaciones, 
         :usuario_id,

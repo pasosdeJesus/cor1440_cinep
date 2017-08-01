@@ -16,11 +16,17 @@ module Cor1440Gen
     belongs_to :tipomoneda, class_name: '::Tipomoneda',
       foreign_key: 'tipomoneda_id'
 
-    has_many :oficina_proyectofinanciero, dependent: :delete_all,
-      class_name: '::OficinaProyectofinanciero',
+    #has_many :oficina_proyectofinanciero, dependent: :delete_all,
+    #  class_name: '::OficinaProyectofinanciero',
+    #  foreign_key: 'proyectofinanciero_id'
+    #has_many :oficina, through: :oficina_proyectofinanciero,
+    #  class_name: 'Sip::Oficina'
+
+    has_many :grupo_proyectofinanciero, dependent: :delete_all,
+      class_name: '::GrupoProyectofinanciero',
       foreign_key: 'proyectofinanciero_id'
-    has_many :oficina, through: :oficina_proyectofinanciero,
-      class_name: 'Sip::Oficina'
+    has_many :grupo, through: :grupo_proyectofinanciero,
+      class_name: 'Sip::Grupo'
 
     # Coordinador(es)
     has_many :coordinador_proyectofinanciero, dependent: :delete_all,

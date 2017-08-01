@@ -25,7 +25,6 @@ module Cor1440Gen
           "fechacierre_localizada",
           "responsable_id"
       ] +
-      #[ :proyecto_ids =>  [] ] +
       [ 
         "monto"
       ] 
@@ -239,9 +238,9 @@ module Cor1440Gen
                memo + ' - ') + i.pais.nombre : memo
           })
         end
-        if @proyectofinanciero.oficina
+        if @proyectofinanciero.grupo
           r.add_field(:organigramacinep, 
-                      @proyectofinanciero.oficina.inject('') { 
+                      @proyectofinanciero.grupo.inject('') { 
             |memo, i|
             (memo == '' ? '' : memo + ' - ') + i.nombre 
           })
@@ -482,7 +481,7 @@ module Cor1440Gen
           :id,
           :_destroy
         ],
-        :oficina_ids => [],
+        :grupo_ids => [],
         :productopf_attributes => [
           :fechaplaneada_localizada,
           :fechareal_localizada,

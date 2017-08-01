@@ -1145,6 +1145,16 @@ CREATE SEQUENCE frontera_seq
 
 
 --
+-- Name: grupo_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE grupo_proyectofinanciero (
+    grupo_id bigint NOT NULL,
+    proyectofinanciero_id bigint NOT NULL
+);
+
+
+--
 -- Name: grupoper_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -3804,6 +3814,14 @@ ALTER TABLE ONLY informenarrativo
 
 
 --
+-- Name: grupo_proyectofinanciero fk_rails_488261d2c6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY grupo_proyectofinanciero
+    ADD CONSTRAINT fk_rails_488261d2c6 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
 -- Name: cor1440_gen_actividad_sip_anexo fk_rails_49ec1ae361; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4057,6 +4075,14 @@ ALTER TABLE ONLY desembolso
 
 ALTER TABLE ONLY heb412_gen_campoplantillahcm
     ADD CONSTRAINT fk_rails_e0e38e0782 FOREIGN KEY (plantillahcm_id) REFERENCES heb412_gen_plantillahcm(id);
+
+
+--
+-- Name: grupo_proyectofinanciero fk_rails_e0f6406d5d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY grupo_proyectofinanciero
+    ADD CONSTRAINT fk_rails_e0f6406d5d FOREIGN KEY (grupo_id) REFERENCES sip_grupo(id);
 
 
 --
@@ -4400,6 +4426,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170516152206'),
 ('20170629211019'),
 ('20170710082318'),
-('20170720185946');
+('20170720185946'),
+('20170728131150');
 
 
