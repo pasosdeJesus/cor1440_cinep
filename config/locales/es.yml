@@ -65,6 +65,7 @@ es:
         compromisos: "Productos (publicaciones, compromisos, actividades)"
         coordinador: "Coordinador(es)"
         uresponsable: "Responsable(s)"
+        "{:uresponsable_ids=>[]}": "Responsable(s)"
         cuentasbancarias: "Cuentas bancarias"
         duracion: "Fecha de liquidación"
         emailrespagencia: "Correo responsable"

@@ -22,11 +22,11 @@ module Cor1440Gen
       ] +
         [ :financiador_ids =>  [] ] +
         [ "fechainicio_localizada",
-          "fechacierre_localizada",
-          "responsable_id"
+          "fechacierre_localizada"
       ] +
-      [ 
-        "monto"
+        [ :uresponsable_ids =>  [] ] +
+        [ 
+          "monto"
       ] 
     end
 
@@ -95,48 +95,27 @@ module Cor1440Gen
         'SELECT * FROM v_solicitud_informes')
     end
 
-    def index(c = nil)
-      if (c == nil) 
-        c = clase.constantize
+    def index_otros_formatos(format, params)
+      format.ods {
+        if params[:idplantilla].nil? or
+          params[:idplantilla].to_i <= 0 then
+          head :no_content 
+      elsif Heb412Gen::Plantillahcm.where(
+        id: params[:idplantilla].to_i).take.nil?
+        head :no_content 
+      else
+        @vista = vista_solicitud_informes
+        pl = Heb412Gen::Plantillahcm.find(
+          params[:idplantilla].to_i)
+        n = Heb412Gen::PlantillahcmController.
+          llena_plantilla_multiple_fd(pl, @vista)
+        send_file n, x_sendfile: true
       end
-      c.reorder(:referenciacinep)
-      @plantillas = Heb412Gen::Plantillahcm.where(
-        vista: 'Solicitud de Informe').
-        select('nombremenu, id').map { 
-          |co| [co.nombremenu, co.id] 
-        }
-      respond_to do |format|
-       format.html {  
-         @registros = @registro = c.paginate(
-           :page => params[:pagina], per_page: 20
-         );
-        render :index, layout: 'application'
-       }
-       format.json {
-         @registros = @registro = c.all
-         render :index, json: @registro
-       }
-       format.js {
-         @registros = @registro = c.all
-         render :index, json: @registro
-       }
-       format.ods {
-         if params[:idplantilla].nil? or
-           params[:idplantilla].to_i <= 0 then
-           head :no_content 
-         elsif Heb412Gen::Plantillahcm.where(
-           id: params[:idplantilla].to_i).take.nil?
-           head :no_content 
-         else
-           @vista = vista_solicitud_informes
-           pl = Heb412Gen::Plantillahcm.find(
-             params[:idplantilla].to_i)
-           n = Heb412Gen::PlantillahcmController.
-             llena_plantilla_multiple_fd(pl, @vista)
-           send_file n, x_sendfile: true
-         end
-       }
-      end
+      }
+    end
+
+    def index_reordenar(registros)
+      return registros.reorder([:referenciacinep, :id])
     end
 
     def genera_odf

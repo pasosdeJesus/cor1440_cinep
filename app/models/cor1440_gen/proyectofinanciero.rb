@@ -164,5 +164,17 @@ module Cor1440Gen
       return pf
     end
 
+    scope :filtro_referenciacinep, lambda { |rc|
+      where("unaccent(referenciacinep) ILIKE '%' || unaccent(?) || '%'",
+            rc)
+    }
+
+    scope :filtro_uresponsable_ids, lambda { |r|
+      joins(:proyectofinanciero_uresponsable).
+        where('proyectofinanciero_uresponsable.uresponsable_id=?',
+            r)
+    }
+
+
   end
 end
