@@ -115,6 +115,11 @@ module Cor1440Gen
     end
 
     def index_reordenar(registros)
+      @plantillas = Heb412Gen::Plantillahcm.where(
+        vista: 'Solicitud de Informe').
+        select('nombremenu, id').map { 
+          |co| [co.nombremenu, co.id] 
+        }
       return registros.reorder([:referenciacinep, :id])
     end
 
