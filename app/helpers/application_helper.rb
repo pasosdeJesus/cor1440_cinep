@@ -4,6 +4,15 @@ module ApplicationHelper
   include Sip::ConsultasHelper
   include FontAwesome::Rails::IconHelper 
 
+  ESTADO = [['EN EJECUCIÓN', :J], 
+            ['EN TRAMITE', :E], 
+            ['RECHAZADO', :R], 
+            ['EN CIERRE', :R],  # Necesario para pestana en cierre de Cuadro General Seguimiento
+            ['TERMINADO', :T] ]
+
+  DIFICULTAD = [['BAJA', :B], ['MEDIA', :M], 
+                ['ALTA', :A], ['N/A', :N]]
+
   def dif_meses_dias(fechaini, fechafin) 
     m = 0
     d = 0
