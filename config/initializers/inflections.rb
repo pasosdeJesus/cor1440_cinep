@@ -5,6 +5,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'redactor', 'redesactor'
   inflect.irregular 'regiongrupo', 'regionesgrupo'
   inflect.irregular 'sectoractor', 'sectoresactores'
+  inflect.irregular 'tasacambio', 'tasascambio'
   inflect.irregular 'tipoanexo', 'tiposanexo'
   inflect.irregular 'tipomoneda', 'tiposmoneda'
   inflect.irregular 'tipoproductopf', 'tiposproductopf'

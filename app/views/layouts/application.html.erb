@@ -22,7 +22,15 @@
           <% end %>
         <% end %>
       <% end %>
-      <%= menu_item "Compromisos Institucionales", cor1440_gen.proyectosfinancieros_path %>
+      <%= drop_down "Compromisos Institucionales" do %>
+        <%= menu_item "Listado", cor1440_gen.proyectosfinancieros_path %>
+        <%= menu_item "Nuevo Compromiso Institucional", 
+          cor1440_gen.new_proyectofinanciero_path %>
+        <% if can? :edit, ::Tasacambio%>
+          <%= menu_item "Tasas de cambio", main_app.tasascambio_path %>
+        <% end %>
+      <% end %>
+ 
     <% end %>
   <% end %>
   <%= menu_group :pull => :right do %>

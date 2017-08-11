@@ -7,12 +7,13 @@ module Cor1440Gen
     @current_usuario = nil
     attr_accessor :current_usuario
     attr_accessor :duracion
-    attr_accessor :tasaformulacion
 
     include Cor1440Gen::Concerns::Models::Proyectofinanciero
    
     belongs_to :respgp, class_name: '::Usuario',
       foreign_key: 'respgp_id'
+    belongs_to :tasaformulacion, class_name: '::Tasacambio',
+      foreign_key: 'tasaformulacion_id'
     belongs_to :tipomoneda, class_name: '::Tipomoneda',
       foreign_key: 'tipomoneda_id'
 
@@ -97,6 +98,7 @@ module Cor1440Gen
       allow_destroy: true, reject_if: :all_blank
 
 
+
     validates :anotacionescontab, length: { maximum: 5000}
     validates :aotrosesp, length: { maximum: 500}
     flotante_localizado :aotrosfin
@@ -130,7 +132,6 @@ module Cor1440Gen
     flotante_localizado :saldo
     validates :saldo, numericality: {allow_blank: true,
                                      less_than: 1000000000000000000 }
-    flotante_localizado :tasaformulacion
     validates :telrespagencia, length: { maximum: 100}
 
 

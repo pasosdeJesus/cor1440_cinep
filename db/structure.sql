@@ -967,7 +967,8 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     observacionesejecucion character varying(5000),
     observacionescierre character varying(5000),
     fechaformulacion date,
-    montopesos numeric
+    montopesos numeric,
+    tasaformulacion_id integer
 );
 
 
@@ -2429,6 +2430,38 @@ CREATE TABLE sip_ubicacion (
 
 
 --
+-- Name: tasacambio; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE tasacambio (
+    id bigint NOT NULL,
+    fecha date,
+    tipomoneda_id integer,
+    enpesos numeric,
+    observaciones character varying(5000)
+);
+
+
+--
+-- Name: tasacambio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tasacambio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tasacambio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tasacambio_id_seq OWNED BY tasacambio.id;
+
+
+--
 -- Name: tipoanexo; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2655,6 +2688,7 @@ CREATE VIEW v_solicitud_informes AS
         END AS a_tiempo
    FROM (cor1440_gen_proyectofinanciero p
      JOIN v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
+  WHERE (p.id = ANY (ARRAY[101, 111]))
   ORDER BY s.fechaplaneada;
 
 
@@ -2939,6 +2973,13 @@ ALTER TABLE ONLY sip_pais ALTER COLUMN id SET DEFAULT nextval('sip_pais_id_seq':
 --
 
 ALTER TABLE ONLY sip_tdocumento ALTER COLUMN id SET DEFAULT nextval('sip_tdocumento_id_seq'::regclass);
+
+
+--
+-- Name: tasacambio id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tasacambio ALTER COLUMN id SET DEFAULT nextval('tasacambio_id_seq'::regclass);
 
 
 --
@@ -3408,6 +3449,14 @@ ALTER TABLE ONLY cor1440_gen_rangoedadac
 
 ALTER TABLE ONLY sip_tdocumento
     ADD CONSTRAINT sivel2_gen_tdocumento_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tasacambio tasacambio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tasacambio
+    ADD CONSTRAINT tasacambio_pkey PRIMARY KEY (id);
 
 
 --
@@ -3934,6 +3983,14 @@ ALTER TABLE ONLY proyectofinanciero_uresponsable
 
 
 --
+-- Name: tasacambio fk_rails_834c638220; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tasacambio
+    ADD CONSTRAINT fk_rails_834c638220 FOREIGN KEY (tipomoneda_id) REFERENCES tipomoneda(id);
+
+
+--
 -- Name: actor_sectoractor fk_rails_8718e4c155; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3971,6 +4028,14 @@ ALTER TABLE ONLY cor1440_gen_financiador
 
 ALTER TABLE ONLY cor1440_gen_actividad_proyectofinanciero
     ADD CONSTRAINT fk_rails_a8489e0d62 FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero fk_rails_aa3f51f24a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_proyectofinanciero
+    ADD CONSTRAINT fk_rails_aa3f51f24a FOREIGN KEY (tasaformulacion_id) REFERENCES tasacambio(id);
 
 
 --
@@ -4427,6 +4492,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170629211019'),
 ('20170710082318'),
 ('20170720185946'),
-('20170728131150');
+('20170728131150'),
+('20170810040012'),
+('20170810183757');
 
 

@@ -22,6 +22,9 @@ es:
       "cor1440_gen/proyecto": 
         one: "Programa / Servicio / Producto"
         other: "Programas / Servicios / Productos"
+      "tasacambio":
+        one: Tasa de cambio
+        other: Tasas de cambio
     attributes:
       "actor":
         Actor: Actor
@@ -124,6 +127,13 @@ es:
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
         enplantrienal: En Glosario del Plan Trienal
+      "tasacambio":
+        enpesos: Tasa en pesos
+        enpesos_localizado: Tasa en pesos
+        fecha_localizada: Fecha
+        Tasacambio: Tasa de cambio
+        Tasascambio: Tasas de cambio
+        tipomoneda_id: Tipo de moneda
       "tipoanexo":
         Tipoanexo: Tipo de anexo 
         Tiposanexo: Tipos de anexo

@@ -6,7 +6,12 @@
     %>
   </div>
   <div class="col-sm-6">
-    <%= f.input :tasaformulacion %>
+    <!--% ctf = f.object.tipomoneda_id ? 
+      (f.object.tipomoneda.nombre=='PESO' ?  [] : 
+       ::Tasacambio.where(tipomoneda_id: f.object.tipomoneda_id)) : [] %-->
+    <%= f.association :tasaformulacion,
+      label_method: :enpesos
+   %>
   </div>
 </div>
     
