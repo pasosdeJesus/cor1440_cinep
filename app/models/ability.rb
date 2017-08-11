@@ -56,7 +56,16 @@ class Ability  < Cor1440Gen::Ability
         'a_tiempo'
       ],
       controlador: 'Cor1440Gen::Proyectofinanciero'
+    },
+    'Cuadro General de Seguimiento' => { 
+      campos: [
+        'compromiso_id',  'referenciacinep', 
+        'financiador', 'responsablegp', 
+        'estado', 'gradoexigencia'
+      ],
+      controlador: 'Cor1440Gen::Proyectofinanciero'
     }
+
   }
 
   def campos_plantillas 
@@ -83,9 +92,12 @@ class Ability  < Cor1440Gen::Ability
       end
       case usuario.rol 
       when Ability::ROLOPERADOR
+        can :read, ::Tasacambio
+        can :read, Heb412Gen::Plantillahcm
         if grupos.include?(GRUPO_COMPROMISOS)
-          can :manage, ::Tipomoneda
+          can :manage, ::Tasacambio
           can :manage, ::Tipoanexo
+          can :manage, ::Tipomoneda
           can :manage, ::Cargo
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Actividad
@@ -103,11 +115,13 @@ class Ability  < Cor1440Gen::Ability
         end
       when Ability::ROLADMIN, Ability::ROLDIR
         can :edit, :contextoac
+        can :manage, ::Tasacambio
         can :manage, ::Usuario
         can :manage, Cor1440Gen::Proyectofinanciero
         can :manage, Cor1440Gen::Actividad
         can :manage, Cor1440Gen::Informe
         can :manage, Heb412Gen::Doc
+        can :manage, Heb412Gen::Plantillahcm
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|
           c = Ability.tb_clase(t)

@@ -15,6 +15,15 @@ module Cor1440Gen
 
     include Sip::ConsultasHelper
 
+    def cadena_muchos(r, campo, sep = ', ', camponom='nombre')
+        if !r.send(campo)
+          return ""
+        end
+        return r.send(campo).inject('') { |memo, i|
+          (memo == '' ? '' : memo + sep) + i[camponom]
+        }
+    end
+
     def atributos_index
       [ "id", 
         "referenciacinep",
@@ -61,6 +70,9 @@ module Cor1440Gen
         seguimiento
         FROM productopf JOIN tipoproductopf
         ON productopf.tipoproductopf_id=tipoproductopf.id"
+      
+      w = @registros.count > 0 ?  
+        "WHERE p.id in (#{@registros.pluck(:id).join(", ")})" : ""
 
       Heb412Gen::Plantillahcm.connection.execute <<-SQL
       DROP VIEW IF EXISTS v_solicitud_informes ;
@@ -88,35 +100,69 @@ module Cor1440Gen
       FROM cor1440_gen_proyectofinanciero AS p
       JOIN v_solicitud_informes1 AS s
       ON p.id=s.proyectofinanciero_id
+      #{w}
       ORDER BY s.fechaplaneada
       )
       SQL
       return Heb412Gen::Plantillahcm.find_by_sql(
         'SELECT * FROM v_solicitud_informes')
+      #return @registros.joins('JOIN v_solicitud_informes ON cor1440_gen_proyectofinanciero.id=v_solicitud_informes.compromiso_id').select('v_solicitud_informes.*')
     end
 
+    def cuadro_general_seguimiento(pl)
+      ruta = File.join(Rails.application.config.x.heb412_ruta, 
+                       pl.ruta).to_s
+      puts "ruta=#{ruta}"
+      libro = Rspreadsheet.open(ruta)
+      resumen = libro.worksheets(1)
+      fila = 3
+      regres = @registros.where("estado IN ('J','E', 'T')").
+        reorder(fechacierre: :desc)
+      cons = 1
+      regres.each do |r|
+        resumen[fila, 1] = cons
+        resumen[fila, 2] = r.referenciacinep
+        resumen[fila, 3] = cadena_muchos(r, 'financiador', ' - ')
+        resumen[fila, 4] = Sip::ModeloHelper.nomap_persona(r.respgp)
+        resumen[fila, 5] = Sip::ModeloHelper.etiqueta_coleccion(
+          ApplicationHelper::ESTADO, r.estado)
+        resumen[fila, 6] = Sip::ModeloHelper.etiqueta_coleccion(
+          ApplicationHelper::DIFICULTAD, r.dificultad)
+
+        cons +=1
+        fila +=1
+      end
+      n=File.join('/tmp', File.basename(pl.ruta))
+      libro.save(n)
+
+      return n
+    end
+       
     def index_otros_formatos(format, params)
       format.ods {
-        if params[:idplantilla].nil? or
-          params[:idplantilla].to_i <= 0 then
+        if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 then
           head :no_content 
-      elsif Heb412Gen::Plantillahcm.where(
-        id: params[:idplantilla].to_i).take.nil?
-        head :no_content 
-      else
-        @vista = vista_solicitud_informes
-        pl = Heb412Gen::Plantillahcm.find(
-          params[:idplantilla].to_i)
-        n = Heb412Gen::PlantillahcmController.
-          llena_plantilla_multiple_fd(pl, @vista)
-        send_file n, x_sendfile: true
-      end
+        elsif Heb412Gen::Plantillahcm.where(
+          id: params[:idplantilla].to_i).take.nil?
+          head :no_content 
+        else
+          pl = Heb412Gen::Plantillahcm.find(
+            params[:idplantilla].to_i)
+          if pl.vista == 'Solicitud de Informe'
+            @vista = vista_solicitud_informes
+            n = Heb412Gen::PlantillahcmController.
+              llena_plantilla_multiple_fd(pl, @vista)
+          elsif pl.vista == 'Cuadro General de Seguimiento'
+            n = cuadro_general_seguimiento(pl)
+          end
+          send_file n, x_sendfile: true
+        end
       }
     end
 
     def index_reordenar(registros)
       @plantillas = Heb412Gen::Plantillahcm.where(
-        vista: 'Solicitud de Informe').
+        "vista IN ('Solicitud de Informe', 'Cuadro General de Seguimiento')").
         select('nombremenu, id').map { 
           |co| [co.nombremenu, co.id] 
         }
@@ -416,7 +462,7 @@ module Cor1440Gen
         :respgp_id,
         :reinvertirrendimientosfinancieros,
         :respagencia, 
-        :tasaformulacion, 
+        :tasaformulacion_id, 
         :telrespagencia, 
         :tipomoneda_id,
         :saldo_localizado,
