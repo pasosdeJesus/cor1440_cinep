@@ -3,6 +3,8 @@ class EstadoOmision < ActiveRecord::Migration[5.1]
     execute <<-SQL
       UPDATE cor1440_gen_proyectofinanciero SET estado='J' WHERE
         estado IS NULL;
+      UPDATE cor1440_gen_proyectofinanciero SET dificultad='N' WHERE
+        dificultad IS NULL;
     SQL
   end
 
