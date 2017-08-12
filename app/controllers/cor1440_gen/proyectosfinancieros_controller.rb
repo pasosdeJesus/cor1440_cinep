@@ -168,7 +168,8 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 2, r.referenciacinep)
         asigna_celda_y_borde(hoja, fila, 3, 
                              cadena_muchos(r, 'financiador', ' - '))
-        asigna_celda_y_borde(hoja, fila, 4, r.respgp.presenta_nombre)
+        asigna_celda_y_borde(hoja, fila, 4, r.respgp ?
+                             r.respgp.presenta_nombre : '')
         asigna_celda_y_borde(hoja, fila, 5, 
                              Sip::ModeloHelper.etiqueta_coleccion(
                                ApplicationHelper::ESTADO, r.estado))
@@ -190,12 +191,12 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 2, r.referenciacinep)
         asigna_celda_y_borde(hoja, fila, 3, 
                              cadena_muchos(r, 'financiador', ' - '))
+        gp = r.respgp ? "GP: " + r.respgp.presenta_nombre : ""
         ao = cadena_muchos(r, 'uresponsable', ', ', 'presenta_nombre')
         if ao != ''
           ao = "; AO: #{ao}"
         end
-        asigna_celda_y_borde(hoja, fila, 4, 
-                             "GP: #{r.respgp.presenta_nombre}#{ao}")
+        asigna_celda_y_borde(hoja, fila, 4, "#{gp}#{ao}")
         asigna_celda_y_borde(hoja, fila, 5, cadena_muchos(
           r, 'usuario', ', ', 'presenta_nombre'))
         asigna_celda_y_borde(hoja, fila, 6, 
@@ -232,7 +233,8 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 4, r.nombre)
         asigna_celda_y_borde(hoja, fila, 5, 
                              cadena_muchos(r, 'financiador', ' - '))
-        asigna_celda_y_borde(hoja, fila, 6, r.respgp.presenta_nombre)
+        asigna_celda_y_borde(hoja, fila, 6, r.respgp ?
+                             r.respgp.presenta_nombre : '')
         asigna_celda_y_borde(hoja, fila, 7, r.observacionesejecucion)
         asigna_celda_y_borde(hoja, fila, 8, 
                              cadena_muchos(r, 'grupo', '; '))
@@ -254,7 +256,8 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 4, r.objeto)
         asigna_celda_y_borde(hoja, fila, 5, 
                              cadena_muchos(r, 'financiador', ' - '))
-        asigna_celda_y_borde(hoja, fila, 6, r.respgp.presenta_nombre)
+        asigna_celda_y_borde(hoja, fila, 6, r.respgp ? 
+                             r.respgp.presenta_nombre : '')
         asigna_celda_y_borde(hoja, fila, 7, r.observacionescierre)
         asigna_celda_y_borde(hoja, fila, 8, 
                              cadena_muchos(r, 'grupo', '; '))
