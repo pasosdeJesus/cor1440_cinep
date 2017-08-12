@@ -106,8 +106,16 @@ module Cor1440Gen
     validates :aportecinep, numericality: 
       { allow_blank: true, less_than: 1000000000000000000 }
     validates :emailrespagencia, length: { maximum: 100}
+
+    #requerido para cuadro general de seguimiento
+    validates :estado, presence: true
+
     campofecha_localizado :fechaliquidacion
     campofecha_localizado :fechaformulacion
+
+    #requerido para cuadro general de seguimiento
+    validates :fechaformulacion, presence: true  
+    
     validates :fuentefinanciador, length: { maximum: 1000 }
     validates :gestiones, length: { maximum: 5000}
     flotante_localizado :monto
@@ -137,8 +145,8 @@ module Cor1440Gen
 
     validate :dificultad_valida
     def dificultad_valida
-      if dificultad != 'B' && dificultad != 'M' && dificultad != 'A' && 
-        dificultad != 'N'
+      cv = ApplicationHelper::DIFICULTAD.map {|r| r[1].to_s}
+      if !cv.include?(dificultad)
         errors.add(:dificultad, 'Dificultad no es válida')
       end
     end
