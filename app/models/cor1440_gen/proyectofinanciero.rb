@@ -145,7 +145,8 @@ module Cor1440Gen
 
     validate :estado_valido
     def estado_valido
-      if estado != 'E' && estado != 'R' && estado != 'J' && estado != 'T'
+      cv = ApplicationHelper::ESTADO.map {|r| r[1].to_s}
+      if !cv.include?(estado)
         errors.add(:estado, 'Estado no es válido')
       end
     end
@@ -157,7 +158,7 @@ module Cor1440Gen
 #      end
 #    end
 
-    def filtra_acceso(current_usuario, pf)
+    def filtra_acceso(current_usuario, pf, params)
       mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
       if mg.count == 0
         pf = pf.where('TRUE=FALSE')

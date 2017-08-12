@@ -7,7 +7,8 @@ module ApplicationHelper
   ESTADO = [['EN EJECUCIÓN', :J], 
             ['EN TRAMITE', :E], 
             ['RECHAZADO', :R], 
-            ['EN CIERRE', :R],  # Necesario para pestana en cierre de Cuadro General Seguimiento
+            ['DESCARTADO', :D], 
+            ['EN CIERRE', :C],  # Necesario para pestana en cierre de Cuadro General Seguimiento
             ['TERMINADO', :T] ]
 
   DIFICULTAD = [['BAJA', :B], ['MEDIA', :M], 
@@ -31,12 +32,19 @@ module ApplicationHelper
         d = fechafin.day - fechaini.day
       end
     end
-    if (m == 0) then
-      return d.to_s + " días"
-    elsif (d == 0) then
-      return m.to_s + " meses"
+    # Hasta aqui, era preciso, el siguiente tiene en cuenta lo tipico
+    if (d+1) == fechafin.end_of_month.day
+      m += 1
+      d = 0
     end
-    return (m.to_s + " meses y " + d.to_s + " días")
+    if (m == 0) then
+      return I18n.translate(:dia, count: d)
+    elsif (d == 0) then
+      return I18n.translate(:mes, count: m)
+    end
+    return I18n.translate(:mes, count: m) + " y " + 
+      I18n.translate(:dia, count: d)
+    #return (m.to_s + " meses y " + d.to_s + " días")
   end
 
   def conv_proyecto_id(proyecto)

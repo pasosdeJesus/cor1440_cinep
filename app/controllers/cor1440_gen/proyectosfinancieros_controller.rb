@@ -20,7 +20,7 @@ module Cor1440Gen
           return ""
         end
         return r.send(campo).inject('') { |memo, i|
-          (memo == '' ? '' : memo + sep) + i[camponom]
+          (memo == '' ? '' : memo + sep) + i.send(camponom)
         }
     end
 
@@ -109,34 +109,209 @@ module Cor1440Gen
       #return @registros.joins('JOIN v_solicitud_informes ON cor1440_gen_proyectofinanciero.id=v_solicitud_informes.compromiso_id').select('v_solicitud_informes.*')
     end
 
+    def asigna_celda_y_borde(hoja, fila, col, valor)
+        hoja[fila, col] = valor
+        hoja.cell(fila, col).format.top.style = 'solid'
+        hoja.cell(fila, col).format.bottom.style = 'solid'
+        hoja.cell(fila, col).format.right.style = 'solid'
+        hoja.cell(fila, col).format.left.style = 'solid'
+    end
+
+    
+    def tramitado_anio(hoja, anio)
+      hoja.name = "Tramitados #{anio}"
+      reg = @registros.where("fechaformulacion>='#{anio}-01-01' AND " +
+                             "fechaformulacion<='#{anio}-12-31'").reorder(
+                               [:referenciacinep, :id])
+      fila = 2
+      cons = 1
+      reg.each do |r|
+        asigna_celda_y_borde(hoja, fila, 1, cons)
+        mf = r.fechaformulacion ?
+          r.fechaformulacion_localizada[3..5] : ''
+        asigna_celda_y_borde(hoja, fila, 2, mf)
+        asigna_celda_y_borde(hoja, fila, 3, r.referenciacinep)
+        asigna_celda_y_borde(hoja, fila, 4, 
+                             cadena_muchos(r, 'financiador', ' - '))
+        asigna_celda_y_borde(hoja, fila, 5, 
+                             Sip::ModeloHelper.etiqueta_coleccion(
+                               ApplicationHelper::ESTADO, r.estado))
+        asigna_celda_y_borde(hoja, fila, 6, r.monto_localizado)
+        asigna_celda_y_borde(hoja, fila, 7, r.tipomoneda ?
+                             r.tipomoneda.codiso4217 : '')
+        asigna_celda_y_borde(hoja, fila, 8, 
+                             r.montopesos_localizado)
+        asigna_celda_y_borde(hoja, fila, 9, 
+                             cadena_muchos(r, 'grupo', '; '))
+        asigna_celda_y_borde(hoja, fila, 10, r.observacionestramite)
+
+        cons +=1
+        fila +=1
+      end
+    end
+
+
     def cuadro_general_seguimiento(pl)
       ruta = File.join(Rails.application.config.x.heb412_ruta, 
                        pl.ruta).to_s
       puts "ruta=#{ruta}"
       libro = Rspreadsheet.open(ruta)
-      resumen = libro.worksheets(1)
-      fila = 3
-      regres = @registros.where("estado IN ('J','E', 'T')").
-        reorder(fechacierre: :desc)
+
+      # Hoja Resumen
+      hoja = libro.worksheets(1)
+      fila = 2
+      reg = @registros.where("estado IN ('J', 'E', 'C', 'T')").
+        reorder([:referenciacinep, :id])
       cons = 1
-      regres.each do |r|
-        resumen[fila, 1] = cons
-        resumen[fila, 2] = r.referenciacinep
-        resumen[fila, 3] = cadena_muchos(r, 'financiador', ' - ')
-        resumen[fila, 4] = Sip::ModeloHelper.nomap_persona(r.respgp)
-        resumen[fila, 5] = Sip::ModeloHelper.etiqueta_coleccion(
-          ApplicationHelper::ESTADO, r.estado)
-        resumen[fila, 6] = Sip::ModeloHelper.etiqueta_coleccion(
-          ApplicationHelper::DIFICULTAD, r.dificultad)
+      reg.each do |r|
+        asigna_celda_y_borde(hoja, fila, 1, cons)
+        asigna_celda_y_borde(hoja, fila, 2, r.referenciacinep)
+        asigna_celda_y_borde(hoja, fila, 3, 
+                             cadena_muchos(r, 'financiador', ' - '))
+        asigna_celda_y_borde(hoja, fila, 4, r.respgp.presenta_nombre)
+        asigna_celda_y_borde(hoja, fila, 5, 
+                             Sip::ModeloHelper.etiqueta_coleccion(
+                               ApplicationHelper::ESTADO, r.estado))
+        asigna_celda_y_borde(hoja, fila, 6, 
+                             Sip::ModeloHelper.etiqueta_coleccion(
+                               ApplicationHelper::DIFICULTAD, r.dificultad))
+        cons +=1
+        fila +=1
+      end
+
+      # Hoja En tramite
+      hoja = libro.worksheets(2)
+      fila = 2
+      reg = @registros.where("estado IN ('E')").
+        reorder([:referenciacinep, :id])
+      cons = 1
+      reg.each do |r|
+        asigna_celda_y_borde(hoja, fila, 1, cons)
+        asigna_celda_y_borde(hoja, fila, 2, r.referenciacinep)
+        asigna_celda_y_borde(hoja, fila, 3, 
+                             cadena_muchos(r, 'financiador', ' - '))
+        ao = cadena_muchos(r, 'uresponsable', ', ', 'presenta_nombre')
+        if ao != ''
+          ao = "; AO: #{ao}"
+        end
+        asigna_celda_y_borde(hoja, fila, 4, 
+                             "GP: #{r.respgp.presenta_nombre}#{ao}")
+        asigna_celda_y_borde(hoja, fila, 5, cadena_muchos(
+          r, 'usuario', ', ', 'presenta_nombre'))
+        asigna_celda_y_borde(hoja, fila, 6, 
+                             Sip::ModeloHelper.etiqueta_coleccion(
+                               ApplicationHelper::ESTADO, r.estado))
+        asigna_celda_y_borde(hoja, fila, 7, r.monto_localizado)
+        asigna_celda_y_borde(hoja, fila, 8, r.tipomoneda ?
+                             r.tipomoneda.codiso4217 : '')
+        asigna_celda_y_borde(hoja, fila, 9, 
+                             r.montopesos_localizado)
+        duryf = r.fechacierre && r.fechainicio ?
+          (dif_meses_dias(r.fechainicio, r.fechacierre) + ' - ' + 
+           r.fechainicio_localizada) : ''
+        asigna_celda_y_borde(hoja, fila, 10, duryf)
+        asigna_celda_y_borde(hoja, fila, 11, r.observacionestramite)
+        mf = r.fechaformulacion ?
+          r.fechaformulacion_localizada[3..-1] : ''
+        asigna_celda_y_borde(hoja, fila, 12, mf)
 
         cons +=1
         fila +=1
       end
+
+      # Hoja Ejecucion
+      hoja = libro.worksheets(3)
+      fila = 2
+      reg = @registros.where("estado IN ('J')").
+        reorder([:referenciacinep, :id])
+      cons = 1
+      reg.each do |r|
+        asigna_celda_y_borde(hoja, fila, 1, cons)
+        asigna_celda_y_borde(hoja, fila, 2, r.referenciacinep)
+        asigna_celda_y_borde(hoja, fila, 3, r.referencia)
+        asigna_celda_y_borde(hoja, fila, 4, r.nombre)
+        asigna_celda_y_borde(hoja, fila, 5, 
+                             cadena_muchos(r, 'financiador', ' - '))
+        asigna_celda_y_borde(hoja, fila, 6, r.respgp.presenta_nombre)
+        asigna_celda_y_borde(hoja, fila, 7, r.observacionesejecucion)
+        asigna_celda_y_borde(hoja, fila, 8, 
+                             cadena_muchos(r, 'grupo', '; '))
+
+        cons +=1
+        fila +=1
+      end
+
+      # Hoja En cierre
+      hoja = libro.worksheets(4)
+      fila = 2
+      reg = @registros.where("estado IN ('C')").
+        reorder([:referenciacinep, :id])
+      cons = 1
+      reg.each do |r|
+        asigna_celda_y_borde(hoja, fila, 1, cons)
+        asigna_celda_y_borde(hoja, fila, 2, r.referenciacinep)
+        asigna_celda_y_borde(hoja, fila, 3, r.referencia)
+        asigna_celda_y_borde(hoja, fila, 4, r.objeto)
+        asigna_celda_y_borde(hoja, fila, 5, 
+                             cadena_muchos(r, 'financiador', ' - '))
+        asigna_celda_y_borde(hoja, fila, 6, r.respgp.presenta_nombre)
+        asigna_celda_y_borde(hoja, fila, 7, r.observacionescierre)
+        asigna_celda_y_borde(hoja, fila, 8, 
+                             cadena_muchos(r, 'grupo', '; '))
+
+        cons +=1
+        fila +=1
+      end
+
+      # Hoja Tramitados del año actual
+      treste = libro.worksheets(5)
+      anio = Date.today.year
+      tramitado_anio(treste, anio)
+
+      # Hoja de publicaciones
+      hoja = libro.worksheets(7)
+      fila = 2
+      reg = @registros.where("estado IN ('J', 'C', 'T')").
+        joins(:productopf).reorder([:referenciacinep, :id])
+      cons = 1
+      reg.each do |r|
+        asigna_celda_y_borde(hoja, fila, 1, cons)
+        asigna_celda_y_borde(hoja, fila, 2, r.referenciacinep)
+        asigna_celda_y_borde(hoja, fila, 3, 
+                             cadena_muchos(r, 'coordinador', ', ', 
+                                           'presenta_nombre'))
+        asigna_celda_y_borde(hoja, fila, 4, 
+                             cadena_muchos(r, 'financiador', ' - '))
+        asigna_celda_y_borde(hoja, fila, 5, r.referencia)
+        asigna_celda_y_borde(hoja, fila, 6, r.fechainicio_localizada)
+        asigna_celda_y_borde(hoja, fila, 7, r.fechacierre_localizada)
+
+        # Tocara hacerlo como consulta porque no logramos sacar
+        # aqui los campos de productopf haciendolo asi
+        cons +=1
+        fila +=1
+      end
+
+     
+      # Hojas para tramitados en años anteriores
+      anios = @registros.where("fechaformulacion<'#{anio}-01-01'").
+        reorder(nil).pluck('DISTINCT EXTRACT(YEAR FROM fechaformulacion)').
+        map {|a| a.to_i}
+      anios.sort!
+      numhoja = 9
+      anios.each do |anio|
+        if numhoja<=11
+          hoja = libro.worksheets(numhoja)
+          tramitado_anio(hoja, anio)
+        end
+      end
+
       n=File.join('/tmp', File.basename(pl.ruta))
       libro.save(n)
 
       return n
     end
+ 
        
     def index_otros_formatos(format, params)
       format.ods {
