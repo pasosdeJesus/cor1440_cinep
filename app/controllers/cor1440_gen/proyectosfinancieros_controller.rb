@@ -120,8 +120,8 @@ module Cor1440Gen
     
     def tramitado_anio(hoja, anio)
       hoja.name = "Tramitados #{anio}"
-      reg = @registros.where("fechaformulacion>='#{anio}-01-01' AND " +
-                             "fechaformulacion<='#{anio}-12-31'").reorder(
+      reg = @registros.where("fechaformulacion>='#{anio.to_i}-01-01' AND " +
+                             "fechaformulacion<='#{anio.to_i}-12-31'").reorder(
                                [:referenciacinep, :id])
       fila = 2
       cons = 1
