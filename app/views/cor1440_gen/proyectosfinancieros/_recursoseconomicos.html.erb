@@ -2,15 +2,18 @@
 <div class='row'>
   <div class="col-sm-offset-0 col-sm-6">
     <%= f.association :tipomoneda,
-      label_method: :nombre
+      collection: ::Tipomoneda.habilitados,
+      label_method: :nombre,
+      value_method: :id,
+      input_html: { class: 'chosen-select' }
     %>
   </div>
   <div class="col-sm-6">
-    <!--% ctf = f.object.tipomoneda_id ? 
-      (f.object.tipomoneda.nombre=='PESO' ?  [] : 
-       ::Tasacambio.where(tipomoneda_id: f.object.tipomoneda_id)) : [] %-->
+    <% ctf = f.object.tipomoneda_id && f.object.tipomoneda.nombre != 'PESO' ?  ::Tasacambio.where(tipomoneda_id: f.object.tipomoneda_id) : ::Tasacambio.where('TRUE=FALSE') 
+      %>
     <%= f.association :tasaformulacion,
-      label_method: :enpesos
+      collection: ctf,
+      label_method: lambda {|r| r.presenta_nombre }
    %>
   </div>
 </div>

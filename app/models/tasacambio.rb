@@ -43,4 +43,7 @@ class Tasacambio < ActiveRecord::Base
     where("unaccent(observaciones) ILIKE '%' || unaccent(?) || '%'", o)
   }
 
+  def presenta_nombre
+    "#{fecha} #{enpesos_localizado}"
+  end
 end
