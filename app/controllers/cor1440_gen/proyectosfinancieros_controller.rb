@@ -135,7 +135,7 @@ module Cor1440Gen
                              cadena_muchos(r, 'financiador', ' - '))
         asigna_celda_y_borde(hoja, fila, 5, 
                              Sip::ModeloHelper.etiqueta_coleccion(
-                               ApplicationHelper::ESTADO, r.estado))
+                               ::ApplicationHelper::ESTADO, r.estado))
         asigna_celda_y_borde(hoja, fila, 6, r.monto_localizado)
         asigna_celda_y_borde(hoja, fila, 7, r.tipomoneda ?
                              r.tipomoneda.codiso4217 : '')
@@ -172,10 +172,11 @@ module Cor1440Gen
                              r.respgp.presenta_nombre : '')
         asigna_celda_y_borde(hoja, fila, 5, 
                              Sip::ModeloHelper.etiqueta_coleccion(
-                               ApplicationHelper::ESTADO, r.estado))
+                               ::ApplicationHelper::ESTADO, r.estado))
         asigna_celda_y_borde(hoja, fila, 6, 
                              Sip::ModeloHelper.etiqueta_coleccion(
-                               ApplicationHelper::DIFICULTAD, r.dificultad))
+                               ::ApplicationHelper::DIFICULTAD, 
+                               r.dificultad))
         cons +=1
         fila +=1
       end
@@ -201,7 +202,7 @@ module Cor1440Gen
           r, 'usuario', ', ', 'presenta_nombre'))
         asigna_celda_y_borde(hoja, fila, 6, 
                              Sip::ModeloHelper.etiqueta_coleccion(
-                               ApplicationHelper::ESTADO, r.estado))
+                               ::ApplicationHelper::ESTADO, r.estado))
         asigna_celda_y_borde(hoja, fila, 7, r.monto_localizado)
         asigna_celda_y_borde(hoja, fila, 8, r.tipomoneda ?
                              r.tipomoneda.codiso4217 : '')
