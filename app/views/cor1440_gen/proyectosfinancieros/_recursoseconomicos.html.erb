@@ -13,7 +13,8 @@
       %>
     <%= f.association :tasaformulacion,
       collection: ctf,
-      label_method: lambda {|r| r.presenta_nombre }
+      label_method: lambda {|r| r.presenta_nombre },
+      input_html: { class: 'chosen-select' }
    %>
   </div>
 </div>
