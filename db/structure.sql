@@ -456,6 +456,42 @@ ALTER SEQUENCE contextoinv_id_seq OWNED BY contextoinv.id;
 
 
 --
+-- Name: convenio; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE convenio (
+    id bigint NOT NULL,
+    clasificacion character varying(1),
+    tipoconvenio_id integer,
+    institucion character varying(1000),
+    descripcion character varying(5000),
+    fechainicio date,
+    fechacierre date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: convenio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE convenio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: convenio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE convenio_id_seq OWNED BY convenio.id;
+
+
+--
 -- Name: coordinador_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2779,6 +2815,13 @@ ALTER TABLE ONLY contextoinv ALTER COLUMN id SET DEFAULT nextval('contextoinv_id
 
 
 --
+-- Name: convenio id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY convenio ALTER COLUMN id SET DEFAULT nextval('convenio_id_seq'::regclass);
+
+
+--
 -- Name: coordinador_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -3082,6 +3125,14 @@ ALTER TABLE ONLY cargo
 
 ALTER TABLE ONLY contextoinv
     ADD CONSTRAINT contextoinv_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: convenio convenio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY convenio
+    ADD CONSTRAINT convenio_pkey PRIMARY KEY (id);
 
 
 --
@@ -4008,6 +4059,14 @@ ALTER TABLE ONLY anexo_proyectofinanciero
 
 
 --
+-- Name: convenio fk_rails_77dbba47fe; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY convenio
+    ADD CONSTRAINT fk_rails_77dbba47fe FOREIGN KEY (tipoconvenio_id) REFERENCES tipoconvenio(id);
+
+
+--
 -- Name: actividad_actor fk_rails_7ebb208867; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4547,6 +4606,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170812044235'),
 ('20170816100923'),
 ('20170817111035'),
-('20170817112031');
+('20170817122026');
 
 

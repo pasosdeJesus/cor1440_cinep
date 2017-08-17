@@ -96,6 +96,7 @@ class Ability  < Cor1440Gen::Ability
         can :read, ::Tasacambio
         can :read, Heb412Gen::Plantillahcm
         if grupos.include?(GRUPO_COMPROMISOS)
+          can :manage, ::Convenio
           can :manage, ::Tasacambio
           can :manage, ::Tipoanexo
           can :manage, ::Tipoconvenio
@@ -117,6 +118,7 @@ class Ability  < Cor1440Gen::Ability
         end
       when Ability::ROLADMIN, Ability::ROLDIR
         can :edit, :contextoac
+        can :manage, ::Convenio
         can :manage, ::Tasacambio
         can :manage, ::Usuario
         can :manage, Cor1440Gen::Proyectofinanciero

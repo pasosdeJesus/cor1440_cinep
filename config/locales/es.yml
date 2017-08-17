@@ -42,6 +42,14 @@ es:
         tipoanexo: Tipo de anexo
       "contextoinv":
         regiongrupo: Región
+      "convenio":
+        clasificacion: Clasificación
+        tipoconvenio_id: Tipo de convenio
+        institucion: Institución
+        descripcion: Descripción
+        fechainicio: Fecha de inicio
+        fechacierre: Fecha de cierre
+        duracion: Duración
       "cor1440_gen/actividad":
         regionsjr: Dependencia
         minutos: Horas

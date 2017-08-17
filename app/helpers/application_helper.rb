@@ -16,6 +16,10 @@ module ApplicationHelper
   DIFICULTAD = [['BAJA', :B], ['MEDIA', :M], 
                 ['ALTA', :A], ['N/A', :N]]
 
+  CLASIFICACIONCONV = [['EN EL MARCO DE UN CONVENIO', :E], 
+                       ['NIVEL INTERINSTITUCIONAL', :I]]
+
+
   def dif_meses_dias(fechaini, fechafin) 
     m = 0
     d = 0
