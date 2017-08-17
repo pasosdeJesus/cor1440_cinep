@@ -39,12 +39,16 @@ Rails.application.routes.draw do
     #      controller: 'cor1440_gen/proyectosfinancieros',
     #      path_names: { new: 'nuevo', edit: 'edita' }
 
+    resources :convenios,
+      path_names: { new: 'nueva', edit: 'edita' }
+
     resources :proyectosfinancieros, 
       controller: 'cor1440_gen/proyectosfinancieros', 
       path_names: { new: 'nuevo', edit: 'edita' }
 
     resources :tasascambio,
       path_names: { new: 'nueva', edit: 'edita' }
+
 
     #get "/proyectosfinancieros" => "cor1440_gen/proyectosfinancieros#index", as: :proyectosfinancieros
     get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :fichaimp
