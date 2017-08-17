@@ -22,6 +22,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'regiongrupo'],
         ['', 'sectoractor'],
         ['', 'tipoanexo'],
+        ['', 'tipoconvenio'],
         ['', 'tipomoneda'],
         ['', 'tipoproductopf'],
         ['Sip', 'grupo']
@@ -33,7 +34,7 @@ class Ability  < Cor1440Gen::Ability
     ['', 'proyectofinanciero_usuario'], 
   ]
 
-		# Tablas no básicas pero que tienen índice con secuencia id_seq
+  # Tablas no básicas pero que tienen índice con secuencia id_seq
   def nobasicas_indice_seq_con_id 
     Sip::Ability::NOBASICAS_INDSEQID +
       Cor1440Gen::Ability::NOBASICAS_INDSEQID +
@@ -97,6 +98,7 @@ class Ability  < Cor1440Gen::Ability
         if grupos.include?(GRUPO_COMPROMISOS)
           can :manage, ::Tasacambio
           can :manage, ::Tipoanexo
+          can :manage, ::Tipoconvenio
           can :manage, ::Tipomoneda
           can :manage, ::Cargo
           can :manage, :tablasbasicas

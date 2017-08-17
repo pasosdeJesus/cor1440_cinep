@@ -7,6 +7,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'sectoractor', 'sectoresactores'
   inflect.irregular 'tasacambio', 'tasascambio'
   inflect.irregular 'tipoanexo', 'tiposanexo'
+  inflect.irregular 'tipoconvenio', 'tiposconvenio'
   inflect.irregular 'tipomoneda', 'tiposmoneda'
   inflect.irregular 'tipoproductopf', 'tiposproductopf'
 end

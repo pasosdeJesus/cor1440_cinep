@@ -2496,6 +2496,40 @@ ALTER SEQUENCE tipoanexo_id_seq OWNED BY tipoanexo.id;
 
 
 --
+-- Name: tipoconvenio; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE tipoconvenio (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: tipoconvenio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tipoconvenio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tipoconvenio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tipoconvenio_id_seq OWNED BY tipoconvenio.id;
+
+
+--
 -- Name: tipomoneda; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2990,6 +3024,13 @@ ALTER TABLE ONLY tipoanexo ALTER COLUMN id SET DEFAULT nextval('tipoanexo_id_seq
 
 
 --
+-- Name: tipoconvenio id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipoconvenio ALTER COLUMN id SET DEFAULT nextval('tipoconvenio_id_seq'::regclass);
+
+
+--
 -- Name: tipomoneda id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -3473,6 +3514,14 @@ ALTER TABLE ONLY sip_tclase
 
 ALTER TABLE ONLY tipoanexo
     ADD CONSTRAINT tipoanexo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tipoconvenio tipoconvenio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipoconvenio
+    ADD CONSTRAINT tipoconvenio_pkey PRIMARY KEY (id);
 
 
 --
@@ -4496,6 +4545,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170810040012'),
 ('20170810183757'),
 ('20170812044235'),
-('20170816100923');
+('20170816100923'),
+('20170817111035'),
+('20170817112031');
 
 
