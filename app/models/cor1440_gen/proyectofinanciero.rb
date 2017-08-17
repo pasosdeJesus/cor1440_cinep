@@ -145,7 +145,7 @@ module Cor1440Gen
 
     validate :dificultad_valida
     def dificultad_valida
-      cv = ApplicationHelper::DIFICULTAD.map {|r| r[1].to_s}
+      cv = ::ApplicationHelper::DIFICULTAD.map {|r| r[1].to_s}
       if !cv.include?(dificultad)
         errors.add(:dificultad, 'Dificultad no es válida')
       end
@@ -153,7 +153,7 @@ module Cor1440Gen
 
     validate :estado_valido
     def estado_valido
-      cv = ApplicationHelper::ESTADO.map {|r| r[1].to_s}
+      cv = ::ApplicationHelper::ESTADO.map {|r| r[1].to_s}
       if !cv.include?(estado)
         errors.add(:estado, 'Estado no es válido')
       end
