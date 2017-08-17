@@ -19,7 +19,7 @@ class ConveniosController < Sip::ModelosController
   end
 
   def atributos_form
-    atributos_index - [ "id" ] #+ [ "duracion" ]
+    atributos_index - [ "id", "duracion" ] + [ "fechacierre_localizada" ]
   end
 
   def index_reordenar(registros)
