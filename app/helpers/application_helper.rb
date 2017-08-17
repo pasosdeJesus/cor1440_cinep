@@ -11,6 +11,8 @@ module ApplicationHelper
             ['EN CIERRE', :C],  # Necesario para pestana en cierre de Cuadro General Seguimiento
             ['TERMINADO', :T] ]
 
+  ESTADOS_APROBADO = [:J, :C, :T]
+
   DIFICULTAD = [['BAJA', :B], ['MEDIA', :M], 
                 ['ALTA', :A], ['N/A', :N]]
 
