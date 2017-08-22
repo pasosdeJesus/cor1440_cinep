@@ -1,0 +1,8 @@
+<%= f.input :busestado, 
+  collection: ::ApplicationHelper::ESTADO,
+  include_blank: true,
+  label: false,
+  input_html: {
+    value: Sip::ModeloHelper.poromision(params, :busestado)
+  } 
+%>

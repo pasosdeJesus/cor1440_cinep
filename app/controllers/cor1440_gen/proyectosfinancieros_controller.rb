@@ -35,7 +35,8 @@ module Cor1440Gen
       ] +
         [ :uresponsable_ids =>  [] ] +
         [ 
-          "monto"
+          "monto",
+          "estado"
       ] 
     end
 
@@ -345,7 +346,7 @@ module Cor1440Gen
         select('nombremenu, id').map { 
           |co| [co.nombremenu, co.id] 
         }
-      return registros.reorder([:referenciacinep, :id])
+      return registros.reorder([:estado, :referenciacinep, :id])
     end
 
     def genera_odf

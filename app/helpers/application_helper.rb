@@ -4,14 +4,18 @@ module ApplicationHelper
   include Sip::ConsultasHelper
   include FontAwesome::Rails::IconHelper 
 
-  ESTADO = [['EN EJECUCIÓN', :J], 
-            ['EN TRAMITE', :E], 
-            ['RECHAZADO', :R], 
-            ['DESCARTADO', :D], 
+  # Las letras escogidas para cada estado están en orden para facilitar presentar
+  # en ese orden
+  ESTADO = [
             ['EN CIERRE', :C],  # Necesario para pestana en cierre de Cuadro General Seguimiento
-            ['TERMINADO', :T] ]
+            ['EN TRAMITE', :E], 
+            ['EN EJECUCIÓN', :J], 
+            ['TERMINADO', :M],
+            ['DESCARTADO', :O], 
+            ['RECHAZADO', :R] 
+  ] 
 
-  ESTADOS_APROBADO = [:J, :C, :T]
+  ESTADOS_APROBADO = [:J, :C, :M]
 
   DIFICULTAD = [['BAJA', :B], ['MEDIA', :M], 
                 ['ALTA', :A], ['N/A', :N]]
