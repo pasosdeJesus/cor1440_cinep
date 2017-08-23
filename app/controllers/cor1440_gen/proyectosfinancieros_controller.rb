@@ -342,7 +342,18 @@ module Cor1440Gen
                              r.tipoproductopf ? r.tipoproductopf.nombre : '')
         cump = ''
         if r.fechaplaneada && r.fechareal
-          cump = r.fechareal <= r.fechaplaneada ? 'SI' : 'NO'
+          c = 0
+          uf = r.fechaplaneada
+          (1..7).each do |d|
+            f = r.fechaplaneada + d.days
+            if f.wday != 0 && f.wday != 6
+              if (c<=5)
+                uf =f
+              end
+              c += 1
+            end
+          end
+          cump = r.fechareal <= uf ? 'SI' : 'NO'
         end
         asigna_celda_y_borde(hoja, fila, 9, cump)
         asigna_celda_y_borde(hoja, fila, 10, r.seguimiento)
