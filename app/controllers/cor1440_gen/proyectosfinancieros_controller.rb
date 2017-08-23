@@ -135,7 +135,7 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 4, 
                              cadena_muchos(r, 'financiador', ' - '))
         asigna_celda_y_borde(hoja, fila, 5, 
-                             ApplicationHelper::ESTADOS_APROBADO.include?(
+                             ::ApplicationHelper::ESTADOS_APROBADO.include?(
                                r.estado.to_sym) ? 'APROBADO' : Sip::ModeloHelper.
                                etiqueta_coleccion(
                                  ::ApplicationHelper::ESTADO, r.estado))
