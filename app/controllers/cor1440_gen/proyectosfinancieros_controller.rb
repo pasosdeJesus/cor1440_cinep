@@ -35,7 +35,8 @@ module Cor1440Gen
       ] +
         [ :uresponsable_ids =>  [] ] +
         [ 
-          "monto"
+          "monto",
+          "estado"
       ] 
     end
 
@@ -121,8 +122,8 @@ module Cor1440Gen
     def tramitado_anio(hoja, anio)
       hoja.name = "Tramitados #{anio}"
       reg = @registros.where("fechaformulacion>='#{anio.to_i}-01-01' AND " +
-                             "fechaformulacion<='#{anio.to_i}-12-31'").reorder(
-                               [:referenciacinep, :id])
+                             "fechaformulacion<='#{anio.to_i}-12-31'").
+        reorder([:referenciacinep, :id])
       fila = 2
       cons = 1
       reg.each do |r|
@@ -134,8 +135,10 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 4, 
                              cadena_muchos(r, 'financiador', ' - '))
         asigna_celda_y_borde(hoja, fila, 5, 
-                             Sip::ModeloHelper.etiqueta_coleccion(
-                               ::ApplicationHelper::ESTADO, r.estado))
+                             ApplicationHelper::ESTADOS_APROBADO.include?(
+                               r.estado.to_sym) ? 'APROBADO' : Sip::ModeloHelper.
+                               etiqueta_coleccion(
+                                 ::ApplicationHelper::ESTADO, r.estado))
         asigna_celda_y_borde(hoja, fila, 6, r.monto_localizado)
         asigna_celda_y_borde(hoja, fila, 7, r.tipomoneda ?
                              r.tipomoneda.codiso4217 : '')
@@ -160,7 +163,7 @@ module Cor1440Gen
       # Hoja Resumen
       hoja = libro.worksheets(1)
       fila = 2
-      reg = @registros.where("estado IN ('J', 'E', 'C', 'T')").
+      reg = @registros.where("estado IN ('J', 'E', 'C', 'M')").
         reorder([:referenciacinep, :id])
       cons = 1
       reg.each do |r|
@@ -200,22 +203,19 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 4, "#{gp}#{ao}")
         asigna_celda_y_borde(hoja, fila, 5, cadena_muchos(
           r, 'usuario', ', ', 'presenta_nombre'))
-        asigna_celda_y_borde(hoja, fila, 6, 
-                             Sip::ModeloHelper.etiqueta_coleccion(
-                               ::ApplicationHelper::ESTADO, r.estado))
-        asigna_celda_y_borde(hoja, fila, 7, r.monto_localizado)
-        asigna_celda_y_borde(hoja, fila, 8, r.tipomoneda ?
+        asigna_celda_y_borde(hoja, fila, 6, r.monto_localizado)
+        asigna_celda_y_borde(hoja, fila, 7, r.tipomoneda ?
                              r.tipomoneda.codiso4217 : '')
-        asigna_celda_y_borde(hoja, fila, 9, 
+        asigna_celda_y_borde(hoja, fila, 8, 
                              r.montopesos_localizado)
         duryf = r.fechacierre && r.fechainicio ?
           (dif_meses_dias(r.fechainicio, r.fechacierre) + ' - ' + 
            r.fechainicio_localizada) : ''
-        asigna_celda_y_borde(hoja, fila, 10, duryf)
-        asigna_celda_y_borde(hoja, fila, 11, r.observacionestramite)
+        asigna_celda_y_borde(hoja, fila, 9, duryf)
+        asigna_celda_y_borde(hoja, fila, 10, r.observacionestramite)
         mf = r.fechaformulacion ?
           r.fechaformulacion_localizada[3..-1] : ''
-        asigna_celda_y_borde(hoja, fila, 12, mf)
+        asigna_celda_y_borde(hoja, fila, 11, mf)
 
         cons +=1
         fila +=1
@@ -262,7 +262,6 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 7, r.observacionescierre)
         asigna_celda_y_borde(hoja, fila, 8, 
                              cadena_muchos(r, 'grupo', '; '))
-
         cons +=1
         fila +=1
       end
@@ -275,7 +274,7 @@ module Cor1440Gen
       # Hoja de publicaciones
       hoja = libro.worksheets(7)
       fila = 2
-      reg = @registros.where("estado IN ('J', 'C', 'T')").
+      reg = @registros.where("estado IN ('J', 'C', 'M')").
         joins(:productopf).reorder([:referenciacinep, :id])
       cons = 1
       reg.each do |r|
@@ -296,6 +295,8 @@ module Cor1440Gen
         fila +=1
       end
 
+      # Hoja de convenios institucionales
+      
      
       # Hojas para tramitados en años anteriores
       anios = @registros.where("fechaformulacion<'#{anio}-01-01'").
@@ -345,7 +346,7 @@ module Cor1440Gen
         select('nombremenu, id').map { 
           |co| [co.nombremenu, co.id] 
         }
-      return registros.reorder([:referenciacinep, :id])
+      return registros.reorder([:estado, :referenciacinep, :id])
     end
 
     def genera_odf

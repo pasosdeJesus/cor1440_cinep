@@ -185,6 +185,17 @@ module Cor1440Gen
             r)
     }
 
+    scope :filtro_estado, lambda { |e|
+      where(estado: e)
+    }
+
+    def presenta(atr)
+      if (atr == 'estado')
+        Sip::ModeloHelper.etiqueta_coleccion(::ApplicationHelper::ESTADO, estado)
+      else
+        presenta_gen(atr)
+      end
+    end
 
   end
 end

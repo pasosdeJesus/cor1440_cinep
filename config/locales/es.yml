@@ -18,6 +18,7 @@ es:
     actividadareas: Componentes Plan Trienal 
     departamento: Departamento
     oficina: Área
+    proyecto: "Programa / Servicio / Producto"
     proyectosfinancieros: Compromisos institucionales
     proyectofinanciero: Compromiso institucional
   activerecord:
@@ -51,11 +52,13 @@ es:
         fechacierre: Fecha de cierre
         duracion: Duración
       "cor1440_gen/actividad":
-        regionsjr: Dependencia
+        actividadtipo: Tipo
         minutos: Horas
         observaciones: Compromisos/Observaciones
+        proyecto: "Programa / Servicio / Producto"
+        proyectos: "Programas / Servicios / Productos"
+        regionsjr: Dependencia
         fecha_localizada: Fecha
-        actividadtipo: Tipo
       "cor1440_gen/actividadarea":
         Actividadarea: Componente Plan Trienal 
         Actividadareas: Componentes Plan Trienal 

@@ -7,6 +7,19 @@ module Cor1440Gen
 
     helper Cor1440Gen::GruposHelper
 
+
+    def create
+      @actividad = Actividad.new(actividad_params)
+      @actividad.oficina_id = 1
+      @actividad.current_usuario = current_usuario
+      create_gen
+    end
+
+    def update
+      params[:actividad][:oficina_id] = 1
+      update_gen
+    end
+
     def self.filtramas(par, ac, current_usuario = nil)
       mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).
         map(&:id).join(', ')
@@ -41,23 +54,32 @@ module Cor1440Gen
 
     # Encabezado comun para HTML y PDF (primeras filas)
     def encabezado_comun
-      return [ Cor1440Gen::Actividad.human_attribute_name(:id), 
-        @actividades.human_attribute_name(:fecha),
-        @actividades.human_attribute_name(:responsable),
-        @actividades.human_attribute_name(:nombre),
-        @actividades.human_attribute_name(:departamento),
-        @actividades.human_attribute_name(:actividadtipo),
-        @actividades.human_attribute_name(:objetivo),
-        @actividades.human_attribute_name(:proyectos),
-        @actividades.human_attribute_name(:proyectosfinancieros),
-        @actividades.human_attribute_name(:resultado),
-        @actividades.human_attribute_name(:contexto),
-        @actividades.human_attribute_name(:mujeres),
-        @actividades.human_attribute_name(:hombres),
-        @actividades.human_attribute_name(:blancos),
-        @actividades.human_attribute_name(:mestizos),
-        @actividades.human_attribute_name(:indigenas),
-        @actividades.human_attribute_name(:negros)
+      atributos_presenta.map {|a| Cor1440Gen::Actividad.human_attribute_name(a)}
+#      return [ 
+#        @actividades.human_attribute_name(:fecha),
+#        @actividades.human_attribute_name(:responsable),
+#        @actividades.human_attribute_name(:nombre),
+#        @actividades.human_attribute_name(:departamento),
+#        @actividades.human_attribute_name(:actividadtipo),
+#        @actividades.human_attribute_name(:objetivo),
+#        @actividades.human_attribute_name(:proyectos),
+#        @actividades.human_attribute_name(:proyectosfinancieros),
+#        @actividades.human_attribute_name(:resultado),
+#        @actividades.human_attribute_name(:contexto),
+#        @actividades.human_attribute_name(:mujeres),
+#        @actividades.human_attribute_name(:hombres),
+#        @actividades.human_attribute_name(:blancos),
+#        @actividades.human_attribute_name(:mestizos),
+#        @actividades.human_attribute_name(:indigenas),
+#        @actividades.human_attribute_name(:negros)
+#      ]
+    end
+
+    def atributos_presenta
+      [ :id, :fecha, :responsable, :nombre, :departamento,
+        :actividadtipos, :objetivo, :proyectos, :proyectosfinancieros, 
+        :resultado, :contexto, :mujeres, :hombres, :blancos,
+        :mestizos, :indigenas, :negros
       ]
     end
 
@@ -118,6 +140,7 @@ module Cor1440Gen
         :accioncetnia,
         :nucleoconflicto_id,
         :redactor_id,
+        :oficina_id,
         :actividadarea_ids => [],
         :actividadtipo_ids => [],
         :actor_ids => [],
