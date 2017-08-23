@@ -21,7 +21,18 @@
     
 <div class='row'>
   <div class="col-sm-offset-0 col-sm-6">
-    <%= f.input :presupuestototal_localizado %>
+    <% ptp = f.object.tipomoneda_id.nil? ? nil :
+      (f.object.tipomoneda.nombre == 'PESO' ? f.object.presupuestototal : 
+       (f.object.tasaformulacion_id.nil? ? nil : 
+       f.object.presupuestototal*f.object.tasaformulacion.enpesos)
+      ) 
+    %>
+    <%= f.input :presupuestototal_localizado,
+    input_html: {
+      "data-toggle" => 'tooltip',
+      "title" => ptp.nil? ? '' : "$#{ptp.a_decimal_localizado}"
+    }
+  %>
   </div>
   <div class="col-sm-6">
     <%= f.input :apresupuesto %>

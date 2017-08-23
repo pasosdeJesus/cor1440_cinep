@@ -21,6 +21,7 @@
   ml = $('#proyectofinanciero_monto_localizado').val()
   if tm == "1"  # PESO
     $('#proyectofinanciero_montopesos_localizado').val(ml)
+    $('#proyectofinanciero_presupuestototal_localizado').attr('data-original-title', $('#proyectofinanciero_presupuestototal_localizado').val())
   else if typeof ml != 'undefined' && typeof tm != 'undefined'
     tf2 = $('#proyectofinanciero_tasaformulacion_id option:selected').text().split(' ')
     if tf2.length != 2
@@ -30,6 +31,11 @@
     mp = tf*m
     mpl = new Intl.NumberFormat('es-CO').format(mp)
     $('#proyectofinanciero_montopesos_localizado').val(mpl)
+    pt = $('#proyectofinanciero_presupuestototal_localizado').val()
+    if typeof pt != 'undefined' and pt != ''
+      ptp = reconocer_decimal_locale_es_CO(pt)*tf
+      ptpl = new Intl.NumberFormat('es-CO').format(ptp)
+      $('#proyectofinanciero_presupuestototal_localizado').attr('data-original-title', '$ ' + ptpl)
     
   return
 
