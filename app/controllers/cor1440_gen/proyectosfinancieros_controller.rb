@@ -271,32 +271,86 @@ module Cor1440Gen
       anio = Date.today.year
       tramitado_anio(treste, anio)
 
-      # Hoja de publicaciones
-      hoja = libro.worksheets(7)
+      # Hoja de convenios institucionales
+      hoja = libro.worksheets(6)
       fila = 2
-      reg = @registros.where("estado IN ('J', 'C', 'M')").
-        joins(:productopf).reorder([:referenciacinep, :id])
+      reg = ::Convenio.all
+      if params[:filtro][:busfechainicio_localizadaini] && 
+        params[:filtro][:busfechainicio_localizadaini] != ''
+        reg = reg.filtro_fechainicio_localizadaini(
+          params[:filtro][:busfechainicio_localizadaini])
+      end
+      if params[:filtro][:busfechainicio_localizadafin] &&
+        params[:filtro][:busfechainicio_localizadafin] != ''
+        reg = reg.filtro_fechainicio_localizadafin(
+          params[:filtro][:busfechainicio_localizadafin])
+      end
+      if params[:filtro][:busfechacierre_localizadaini] &&
+        params[:filtro][:busfechacierre_localizadaini] != ''
+        reg = reg.filtro_fechacierre_localizadaini(
+          params[:filtro][:busfechacierre_localizadaini])
+      end
+      if params[:filtro][:busfechacierre_localizadafin] &&
+        params[:filtro][:busfechacierre_localizadafin] != ''
+        reg = reg.filtro_fechacierre_localizadafin(
+          params[:filtro][:busfechacierre_localizadafin])
+      end
+
+     
       cons = 1
       reg.each do |r|
         asigna_celda_y_borde(hoja, fila, 1, cons)
-        asigna_celda_y_borde(hoja, fila, 2, r.referenciacinep)
-        asigna_celda_y_borde(hoja, fila, 3, 
-                             cadena_muchos(r, 'coordinador', ', ', 
-                                           'presenta_nombre'))
-        asigna_celda_y_borde(hoja, fila, 4, 
-                             cadena_muchos(r, 'financiador', ' - '))
-        asigna_celda_y_borde(hoja, fila, 5, r.referencia)
-        asigna_celda_y_borde(hoja, fila, 6, r.fechainicio_localizada)
-        asigna_celda_y_borde(hoja, fila, 7, r.fechacierre_localizada)
-
-        # Tocara hacerlo como consulta porque no logramos sacar
-        # aqui los campos de productopf haciendolo asi
+        asigna_celda_y_borde(hoja, fila, 2, r.clasificacion ? 
+                             r.clasificacion : '')
+        asigna_celda_y_borde(hoja, fila, 3, r.institucion)
+        asigna_celda_y_borde(hoja, fila, 4, r.tipoconvenio_id ?
+                             r.tipoconvenio.nombre : '')
+        asigna_celda_y_borde(hoja, fila, 5, r.descripcion)
+        asigna_celda_y_borde(hoja, fila, 6, r.fechainicio)
+        asigna_celda_y_borde(hoja, fila, 7, dif_meses_dias(
+          r.fechainicio, r.fechacierre))
         cons +=1
         fila +=1
       end
 
-      # Hoja de convenios institucionales
-      
+
+      # Hoja de publicaciones
+      hoja = libro.worksheets(7)
+      fila = 2
+      reg = @registros.where("estado IN ('J', 'C', 'M')")
+      ppf = ::Productopf.where(proyectofinanciero_id: reg.map(&:id)).
+        joins(:proyectofinanciero)
+     
+      cons = 1
+      ppf.each do |r|
+        asigna_celda_y_borde(hoja, fila, 1, cons)
+        asigna_celda_y_borde(hoja, fila, 2, r.proyectofinanciero.referenciacinep)
+        asigna_celda_y_borde(hoja, fila, 3, 
+                             cadena_muchos(r.proyectofinanciero, 
+                                           'coordinador', ', ', 
+                                           'presenta_nombre'))
+        asigna_celda_y_borde(hoja, fila, 4, 
+                             cadena_muchos(r.proyectofinanciero, 
+                                           'financiador', ' - '))
+        asigna_celda_y_borde(hoja, fila, 5, r.proyectofinanciero.referencia)
+        asigna_celda_y_borde(hoja, fila, 6, 
+                             r.proyectofinanciero.fechainicio_localizada)
+        asigna_celda_y_borde(hoja, fila, 7, 
+                             r.proyectofinanciero.fechacierre_localizada)
+
+        asigna_celda_y_borde(hoja, fila, 8, 
+                             r.tipoproductopf ? r.tipoproductopf.nombre : '')
+        cump = ''
+        if r.fechaplaneada && r.fechareal
+          cump = r.fechareal <= r.fechaplaneada ? 'SI' : 'NO'
+        end
+        asigna_celda_y_borde(hoja, fila, 9, cump)
+        asigna_celda_y_borde(hoja, fila, 10, r.seguimiento)
+        cons +=1
+        fila +=1
+      end
+
+  
      
       # Hojas para tramitados en años anteriores
       anios = @registros.where("fechaformulacion<'#{anio}-01-01'").

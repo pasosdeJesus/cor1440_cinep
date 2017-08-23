@@ -62,11 +62,23 @@ class Convenio < ActiveRecord::Base
   } 
 
   scope :filtro_fechainicio_localizadaini, lambda { |f|
-      where('fechainicio >= ?', f)
+    where('fechainicio >= ?', 
+          Sip::FormatoFechaHelper.fecha_local_estandar(f))
   }
 
   scope :filtro_fechainicio_localizadafin, lambda { |f|
-      where('fechainicio <= ?', f)
+    where('fechainicio <= ?', 
+          Sip::FormatoFechaHelper.fecha_local_estandar(f))
+  }
+
+  scope :filtro_fechacierre_localizadaini, lambda { |f|
+    where('fechacierre >= ?', 
+          Sip::FormatoFechaHelper.fecha_local_estandar(f))
+  }
+
+  scope :filtro_fechacierre_localizadafin, lambda { |f|
+    where('fechacierre <= ?', 
+          Sip::FormatoFechaHelper.fecha_local_estandar(f))
   }
 
 
