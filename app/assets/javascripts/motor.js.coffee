@@ -15,7 +15,14 @@
       r = r + n[i]
     i++
   return parseFloat(r)
-    
+
+@recalcula_aemergente_pesos_localizado = (campo, tasa) ->
+  vc = $('#' + campo).val()
+  if typeof vc != 'undefined' && vc != '' && typeof tasa != 'undefined' && tasa > 0
+      vcp = reconocer_decimal_locale_es_CO(vc)*tasa
+      vcpl = new Intl.NumberFormat('es-CO').format(vcp)
+      $('#' + campo).attr('title', '$ ' + vcpl).tooltip('fixTitle').tooltip('show')
+
 @recalcula_montospesos_localizado = (root) ->
   tm = $('#proyectofinanciero_tipomoneda_id').val()
   ml = $('#proyectofinanciero_monto_localizado').val()
@@ -31,11 +38,10 @@
     mp = tf*m
     mpl = new Intl.NumberFormat('es-CO').format(mp)
     $('#proyectofinanciero_montopesos_localizado').val(mpl)
-    pt = $('#proyectofinanciero_presupuestototal_localizado').val()
-    if typeof pt != 'undefined' and pt != ''
-      ptp = reconocer_decimal_locale_es_CO(pt)*tf
-      ptpl = new Intl.NumberFormat('es-CO').format(ptp)
-      $('#proyectofinanciero_presupuestototal_localizado').attr('title', '$ ' + ptpl).tooltip('fixTitle').tooltip('show')
+
+    recalcula_aemergente_pesos_localizado('proyectofinanciero_presupuestototal_localizado', tf)
+    recalcula_aemergente_pesos_localizado('proyectofinanciero_aportecinep_localizado', tf)
+    recalcula_aemergente_pesos_localizado('proyectofinanciero_aotrosfin_localizado', tf)
     
   return
 
