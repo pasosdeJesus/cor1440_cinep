@@ -16,7 +16,7 @@
     i++
   return parseFloat(r)
     
-@recalcula_montopesos_localizado = (root) ->
+@recalcula_montospesos_localizado = (root) ->
   tm = $('#proyectofinanciero_tipomoneda_id').val()
   ml = $('#proyectofinanciero_monto_localizado').val()
   if tm == "1"  # PESO
@@ -35,7 +35,7 @@
     if typeof pt != 'undefined' and pt != ''
       ptp = reconocer_decimal_locale_es_CO(pt)*tf
       ptpl = new Intl.NumberFormat('es-CO').format(ptp)
-      $('#proyectofinanciero_presupuestototal_localizado').attr('data-original-title', '$ ' + ptpl)
+      $('#proyectofinanciero_presupuestototal_localizado').attr('title', '$ ' + ptpl).tooltip('fixTitle').tooltip('show')
     
   return
 
@@ -43,13 +43,16 @@
 @cor1440_cinep_prepara_eventos_unicos = (root) ->
   sip_arregla_puntomontaje(root)
   $('#proyectofinanciero_tipomoneda_id').chosen().change( (e) ->
-    sip_llena_select_con_AJAX($(this), 'proyectofinanciero_tasaformulacion_id', 'tasascambio', 'bustipomoneda_id', 'con Tasa de cambio', root, true, 'id', 'presenta_nombre', recalcula_montopesos_localizado)
+    sip_llena_select_con_AJAX($(this), 'proyectofinanciero_tasaformulacion_id', 'tasascambio', 'bustipomoneda_id', 'con Tasa de cambio', root, true, 'id', 'presenta_nombre', recalcula_montospesos_localizado)
   )
   $('#proyectofinanciero_monto_localizado').change( (e) ->
-    recalcula_montopesos_localizado(root)
+    recalcula_montospesos_localizado(root)
+  )
+  $('#proyectofinanciero_presupuestototal_localizado').change( (e) ->
+    recalcula_montospesos_localizado(root)
   )
   $('#proyectofinanciero_tasaformulacion_id').chosen().change( (e) ->
-    recalcula_montopesos_localizado(root)
+    recalcula_montospesos_localizado(root)
   )
 
   return
