@@ -151,6 +151,7 @@ es:
         Tasacambio: Tasa de cambio
         Tasascambio: Tasas de cambio
         tipomoneda_id: Tipo de moneda
+        tipomoneda: Tipo de moneda
       "tipoanexo":
         Tipoanexo: Tipo de anexo 
         Tiposanexo: Tipos de anexo
