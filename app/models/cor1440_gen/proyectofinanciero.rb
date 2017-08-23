@@ -120,10 +120,10 @@ module Cor1440Gen
     validates :gestiones, length: { maximum: 5000}
     flotante_localizado :monto
     validates :monto, numericality: 
-      { greater_than: 0, less_than: 1000000000000000000 }
+      { less_than: 1000000000000000000 }
     flotante_localizado :montopesos
     validates :montopesos, numericality: 
-      { greater_than: 0, less_than: 1000000000000000000 }
+      { less_than: 1000000000000000000 }
     validates :objeto, length: { maximum: 5000}
     validates :observacionestramite, length: { maximum: 5000}
     validates :observacionesejecucion, length: { maximum: 5000}
@@ -131,7 +131,7 @@ module Cor1440Gen
     validates :otrosaportescinep, length: { maximum: 500}
     flotante_localizado :presupuestototal
     validates :presupuestototal, numericality: 
-      { greater_than: 0, less_than: 1000000000000000000 }
+      { less_than: 1000000000000000000 }
     validates :referencia, presence: true, allow_blank: false,
       length: { maximum: 1000 }
     validates :referenciacinep, presence: true, allow_blank: false,
