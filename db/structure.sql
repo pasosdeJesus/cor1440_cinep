@@ -962,7 +962,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    monto numeric(20,2),
+    monto numeric DEFAULT 0.0,
     referencia character varying(1000),
     referenciacinep character varying(1000),
     fuentefinanciador character varying(1000),
@@ -979,7 +979,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric(20,2),
+    presupuestototal numeric DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -1003,7 +1003,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     observacionesejecucion character varying(5000),
     observacionescierre character varying(5000),
     fechaformulacion date,
-    montopesos numeric,
+    montopesos numeric DEFAULT 0.0,
     tasaformulacion_id integer
 );
 
@@ -2758,7 +2758,7 @@ CREATE VIEW v_solicitud_informes AS
         END AS a_tiempo
    FROM (cor1440_gen_proyectofinanciero p
      JOIN v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[101, 117, 102, 122, 123, 106, 125, 104, 118, 109, 111, 131, 132, 133, 134, 103, 116, 115, 128, 129, 130, 120, 126, 119]))
+  WHERE (p.id = ANY (ARRAY[101, 111]))
   ORDER BY s.fechaplaneada;
 
 
@@ -4606,6 +4606,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170812044235'),
 ('20170816100923'),
 ('20170817111035'),
-('20170817122026');
+('20170817122026'),
+('20170823205820');
 
 

@@ -12,11 +12,6 @@
 <tr><td rowspan="1" colspan="3">actos_colectivos</td></tr>
 </thead><tbody>
 <tr>
-	<td>open</td>
-	<td>/sivel2</td>
-	<td></td>
-</tr>
-<tr>
 	<td>click</td>
 	<td>css=b.caret</td>
 	<td></td>

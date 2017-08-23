@@ -11,6 +11,7 @@
 <tr><td><a href="crear_un_usuario.selenium">crear_un_usuario</a></td></tr>
 <tr><td><a href="ingresar_y_salir_de_usuario_recien_creado.selenium">ingresar_y_salir_de_usuario_recien_creado</a></td></tr>
 <tr><td><a href="eliminar_usuario_recien_creado.selenium">eliminar_usuario_recien_creado</a></td></tr>
+<tr><td><a href="../../../../crecer_cor1440_cinep/test/seleniumide/actores.selenium">actores</a></td></tr>
 </tbody></table>
 </body>
 </html>
