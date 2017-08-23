@@ -192,6 +192,12 @@ module Cor1440Gen
     def presenta(atr)
       if (atr == 'estado')
         Sip::ModeloHelper.etiqueta_coleccion(::ApplicationHelper::ESTADO, estado)
+      elsif (atr == 'monto_localizado')
+        if tipomoneda_id.nil?
+          monto_localizado
+        else
+          monto_localizado + ' ' + tipomoneda.codiso4217
+        end
       else
         presenta_gen(atr)
       end
