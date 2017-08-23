@@ -35,7 +35,7 @@ module Cor1440Gen
       ] +
         [ :uresponsable_ids =>  [] ] +
         [ 
-          "monto",
+          "monto_localizado",
           "estado"
       ] 
     end
