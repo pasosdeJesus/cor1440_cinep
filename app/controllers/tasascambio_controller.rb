@@ -1,5 +1,8 @@
 # encoding: UTF-8
 
+require 'net/http'
+require 'json'
+
 class TasascambioController < Sip::ModelosController
   helper ::ApplicationHelper
   #include ::ApplicationHelper
@@ -35,6 +38,19 @@ class TasascambioController < Sip::ModelosController
     return 'F'
   end
 
+  def new
+    url = 'http://www.apilayer.net/api/live?access_key=a9831f6952fcc74b74af769cb44394cf&format=1&currencies=COP,SEK,EUR,CHF,GBP'
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    j=JSON.parse(response)
+    @div = {}
+    @div['USD'] = j['quotes']['USDCOP'].to_f
+    @div['SEK'] = @div['USD'] / j['quotes']['USDSEK'].to_f
+    @div['EUR'] = @div['USD'] / j['quotes']['USDEUR'].to_f
+    @div['CHF'] = @div['USD'] / j['quotes']['USDCHF'].to_f
+    @div['GBP'] = @div['USD'] / j['quotes']['USDGBP'].to_f
+    super
+  end
 
   private
 
