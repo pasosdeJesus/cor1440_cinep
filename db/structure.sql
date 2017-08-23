@@ -2758,6 +2758,7 @@ CREATE VIEW v_solicitud_informes AS
         END AS a_tiempo
    FROM (cor1440_gen_proyectofinanciero p
      JOIN v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
+  WHERE (p.id = ANY (ARRAY[101, 117, 102, 122, 123, 106, 125, 104, 118, 109, 111, 131, 132, 133, 134, 103, 116, 115, 128, 129, 130, 120, 126, 119]))
   ORDER BY s.fechaplaneada;
 
 
