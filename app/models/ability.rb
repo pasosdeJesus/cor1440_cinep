@@ -56,7 +56,8 @@ class Ability  < Cor1440Gen::Ability
         'devoluciones', 'observaciones', 'seguimiento',
         'a_tiempo'
       ],
-      controlador: 'Cor1440Gen::Proyectofinanciero'
+      controlador: 'Cor1440Gen::Proyectofinanciero',
+      ruta: '/proyectosfinancieros'
     },
     'Cuadro General de Seguimiento' => { 
       campos: [
@@ -64,7 +65,8 @@ class Ability  < Cor1440Gen::Ability
         'financiador', 'responsablegp', 
         'estado', 'gradoexigencia'
       ],
-      controlador: 'Cor1440Gen::Proyectofinanciero'
+      controlador: 'Cor1440Gen::Proyectofinanciero',
+      ruta: '/proyectosfinancieros'
     }
 
   }

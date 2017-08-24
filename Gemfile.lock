@@ -1,26 +1,4 @@
 GIT
-  remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 812335d9c6273d606b41f60be35d29426c65e80d
-  specs:
-    cor1440_gen (1.0.b1)
-      devise
-      heb412_gen
-      jquery-rails
-      paperclip
-      rails
-      sip
-
-GIT
-  remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 03f2b1c6dc234e37fe9fa24f6fb47125cfabbf30
-  specs:
-    heb412_gen (1.0.a1)
-      chosen-rails
-      font-awesome-rails
-      rspreadsheet
-      sip
-
-GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
   revision: 88e19fa6ef104970b126f40bee6008dde9dce0be
   specs:
@@ -56,6 +34,26 @@ GIT
   revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
   specs:
     cocoon (1.2.6)
+
+PATH
+  remote: ../cor1440_gen
+  specs:
+    cor1440_gen (1.0.b1)
+      devise
+      heb412_gen
+      jquery-rails
+      paperclip
+      rails
+      sip
+
+PATH
+  remote: ../heb412_gen
+  specs:
+    heb412_gen (1.0.a1)
+      chosen-rails
+      font-awesome-rails
+      rspreadsheet
+      sip
 
 GEM
   remote: https://rubygems.org/
@@ -109,6 +107,7 @@ GEM
     bootstrap-datepicker-rails (1.6.4.1)
       railties (>= 3.0)
     builder (3.2.3)
+    byebug (9.0.6)
     camertron-eprun (1.1.1)
     cancancan (2.0.0)
     capybara (2.15.1)
@@ -374,6 +373,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
+  byebug
   cancancan
   capybara
   chosen-rails
