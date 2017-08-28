@@ -996,13 +996,13 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     aotrosfin numeric,
     aotrosesp character varying(500),
     respgp_id integer,
-    estado character varying(1),
+    estado character varying(1) DEFAULT 'E'::character varying,
     dificultad character varying(1),
     objeto character varying(5000),
     observacionestramite character varying(5000),
     observacionesejecucion character varying(5000),
     observacionescierre character varying(5000),
-    fechaformulacion date,
+    fechaformulacion date DEFAULT ('now'::text)::date NOT NULL,
     montopesos numeric DEFAULT 0.0,
     tasaformulacion_id integer
 );
@@ -4607,6 +4607,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170816100923'),
 ('20170817111035'),
 ('20170817122026'),
-('20170823205820');
+('20170823205820'),
+('20170828104454');
 
 

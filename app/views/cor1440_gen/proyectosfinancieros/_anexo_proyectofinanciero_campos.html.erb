@@ -6,7 +6,7 @@
     <%= f.association :tipoanexo,
       collection: ::Tipoanexo.habilitados,
       label_method: :nombre,
-      value_method: :id 
+      value_method: :id
     %>
 
     <%= f.simple_fields_for :sip_anexo do |a| %>

@@ -1,7 +1,8 @@
 <%= f.association :grupo,
   collection: Sip::Grupo.habilitados,
   label_method: :nombre,
-  value_method: :id 
+  value_method: :id,
+  input_html: { class: 'chosen-select' }
 %>
 
 <p>

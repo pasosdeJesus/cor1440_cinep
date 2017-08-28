@@ -108,7 +108,7 @@ module Cor1440Gen
     validates :emailrespagencia, length: { maximum: 100}
 
     #requerido para cuadro general de seguimiento
-    validates :estado, presence: true
+    validates :estado, presence: true, allow_blank: false
 
     campofecha_localizado :fechaliquidacion
     campofecha_localizado :fechaformulacion
@@ -132,9 +132,9 @@ module Cor1440Gen
     flotante_localizado :presupuestototal
     validates :presupuestototal, numericality: 
       { less_than: 1000000000000000000 }
-    validates :referencia, presence: true, allow_blank: false,
+    validates :referencia, allow_blank: true,
       length: { maximum: 1000 }
-    validates :referenciacinep, presence: true, allow_blank: false,
+    validates :referenciacinep, allow_blank: true,
       length: { maximum: 1000 }
     validates :respagencia, length: { maximum: 100}
     flotante_localizado :saldo
