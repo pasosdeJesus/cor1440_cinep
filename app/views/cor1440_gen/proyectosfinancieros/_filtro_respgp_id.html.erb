@@ -1,0 +1,13 @@
+<%= f.input :busrespgp_id,
+  collection: ::Usuario.joins(:sip_grupo).
+    where('sip_grupo.nombre=?', Ability::GRUPO_COMPROMISOS),
+  include_blank: true,
+  label_method: :presenta_nombre,
+  value_method: :id,
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :busrespgp_id),
+  input_html: { 
+    class: 'chosen-select',
+    'data-enviarautomatico' => ''
+  }
+%>

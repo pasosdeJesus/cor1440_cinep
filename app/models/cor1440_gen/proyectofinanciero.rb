@@ -185,6 +185,16 @@ module Cor1440Gen
             r)
     }
 
+    scope :filtro_grupo_ids, lambda { |g|
+      joins(:grupo_proyectofinanciero).
+        where('grupo_proyectofinanciero.grupo_id=?', g)
+    }
+
+    scope :filtro_respgp_id, lambda { |r|
+      where('respgp_id=?', r)
+    }
+
+
     scope :filtro_estado, lambda { |e|
       where(estado: e)
     }

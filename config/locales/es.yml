@@ -84,8 +84,6 @@ es:
         copiasdesoporte: "Copias de soporte"
         compromisos: "Productos (publicaciones, compromisos, actividades)"
         coordinador: "Coordinador(es)"
-        uresponsable: "Responsable(s)"
-        "{:uresponsable_ids=>[]}": "Responsable(s)"
         cuentasbancarias: "Cuentas bancarias"
         duracion: "Fecha de liquidación"
         emailrespagencia: "Correo responsable"
@@ -101,6 +99,7 @@ es:
         fuentefinanciador: "Fuente de financiacion"
         formatosespecificos: "Formatos específicos"
         formatossolicitudpago: "Formatos de solicitud de pago"
+        "{:grupo_ids=>[]}": "Equipo(s)"
         informesnarrativos: "Informes narrativos"
         informesfinancieros: "Informes financieros"
         informesauditoria: "Informes auditoria/Verificación de gastos/Controles del financiador"
@@ -120,12 +119,16 @@ es:
         referenciacinep: "Referencia CINEP/PPP"
         rendimientosfinancieros: "Rendimientos financieros"
         respagencia: "Responsable"
+        respgp: "Responsable GP"
+        respgp_id: "Responsable GP"
         saldo_localizado: "Saldo"
         tasaformulacion: "Tasa de cambio"
         tasaformulacion_localizado: "Tasa de cambio"
         telrespagencia: "Teléfono responsable"
         tipomoneda: "Tipo de moneda"
         tipoanexo: "Tipo de anexo"
+        uresponsable: "Responsable(s)"
+        "{:uresponsable_ids=>[]}": "Responsable(s)"
       "nucleoconflicto":
         Nucleoconflict: Núcleo de conflicto
         Nucleosconflicto: Núcleos de conflicto

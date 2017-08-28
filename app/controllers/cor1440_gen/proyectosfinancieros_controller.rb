@@ -33,8 +33,9 @@ module Cor1440Gen
         [ "fechainicio_localizada",
           "fechacierre_localizada"
       ] +
-        [ :uresponsable_ids =>  [] ] +
+        [ :grupo_ids =>  [] ] +
         [ 
+          "respgp_id",
           "monto_localizado",
           "estado"
       ] 
