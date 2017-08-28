@@ -45,6 +45,15 @@ class Convenio < ActiveRecord::Base
     end
   end
 
+  def presenta(atr)
+    if (atr == 'clasificacion')
+      Sip::ModeloHelper.etiqueta_coleccion(
+        ::ApplicationHelper::CLASIFICACIONCONV, clasificacion)
+    else
+      presenta_gen(atr)
+    end
+  end
+
   scope :filtro_clasificacion, lambda {|c|
         where(clasificacion: c)
   } 

@@ -23,6 +23,9 @@ es:
     proyectofinanciero: Compromiso institucional
   activerecord:
     models:
+      "convenio":
+        one: "Convenio institucional"
+        other: "Convenios institucionales"
       "cor1440_gen/proyectofinanciero": 
         one: "Compromiso institucional"
         other: "Compromisos institucionales"
@@ -46,11 +49,14 @@ es:
       "convenio":
         clasificacion: Clasificación
         tipoconvenio_id: Tipo de convenio
+        tipoconvenio: Tipo de convenio
         institucion: Institución
         descripcion: Descripción
         fechainicio: Fecha de inicio
         fechacierre: Fecha de cierre
         duracion: Duración
+        Convenio: "Convenio institucional"
+        Convenios: "Convenios institucionales"
       "cor1440_gen/actividad":
         actividadtipo: Tipo
         minutos: Horas
