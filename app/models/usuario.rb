@@ -44,4 +44,9 @@ class Usuario < ActiveRecord::Base
     end
     return r.strip
   end
+
+  scope :filtro_oficina_id, lambda {|o|
+    where(oficina_id: o)
+  }
+
 end
