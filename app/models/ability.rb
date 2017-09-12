@@ -25,7 +25,8 @@ class Ability  < Cor1440Gen::Ability
         ['', 'tipoconvenio'],
         ['', 'tipomoneda'],
         ['', 'tipoproductopf'],
-        ['Sip', 'grupo']
+        ['Sip', 'grupo'],
+        ['Sip', 'oficina']
     ]
   end
   

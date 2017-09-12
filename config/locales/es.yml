@@ -17,7 +17,7 @@ es:
     actividadarea: Componente Plan Trienal 
     actividadareas: Componentes Plan Trienal 
     departamento: Departamento
-    oficina: Área
+    oficina: Oficina
     proyecto: "Programa / Servicio / Producto"
     proyectosfinancieros: Compromisos institucionales
     proyectofinanciero: Compromiso institucional
@@ -117,7 +117,7 @@ es:
         observacionestramite: "Observaciones durante el trámite"
         observacionesejecucion: "Observaciones durante la ejecución"
         observacionescierre: "Observaciones durante el cierre"
-        oficina: "Organigrama CINEP/PPP"
+        oficina: "Oficina"
         otrosaportescinep: "Otros aportes CINEP/PPP"
         presupuestototal: "Presupuesto total"
         presupuestototal_localizado: "Presupuesto total"
@@ -174,6 +174,6 @@ es:
         Tipoproductopf: Tipo de producto de un compromiso institucional
         Tiposproductopf: Tipos de productos de un compromiso institucional
       "sip/oficina":
-        Oficinas: Áreas
-        Oficina: Área
+        Oficinas: Oficina
+        Oficina: Oficina
 

@@ -6,7 +6,7 @@ require 'cor1440_gen/concerns/models/usuario'
 
 class Usuario < ActiveRecord::Base
   include Sip::Concerns::Models::Usuario
-  #include Cor1440Gen::Concerns::Models::Usuario
+  #Bastantes cambios respecto a Cor1440Gen::Concerns::Models::Usuario
   include Jn316Gen::Concerns::Models::Usuario
 
   devise :database_authenticatable, :rememberable, 
