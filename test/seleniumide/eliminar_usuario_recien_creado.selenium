@@ -32,9 +32,104 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//td[9]</td>
-	<td>a@a.com</td>
+	<td>clickAt</td>
+	<td>link=Nuevo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=usuario_nusuario</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=usuario_nusuario</td>
+	<td>ab</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=usuario_nombres</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=usuario_nombres</td>
+	<td>Alberto</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=usuario_apellidos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=usuario_apellidos</td>
+	<td>Buitrago</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=usuario_descripcion</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=usuario_descripcion</td>
+	<td>bbbbbbbbbbb</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=usuario_rol</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=usuario_rol</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=usuario_rol</td>
+	<td>label=Administrador</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=usuario_email</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=usuario_email</td>
+	<td>ab@a.org</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=usuario_encrypted_password</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=usuario_encrypted_password</td>
+	<td>aabbb</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=usuario_fechacreacion_localizada</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=usuario_fechacreacion_localizada</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=td.today.day</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -44,7 +139,7 @@
 <tr>
 	<td>assertNotText</td>
 	<td>//td[9]</td>
-	<td>a@a.com</td>
+	<td>ab@a.com</td>
 </tr>
 </tbody></table>
 </body>

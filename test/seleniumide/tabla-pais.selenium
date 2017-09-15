@@ -77,6 +77,26 @@
 	<td>aa</td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>id=pais_codiso</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=pais_codiso</td>
+	<td>22</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=pais_observaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=pais_observaciones</td>
+	<td>bbbb</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>name=commit</td>
 	<td></td>

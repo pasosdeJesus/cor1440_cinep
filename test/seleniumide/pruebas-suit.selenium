@@ -11,7 +11,6 @@
 <tr><td><a href="crear_un_usuario.selenium">crear_un_usuario</a></td></tr>
 <tr><td><a href="ingresar_y_salir_de_usuario_recien_creado.selenium">ingresar_y_salir_de_usuario_recien_creado</a></td></tr>
 <tr><td><a href="eliminar_usuario_recien_creado.selenium">eliminar_usuario_recien_creado</a></td></tr>
-<tr><td><a href="../../../../../../../../../crecer_cor1440_cinep/test/seleniumide/actores.selenium">actores</a></td></tr>
 <tr><td><a href="tabla-tipo-de-producto-compromiso-institucional.selenium">tabla-tipo-de-producto-compromiso-institucional</a></td></tr>
 <tr><td><a href="tabla-tipo-de-moneda.selenium">tabla-tipo-de-moneda</a></td></tr>
 <tr><td><a href="tabla-tipo-de-convenio.selenium">tabla-tipo-de-convenio</a></td></tr>
@@ -26,9 +25,10 @@
 <tr><td><a href="tabla-financiador.selenium">tabla-financiador</a></td></tr>
 <tr><td><a href="tabla-etiqueta.selenium">tabla-etiqueta</a></td></tr>
 <tr><td><a href="tabla-cargo.selenium">tabla-cargo</a></td></tr>
-<tr><td><a href="tabla-area.selenium">tabla-area</a></td></tr>
 <tr><td><a href="tabla-actor.selenium">tabla-actor</a></td></tr>
 <tr><td><a href="componentes-plan-trienal.selenium">componentes-plan-trienal</a></td></tr>
+<tr><td><a href="tabla-rango-edad-en-activiad.selenium">tabla-rango-edad-en-activiad</a></td></tr>
+<tr><td><a href="tabla-municipio.selenium">tabla-municipio</a></td></tr>
 </tbody></table>
 </body>
 </html>

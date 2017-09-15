@@ -57,11 +57,6 @@
 	<td>aaa</td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>name=commit</td>
-	<td></td>
-</tr>
-<tr>
 	<td>waitForElementPresent</td>
 	<td>id=tipomoneda_codiso4217</td>
 	<td></td>
@@ -80,6 +75,31 @@
 	<td>type</td>
 	<td>id=tipomoneda_simbolo</td>
 	<td>$</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=a.chosen-single.chosen-default &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>css=a.chosen-single.chosen-default &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//li[@data-option-array-index='1'] 	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=tipomoneda_observaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tipomoneda_observaciones</td>
+	<td>bbbb</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
