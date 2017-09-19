@@ -3,6 +3,7 @@
   include_blank: true,
   label: false,
   input_html: {
-    value: Sip::ModeloHelper.poromision(params, :busestado)
+    value: Sip::ModeloHelper.poromision(params, :busestado),
+    'data-enviarautomatico' => 'data-enviarautomatico'
   } 
 %>

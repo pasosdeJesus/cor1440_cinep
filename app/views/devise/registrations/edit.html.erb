@@ -1,0 +1,80 @@
+<h2>Cambiar clave de <%= @usuario.nusuario %></h2>
+
+<%= simple_form_for(resource, :as => resource_name, 
+                    :url => registro_usuario_path(resource_name), 
+                    :html => { :method => :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <div class='input string'>
+      <label class='string control-label'>Usuario:</label>
+      <%= @usuario.nusuario %>
+    </div>
+
+    <div class='input string'>
+      <label class='string control-label'>Nombres:</label>
+      <%= @usuario.nombres %>
+    </div>
+
+    <div class='input string'>
+      <label class='string control-label'>Apellidos:</label>
+      <%= @usuario.apellidos%>
+    </div>
+
+    <div class='input string'>
+      <label class='string control-label'>Correo:</label>
+      <%= @usuario.email%>
+    </div>
+
+    <div class='input string'>
+      <label class='string control-label'>Oficina:</label>
+      <%= @usuario.oficina.nombre if @usuario.oficina %>
+    </div>
+
+    <div class='input string'>
+      <label class='string control-label'>Extensión:</label>
+      <%= @usuario.extension if @usuario.extension %>
+    </div>
+ 
+    <div class='input string'>
+      <label class='string control-label'>Grupos:</label>
+      <ul>
+        <% g = @usuario.sip_grupo.map(&:nombre) - ['usuario'] %>
+        <% g.each do |nombre| %>
+          <li> <%= nombre %> </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class='input string'>
+      <label class='string control-label'>Teléfonos:</label>
+      <%= @usuario.telefonos if @usuario.telefonos %>
+    </div>
+ 
+    <%= render partial: 'edit_antesclave', locals: {f: f} %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Aún esperando confirmación para: 
+      <%= resource.unconfirmed_email %>
+      </p>
+    <% end %>
+
+    <%= f.input :password, label: 'Nueva clave', :autocomplete => "off", 
+      :hint => " deje en blanco si no desea cambiarla", :required => false 
+    %>
+    <%= f.input :password_confirmation, label: 'Confirmación de nueva clave',
+      :required => false,
+      wrapper_html: { style: "padding-bottom: 18px;" }
+    %>
+    <%= f.input :current_password, label: 'Clave actual',
+      :hint => " requerida para confirmar sus cambios", 
+      :required => true 
+    %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Actualizar" %>
+  </div>
+<% end %>
+

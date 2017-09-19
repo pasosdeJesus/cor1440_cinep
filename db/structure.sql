@@ -2682,6 +2682,8 @@ CREATE TABLE usuario (
     apellidos character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying NOT NULL,
     ultimasincldap date,
     "uidNumber" integer,
+    telefonos character varying(256),
+    extension character varying(128),
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -4609,6 +4611,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170817122026'),
 ('20170823205820'),
 ('20170828104454'),
-('20170912133101');
+('20170912133101'),
+('20170919113357');
 
 

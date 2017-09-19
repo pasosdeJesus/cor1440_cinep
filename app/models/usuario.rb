@@ -1,12 +1,8 @@
 # encoding: UTF-8
 
-require 'sip/concerns/models/usuario'
 require 'jn316_gen/concerns/models/usuario'
-require 'cor1440_gen/concerns/models/usuario'
 
 class Usuario < ActiveRecord::Base
-  include Sip::Concerns::Models::Usuario
-  #Bastantes cambios respecto a Cor1440Gen::Concerns::Models::Usuario
   include Jn316Gen::Concerns::Models::Usuario
 
   devise :database_authenticatable, :rememberable, 
@@ -14,7 +10,9 @@ class Usuario < ActiveRecord::Base
 
   validates_presence_of :nombres
   validates_presence_of :apellidos
- 
+  validates :telefonos, length: { maximum: 256}
+  validates :extension, length: { maximum: 128}
+
   has_many :proyectofinanciero_usuario, #dependent: :destroy,
     class_name: '::ProyectofinancieroUsuario',
     foreign_key: 'usuario_id'
@@ -25,6 +23,9 @@ class Usuario < ActiveRecord::Base
     class_name: '::CoordinadorProyectofinanciero',
     foreign_key: 'coordinador_id'
 
+  has_many :proyectofinanciero_uresponsable, #dependent: :destroy,
+    class_name: '::ProyectofinancieroUresponsable',
+    foreign_key: 'uresponsable_id'
 
   belongs_to :oficina, class_name: 'Sip::Oficina',
     foreign_key: "oficina_id", validate: true
