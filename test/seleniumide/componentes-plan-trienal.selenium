@@ -57,6 +57,16 @@
 	<td>aaaaa</td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>id=actividadarea_observaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=actividadarea_observaciones</td>
+	<td>bbb</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>name=commit</td>
 	<td></td>

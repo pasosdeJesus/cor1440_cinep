@@ -77,6 +77,16 @@
 	<td>5</td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>id=rangoedadac_observaciones</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=rangoedadac_observaciones</td>
+	<td>bbbb</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>name=commit</td>
 	<td></td>
