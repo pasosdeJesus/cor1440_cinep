@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 9601aeb05072ddbe0fa2e154c9d24403cdb8b2ee
+  revision: 6b575eec3c880d16d7ec4b2661e6b49c59feca98
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -182,7 +182,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
-    method_source (0.8.2)
+    method_source (0.9.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -238,9 +238,9 @@ GEM
     prawnto_2 (0.2.6)
       prawn (>= 0.6.0)
       rails (>= 3.1)
-    pry (0.11.0)
+    pry (0.11.1)
       coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
+      method_source (~> 0.9.0)
     pry-rescue (1.4.5)
       interception (>= 0.5)
       pry

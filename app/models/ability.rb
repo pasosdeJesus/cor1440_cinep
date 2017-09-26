@@ -4,9 +4,41 @@ class Ability  < Cor1440Gen::Ability
   ROLOPERADOR = 5
 
   ROLES = [
-    ["Administrador", ROLADMIN], 
-    ["Directivo", ROLDIR],
-    ["Operador", ROLOPERADOR]
+    ["Administrador", ROLADMIN], #1
+    ["Directivo", ROLDIR], #3
+    ["Operador", ROLOPERADOR] #5
+  ]
+
+  # Se usa desde 1
+  ROLES_CA = [
+    'Administrar actividades e informes de todos los grupos (con contexto). ' +
+    'Administrar convenios institucionales. ' +
+    'Administrar documentos en nube y plantillas. ' +
+    'Administrar tablas básicas (actores sociales, tipos de convenios, etc). ' +
+    'Administrar tasas de cambio. ' +
+    'Administrar usuarios. ', #ROLADMIN, 1
+
+    '', #2
+
+    'Administrar actividades e informes de todos los grupos (con contexto). ' +
+    'Administrar convenios institucionales. ' +
+    'Administrar documentos en nube y plantillas. ' +
+    'Administrar tablas básicas (actores sociales, tipos de convenios, etc). ' +
+    'Administrar tasas de cambio. ' +
+    'Administrar usuarios. ', #ROLDIR, 3
+
+    '', #4
+
+    'Ver convenios institucionales. ' +
+    'Ver documentos en nube y plantillas. ' +
+    'Ver usuarios. ' +
+    'Administrar actividades e informes de todos los grupos. ' +
+    'Administrar una tabla básica: actores sociales. ' +
+    'Grupo Gerencia de Proyectos: Administrar actividades de todos los grupos. ' +
+    'Grupo Gerencia de Proyectos: Administrar convenios institucionales. ' +
+    'Grupo Gerencia de Proyectos: Administrar algunas tablas básicas: tipos de anexos, tipos de convenios, tipos de moneda, financiadores y cargos. ' +
+    'Grupo Derechos Humanos: En formulario de actividades usan contexto. ' #ROLOPERADOR, 5
+
   ]
 
   GRUPO_COMPROMISOS = "Gerencia de Proyectos"
@@ -49,6 +81,28 @@ class Ability  < Cor1440Gen::Ability
   end
 
   CAMPOS_PLANTILLAS_PROPIAS = {
+    'Actividad' => { 
+      campos: [
+        'id', 'fecha', 'responsable', 'nombre', 
+        'departamento', 'tipos_de_actividad', 'objetivo', 
+        'proyecto', 'convenios_financieros', 'resultado', 
+        'contexto', 'mujeres', 'hombres', 
+        'blancos', 'mestizos', 'indigenas', 
+        'negros', 'observaciones', 
+        'creacion', 'actualizacion', 'corresponsables'
+      ],
+      controlador: 'Cor1440Gen::ActividadesController',
+      ruta: '/actividades'
+    },
+    'Cuadro General de Seguimiento' => { 
+      campos: [
+        'compromiso_id',  'referenciacinep', 
+        'financiador', 'responsablegp', 
+        'estado', 'gradoexigencia'
+      ],
+      controlador: 'Cor1440Gen::Proyectofinanciero',
+      ruta: '/proyectosfinancieros'
+    },
     'Solicitud de Informe' => { 
       campos: [
         'compromiso_id',  'titulo', 
@@ -60,22 +114,14 @@ class Ability  < Cor1440Gen::Ability
       controlador: 'Cor1440Gen::Proyectofinanciero',
       ruta: '/proyectosfinancieros'
     },
-    'Cuadro General de Seguimiento' => { 
-      campos: [
-        'compromiso_id',  'referenciacinep', 
-        'financiador', 'responsablegp', 
-        'estado', 'gradoexigencia'
-      ],
-      controlador: 'Cor1440Gen::Proyectofinanciero',
-      ruta: '/proyectosfinancieros'
-    }
+
+
 
   }
 
   def campos_plantillas 
     Heb412Gen::Ability::CAMPOS_PLANTILLAS_PROPIAS.
-      clone.merge(CAMPOS_PLANTILLAS_PROPIAS).merge(
-        Cor1440Gen::Ability::CAMPOS_PLANTILLAS_PROPIAS)
+      clone.merge(CAMPOS_PLANTILLAS_PROPIAS)
   end
 
   # Ver documentacion de este metodo en app/models/ability de sip
@@ -91,7 +137,8 @@ class Ability  < Cor1440Gen::Ability
       can :nuevo, Cor1440Gen::Actividad
       can :new, Cor1440Gen::Actividad
       # Contexto es para equipo derechos humanos 
-      if Cor1440Gen::GruposHelper.mis_grupos_sinus(usuario).where(cn: 'EquipoDerechosHumanos').count > 0
+      if Cor1440Gen::GruposHelper.mis_grupos_sinus(usuario).
+        where(cn: 'EquipoDerechosHumanos').count > 0
         can :edit, :contextoac
       end
       case usuario.rol 
