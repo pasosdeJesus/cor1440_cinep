@@ -110,6 +110,33 @@ module Cor1440Gen
       ]
     end
 
+    def vector_a_registro(a, ac)
+      {
+        id: a[0],
+        fecha: a[1],
+        responsable: a[2],
+        nombre: a[3],
+        departamento: a[4],
+        tipos_de_actividad: a[5],
+        objetivo: a[6],
+        proyecto: a[7],
+        convenios_financieros: a[8],
+        resultado: a[9],
+        contexto: a[10],
+        mujeres: a[11],
+        hombres: a[12],
+        blancos: a[13],
+        mestizos: a[14],
+        indigenas: a[15],
+        negros: a[16],
+        observaciones: ac.observaciones,
+        creacion: ac.created_at,
+        actualizacion: ac.updated_at,
+        corresponsables: ac.usuario.inject("") { |memo, i| 
+                (memo == "" ? "" : memo + "; ") + i.nusuario },
+            }
+    end
+
     # No confiar parametros a Internet, sólo permitir lista blanca
     def actividad_params
       params.require(:actividad).permit(
