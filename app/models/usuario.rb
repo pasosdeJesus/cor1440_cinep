@@ -36,6 +36,7 @@ class Usuario < ActiveRecord::Base
   has_many :actividad, through: :actividad_usuario,
     class_name: 'Cor1440Gen::Actividad'
 
+  before_destroy :usuario_sin_proyectofinanciero
 
   def presenta_nombre
     if self.nombres
@@ -49,5 +50,15 @@ class Usuario < ActiveRecord::Base
   scope :filtro_oficina_id, lambda {|o|
     where(oficina_id: o)
   }
+
+  protected
+
+  def usuario_sin_proyectofinanciero
+    return true if proyectofinanciero_usuario.count == 0
+    m = "El usuario aparece en compromiso(s) institucional"
+    errors.add :base, m
+    throw(:abort)
+  end
+
 
 end

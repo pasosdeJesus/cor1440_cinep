@@ -1,6 +1,9 @@
 # encoding: UTF-8
 
-class UsuariosController < Jn316Gen::UsuariosController
+require 'jn316_gen/concerns/controllers/usuarios_controller'
+
+class UsuariosController < Sip::ModelosController
+  include Jn316Gen::Concerns::Controllers::UsuariosController
 
   def atributos_index
     [ "id",
