@@ -124,7 +124,7 @@ module Cor1440Gen
       hoja.name = "Tramitados #{anio}"
       reg = @registros.where("fechaformulacion>='#{anio.to_i}-01-01' AND " +
                              "fechaformulacion<='#{anio.to_i}-12-31'").
-        reorder([:referenciacinep, :id])
+        reorder('EXTRACT(MONTH FROM fechaformulacion), referenciacinep, id')
       fila = 2
       cons = 1
       reg.each do |r|
