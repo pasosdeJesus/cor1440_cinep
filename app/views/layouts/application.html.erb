@@ -23,10 +23,10 @@
         <% end %>
       <% end %>
       <%= drop_down "Compromisos Institucionales" do %>
-        <%= menu_item "Listado de Convenios Financiados", 
+        <%= menu_item "Listado de Compromisos Institucionales", 
           cor1440_gen.proyectosfinancieros_path %>
         <% if can? :edit, Cor1440Gen::Proyectofinanciero %>
-          <%= menu_item "Nuevo Convenio Financiado", 
+          <%= menu_item "Nuevo Compromiso Institucional", 
             cor1440_gen.new_proyectofinanciero_path %>
         <% end %>
         <% if can? :edit, ::Convenio %>
