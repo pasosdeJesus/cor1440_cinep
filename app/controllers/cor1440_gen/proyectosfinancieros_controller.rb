@@ -124,7 +124,7 @@ module Cor1440Gen
       hoja.name = "Tramitados #{anio}"
       reg = @registros.where("fechaformulacion>='#{anio.to_i}-01-01' AND " +
                              "fechaformulacion<='#{anio.to_i}-12-31'").
-        reorder('EXTRACT(MONTH FROM fechaformulacion), referenciacinep, id')
+        reorder('EXTRACT(MONTH FROM fechaformulacion), referenciacinep')
       fila = 2
       cons = 1
       reg.each do |r|
@@ -136,9 +136,10 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 4, 
                              cadena_muchos(r, 'financiador', ' - '))
         asigna_celda_y_borde(hoja, fila, 5, 
-                             ::ApplicationHelper::ESTADOS_APROBADO.include?(
-                               r.estado.to_sym) ? 'APROBADO' : Sip::ModeloHelper.
-                               etiqueta_coleccion(
+                             ::ApplicationHelper::ESTADOS_APROBADO.
+                             include?(
+                               r.estado.to_sym) ? 'APROBADO' : 
+                               Sip::ModeloHelper.etiqueta_coleccion(
                                  ::ApplicationHelper::ESTADO, r.estado))
         asigna_celda_y_borde(hoja, fila, 6, r.monto_localizado)
         asigna_celda_y_borde(hoja, fila, 7, r.tipomoneda ?
@@ -409,9 +410,20 @@ module Cor1440Gen
     def index_reordenar(registros)
       @plantillas = Heb412Gen::Plantillahcm.where(
         "vista IN ('Solicitud de Informe', 'Cuadro General de Seguimiento')").
-        select('nombremenu, id').map { 
+      select('nombremenu, id').map { 
           |co| [co.nombremenu, co.id] 
         }
+     
+      mg1 = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
+      mgi = mg1.map(&:id).join(', ')
+      if mgi == ''
+        registros = registros.where('TRUE=FALSE')
+      elsif !mg1.where(nombre: ::Ability::GRUPO_COMPROMISOS) &&
+        current_usuario.rol != ::Ability::ROLDIR ||
+        current_usuario.rol != ::Ability::ROLADMIN
+        registros = registros.joins(:grupo_proyectofinanciero).where(
+          "grupo_id IN (#{mgi})")
+      end
       return registros.reorder([:estado, :referenciacinep, :id])
     end
 
