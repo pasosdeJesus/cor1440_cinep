@@ -363,7 +363,22 @@ module Cor1440Gen
         fila +=1
       end
 
-  
+       # Hoja de divisas
+#      beybug
+#      hoja = libro.worksheets(8)
+#      fila = 2
+#      reg = @registros.where("estado IN ('J', 'C', 'M')")
+#      tf = ::Tasacambio.where(id: reg.map(&:tasaformulacion_id)).order(:fecha)
+#     
+#      cons = 1
+#      tf.each do |t|
+#        asigna_celda_y_borde(hoja, fila, 1, t.fecha)
+#        asigna_celda_y_borde(hoja, fila, 2, t.tipomoneda_id)
+#        asigna_celda_y_borde(hoja, fila, 3, t.enpesos)
+#        cons +=1
+#        fila +=1
+#      end
+#
      
       # Hojas para tramitados en años anteriores
       anios = @registros.where("fechaformulacion<'#{anio}-01-01'").
@@ -413,13 +428,13 @@ module Cor1440Gen
       select('nombremenu, id').map { 
           |co| [co.nombremenu, co.id] 
         }
-     
+    
       mg1 = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
       mgi = mg1.map(&:id).join(', ')
       if mgi == ''
         registros = registros.where('TRUE=FALSE')
-      elsif !mg1.where(nombre: ::Ability::GRUPO_COMPROMISOS) &&
-        current_usuario.rol != ::Ability::ROLDIR ||
+      elsif mg1.where(nombre: ::Ability::GRUPO_COMPROMISOS).count == 0 &&
+        current_usuario.rol != ::Ability::ROLDIR &&
         current_usuario.rol != ::Ability::ROLADMIN
         registros = registros.joins(:grupo_proyectofinanciero).where(
           "grupo_id IN (#{mgi})")
