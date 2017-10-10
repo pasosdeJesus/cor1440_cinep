@@ -962,7 +962,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    monto numeric(20,2) DEFAULT 0.0,
+    monto numeric DEFAULT 0.0,
     referencia character varying(1000),
     referenciacinep character varying(1000),
     fuentefinanciador character varying(1000),
@@ -979,7 +979,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric(20,2) DEFAULT 0.0,
+    presupuestototal numeric DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -2760,7 +2760,7 @@ CREATE VIEW v_solicitud_informes AS
         END AS a_tiempo
    FROM (cor1440_gen_proyectofinanciero p
      JOIN v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[122, 123, 125, 116]))
+  WHERE (p.id = ANY (ARRAY[126, 117, 106, 133, 101, 102, 122, 123, 125, 104, 118, 109, 111, 103, 116, 115, 120, 119, 131, 132, 127, 130, 128, 129, 134]))
   ORDER BY s.fechaplaneada;
 
 
