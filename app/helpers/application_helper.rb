@@ -70,19 +70,19 @@ module ApplicationHelper
   # funcionar proyectofinanciero_path y demás.
  
   def nuevo_proyectofinanciero_ruta()
-    "/act/proyectosfinancieros/nuevo"
+    "/proyectosfinancieros/nuevo"
   end
 
   def edita_proyectofinanciero_ruta(proyecto)
-    "/act/proyectosfinancieros/#{conv_proyecto_id(proyecto).to_s}/edita"
+    "/proyectosfinancieros/#{conv_proyecto_id(proyecto).to_s}/edita"
   end
 
   def proyectofinanciero_ruta(proyecto)
-    "/act/proyectosfinancieros/#{conv_proyecto_id(proyecto).to_s}"
+    "/proyectosfinancieros/#{conv_proyecto_id(proyecto).to_s}"
   end
 
   def proyectosfinancieros_ruta()
-    "/act/proyectosfinancieros"
+    "/proyectosfinancieros"
   end
 
 end
