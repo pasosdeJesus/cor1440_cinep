@@ -42,5 +42,11 @@ module Cor1440Gen
       allow_nil: true 
     }
 
+    # Deshabilita validacion con oficina que proviene de
+    # Cor1440Gen::Concerns::Models::Actividad
+    def rol_usuario
+    end
+
+
   end
 end
