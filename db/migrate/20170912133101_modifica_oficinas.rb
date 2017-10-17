@@ -64,4 +64,9 @@ class ModificaOficinas < ActiveRecord::Migration[5.1]
     INSERT INTO sip_oficina (id, nombre, observaciones, fechacreacion, created_at, updated_at) VALUES (96, 'CAI PISO 5', 'SALÓN REUNIONES', '2017-09-12', '2017-09-12', '2017-09-12');
     SQL
   end
+  def down
+    execute <<-SQL
+    DELETE FROM sip_oficina WHERE id>='30' AND id<='96';
+    SQL
+  end
 end
