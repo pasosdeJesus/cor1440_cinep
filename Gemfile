@@ -74,6 +74,9 @@ gem "paperclip"
 gem "tzinfo"
 gem "tzinfo-data"
 
+gem 'redcarpet'
+
+
 # Motor generico
 gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
 #gem 'sip', path: '../sip'
