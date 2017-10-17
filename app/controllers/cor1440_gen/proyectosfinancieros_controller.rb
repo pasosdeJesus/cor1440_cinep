@@ -363,23 +363,36 @@ module Cor1440Gen
         fila +=1
       end
 
-       # Hoja de divisas
-#      beybug
-#      hoja = libro.worksheets(8)
-#      fila = 2
-#      reg = @registros.where("estado IN ('J', 'C', 'M')")
-#      tf = ::Tasacambio.where(id: reg.map(&:tasaformulacion_id)).order(:fecha)
-#     
-#      cons = 1
-#      tf.each do |t|
-#        asigna_celda_y_borde(hoja, fila, 1, t.fecha)
-#        asigna_celda_y_borde(hoja, fila, 2, t.tipomoneda_id)
-#        asigna_celda_y_borde(hoja, fila, 3, t.enpesos)
-#        cons +=1
-#        fila +=1
-#      end
-#
+      # Hoja de divisas
+      hoja = libro.worksheets(8)
+      fila = 2
+      reg = @registros #.where("estado IN ('J', 'C', 'M')")
+      tf = ::Tasacambio.where(id: reg.map(&:tasaformulacion_id).uniq).order(:fecha)
      
+      cons = 1
+      tf.each do |t|
+        asigna_celda_y_borde(hoja, fila, 1, t.fecha.to_s)
+        val = t.enpesos
+        ordcol=['', 'EUR', 'USD', 'GBP', 'SEK', 'CHF', 'Otros']
+        otro = true
+        (2..6).each do |ncol|
+          if ordcol[ncol-1] == t.tipomoneda.codiso4217
+            asigna_celda_y_borde(hoja, fila, ncol, val)
+            otro  = false
+          else
+            asigna_celda_y_borde(hoja, fila, ncol, ' ')
+          end 
+        end
+        if otro
+          val = "1 " + t.tipomoneda.codiso4217 + " = " + t.enpesos.to_s + " COP"
+          asigna_celda_y_borde(hoja, fila, 7, val)
+        else
+          asigna_celda_y_borde(hoja, fila, 7, ' ')
+        end
+        cons += 1
+        fila += 1
+      end
+
       # Hojas para tramitados en años anteriores
       anios = @registros.where("fechaformulacion<'#{anio}-01-01'").
         reorder(nil).pluck('DISTINCT EXTRACT(YEAR FROM fechaformulacion)').
