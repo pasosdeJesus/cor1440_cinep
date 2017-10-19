@@ -144,6 +144,7 @@ class Ability  < Cor1440Gen::Ability
       case usuario.rol 
       when Ability::ROLOPERADOR
         can :read, ::Tasacambio
+        can :read, Heb412Gen::Doc
         can :read, Heb412Gen::Plantillahcm
         if grupos.include?(GRUPO_COMPROMISOS)
           can :manage, ::Convenio
