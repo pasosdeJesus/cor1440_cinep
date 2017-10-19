@@ -48,7 +48,12 @@ module Cor1440Gen
       @registro.presupuestototal = 1
       @registro.tipomoneda = ::Tipomoneda.where(codiso4217: 'COP').take
       #@registro.tasacambio = 1
-      render layout: 'application'
+      @registro.fechaformulacion = Date.today
+      @registro.nombre = 'N'
+      @registro.dificultad = 'M'
+      @registro.save!
+      redirect_to main_app.edit_proyectofinanciero_path(@registro)
+      #render 'edit', layout: 'application'
     end
 
     def vista_solicitud_informes
