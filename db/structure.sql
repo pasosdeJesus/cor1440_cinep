@@ -1320,7 +1320,6 @@ ALTER SEQUENCE heb412_gen_doc_id_seq OWNED BY heb412_gen_doc.id;
 CREATE TABLE heb412_gen_plantillahcm (
     id integer NOT NULL,
     ruta character varying(2047) NOT NULL,
-    descripcion character varying(2047),
     fuente character varying(1023),
     licencia character varying(1023),
     vista character varying(127) NOT NULL,
@@ -2760,7 +2759,7 @@ CREATE VIEW v_solicitud_informes AS
         END AS a_tiempo
    FROM (cor1440_gen_proyectofinanciero p
      JOIN v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[126, 117, 106, 133, 101, 102, 122, 123, 125, 104, 118, 109, 111, 103, 116, 115, 120, 119, 131, 132, 127, 130, 128, 129, 134]))
+  WHERE (p.id = ANY (ARRAY[126, 146, 136, 137, 138, 140, 117, 106, 133, 141, 142, 143, 144, 145, 147, 101, 102, 122, 123, 125, 104, 118, 109, 111, 103, 116, 115, 120, 119, 131, 132, 127, 130, 128, 129, 134]))
   ORDER BY s.fechaplaneada;
 
 
@@ -4612,6 +4611,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170823205820'),
 ('20170828104454'),
 ('20170912133101'),
-('20170919113357');
+('20170919113357'),
+('20171019133203');
 
 
