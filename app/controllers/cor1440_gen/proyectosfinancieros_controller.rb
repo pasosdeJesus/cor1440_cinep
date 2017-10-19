@@ -462,7 +462,7 @@ module Cor1440Gen
 
     def genera_odf
       # Ejemplo de https://github.com/sandrods/odf-report
-      report = ODFReport::Report.new("#{Rails.root}/public/heb412/Sistemas Integrados de Gestión/1 Gestión de Calidad/7 Seguimiento y control/3 Formatos/RE-SC-07.odt") do |r|
+      report = ODFReport::Report.new("#{Rails.root}/public/heb412/Sistemas Integrados de Gestión/1 Gestión de Calidad/07 Seguimiento y control/3 Formatos/RE-SC-07 Ficha de Seguimiento y Control.odt") do |r|
         cn = [:nombre, :referencia, :referenciacinep, 
               :respagencia, :emailrespagencia,
               :telrespagencia, :fuentefinanciador, :observaciones,
