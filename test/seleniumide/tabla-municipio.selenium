@@ -13,12 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/act/</td>
+	<td>/</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>//ul[2]/li[2]/a/b</td>
+	<td>waitForElementPresent</td>
+	<td>link=Tablas Básicas</td>
 	<td></td>
 </tr>
 <tr>
