@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://archivoprensa.cinep.org.co:4000/" />
-<title>actor</title>
+<title>region-para-un-grupo</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">actor</td></tr>
+<tr><td rowspan="1" colspan="3">region-para-un-grupo</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -17,8 +17,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Tablas Básicas</td>
+	<td>click</td>
+	<td>link=Administrar</td>
 	<td></td>
 </tr>
 <tr>
@@ -28,38 +28,53 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>link=Actores</td>
+	<td>link=Región para un grupo</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Actores</td>
+	<td>link=Región para un grupo</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>link=Nuevo</td>
+	<td>link=Nueva</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Nuevo</td>
+	<td>link=Nueva</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>id=actor_nombre</td>
+	<td>id=regiongrupo_nombre</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=actor_nombre</td>
+	<td>id=regiongrupo_nombre</td>
 	<td>aaa</td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>id=regiongrupo_observaciones</td>
+	<td></td>
+</tr>
+<tr>
 	<td>type</td>
-	<td>id=actor_personacontacto</td>
-	<td>aa</td>
+	<td>id=regiongrupo_observaciones</td>
+	<td>bbb</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>css=a.chosen-single.chosen-default &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>css=li.active-result.result-selected</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -74,6 +89,11 @@
 <tr>
 	<td>assertConfirmation</td>
 	<td>¿Está seguro(a)?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Crecer 1.0.a7</td>
 	<td></td>
 </tr>
 </tbody></table>

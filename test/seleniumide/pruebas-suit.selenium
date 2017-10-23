@@ -10,15 +10,19 @@
 <tr><td><b>Test Suite</b></td></tr>
 <tr><td><a href="tabla-actor.selenium">tabla-actor</a></td></tr>
 <tr><td><a href="tabla-cargo.selenium">tabla-cargo</a></td></tr>
+<tr><td><a href="tabla-centro-poblado.selenium">tabla-centro-poblado</a></td></tr>
 <tr><td><a href="tabla-componentes-plan-trienal.selenium">tabla-componentes-plan-trienal</a></td></tr>
+<tr><td><a href="tabla-departamento.selenium">tabla-departamento</a></td></tr>
 <tr><td><a href="tabla-etiqueta.selenium">tabla-etiqueta</a></td></tr>
 <tr><td><a href="tabla-financiador.selenium">tabla-financiador</a></td></tr>
 <tr><td><a href="tabla-grupo.selenium">tabla-grupo</a></td></tr>
 <tr><td><a href="tabla-municipio.selenium">tabla-municipio</a></td></tr>
 <tr><td><a href="tabla-nucleo-de-conflicto.selenium">tabla-nucleo-de-conflicto</a></td></tr>
+<tr><td><a href="tabla-oficina.selenium">tabla-oficina</a></td></tr>
 <tr><td><a href="tabla-pais.selenium">tabla-pais</a></td></tr>
 <tr><td><a href="tabla-publicacion.selenium">tabla-publicacion</a></td></tr>
 <tr><td><a href="tabla-rango-edad-en-activiad.selenium">tabla-rango-edad-en-activiad</a></td></tr>
+<tr><td><a href="tabla-redes-de-actores .selenium">tabla-redes-de-actores </a></td></tr>
 <tr><td><a href="tabla-sector-de-actor.selenium">tabla-sector-de-actor</a></td></tr>
 <tr><td><a href="tabla-tipo-de-actividad.selenium">tabla-tipo-de-actividad</a></td></tr>
 <tr><td><a href="tabla-tipo-de-anexo.selenium">tabla-tipo-de-anexo</a></td></tr>
