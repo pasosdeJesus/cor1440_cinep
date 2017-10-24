@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 863bfac2b1710f961d318950f9cf20719b9df406
+  revision: 2bb339c265654de9022971aa72f2b8026b99a02a
   specs:
     cor1440_gen (1.0.b1)
       devise
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: ecb482fc4addc8bf3e7f8f61f5d4c1523328a0f3
+  revision: 474bbdf1b111690f465cbc45fea2c459bb3e56df
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: cea1013d51676960c14239867485756be537b5f8
+  revision: f1dd93b363dd87222f56061cda1808bec43431a0
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: fba8b18393cc4cfda4dcbaf2bcef8ef559f99b93
+  revision: 2830ab4e94d4b156bca305408fe95d11f7114a28
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -105,7 +105,7 @@ GEM
     arel (8.0.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
-    binding_of_caller (0.7.2)
+    binding_of_caller (0.7.3)
       debug_inspector (>= 0.0.1)
     bootstrap-datepicker-rails (1.7.1.1)
       railties (>= 3.0)
@@ -351,7 +351,7 @@ GEM
       tzinfo
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2017.2)
+    tzinfo-data (1.2017.3)
       tzinfo (>= 1.0.0)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
