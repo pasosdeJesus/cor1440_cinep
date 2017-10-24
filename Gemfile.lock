@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: f1dd93b363dd87222f56061cda1808bec43431a0
+  revision: 70b9241c722beb82d0cbff3a67e4bff8851c4904
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 891cc57000a6c98981f9a1d5272d06175ae65260
+  revision: 144bb3148bfdb930239520b9dd540c77e72f462a
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -156,7 +156,7 @@ GEM
     ffi (1.9.18)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
-    globalid (0.4.0)
+    globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.9.0)
       concurrent-ruby (~> 1.0)

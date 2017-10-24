@@ -42,6 +42,11 @@ class Ability  < Cor1440Gen::Ability
   ]
 
   GRUPO_COMPROMISOS = "Gerencia de Proyectos"
+  GRUPO_ARCHIVOYCORRESPONDENCIA= "Archivo y Correspondencia"
+  GRUPO_GESTIONHUMANA = "Gestión Humana"
+  GRUPO_GESTIONDECALIDAD = "Gestión de Calidad"
+  GRUPO_EXTERNOS = "Externos"
+  GRUPO_COMUNICACIONES = "Comunicaciones"
 
   def tablasbasicas 
     super() - [ ['Cor1440Gen', 'proyectofinanciero'] ] + 
@@ -146,6 +151,16 @@ class Ability  < Cor1440Gen::Ability
         can :read, ::Tasacambio
         can :read, Heb412Gen::Doc
         can :read, Heb412Gen::Plantillahcm
+        can [:read], ::Usuario # Directorio institucional
+        can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
+        #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
+        can :manage, Cor1440Gen::Informe # limitar a oficina?
+        can :read, Cor1440Gen::Proyectofinanciero # Los de su grupo
+
+        # Sólo equipos
+        can :manage, ::Actor
+        can :manage, :tablasbasicas
+
         if grupos.include?(GRUPO_COMPROMISOS)
           can :manage, ::Convenio
           can :manage, ::Tasacambio
@@ -158,14 +173,17 @@ class Ability  < Cor1440Gen::Ability
           # Oficina Gerencia de Proyectos
           can :manage, Cor1440Gen::Proyectofinanciero
           can :manage, Cor1440Gen::Financiador
-        else
-          can :manage, ::Actor
-          can :manage, :tablasbasicas
-          can [:read], ::Usuario # Limita a oficina?
-          can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
-          can :read, Cor1440Gen::Proyectofinanciero
-          can :manage, Cor1440Gen::Informe # limitar a oficina?
-          #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
+        end
+        if grupos.include?(GRUPO_GESTIONDECALIDAD)
+          can :manage, Heb412Gen::Doc
+          can :manage, Heb412Gen::Plantillahcm
+        end
+        if grupos.include?(GRUPO_ARCHIVOYCORRESPONDENCIA)
+          can [:edit, :update], ::Usuario
+        end
+        if grupos.include?(GRUPO_GESTIONHUMANA)
+          can [:edit, :update, :create], ::Usuario
+          can [:read], Sip::Grupo
         end
       when Ability::ROLADMIN, Ability::ROLDIR
         can :edit, :contextoac

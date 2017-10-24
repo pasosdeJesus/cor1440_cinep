@@ -22,13 +22,17 @@ class UsuariosController < Sip::ModelosController
       "nusuario",
       "nombres",
       "apellidos",
-      "descripcion",
-      "rol",
-      "oficina_id",
-      "extension",
-      "email",
+      "descripcion"
     ]
     if can?(:manage, Sip::Grupo)
+      r += ["rol"]
+    end
+    r += [
+      "oficina_id",
+      "extension",
+      "email"
+    ]
+    if can?(:read, Sip::Grupo)
       r += ["sip_grupo"]
     end
     r += [
@@ -44,6 +48,23 @@ class UsuariosController < Sip::ModelosController
       "locked_at"
     ]
   end
+
+#  def prefiltrar()
+#    byebug
+#    if params.nil?
+#      params = ActionController::Parameters.new({
+#         filtro: {
+#          bushabilitado: 'SI'
+#         }
+#      })
+#    elsif !params[:filtro]
+#      params[:filtro] = ActionController::Parameters.new({
+#        bushabilitado: 'SI'
+#      })
+#    elsif !params[:filtro][:bushabilitado]
+#      params[:filtro][:bushabilitado] = 'SI'
+#    end
+#  end
 
   private
 

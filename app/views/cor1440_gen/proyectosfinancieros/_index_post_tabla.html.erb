@@ -5,10 +5,11 @@
     <%= will_paginate @registros, { param_name: :pagina }  %>
   </div>
   <div class="col-sm-2">
-    <%= link_to t('.new', :default => 'Nueva'),
-      new_modelo_path(@registros),
-      :class => 'btn btn-primary' 
-    %>
+    <% if can?(:create, clase.constantize) %>
+      <%= link_to t('.new', :default => 'Nueva'),
+        new_modelo_path(@registros),
+        :class => 'btn btn-primary' %>
+    <% end %>
   </div>
   <div class="col-sm-offset-1 col-sm-3">
     <%= f.input :disgenera,
