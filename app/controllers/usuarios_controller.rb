@@ -12,6 +12,7 @@ class UsuariosController < Sip::ModelosController
       "apellidos",
       "email",
       "oficina_id",
+      "habilitado",
       "extension"
     ]
   end

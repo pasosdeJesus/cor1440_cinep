@@ -8,6 +8,10 @@ class Usuario < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, 
     :trackable, :lockable
 
+  def habilitado
+    fechadeshabilitacion.nil? ? 'SI' : 'NO'
+  end
+
   validates_presence_of :nombres
   validates_presence_of :apellidos
   validates :telefonos, length: { maximum: 256}
@@ -50,6 +54,15 @@ class Usuario < ActiveRecord::Base
   scope :filtro_oficina_id, lambda {|o|
     where(oficina_id: o)
   }
+
+  scope :filtro_habilitado, lambda {|o|
+    if o.upcase.strip == 'SI'
+      where(fechadeshabilitacion: nil)
+    elsif o.upcase.strip == 'NO'
+      where.not(fechadeshabilitacion: nil)
+    end 
+  }
+
 
   protected
 
