@@ -20,24 +20,22 @@ class Ability  < Cor1440Gen::Ability
 
     '', #2
 
-    'Administrar actividades e informes de todos los grupos (con contexto). ' +
-    'Administrar convenios institucionales. ' +
-    'Administrar documentos en nube y plantillas. ' +
-    'Administrar tablas básicas (actores sociales, tipos de convenios, etc). ' +
-    'Administrar tasas de cambio. ' +
-    'Administrar usuarios. ', #ROLDIR, 3
+    'Igual al Administrador ', #ROLDIR, 3
 
     '', #4
 
     'Ver convenios institucionales. ' +
-    'Ver documentos en nube y plantillas. ' +
-    'Ver usuarios. ' +
+    'Ver documentos en nube y plantillas, así como descripciones de cada carpeta. ' +
+    'Ver listado de usuarios y su información pública. ' +
     'Administrar actividades e informes de todos los grupos. ' +
     'Administrar una tabla básica: actores sociales. ' +
+    'Grupo Derechos Humanos: En formulario de actividades usan contexto. ' +
     'Grupo Gerencia de Proyectos: Administrar actividades de todos los grupos. ' +
     'Grupo Gerencia de Proyectos: Administrar convenios institucionales. ' +
     'Grupo Gerencia de Proyectos: Administrar algunas tablas básicas: tipos de anexos, tipos de convenios, tipos de moneda, financiadores y cargos. ' +
-    'Grupo Derechos Humanos: En formulario de actividades usan contexto. ' #ROLOPERADOR, 5
+    'Grupo Gestion de Calidad: Editar documentos en Nube y plantilas, asi como descripciones de cada carpeta. ' +
+    'Grupo Archivo y Correspondencia: Editar usuarios pero sólo los campos extensión, oficina y teléfonos personales. ' +
+    'Grupo Gestión Humana: Agregar y editar usuarios, campos privados de gestión humana, grupos y campos públicos. '  #ROLOPERADOR, 5
 
   ]
 

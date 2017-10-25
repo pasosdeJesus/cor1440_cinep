@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 474bbdf1b111690f465cbc45fea2c459bb3e56df
+  revision: 3149076cfe4a63669502397cc0bbdc6094e4a039
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
