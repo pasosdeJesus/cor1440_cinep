@@ -12,6 +12,11 @@ class Usuario < ActiveRecord::Base
     fechadeshabilitacion.nil? ? 'SI' : 'NO'
   end
 
+  def grupos 
+    sip_grupo.map(&:nombre).join("; ")
+  end
+
+
   validates_presence_of :nombres
   validates_presence_of :apellidos
   validates :telefonos, length: { maximum: 256}

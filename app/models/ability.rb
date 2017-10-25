@@ -136,7 +136,7 @@ class Ability  < Cor1440Gen::Ability
     if !usuario || usuario.fechadeshabilitacion
       return
     end
-    grupos = usuario.sip_grupo.map(&:nombre)
+    lgrupos = usuario.sip_grupo.map(&:nombre)
     can :descarga_anexo, Sip::Anexo
     if !usuario.nil? && !usuario.rol.nil? then
       can :nuevo, Cor1440Gen::Actividad
@@ -161,7 +161,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, ::Actor
         can :manage, :tablasbasicas
 
-        if grupos.include?(GRUPO_COMPROMISOS)
+        if lgrupos.include?(GRUPO_COMPROMISOS)
           can :manage, ::Convenio
           can :manage, ::Tasacambio
           can :manage, ::Tipoanexo
@@ -174,14 +174,14 @@ class Ability  < Cor1440Gen::Ability
           can :manage, Cor1440Gen::Proyectofinanciero
           can :manage, Cor1440Gen::Financiador
         end
-        if grupos.include?(GRUPO_GESTIONDECALIDAD)
+        if lgrupos.include?(GRUPO_GESTIONDECALIDAD)
           can :manage, Heb412Gen::Doc
           can :manage, Heb412Gen::Plantillahcm
         end
-        if grupos.include?(GRUPO_ARCHIVOYCORRESPONDENCIA)
+        if lgrupos.include?(GRUPO_ARCHIVOYCORRESPONDENCIA)
           can [:edit, :update], ::Usuario
         end
-        if grupos.include?(GRUPO_GESTIONHUMANA)
+        if lgrupos.include?(GRUPO_GESTIONHUMANA)
           can [:edit, :update, :create], ::Usuario
           can [:read], Sip::Grupo
         end

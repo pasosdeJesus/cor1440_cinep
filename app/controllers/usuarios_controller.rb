@@ -12,41 +12,56 @@ class UsuariosController < Sip::ModelosController
       "apellidos",
       "email",
       "oficina_id",
+      "extension",
+      "grupos",
       "habilitado",
-      "extension"
     ]
   end
 
   def atributos_form
-    r = [ 
-      "nusuario",
-      "nombres",
-      "apellidos",
-      "descripcion"
-    ]
-    if can?(:manage, Sip::Grupo)
+    r = []
+    if can?(:create, ::Usuario)
+      r += [ 
+        "nusuario",
+        "nombres",
+        "apellidos",
+        "descripcion"
+      ]
+    end
+    if can?(:manage, ::Usuario)
       r += ["rol"]
     end
-    r += [
-      "oficina_id",
-      "extension",
-      "email"
-    ]
-    if can?(:read, Sip::Grupo)
-      r += ["sip_grupo"]
+    if can?(:edit, ::Usuario)
+      r += [
+        "oficina_id",
+        "extension",
+        "telefonos",
+      ]
     end
-    r += [
-      "idioma",
-      "telefonos",
-      "encrypted_password",
-      "no_modificar_ldap",
-      "uidNumber",
-      "fechacreacion_localizada",
-      "fechadeshabilitacion_localizada",
-      "failed_attempts",
-      "unlock_token",
-      "locked_at"
-    ]
+    if can?(:create, ::Usuario)
+      r += [
+        "email"
+      ]
+    end
+    if can?(:create, ::Usuario)
+      r += [
+        "sip_grupo",
+        "fechacreacion_localizada",
+        "fechadeshabilitacion_localizada",
+      ]
+    end
+    if can?(:manage, ::Usuario)
+      r += [
+        "idioma",
+        "encrypted_password",
+        "no_modificar_ldap",
+        "uidNumber",
+        "failed_attempts",
+        "unlock_token",
+        "locked_at"
+      ]
+    end
+    return r
   end
 
 #  def prefiltrar()
