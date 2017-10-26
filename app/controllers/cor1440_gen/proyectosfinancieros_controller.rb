@@ -59,7 +59,7 @@ module Cor1440Gen
     def vista_solicitud_informes
       cons = ""
       pre = ""
-      [['informenarrativo','INFOMRE NARRATIVO'], 
+      [['informenarrativo','INFORME NARRATIVO'], 
        ['informefinanciero', 'INFORME FINANCIERO'],
        ['informeauditoria', 'INFORME DE AUDITORÍA']].each do |i|
         cons += pre 
@@ -100,9 +100,9 @@ module Cor1440Gen
         WHEN devoluciones IS NULL THEN '' 
         ELSE 'NO' END AS devoluciones,
       s.observaciones as observaciones, seguimiento, 
-      CASE WHEN fechareal<=fechaplaneada THEN 'SI'
-        WHEN fechareal>fechaplaneada THEN 'NO'
-        WHEN fechareal IS NULL AND CURRENT_DATE>fechaplaneada THEN 'NO'
+      CASE WHEN fechareal<=(fechaplaneada+7) THEN 'SI'
+        WHEN fechareal>(fechaplaneada+7) THEN 'NO'
+        WHEN fechareal IS NULL AND CURRENT_DATE>(fechaplaneada+7) THEN 'NO'
         ELSE '' END AS a_tiempo
       FROM cor1440_gen_proyectofinanciero AS p
       JOIN v_solicitud_informes1 AS s
