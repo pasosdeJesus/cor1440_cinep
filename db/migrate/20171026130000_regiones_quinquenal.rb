@@ -42,7 +42,7 @@ class RegionesQuinquenal < ActiveRecord::Migration[5.1]
       INSERT INTO regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (21, 1398);
       
       
-      INSERT INTO regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (22, 'MAGDALENA MEDIO', 'Plan Quinquenal 2018-2022', 101, '2017-10-26', NULL, '2017-10-26 12:56:30.833328', '2017-10-26 12:56:30.833328');
+      INSERT INTO regiongrupo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (22, 'MAGDALENA MEDIO', 'Plan Quinquenal 2018-2022', '2017-10-26', NULL, '2017-10-26 12:56:30.833328', '2017-10-26 12:56:30.833328');
       INSERT INTO regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (22, 1319);
       INSERT INTO regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (22, 652);
       INSERT INTO regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (22, 812);
