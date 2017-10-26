@@ -18,7 +18,7 @@ module Admin
       [
         "id", "nombre", "observaciones", "grupo_id"] +
       [ :departamento_ids =>  [] ] +
-#      [ :municipios_ids =>  [] ] +
+      [ :municipio_ids =>  [] ] +
       [ 
         "fechacreacion", 
         "fechadeshabilitacion"
