@@ -428,7 +428,7 @@ module Cor1440Gen
         else
           pl = Heb412Gen::Plantillahcm.find(
             params[:idplantilla].to_i)
-          if pl.vista == 'Solicitud de Informe'
+          if pl.vista == 'Cronograma de Solicitud de Informes'
             @vista = vista_solicitud_informes
             n = Heb412Gen::PlantillahcmController.
               llena_plantilla_multiple_fd(pl, @vista)
@@ -442,7 +442,7 @@ module Cor1440Gen
 
     def index_reordenar(registros)
       @plantillas = Heb412Gen::Plantillahcm.where(
-        "vista IN ('Solicitud de Informe', 'Cuadro General de Seguimiento')").
+        "vista IN ('Cronograma de Solicitud de Informes', 'Cuadro General de Seguimiento')").
       select('nombremenu, id').map { 
           |co| [co.nombremenu, co.id] 
         }
