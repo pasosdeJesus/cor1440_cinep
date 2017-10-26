@@ -39,9 +39,13 @@ es:
       "actor":
         Actor: Actor
         Actores: Actores
+        grupo: Equipo(s)
         personacontacto: Persona Contacto
         pais_id: País
+        regiongrupo: Región(es)
         sectoractor_id: Sector del Actor
+        "{:regiongrupo_ids=>[]}": Región(es)
+        "{:grupo_ids=>[]}": Equipo(s)
       "anexo_proyectofinanciero":
         tipoanexo: Tipo de anexo
       "contextoinv":

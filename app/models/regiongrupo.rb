@@ -18,5 +18,10 @@ class Regiongrupo < ActiveRecord::Base
   has_many :municipio, through: :regiongrupo_municipio,
     class_name: 'Sip::Municipio'
 
+  has_many :actor_regiongrupo, dependent: :delete_all,
+    class_name: '::ActorRegiongrupo',
+    foreign_key: 'regiongrupo_id'
+  has_many :actor, through: :actor_regiongrupo,
+    class_name: '::Actor'
 
 end

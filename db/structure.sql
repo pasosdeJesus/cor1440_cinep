@@ -245,6 +245,16 @@ CREATE TABLE actor (
 
 
 --
+-- Name: actor_grupo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE actor_grupo (
+    actor_id bigint NOT NULL,
+    sip_grupo_id bigint NOT NULL
+);
+
+
+--
 -- Name: actor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -261,6 +271,16 @@ CREATE SEQUENCE actor_id_seq
 --
 
 ALTER SEQUENCE actor_id_seq OWNED BY actor.id;
+
+
+--
+-- Name: actor_regiongrupo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE actor_regiongrupo (
+    actor_id bigint NOT NULL,
+    regiongrupo_id bigint NOT NULL
+);
 
 
 --
@@ -3892,6 +3912,14 @@ ALTER TABLE ONLY heb412_gen_doc
 
 
 --
+-- Name: actor_regiongrupo fk_rails_2e83e09369; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor_regiongrupo
+    ADD CONSTRAINT fk_rails_2e83e09369 FOREIGN KEY (regiongrupo_id) REFERENCES regiongrupo(id);
+
+
+--
 -- Name: cor1440_gen_actividad_proyecto fk_rails_395faa0882; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4196,6 +4224,14 @@ ALTER TABLE ONLY actividad_nucleoconflicto
 
 
 --
+-- Name: actor_regiongrupo fk_rails_cbc36271a1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor_regiongrupo
+    ADD CONSTRAINT fk_rails_cbc36271a1 FOREIGN KEY (actor_id) REFERENCES actor(id);
+
+
+--
 -- Name: cor1440_gen_actividad_sip_anexo fk_rails_cc9d44f9de; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4228,6 +4264,14 @@ ALTER TABLE ONLY cor1440_gen_proyectofinanciero
 
 
 --
+-- Name: actor_grupo fk_rails_d790f09b08; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor_grupo
+    ADD CONSTRAINT fk_rails_d790f09b08 FOREIGN KEY (sip_grupo_id) REFERENCES sip_grupo(id);
+
+
+--
 -- Name: cor1440_gen_informe fk_rails_daf0af8605; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4257,6 +4301,14 @@ ALTER TABLE ONLY heb412_gen_campoplantillahcm
 
 ALTER TABLE ONLY grupo_proyectofinanciero
     ADD CONSTRAINT fk_rails_e0f6406d5d FOREIGN KEY (grupo_id) REFERENCES sip_grupo(id);
+
+
+--
+-- Name: actor_grupo fk_rails_e37d7223f1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor_grupo
+    ADD CONSTRAINT fk_rails_e37d7223f1 FOREIGN KEY (actor_id) REFERENCES actor(id);
 
 
 --
@@ -4614,6 +4666,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170919113357'),
 ('20171019133203'),
 ('20171026121737'),
-('20171026130000');
+('20171026130000'),
+('20171026144919'),
+('20171026172501');
 
 

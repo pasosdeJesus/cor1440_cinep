@@ -14,5 +14,9 @@ module Sip
     has_many :actividad, through: :actividad_grupo,
       class_name: 'Cor1440Gen::Actividad'
 
+    has_many :actor_regiongrupo, dependent: :delete_all,
+      class_name: '::ActorRegiongrupo',
+      foreign_key: 'sip_grupo_id'
+
   end
 end
