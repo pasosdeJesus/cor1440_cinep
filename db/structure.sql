@@ -2697,7 +2697,7 @@ CREATE VIEW v_solicitud_informes1 AS
     informenarrativo.fechaplaneada,
     informenarrativo.fechareal,
     informenarrativo.devoluciones,
-    ('INFOMRE NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
+    ('INFORME NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
     informenarrativo.seguimiento
    FROM informenarrativo
 UNION
@@ -2752,9 +2752,9 @@ CREATE VIEW v_solicitud_informes AS
     s.observaciones,
     s.seguimiento,
         CASE
-            WHEN (s.fechareal <= s.fechaplaneada) THEN 'SI'::text
-            WHEN (s.fechareal > s.fechaplaneada) THEN 'NO'::text
-            WHEN ((s.fechareal IS NULL) AND (('now'::text)::date > s.fechaplaneada)) THEN 'NO'::text
+            WHEN (s.fechareal <= (s.fechaplaneada + 7)) THEN 'SI'::text
+            WHEN (s.fechareal > (s.fechaplaneada + 7)) THEN 'NO'::text
+            WHEN ((s.fechareal IS NULL) AND (('now'::text)::date > (s.fechaplaneada + 7))) THEN 'NO'::text
             ELSE ''::text
         END AS a_tiempo
    FROM (cor1440_gen_proyectofinanciero p
@@ -4612,6 +4612,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170828104454'),
 ('20170912133101'),
 ('20170919113357'),
-('20171019133203');
+('20171019133203'),
+('20171026121737'),
+('20171026130000');
 
 
