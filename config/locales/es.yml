@@ -148,7 +148,7 @@ es:
         Regionesgrupo: Región para un grupo
         Regiongrupo: Regiones para un grupo
         "{:departamento_ids=>[]}": Departamentos completos
-        "{:municipios_ids=>[]}": Otros municipios
+        "{:municipio_ids=>[]}": Otros municipios
       "sectoractor":
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
