@@ -106,7 +106,7 @@ class Ability  < Cor1440Gen::Ability
       controlador: 'Cor1440Gen::Proyectofinanciero',
       ruta: '/proyectosfinancieros'
     },
-    'Solicitud de Informe' => { 
+    'Cronograma de Solicitud de Informes' => { 
       campos: [
         'compromiso_id',  'titulo', 
         'coordinador', 'responsable', 
