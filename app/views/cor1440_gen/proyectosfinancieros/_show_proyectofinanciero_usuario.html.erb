@@ -1,0 +1,14 @@
+<table border="1">
+  <tr>
+    <th>Cargo</th>
+    <th>Persona</th>
+    <th>Porcentaje</th>
+  </tr>
+  <% @registro.proyectofinanciero_usuario.each do |pu| %>
+    <tr>
+      <td><%= pu.usuario ? pu.usuario.presenta_nombre : 'Por contratar' %></td>
+      <td><%= pu.cargo.nombre %></td>
+      <td><%= "#{pu.porcentaje.to_s}%" if pu.porcentaje %></td>
+    </tr>
+  <% end %>
+</table>

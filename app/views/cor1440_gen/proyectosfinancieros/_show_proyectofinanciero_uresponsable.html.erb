@@ -1,0 +1,9 @@
+<%= 
+  @registro.proyectofinanciero_uresponsable.inject('') { 
+    |memo, u| memo + 
+    (memo == '' ? '' : '; ') +
+    (u.uresponsable ? u.uresponsable.presenta_nombre :
+     'Por contratar') +
+     (u.porcentaje ? " #{u.porcentaje.to_s}%" : '')
+  }
+%>

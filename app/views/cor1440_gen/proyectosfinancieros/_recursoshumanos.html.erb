@@ -97,7 +97,6 @@
 <%= f.association :respgp,
   collection: umgu,
   include_blank: false,
-  label: "Responsable de Gerencia de Proyectos",
   label_method: lambda { |t| 
     r = ""
     r += t.nombres + " " if t.nombres

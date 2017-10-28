@@ -36,10 +36,74 @@ module Cor1440Gen
         [ :grupo_ids =>  [] ] +
         [ 
           "respgp_id",
+          "estado",
           "monto_localizado",
-          "estado"
-      ] 
+        ] 
     end
+
+    def atributos_show
+      [ 
+        "referenciacinep",
+        "nombre",
+        "referencia", 
+      ] +
+      [ :financiador_ids =>  [] ] +
+      [ "fuentefinanciador", 
+        "fechainicio_localizada",
+        "fechacierre_localizada",
+        "duracion",
+        "fechaformulacion_localizada",
+        "fechaliquidacion_localizada",
+        "anotacionesdb",
+        "estado",
+        "dificultad",
+        "observacionestramite",
+        "observacionesejecucion",
+        "observacionescierre" 
+      ] +
+      [ :grupo_ids =>  [] ] +
+      [ "coordinador_proyectofinanciero",
+        "proyectofinanciero_uresponsable",
+        "proyectofinanciero_usuario",
+        "respgp",
+        "anotacionesrh",
+        "tipomoneda",
+        "tasaformulacion",
+        "presupuestototal_localizado",
+        "apresupuesto",
+        "monto_localizado",
+        "montopesos_localizado",
+        "aportecinep_localizado",
+        "otrosaportescinep",
+        "aotrosfin_localizado",
+        "aotrosesp",
+        "aaportes",
+        "acuse",
+        "reportarrendimientosfinancieros",
+        "reinvertirrendimientosfinancieros",
+        "autenticarcompulsar",
+        "desembolso",
+        "anotacionesre",
+        "informenarrativo",
+        "informefinanciero",
+        "productopf",
+        "informeauditoria",
+        "empresaauditoria",
+        "anotacionesinf",
+        "centrocosto",
+        "copiasdesoporte",
+        "cuentasbancarias",
+        "saldo_localizado",
+        "gestiones",
+        "anotacionescontab",
+        "respagencia",
+        "emailrespagencia",
+        "telrespagencia",
+        "observaciones",
+        "anexo_proyectofinanciero"
+      ]
+    end
+
 
     def new
       @registro = clase.constantize.new

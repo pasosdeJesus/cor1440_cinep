@@ -1,0 +1,22 @@
+<p>
+<table border="1">
+  <tr>
+    <th>Tipo de producto</th>
+    <th>Fecha planeada</th>
+    <th>Fecha envio</th>
+    <th>Devoluciones</th>
+    <th>Detalle</th>
+    <th>Seguimiento</th>
+  </tr>
+  <% @registro.productopf.each do |p| %>
+    <tr>
+      <td><%= p.tipoproductopf.nombre %></td>
+      <td><%= p.fechaplaneada_localizada %></td>
+      <td><%= p.fechareal_localizada %></td>
+      <td><%= p.devoluciones ? 'Si' : 'No' %></td>
+      <td><%= p.detalle if p.detalle %></td>
+      <td><%= p.seguimiento %></td>
+    </tr>
+  <% end %>
+</table>
+</p>

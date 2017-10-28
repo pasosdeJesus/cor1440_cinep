@@ -1,0 +1,14 @@
+<p><table border="1">
+  <tr>
+    <th>Tipo Anexo</th>
+    <th>Descripción</th>
+    <th>Archivo</th>
+  </tr>
+  <% @registro.anexo_proyectofinanciero .each do |ap| %>
+    <tr>
+      <td><%= ap.tipoanexo.nombre if ap.tipoanexo %></td>
+      <td><%= ap.sip_anexo.descripcion %></td>
+      <td><%= ap.sip_anexo.adjunto_file_name %></td>
+    </tr>
+  <% end %>
+</table></p>
