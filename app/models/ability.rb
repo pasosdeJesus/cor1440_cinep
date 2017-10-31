@@ -154,6 +154,7 @@ class Ability  < Cor1440Gen::Ability
         #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
         can :manage, Cor1440Gen::Informe # limitar a oficina?
         can :read, Cor1440Gen::Proyectofinanciero # Los de su grupo
+        can :fichaimp, Cor1440Gen::Proyectofinanciero # Los de su grupo
 
         # Sólo equipos
         can :manage, ::Actor
