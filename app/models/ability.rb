@@ -155,6 +155,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, Cor1440Gen::Informe # limitar a oficina?
         can :read, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichaimp, Cor1440Gen::Proyectofinanciero # Los de su grupo
+        can :fichapdf, Cor1440Gen::Proyectofinanciero # Los de su grupo
 
         # Sólo equipos
         can :manage, ::Actor
