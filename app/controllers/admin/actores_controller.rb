@@ -19,6 +19,21 @@ module Admin
         "nombre"
         ] +
         [ :sectoractor_ids =>  [] ] +
+        [ :regiongrupo_ids =>  [] ] +
+        [ :grupo_ids =>  [] ] +
+        [ "personacontacto",
+        "observaciones", 
+        "fechacreacion_localizada", 
+        "fechadeshabilitacion_localizada"
+      ]
+    end
+
+    def atributos_show
+      [
+        "id", 
+        "nombre"
+        ] +
+        [ :sectoractor_ids =>  [] ] +
         ["pais_id"] +
         [ :regiongrupo_ids =>  [] ] +
         [ :grupo_ids =>  [] ] +

@@ -27,9 +27,9 @@ class Ability  < Cor1440Gen::Ability
     'Ver convenios institucionales. ' +
     'Ver documentos en nube y plantillas, así como descripciones de cada carpeta. ' +
     'Ver listado de usuarios y su información pública. ' +
-    'Administrar actividades e informes de todos los grupos. ' +
-    'Administrar una tabla básica: actores sociales. ' +
-    'Grupo Derechos Humanos: En formulario de actividades usan contexto. ' +
+    'Administrar actividades e informes de su grupo. ' +
+    'Equipos de investigación: Ver, editar y agregar actores sociales. ' +
+    'Equipo Derechos Humanos: En formulario de actividades usan contexto. ' +
     'Grupo Gerencia de Proyectos: Administrar actividades de todos los grupos. ' +
     'Grupo Gerencia de Proyectos: Administrar convenios institucionales. ' +
     'Grupo Gerencia de Proyectos: Administrar algunas tablas básicas: tipos de anexos, tipos de convenios, tipos de moneda, financiadores y cargos. ' +
@@ -45,7 +45,10 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_GESTIONDECALIDAD = "Gestión de Calidad"
   GRUPO_EXTERNOS = "Externos"
   GRUPO_COMUNICACIONES = "Comunicaciones"
-
+  GRUPO_DERECHOSHUMANOS = "Equipo Derechos Humanos"
+  GRUPO_CIUDADANIAYPAZ = "Equipo Equipo Ciudadanía y Paz"
+  GRUPO_CONFLICTOESTADOYDESARROLLO = "Equipo Conflicto, Estado y Desarrollo" 
+  GRUPO_MOVILIZACIONTERRITORIOEINTERCULTURALIDAD = "Equipo Movilización, Territorio e Interculturalidad" 
   def tablasbasicas 
     super() - [ ['Cor1440Gen', 'proyectofinanciero'] ] + 
       [
@@ -139,17 +142,12 @@ class Ability  < Cor1440Gen::Ability
     if !usuario.nil? && !usuario.rol.nil? then
       can :nuevo, Cor1440Gen::Actividad
       can :new, Cor1440Gen::Actividad
-      # Contexto es para equipo derechos humanos 
-      if Cor1440Gen::GruposHelper.mis_grupos_sinus(usuario).
-        where(cn: 'EquipoDerechosHumanos').count > 0
-        can :edit, :contextoac
-      end
       case usuario.rol 
       when Ability::ROLOPERADOR
         can :read, ::Tasacambio
         can :read, Heb412Gen::Doc
         can :read, Heb412Gen::Plantillahcm
-        can [:read], ::Usuario # Directorio institucional
+        can :read, ::Usuario # Directorio institucional
         can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
         #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
         can :manage, Cor1440Gen::Informe # limitar a oficina?
@@ -158,8 +156,18 @@ class Ability  < Cor1440Gen::Ability
         can :fichapdf, Cor1440Gen::Proyectofinanciero # Los de su grupo
 
         # Sólo equipos
-        can :manage, ::Actor
-        can :manage, :tablasbasicas
+        if lgrupos.include?(GRUPO_DERECHOSHUMANOS) || 
+          lgrupos.include?(GRUPO_CIUDADANIAYPAZ) ||
+          lgrupos.include?(GRUPO_CONFLICTOESTADOYDESARROLLO) ||
+          lgrupos.include?(GRUPO_MOVILIZACIONTERRITORIOEINTERCULTURALIDAD)
+          can [:create, :read, :update], ::Actor
+          can :manage, :tablasbasicas
+        end
+
+        # Contexto es para equipo derechos humanos 
+        if lgrupos.include?(GRUPO_DERECHOSHUMANOS)
+          can :edit, :contextoac
+        end
 
         if lgrupos.include?(GRUPO_COMPROMISOS)
           can :manage, ::Convenio
