@@ -12,37 +12,74 @@ class UsuariosController < Sip::ModelosController
       "apellidos",
       "email",
       "oficina_id",
-      "extension"
+      "extension",
+      "grupos",
+      "habilitado",
     ]
   end
 
   def atributos_form
-    r = [ 
-      "nusuario",
-      "nombres",
-      "apellidos",
-      "descripcion",
-      "rol",
-      "oficina_id",
-      "extension",
-      "email",
-    ]
-    if can?(:manage, Sip::Grupo)
-      r += ["sip_grupo"]
+    r = []
+    if can?(:create, ::Usuario)
+      r += [ 
+        "nusuario",
+        "nombres",
+        "apellidos",
+        "descripcion"
+      ]
     end
-    r += [
-      "idioma",
-      "telefonos",
-      "encrypted_password",
-      "no_modificar_ldap",
-      "uidNumber",
-      "fechacreacion_localizada",
-      "fechadeshabilitacion_localizada",
-      "failed_attempts",
-      "unlock_token",
-      "locked_at"
-    ]
+    if can?(:manage, ::Usuario)
+      r += ["rol"]
+    end
+    if can?(:edit, ::Usuario)
+      r += [
+        "oficina_id",
+        "extension",
+        "telefonos",
+      ]
+    end
+    if can?(:create, ::Usuario)
+      r += [
+        "email"
+      ]
+    end
+    if can?(:create, ::Usuario)
+      r += [
+        "sip_grupo",
+        "fechacreacion_localizada",
+        "fechadeshabilitacion_localizada",
+      ]
+    end
+    if can?(:manage, ::Usuario)
+      r += [
+        "idioma",
+        "encrypted_password",
+        "no_modificar_ldap",
+        "uidNumber",
+        "failed_attempts",
+        "unlock_token",
+        "locked_at"
+      ]
+    end
+    return r
   end
+
+#  def prefiltrar()
+#    byebug
+#    if params.nil?
+#      params = ActionController::Parameters.new({
+#         filtro: {
+#          bushabilitado: 'SI'
+#         }
+#      })
+#    elsif !params[:filtro]
+#      params[:filtro] = ActionController::Parameters.new({
+#        bushabilitado: 'SI'
+#      })
+#    elsif !params[:filtro][:bushabilitado]
+#      params[:filtro][:bushabilitado] = 'SI'
+#    end
+#  end
 
   private
 

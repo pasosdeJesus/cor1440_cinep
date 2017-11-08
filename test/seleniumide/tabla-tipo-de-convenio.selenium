@@ -86,6 +86,14 @@
 	<td>¿Está seguro(a)?</td>
 	<td></td>
 </tr>
+<<<<<<< HEAD
+=======
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+>>>>>>> 025c950d1a3569caae9a6d987c3b03f095237e6d
 </tbody></table>
 </body>
 </html>

@@ -41,7 +41,6 @@
       end
     %>
     <%= f.input :duracion,
-      label: 'Duración',
       :input_html => { 'readonly' => 'readonly' }
     %>
   </div>
@@ -51,8 +50,7 @@
   <div class="col-sm-offset-0 col-sm-6">
     <%= f.input :fechaformulacion_localizada, 
       :input_html => { "data-behaviour" => "datepicker" },
-      :as => :string,
-      label: '* Fecha de formulación'
+      :as => :string
     %>
   </div>
   <div class="col-sm-6">

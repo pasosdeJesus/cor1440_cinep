@@ -19,6 +19,24 @@ module Admin
         "nombre"
         ] +
         [ :sectoractor_ids =>  [] ] +
+        [ :regiongrupo_ids =>  [] ] +
+        [ :grupo_ids =>  [] ] +
+        [ "personacontacto",
+        "observaciones", 
+        "fechacreacion_localizada", 
+        "fechadeshabilitacion_localizada"
+      ]
+    end
+
+    def atributos_show
+      [
+        "id", 
+        "nombre"
+        ] +
+        [ :sectoractor_ids =>  [] ] +
+        ["pais_id"] +
+        [ :regiongrupo_ids =>  [] ] +
+        [ :grupo_ids =>  [] ] +
         [ "personacontacto",
         "cargo",
         "correo",
@@ -27,7 +45,6 @@ module Admin
         "celular",
         "direccion",
         "ciudad",
-        "pais_id",
         "observaciones", 
         "fechacreacion_localizada", 
         "fechadeshabilitacion_localizada"

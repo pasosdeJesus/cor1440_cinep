@@ -36,10 +36,74 @@ module Cor1440Gen
         [ :grupo_ids =>  [] ] +
         [ 
           "respgp_id",
+          "estado",
           "monto_localizado",
-          "estado"
-      ] 
+        ] 
     end
+
+    def atributos_show
+      [ 
+        "referenciacinep",
+        "nombre",
+        "referencia", 
+      ] +
+      [ :financiador_ids =>  [] ] +
+      [ "fuentefinanciador", 
+        "fechainicio_localizada",
+        "fechacierre_localizada",
+        "duracion",
+        "fechaformulacion_localizada",
+        "fechaliquidacion_localizada",
+        "anotacionesdb",
+        "estado",
+        "dificultad",
+        "observacionestramite",
+        "observacionesejecucion",
+        "observacionescierre" 
+      ] +
+      [ :grupo_ids =>  [] ] +
+      [ "coordinador_proyectofinanciero",
+        "proyectofinanciero_uresponsable",
+        "proyectofinanciero_usuario",
+        "respgp",
+        "anotacionesrh",
+        "tipomoneda",
+        "tasaformulacion",
+        "presupuestototal_localizado",
+        "apresupuesto",
+        "monto_localizado",
+        "montopesos_localizado",
+        "aportecinep_localizado",
+        "otrosaportescinep",
+        "aotrosfin_localizado",
+        "aotrosesp",
+        "aaportes",
+        "acuse",
+        "reportarrendimientosfinancieros",
+        "reinvertirrendimientosfinancieros",
+        "autenticarcompulsar",
+        "desembolso",
+        "anotacionesre",
+        "informenarrativo",
+        "informefinanciero",
+        "productopf",
+        "informeauditoria",
+        "empresaauditoria",
+        "anotacionesinf",
+        "centrocosto",
+        "copiasdesoporte",
+        "cuentasbancarias",
+        "saldo_localizado",
+        "gestiones",
+        "anotacionescontab",
+        "respagencia",
+        "emailrespagencia",
+        "telrespagencia",
+        "observaciones",
+        "anexo_proyectofinanciero"
+      ]
+    end
+
 
     def new
       @registro = clase.constantize.new
@@ -59,7 +123,7 @@ module Cor1440Gen
     def vista_solicitud_informes
       cons = ""
       pre = ""
-      [['informenarrativo','INFOMRE NARRATIVO'], 
+      [['informenarrativo','INFORME NARRATIVO'], 
        ['informefinanciero', 'INFORME FINANCIERO'],
        ['informeauditoria', 'INFORME DE AUDITORÍA']].each do |i|
         cons += pre 
@@ -100,9 +164,9 @@ module Cor1440Gen
         WHEN devoluciones IS NULL THEN '' 
         ELSE 'NO' END AS devoluciones,
       s.observaciones as observaciones, seguimiento, 
-      CASE WHEN fechareal<=fechaplaneada THEN 'SI'
-        WHEN fechareal>fechaplaneada THEN 'NO'
-        WHEN fechareal IS NULL AND CURRENT_DATE>fechaplaneada THEN 'NO'
+      CASE WHEN fechareal<=(fechaplaneada+7) THEN 'SI'
+        WHEN fechareal>(fechaplaneada+7) THEN 'NO'
+        WHEN fechareal IS NULL AND CURRENT_DATE>(fechaplaneada+7) THEN 'NO'
         ELSE '' END AS a_tiempo
       FROM cor1440_gen_proyectofinanciero AS p
       JOIN v_solicitud_informes1 AS s
@@ -428,7 +492,7 @@ module Cor1440Gen
         else
           pl = Heb412Gen::Plantillahcm.find(
             params[:idplantilla].to_i)
-          if pl.vista == 'Solicitud de Informe'
+          if pl.vista == 'Cronograma de Solicitud de Informes'
             @vista = vista_solicitud_informes
             n = Heb412Gen::PlantillahcmController.
               llena_plantilla_multiple_fd(pl, @vista)
@@ -442,7 +506,7 @@ module Cor1440Gen
 
     def index_reordenar(registros)
       @plantillas = Heb412Gen::Plantillahcm.where(
-        "vista IN ('Solicitud de Informe', 'Cuadro General de Seguimiento')").
+        "vista IN ('Cronograma de Solicitud de Informes', 'Cuadro General de Seguimiento')").
       select('nombremenu, id').map { 
           |co| [co.nombremenu, co.id] 
         }

@@ -20,29 +20,35 @@ class Ability  < Cor1440Gen::Ability
 
     '', #2
 
-    'Administrar actividades e informes de todos los grupos (con contexto). ' +
-    'Administrar convenios institucionales. ' +
-    'Administrar documentos en nube y plantillas. ' +
-    'Administrar tablas básicas (actores sociales, tipos de convenios, etc). ' +
-    'Administrar tasas de cambio. ' +
-    'Administrar usuarios. ', #ROLDIR, 3
+    'Igual al Administrador ', #ROLDIR, 3
 
     '', #4
 
     'Ver convenios institucionales. ' +
-    'Ver documentos en nube y plantillas. ' +
-    'Ver usuarios. ' +
-    'Administrar actividades e informes de todos los grupos. ' +
-    'Administrar una tabla básica: actores sociales. ' +
+    'Ver documentos en nube y plantillas, así como descripciones de cada carpeta. ' +
+    'Ver listado de usuarios y su información pública. ' +
+    'Administrar actividades e informes de su grupo. ' +
+    'Equipos de investigación: Ver, editar y agregar actores sociales. ' +
+    'Equipo Derechos Humanos: En formulario de actividades usan contexto. ' +
     'Grupo Gerencia de Proyectos: Administrar actividades de todos los grupos. ' +
     'Grupo Gerencia de Proyectos: Administrar convenios institucionales. ' +
     'Grupo Gerencia de Proyectos: Administrar algunas tablas básicas: tipos de anexos, tipos de convenios, tipos de moneda, financiadores y cargos. ' +
-    'Grupo Derechos Humanos: En formulario de actividades usan contexto. ' #ROLOPERADOR, 5
+    'Grupo Gestion de Calidad: Editar documentos en Nube y plantilas, asi como descripciones de cada carpeta. ' +
+    'Grupo Archivo y Correspondencia: Editar usuarios pero sólo los campos extensión, oficina y teléfonos personales. ' +
+    'Grupo Gestión Humana: Agregar y editar usuarios, campos privados de gestión humana, grupos y campos públicos. '  #ROLOPERADOR, 5
 
   ]
 
   GRUPO_COMPROMISOS = "Gerencia de Proyectos"
-
+  GRUPO_ARCHIVOYCORRESPONDENCIA= "Archivo y Correspondencia"
+  GRUPO_GESTIONHUMANA = "Gestión Humana"
+  GRUPO_GESTIONDECALIDAD = "Gestión de Calidad"
+  GRUPO_EXTERNOS = "Externos"
+  GRUPO_COMUNICACIONES = "Comunicaciones"
+  GRUPO_DERECHOSHUMANOS = "Equipo Derechos Humanos"
+  GRUPO_CIUDADANIAYPAZ = "Equipo Equipo Ciudadanía y Paz"
+  GRUPO_CONFLICTOESTADOYDESARROLLO = "Equipo Conflicto, Estado y Desarrollo" 
+  GRUPO_MOVILIZACIONTERRITORIOEINTERCULTURALIDAD = "Equipo Movilización, Territorio e Interculturalidad" 
   def tablasbasicas 
     super() - [ ['Cor1440Gen', 'proyectofinanciero'] ] + 
       [
@@ -103,7 +109,7 @@ class Ability  < Cor1440Gen::Ability
       controlador: 'Cor1440Gen::Proyectofinanciero',
       ruta: '/proyectosfinancieros'
     },
-    'Solicitud de Informe' => { 
+    'Cronograma de Solicitud de Informes' => { 
       campos: [
         'compromiso_id',  'titulo', 
         'coordinador', 'responsable', 
@@ -131,22 +137,39 @@ class Ability  < Cor1440Gen::Ability
     if !usuario || usuario.fechadeshabilitacion
       return
     end
-    grupos = usuario.sip_grupo.map(&:nombre)
+    lgrupos = usuario.sip_grupo.map(&:nombre)
     can :descarga_anexo, Sip::Anexo
     if !usuario.nil? && !usuario.rol.nil? then
       can :nuevo, Cor1440Gen::Actividad
       can :new, Cor1440Gen::Actividad
-      # Contexto es para equipo derechos humanos 
-      if Cor1440Gen::GruposHelper.mis_grupos_sinus(usuario).
-        where(cn: 'EquipoDerechosHumanos').count > 0
-        can :edit, :contextoac
-      end
       case usuario.rol 
       when Ability::ROLOPERADOR
         can :read, ::Tasacambio
         can :read, Heb412Gen::Doc
         can :read, Heb412Gen::Plantillahcm
-        if grupos.include?(GRUPO_COMPROMISOS)
+        can :read, ::Usuario # Directorio institucional
+        can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
+        #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
+        can :manage, Cor1440Gen::Informe # limitar a oficina?
+        can :read, Cor1440Gen::Proyectofinanciero # Los de su grupo
+        can :fichaimp, Cor1440Gen::Proyectofinanciero # Los de su grupo
+        can :fichapdf, Cor1440Gen::Proyectofinanciero # Los de su grupo
+
+        # Sólo equipos
+        if lgrupos.include?(GRUPO_DERECHOSHUMANOS) || 
+          lgrupos.include?(GRUPO_CIUDADANIAYPAZ) ||
+          lgrupos.include?(GRUPO_CONFLICTOESTADOYDESARROLLO) ||
+          lgrupos.include?(GRUPO_MOVILIZACIONTERRITORIOEINTERCULTURALIDAD)
+          can [:create, :read, :update], ::Actor
+          can :manage, :tablasbasicas
+        end
+
+        # Contexto es para equipo derechos humanos 
+        if lgrupos.include?(GRUPO_DERECHOSHUMANOS)
+          can :edit, :contextoac
+        end
+
+        if lgrupos.include?(GRUPO_COMPROMISOS)
           can :manage, ::Convenio
           can :manage, ::Tasacambio
           can :manage, ::Tipoanexo
@@ -158,14 +181,17 @@ class Ability  < Cor1440Gen::Ability
           # Oficina Gerencia de Proyectos
           can :manage, Cor1440Gen::Proyectofinanciero
           can :manage, Cor1440Gen::Financiador
-        else
-          can :manage, ::Actor
-          can :manage, :tablasbasicas
-          can [:read], ::Usuario # Limita a oficina?
-          can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
-          can :read, Cor1440Gen::Proyectofinanciero
-          can :manage, Cor1440Gen::Informe # limitar a oficina?
-          #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
+        end
+        if lgrupos.include?(GRUPO_GESTIONDECALIDAD)
+          can :manage, Heb412Gen::Doc
+          can :manage, Heb412Gen::Plantillahcm
+        end
+        if lgrupos.include?(GRUPO_ARCHIVOYCORRESPONDENCIA)
+          can [:edit, :update], ::Usuario
+        end
+        if lgrupos.include?(GRUPO_GESTIONHUMANA)
+          can [:edit, :update, :create], ::Usuario
+          can [:read], Sip::Grupo
         end
       when Ability::ROLADMIN, Ability::ROLDIR
         can :edit, :contextoac

@@ -9,13 +9,22 @@ module Cor1440Gen
     attr_accessor :duracion
 
     include Cor1440Gen::Concerns::Models::Proyectofinanciero
-   
+    include ApplicationHelper
+
     belongs_to :respgp, class_name: '::Usuario',
       foreign_key: 'respgp_id'
     belongs_to :tasaformulacion, class_name: '::Tasacambio',
       foreign_key: 'tasaformulacion_id'
     belongs_to :tipomoneda, class_name: '::Tipomoneda',
       foreign_key: 'tipomoneda_id'
+
+    def duracion
+      if fechainicio && fechacierre
+        dif_meses_dias(fechainicio, fechacierre)
+      else
+        ''
+      end
+    end
 
     #has_many :oficina_proyectofinanciero, dependent: :delete_all,
     #  class_name: '::OficinaProyectofinanciero',

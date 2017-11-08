@@ -39,9 +39,13 @@ es:
       "actor":
         Actor: Actor
         Actores: Actores
+        grupo: Equipo(s)
         personacontacto: Persona Contacto
         pais_id: País
+        regiongrupo: Región(es)
         sectoractor_id: Sector del Actor
+        "{:regiongrupo_ids=>[]}": Región(es)
+        "{:grupo_ids=>[]}": Equipo(s)
       "anexo_proyectofinanciero":
         tipoanexo: Tipo de anexo
       "contextoinv":
@@ -79,7 +83,7 @@ es:
         anotacionesdb: "Anotaciones Datos Básicos"
         anotacionesrh: "Anotaciones Recursos Humanos"
         anotacionesre: "Anotaciones Recursos Económicos y Financieros"
-        anotacionesinf: "Anotaciones Informes y Auditorias"
+        anotacionesinf: "Anotaciones Informes y Auditorías"
         aotrosfin_localizado: 'Aportes financieros otros donantes'
         aotrosesp: 'Aportes en especies otros donantes'
         aportecinep: "Aporte financiero CINEP/PPP - Otros donantes"
@@ -91,9 +95,10 @@ es:
         compromisos: "Productos (publicaciones, compromisos, actividades)"
         coordinador: "Coordinador(es)"
         cuentasbancarias: "Cuentas bancarias"
-        duracion: "Fecha de liquidación"
-        emailrespagencia: "Correo responsable"
-        empresaauditoria: "Empresa de Auditorias y Relacionados"
+        desembolso: 'Desembolsos'
+        duracion: "Duración"
+        emailrespagencia: "Correo del responsable agencia"
+        empresaauditoria: "Empresa de Auditorías y Relacionados"
         fechacierre: "Termina"
         fechacierre_localizada: "Termina"
         fechaformulacion: "Fecha de formulación"
@@ -106,14 +111,19 @@ es:
         formatosespecificos: "Formatos específicos"
         formatossolicitudpago: "Formatos de solicitud de pago"
         "{:grupo_ids=>[]}": "Equipo(s)"
+        informesauditorias: "Informes auditorías"
+        informeauditoria: "Informes auditorías"
+        informefinanciero: "Informes financieros"
+        informefinanciero: "Informes financieros"
         informesnarrativos: "Informes narrativos"
-        informesfinancieros: "Informes financieros"
-        informesauditoria: "Informes auditoria/Verificación de gastos/Controles del financiador"
+        informenarrativo: "Informes narrativos"
+        informesauditoria: "Informes auditoría/Verificación de gastos/Controles del financiador"
         monto: "Aporte financiador"
         monto_localizado: "Aporte financiador"
         montopesos: "Aporte financiador en pesos"
         montopesos_localizado: "Aporte financiador en pesos"
         nombre: 'Titulo'
+        observaciones: 'Observaciones financiador'
         observacionestramite: "Observaciones durante el trámite"
         observacionesejecucion: "Observaciones durante la ejecución"
         observacionescierre: "Observaciones durante el cierre"
@@ -121,16 +131,21 @@ es:
         otrosaportescinep: "Otros aportes CINEP/PPP"
         presupuestototal: "Presupuesto total"
         presupuestototal_localizado: "Presupuesto total"
+        productopf: "Productos"
+        proyectofinanciero_uresponsable: "Responsable(s)"
+        proyectofinanciero_usuario: "Cargos"
         referencia: "Referencia"
         referenciacinep: "Referencia CINEP/PPP"
+        reinvertirrendimientosfinancieros: "Reinvertir rendimientos financieros"
         rendimientosfinancieros: "Rendimientos financieros"
-        respagencia: "Responsable"
+        reportarrendimientosfinancieros: "Reportar rendimientos financieros"
+        respagencia: "Responsable de la Agencia"
         respgp: "Responsable GP"
         respgp_id: "Responsable GP"
         saldo_localizado: "Saldo"
         tasaformulacion: "Tasa de cambio"
         tasaformulacion_localizado: "Tasa de cambio"
-        telrespagencia: "Teléfono responsable"
+        telrespagencia: "Teléfono responsable agencia"
         tipomoneda: "Tipo de moneda"
         tipoanexo: "Tipo de anexo"
         uresponsable: "Responsable(s)"
@@ -148,7 +163,7 @@ es:
         Regionesgrupo: Región para un grupo
         Regiongrupo: Regiones para un grupo
         "{:departamento_ids=>[]}": Departamentos completos
-        "{:municipios_ids=>[]}": Otros municipios
+        "{:municipio_ids=>[]}": Otros municipios
       "sectoractor":
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
