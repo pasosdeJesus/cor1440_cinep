@@ -4,16 +4,16 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://archivoprensa.cinep.org.co:4000/" />
-<title>sector-de-actor</title>
+<title>eliminar_usuario_recien_creado</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">sector-de-actor</td></tr>
+<tr><td rowspan="1" colspan="3">eliminar_usuario_recien_creado</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/</td>
+	<td>/act</td>
 	<td></td>
 </tr>
 <tr>
@@ -23,17 +23,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Tablas Básicas</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>link=Sectores de Actores</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Sectores de Actores</td>
+	<td>link=Usuarios</td>
 	<td></td>
 </tr>
 <tr>
@@ -42,44 +32,19 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>link=Nuevo</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>id=sectoractor_nombre</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=sectoractor_nombre</td>
-	<td>aaa</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>id=sectoractor_observaciones</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=sectoractor_observaciones</td>
-	<td>bbb</td>
+	<td>assertText</td>
+	<td>//td[9]</td>
+	<td>a@a.com</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>name=commit</td>
+	<td>link=Eliminar de base y LDAP</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>link=Eliminar</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertConfirmation</td>
-	<td>¿Está seguro(a)?</td>
-	<td></td>
+	<td>assertNotText</td>
+	<td>//td[9]</td>
+	<td>a@a.com</td>
 </tr>
 </tbody></table>
 </body>

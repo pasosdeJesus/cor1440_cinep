@@ -4,16 +4,21 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://archivoprensa.cinep.org.co:4000/" />
-<title>tabla-tipo-de-centro-poblado</title>
+<title>actor</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">tabla-tipo-de-centro-poblado</td></tr>
+<tr><td rowspan="1" colspan="3">actor</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/</td>
+	<td>/act</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//ul[2]/li[2]/a/b</td>
 	<td></td>
 </tr>
 <tr>
@@ -23,12 +28,12 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>link=Tipos de Centros Poblados</td>
+	<td>link=Actores</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Tipos de Centros Poblados</td>
+	<td>link=Actores</td>
 	<td></td>
 </tr>
 <tr>
@@ -43,28 +48,18 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>id=tclase_id</td>
+	<td>id=actor_nombre</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=tclase_id</td>
-	<td>7</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=tclase_nombre</td>
+	<td>id=actor_nombre</td>
 	<td>aaa</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>id=tclase_observaciones</td>
-	<td></td>
-</tr>
-<tr>
 	<td>type</td>
-	<td>id=tclase_observaciones</td>
-	<td>bbbb</td>
+	<td>id=actor_personacontacto</td>
+	<td>aa</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -81,6 +76,12 @@
 	<td>¿Está seguro(a)?</td>
 	<td></td>
 </tr>
+<tr>
+	<td>click</td>
+	<td>link=Crecer 1.0.a7</td>
+	<td></td>
+</tr>
+
 </tbody></table>
 </body>
 </html>
