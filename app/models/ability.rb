@@ -193,6 +193,10 @@ class Ability  < Cor1440Gen::Ability
           can [:edit, :update, :create], ::Usuario
           can [:read], Sip::Grupo
         end
+        if lgrupos.include?(GRUPO_COMUNICACIONES)
+          can [:read, :edit, :update, :create], ::Publicacion
+          can :manage, :tablasbasicas
+        end
       when Ability::ROLADMIN, Ability::ROLDIR
         can :edit, :contextoac
         can :manage, ::Convenio
