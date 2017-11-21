@@ -35,7 +35,8 @@ class Ability  < Cor1440Gen::Ability
     'Grupo Gerencia de Proyectos: Administrar algunas tablas básicas: tipos de anexos, tipos de convenios, tipos de moneda, financiadores y cargos. ' +
     'Grupo Gestion de Calidad: Editar documentos en Nube y plantilas, asi como descripciones de cada carpeta. ' +
     'Grupo Archivo y Correspondencia: Editar usuarios pero sólo los campos extensión, oficina y teléfonos personales. ' +
-    'Grupo Gestión Humana: Agregar y editar usuarios, campos privados de gestión humana, grupos y campos públicos. '  #ROLOPERADOR, 5
+    'Grupo Gestión Humana: Agregar y editar usuarios, campos privados de gestión humana, grupos y campos públicos. ' +
+    'Grupo Comunicaciones: Gestionar publicaciones. '  #ROLOPERADOR, 5
 
   ]
 
@@ -194,7 +195,7 @@ class Ability  < Cor1440Gen::Ability
           can [:read], Sip::Grupo
         end
         if lgrupos.include?(GRUPO_COMUNICACIONES)
-          can [:read, :edit, :update, :create], ::Publicacion
+          can :manage, ::Publicacion
           can :manage, :tablasbasicas
         end
       when Ability::ROLADMIN, Ability::ROLDIR
