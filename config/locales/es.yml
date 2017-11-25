@@ -7,20 +7,22 @@ es:
     one: '%{count} día'
     other: '%{count} días'
   attributes:
-    fechacreacion: Creación
-    fechadeshabilitacion: Deshabilitación 
-    regionsjr: Dependencia
-    pais: País
-    telefono: Teléfono
-    direccion: Dirección
-    sectoractor: Sector del Actor
     actividadarea: Componente Plan Trienal 
     actividadareas: Componentes Plan Trienal 
+    articulo: Publicación
+    articulos: Publicaciones
     departamento: Departamento
+    direccion: Dirección
+    fechacreacion: Creación
+    fechadeshabilitacion: Deshabilitación 
     oficina: Oficina
+    pais: País
     proyecto: "Programa / Servicio / Producto"
     proyectosfinancieros: Compromisos institucionales
     proyectofinanciero: Compromiso institucional
+    regionsjr: Dependencia
+    sectoractor: Sector del Actor
+    telefono: Teléfono
   activerecord:
     models:
       "convenio":
@@ -35,6 +37,9 @@ es:
       "tasacambio":
         one: Tasa de cambio
         other: Tasas de cambio
+      "sal7711_gen/articulo": 
+        one: "Publicación"
+        other: "Publicaciones"
     attributes:
       "actor":
         Actor: Actor
@@ -188,6 +193,9 @@ es:
       "tipoproductopf":
         Tipoproductopf: Tipo de producto de un compromiso institucional
         Tiposproductopf: Tipos de productos de un compromiso institucional
+      "sal7711_gen/articulo":
+        Articulo: Publicación 
+        Articulos: Publicaciones
       "sip/oficina":
         Oficinas: Oficina
         Oficina: Oficina

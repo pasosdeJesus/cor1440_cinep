@@ -195,6 +195,7 @@ class Ability  < Cor1440Gen::Ability
           can [:read], Sip::Grupo
         end
         if lgrupos.include?(GRUPO_COMUNICACIONES)
+          can :manage, Sal7711Gen::Articulo
           can :manage, ::Publicacion
           can :manage, :tablasbasicas
         end

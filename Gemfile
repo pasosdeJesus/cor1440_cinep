@@ -94,6 +94,19 @@ gem 'cor1440_gen', git: "https://github.com/pasosdeJesus/cor1440_gen.git"
 gem 'jn316_gen', git: "https://github.com/pasosdeJesus/jn316_gen.git"
 #gem "jn316_gen", path: '../jn316_gen'
 
+# Motor sal7711_gen
+gem 'sal7711_gen', git: "https://github.com/pasosdeJesus/sal7711_gen.git"
+#gem "sal7711_gen", path: '../sal7711_gen'
+
+# Motor sal7711_web
+gem 'sal7711_web', git: "https://github.com/pasosdeJesus/sal7711_web.git"
+#gem "sal7711_web", path: '../sal7711_web'
+
+# Publicaciones sobre motor Sal7711_ld
+gem 'sal7711_ld', git: "https://github.com/pasosdeJesus/sal7711_ld.git"
+#gem "sal7711_ld", path: '../sal7711_ld'
+
+
 # Los siguientes son para desarrollo o para pruebas con generadores
 group :development do
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas

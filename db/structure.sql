@@ -1891,6 +1891,132 @@ CREATE TABLE regiongrupo_sip_municipio (
 
 
 --
+-- Name: sal7711_gen_articulo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sal7711_gen_articulo (
+    id integer NOT NULL,
+    departamento_id integer,
+    municipio_id integer,
+    fuenteprensa_id integer,
+    fecha date,
+    pagina character varying(20),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    texto text,
+    adjunto_file_name character varying,
+    adjunto_content_type character varying,
+    adjunto_file_size integer,
+    adjunto_updated_at timestamp without time zone,
+    anexo_id_antiguo integer,
+    adjunto_descripcion character varying(1500),
+    titulo character varying(1024),
+    observaciones character varying(5000),
+    url character varying(5000),
+    pais_id integer
+);
+
+
+--
+-- Name: sal7711_gen_articulo_categoriaprensa; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sal7711_gen_articulo_categoriaprensa (
+    articulo_id bigint NOT NULL,
+    categoriaprensa_id bigint NOT NULL
+);
+
+
+--
+-- Name: sal7711_gen_articulo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sal7711_gen_articulo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sal7711_gen_articulo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sal7711_gen_articulo_id_seq OWNED BY sal7711_gen_articulo.id;
+
+
+--
+-- Name: sal7711_gen_bitacora; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sal7711_gen_bitacora (
+    id integer NOT NULL,
+    fecha timestamp without time zone,
+    ip character varying(100),
+    usuario_id integer,
+    operacion character varying(50),
+    detalle character varying(5000),
+    detalle2 character varying(500),
+    detalle3 character varying(500)
+);
+
+
+--
+-- Name: sal7711_gen_bitacora_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sal7711_gen_bitacora_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sal7711_gen_bitacora_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sal7711_gen_bitacora_id_seq OWNED BY sal7711_gen_bitacora.id;
+
+
+--
+-- Name: sal7711_gen_categoriaprensa; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sal7711_gen_categoriaprensa (
+    id integer NOT NULL,
+    codigo character varying(15),
+    nombre character varying(500),
+    observaciones character varying(5000),
+    fechacreacion date,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: sal7711_gen_categoriaprensa_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sal7711_gen_categoriaprensa_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sal7711_gen_categoriaprensa_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sal7711_gen_categoriaprensa_id_seq OWNED BY sal7711_gen_categoriaprensa.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3032,6 +3158,27 @@ ALTER TABLE ONLY regiongrupo ALTER COLUMN id SET DEFAULT nextval('regiongrupo_id
 
 
 --
+-- Name: sal7711_gen_articulo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_articulo ALTER COLUMN id SET DEFAULT nextval('sal7711_gen_articulo_id_seq'::regclass);
+
+
+--
+-- Name: sal7711_gen_bitacora id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_bitacora ALTER COLUMN id SET DEFAULT nextval('sal7711_gen_bitacora_id_seq'::regclass);
+
+
+--
+-- Name: sal7711_gen_categoriaprensa id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_categoriaprensa ALTER COLUMN id SET DEFAULT nextval('sal7711_gen_categoriaprensa_id_seq'::regclass);
+
+
+--
 -- Name: sectoractor id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -3370,6 +3517,30 @@ ALTER TABLE ONLY regiongrupo
 
 ALTER TABLE ONLY sip_oficina
     ADD CONSTRAINT regionsjr_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sal7711_gen_articulo sal7711_gen_articulo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_articulo
+    ADD CONSTRAINT sal7711_gen_articulo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sal7711_gen_bitacora sal7711_gen_bitacora_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_bitacora
+    ADD CONSTRAINT sal7711_gen_bitacora_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sal7711_gen_categoriaprensa sal7711_gen_categoriaprensa_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_categoriaprensa
+    ADD CONSTRAINT sal7711_gen_categoriaprensa_pkey PRIMARY KEY (id);
 
 
 --
@@ -4024,6 +4195,14 @@ ALTER TABLE ONLY cor1440_gen_actividad_proyectofinanciero
 
 
 --
+-- Name: sal7711_gen_bitacora fk_rails_52d9d2f700; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_bitacora
+    ADD CONSTRAINT fk_rails_52d9d2f700 FOREIGN KEY (usuario_id) REFERENCES usuario(id);
+
+
+--
 -- Name: actividad_nucleoconflicto fk_rails_55868fbce2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4053,6 +4232,14 @@ ALTER TABLE ONLY coordinador_proyectofinanciero
 
 ALTER TABLE ONLY actividad_publicacion
     ADD CONSTRAINT fk_rails_60dbe4c315 FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
+-- Name: sal7711_gen_articulo fk_rails_65eae7449f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_articulo
+    ADD CONSTRAINT fk_rails_65eae7449f FOREIGN KEY (departamento_id) REFERENCES sip_departamento(id);
 
 
 --
@@ -4093,6 +4280,14 @@ ALTER TABLE ONLY anexo_proyectofinanciero
 
 ALTER TABLE ONLY convenio
     ADD CONSTRAINT fk_rails_77dbba47fe FOREIGN KEY (tipoconvenio_id) REFERENCES tipoconvenio(id);
+
+
+--
+-- Name: sal7711_gen_articulo_categoriaprensa fk_rails_7d1213c35b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_articulo_categoriaprensa
+    ADD CONSTRAINT fk_rails_7d1213c35b FOREIGN KEY (articulo_id) REFERENCES sal7711_gen_articulo(id);
 
 
 --
@@ -4144,11 +4339,27 @@ ALTER TABLE ONLY sip_grupo_usuario
 
 
 --
+-- Name: sal7711_gen_articulo fk_rails_8e3e0703f9; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_articulo
+    ADD CONSTRAINT fk_rails_8e3e0703f9 FOREIGN KEY (municipio_id) REFERENCES sip_municipio(id);
+
+
+--
 -- Name: regiongrupo fk_rails_907d221630; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY regiongrupo
     ADD CONSTRAINT fk_rails_907d221630 FOREIGN KEY (grupo_id) REFERENCES sip_grupo(id);
+
+
+--
+-- Name: sal7711_gen_articulo fk_rails_97ebadca1b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_articulo
+    ADD CONSTRAINT fk_rails_97ebadca1b FOREIGN KEY (pais_id) REFERENCES sip_pais(id);
 
 
 --
@@ -4264,6 +4475,14 @@ ALTER TABLE ONLY cor1440_gen_proyectofinanciero
 
 
 --
+-- Name: sal7711_gen_articulo fk_rails_d3b628101f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_articulo
+    ADD CONSTRAINT fk_rails_d3b628101f FOREIGN KEY (fuenteprensa_id) REFERENCES sip_fuenteprensa(id);
+
+
+--
 -- Name: actor_grupo fk_rails_d790f09b08; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4325,6 +4544,14 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 ALTER TABLE ONLY coordinador_proyectofinanciero
     ADD CONSTRAINT fk_rails_fab0c162ed FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: sal7711_gen_articulo_categoriaprensa fk_rails_fcf649bab3; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sal7711_gen_articulo_categoriaprensa
+    ADD CONSTRAINT fk_rails_fcf649bab3 FOREIGN KEY (categoriaprensa_id) REFERENCES sal7711_gen_categoriaprensa(id);
 
 
 --
@@ -4547,6 +4774,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20150420200255'),
 ('20150503120915'),
 ('20150510125926'),
+('20150510130031'),
 ('20150513112126'),
 ('20150513130058'),
 ('20150513130510'),
@@ -4559,6 +4787,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20150521203631'),
 ('20150521223501'),
 ('20150528100944'),
+('20150603181900'),
+('20150604101858'),
+('20150604102321'),
 ('20150624200701'),
 ('20150630042537'),
 ('20150630130814'),
@@ -4569,6 +4800,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20150630224704'),
 ('20150630230130'),
 ('20150630230134'),
+('20150702224217'),
 ('20150706172733'),
 ('20150706173649'),
 ('20150707164448'),
@@ -4584,6 +4816,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20150809032138'),
 ('20150819173047'),
 ('20151020203421'),
+('20151030154449'),
+('20151030154458'),
+('20151030181131'),
 ('20160118101511'),
 ('20160202103751'),
 ('20160218102246'),
@@ -4611,13 +4846,16 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20160308135905'),
 ('20160308213334'),
 ('20160328153309'),
+('20160518025044'),
 ('20160519195544'),
 ('20160616024857'),
 ('20160617030012'),
 ('20160621113440'),
 ('20160621125127'),
 ('20160628222616'),
+('20160802134021'),
 ('20160805103310'),
+('20160921112808'),
 ('20161009111443'),
 ('20161010152631'),
 ('20161019185830'),
@@ -4627,6 +4865,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20161103081041'),
 ('20161103083352'),
 ('20161108102349'),
+('20161212175928'),
 ('20170327132108'),
 ('20170328172001'),
 ('20170329153630'),
@@ -4669,6 +4908,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026130000'),
 ('20171026144919'),
 ('20171026172501'),
-('20171114185712');
+('20171114185712'),
+('20171123212504');
 
 
