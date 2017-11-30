@@ -54,6 +54,10 @@ class Actor < ActiveRecord::Base
     end
   end
 
+  def presenta_nombre
+    nombre
+  end
+
   scope :filtro_sectoractor_ids, lambda { |s|
     joins(:actor_sectoractor).where('actor_sectoractor.sectoractor_id=?', s)
   }

@@ -202,11 +202,14 @@ class Ability  < Cor1440Gen::Ability
       when Ability::ROLADMIN, Ability::ROLDIR
         can :edit, :contextoac
         can :manage, ::Convenio
+        can :manage, ::Efecto
         can :manage, ::Tasacambio
         can :manage, ::Usuario
-        can :manage, Cor1440Gen::Proyectofinanciero
         can :manage, Cor1440Gen::Actividad
+        can :manage, Cor1440Gen::Indicadorpf
         can :manage, Cor1440Gen::Informe
+        can :manage, Cor1440Gen::Proyectofinanciero
+        can :manage, Cor1440Gen::Tipoindicador
         can :manage, Heb412Gen::Doc
         can :manage, Heb412Gen::Plantillahcm
         can :manage, :tablasbasicas

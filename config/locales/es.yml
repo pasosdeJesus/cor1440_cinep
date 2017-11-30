@@ -155,6 +155,11 @@ es:
         tipoanexo: "Tipo de anexo"
         uresponsable: "Responsable(s)"
         "{:uresponsable_ids=>[]}": "Responsable(s)"
+      "efecto":
+        indicadorpf: Indicador
+        indicadorpf_id: Indicador
+        actor: Actor social
+        fecha_localizada: Fecha
       "nucleoconflicto":
         Nucleoconflict: Núcleo de conflicto
         Nucleosconflicto: Núcleos de conflicto

@@ -924,7 +924,8 @@ CREATE TABLE cor1440_gen_indicadorpf (
     proyectofinanciero_id integer,
     resultadopf_id integer,
     numero character varying(15) NOT NULL,
-    indicador character varying(5000) NOT NULL
+    indicador character varying(5000) NOT NULL,
+    tipoindicador_id integer
 );
 
 
@@ -1222,6 +1223,41 @@ ALTER SEQUENCE cor1440_gen_resultadopf_id_seq OWNED BY cor1440_gen_resultadopf.i
 
 
 --
+-- Name: cor1440_gen_tipoindicador; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cor1440_gen_tipoindicador (
+    id bigint NOT NULL,
+    nombre character varying(32),
+    espcampos character varying(1000),
+    espvaloresomision character varying(1000),
+    espvalidaciones character varying(1000),
+    esptipometa character varying(32),
+    espfuncionmedir character varying(1000),
+    medircon integer
+);
+
+
+--
+-- Name: cor1440_gen_tipoindicador_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cor1440_gen_tipoindicador_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_tipoindicador_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cor1440_gen_tipoindicador_id_seq OWNED BY cor1440_gen_tipoindicador.id;
+
+
+--
 -- Name: desembolso; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1253,6 +1289,37 @@ CREATE SEQUENCE desembolso_id_seq
 --
 
 ALTER SEQUENCE desembolso_id_seq OWNED BY desembolso.id;
+
+
+--
+-- Name: efecto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE efecto (
+    id bigint NOT NULL,
+    indicadorpf_id integer,
+    actor_id integer,
+    fecha date
+);
+
+
+--
+-- Name: efecto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE efecto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: efecto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE efecto_id_seq OWNED BY efecto.id;
 
 
 --
@@ -3219,10 +3286,24 @@ ALTER TABLE ONLY cor1440_gen_resultadopf ALTER COLUMN id SET DEFAULT nextval('co
 
 
 --
+-- Name: cor1440_gen_tipoindicador id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_tipoindicador ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_tipoindicador_id_seq'::regclass);
+
+
+--
 -- Name: desembolso id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY desembolso ALTER COLUMN id SET DEFAULT nextval('desembolso_id_seq'::regclass);
+
+
+--
+-- Name: efecto id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY efecto ALTER COLUMN id SET DEFAULT nextval('efecto_id_seq'::regclass);
 
 
 --
@@ -3574,11 +3655,27 @@ ALTER TABLE ONLY cor1440_gen_resultadopf
 
 
 --
+-- Name: cor1440_gen_tipoindicador cor1440_gen_tipoindicador_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_tipoindicador
+    ADD CONSTRAINT cor1440_gen_tipoindicador_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: desembolso desembolso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY desembolso
     ADD CONSTRAINT desembolso_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: efecto efecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY efecto
+    ADD CONSTRAINT efecto_pkey PRIMARY KEY (id);
 
 
 --
@@ -4601,6 +4698,14 @@ ALTER TABLE ONLY sal7711_gen_articulo
 
 
 --
+-- Name: efecto fk_rails_9b37deb543; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY efecto
+    ADD CONSTRAINT fk_rails_9b37deb543 FOREIGN KEY (indicadorpf_id) REFERENCES cor1440_gen_indicadorpf(id);
+
+
+--
 -- Name: cor1440_gen_financiador fk_rails_9daa099154; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4721,6 +4826,14 @@ ALTER TABLE ONLY cor1440_gen_actividad_proyecto
 
 
 --
+-- Name: cor1440_gen_indicadorpf fk_rails_cf888d1b56; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_indicadorpf
+    ADD CONSTRAINT fk_rails_cf888d1b56 FOREIGN KEY (tipoindicador_id) REFERENCES cor1440_gen_tipoindicador(id);
+
+
+--
 -- Name: cor1440_gen_proyectofinanciero fk_rails_d0ff83bfc6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4790,6 +4903,14 @@ ALTER TABLE ONLY grupo_proyectofinanciero
 
 ALTER TABLE ONLY actor_grupo
     ADD CONSTRAINT fk_rails_e37d7223f1 FOREIGN KEY (actor_id) REFERENCES actor(id);
+
+
+--
+-- Name: efecto fk_rails_e7b8b0f924; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY efecto
+    ADD CONSTRAINT fk_rails_e7b8b0f924 FOREIGN KEY (actor_id) REFERENCES actor(id);
 
 
 --
@@ -5185,6 +5306,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026172501'),
 ('20171114185712'),
 ('20171123212504'),
-('20171128234148');
+('20171128234148'),
+('20171130125044'),
+('20171130133741'),
+('20171130171954');
 
 

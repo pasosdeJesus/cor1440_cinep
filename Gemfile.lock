@@ -1,18 +1,6 @@
 GIT
-  remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 051f0167912ad1855636761352d87f9ea1841b53
-  specs:
-    cor1440_gen (1.0b2)
-      devise
-      heb412_gen
-      jquery-rails
-      paperclip
-      rails
-      sip
-
-GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 407979ad79f7370ff84c0630c70521fcf00349d5
+  revision: 99bb3f34a20d34a761c916a689b86248d449786d
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -55,8 +43,33 @@ GIT
       sal7711_gen
 
 GIT
-  remote: https://github.com/pasosdeJesus/sip.git
-  revision: 961e34dfed095fb7fba268650392f8bb141a0376
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
+  specs:
+    cocoon (1.2.6)
+
+GIT
+  remote: https://github.com/vtamara/odf-report.git
+  revision: bd2daa10ceaf02af401c2a9c4e6fb7bb8a69afee
+  branch: update-rubyzip
+  specs:
+    odf-report (0.5.2)
+      nokogiri (>= 1.5.0)
+      rubyzip (~> 1.2.0)
+
+PATH
+  remote: ../cor1440_gen
+  specs:
+    cor1440_gen (1.0b2)
+      devise
+      heb412_gen
+      jquery-rails
+      paperclip
+      rails
+      sip
+
+PATH
+  remote: ../sip
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -75,21 +88,6 @@ GIT
       twitter-bootstrap-rails
       twitter_cldr
       will_paginate
-
-GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
-  specs:
-    cocoon (1.2.6)
-
-GIT
-  remote: https://github.com/vtamara/odf-report.git
-  revision: bd2daa10ceaf02af401c2a9c4e6fb7bb8a69afee
-  branch: update-rubyzip
-  specs:
-    odf-report (0.5.2)
-      nokogiri (>= 1.5.0)
-      rubyzip (~> 1.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -143,6 +141,7 @@ GEM
     bootstrap-datepicker-rails (1.7.1.1)
       railties (>= 3.0)
     builder (3.2.3)
+    byebug (9.1.0)
     camertron-eprun (1.1.1)
     cancancan (2.1.2)
     capybara (2.16.1)
@@ -408,6 +407,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
+  byebug
   cancancan
   capybara
   chosen-rails

@@ -43,6 +43,11 @@
           <li role="presentation"><a href="#datosfinanciador" 
             class="enviarautomatico" aria-controls="datosfinanciador" role="tab" 
              data-toggle="tab">Datos del financiador</a></li>
+          <% if can? :manage, Cor1440Gen::Indicadorpf %>
+            <li role="presentation"><a href="#marcologico" 
+              class="enviarautomatico" aria-controls="marcologico" role="tab" 
+              data-toggle="tab">Marco Lógico</a></li>
+          <% end %>
           <li role="presentation"><a href="#anexos" 
             class="enviarautomatico" 
             aria-controls="anexos" role="tab" 
@@ -73,6 +78,11 @@
           <div role="tabpanel" class="tab-pane" id="datosfinanciador">
             <%= render 'datosfinanciador', :f => f %>
           </div>
+          <% if can? :manage, Cor1440Gen::Indicadorpf %>
+            <div role="tabpanel" class="tab-pane" id="marcologico">
+              <%= render 'marcologico', :f => f %>
+            </div>
+          <% end %> 
           <div role="tabpanel" class="tab-pane" id="anexos">
             <% if f.object.id.nil? %>
               <p>Antes de agregar anexos se debe guardar el compromiso institucional</p>

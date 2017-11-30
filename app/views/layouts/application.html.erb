@@ -22,6 +22,13 @@
           <% end %>
         <% end %>
       <% end %>
+      <% if can? :manage, ::Efecto %>
+        <%= drop_down "Efectos" do %>
+          <%= menu_item "Listado", main_app.efectos_path %>
+          <%= menu_item "Nuevo Efecto", main_app.new_efecto_path %>
+        <% end %>
+      <% end %>
+
       <%= drop_down "Compromisos Institucionales" do %>
         <%= menu_item "Listado de Compromisos Institucionales", 
           cor1440_gen.proyectosfinancieros_path %>
@@ -59,6 +66,7 @@
         <% end %>
         <% if can? :manage, :tablasbasicas %>
           <%= menu_item "Tablas Básicas", sip.tablasbasicas_path %>
+          <%= menu_item "Tipos de indicador", cor1440_gen.tiposindicador_path %>
         <% end %>
         <%= menu_item "Ver Control de Acceso", sip.ayuda_controldeacceso_path %>
       <% end %>
