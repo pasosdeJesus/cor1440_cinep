@@ -1,6 +1,18 @@
 GIT
+  remote: https://github.com/pasosdeJesus/cor1440_gen.git
+  revision: 61a28b34ec0e1fc5853bc956dc964d205e9ceb65
+  specs:
+    cor1440_gen (1.0b2)
+      devise
+      heb412_gen
+      jquery-rails
+      paperclip
+      rails
+      sip
+
+GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 99bb3f34a20d34a761c916a689b86248d449786d
+  revision: 5da7606f03bcc00fd973f7426124533cb4192968
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -43,33 +55,8 @@ GIT
       sal7711_gen
 
 GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
-  specs:
-    cocoon (1.2.6)
-
-GIT
-  remote: https://github.com/vtamara/odf-report.git
-  revision: bd2daa10ceaf02af401c2a9c4e6fb7bb8a69afee
-  branch: update-rubyzip
-  specs:
-    odf-report (0.5.2)
-      nokogiri (>= 1.5.0)
-      rubyzip (~> 1.2.0)
-
-PATH
-  remote: ../cor1440_gen
-  specs:
-    cor1440_gen (1.0b2)
-      devise
-      heb412_gen
-      jquery-rails
-      paperclip
-      rails
-      sip
-
-PATH
-  remote: ../sip
+  remote: https://github.com/pasosdeJesus/sip.git
+  revision: eb1368920bae0482dfd878cec57bd1e41a61ee87
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -88,6 +75,21 @@ PATH
       twitter-bootstrap-rails
       twitter_cldr
       will_paginate
+
+GIT
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
+  specs:
+    cocoon (1.2.6)
+
+GIT
+  remote: https://github.com/vtamara/odf-report.git
+  revision: bd2daa10ceaf02af401c2a9c4e6fb7bb8a69afee
+  branch: update-rubyzip
+  specs:
+    odf-report (0.5.2)
+      nokogiri (>= 1.5.0)
+      rubyzip (~> 1.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -141,7 +143,6 @@ GEM
     bootstrap-datepicker-rails (1.7.1.1)
       railties (>= 3.0)
     builder (3.2.3)
-    byebug (9.1.0)
     camertron-eprun (1.1.1)
     cancancan (2.1.2)
     capybara (2.16.1)
@@ -382,7 +383,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2017.3)
       tzinfo (>= 1.0.0)
-    uglifier (3.2.0)
+    uglifier (4.0.1)
       execjs (>= 0.3.0, < 3)
     unicorn (5.3.1)
       kgio (~> 2.6)
@@ -407,7 +408,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
-  byebug
   cancancan
   capybara
   chosen-rails
