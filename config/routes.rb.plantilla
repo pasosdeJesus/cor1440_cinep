@@ -1,6 +1,7 @@
 
 Rails.application.routes.draw do
 
+  scope '/' do
     devise_scope :usuario do
       get 'sign_out' => 'devise/sessions#destroy'
       # El siguiente para superar mala generación del action en el formulario
@@ -71,6 +72,7 @@ Rails.application.routes.draw do
 
     # Se define root aqui para que tras ingresos y salidas llegue a root
     root 'cor1440_gen/hogar#index'
+  end
   mount Cor1440Gen::Engine, at: "/", as: "cor1440_gen"
   mount Sal7711Ld::Engine, at: "/", as: "sal7711_ld"
   mount Jn316Gen::Engine, at: "/", as: "jn316_gen"
