@@ -60,6 +60,10 @@ class Usuario < ActiveRecord::Base
     where(oficina_id: o)
   }
 
+  scope :filtro_sip_grupo_ids, lambda {|g|
+    where(grupo_id: g)
+  }
+
   scope :filtro_habilitado, lambda {|o|
     if o.upcase.strip == 'SI'
       where(fechadeshabilitacion: nil)
