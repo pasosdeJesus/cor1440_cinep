@@ -14,14 +14,15 @@ class Desembolso < ActiveRecord::Base
 
   campofecha_localizado :fechaplaneada
 
-  validate :fechaplaneada_posterior_inicio
+  validate :fechaplaneada_posterior_inicio 
 
   def fechaplaneada_posterior_inicio
+    # Estefania solicito quitarla el 4.Dic.2017, pero se pregunta se bastan 6 meses
     if fechaplaneada && proyectofinanciero && 
       proyectofinanciero.fechainicio && 
-      fechaplaneada < proyectofinanciero.fechainicio then
+      fechaplaneada < (proyectofinanciero.fechainicio - 90) then
       errors.add(:fechaplaneada,
-                 "La fecha planeada debe ser posterior a la de inicio")
+                 "La fecha planeada debe ser posterior a la fecha de inicio menos 90 días")
     end
   end
 
