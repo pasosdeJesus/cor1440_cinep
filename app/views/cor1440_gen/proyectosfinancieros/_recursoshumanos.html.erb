@@ -96,7 +96,7 @@
 
 <%= f.association :respgp,
   collection: umgu,
-  include_blank: false,
+  include_blank: true,
   label_method: lambda { |t| 
     r = ""
     r += t.nombres + " " if t.nombres
