@@ -294,6 +294,36 @@ CREATE TABLE actor_sectoractor (
 
 
 --
+-- Name: anexo_efecto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE anexo_efecto (
+    id bigint NOT NULL,
+    anexo_id integer,
+    efecto_id integer
+);
+
+
+--
+-- Name: anexo_efecto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE anexo_efecto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: anexo_efecto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE anexo_efecto_id_seq OWNED BY anexo_efecto.id;
+
+
+--
 -- Name: anexo_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3146,6 +3176,13 @@ ALTER TABLE ONLY actor ALTER COLUMN id SET DEFAULT nextval('actor_id_seq'::regcl
 
 
 --
+-- Name: anexo_efecto id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_efecto ALTER COLUMN id SET DEFAULT nextval('anexo_efecto_id_seq'::regclass);
+
+
+--
 -- Name: anexo_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -3508,6 +3545,14 @@ ALTER TABLE ONLY tipoproductopf ALTER COLUMN id SET DEFAULT nextval('tipoproduct
 
 ALTER TABLE ONLY actor
     ADD CONSTRAINT actor_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: anexo_efecto anexo_efecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_efecto
+    ADD CONSTRAINT anexo_efecto_pkey PRIMARY KEY (id);
 
 
 --
@@ -4546,6 +4591,14 @@ ALTER TABLE ONLY cor1440_gen_objetivopf
 
 
 --
+-- Name: anexo_efecto fk_rails_5a3da48239; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_efecto
+    ADD CONSTRAINT fk_rails_5a3da48239 FOREIGN KEY (efecto_id) REFERENCES efecto(id);
+
+
+--
 -- Name: coordinador_proyectofinanciero fk_rails_5a7dd1dd10; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4711,6 +4764,14 @@ ALTER TABLE ONLY efecto
 
 ALTER TABLE ONLY cor1440_gen_financiador
     ADD CONSTRAINT fk_rails_9daa099154 FOREIGN KEY (pais_id) REFERENCES sip_pais(id);
+
+
+--
+-- Name: anexo_efecto fk_rails_a3fa2e726c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_efecto
+    ADD CONSTRAINT fk_rails_a3fa2e726c FOREIGN KEY (anexo_id) REFERENCES sip_anexo(id);
 
 
 --
@@ -5309,6 +5370,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171128234148'),
 ('20171130125044'),
 ('20171130133741'),
-('20171130171954');
+('20171130171954'),
+('20171209014535');
 
 

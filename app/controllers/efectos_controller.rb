@@ -15,7 +15,8 @@ class EfectosController < Sip::ModelosController
     [ "id", 
       "indicadorpf_id",
       "actor_id",
-      "fecha_localizada"
+      "fecha_localizada",
+      "anexo_efecto"
     ] 
   end
 
@@ -41,6 +42,19 @@ class EfectosController < Sip::ModelosController
 
   # No confiar parametros a Internet, sólo permitir lista blanca
   def efecto_params
-    params.require(:efecto).permit(atributos_index)
+    params.require(:efecto).permit(
+      :id, 
+      :indicadorpf_id,
+      :actor_id,
+      :fecha_localizada,
+      :anexo_efecto_attributes => [
+        :id,
+        :efecto_id,
+        :_destroy,
+        :sip_anexo_attributes => [
+          :id, :descripcion, :adjunto, :_destroy
+        ]
+      ],
+    )
   end
 end

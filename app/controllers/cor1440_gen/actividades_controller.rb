@@ -55,24 +55,6 @@ module Cor1440Gen
     # Encabezado comun para HTML y PDF (primeras filas)
     def encabezado_comun
       atributos_presenta.map {|a| Cor1440Gen::Actividad.human_attribute_name(a)}
-#      return [ 
-#        @actividades.human_attribute_name(:fecha),
-#        @actividades.human_attribute_name(:responsable),
-#        @actividades.human_attribute_name(:nombre),
-#        @actividades.human_attribute_name(:departamento),
-#        @actividades.human_attribute_name(:actividadtipo),
-#        @actividades.human_attribute_name(:objetivo),
-#        @actividades.human_attribute_name(:proyectos),
-#        @actividades.human_attribute_name(:proyectosfinancieros),
-#        @actividades.human_attribute_name(:resultado),
-#        @actividades.human_attribute_name(:contexto),
-#        @actividades.human_attribute_name(:mujeres),
-#        @actividades.human_attribute_name(:hombres),
-#        @actividades.human_attribute_name(:blancos),
-#        @actividades.human_attribute_name(:mestizos),
-#        @actividades.human_attribute_name(:indigenas),
-#        @actividades.human_attribute_name(:negros)
-#      ]
     end
 
     def atributos_presenta

@@ -11,6 +11,15 @@ class Efecto < ActiveRecord::Base
 
   campofecha_localizado :fecha
 
+  has_many :anexo_efecto, dependent: :delete_all,
+    class_name: '::AnexoEfecto',
+    foreign_key: 'efecto_id', validate: true
+  accepts_nested_attributes_for :anexo_efecto, 
+    allow_destroy: true, reject_if: :all_blank
+  has_many :sip_anexo, :through => :anexo_efecto, 
+    class_name: 'Sip::Anexo'
+  accepts_nested_attributes_for :sip_anexo,  reject_if: :all_blank
+
   validates :indicadorpf_id, presence: true
   validates :actor_id, presence: true
   validates :fecha, presence: true

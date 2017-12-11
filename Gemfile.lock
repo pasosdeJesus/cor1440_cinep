@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 9afc3ea271cc003b09112aa72d0965c9e0a85df7
+  revision: 2bfa99c957d6bf80d584652741082ae210dc5807
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: f5271fd7002422c3197035b4f6538a58e3135c1d
+  revision: 681b4e459060434517f2ce1bce2480e5cb48ac22
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: ff7a43e574123337f1aa2581d1344813cbc4af4f
+  revision: 5c102b1e6e46b3fd2ba073224a8a24221dc57522
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 78cb82444c26d97e5eb3a885d25eac45ce178dd4
+  revision: 6a4ee1b66c1b21cb7ed90965281df25a69c50625
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: f4442f35bbae0bfc667e30e1f53c82f7dfefbbb5
+  revision: 9242ce221ee21b53ebc29296e465c9b3b19f6fdc
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: eb1368920bae0482dfd878cec57bd1e41a61ee87
+  revision: 497e74044d80a5ea13d788f8c5a262ddc846f4fd
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -181,8 +181,8 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.4.0)
-      devise (>= 3.1)
+    devise-i18n (1.5.0)
+      devise (>= 3.4)
     docile (1.1.5)
     erubi (1.7.0)
     execjs (2.7.0)
@@ -383,7 +383,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2017.3)
       tzinfo (>= 1.0.0)
-    uglifier (4.0.1)
+    uglifier (4.0.2)
       execjs (>= 0.3.0, < 3)
     unicorn (5.3.1)
       kgio (~> 2.6)
