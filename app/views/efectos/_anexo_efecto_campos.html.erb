@@ -1,7 +1,6 @@
 <div class='control-group nested-fields'>
   <div class="controls">
 
-    <% #byebug %>
     <%  f.object.sip_anexo = Sip::Anexo.new if !f.object.sip_anexo %>
 
     <%= f.simple_fields_for :sip_anexo do |a| %>
