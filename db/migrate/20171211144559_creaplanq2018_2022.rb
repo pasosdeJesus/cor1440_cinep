@@ -35,6 +35,7 @@ class Creaplanq20182022 < ActiveRecord::Migration[5.1]
       DELETE FROM cor1440_gen_financiador_proyectofinanciero WHERE proyectofinanciero_id='18';
       DELETE FROM coordinador_proyectofinanciero WHERE proyectofinanciero_id='18';
       DELETE FROM cor1440_gen_indicadorpf WHERE proyectofinanciero_id='18';
+      DELETE FROM cor1440_gen_tipoindicador WHERE id>='18' AND id<='22';
       DELETE FROM cor1440_gen_resultadopf WHERE proyectofinanciero_id='18';
       DELETE FROM cor1440_gen_objetivopf WHERE proyectofinanciero_id='18';
       DELETE FROM cor1440_gen_proyectofinanciero WHERE id='18';
