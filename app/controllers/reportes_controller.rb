@@ -25,6 +25,14 @@ class ReportesController < ::ApplicationController
   def indicador11
     carga_fechas
 
+    wac = 'TRUE=FALSE'
+    mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).
+      map(&:id).join(', ')
+    if mg != ''
+      wac = "cor1440_gen_actividad.id in 
+        (SELECT actividad_id FROM actividad_grupo 
+          WHERE grupo_id IN (#{mg}))"
+    end
     cons = "SELECT DISTINCT cor1440_gen_actividad.id, usuario.nusuario,
     cor1440_gen_actividad.nombre as act_nombre, 
     redactor.nombre as red_nombre, 
@@ -59,10 +67,10 @@ class ReportesController < ::ApplicationController
     WHERE cor1440_gen_actividad.id 
       IN (SELECT actividad_id FROM actividad_actor)
     "
-    where = ''
+    where = " AND #{wac}"
     if (@fechaini != '') 
       pfi = fecha_local_estandar @fechaini
-      where = " AND cor1440_gen_actividad.fecha >= '#{pfi}'"
+      where += " AND cor1440_gen_actividad.fecha >= '#{pfi}'"
     end
     if (@fechafin != '')
       pff = fecha_local_estandar @fechafin
@@ -90,6 +98,15 @@ class ReportesController < ::ApplicationController
   # Objetivo Especifico 2
   def objetivoe2 
     carga_fechas
+
+    wac = 'TRUE=FALSE'
+    mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).
+      map(&:id).join(', ')
+    if mg != ''
+      wac = "cor1440_gen_actividad.id in 
+        (SELECT actividad_id FROM actividad_grupo 
+          WHERE grupo_id IN (#{mg}))"
+    end
 
     cons = "SELECT DISTINCT cor1440_gen_actividad.id, usuario.nusuario,
     actor.nombre AS nombre_actor, sip_municipio.nombre AS municipio,
@@ -126,7 +143,7 @@ class ReportesController < ::ApplicationController
       WHERE actor_sectoractor.sectoractor_id=sectoractor.id 
       AND sectoractor.enplantrienal)
     "
-    where = ''
+    where = " AND #{wac}"
     if (@fechaini != '') 
       pfi = fecha_local_estandar @fechaini
       where += " AND cor1440_gen_actividad.fecha >= '#{pfi}'"
@@ -157,17 +174,24 @@ class ReportesController < ::ApplicationController
   def cuadroactividades
     carga_fechas
 
-    wheref = ''
+    wac = 'TRUE=FALSE'
+    mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).
+      map(&:id).join(', ')
+    if mg != ''
+      wac = "cor1440_gen_actividad.id in 
+        (SELECT actividad_id FROM actividad_grupo 
+          WHERE grupo_id IN (#{mg}))"
+    end
+
+
+    wheref = wac
     if (@fechaini != '') 
       pfi = fecha_local_estandar @fechaini
-      wheref = "cor1440_gen_actividad.fecha >= '#{pfi}'"
+      wheref += " AND cor1440_gen_actividad.fecha >= '#{pfi}'"
     end
     if (@fechafin != '')
       pff = fecha_local_estandar @fechafin
-      if wheref != ''
-        wheref += ' AND '
-      end
-      wheref += "cor1440_gen_actividad.fecha <= '#{pff}'"
+      wheref += " AND cor1440_gen_actividad.fecha <= '#{pff}'"
     end
 
     filas = [["Participación en espacios estratégicos para el centro  (foros, conversatorios, debates, seminarios, cátedras etc.)",
