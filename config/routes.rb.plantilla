@@ -21,9 +21,6 @@ Rails.application.routes.draw do
       put 'usuarios/:id' => 'jn316_gen/registrations#update', 
         :as => 'registro_usuario'            
     end
-    #    get '/usuarios', to: 'jn316_gen/usuarios#index', as: 'usuarios_path'
-    #    get '/usuarios/:id/edita', to: 'jn316_gen/usuarios#edit', as: 'edit_usuario_path'
-    #    get '/usuarios/:id', to: 'jn316_gen/usuarios#show', as: 'usuario_path'
     resources :usuarios, 
       controller: 'usuarios',
       path_names: { new: 'nuevo', edit: 'edita' }
@@ -37,9 +34,6 @@ Rails.application.routes.draw do
       as: :reportes_objetivoe2
     get "/reportes/cuadroactividades" => "reportes#cuadroactividades", 
       as: :reportes_cuadroactividades
-    #    resources :proyectosfinancieros, as: 'proyectosfinancieros', 
-    #      controller: 'cor1440_gen/proyectosfinancieros',
-    #      path_names: { new: 'nuevo', edit: 'edita' }
 
     resources :convenios,
       path_names: { new: 'nueva', edit: 'edita' }
@@ -52,7 +46,6 @@ Rails.application.routes.draw do
       path_names: { new: 'nueva', edit: 'edita' }
 
 
-    #get "/proyectosfinancieros" => "cor1440_gen/proyectosfinancieros#index", as: :proyectosfinancieros
     get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :fichaimp
     get "/proyectosfinancieros/:id/fichapdf" => "cor1440_gen/proyectosfinancieros#fichapdf", as: :fichapdf
 
