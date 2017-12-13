@@ -901,6 +901,37 @@ ALTER SEQUENCE cor1440_gen_actividadtipo_id_seq OWNED BY cor1440_gen_actividadti
 
 
 --
+-- Name: cor1440_gen_campotind; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cor1440_gen_campotind (
+    id bigint NOT NULL,
+    tipoindicador_id integer NOT NULL,
+    nombrecampo character varying(128) NOT NULL,
+    ayudauso character varying(1024)
+);
+
+
+--
+-- Name: cor1440_gen_campotind_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cor1440_gen_campotind_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_campotind_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cor1440_gen_campotind_id_seq OWNED BY cor1440_gen_campotind.id;
+
+
+--
 -- Name: cor1440_gen_financiador; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3267,6 +3298,13 @@ ALTER TABLE ONLY cor1440_gen_actividadtipo ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
+-- Name: cor1440_gen_campotind id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_campotind ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_campotind_id_seq'::regclass);
+
+
+--
 -- Name: cor1440_gen_financiador id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -3641,6 +3679,14 @@ ALTER TABLE ONLY cor1440_gen_actividadpf
 
 ALTER TABLE ONLY cor1440_gen_actividadtipo
     ADD CONSTRAINT cor1440_gen_actividadtipo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cor1440_gen_campotind cor1440_gen_campotind_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_campotind
+    ADD CONSTRAINT cor1440_gen_campotind_pkey PRIMARY KEY (id);
 
 
 --
@@ -4404,6 +4450,14 @@ ALTER TABLE ONLY actividad_grupo
 
 ALTER TABLE ONLY proyectofinanciero_uresponsable
     ADD CONSTRAINT fk_rails_272a913d18 FOREIGN KEY (uresponsable_id) REFERENCES usuario(id);
+
+
+--
+-- Name: cor1440_gen_campotind fk_rails_2770ce966d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_campotind
+    ADD CONSTRAINT fk_rails_2770ce966d FOREIGN KEY (tipoindicador_id) REFERENCES cor1440_gen_tipoindicador(id);
 
 
 --
@@ -5373,6 +5427,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171130171954'),
 ('20171209014535'),
 ('20171211144559'),
-('20171211161743');
+('20171211161743'),
+('20171212001011');
 
 

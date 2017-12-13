@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 65b019aac32c39f63d2c3c836f9538a7cb666acf
+  revision: 30770fd663c8c3b45adbe7d0bf2b8e196ad2bdf2
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 681b4e459060434517f2ce1bce2480e5cb48ac22
+  revision: f689d810923d85e0ee451cd3cfe780ded6cd2502
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 5c102b1e6e46b3fd2ba073224a8a24221dc57522
+  revision: 39cae8bdf7ef591190bf70261ccae72c3c9e1664
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 9242ce221ee21b53ebc29296e465c9b3b19f6fdc
+  revision: 900f02246e8f721ece73c9f885577eb93885c0a0
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 497e74044d80a5ea13d788f8c5a262ddc846f4fd
+  revision: 5bfcd031b58d312844fd43b4baeffb26ac686440
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -259,7 +259,7 @@ GEM
       mimemagic (~> 0.3.0)
     pdf-core (0.7.0)
     pg (0.21.0)
-    poltergeist (1.16.0)
+    poltergeist (1.17.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
