@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 30770fd663c8c3b45adbe7d0bf2b8e196ad2bdf2
+  revision: 2910e0c189aeba06123d04fb024e98b2e378a31e
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: f689d810923d85e0ee451cd3cfe780ded6cd2502
+  revision: 5c59d632772785597c97eaf3f9c0f4466d2f83d1
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 39cae8bdf7ef591190bf70261ccae72c3c9e1664
+  revision: 69bf52b3880a46fe0624f1bea7195ecd728445f3
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 6a4ee1b66c1b21cb7ed90965281df25a69c50625
+  revision: e8211a268b61c1015efd86df8d20bd7aa81ce7f6
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 900f02246e8f721ece73c9f885577eb93885c0a0
+  revision: 98c8c884eb7d5338b70b65bbe367e0c02d945cf2
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -204,7 +204,7 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.1.0)
-    kgio (2.11.0)
+    kgio (2.11.1)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (2.8.0)
@@ -334,7 +334,7 @@ GEM
       rubyzip (~> 1.1)
     ruby-progressbar (1.9.0)
     rubyzip (1.2.1)
-    sass (3.5.3)
+    sass (3.5.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
