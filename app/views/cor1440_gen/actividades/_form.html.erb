@@ -22,12 +22,12 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">Planeación</div><div class="panel-body">
-      <%= f.input :nombre,
-        label: 'Nombre / Escenario de toma de decisión / Acción Colectiva'
-      %>
       <%= f.input :fecha_localizada, 
         :input_html => { "data-behaviour" => "datepicker"}, 
         :as => :string
+      %>
+      <%= f.input :nombre,
+        label: 'Nombre / Escenario de toma de decisión / Acción Colectiva'
       %>
       <%= f.input :duracion, 
         label: 'Duración estimada',

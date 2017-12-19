@@ -294,6 +294,36 @@ CREATE TABLE actor_sectoractor (
 
 
 --
+-- Name: anexo_efecto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE anexo_efecto (
+    id bigint NOT NULL,
+    anexo_id integer,
+    efecto_id integer
+);
+
+
+--
+-- Name: anexo_efecto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE anexo_efecto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: anexo_efecto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE anexo_efecto_id_seq OWNED BY anexo_efecto.id;
+
+
+--
 -- Name: anexo_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -871,6 +901,37 @@ ALTER SEQUENCE cor1440_gen_actividadtipo_id_seq OWNED BY cor1440_gen_actividadti
 
 
 --
+-- Name: cor1440_gen_campotind; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cor1440_gen_campotind (
+    id bigint NOT NULL,
+    tipoindicador_id integer NOT NULL,
+    nombrecampo character varying(128) NOT NULL,
+    ayudauso character varying(1024)
+);
+
+
+--
+-- Name: cor1440_gen_campotind_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cor1440_gen_campotind_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_campotind_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cor1440_gen_campotind_id_seq OWNED BY cor1440_gen_campotind.id;
+
+
+--
 -- Name: cor1440_gen_financiador; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1258,6 +1319,36 @@ ALTER SEQUENCE cor1440_gen_tipoindicador_id_seq OWNED BY cor1440_gen_tipoindicad
 
 
 --
+-- Name: cor1440_gen_valorcampotind; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cor1440_gen_valorcampotind (
+    id bigint NOT NULL,
+    campotind_id integer,
+    valor character varying(5000)
+);
+
+
+--
+-- Name: cor1440_gen_valorcampotind_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cor1440_gen_valorcampotind_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_valorcampotind_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cor1440_gen_valorcampotind_id_seq OWNED BY cor1440_gen_valorcampotind.id;
+
+
+--
 -- Name: desembolso; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1320,6 +1411,36 @@ CREATE SEQUENCE efecto_id_seq
 --
 
 ALTER SEQUENCE efecto_id_seq OWNED BY efecto.id;
+
+
+--
+-- Name: efecto_valorcampotind; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE efecto_valorcampotind (
+    id bigint NOT NULL,
+    efecto_id integer,
+    valorcampotind_id integer
+);
+
+
+--
+-- Name: efecto_valorcampotind_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE efecto_valorcampotind_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: efecto_valorcampotind_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE efecto_valorcampotind_id_seq OWNED BY efecto_valorcampotind.id;
 
 
 --
@@ -3146,6 +3267,13 @@ ALTER TABLE ONLY actor ALTER COLUMN id SET DEFAULT nextval('actor_id_seq'::regcl
 
 
 --
+-- Name: anexo_efecto id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_efecto ALTER COLUMN id SET DEFAULT nextval('anexo_efecto_id_seq'::regclass);
+
+
+--
 -- Name: anexo_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -3230,6 +3358,13 @@ ALTER TABLE ONLY cor1440_gen_actividadtipo ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
+-- Name: cor1440_gen_campotind id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_campotind ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_campotind_id_seq'::regclass);
+
+
+--
 -- Name: cor1440_gen_financiador id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -3293,6 +3428,13 @@ ALTER TABLE ONLY cor1440_gen_tipoindicador ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
+-- Name: cor1440_gen_valorcampotind id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_valorcampotind ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_valorcampotind_id_seq'::regclass);
+
+
+--
 -- Name: desembolso id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -3304,6 +3446,13 @@ ALTER TABLE ONLY desembolso ALTER COLUMN id SET DEFAULT nextval('desembolso_id_s
 --
 
 ALTER TABLE ONLY efecto ALTER COLUMN id SET DEFAULT nextval('efecto_id_seq'::regclass);
+
+
+--
+-- Name: efecto_valorcampotind id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY efecto_valorcampotind ALTER COLUMN id SET DEFAULT nextval('efecto_valorcampotind_id_seq'::regclass);
 
 
 --
@@ -3511,6 +3660,14 @@ ALTER TABLE ONLY actor
 
 
 --
+-- Name: anexo_efecto anexo_efecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_efecto
+    ADD CONSTRAINT anexo_efecto_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: anexo_proyectofinanciero anexo_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3599,6 +3756,14 @@ ALTER TABLE ONLY cor1440_gen_actividadtipo
 
 
 --
+-- Name: cor1440_gen_campotind cor1440_gen_campotind_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_campotind
+    ADD CONSTRAINT cor1440_gen_campotind_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: cor1440_gen_financiador cor1440_gen_financiador_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3663,6 +3828,14 @@ ALTER TABLE ONLY cor1440_gen_tipoindicador
 
 
 --
+-- Name: cor1440_gen_valorcampotind cor1440_gen_valorcampotind_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_valorcampotind
+    ADD CONSTRAINT cor1440_gen_valorcampotind_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: desembolso desembolso_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3676,6 +3849,14 @@ ALTER TABLE ONLY desembolso
 
 ALTER TABLE ONLY efecto
     ADD CONSTRAINT efecto_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: efecto_valorcampotind efecto_valorcampotind_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY efecto_valorcampotind
+    ADD CONSTRAINT efecto_valorcampotind_pkey PRIMARY KEY (id);
 
 
 --
@@ -4362,6 +4543,14 @@ ALTER TABLE ONLY proyectofinanciero_uresponsable
 
 
 --
+-- Name: cor1440_gen_campotind fk_rails_2770ce966d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_campotind
+    ADD CONSTRAINT fk_rails_2770ce966d FOREIGN KEY (tipoindicador_id) REFERENCES cor1440_gen_tipoindicador(id);
+
+
+--
 -- Name: proyectofinanciero_usuario fk_rails_28225d4dc2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4407,6 +4596,14 @@ ALTER TABLE ONLY heb412_gen_doc
 
 ALTER TABLE ONLY actor_regiongrupo
     ADD CONSTRAINT fk_rails_2e83e09369 FOREIGN KEY (regiongrupo_id) REFERENCES regiongrupo(id);
+
+
+--
+-- Name: efecto_valorcampotind fk_rails_3881614cfb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY efecto_valorcampotind
+    ADD CONSTRAINT fk_rails_3881614cfb FOREIGN KEY (valorcampotind_id) REFERENCES cor1440_gen_valorcampotind(id);
 
 
 --
@@ -4458,6 +4655,14 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 
 --
+-- Name: efecto_valorcampotind fk_rails_43198ca4c9; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY efecto_valorcampotind
+    ADD CONSTRAINT fk_rails_43198ca4c9 FOREIGN KEY (efecto_id) REFERENCES efecto(id);
+
+
+--
 -- Name: cor1440_gen_proyectofinanciero fk_rails_4473f9ee28; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4506,6 +4711,14 @@ ALTER TABLE ONLY oficina_proyectofinanciero
 
 
 --
+-- Name: cor1440_gen_valorcampotind fk_rails_4f2fc96457; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_valorcampotind
+    ADD CONSTRAINT fk_rails_4f2fc96457 FOREIGN KEY (campotind_id) REFERENCES cor1440_gen_campotind(id);
+
+
+--
 -- Name: cor1440_gen_actividad_proyectofinanciero fk_rails_524486e06b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4543,6 +4756,14 @@ ALTER TABLE ONLY actividad_actor
 
 ALTER TABLE ONLY cor1440_gen_objetivopf
     ADD CONSTRAINT fk_rails_57b4fd8780 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: anexo_efecto fk_rails_5a3da48239; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_efecto
+    ADD CONSTRAINT fk_rails_5a3da48239 FOREIGN KEY (efecto_id) REFERENCES efecto(id);
 
 
 --
@@ -4711,6 +4932,14 @@ ALTER TABLE ONLY efecto
 
 ALTER TABLE ONLY cor1440_gen_financiador
     ADD CONSTRAINT fk_rails_9daa099154 FOREIGN KEY (pais_id) REFERENCES sip_pais(id);
+
+
+--
+-- Name: anexo_efecto fk_rails_a3fa2e726c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_efecto
+    ADD CONSTRAINT fk_rails_a3fa2e726c FOREIGN KEY (anexo_id) REFERENCES sip_anexo(id);
 
 
 --
@@ -5309,6 +5538,13 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171128234148'),
 ('20171130125044'),
 ('20171130133741'),
-('20171130171954');
+('20171130171954'),
+('20171209014535'),
+('20171211144559'),
+('20171211161743'),
+('20171212001011'),
+('20171217135318'),
+('20171217140031'),
+('20171219122432');
 
 

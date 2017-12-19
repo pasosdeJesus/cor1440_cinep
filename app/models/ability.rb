@@ -47,9 +47,9 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_EXTERNOS = "Externos"
   GRUPO_COMUNICACIONES = "Comunicaciones"
   GRUPO_DERECHOSHUMANOS = "Equipo Derechos Humanos"
-  GRUPO_CIUDADANIAYPAZ = "Equipo Equipo Ciudadanía y Paz"
+  GRUPO_CIUDADANIAYPAZ = "Equipo Ciudadanía y Paz"
   GRUPO_CONFLICTOESTADOYDESARROLLO = "Equipo Conflicto, Estado y Desarrollo" 
-  GRUPO_MOVILIZACIONTERRITORIOEINTERCULTURALIDAD = "Equipo Movilización, Territorio e Interculturalidad" 
+  GRUPO_MOVILIZACIONTERRITORIOEINTERCULTURALIDAD = "Equipo Movilización, Tierra y Territorios" 
   def tablasbasicas 
     super() - [ ['Cor1440Gen', 'proyectofinanciero'] ] + 
       [
@@ -163,6 +163,7 @@ class Ability  < Cor1440Gen::Ability
           lgrupos.include?(GRUPO_MOVILIZACIONTERRITORIOEINTERCULTURALIDAD)
           can [:create, :read, :update], ::Actor
           can :manage, :tablasbasicas
+          can :manage, ::Efecto
         end
 
         # Contexto es para equipo derechos humanos 

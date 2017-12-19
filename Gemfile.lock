@@ -1,6 +1,18 @@
 GIT
+  remote: https://github.com/pasosdeJesus/cor1440_gen.git
+  revision: 3a9f53ca29d130818bdd174712f644ebd6f016c6
+  specs:
+    cor1440_gen (1.0b2)
+      devise
+      heb412_gen
+      jquery-rails
+      paperclip
+      rails
+      sip
+
+GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 99bb3f34a20d34a761c916a689b86248d449786d
+  revision: f3c37ad5de6377df2ae6c79f4c91abfd30ff7d36
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -20,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: f3aa3fd9ef086f37a635ab23148eaafea1448c42
+  revision: 69bf52b3880a46fe0624f1bea7195ecd728445f3
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -28,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 78cb82444c26d97e5eb3a885d25eac45ce178dd4
+  revision: e8211a268b61c1015efd86df8d20bd7aa81ce7f6
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -36,40 +48,15 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: e548d9084fee4b090ca56b4c5628a62c4208f83a
+  revision: 98c8c884eb7d5338b70b65bbe367e0c02d945cf2
   specs:
     sal7711_web (1.0.a3)
       rails
       sal7711_gen
 
 GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
-  specs:
-    cocoon (1.2.6)
-
-GIT
-  remote: https://github.com/vtamara/odf-report.git
-  revision: bd2daa10ceaf02af401c2a9c4e6fb7bb8a69afee
-  branch: update-rubyzip
-  specs:
-    odf-report (0.5.2)
-      nokogiri (>= 1.5.0)
-      rubyzip (~> 1.2.0)
-
-PATH
-  remote: ../cor1440_gen
-  specs:
-    cor1440_gen (1.0b2)
-      devise
-      heb412_gen
-      jquery-rails
-      paperclip
-      rails
-      sip
-
-PATH
-  remote: ../sip
+  remote: https://github.com/pasosdeJesus/sip.git
+  revision: 54241e90fbac50da24d701ed7fa1d31b49f47df2
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -88,6 +75,21 @@ PATH
       twitter-bootstrap-rails
       twitter_cldr
       will_paginate
+
+GIT
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
+  specs:
+    cocoon (1.2.6)
+
+GIT
+  remote: https://github.com/vtamara/odf-report.git
+  revision: bd2daa10ceaf02af401c2a9c4e6fb7bb8a69afee
+  branch: update-rubyzip
+  specs:
+    odf-report (0.5.2)
+      nokogiri (>= 1.5.0)
+      rubyzip (~> 1.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -141,7 +143,6 @@ GEM
     bootstrap-datepicker-rails (1.7.1.1)
       railties (>= 3.0)
     builder (3.2.3)
-    byebug (9.1.0)
     camertron-eprun (1.1.1)
     cancancan (2.1.2)
     capybara (2.16.1)
@@ -180,8 +181,8 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.4.0)
-      devise (>= 3.1)
+    devise-i18n (1.5.0)
+      devise (>= 3.4)
     docile (1.1.5)
     erubi (1.7.0)
     execjs (2.7.0)
@@ -203,7 +204,7 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.1.0)
-    kgio (2.11.0)
+    kgio (2.11.1)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (2.8.0)
@@ -258,7 +259,7 @@ GEM
       mimemagic (~> 0.3.0)
     pdf-core (0.7.0)
     pg (0.21.0)
-    poltergeist (1.16.0)
+    poltergeist (1.17.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
@@ -333,7 +334,7 @@ GEM
       rubyzip (~> 1.1)
     ruby-progressbar (1.9.0)
     rubyzip (1.2.1)
-    sass (3.5.3)
+    sass (3.5.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -382,7 +383,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2017.3)
       tzinfo (>= 1.0.0)
-    uglifier (3.2.0)
+    uglifier (4.0.2)
       execjs (>= 0.3.0, < 3)
     unicorn (5.3.1)
       kgio (~> 2.6)
@@ -407,7 +408,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
-  byebug
   cancancan
   capybara
   chosen-rails

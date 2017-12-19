@@ -1,7 +1,7 @@
 # Cor1440_cinep
 [![Estado Construcción](https://api.travis-ci.org/pasosdeJesus/cor1440_cinep.svg?branch=master)](https://travis-ci.org/pasosdeJesus/cor1440_cinep) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep) [![security](https://hakiri.io/github/pasosdeJesus/cor1440_cinep/master.svg)](https://hakiri.io/github/pasosdeJesus/cor1440_cinep/master) [![Dependencias](https://gemnasium.com/pasosdeJesus/cor1440_cinep.svg)](https://gemnasium.com/pasosdeJesus/cor1440_cinep) 
 
-Sistema para planeación y seguimiento de actividades e informes en el CINEP.
+Sistema de información de procesos en CINEP/PPP
 
 ### Requerimientos
 * Ruby version >= 2.4

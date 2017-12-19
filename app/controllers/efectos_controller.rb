@@ -15,8 +15,60 @@ class EfectosController < Sip::ModelosController
     [ "id", 
       "indicadorpf_id",
       "actor_id",
-      "fecha_localizada"
+      "fecha_localizada",
+      "anexo_efecto"
     ] 
+  end
+
+  def atributos_form
+    [ "indicadorpf_id",
+      "actor_id",
+      "fecha_localizada",
+      "efecto_valorcampotind",
+      "anexo_efecto"
+    ] 
+  end
+
+  def new
+    @registro = clase.constantize.new
+    @registro.fecha = Date.today
+    @registro.save!(validate: false)
+    redirect_to main_app.edit_efecto_path(@registro)
+  end
+
+  def asegura_camposdinamicos(efecto)
+    if efecto.indicadorpf && efecto.indicadorpf.tipoindicador
+        ci = efecto.indicadorpf.tipoindicador.campotind.map(&:id).sort
+        cd = efecto.valorcampotind.map(&:campotind_id).sort
+        if ci != cd
+          if cd == []
+            efecto.indicadorpf.tipoindicador.campotind.each do |cti|
+              nr = Cor1440Gen::Valorcampotind.new
+              nr.campotind_id = cti.id
+              nr.valor = ''
+              if nr.save
+                ne = ::EfectoValorcampotind.new
+                ne.efecto_id = efecto.id
+                ne.valorcampotind_id = nr.id
+                if !ne.save
+                  # No pudo guardar ne
+                end
+              else
+                # No pudo guardar nr
+              end
+            end
+          else
+            # Inconsistencia
+          end
+        end 
+    end
+  end
+
+  def edit
+    authorize! :edit, ::Efecto
+    @registro = ::Efecto.find(params[:id])
+    asegura_camposdinamicos(@registro)
+    render layout: 'application'
   end
 
   def index_reordenar(registros)
@@ -41,6 +93,30 @@ class EfectosController < Sip::ModelosController
 
   # No confiar parametros a Internet, sólo permitir lista blanca
   def efecto_params
-    params.require(:efecto).permit(atributos_index)
+    params.require(:efecto).permit(
+      :id, 
+      :indicadorpf_id,
+      :actor_id,
+      :fecha_localizada,
+      :efecto_valorcampotind_attributes => [
+        :id,
+        :efecto_id,
+        :_destroy,
+        :valorcampotind_attributes => [
+          :id,
+          :campotind_id,
+          :valor,
+          :_destroy
+        ]
+      ],
+      :anexo_efecto_attributes => [
+        :id,
+        :efecto_id,
+        :_destroy,
+        :sip_anexo_attributes => [
+          :id, :descripcion, :adjunto, :_destroy
+        ]
+      ],
+    )
   end
 end
