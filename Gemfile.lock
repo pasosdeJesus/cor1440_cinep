@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 7a330e6e7626ece63dbd852ab69e03bde8dfc474
+  revision: 3a9f53ca29d130818bdd174712f644ebd6f016c6
   specs:
     cor1440_gen (1.0b2)
       devise
