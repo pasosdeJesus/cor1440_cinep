@@ -20,6 +20,15 @@ class Efecto < ActiveRecord::Base
     class_name: 'Sip::Anexo'
   accepts_nested_attributes_for :sip_anexo,  reject_if: :all_blank
 
+  has_many :efecto_valorcampotind, dependent: :delete_all,
+    class_name: '::EfectoValorcampotind',
+    foreign_key: 'efecto_id', validate: true
+  accepts_nested_attributes_for :efecto_valorcampotind,
+    allow_destroy: true, reject_if: :all_blank
+  has_many :valorcampotind, :through => :efecto_valorcampotind,
+    class_name: '::Cor1440Gen::Valorcampotind'
+  accepts_nested_attributes_for :valorcampotind,  reject_if: :all_blank
+
   validates :indicadorpf_id, presence: true
   validates :actor_id, presence: true
   validates :fecha, presence: true
