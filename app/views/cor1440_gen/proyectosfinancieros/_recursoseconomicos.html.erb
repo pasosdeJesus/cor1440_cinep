@@ -77,7 +77,15 @@
   </div>
 </div>
 
-<%= f.input :aaportes%>
+<div class='row'>
+  <div class="col-sm-6">
+    <%= f.input :aaportes, as: :text, input_html: { rows: 3 } %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :saldo_localizado %>
+  </div>
+</div>
+
 <div class='row'>
   <div class="col-sm-offset-0 col-sm-6">
     <%= f.input :acuse,
