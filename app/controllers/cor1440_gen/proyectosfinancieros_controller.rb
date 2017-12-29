@@ -15,6 +15,37 @@ module Cor1440Gen
 
     include Sip::ConsultasHelper
 
+    # API
+    # calcduracion fechaini fechacierre
+    # Retorna cadena con duracion
+    def duracion
+      byebug
+      prob = ''
+      if params[:fechaini_localizada] && params[:fechacierre_localizada]
+        fini = Sip::FormatoFechaHelper.fecha_local_estandar(params[:fechaini_localizada])
+        fcierre = Sip::FormatoFechaHelper.fecha_local_estandar(params[:fechacierre_localizada])
+        if fini && fcierre
+          d = ApplicationHelper::dif_meses_dias(fini, fcierre)
+          respond_to do |format|
+            format.json { 
+              render json: d.to_s, status: :ok 
+              return
+            }
+          end
+        else
+          prob = 'No pudo convertirse una de las fechas'
+        end
+      else
+        prob = 'Indispensables parametros fechaini_localizada y fechacierre_localizada'
+      end
+      respond_to do |format|
+        format.html { render action: "error" }
+        format.json { render json: prob, 
+                      status: :unprocessable_entity 
+        }
+      end
+    end
+
     def cadena_muchos(r, campo, sep = ', ', camponom='nombre')
         if !r.send(campo)
           return ""
@@ -52,7 +83,8 @@ module Cor1440Gen
         "fechainicio_localizada",
         "fechacierre_localizada",
         "duracion",
-        "fechaformulacion_localizada",
+        "anioformulacion",
+        "mesformulacion",
         "fechaliquidacion_localizada",
         "anotacionesdb",
         "estado",
@@ -468,10 +500,10 @@ module Cor1440Gen
         map {|a| a.to_i}
       anios.sort!
       numhoja = 9
-      anios.each do |anio|
+      anios.each do |a|
         if numhoja<=11
           hoja = libro.worksheets(numhoja)
-          tramitado_anio(hoja, anio)
+          tramitado_anio(hoja, a)
         end
       end
 
@@ -792,6 +824,8 @@ module Cor1440Gen
         :estado,
         :fechacierre_localizada,
         :fechaformulacion_localizada,
+        :mesformulacion,
+        :anioformulacion,
         :fechainicio_localizada,
         :fechaliquidacion_localizada,
         :financiador,

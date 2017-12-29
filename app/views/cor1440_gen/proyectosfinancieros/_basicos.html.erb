@@ -47,13 +47,19 @@
 </div>
 
 <div class='row'>
-  <div class="col-sm-offset-0 col-sm-6">
-    <%= f.input :fechaformulacion_localizada, 
-      :input_html => { "data-behaviour" => "datepicker" },
-      :as => :string
+  <div class="col-sm-offset-0 col-sm-3">
+    <%= f.input :anioformulacion, as: :integer %>
+  </div>
+  <div class="col-sm-offset-0 col-sm-3">
+    <%= f.input :mesformulacion,
+      collection: Sip::ModeloHelper::MESES
     %>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-offset-0 col-sm-3">
+    <%= f.input :semestreformulacion, 
+      :input_html => { 'readonly' => 'readonly' } %>
+  </div>
+  <div class="col-sm-3">
     <%= f.input :fechaliquidacion_localizada, :input_html => { 
       "data-behaviour" => "datepicker" },
       :as => :string

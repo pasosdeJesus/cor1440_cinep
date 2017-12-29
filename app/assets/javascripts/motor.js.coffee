@@ -23,6 +23,26 @@
       vcpl = new Intl.NumberFormat('es-CO').format(vcp)
       $('#' + campo).attr('title', '$ ' + vcpl).tooltip('fixTitle').tooltip('show')
 
+@establece_duracion = (response) ->
+  debugger
+
+@recalcula_duracion = (root) ->
+  return
+  # Evitar ejecutr 2 veces en menos de 2 segundos (suele pasar con
+  # rails+turbolinks+jquery)
+  t = Date.now()
+  d = -1
+  if (root.recalcula_duracion_t) 
+    d = (t - root.recalcula_duracion_t) / 1000
+  window.recalcula_duracion_t = t
+  if (d == -1 || d > 2) 
+    datos = {
+      fechainicio_localizada: $('#proyectofinanciero_fechainicio_localizada').val(),
+      fechacierre_localizada: $('#proyectofinanciero_fechacierre_localizada').val()
+    }
+    sip_ajax_recibe_json(root, '/api/cor1440cinep/duracion',
+      datos, establece_duracion)
+
 @recalcula_montospesos_localizado = (root) ->
   tm = $('#proyectofinanciero_tipomoneda_id').val()
   ml = $('#proyectofinanciero_monto_localizado').val()
@@ -59,6 +79,26 @@
   )
   $('#proyectofinanciero_tasaformulacion_id').chosen().change( (e) ->
     recalcula_montospesos_localizado(root)
+  )
+
+  $('#proyectofinanciero_mesformulacion').change( (e) ->
+    s = 2
+    if $('#proyectofinanciero_mesformulacion').val() <= 6
+      s = 1
+    $('#proyectofinanciero_semestreformulacion').val(s)
+  )
+
+  $('#proyectofinanciero_fechainicio_localizada').change( (e) ->
+    recalcula_duracion(root)
+  )
+  $('#proyectofinanciero_fechacierre_localizada').change( (e) ->
+    recalcula_duracion(root)
+  )
+
+  # Si se agrega con cocoon un campo de seleccion que se espera con
+  # chosen, usa chosen
+  $(document).on('cocoon:after-insert', '', (e,inserted) ->
+    inserted.find('select[class*=chosen-select]').chosen()
   )
 
   return

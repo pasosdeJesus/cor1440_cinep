@@ -26,8 +26,8 @@ es:
   activerecord:
     models:
       "convenio":
-        one: "Convenio institucional"
-        other: "Convenios institucionales"
+        one: "Convenio interinstitucional marco"
+        other: "Convenios interinstitucionales marco"
       "cor1440_gen/proyectofinanciero": 
         one: "Compromiso institucional"
         other: "Compromisos institucionales"
@@ -64,8 +64,8 @@ es:
         fechainicio: Fecha de inicio
         fechacierre: Fecha de cierre
         duracion: Duración
-        Convenio: "Convenio institucional"
-        Convenios: "Convenios institucionales"
+        Convenio: "Convenio interinstitucional marco"
+        Convenios: "Convenios interinstitucionales marco"
       "cor1440_gen/actividad":
         actividadtipo: Tipo
         minutos: Horas
@@ -84,6 +84,7 @@ es:
         Proyectofinanciero: "Compromiso institucional"
         Proyectosfinancieros: "Compromisos institucionales"
         aaportes: "Anotaciones aportes financieros CINEP/Otros Donantes"
+        anioformulacion: "Año de formulación"
         anotacionescontab: "Anotaciones Contabilidad"
         anotacionesdb: "Anotaciones Datos Básicos"
         anotacionesrh: "Anotaciones Recursos Humanos"
@@ -123,6 +124,7 @@ es:
         informesnarrativos: "Informes narrativos"
         informenarrativo: "Informes narrativos"
         informesauditoria: "Informes auditoría/Verificación de gastos/Controles del financiador"
+        mesformulacion: "Mes de formulación"
         monto: "Aporte financiador"
         monto_localizado: "Aporte financiador"
         montopesos: "Aporte financiador en pesos"
@@ -148,8 +150,9 @@ es:
         respgp: "Responsable GP"
         respgp_id: "Responsable GP"
         saldo_localizado: "Saldo"
-        tasaformulacion: "Tasa de cambio"
-        tasaformulacion_localizado: "Tasa de cambio"
+        semestreformulacion: "Semestre de formulación"
+        tasaformulacion: "Tasa de cambio en formulación"
+        tasaformulacion_localizado: "Tasa de cambio en formulación"
         telrespagencia: "Teléfono responsable agencia"
         tipomoneda: "Tipo de moneda"
         tipoanexo: "Tipo de anexo"

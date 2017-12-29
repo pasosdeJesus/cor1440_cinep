@@ -5,8 +5,8 @@
       collection: col,
       label: false,
       label_method: lambda {|t| t.nombres.to_s + ' ' + t.apellidos.to_s}, 
-      value_method: :id
-    %>
+      value_method: :id,
+      input_html: { class: 'chosen-select' } %>
   </td>
   <td>
     <% @porc = *(1..100) %>

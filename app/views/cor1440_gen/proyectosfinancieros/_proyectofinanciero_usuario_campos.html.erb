@@ -14,8 +14,8 @@
       label: false,
       label_method: lambda { |n| n.nombres.to_s + ' ' + n.apellidos.to_s },
       value_method: :id,
-      include_blank: "POR CONTRATAR"
-    %>
+      include_blank: "POR CONTRATAR",
+      input_html: { class: 'chosen-select' } %>
   </td>
   <td>
     <% @porc = *(1..100) %>

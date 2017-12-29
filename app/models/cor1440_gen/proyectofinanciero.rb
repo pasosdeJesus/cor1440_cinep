@@ -7,6 +7,7 @@ module Cor1440Gen
     @current_usuario = nil
     attr_accessor :current_usuario
     attr_accessor :duracion
+    attr_accessor :semestreformulacion
 
     include Cor1440Gen::Concerns::Models::Proyectofinanciero
     include ApplicationHelper
@@ -23,6 +24,43 @@ module Cor1440Gen
         dif_meses_dias(fechainicio, fechacierre)
       else
         ''
+      end
+    end
+
+    def semestreformulacion
+      if fechaformulacion
+        if fechaformulacion.month<=6
+          '1'
+        else
+          '2'
+        end        
+      end
+    end
+
+
+    def anioformulacion
+      fechaformulacion.year 
+    end
+
+    def mesformulacion
+      fechaformulacion.month
+    end
+
+    def anioformulacion=(a)
+      if self.fechaformulacion 
+        self.fechaformulacion = Date.new(a.to_i, self.fechaformulacion.month,
+                                    self.fechaformulacion.day)
+      else
+        self.fechaformulacion = Date.new(a.to_i, 6, 15)
+      end
+    end
+
+    def mesformulacion=(m)
+      if self.fechaformulacion 
+        self.fechaformulacion = Date.new(self.fechaformulacion.year, m.to_i,
+                                    self.fechaformulacion.day)
+      else
+        self.fechaformulacion = Date.new(Date.today.year, m.to_i, 15)
       end
     end
 
