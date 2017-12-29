@@ -57,7 +57,6 @@ module Cor1440Gen
 
     def mesformulacion=(m)
       if self.fechaformulacion 
-        byebug
         self.fechaformulacion = Date.new(self.fechaformulacion.year, 
                                          m.to_i, 15)
       else
