@@ -48,8 +48,8 @@ module Cor1440Gen
 
     def anioformulacion=(a)
       if self.fechaformulacion 
-        self.fechaformulacion = Date.new(a.to_i, self.fechaformulacion.month,
-                                    self.fechaformulacion.day)
+        self.fechaformulacion = Date.new(a.to_i, 
+                                         self.fechaformulacion.month, 15) 
       else
         self.fechaformulacion = Date.new(a.to_i, 6, 15)
       end
@@ -57,8 +57,9 @@ module Cor1440Gen
 
     def mesformulacion=(m)
       if self.fechaformulacion 
-        self.fechaformulacion = Date.new(self.fechaformulacion.year, m.to_i,
-                                    self.fechaformulacion.day)
+        byebug
+        self.fechaformulacion = Date.new(self.fechaformulacion.year, 
+                                         m.to_i, 15)
       else
         self.fechaformulacion = Date.new(Date.today.year, m.to_i, 15)
       end
