@@ -1,20 +1,17 @@
 <tr class='nested-fields'>
   <td>
-    <% 
-        col = ::Usuario.order(:nombres, :apellidos).habilitados
-    %>
+    <% col = ::Usuario.order(:nombres, :apellidos).habilitados %>
     <%= f.association :coordinador,
       collection: col,
       label: false,
       label_method: lambda {|t| t.nombres.to_s + ' ' + t.apellidos.to_s},
-      value_method: :id
-    %>
+      value_method: :id,
+      input_html: { class: 'chosen-select' } %>
   </td>
   <td>
     <%= f.input :id, as: :hidden %>
     <%= link_to_remove_association "Eliminar", f, 
-        :class => 'btn-danger' 
-    %>
+      :class => 'btn-danger' %>
     <div><%= f.error_notification %></div>
   </td>
 </tr>

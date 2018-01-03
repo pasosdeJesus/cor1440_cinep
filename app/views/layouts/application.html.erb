@@ -29,7 +29,7 @@
         <% end %>
       <% end %>
 
-      <%= drop_down "Compromisos Institucionales" do %>
+      <%= drop_down "Compromisos y Convenios" do %>
         <%= menu_item "Listado de Compromisos Institucionales", 
           cor1440_gen.proyectosfinancieros_path %>
         <% if can? :edit, Cor1440Gen::Proyectofinanciero %>
@@ -37,7 +37,7 @@
             cor1440_gen.new_proyectofinanciero_path %>
         <% end %>
         <% if can? :edit, ::Convenio %>
-          <%= menu_item "Listado Convenios Institucionales", 
+          <%= menu_item "Listado Convenios Interinstitucionales Marco", 
             main_app.convenios_path %>
         <% end %>
         <% if can? :edit, ::Tasacambio%>
