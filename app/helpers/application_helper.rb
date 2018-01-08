@@ -18,8 +18,7 @@ module ApplicationHelper
   ESTADOS_APROBADO = [:J, :C, :M]
 
   DIFICULTAD = [['BAJA', :B], ['MEDIA', :M], 
-                ['ALTA', :A], ['NINGUNA', :I],
-                ['N/A', :N]]
+                ['ALTA', :A], ['N/A', :N]]
 
   CLASIFICACIONCONV = [['EN EL MARCO DE UN CONVENIO', :E], 
                        ['NIVEL INTERINSTITUCIONAL', :I]]
