@@ -23,25 +23,16 @@
       vcpl = new Intl.NumberFormat('es-CO').format(vcp)
       $('#' + campo).attr('title', '$ ' + vcpl).tooltip('fixTitle').tooltip('show')
 
-@establece_duracion = (response) ->
-  debugger
+@establece_duracion = (obdur) ->
+  $('#proyectofinanciero_duracion').val(obdur.duracion)
 
 @recalcula_duracion = (root) ->
-  return
-  # Evitar ejecutr 2 veces en menos de 2 segundos (suele pasar con
-  # rails+turbolinks+jquery)
-  t = Date.now()
-  d = -1
-  if (root.recalcula_duracion_t) 
-    d = (t - root.recalcula_duracion_t) / 1000
-  window.recalcula_duracion_t = t
-  if (d == -1 || d > 2) 
-    datos = {
-      fechainicio_localizada: $('#proyectofinanciero_fechainicio_localizada').val(),
-      fechacierre_localizada: $('#proyectofinanciero_fechacierre_localizada').val()
-    }
-    sip_ajax_recibe_json(root, '/api/cor1440cinep/duracion',
-      datos, establece_duracion)
+  datos = {
+    fechainicio_localizada: $('#proyectofinanciero_fechainicio_localizada').val(),
+    fechacierre_localizada: $('#proyectofinanciero_fechacierre_localizada').val()
+  }
+  sip_ajax_recibe_json(root, 'api/cor1440cinep/duracion',
+    datos, establece_duracion)
 
 @recalcula_montospesos_localizado = (root) ->
   tm = $('#proyectofinanciero_tipomoneda_id').val()
