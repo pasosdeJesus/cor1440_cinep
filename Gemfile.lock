@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 4241c643937083ff6da31e2df7a3ab7015ae7973
+  revision: 1d5b16ad4f933db6225449a09cfb45e4d54c8fc2
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 740cfa29aced6a23a757c129462ea8f1d8398d70
+  revision: 4acc07a0f61a6210cd56ccd53d9b2c128f304228
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -367,9 +367,9 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     ttfunk (1.5.1)
-    turbolinks (5.0.1)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.3)
+    turbolinks (5.1.0)
+      turbolinks-source (~> 5.1)
+    turbolinks-source (5.1.0)
     twitter-bootstrap-rails (4.0.0)
       actionpack (~> 5.0, >= 5.0.1)
       execjs (~> 2.7)

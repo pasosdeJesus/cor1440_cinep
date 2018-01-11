@@ -85,6 +85,16 @@
   $('#proyectofinanciero_fechacierre_localizada').change( (e) ->
     recalcula_duracion(root)
   )
+  $('#proyectofinanciero_tipomoneda_id').chosen().change( (e) ->
+    sip_llena_select_con_AJAX($(this), 'proyectofinanciero_tasaformulacion_id', 'tasascambio', 'bustipomoneda_id', 'con Tasa de cambio', root, true, 'id', 'presenta_nombre', recalcula_montospesos_localizado)
+  )
+
+  $('#proyectofinanciero_estado').chosen().change( (e) ->
+    if $(this).val() == 'E'
+      $('.editable-entramite').removeAttr('readonly')
+    else
+      $('.editable-entramite').attr('readonly', 'readonly')
+  )
 
   # Si se agrega con cocoon un campo de seleccion que se espera con
   # chosen, usa chosen
