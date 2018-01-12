@@ -92,8 +92,8 @@ es:
         anotacionesinf: "Anotaciones Informes y Auditorías"
         aotrosfin_localizado: 'Aportes financieros otros donantes'
         aotrosesp: 'Aportes en especies otros donantes'
-        aportecinep: "Aporte financiero CINEP/PPP - Otros donantes"
-        aportecinep_localizado: "Aporte financiero CINEP/PPP"
+        aportecinep: "Aporte financiero CINEP/PPP en formulación"
+        aportecinep_localizado: "Aporte financiero CINEP/PPP en formulación"
         apresupuesto: "Anotaciones presupuesto"
         autenticarcompulsar: "Autenticar, compulsar copias"
         centrocosto: "Centro de costo"
@@ -125,10 +125,10 @@ es:
         informenarrativo: "Informes narrativos"
         informesauditoria: "Informes auditoría/Verificación de gastos/Controles del financiador"
         mesformulacion: "Mes de formulación"
-        monto: "Aporte financiador"
-        monto_localizado: "Aporte financiador"
-        montopesos: "Aporte financiador en pesos"
-        montopesos_localizado: "Aporte financiador en pesos"
+        monto: "Aporte financiador en formulación"
+        monto_localizado: "Aporte financiador en formulación"
+        montopesos: "Aporte financiador en pesos durate formulación"
+        montopesos_localizado: "Aporte financiador en pesos durante formulación"
         nombre: 'Titulo'
         observaciones: 'Observaciones financiador'
         observacionestramite: "Observaciones durante el trámite"
@@ -136,8 +136,8 @@ es:
         observacionescierre: "Observaciones durante el cierre"
         oficina: "Oficina"
         otrosaportescinep: "Otros aportes CINEP/PPP"
-        presupuestototal: "Presupuesto total"
-        presupuestototal_localizado: "Presupuesto total"
+        presupuestototal: "Presupuesto total en formulación"
+        presupuestototal_localizado: "Presupuesto total en formulación"
         productopf: "Productos"
         proyectofinanciero_uresponsable: "Responsable(s)"
         proyectofinanciero_usuario: "Cargos"

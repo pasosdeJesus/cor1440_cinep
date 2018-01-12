@@ -23,25 +23,16 @@
       vcpl = new Intl.NumberFormat('es-CO').format(vcp)
       $('#' + campo).attr('title', '$ ' + vcpl).tooltip('fixTitle').tooltip('show')
 
-@establece_duracion = (response) ->
-  debugger
+@establece_duracion = (obdur) ->
+  $('#proyectofinanciero_duracion').val(obdur.duracion)
 
 @recalcula_duracion = (root) ->
-  return
-  # Evitar ejecutr 2 veces en menos de 2 segundos (suele pasar con
-  # rails+turbolinks+jquery)
-  t = Date.now()
-  d = -1
-  if (root.recalcula_duracion_t) 
-    d = (t - root.recalcula_duracion_t) / 1000
-  window.recalcula_duracion_t = t
-  if (d == -1 || d > 2) 
-    datos = {
-      fechainicio_localizada: $('#proyectofinanciero_fechainicio_localizada').val(),
-      fechacierre_localizada: $('#proyectofinanciero_fechacierre_localizada').val()
-    }
-    sip_ajax_recibe_json(root, '/api/cor1440cinep/duracion',
-      datos, establece_duracion)
+  datos = {
+    fechainicio_localizada: $('#proyectofinanciero_fechainicio_localizada').val(),
+    fechacierre_localizada: $('#proyectofinanciero_fechacierre_localizada').val()
+  }
+  sip_ajax_recibe_json(root, 'api/cor1440cinep/duracion',
+    datos, establece_duracion)
 
 @recalcula_montospesos_localizado = (root) ->
   tm = $('#proyectofinanciero_tipomoneda_id').val()
@@ -94,6 +85,34 @@
   $('#proyectofinanciero_fechacierre_localizada').change( (e) ->
     recalcula_duracion(root)
   )
+  $('#proyectofinanciero_tipomoneda_id').chosen().change( (e) ->
+    sip_llena_select_con_AJAX($(this), 'proyectofinanciero_tasaformulacion_id', 'tasascambio', 'bustipomoneda_id', 'con Tasa de cambio', root, true, 'id', 'presenta_nombre', recalcula_montospesos_localizado)
+  )
+
+  $('#proyectofinanciero_estado').chosen().change( (e) ->
+    if $(this).val() == 'E'
+      $('.editable-entramite').removeAttr('readonly')
+      $('.editable-entramite.chosen-select').off()
+      $('.editable-entramite.chosen-select').on('chosen:updated', () ->
+        $(this).removeAttr('disabled');
+        $(this).removeAttr('readonly');
+        $(this).data('chosen').search_field_disabled();
+      );
+      $('.editable-entramite.chosen-select').trigger('chosen:updated')
+    else
+      $('.editable-entramite').attr('readonly', 'readonly')
+      $('.editable-entramite.chosen-select').off()
+      $('.editable-entramite.chosen-select').on('chosen:updated', () ->
+        $(this).attr('disabled', 'disabled');
+        $(this).attr('readonly', 'readonly');
+        $(this).data('chosen').search_field_disabled();
+      );
+      $('.editable-entramite.chosen-select').trigger('chosen:updated')
+
+      #$('.editable-entramite').removeClass('chosen-select')
+      #$('.editable-entramite').attr('readonly', 'readonly')
+  )
+  $('#proyectofinanciero_estado').trigger('change')
 
   # Si se agrega con cocoon un campo de seleccion que se espera con
   # chosen, usa chosen

@@ -1,5 +1,6 @@
 # encoding: UTF-8
 
+require 'date'
 require 'cor1440_gen/concerns/controllers/proyectosfinancieros_controller'
 
 module Cor1440Gen
@@ -19,16 +20,20 @@ module Cor1440Gen
     # calcduracion fechaini fechacierre
     # Retorna cadena con duracion
     def duracion
-      byebug
       prob = ''
-      if params[:fechaini_localizada] && params[:fechacierre_localizada]
-        fini = Sip::FormatoFechaHelper.fecha_local_estandar(params[:fechaini_localizada])
-        fcierre = Sip::FormatoFechaHelper.fecha_local_estandar(params[:fechacierre_localizada])
+      if params[:fechainicio_localizada] && 
+        params[:fechacierre_localizada]
+        fini = Sip::FormatoFechaHelper.fecha_local_estandar(
+          params[:fechainicio_localizada])
+        fini = Date.strptime(fini, '%Y-%m-%d')
+        fcierre = Sip::FormatoFechaHelper.fecha_local_estandar(
+          params[:fechacierre_localizada])
+        fcierre = Date.strptime(fcierre, '%Y-%m-%d')
         if fini && fcierre
-          d = ApplicationHelper::dif_meses_dias(fini, fcierre)
+          d = dif_meses_dias(fini, fcierre)
           respond_to do |format|
             format.json { 
-              render json: d.to_s, status: :ok 
+              render json: {duracion: d.to_s}, status: :ok
               return
             }
           end
