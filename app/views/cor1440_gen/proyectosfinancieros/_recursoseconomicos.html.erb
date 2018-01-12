@@ -1,10 +1,8 @@
 
 <div class='row'>
   <div class="col-sm-offset-0 col-sm-6">
-    <% ih_tm = {
-         class: 'chosen-select editable-entramite' 
-        }
-       ih_tm[:readonly] = 'readonly' if f.object.estado != 'E'
+    <%  ih_tm = { class: 'chosen-select editable-entramite' }
+        ih_tm[:readonly] = 'readonly' if f.object.estado != 'E'
     %>
     <%= f.association :tipomoneda,
       collection: ::Tipomoneda.habilitados,
@@ -15,10 +13,8 @@
   </div>
   <div class="col-sm-6">
     <% ctf = f.object.tipomoneda_id && f.object.tipomoneda.nombre != 'PESO' ?  ::Tasacambio.where(tipomoneda_id: f.object.tipomoneda_id) : ::Tasacambio.where('TRUE=FALSE') %>
-    <% ih_tf = {
-         class: 'chosen-select editable-entramite' 
-        }
-       ih_tf[:readonly] = 'readonly' if f.object.estado != 'E'
+    <%  ih_tf = { class: 'chosen-select editable-entramite' }
+        ih_tf[:readonly] = 'readonly' if f.object.estado != 'E'
     %>
     <%= f.association :tasaformulacion,
       collection: ctf,
@@ -48,8 +44,7 @@
     input_html: ih_pt  %>
   </div>
   <div class="col-sm-6">
-    <% ih_ap = { class: 'editable-entramite' }; 
-       ih_ap[:readonly] = 'readonly' if f.object.estado != 'E' %>
+    <% ih_ap = { }; %>
     <%= f.input :apresupuesto,
       input_html: ih_ap %>
   </div>

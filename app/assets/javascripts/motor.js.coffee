@@ -92,9 +92,27 @@
   $('#proyectofinanciero_estado').chosen().change( (e) ->
     if $(this).val() == 'E'
       $('.editable-entramite').removeAttr('readonly')
+      $('.editable-entramite.chosen-select').off()
+      $('.editable-entramite.chosen-select').on('chosen:updated', () ->
+        $(this).removeAttr('disabled');
+        $(this).removeAttr('readonly');
+        $(this).data('chosen').search_field_disabled();
+      );
+      $('.editable-entramite.chosen-select').trigger('chosen:updated')
     else
       $('.editable-entramite').attr('readonly', 'readonly')
+      $('.editable-entramite.chosen-select').off()
+      $('.editable-entramite.chosen-select').on('chosen:updated', () ->
+        $(this).attr('disabled', 'disabled');
+        $(this).attr('readonly', 'readonly');
+        $(this).data('chosen').search_field_disabled();
+      );
+      $('.editable-entramite.chosen-select').trigger('chosen:updated')
+
+      #$('.editable-entramite').removeClass('chosen-select')
+      #$('.editable-entramite').attr('readonly', 'readonly')
   )
+  $('#proyectofinanciero_estado').trigger('change')
 
   # Si se agrega con cocoon un campo de seleccion que se espera con
   # chosen, usa chosen
