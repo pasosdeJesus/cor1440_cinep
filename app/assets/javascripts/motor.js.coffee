@@ -31,8 +31,11 @@
     fechainicio_localizada: $('#proyectofinanciero_fechainicio_localizada').val(),
     fechacierre_localizada: $('#proyectofinanciero_fechacierre_localizada').val()
   }
-  sip_ajax_recibe_json(root, 'api/cor1440cinep/duracion',
-    datos, establece_duracion)
+  if datos.fechainicio_localizada != '' && datos.fechacierre_localizada != ''
+    sip_ajax_recibe_json(root, 'api/cor1440cinep/duracion',
+      datos, establece_duracion)
+  else
+    $('#proyectofinanciero_duracion').val('')
 
 @recalcula_montospesos_localizado = (root) ->
   tm = $('#proyectofinanciero_tipomoneda_id').val()
@@ -56,6 +59,32 @@
     
   return
 
+
+@cor1440_gen_llena_medicion = (res) ->
+  hid = res.hmindicadorpf_id
+  $('[id$=_' + hid + '_dmed1]').val(res.dmed1)
+  $('[id$=_' + hid + '_dmed2]').val(res.dmed2)
+  $('[id$=_' + hid + '_dmed3]').val(res.dmed3)
+  $('[id$=_' + hid + '_rind]').val(res.rind)
+  meta = +$('[id$=_' + hid + '_meta]').val()
+  if ( meta > 0)
+    $('[id$=_' + hid + '_porcump]').val(res.rind*100/meta)
+
+
+@cor1440_gen_calcula_pmindicador = (elem) ->
+  root =  window
+  r = $(elem).closest('tr')
+  efinicio = r.find('[id$=finicio_localizada]')
+  hid = efinicio.attr('id').replace(/.*_attributes_([0-9]*)_finicio_localizada/, '$1');
+  datos = {
+    finicio_localizada: efinicio.val()
+    ffin_localizada: r.find('[id$=ffin_localizada]').val()
+    indicadorpf_id: $(document).find('#mindicadorpf_indicadorpf_id').val()
+    hmindicadorpf_id: hid
+  }
+  sip_ajax_recibe_json(root, 'api/cor1440cinep/mideindicador', 
+    datos, cor1440_gen_llena_medicion)  
+  return
 
 @cor1440_cinep_prepara_eventos_unicos = (root) ->
   sip_arregla_puntomontaje(root)

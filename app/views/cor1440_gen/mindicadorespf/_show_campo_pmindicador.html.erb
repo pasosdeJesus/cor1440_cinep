@@ -1,0 +1,37 @@
+<div>
+  <table border=1>
+  <tr>
+    <th>Fecha Inicio</th><th>Fecha Fin</th><th>Tiempo</th><th>Resultado</th><th>Meta</th><th>Porcentaje</th>
+  </tr>
+<% if @registro %>
+  <% pms = @registro.pmindicador.order(:ffin) %>
+  <% pms.each do |pm| %>
+    <tr>
+      <td><%= pm.finicio%></td>
+      <td><%= pm.ffin %></td>
+      <td><%= pm.restiempo %></td>
+      <td><%= pm.rind %></td>
+      <td><%= pm.meta %></td>
+      <td><%= pm.porcump %></td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
+</div>
+
+<div>
+<table border='1'>
+  <tr>
+    <th>Tiempo</th><th>Análisis</th><th>Acciones</th><th>Responsables</th><th>Plazo</th>
+  </tr>
+  <% pms.each do |pm| %>
+    <tr>
+      <td><%= pm.restiempo %></td>
+      <td><%= pm.analisis%></td>
+      <td><%= pm.acciones %></td>
+      <td><%= pm.responsables%></td>
+      <td><%= pm.plazo %></td>
+    </tr>
+  <% end %>
+</table>
+</div>

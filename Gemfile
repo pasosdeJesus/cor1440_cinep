@@ -5,7 +5,7 @@ gem "rails", '~> 5.1.0'
 gem "rails-i18n"
 
 # Postgresql
-gem "pg"
+gem "pg", '~> 0.21'
 
 gem 'puma'
 
@@ -116,7 +116,7 @@ end
 
 group :test, :development, :ensayo do
   # Depurar
-  #gem 'byebug'
+  gem 'byebug'
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo

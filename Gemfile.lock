@@ -143,6 +143,7 @@ GEM
     bootstrap-datepicker-rails (1.7.1.1)
       railties (>= 3.0)
     builder (3.2.3)
+    byebug (10.0.0)
     camertron-eprun (1.1.1)
     cancancan (2.1.2)
     capybara (2.17.0)
@@ -408,6 +409,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
+  byebug
   cancancan
   capybara
   chosen-rails
@@ -430,7 +432,7 @@ DEPENDENCIES
   minitest-reporters
   odf-report!
   paperclip
-  pg
+  pg (~> 0.21)
   poltergeist
   prawn
   prawn-table

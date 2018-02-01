@@ -1,0 +1,32 @@
+<table border=1 width="100%">
+  <thead>
+    <tr>
+      <th>Inicio</th>
+      <th>Fin</th>
+      <th>Tiempo</th>
+      <th>Dato 1</th>
+      <th>Dato 2</th>
+      <th>Resultado</th>
+      <th>Meta</th>
+      <th>% Cumplimiento</th>
+      <th>Analisis</th>
+      <th>Acciones</th>
+      <th>Responsables</th>
+      <th>Plazo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="pmindicador">
+    <%= f.simple_fields_for :pmindicador do |pmi| %>
+      <%= render 'pmindicador_campos', :f => pmi %>
+    <% end %>
+  </tbody>
+</table>
+<div class="links">
+  <%= link_to_add_association 'Añadir Punto de Medición', f, 
+    :pmindicador,
+    :"data-association-insertion-node" => "tbody#pmindicador", 
+    :"data-association-insertion-method" => "append", 
+    partial: 'pmindicador_campos',
+    :class => 'btn-primary' %>
+    </div>
