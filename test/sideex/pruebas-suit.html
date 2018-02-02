@@ -36,10 +36,23 @@
 	<td>id=actor_nombre<datalist><option>id=actor_nombre</option></datalist></td>
 	<td>aaa</td>
 </tr>
-<tr>
-	<td>type</td>
-	<td>id=actor_personacontacto<datalist><option>id=actor_personacontacto</option></datalist></td>
-	<td>aa</td>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>addSelection</td><td>id=actor_sectoractor_ids<datalist><option>id=actor_sectoractor_ids</option><option>css=#actor_sectoractor_ids</option><option>//select[@id='actor_sectoractor_ids']</option><option>//form[@id='new_actor']/div[3]/select</option><option>//select</option></datalist></td><td>label=AFRO</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="105"]<datalist><option>css=option[value="105"]</option><option>//option[@value='105']</option><option>//select[@id='actor_sectoractor_ids']/option</option><option>//option</option></datalist></td><td>26,5</td>
+</tr>
+<tr><td>addSelection</td><td>id=actor_regiongrupo_ids<datalist><option>id=actor_regiongrupo_ids</option><option>css=#actor_regiongrupo_ids</option><option>//select[@id='actor_regiongrupo_ids']</option><option>//form[@id='new_actor']/div[4]/select</option><option>//div[4]/select</option></datalist></td><td>label=ANDINA</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="23"]<datalist><option>css=option[value="23"]</option><option>//option[@value='23']</option><option>//select[@id='actor_regiongrupo_ids']/option</option><option>//div[4]/select/option</option></datalist></td><td>16,6</td>
+</tr>
+<tr><td>addSelection</td><td>id=actor_grupo_ids<datalist><option>id=actor_grupo_ids</option><option>css=#actor_grupo_ids</option><option>//select[@id='actor_grupo_ids']</option><option>//form[@id='new_actor']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>label=Archivo y Correspondencia</td>
+</tr>
+<tr><td>clickAt</td><td>css=#actor_grupo_ids &gt; option[value="112"]<datalist><option>css=#actor_grupo_ids &gt; option[value="112"]</option><option>xpath=(//option[@value='112'])[2]</option><option>//select[@id='actor_grupo_ids']/option</option><option>//div[5]/select/option</option></datalist></td><td>62,9</td>
+</tr>
+<tr><td>clickAt</td><td>id=actor_personacontacto<datalist><option>id=actor_personacontacto</option><option>name=actor[personacontacto]</option><option>//input[@id='actor_personacontacto']</option><option>//form[@id='new_actor']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>12,19</td>
+</tr>
+<tr><td>type</td><td>id=actor_personacontacto<datalist><option>id=actor_personacontacto</option><option>name=actor[personacontacto]</option><option>//input[@id='actor_personacontacto']</option><option>//form[@id='new_actor']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>aa</td>
 </tr>
 <tr><td>clickAt</td><td>id=actor_observaciones<datalist><option>id=actor_observaciones</option><option>name=actor[observaciones]</option><option>//textarea[@id='actor_observaciones']</option><option>//form[@id='new_actor']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>66,14</td>
 </tr>
@@ -49,6 +62,16 @@
 	<td>clickAt</td>
 	<td>name=commit<datalist><option>name=commit</option></datalist></td>
 	<td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/admin/actores/312/edita')]</option><option>//a[2]</option></datalist></td><td>20,19</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='actor_sectoractor_ids_chosen']/ul/li/a</option><option>//div[3]/div/ul/li/a</option></datalist></td><td>5,4</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='actor_regiongrupo_ids_chosen']/ul/li/a</option><option>//div[4]/div/ul/li/a</option></datalist></td><td>7,6</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='actor_grupo_ids_chosen']/ul/li/a</option><option>//div[5]/div/ul/li/a</option></datalist></td><td>5,9</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_actor_312']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>55,12</td>
 </tr>
 <tr>
 	<td>chooseOkOnNextConfirmation</td>
@@ -181,7 +204,7 @@
 <tbody>
 <tr>
 	<td>open</td>
-	<td>http://archivoprensa.cinep.org.co:4000/<datalist><option>http://archivoprensa.cinep.org.co:4000/</option></datalist></td>
+	<td>/<datalist><option>http://archivoprensa.cinep.org.co:4000/</option><option>/</option></datalist></td>
 	<td></td>
 </tr>
 <tr>
@@ -355,10 +378,19 @@
 	<td>id=financiador_nombre<datalist><option>id=financiador_nombre</option></datalist></td>
 	<td>aaa</td>
 </tr>
-<tr>
-	<td>type</td>
-	<td>id=financiador_observaciones<datalist><option>id=financiador_observaciones</option></datalist></td>
-	<td>bbb</td>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>select</td><td>id=financiador_pais_id<datalist><option>id=financiador_pais_id</option><option>name=financiador[pais_id]</option><option>css=#financiador_pais_id</option><option>//select[@id='financiador_pais_id']</option><option>//form[@id='new_financiador']/div[3]/select</option><option>//select</option></datalist></td><td>label=COLOMBIA</td>
+</tr>
+<tr><td>mouseDownAt</td><td>id=financiador_pais_id<datalist><option>id=financiador_pais_id</option><option>name=financiador[pais_id]</option><option>css=#financiador_pais_id</option><option>//select[@id='financiador_pais_id']</option><option>//form[@id='new_financiador']/div[3]/select</option><option>//select</option></datalist></td><td>-38.5,-231</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>id=financiador_pais_id<datalist><option>id=financiador_pais_id</option><option>name=financiador[pais_id]</option><option>css=#financiador_pais_id</option><option>//select[@id='financiador_pais_id']</option><option>//form[@id='new_financiador']/div[3]/select</option><option>//select</option></datalist></td><td>-38.5,-231</td>
+</tr>
+<tr><td>mouseUpAt</td><td>id=financiador_pais_id<datalist><option>id=financiador_pais_id</option><option>name=financiador[pais_id]</option><option>css=#financiador_pais_id</option><option>//select[@id='financiador_pais_id']</option><option>//form[@id='new_financiador']/div[3]/select</option><option>//select</option></datalist></td><td>-38.5,-231</td>
+</tr>
+<tr><td>clickAt</td><td>id=financiador_pais_id<datalist><option>id=financiador_pais_id</option><option>name=financiador[pais_id]</option><option>css=#financiador_pais_id</option><option>//select[@id='financiador_pais_id']</option><option>//form[@id='new_financiador']/div[3]/select</option><option>//select</option></datalist></td><td>-39,-231</td>
+</tr>
+<tr><td>type</td><td>id=financiador_observaciones<datalist><option>id=financiador_observaciones</option></datalist></td><td>bbb</td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -403,6 +435,30 @@
 	<td>id=grupo_nombre<datalist><option>id=grupo_nombre</option></datalist></td>
 	<td>aaa</td>
 </tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=grupo_cn<datalist><option>id=grupo_cn</option><option>name=grupo[cn]</option><option>css=#grupo_cn</option><option>//input[@id='grupo_cn']</option><option>//form[@id='new_grupo']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>75,10</td>
+</tr>
+<tr><td>type</td><td>id=grupo_cn<datalist><option>id=grupo_cn</option><option>name=grupo[cn]</option><option>css=#grupo_cn</option><option>//input[@id='grupo_cn']</option><option>//form[@id='new_grupo']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>sss</td>
+</tr>
+<tr><td>clickAt</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>65,9</td>
+</tr>
+<tr><td>type</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>-1</td>
+</tr>
+<tr><td>clickAt</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>1114,22</td>
+</tr>
+<tr><td>clickAt</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>33,15</td>
+</tr>
+<tr><td>type</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>77</td>
+</tr>
+<tr><td>clickAt</td><td>id=grupo_ultimasincldap<datalist><option>id=grupo_ultimasincldap</option><option>name=grupo[ultimasincldap]</option><option>css=#grupo_ultimasincldap</option><option>//input[@id='grupo_ultimasincldap']</option><option>//form[@id='new_grupo']/div[5]/input</option><option>//div[5]/input</option></datalist></td><td>36,13</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[2]/td[2]<datalist><option>//tr[2]/td[2]</option></datalist></td><td>11,16</td>
+</tr>
+<tr><td>addSelection</td><td>id=grupo_usuario_ids<datalist><option>id=grupo_usuario_ids</option><option>css=#grupo_usuario_ids</option><option>//select[@id='grupo_usuario_ids']</option><option>//form[@id='new_grupo']/div[6]/select</option><option>//select</option></datalist></td><td>label=Javier Giraldo</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="18"]<datalist><option>css=option[value="18"]</option><option>//option[@value='18']</option><option>//select[@id='grupo_usuario_ids']/option[62]</option><option>//option[62]</option></datalist></td><td>73,-1000</td>
+</tr>
 <tr>
 	<td>type</td>
 	<td>id=grupo_observaciones<datalist><option>id=grupo_observaciones</option></datalist></td>
@@ -413,12 +469,15 @@
 	<td>name=commit<datalist><option>name=commit</option></datalist></td>
 	<td></td>
 </tr>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/admin/grupos/119/edita')]</option><option>//a[2]</option></datalist></td><td>20,22</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='grupo_usuario_ids_chosen']/ul/li/a</option><option>//div[6]/div/ul/li/a</option></datalist></td><td>8,7</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option></datalist></td><td></td>
+</tr>
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option>name=commit</option><option></option></datalist></td><td></td>
 </tr>
-<tr>
-	<td>click</td>
-	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
-	<td></td>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/grupos/119')])[2]</option><option>//a[3]</option></datalist></td><td>41,16</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -449,7 +508,7 @@
 <tr>
 	<td>type</td>
 	<td>id=municipio_nombre<datalist><option>id=municipio_nombre</option></datalist></td>
-	<td>san san sebastian</td>
+	<td>aaa</td>
 </tr>
 <tr>
 	<td>select</td>
@@ -481,8 +540,6 @@
 	<td>open</td>
 	<td>/<datalist><option>http://archivoprensa.cinep.org.co:4000/</option><option>/</option></datalist></td>
 	<td></td>
-</tr>
-<tr><td>open</td><td>http://archivoprensa.cinep.org.co:4000/<datalist><option>http://archivoprensa.cinep.org.co:4000/</option></datalist></td><td></td>
 </tr>
 <tr>
 	<td>click</td>
@@ -641,7 +698,7 @@
 <tr><td rowspan="1" colspan="3">tabla-programas-servicios-productos</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>http://archivoprensa.cinep.org.co:4000/<datalist><option>http://archivoprensa.cinep.org.co:4000/</option></datalist></td><td></td>
+<tr><td>open</td><td>/<datalist><option>http://archivoprensa.cinep.org.co:4000/</option><option>/</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>91,25</td>
 </tr>
@@ -904,14 +961,43 @@
 	<td>id=regiongrupo_observaciones<datalist><option>id=regiongrupo_observaciones</option></datalist></td>
 	<td>bbb</td>
 </tr>
-<tr>
-	<td>clickAt</td>
-	<td>name=commit<datalist><option>name=commit</option></datalist></td>
-	<td></td>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>select</td><td>id=regiongrupo_grupo_id<datalist><option>id=regiongrupo_grupo_id</option><option>name=regiongrupo[grupo_id]</option><option>css=#regiongrupo_grupo_id</option><option>//select[@id='regiongrupo_grupo_id']</option><option>//form[@id='new_regiongrupo']/div[4]/select</option><option>//select</option></datalist></td><td>label=TI</td>
+</tr>
+<tr><td>mouseDownAt</td><td>id=regiongrupo_grupo_id<datalist><option>id=regiongrupo_grupo_id</option><option>name=regiongrupo[grupo_id]</option><option>css=#regiongrupo_grupo_id</option><option>//select[@id='regiongrupo_grupo_id']</option><option>//form[@id='new_regiongrupo']/div[4]/select</option><option>//select</option></datalist></td><td>-31,-314</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>id=regiongrupo_grupo_id<datalist><option>id=regiongrupo_grupo_id</option><option>name=regiongrupo[grupo_id]</option><option>css=#regiongrupo_grupo_id</option><option>//select[@id='regiongrupo_grupo_id']</option><option>//form[@id='new_regiongrupo']/div[4]/select</option><option>//select</option></datalist></td><td>-31,-314</td>
+</tr>
+<tr><td>mouseUpAt</td><td>id=regiongrupo_grupo_id<datalist><option>id=regiongrupo_grupo_id</option><option>name=regiongrupo[grupo_id]</option><option>css=#regiongrupo_grupo_id</option><option>//select[@id='regiongrupo_grupo_id']</option><option>//form[@id='new_regiongrupo']/div[4]/select</option><option>//select</option></datalist></td><td>-31,-314</td>
+</tr>
+<tr><td>clickAt</td><td>id=regiongrupo_grupo_id<datalist><option>id=regiongrupo_grupo_id</option><option>name=regiongrupo[grupo_id]</option><option>css=#regiongrupo_grupo_id</option><option>//select[@id='regiongrupo_grupo_id']</option><option>//form[@id='new_regiongrupo']/div[4]/select</option><option>//select</option></datalist></td><td>-31,-314</td>
+</tr>
+<tr><td>addSelection</td><td>id=regiongrupo_departamento_ids<datalist><option>id=regiongrupo_departamento_ids</option><option>css=#regiongrupo_departamento_ids</option><option>//select[@id='regiongrupo_departamento_ids']</option><option>//form[@id='new_regiongrupo']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>label=AMAZONAS / COLOMBIA</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="55"]<datalist><option>css=option[value="55"]</option><option>//option[@value='55']</option><option>//select[@id='regiongrupo_departamento_ids']/option</option><option>//div[5]/select/option</option></datalist></td><td>110,11</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="300"]<datalist><option>css=option[value="300"]</option><option>//option[@value='300']</option><option>//select[@id='regiongrupo_municipio_ids']/option</option><option>//div[6]/select/option</option></datalist></td><td>109,8</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="300"]<datalist><option>css=option[value="300"]</option><option>//option[@value='300']</option><option>//select[@id='regiongrupo_municipio_ids']/option</option><option>//div[6]/select/option</option></datalist></td><td>109,8</td>
+</tr>
+<tr><td>addSelection</td><td>id=regiongrupo_municipio_ids<datalist><option>id=regiongrupo_municipio_ids</option><option>css=#regiongrupo_municipio_ids</option><option>//select[@id='regiongrupo_municipio_ids']</option><option>//form[@id='new_regiongrupo']/div[6]/select</option><option>//div[6]/select</option></datalist></td><td>label=ABEJORRAL / ANTIOQUIA / COLOMBIA</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="300"]<datalist><option>css=option[value="300"]</option><option>//option[@value='300']</option><option>//select[@id='regiongrupo_municipio_ids']/option</option><option>//div[6]/select/option</option></datalist></td><td>29,5</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/admin/regionesgrupo/104/edita')]</option><option>//a[2]</option></datalist></td><td>18,18</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='regiongrupo_departamento_ids_chosen']/ul/li/a</option><option>//div[5]/div/ul/li/a</option></datalist></td><td>8,11</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='regiongrupo_municipio_ids_chosen']/ul/li/a</option><option>//div[6]/div/ul/li/a</option></datalist></td><td>8,6</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_regiongrupo_104']/div[9]/input</option><option>//div[9]/input</option></datalist></td><td>44,4</td>
 </tr>
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
-<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/regionesgrupo/106')])[2]</option><option>//a[3]</option></datalist></td><td>42,17</td>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/regionesgrupo/104')])[2]</option><option>//a[3]</option></datalist></td><td>38,17</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -1282,90 +1368,6 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">compromisos institucionales</td></tr>
-</thead>
-<tbody>
-<tr>
-	<td>open</td>
-	<td>/<datalist><option>http://archivoprensa.cinep.org.co:4000/act/</option><option>/</option></datalist></td>
-	<td></td>
-</tr>
-<tr><td>mouseDownAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>65.890625,16</td>
-</tr>
-<tr><td>mouseMoveAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>65.890625,16</td>
-</tr>
-<tr><td>mouseUpAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>65.890625,16</td>
-</tr>
-<tr><td>clickAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>66,16</td>
-</tr>
-<tr><td>clickAt</td><td>link=Nuevo Compromiso Institucional<datalist><option>link=Nuevo Compromiso Institucional</option><option>//a[contains(text(),'Nuevo Compromiso Institucional')]</option><option>//a[contains(@href, '/proyectosfinancieros/nuevo')]</option><option>//li[3]/ul/li[2]/a</option></datalist></td><td>67,11</td>
-</tr>
-<tr><td>clickAt</td><td>id=proyectofinanciero_nombre<datalist><option>id=proyectofinanciero_nombre</option><option>name=proyectofinanciero[nombre]</option><option>//input[@id='proyectofinanciero_nombre']</option><option>//div[@id='basicos']/div/input</option><option>//div/input</option></datalist></td><td>45,19</td>
-</tr>
-<tr><td>type</td><td>id=proyectofinanciero_nombre<datalist><option>id=proyectofinanciero_nombre</option><option>name=proyectofinanciero[nombre]</option><option>//input[@id='proyectofinanciero_nombre']</option><option>//div[@id='basicos']/div/input</option><option>//div/input</option></datalist></td><td>aaa</td>
-</tr>
-<tr><td>clickAt</td><td>id=proyectofinanciero_referenciacinep<datalist><option>id=proyectofinanciero_referenciacinep</option><option>name=proyectofinanciero[referenciacinep]</option><option>//input[@id='proyectofinanciero_referenciacinep']</option><option>//div[@id='basicos']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>36,6</td>
-</tr>
-<tr><td>type</td><td>id=proyectofinanciero_referenciacinep<datalist><option>id=proyectofinanciero_referenciacinep</option><option>name=proyectofinanciero[referenciacinep]</option><option>//input[@id='proyectofinanciero_referenciacinep']</option><option>//div[@id='basicos']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>ccc</td>
-</tr>
-<tr><td>clickAt</td><td>id=proyectofinanciero_fechainicio_localizada<datalist><option>id=proyectofinanciero_fechainicio_localizada</option><option>name=proyectofinanciero[fechainicio_localizada]</option><option>//input[@id='proyectofinanciero_fechainicio_localizada']</option><option>//div[@id='basicos']/div[5]/div/div/input</option><option>//div[5]/div/div/input</option></datalist></td><td>103,14</td>
-</tr>
-<tr><td>clickAt</td><td>//tr[2]/td[2]<datalist><option>//tr[2]/td[2]</option></datalist></td><td>7,15</td>
-</tr>
-<tr><td>clickAt</td><td>id=proyectofinanciero_fechacierre_localizada<datalist><option>id=proyectofinanciero_fechacierre_localizada</option><option>name=proyectofinanciero[fechacierre_localizada]</option><option>//input[@id='proyectofinanciero_fechacierre_localizada']</option><option>//div[@id='basicos']/div[5]/div[2]/div/input</option><option>//div[5]/div[2]/div/input</option></datalist></td><td>52,7</td>
-</tr>
-<tr><td>mouseDownAt</td><td>//div[2]/div/table/thead/tr[2]/th[3]<datalist><option>//div[2]/div/table/thead/tr[2]/th[3]</option></datalist></td><td>10,16</td>
-</tr>
-<tr><td>mouseMoveAt</td><td>//div[2]/div/table/thead/tr[2]/th[3]<datalist><option>//div[2]/div/table/thead/tr[2]/th[3]</option></datalist></td><td>10,16</td>
-</tr>
-<tr><td>mouseUpAt</td><td>//div[2]/div/table/thead/tr[2]/th[3]<datalist><option>//div[2]/div/table/thead/tr[2]/th[3]</option></datalist></td><td>10,16</td>
-</tr>
-<tr><td>clickAt</td><td>//div[2]/div/table/thead/tr[2]/th[3]<datalist><option>//div[2]/div/table/thead/tr[2]/th[3]</option></datalist></td><td>11,17</td>
-</tr>
-<tr><td>clickAt</td><td>//div[2]/div/table/thead/tr[2]/th[3]<datalist><option>//div[2]/div/table/thead/tr[2]/th[3]</option></datalist></td><td>11,17</td>
-</tr>
-<tr><td>clickAt</td><td>//div[2]/div/table/thead/tr[2]/th[3]<datalist><option>//div[2]/div/table/thead/tr[2]/th[3]</option></datalist></td><td>11,17</td>
-</tr>
-<tr><td>clickAt</td><td>//tr[6]/td<datalist><option>//tr[6]/td</option></datalist></td><td>22,17</td>
-</tr>
-<tr><td>clickAt</td><td>id=proyectofinanciero_fechaliquidacion_localizada<datalist><option>id=proyectofinanciero_fechaliquidacion_localizada</option><option>name=proyectofinanciero[fechaliquidacion_localizada]</option><option>//input[@id='proyectofinanciero_fechaliquidacion_localizada']</option><option>//div[@id='basicos']/div[6]/div[4]/div/input</option><option>//div[6]/div[4]/div/input</option></datalist></td><td>33,10</td>
-</tr>
-<tr><td>clickAt</td><td>//tr[5]/td[5]<datalist><option>//tr[5]/td[5]</option></datalist></td><td>12,8</td>
-</tr>
-<tr><td>mouseDownAt</td><td>id=proyectofinanciero_anotacionesdb<datalist><option>id=proyectofinanciero_anotacionesdb</option><option>name=proyectofinanciero[anotacionesdb]</option><option>//textarea[@id='proyectofinanciero_anotacionesdb']</option><option>//div[@id='basicos']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>66,32</td>
-</tr>
-<tr><td>mouseMoveAt</td><td>id=proyectofinanciero_anotacionesdb<datalist><option>id=proyectofinanciero_anotacionesdb</option><option>name=proyectofinanciero[anotacionesdb]</option><option>//textarea[@id='proyectofinanciero_anotacionesdb']</option><option>//div[@id='basicos']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>66,32</td>
-</tr>
-<tr><td>mouseUpAt</td><td>id=proyectofinanciero_anotacionesdb<datalist><option>id=proyectofinanciero_anotacionesdb</option><option>name=proyectofinanciero[anotacionesdb]</option><option>//textarea[@id='proyectofinanciero_anotacionesdb']</option><option>//div[@id='basicos']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>66,32</td>
-</tr>
-<tr><td>clickAt</td><td>id=proyectofinanciero_anotacionesdb<datalist><option>id=proyectofinanciero_anotacionesdb</option><option>name=proyectofinanciero[anotacionesdb]</option><option>//textarea[@id='proyectofinanciero_anotacionesdb']</option><option>//div[@id='basicos']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>66,32</td>
-</tr>
-<tr><td>type</td><td>id=proyectofinanciero_anotacionesdb<datalist><option>id=proyectofinanciero_anotacionesdb</option><option>name=proyectofinanciero[anotacionesdb]</option><option>//textarea[@id='proyectofinanciero_anotacionesdb']</option><option>//div[@id='basicos']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>ddd</td>
-</tr>
-<tr><td>clickAt</td><td>id=proyectofinanciero_observacionestramite<datalist><option>id=proyectofinanciero_observacionestramite</option><option>name=proyectofinanciero[observacionestramite]</option><option>//textarea[@id='proyectofinanciero_observacionestramite']</option><option>//div[@id='basicos']/div[9]/div/div/textarea</option><option>//div[9]/div/div/textarea</option></datalist></td><td>198,26</td>
-</tr>
-<tr><td>type</td><td>id=proyectofinanciero_observacionestramite<datalist><option>id=proyectofinanciero_observacionestramite</option><option>name=proyectofinanciero[observacionestramite]</option><option>//textarea[@id='proyectofinanciero_observacionestramite']</option><option>//div[@id='basicos']/div[9]/div/div/textarea</option><option>//div[9]/div/div/textarea</option></datalist></td><td>bbb</td>
-</tr>
-<tr><td>clickAt</td><td>id=proyectofinanciero_observacionesejecucion<datalist><option>id=proyectofinanciero_observacionesejecucion</option><option>name=proyectofinanciero[observacionesejecucion]</option><option>//textarea[@id='proyectofinanciero_observacionesejecucion']</option><option>//div[@id='basicos']/div[9]/div[2]/div/textarea</option><option>//div[9]/div[2]/div/textarea</option></datalist></td><td>83,40</td>
-</tr>
-<tr><td>type</td><td>id=proyectofinanciero_observacionesejecucion<datalist><option>id=proyectofinanciero_observacionesejecucion</option><option>name=proyectofinanciero[observacionesejecucion]</option><option>//textarea[@id='proyectofinanciero_observacionesejecucion']</option><option>//div[@id='basicos']/div[9]/div[2]/div/textarea</option><option>//div[9]/div[2]/div/textarea</option></datalist></td><td>ggg</td>
-</tr>
-<tr><td>clickAt</td><td>id=proyectofinanciero_observacionescierre<datalist><option>id=proyectofinanciero_observacionescierre</option><option>name=proyectofinanciero[observacionescierre]</option><option>//textarea[@id='proyectofinanciero_observacionescierre']</option><option>//div[@id='basicos']/div[9]/div[3]/div/textarea</option><option>//div[9]/div[3]/div/textarea</option></datalist></td><td>94,11</td>
-</tr>
-<tr><td>type</td><td>id=proyectofinanciero_observacionescierre<datalist><option>id=proyectofinanciero_observacionescierre</option><option>name=proyectofinanciero[observacionescierre]</option><option>//textarea[@id='proyectofinanciero_observacionescierre']</option><option>//div[@id='basicos']/div[9]/div[3]/div/textarea</option><option>//div[9]/div[3]/div/textarea</option></datalist></td><td>hhh</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_167']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>66,7</td>
-</tr>
-<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
-	<td></td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
 <tr><td rowspan="1" colspan="3">actividad-listado-informe</td></tr>
 </thead>
 <tbody>
@@ -1519,6 +1521,22 @@
 </tr>
 <tr><td>type</td><td>id=proyectofinanciero_referenciacinep<datalist><option>id=proyectofinanciero_referenciacinep</option><option>name=proyectofinanciero[referenciacinep]</option><option>//input[@id='proyectofinanciero_referenciacinep']</option><option>//div[@id='basicos']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>ccc</td>
 </tr>
+<tr><td>clickAt</td><td>//input[@value='Selecciones algunas opciones']<datalist><option>//input[@value='Selecciones algunas opciones']</option><option>//div[@id='proyectofinanciero_financiador_ids_chosen']/ul/li/input</option><option>//li/input</option></datalist></td><td>95,13</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='proyectofinanciero_financiador_ids_chosen']/div/ul/li<datalist><option>//div[@id='proyectofinanciero_financiador_ids_chosen']/div/ul/li</option><option>//div[4]/div/div/div/div/ul/li</option></datalist></td><td>77,20</td>
+</tr>
+<tr><td>clickAt</td><td>//input[@value='Selecciones algunas opciones']<datalist><option>//input[@value='Selecciones algunas opciones']</option><option>//div[@id='proyectofinanciero_financiador_ids_chosen']/ul/li[2]/input</option><option>//li[2]/input</option></datalist></td><td>25,12</td>
+</tr>
+<tr><td>clickAt</td><td>//body<datalist><option>//body</option></datalist></td><td>12,472</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_fechainicio_localizada<datalist><option>id=proyectofinanciero_fechainicio_localizada</option><option>name=proyectofinanciero[fechainicio_localizada]</option><option>//input[@id='proyectofinanciero_fechainicio_localizada']</option><option>//div[@id='basicos']/div[5]/div/div/input</option><option>//div[5]/div/div/input</option></datalist></td><td>135,20</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='basicos']/div[5]/div<datalist><option>//div[@id='basicos']/div[5]/div</option><option>//div[2]/div/div/div[5]/div</option></datalist></td><td>10,54</td>
+</tr>
+<tr><td>clickAt</td><td>//input[@value='Selecciones algunas opciones']<datalist><option>//input[@value='Selecciones algunas opciones']</option><option>//div[@id='proyectofinanciero_financiador_ids_chosen']/ul/li/input</option><option>//li/input</option></datalist></td><td>78,15</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='proyectofinanciero_financiador_ids_chosen']/div/ul/li<datalist><option>//div[@id='proyectofinanciero_financiador_ids_chosen']/div/ul/li</option><option>//div[4]/div/div/div/div/ul/li</option></datalist></td><td>57,14</td>
+</tr>
 <tr><td>clickAt</td><td>id=proyectofinanciero_fechainicio_localizada<datalist><option>id=proyectofinanciero_fechainicio_localizada</option><option>name=proyectofinanciero[fechainicio_localizada]</option><option>//input[@id='proyectofinanciero_fechainicio_localizada']</option><option>//div[@id='basicos']/div[5]/div/div/input</option><option>//div[5]/div/div/input</option></datalist></td><td>103,14</td>
 </tr>
 <tr><td>clickAt</td><td>//tr[2]/td[2]<datalist><option>//tr[2]/td[2]</option></datalist></td><td>7,15</td>
@@ -1565,60 +1583,23 @@
 </tr>
 <tr><td>type</td><td>id=proyectofinanciero_observacionescierre<datalist><option>id=proyectofinanciero_observacionescierre</option><option>name=proyectofinanciero[observacionescierre]</option><option>//textarea[@id='proyectofinanciero_observacionescierre']</option><option>//div[@id='basicos']/div[9]/div[3]/div/textarea</option><option>//div[9]/div[3]/div/textarea</option></datalist></td><td>hhh</td>
 </tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>addSelection</td><td>id=proyectofinanciero_financiador_ids<datalist><option>id=proyectofinanciero_financiador_ids</option><option>css=#proyectofinanciero_financiador_ids</option><option>//select[@id='proyectofinanciero_financiador_ids']</option><option>//div[@id='basicos']/div[4]/div/div/select</option><option>//select</option></datalist></td><td>label=ADVENIAT</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="110"]<datalist><option>css=option[value="110"]</option><option>//option[@value='110']</option><option>//select[@id='proyectofinanciero_financiador_ids']/option</option><option>//option</option></datalist></td><td>35,4</td>
+</tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_167']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>66,7</td>
 </tr>
-<tr><td>clickAt</td><td>link=Ficha para procesador de texto<datalist><option>link=Ficha para procesador de texto</option><option>//a[contains(text(),'Ficha para procesador de texto')]</option><option>//a[contains(@href, '/proyectosfinancieros/167/fichaimp')]</option><option>//a[3]</option></datalist></td><td>101,17</td>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/proyectosfinancieros/195/edita')]</option><option>//a[2]</option></datalist></td><td>31,13</td>
 </tr>
-<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/proyectosfinancieros/167')])[4]</option><option>//a[5]</option></datalist></td><td>35,13</td>
+<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='proyectofinanciero_financiador_ids_chosen']/ul/li/a</option><option>//div/div/div/ul/li/a</option></datalist></td><td>5,6</td>
 </tr>
-<tr><td>assertConfirmation</td><td>¿Está seguro(a)?<datalist><option>¿Está seguro(a)?</option></datalist></td><td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Compromisos Institucionales<datalist><option>link=Compromisos Institucionales</option></datalist></td>
-	<td></td>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_167']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>66,7</td>
 </tr>
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Nuevo<datalist><option>link=Nuevo</option></datalist></td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=proyectofinanciero_nombre<datalist><option>id=proyectofinanciero_nombre</option></datalist></td>
-	<td>Novedades</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>name=commit<datalist><option>name=commit</option></datalist></td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=proyectofinanciero_referencia<datalist><option>id=proyectofinanciero_referencia</option></datalist></td>
-	<td>zzz</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=proyectofinanciero_referenciacinep<datalist><option>id=proyectofinanciero_referenciacinep</option></datalist></td>
-	<td>sss</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>name=commit<datalist><option>name=commit</option></datalist></td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertConfirmation</td>
-	<td>¿Está seguro(a)?<datalist><option>¿Está seguro(a)?</option></datalist></td>
-	<td></td>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/proyectosfinancieros/167')])[4]</option><option>//a[5]</option></datalist></td><td>35,13</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -1664,17 +1645,31 @@
 </tr>
 <tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>aab@aaa.org</td>
 </tr>
-<tr><td>clickAt</td><td>//div[@id='usuario_sip_grupo_ids_chosen']/ul/li/input<datalist><option>//input[@value='Selecciones algunas opciones']</option><option>//div[@id='usuario_sip_grupo_ids_chosen']/ul/li/input</option><option>//li/input</option></datalist></td><td>17,12</td>
+<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>aab@aaa.org</td>
 </tr>
-<tr><td>clickAt</td><td>//div[@id='usuario_sip_grupo_ids_chosen']/div/ul/li<datalist><option>//div[@id='usuario_sip_grupo_ids_chosen']/div/ul/li</option><option>//div[11]/div/div/ul/li</option></datalist></td><td>88,12</td>
+<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>aab@aaa.org</td>
 </tr>
-<tr><td>clickAt</td><td>//div[@id='usuario_sip_grupo_ids_chosen']/div/ul/li<datalist><option>//div[@id='usuario_sip_grupo_ids_chosen']/div/ul/li</option><option>//div[11]/div/div/ul/li</option></datalist></td><td>88,12</td>
+<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>aab@aaa.org</td>
+</tr>
+<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>aab@aaa.org</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>addSelection</td><td>id=usuario_sip_grupo_ids<datalist><option>id=usuario_sip_grupo_ids</option><option>css=#usuario_sip_grupo_ids</option><option>//select[@id='usuario_sip_grupo_ids']</option><option>//form[@id='new_usuario']/div[11]/select</option><option>//div[11]/select</option></datalist></td><td>label=Archivo y Correspondencia</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="112"]<datalist><option>css=option[value="112"]</option><option>//option[@value='112']</option><option>//select[@id='usuario_sip_grupo_ids']/option</option><option>//div[11]/select/option</option></datalist></td><td>134,13</td>
 </tr>
 <tr><td>clickAt</td><td>id=usuario_encrypted_password<datalist><option>id=usuario_encrypted_password</option><option>name=usuario[encrypted_password]</option><option>//input[@id='usuario_encrypted_password']</option><option>//form[@id='new_usuario']/div[15]/input</option><option>//div[15]/input</option></datalist></td><td>45,23</td>
 </tr>
 <tr><td>type</td><td>id=usuario_encrypted_password<datalist><option>id=usuario_encrypted_password</option><option>name=usuario[encrypted_password]</option><option>//input[@id='usuario_encrypted_password']</option><option>//form[@id='new_usuario']/div[15]/input</option><option>//div[15]/input</option></datalist></td><td>aaaa</td>
 </tr>
 <tr><td>clickAt</td><td>id=usuario_no_modificar_ldap<datalist><option>id=usuario_no_modificar_ldap</option><option>//input[@id='usuario_no_modificar_ldap']</option><option>//form[@id='new_usuario']/div[16]/label/input</option><option>//label/input</option></datalist></td><td>565,6</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>//input[@name='commit']</option><option>//form[@id='new_usuario']/div[21]/input</option><option>//div[21]/input</option></datalist></td><td>34,19</td>
+</tr>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/usuarios/1143/edita')]</option><option>//a[2]</option></datalist></td><td>27,22</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='usuario_sip_grupo_ids_chosen']/ul/li/a</option><option>//div[11]/div/ul/li/a</option></datalist></td><td>5,9</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>//input[@name='commit']</option><option>//form[@id='new_usuario']/div[21]/input</option><option>//div[21]/input</option></datalist></td><td>34,19</td>
 </tr>
@@ -1685,15 +1680,73 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">prueebas-suit</td></tr>
+<tr><td rowspan="1" colspan="3">usuario-administrador-administrar actividades</td></tr>
 </thead>
 <tbody>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">Untitled Test Case</td></tr>
-</thead>
-<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/usuarios<datalist><option>http://crecer.cinep.org.co:4000/usuarios</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Salir cor1440<datalist><option>link=Salir cor1440</option><option>//a[contains(text(),'Salir cor1440')]</option><option>//a[contains(@href, '/sign_out')]</option><option>//ul[2]/li[3]/a</option></datalist></td><td>67,22</td>
+</tr>
+<tr><td>clickAt</td><td>link=Iniciar Sesión<datalist><option>link=Iniciar Sesión</option><option>//a[contains(text(),'Iniciar Sesión')]</option><option>//a[contains(@href, '/usuarios/sign_in')]</option><option>//li[2]/a</option></datalist></td><td>56,22</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div/div/input</option><option>//div/input</option></datalist></td><td>54,7</td>
+</tr>
+<tr><td>type</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div/div/input</option><option>//div/input</option></datalist></td><td>aad</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_password<datalist><option>id=usuario_password</option><option>name=usuario[password]</option><option>css=#usuario_password</option><option>//input[@id='usuario_password']</option><option>//form[@id='new_usuario']/div/div[2]/input</option><option>//div/div[2]/input</option></datalist></td><td>28,20</td>
+</tr>
+<tr><td>type</td><td>id=usuario_password<datalist><option>id=usuario_password</option><option>name=usuario[password]</option><option>css=#usuario_password</option><option>//input[@id='usuario_password']</option><option>//form[@id='new_usuario']/div/div[2]/input</option><option>//div/div[2]/input</option></datalist></td><td>aad</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div/div/input</option><option>//div/input</option></datalist></td><td>54,16</td>
+</tr>
+<tr><td>type</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div/div/input</option><option>//div/input</option></datalist></td><td>aam</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_password<datalist><option>id=usuario_password</option><option>name=usuario[password]</option><option>css=#usuario_password</option><option>//input[@id='usuario_password']</option><option>//form[@id='new_usuario']/div/div[2]/input</option><option>//div/div[2]/input</option></datalist></td><td>31,19</td>
+</tr>
+<tr><td>type</td><td>id=usuario_password<datalist><option>id=usuario_password</option><option>name=usuario[password]</option><option>css=#usuario_password</option><option>//input[@id='usuario_password']</option><option>//form[@id='new_usuario']/div/div[2]/input</option><option>//div/div[2]/input</option></datalist></td><td>aam</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_usuario']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>37,15</td>
+</tr>
+<tr><td>clickAt</td><td>css=b.caret<datalist><option>css=b.caret</option><option>//b</option></datalist></td><td>2,1</td>
+</tr>
+<tr><td>clickAt</td><td>link=Listado<datalist><option>link=Listado</option><option>css=ul.dropdown-menu &gt; li &gt; a</option><option>//a[contains(text(),'Listado')]</option><option>//a[contains(@href, '/actividades')]</option><option>//li/ul/li/a</option></datalist></td><td>52,13</td>
+</tr>
+<tr><td>clickAt</td><td>link=478<datalist><option>link=478</option><option>css=#index_tabla &gt; tr &gt; td &gt; a</option><option>//a[contains(text(),'478')]</option><option>//tbody[@id='index_tabla']/tr/td/a</option><option>//a[contains(@href, '/actividades/478')]</option><option>//form/table/tbody/tr/td/a</option></datalist></td><td>16,8</td>
+</tr>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/actividades/478/edita')]</option><option>//a[2]</option></datalist></td><td>31,22</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_actividad_478']/div/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>94,21</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.btn<datalist><option>link=Regresar</option><option>css=a.btn</option><option>//a[contains(text(),'Regresar')]</option><option>xpath=(//a[contains(@href, '/actividades')])[3]</option><option>//div[3]/a</option></datalist></td><td>55,10</td>
+</tr>
+<tr><td>clickAt</td><td>link=464<datalist><option>link=464</option><option>//a[contains(text(),'464')]</option><option>//tbody[@id='index_tabla']/tr[6]/td/a</option><option>//a[contains(@href, '/actividades/464')]</option><option>//tr[6]/td/a</option></datalist></td><td>13,13</td>
+</tr>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/actividades/464/edita')]</option><option>//a[2]</option></datalist></td><td>35,16</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_actividad_464']/div/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>112,14</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.btn<datalist><option>link=Regresar</option><option>css=a.btn</option><option>//a[contains(text(),'Regresar')]</option><option>xpath=(//a[contains(@href, '/actividades')])[3]</option><option>//div[3]/a</option></datalist></td><td>49,14</td>
+</tr>
+<tr><td>clickAt</td><td>link=425<datalist><option>link=425</option><option>//a[contains(text(),'425')]</option><option>//tbody[@id='index_tabla']/tr[19]/td/a</option><option>//a[contains(@href, '/actividades/425')]</option><option>//tr[19]/td/a</option></datalist></td><td>10,10</td>
+</tr>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/actividades/425/edita')]</option><option>//a[2]</option></datalist></td><td>37,14</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_actividad_425']/div/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>93,20</td>
+</tr>
+<tr><td>clickAt</td><td>link=Salir aam<datalist><option>link=Salir aam</option><option>//a[contains(text(),'Salir aam')]</option><option>//a[contains(@href, '/sign_out')]</option><option>//ul[2]/li[3]/a</option></datalist></td><td>32,21</td>
+</tr>
+<tr><td>clickAt</td><td>link=Iniciar Sesión<datalist><option>link=Iniciar Sesión</option><option>//a[contains(text(),'Iniciar Sesión')]</option><option>//a[contains(@href, '/usuarios/sign_in')]</option><option>//li[2]/a</option></datalist></td><td>64,20</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div/div/input</option><option>//div/input</option></datalist></td><td>404,10</td>
+</tr>
+<tr><td>type</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div/div/input</option><option>//div/input</option></datalist></td><td>cor1440</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_password<datalist><option>id=usuario_password</option><option>name=usuario[password]</option><option>css=#usuario_password</option><option>//input[@id='usuario_password']</option><option>//form[@id='new_usuario']/div/div[2]/input</option><option>//div/div[2]/input</option></datalist></td><td>106,11</td>
+</tr>
+<tr><td>type</td><td>id=usuario_password<datalist><option>id=usuario_password</option><option>name=usuario[password]</option><option>css=#usuario_password</option><option>//input[@id='usuario_password']</option><option>//form[@id='new_usuario']/div/div[2]/input</option><option>//div/div[2]/input</option></datalist></td><td>cor1440</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_usuario']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>35,20</td>
+</tr>
 </tbody></table>
 </body>
 </html>

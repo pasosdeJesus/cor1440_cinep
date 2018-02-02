@@ -43,6 +43,11 @@
         <% if can? :edit, ::Tasacambio%>
           <%= menu_item "Tasas de cambio", main_app.tasascambio_path %>
         <% end %>
+        <% if can? :edit, Cor1440Gen::Proyectofinanciero %>
+          <%= menu_item "Medición de Indicadores", 
+            main_app.mindicadorespf_path %>
+        <% end %>
+
       <% end %>
  
     <% end %>

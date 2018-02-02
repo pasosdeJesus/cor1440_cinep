@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 1e780867a6030920d2fceff8a6156b4c7fd80f9c
+  revision: f46a13478e47eab4e65413138683efcd8728b31f
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -143,6 +143,7 @@ GEM
     bootstrap-datepicker-rails (1.7.1.1)
       railties (>= 3.0)
     builder (3.2.3)
+    byebug (10.0.0)
     camertron-eprun (1.1.1)
     cancancan (2.1.2)
     capybara (2.17.0)
@@ -408,6 +409,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
+  byebug
   cancancan
   capybara
   chosen-rails
@@ -430,7 +432,7 @@ DEPENDENCIES
   minitest-reporters
   odf-report!
   paperclip
-  pg
+  pg (~> 0.21)
   poltergeist
   prawn
   prawn-table

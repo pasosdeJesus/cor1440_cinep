@@ -77,6 +77,13 @@ es:
       "cor1440_gen/actividadarea":
         Actividadarea: Componente Plan Trienal 
         Actividadareas: Componentes Plan Trienal 
+      "cor1440_gen/mindicadorpf":
+        Mindicadorpf: Medición de un indicador
+        Mindicadorespf: Mediciones de indicadores
+        cor1440_gen_proyectofinanciero: 'Compromiso institucional'
+        cor1440_gen_indicadorpf: 'Indicador'
+        frecuenciaanual: 'Frecuencia de medición anual'
+        pmindicador: 'Puntos de medición'
       "cor1440_gen/proyecto":
         Proyecto: Programa / Servicio / Producto
         Proyectos: Programas / Servicios / Productos

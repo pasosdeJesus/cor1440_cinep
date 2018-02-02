@@ -51,6 +51,72 @@ module Cor1440Gen
       end
     end
 
+    # Mide indicador
+    # Calcula medición de un indicador
+    def mideindicador
+      prob = ''
+      if params[:finicio_localizada] && 
+        params[:ffin_localizada] && params[:indicadorpf_id] &&
+        params[:hmindicadorpf_id] 
+        fini = Sip::FormatoFechaHelper.fecha_local_estandar(
+          params[:finicio_localizada])
+        fini = Date.strptime(fini, '%Y-%m-%d')
+        ffin = Sip::FormatoFechaHelper.fecha_local_estandar(
+          params[:ffin_localizada])
+        ffin = Date.strptime(ffin, '%Y-%m-%d')
+        indid = params[:indicadorpf_id].to_i
+        ind = Cor1440Gen::Indicadorpf.find(indid)
+        tipoind = ind.tipoindicador
+        hmi = params[:hmindicadorpf_id].to_i
+        if fini && ffin && ind && tipoind
+          resind = 0.0
+          d1 = 0.0
+          d2 = 0.0
+          d3 = 0.0
+          ids = []
+          case tipoind.nombre
+          when 'IG-FG-01'
+              base = "SELECT COUNT(*) FROM cor1440_gen_proyectofinanciero " +
+                "WHERE fechaformulacion>='#{fini}' AND "+
+                "fechaformulacion<='#{ffin}'"
+              cd1 = base + " AND estado IN ('C', 'J', 'M')"
+              #byebug
+              d1 = ActiveRecord::Base.connection.execute(cd1).first.count
+              cd2 = base 
+              d2 = ActiveRecord::Base.connection.execute(cd2).first.count
+              resind = d1/d2
+          when 'IG-FG-02'
+
+          end
+          respond_to do |format|
+            format.json { 
+              render json: {
+                hmindicadorpf_id: hmi, 
+                dmed1: d1, 
+                dmed2: d2, 
+                dmed3: d3, 
+                rind: resind }, 
+                status: :ok
+              return
+            }
+          end
+        else
+          prob = 'Falla al convertir parametros'
+        end
+      else
+        prob = 'Indispensables parametros fechaini_localizada ' +
+          ', fechacierre_localizada e indicadorpf_id'
+      end
+      respond_to do |format|
+        format.html { render action: "error" }
+        format.json { render json: prob, 
+                      status: :unprocessable_entity 
+        }
+      end
+
+      
+    end
+ 
     def cadena_muchos(r, campo, sep = ', ', camponom='nombre')
         if !r.send(campo)
           return ""

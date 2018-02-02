@@ -181,8 +181,9 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Actividad
           # Oficina Gerencia de Proyectos
-          can :manage, Cor1440Gen::Proyectofinanciero
           can :manage, Cor1440Gen::Financiador
+          can :manage, Cor1440Gen::Mindicadorpf
+          can :manage, Cor1440Gen::Proyectofinanciero
         end
         if lgrupos.include?(GRUPO_GESTIONDECALIDAD)
           can :manage, Heb412Gen::Doc
@@ -209,6 +210,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, Cor1440Gen::Actividad
         can :manage, Cor1440Gen::Indicadorpf
         can :manage, Cor1440Gen::Informe
+        can :manage, Cor1440Gen::Mindicadorpf
         can :manage, Cor1440Gen::Proyectofinanciero
         can :manage, Cor1440Gen::Tipoindicador
         can :manage, Heb412Gen::Doc

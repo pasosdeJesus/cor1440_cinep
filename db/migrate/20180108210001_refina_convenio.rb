@@ -1,6 +1,7 @@
 class RefinaConvenio < ActiveRecord::Migration[5.1]
   def up
     execute <<-SQL
+      UPDATE convenio SET tipoconvenio_id=13 where tipoconvenio_id IN ('14', '21', '23');
       DELETE FROM tipoconvenio WHERE id IN (28, 27, 26, 25, 24, 23, 21, 14, 10, 9, 6, 2);
     SQL
   end
