@@ -240,7 +240,8 @@ CREATE TABLE actor (
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    nivelrelacion_id integer
 );
 
 
@@ -1928,6 +1929,40 @@ CREATE SEQUENCE maternidad_seq
 
 
 --
+-- Name: nivelrelacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE nivelrelacion (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nivelrelacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE nivelrelacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nivelrelacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE nivelrelacion_id_seq OWNED BY nivelrelacion.id;
+
+
+--
 -- Name: nucleoconflicto; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3597,6 +3632,13 @@ ALTER TABLE ONLY informenarrativo ALTER COLUMN id SET DEFAULT nextval('informena
 
 
 --
+-- Name: nivelrelacion id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY nivelrelacion ALTER COLUMN id SET DEFAULT nextval('nivelrelacion_id_seq'::regclass);
+
+
+--
 -- Name: nucleoconflicto id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4029,6 +4071,14 @@ ALTER TABLE ONLY informefinanciero
 
 ALTER TABLE ONLY informenarrativo
     ADD CONSTRAINT informenarrativo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nivelrelacion nivelrelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY nivelrelacion
+    ADD CONSTRAINT nivelrelacion_pkey PRIMARY KEY (id);
 
 
 --
@@ -4624,6 +4674,14 @@ ALTER TABLE ONLY contextoinv
 
 ALTER TABLE ONLY cor1440_gen_mindicadorpf
     ADD CONSTRAINT fk_rails_0fbac6136b FOREIGN KEY (indicadorpf_id) REFERENCES cor1440_gen_indicadorpf(id);
+
+
+--
+-- Name: actor fk_rails_1a67af6964; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor
+    ADD CONSTRAINT fk_rails_1a67af6964 FOREIGN KEY (nivelrelacion_id) REFERENCES nivelrelacion(id);
 
 
 --
@@ -5681,6 +5739,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180108210001'),
 ('20180118104000'),
 ('20180119212433'),
-('20180129024117');
+('20180129024117'),
+('20180203032539'),
+('20180203035955'),
+('20180203102441');
 
 

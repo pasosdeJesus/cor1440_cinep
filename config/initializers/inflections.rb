@@ -3,6 +3,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'convenio', 'convenios'
   inflect.irregular 'informeauditoria', 'informeauditorias'
   inflect.irregular 'mindicadorpf', 'mindicadorespf'
+  inflect.irregular 'nivelrelacion', 'nivelesrelacion'
   inflect.irregular 'nucleoconflicto', 'nucleosconflicto'
   inflect.irregular 'redactor', 'redesactor'
   inflect.irregular 'regiongrupo', 'regionesgrupo'

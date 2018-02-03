@@ -171,6 +171,9 @@ es:
         fecha_localizada: Fecha
         indicadorpf: Indicador
         indicadorpf_id: Indicador
+      "nivelrelacion":
+        Nivelrelacion: Nivel de relacion
+        Nivelesrelacion: Niveles de relacion
       "nucleoconflicto":
         Nucleoconflict: Núcleo de conflicto
         Nucleosconflicto: Núcleos de conflicto

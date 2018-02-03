@@ -5,6 +5,8 @@ class Actor < ActiveRecord::Base
 
   belongs_to :pais, class_name: 'Sip::Pais',
             foreign_key: "pais_id", validate: true
+  belongs_to :nivelrelacion, class_name: "::Nivelrelacion",
+    foreign_key: "nivelrelacion_id", validate: true
 
   has_many :actor_sectoractor, class_name: '::ActorSectoractor',
     foreign_key: "actor_id", validate: true, dependent: :delete_all
