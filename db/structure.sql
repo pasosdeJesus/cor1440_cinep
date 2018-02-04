@@ -27,7 +27,7 @@ SET search_path = public, pg_catalog;
 -- Name: es_co_utf_8; Type: COLLATION; Schema: public; Owner: -
 --
 
-CREATE COLLATION es_co_utf_8 (lc_collate = 'es_CO.UTF-8', lc_ctype = 'es_CO.UTF-8');
+CREATE COLLATION es_co_utf_8 (provider = libc, locale = 'es_CO.UTF-8');
 
 
 --
@@ -240,7 +240,8 @@ CREATE TABLE actor (
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    nivelrelacion_id integer
 );
 
 
@@ -1059,6 +1060,40 @@ ALTER SEQUENCE cor1440_gen_informe_id_seq OWNED BY cor1440_gen_informe.id;
 
 
 --
+-- Name: cor1440_gen_mindicadorpf; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cor1440_gen_mindicadorpf (
+    id bigint NOT NULL,
+    proyectofinanciero_id integer,
+    indicadorpf_id integer,
+    formulacion character varying(512),
+    frecuenciaanual integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: cor1440_gen_mindicadorpf_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cor1440_gen_mindicadorpf_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_mindicadorpf_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cor1440_gen_mindicadorpf_id_seq OWNED BY cor1440_gen_mindicadorpf.id;
+
+
+--
 -- Name: cor1440_gen_objetivopf; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1087,6 +1122,50 @@ CREATE SEQUENCE cor1440_gen_objetivopf_id_seq
 --
 
 ALTER SEQUENCE cor1440_gen_objetivopf_id_seq OWNED BY cor1440_gen_objetivopf.id;
+
+
+--
+-- Name: cor1440_gen_pmindicadorpf; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cor1440_gen_pmindicadorpf (
+    id bigint NOT NULL,
+    mindicadorpf_id integer,
+    finicio date,
+    ffin date,
+    restiempo character varying(128),
+    dmed1 double precision,
+    dmed2 double precision,
+    dmed3 double precision,
+    datosmedicion json,
+    rind double precision,
+    meta double precision,
+    resindicador json,
+    porcump double precision,
+    analisis character varying(5000),
+    acciones character varying(5000),
+    responsables character varying(5000),
+    plazo character varying(5000)
+);
+
+
+--
+-- Name: cor1440_gen_pmindicadorpf_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cor1440_gen_pmindicadorpf_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_pmindicadorpf_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cor1440_gen_pmindicadorpf_id_seq OWNED BY cor1440_gen_pmindicadorpf.id;
 
 
 --
@@ -1150,7 +1229,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    monto numeric(20,2) DEFAULT 0.0,
+    monto numeric DEFAULT 0.0,
     referencia character varying(1000),
     referenciacinep character varying(1000),
     fuentefinanciador character varying(1000),
@@ -1167,7 +1246,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric(20,2) DEFAULT 0.0,
+    presupuestototal numeric DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -1290,12 +1369,12 @@ ALTER SEQUENCE cor1440_gen_resultadopf_id_seq OWNED BY cor1440_gen_resultadopf.i
 CREATE TABLE cor1440_gen_tipoindicador (
     id bigint NOT NULL,
     nombre character varying(32),
-    medircon integer,
     espcampos character varying(1000),
     espvaloresomision character varying(1000),
     espvalidaciones character varying(1000),
     esptipometa character varying(32),
-    espfuncionmedir character varying(1000)
+    espfuncionmedir character varying(1000),
+    medircon integer
 );
 
 
@@ -1850,6 +1929,40 @@ CREATE SEQUENCE maternidad_seq
 
 
 --
+-- Name: nivelrelacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE nivelrelacion (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: nivelrelacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE nivelrelacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: nivelrelacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE nivelrelacion_id_seq OWNED BY nivelrelacion.id;
+
+
+--
 -- Name: nucleoconflicto; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2229,7 +2342,6 @@ CREATE TABLE sal7711_gen_articulo (
     pagina character varying(20),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    url character varying(5000),
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
@@ -2237,9 +2349,10 @@ CREATE TABLE sal7711_gen_articulo (
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
-    pais_id integer,
     titulo character varying(1024),
-    observaciones character varying(5000)
+    observaciones character varying(5000),
+    url character varying(5000),
+    pais_id integer
 );
 
 
@@ -3169,7 +3282,7 @@ CREATE VIEW v_solicitud_informes1 AS
     informenarrativo.fechaplaneada,
     informenarrativo.fechareal,
     informenarrativo.devoluciones,
-    ('INFOMRE NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
+    ('INFORME NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
     informenarrativo.seguimiento
    FROM informenarrativo
 UNION
@@ -3224,14 +3337,14 @@ CREATE VIEW v_solicitud_informes AS
     s.observaciones,
     s.seguimiento,
         CASE
-            WHEN (s.fechareal <= s.fechaplaneada) THEN 'SI'::text
-            WHEN (s.fechareal > s.fechaplaneada) THEN 'NO'::text
-            WHEN ((s.fechareal IS NULL) AND (('now'::text)::date > s.fechaplaneada)) THEN 'NO'::text
+            WHEN (s.fechareal <= (s.fechaplaneada + 7)) THEN 'SI'::text
+            WHEN (s.fechareal > (s.fechaplaneada + 7)) THEN 'NO'::text
+            WHEN ((s.fechareal IS NULL) AND (('now'::text)::date > (s.fechaplaneada + 7))) THEN 'NO'::text
             ELSE ''::text
         END AS a_tiempo
    FROM (cor1440_gen_proyectofinanciero p
      JOIN v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[122, 123, 125, 116]))
+  WHERE (p.id = ANY (ARRAY[136, 122, 123, 125, 116]))
   ORDER BY s.fechaplaneada;
 
 
@@ -3386,10 +3499,24 @@ ALTER TABLE ONLY cor1440_gen_informe ALTER COLUMN id SET DEFAULT nextval('cor144
 
 
 --
+-- Name: cor1440_gen_mindicadorpf id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_mindicadorpf ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_mindicadorpf_id_seq'::regclass);
+
+
+--
 -- Name: cor1440_gen_objetivopf id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_objetivopf ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_objetivopf_id_seq'::regclass);
+
+
+--
+-- Name: cor1440_gen_pmindicadorpf id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_pmindicadorpf ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_pmindicadorpf_id_seq'::regclass);
 
 
 --
@@ -3502,6 +3629,13 @@ ALTER TABLE ONLY informefinanciero ALTER COLUMN id SET DEFAULT nextval('informef
 --
 
 ALTER TABLE ONLY informenarrativo ALTER COLUMN id SET DEFAULT nextval('informenarrativo_id_seq'::regclass);
+
+
+--
+-- Name: nivelrelacion id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY nivelrelacion ALTER COLUMN id SET DEFAULT nextval('nivelrelacion_id_seq'::regclass);
 
 
 --
@@ -3788,11 +3922,27 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 
 --
+-- Name: cor1440_gen_mindicadorpf cor1440_gen_mindicadorpf_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_mindicadorpf
+    ADD CONSTRAINT cor1440_gen_mindicadorpf_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: cor1440_gen_objetivopf cor1440_gen_objetivopf_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cor1440_gen_objetivopf
     ADD CONSTRAINT cor1440_gen_objetivopf_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cor1440_gen_pmindicadorpf cor1440_gen_pmindicadorpf_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_pmindicadorpf
+    ADD CONSTRAINT cor1440_gen_pmindicadorpf_pkey PRIMARY KEY (id);
 
 
 --
@@ -3921,6 +4071,14 @@ ALTER TABLE ONLY informefinanciero
 
 ALTER TABLE ONLY informenarrativo
     ADD CONSTRAINT informenarrativo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: nivelrelacion nivelrelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY nivelrelacion
+    ADD CONSTRAINT nivelrelacion_pkey PRIMARY KEY (id);
 
 
 --
@@ -4455,6 +4613,14 @@ ALTER TABLE ONLY oficina_proyectofinanciero
 
 
 --
+-- Name: cor1440_gen_mindicadorpf fk_rails_06564b910d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_mindicadorpf
+    ADD CONSTRAINT fk_rails_06564b910d FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
 -- Name: cor1440_gen_resultadopf fk_rails_06ba24bd54; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4500,6 +4666,22 @@ ALTER TABLE ONLY anexo_proyectofinanciero
 
 ALTER TABLE ONLY contextoinv
     ADD CONSTRAINT fk_rails_0fa44160c3 FOREIGN KEY (usuario_id) REFERENCES usuario(id);
+
+
+--
+-- Name: cor1440_gen_mindicadorpf fk_rails_0fbac6136b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_mindicadorpf
+    ADD CONSTRAINT fk_rails_0fbac6136b FOREIGN KEY (indicadorpf_id) REFERENCES cor1440_gen_indicadorpf(id);
+
+
+--
+-- Name: actor fk_rails_1a67af6964; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor
+    ADD CONSTRAINT fk_rails_1a67af6964 FOREIGN KEY (nivelrelacion_id) REFERENCES nivelrelacion(id);
 
 
 --
@@ -4796,6 +4978,14 @@ ALTER TABLE ONLY sal7711_gen_articulo
 
 ALTER TABLE ONLY informeauditoria
     ADD CONSTRAINT fk_rails_67f52ffcf6 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: cor1440_gen_pmindicadorpf fk_rails_701d924c54; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_pmindicadorpf
+    ADD CONSTRAINT fk_rails_701d924c54 FOREIGN KEY (mindicadorpf_id) REFERENCES cor1440_gen_mindicadorpf(id);
 
 
 --
@@ -5533,6 +5723,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026130000'),
 ('20171026144919'),
 ('20171026172501'),
+('20171114185712'),
 ('20171123212504'),
 ('20171128234148'),
 ('20171130125044'),
@@ -5545,6 +5736,12 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171217135318'),
 ('20171217140031'),
 ('20171219122432'),
-('20180108210001');
+('20180108210001'),
+('20180118104000'),
+('20180119212433'),
+('20180129024117'),
+('20180203032539'),
+('20180203035955'),
+('20180203102441');
 
 

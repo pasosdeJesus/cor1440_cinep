@@ -67,6 +67,10 @@ class EfectosController < Sip::ModelosController
   def edit
     authorize! :edit, ::Efecto
     @registro = ::Efecto.find(params[:id])
+    if params['indicadorpf_id'] && params['indicadorpf_id'].to_i > 0
+      @registro.indicadorpf_id = params['indicadorpf_id'].to_i
+      @registro.valorcampotind = []
+    end
     asegura_camposdinamicos(@registro)
     render layout: 'application'
   end

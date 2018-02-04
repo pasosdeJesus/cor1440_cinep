@@ -16,12 +16,19 @@ module Admin
     def atributos_index
       [
         "id", 
-        "nombre"
+        "nombre",
+        "nivelrelacion_id",
         ] +
         [ :sectoractor_ids =>  [] ] +
         [ :regiongrupo_ids =>  [] ] +
         [ :grupo_ids =>  [] ] +
         [ "personacontacto",
+        "cargo",
+        "correo",
+        "telefono",
+        "fax",
+        "celular",
+        "direccion",
         "observaciones", 
         "fechacreacion_localizada", 
         "fechadeshabilitacion_localizada"
@@ -44,7 +51,6 @@ module Admin
         "fax",
         "celular",
         "direccion",
-        "ciudad",
         "observaciones", 
         "fechacreacion_localizada", 
         "fechadeshabilitacion_localizada"
