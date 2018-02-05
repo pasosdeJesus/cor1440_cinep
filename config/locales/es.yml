@@ -135,6 +135,7 @@ es:
         informenarrativo: "Informes narrativos"
         informesauditoria: "Informes auditoría/Verificación de gastos/Controles del financiador"
         mesformulacion: "Mes de formulación"
+        mesformulacion_localizado: "Mes form."
         monto: "Aporte financiador en formulación"
         monto_localizado: "Aporte financiador en formulación"
         montopesos: "Aporte financiador en pesos durate formulación"
