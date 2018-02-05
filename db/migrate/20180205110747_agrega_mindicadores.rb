@@ -10,14 +10,12 @@ class AgregaMindicadores < ActiveRecord::Migration[5.1]
         frecuenciaanual, created_at, updated_at, descd1, descd2, meta)
         VALUES (1, 19, 23, 
         '(Numero de proyectos aprobados / Numero de convocatorias en la que participamos)*100', 
-        '2', '2018-02-05', '2018-02-05', 'Formulados', 'Aprobados', '60');
+        '2', '2018-02-05', '2018-02-05', 'Aprobados', 'Formulados', '60');
 
       INSERT INTO cor1440_gen_mindicadorpf (id, proyectofinanciero_id, 
         indicadorpf_id, formulacion, frecuenciaanual, 
-        created_at, updated_at, descd1, meta)
-        VALUES (2, 19, 24, 
-        'No. de convocatorios en las que participamos',
-        '1', '2018-02-05', '2018-02-05', 
+        created_at, updated_at, meta)
+        VALUES (2, 19, 24, '1', '2018-02-05', '2018-02-05', 
         'Convocatorias en las que participamos', '30');
 
       INSERT INTO cor1440_gen_mindicadorpf (id, proyectofinanciero_id, 
@@ -41,19 +39,19 @@ class AgregaMindicadores < ActiveRecord::Migration[5.1]
         indicadorpf_id, formulacion, frecuenciaanual, 
         created_at, updated_at, descd1, descd2, meta)
         VALUES (5, 19, 27, 
-        '(No. de informes narrativos devueltos por financiadores / No. de informes enviados a financiadores)*100',
+        '(No. de informes narrativos sin devoluciones / No. de informes narrativos enviados a financiadores)*100',
         '2', '2018-02-05', '2018-02-05', 
-        'No. de informes narrativos devueltos por financiadores', 
-        'No. de informes enviados a financiadores', '2');
+        'No. de informes narrativos sin devoluciones', 
+        'No. de informes narrativos enviados a financiadores', '98');
 
       INSERT INTO cor1440_gen_mindicadorpf (id, proyectofinanciero_id, 
         indicadorpf_id, formulacion, frecuenciaanual, 
         created_at, updated_at, descd1, descd2, meta)
         VALUES (6, 19, 28, 
-        '(No. de informes financieros devueltos por financiadores / No. de informes enviados a financiadores)*100',
+        '(No. de informes financieros sin devoluciones / No. de informes financieros enviados a financiadores)*100',
         '2', '2018-02-05', '2018-02-05', 
-        'No. de informes financieros devueltos por financiadores', 
-        'No. de informes enviados a financiadores', '2');
+        'No. de informes financieros sin devoluciones', 
+        'No. de informes financieros enviados a financiadores', '98');
     SQL
   end
   def down

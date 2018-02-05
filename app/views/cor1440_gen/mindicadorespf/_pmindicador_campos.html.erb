@@ -27,12 +27,16 @@
         label: false %>
     </td>
   <% end %>
-  <% if @descd2 != '' %> 
+  <% if @descd3 != '' %> 
     <td>
-      <%= f.input :rind,
+      <%= f.input :dmed2,
         label: false %>
     </td>
   <% end %>
+  <td>
+    <%= f.input :rind,
+      label: false %>
+  </td>
   <td>
     <%= f.input :meta,
       label: false %>

@@ -78,16 +78,59 @@ module Cor1440Gen
           eap = eap.join(', ')
           case tipoind.nombre
           when 'IG-FG-01'
-              base = "SELECT COUNT(*) FROM cor1440_gen_proyectofinanciero " +
-                "WHERE fechaformulacion>='#{fini}' AND "+
-                "fechaformulacion<='#{ffin}'"
-              cd1 = base + " AND estado IN (#{eap})"
-              byebug
-              d1 = ActiveRecord::Base.connection.execute(cd1).first['count']
-              cd2 = base 
-              d2 = ActiveRecord::Base.connection.execute(cd2).first['count']
-              resind = 100*d1.to_f/d2.to_f
+            base = "SELECT COUNT(*) FROM cor1440_gen_proyectofinanciero " +
+              "WHERE fechaformulacion>='#{fini}' AND "+
+              "fechaformulacion<='#{ffin}'"
+            cd1 = base + " AND estado IN (#{eap})"
+            d1 = ActiveRecord::Base.connection.execute(cd1).first['count']
+            cd2 = base 
+            d2 = ActiveRecord::Base.connection.execute(cd2).first['count']
+            resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil;
           when 'IG-FG-02'
+            base = "SELECT COUNT(*) FROM cor1440_gen_proyectofinanciero " +
+              "WHERE fechaformulacion>='#{fini}' AND "+
+              "fechaformulacion<='#{ffin}'"
+            cd1 = base
+            resind = ActiveRecord::Base.connection.execute(cd1).first['count']
+          when 'IG-FG-03'
+
+          when 'IG-SC-01'
+            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
+               AND fechareal<=(fechaplaneada+7) "
+            d1 = ActiveRecord::Base.connection.execute(base).first['count']
+            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
+               AND fechareal<=(fechaplaneada+7) "
+            d1 += ActiveRecord::Base.connection.execute(base).first['count']
+
+            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
+            d2 = ActiveRecord::Base.connection.execute(base).first['count']
+            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
+            d2 += ActiveRecord::Base.connection.execute(base).first['count']
+            resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
+
+          when 'IG-SC-02'
+            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
+               AND devoluciones!='t'"
+            d1 = ActiveRecord::Base.connection.execute(base).first['count']
+            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
+            d2 = ActiveRecord::Base.connection.execute(base).first['count']
+            resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
+
+          when 'IG-SC-03'
+            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
+               AND devoluciones!='t'"
+            d1 = ActiveRecord::Base.connection.execute(base).first['count']
+            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
+            d2 = ActiveRecord::Base.connection.execute(base).first['count']
+            resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
           end
           respond_to do |format|
@@ -285,7 +328,6 @@ module Cor1440Gen
       SQL
       return Heb412Gen::Plantillahcm.find_by_sql(
         'SELECT * FROM v_solicitud_informes')
-      #return @registros.joins('JOIN v_solicitud_informes ON cor1440_gen_proyectofinanciero.id=v_solicitud_informes.compromiso_id').select('v_solicitud_informes.*')
     end
 
     def asigna_celda_y_borde(hoja, fila, col, valor)
@@ -342,7 +384,7 @@ module Cor1440Gen
       # Hoja Resumen
       hoja = libro.worksheets(1)
       fila = 2
-      reg = @registros.where("estado IN ('J', 'E', 'C', 'M')").
+      reg = @registros.where("estado IN ('C', 'E', 'J', 'K', 'M')").
         reorder([:referenciacinep, :id])
       cons = 1
       reg.each do |r|
@@ -496,7 +538,7 @@ module Cor1440Gen
       # Hoja de publicaciones
       hoja = libro.worksheets(7)
       fila = 2
-      reg = @registros.where("estado IN ('J', 'C', 'M')")
+      reg = @registros.where("estado IN ('C', 'J', 'K', 'M')")
       ppf = ::Productopf.where(proyectofinanciero_id: reg.map(&:id)).
         joins(:proyectofinanciero)
      
