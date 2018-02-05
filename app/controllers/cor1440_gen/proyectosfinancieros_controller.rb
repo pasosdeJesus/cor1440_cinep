@@ -74,13 +74,15 @@ module Cor1440Gen
           d2 = 0.0
           d3 = 0.0
           ids = []
+          eap = ApplicationHelper::ESTADOS_APROBADO.map { |l| "'#{l}'" }
+          eap = eap.join(', ')
           case tipoind.nombre
           when 'IG-FG-01'
               base = "SELECT COUNT(*) FROM cor1440_gen_proyectofinanciero " +
                 "WHERE fechaformulacion>='#{fini}' AND "+
                 "fechaformulacion<='#{ffin}'"
-              cd1 = base + " AND estado IN ('C', 'J', 'M')"
-              #byebug
+              cd1 = base + " AND estado IN (#{eap})"
+              byebug
               d1 = ActiveRecord::Base.connection.execute(cd1).first['count']
               cd2 = base 
               d2 = ActiveRecord::Base.connection.execute(cd2).first['count']
@@ -134,7 +136,8 @@ module Cor1440Gen
         "nombre",
       ] +
         [ :financiador_ids =>  [] ] +
-        [ "fechainicio_localizada",
+        [ "mesformulacion_localizado",
+          "fechainicio_localizada",
           "fechacierre_localizada"
       ] +
         [ :grupo_ids =>  [] ] +
