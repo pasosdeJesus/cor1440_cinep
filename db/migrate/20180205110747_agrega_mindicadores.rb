@@ -4,13 +4,13 @@ class AgregaMindicadores < ActiveRecord::Migration[5.1]
     change_column :cor1440_gen_mindicadorpf, :frecuenciaanual, :string, 
       limit: 128
     execute <<-SQL
-      SELECT pg_catalog.setval('cor1440_gen_campotind_id_seq', 1001, false);
+      SELECT pg_catalog.setval('cor1440_gen_mindicadorpf_id_seq', 1001, false);
       INSERT INTO cor1440_gen_mindicadorpf (id, proyectofinanciero_id, 
         indicadorpf_id, formulacion, 
         frecuenciaanual, created_at, updated_at, descd1, descd2, meta)
         VALUES (1, 19, 23, 
         '(Numero de proyectos aprobados / Numero de convocatorias en la que participamos)*100', 
-        2, '2018-02-05', '2018-02-05', 'Formulados', 'Aprobados', '60');
+        '2', '2018-02-05', '2018-02-05', 'Formulados', 'Aprobados', '60');
 
       INSERT INTO cor1440_gen_mindicadorpf (id, proyectofinanciero_id, 
         indicadorpf_id, formulacion, frecuenciaanual, 

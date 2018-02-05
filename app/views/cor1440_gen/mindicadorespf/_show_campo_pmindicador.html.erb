@@ -27,17 +27,17 @@
         <td><%= pm.ffin_localizada %></td>
         <td><%= pm.restiempo %></td>
         <% if @descd1 != '' %>
-          <td><%= pm.dmed1.round(1) %></td>
+          <td><%= pm.dmed1 ? pm.dmed1.round(1) : '' %></td>
         <% end %>
         <% if @descd2 != '' %>
-          <td><%= pm.dmed2.round(1) %></td>
+          <td><%= pm.dmed2 ? pm.dmed2.round(1) : '' %></td>
         <% end %>
         <% if @descd3 != '' %>
-          <td><%= pm.dmed3.round(1) %></td>
+          <td><%= pm.dmed3 ? pm.dmed3.round(1) : '' %></td>
         <% end %>
-        <td><%= pm.rind.round(1) %></td>
+        <td><%= pm.rind ? pm.rind.round(1) : '' %></td>
         <td><%= pm.meta %></td>
-        <td><%= pm.porcump.round(1) %></td>
+        <td><%= pm.porcump ? pm.porcump.round(1) : '' %></td>
       </tr>
     <% end %>
   </table>
