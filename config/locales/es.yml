@@ -84,6 +84,9 @@ es:
         cor1440_gen_indicadorpf: 'Indicador'
         frecuenciaanual: 'Frecuencia de medición anual'
         pmindicador: 'Puntos de medición'
+        descd1: Descripción de dato intermedio 1
+        descd2: Descripción de dato intermedio 2
+        descd3: Descripción de dato intermedio 3
       "cor1440_gen/proyecto":
         Proyecto: Programa / Servicio / Producto
         Proyectos: Programas / Servicios / Productos
@@ -132,6 +135,7 @@ es:
         informenarrativo: "Informes narrativos"
         informesauditoria: "Informes auditoría/Verificación de gastos/Controles del financiador"
         mesformulacion: "Mes de formulación"
+        mesformulacion_localizado: "Mes form."
         monto: "Aporte financiador en formulación"
         monto_localizado: "Aporte financiador en formulación"
         montopesos: "Aporte financiador en pesos durate formulación"
@@ -170,6 +174,8 @@ es:
         anexo_efecto: Anexos / Medios de verificación
         fecha_localizada: Fecha
         indicadorpf: Indicador
+        nivelrelacion: Nivel de relacion
+        nivelrelacion_id: Nivel de relacion
         indicadorpf_id: Indicador
       "nivelrelacion":
         Nivelrelacion: Nivel de relacion

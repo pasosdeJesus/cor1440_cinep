@@ -5,6 +5,7 @@ module Cor1440Gen
     include Sip::Modelo
     include Sip::Localizacion
 
+    campofecha_localizado :fecha
     campofecha_localizado :finicio
     campofecha_localizado :ffin
 

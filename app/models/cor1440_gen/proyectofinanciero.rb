@@ -64,6 +64,11 @@ module Cor1440Gen
       end
     end
 
+    def mesformulacion_localizado
+      fechaformulacion.year.to_s + "-" + fechaformulacion.month.to_s
+    end
+
+
     #has_many :oficina_proyectofinanciero, dependent: :delete_all,
     #  class_name: '::OficinaProyectofinanciero',
     #  foreign_key: 'proyectofinanciero_id'
@@ -245,6 +250,19 @@ module Cor1440Gen
     scope :filtro_estado, lambda { |e|
       where(estado: e)
     }
+
+    #scope :filtro_mesformulacion_localizadoini, lambda { |f|
+    #    byebug
+    #    fi = f+'-01'
+    #    where('fechaformulacion >= ?', fi)
+    #}
+
+
+    #scope :filtro_mesformulacion_localizadofin, lambda { |f|
+    #    byebug
+    #    ff = f+'-28'
+    #    where('fechaformulacion <= ?', ff)
+    #}
 
     def presenta(atr)
       if (atr == 'estado')

@@ -1,11 +1,23 @@
+<% @descd1 = @registro.descd1 ? @registro.descd1 : '' %>
+<% @descd2 = @registro.descd2 ? @registro.descd2 : '' %>
+<% @descd3 = @registro.descd3 ? @registro.descd3 : '' %>
+
 <table border=1 width="100%">
   <thead>
     <tr>
+      <th>Fecha Medición</th>
       <th>Inicio</th>
       <th>Fin</th>
       <th>Tiempo</th>
-      <th>Dato 1</th>
-      <th>Dato 2</th>
+      <% if @descd1 != '' %>
+        <th><%= @descd1 %></th>
+      <% end %>
+      <% if @descd2 != '' %>
+        <th><%= @descd2 %></th>
+      <% end %>
+      <% if @descd3 != '' %>
+        <th><%= @descd3 %></th>
+      <% end %>
       <th>Resultado</th>
       <th>Meta</th>
       <th>% Cumplimiento</th>

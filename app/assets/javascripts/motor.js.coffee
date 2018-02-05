@@ -62,6 +62,7 @@
 
 @cor1440_gen_llena_medicion = (res) ->
   hid = res.hmindicadorpf_id
+  $('[id$=_' + hid + '_fecha_localizada]').val(res.fechaloc)
   $('[id$=_' + hid + '_dmed1]').val(res.dmed1)
   $('[id$=_' + hid + '_dmed2]').val(res.dmed2)
   $('[id$=_' + hid + '_dmed3]').val(res.dmed3)
@@ -71,7 +72,9 @@
     $('[id$=_' + hid + '_porcump]').val(res.rind*100/meta)
 
 
-@cor1440_gen_calcula_pmindicador = (elem) ->
+@cor1440_gen_calcula_pmindicador = (elem, event) ->
+  event.stopPropagation() 
+  event.preventDefault() 
   root =  window
   r = $(elem).closest('tr')
   efinicio = r.find('[id$=finicio_localizada]')

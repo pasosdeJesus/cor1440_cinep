@@ -27,7 +27,7 @@ SET search_path = public, pg_catalog;
 -- Name: es_co_utf_8; Type: COLLATION; Schema: public; Owner: -
 --
 
-CREATE COLLATION es_co_utf_8 (lc_collate = 'es_CO.UTF-8', lc_ctype = 'es_CO.UTF-8');
+CREATE COLLATION es_co_utf_8 (provider = libc, locale = 'es_CO.UTF-8');
 
 
 --
@@ -1068,9 +1068,13 @@ CREATE TABLE cor1440_gen_mindicadorpf (
     proyectofinanciero_id integer,
     indicadorpf_id integer,
     formulacion character varying(512),
-    frecuenciaanual integer,
+    frecuenciaanual character varying(128),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    descd1 character varying(500),
+    descd2 character varying(500),
+    descd3 character varying(500),
+    meta double precision
 );
 
 
@@ -1145,7 +1149,8 @@ CREATE TABLE cor1440_gen_pmindicadorpf (
     analisis character varying(5000),
     acciones character varying(5000),
     responsables character varying(5000),
-    plazo character varying(5000)
+    plazo character varying(5000),
+    fecha date
 );
 
 
@@ -1229,7 +1234,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    monto numeric(20,2) DEFAULT 0.0,
+    monto numeric DEFAULT 0.0,
     referencia character varying(1000),
     referenciacinep character varying(1000),
     fuentefinanciador character varying(1000),
@@ -1246,7 +1251,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric(20,2) DEFAULT 0.0,
+    presupuestototal numeric DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -1369,12 +1374,12 @@ ALTER SEQUENCE cor1440_gen_resultadopf_id_seq OWNED BY cor1440_gen_resultadopf.i
 CREATE TABLE cor1440_gen_tipoindicador (
     id bigint NOT NULL,
     nombre character varying(32),
-    medircon integer,
     espcampos character varying(1000),
     espvaloresomision character varying(1000),
     espvalidaciones character varying(1000),
     esptipometa character varying(32),
-    espfuncionmedir character varying(1000)
+    espfuncionmedir character varying(1000),
+    medircon integer
 );
 
 
@@ -2342,7 +2347,6 @@ CREATE TABLE sal7711_gen_articulo (
     pagina character varying(20),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    url character varying(5000),
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
@@ -2350,9 +2354,10 @@ CREATE TABLE sal7711_gen_articulo (
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
-    pais_id integer,
     titulo character varying(1024),
-    observaciones character varying(5000)
+    observaciones character varying(5000),
+    url character varying(5000),
+    pais_id integer
 );
 
 
@@ -3282,7 +3287,7 @@ CREATE VIEW v_solicitud_informes1 AS
     informenarrativo.fechaplaneada,
     informenarrativo.fechareal,
     informenarrativo.devoluciones,
-    ('INFOMRE NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
+    ('INFORME NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
     informenarrativo.seguimiento
    FROM informenarrativo
 UNION
@@ -3337,14 +3342,14 @@ CREATE VIEW v_solicitud_informes AS
     s.observaciones,
     s.seguimiento,
         CASE
-            WHEN (s.fechareal <= s.fechaplaneada) THEN 'SI'::text
-            WHEN (s.fechareal > s.fechaplaneada) THEN 'NO'::text
-            WHEN ((s.fechareal IS NULL) AND (('now'::text)::date > s.fechaplaneada)) THEN 'NO'::text
+            WHEN (s.fechareal <= (s.fechaplaneada + 7)) THEN 'SI'::text
+            WHEN (s.fechareal > (s.fechaplaneada + 7)) THEN 'NO'::text
+            WHEN ((s.fechareal IS NULL) AND (('now'::text)::date > (s.fechaplaneada + 7))) THEN 'NO'::text
             ELSE ''::text
         END AS a_tiempo
    FROM (cor1440_gen_proyectofinanciero p
      JOIN v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[122, 123, 125, 116]))
+  WHERE (p.id = ANY (ARRAY[136, 122, 123, 125, 116]))
   ORDER BY s.fechaplaneada;
 
 
@@ -5723,6 +5728,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026130000'),
 ('20171026144919'),
 ('20171026172501'),
+('20171114185712'),
 ('20171123212504'),
 ('20171128234148'),
 ('20171130125044'),
@@ -5741,6 +5747,11 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180129024117'),
 ('20180203032539'),
 ('20180203035955'),
-('20180203102441');
+('20180203102441'),
+('20180205032945'),
+('20180205033819'),
+('20180205110747'),
+('20180205160644'),
+('20180205161933');
 
 

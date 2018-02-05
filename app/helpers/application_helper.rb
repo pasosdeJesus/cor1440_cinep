@@ -10,12 +10,13 @@ module ApplicationHelper
             ['EN CIERRE', :C],  # Necesario para pestana en cierre de Cuadro General Seguimiento
             ['EN TRAMITE', :E], 
             ['EN EJECUCIÓN', :J], 
+            ['APROBADO', :K], 
             ['TERMINADO', :M],
             ['DESCARTADO', :O], 
             ['RECHAZADO', :R] 
   ] 
 
-  ESTADOS_APROBADO = [:J, :C, :M]
+  ESTADOS_APROBADO = [:C, :J, :K, :M]
 
   DIFICULTAD = [['BAJA', :B], ['MEDIA', :M], 
                 ['ALTA', :A], ['N/A', :N]]

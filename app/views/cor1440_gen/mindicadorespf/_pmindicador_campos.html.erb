@@ -1,5 +1,9 @@
 <tr class='nested-fields'>
   <td>
+    <%= f.input :fecha_localizada,
+      label: false, 
+      input_html: {"data-behaviour" => "datepicker"}, as: :string %>
+  </td><td>
     <%= f.input :finicio_localizada,
       label: false, 
       input_html: {"data-behaviour" => "datepicker"}, as: :string %>
@@ -10,16 +14,30 @@
   </td><td>
     <%= f.input :restiempo,
       label: false %>
-  </td><td>
-    <%= f.input :dmed1, 
-      label: false %>
-  </td><td>
-    <%= f.input :dmed2,
-      label: false %>
-  </td><td>
+  </td>
+  <% if @descd1 != '' %> 
+    <td>
+      <%= f.input :dmed1, 
+        label: false %>
+    </td>
+  <% end %>
+  <% if @descd2 != '' %> 
+    <td>
+      <%= f.input :dmed2,
+        label: false %>
+    </td>
+  <% end %>
+  <% if @descd3 != '' %> 
+    <td>
+      <%= f.input :dmed2,
+        label: false %>
+    </td>
+  <% end %>
+  <td>
     <%= f.input :rind,
       label: false %>
-  </td><td>
+  </td>
+  <td>
     <%= f.input :meta,
       label: false %>
   </td><td>
@@ -41,8 +59,8 @@
   <td>
     <%= f.input :id, as: :hidden %>
     <%= link_to t('Calcular'), '#',
-                  class: 'btn', 
-                  onclick: 'cor1440_gen_calcula_pmindicador(this)' %>
+                  class: 'btn btn-xs', 
+                  onclick: 'cor1440_gen_calcula_pmindicador(this, event)' %>
     <%= link_to_remove_association "Eliminar", f, 
       :class => 'btn-danger' %>
     <div><%= f.error_notification %></div>

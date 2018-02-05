@@ -152,7 +152,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
-    chosen-rails (1.8.2)
+    chosen-rails (1.8.3)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sass-rails (>= 3.2)
@@ -212,7 +212,7 @@ GEM
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
-    libxml-ruby (3.0.0)
+    libxml-ruby (3.1.0)
     loofah (2.1.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -379,7 +379,7 @@ GEM
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     tzinfo-data (1.2018.3)
       tzinfo (>= 1.0.0)
