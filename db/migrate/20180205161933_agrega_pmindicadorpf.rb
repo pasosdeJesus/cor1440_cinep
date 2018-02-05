@@ -39,7 +39,7 @@ class AgregaPmindicadorpf < ActiveRecord::Migration[5.1]
         VALUES (11, 5, '2018-02-05', '2017-07-01', '2017-12-31', '2017-II', '98');
       INSERT INTO cor1440_gen_pmindicadorpf (id, mindicadorpf_id,
         fecha,finicio, ffin, restiempo, meta) 
-        VALUES (16, 2, '2018-02-05', '2017-07-01', '2017-12-31', '2017-II', '98');
+        VALUES (16, 6, '2018-02-05', '2017-07-01', '2017-12-31', '2017-II', '98');
     SQL
   end
 
