@@ -15,8 +15,8 @@ class AgregaMindicadores < ActiveRecord::Migration[5.1]
       INSERT INTO cor1440_gen_mindicadorpf (id, proyectofinanciero_id, 
         indicadorpf_id, formulacion, frecuenciaanual, 
         created_at, updated_at, meta)
-        VALUES (2, 19, 24, '1', '2018-02-05', '2018-02-05', 
-        'Convocatorias en las que participamos', '30');
+        VALUES (2, 19, 24, 'Convocatorias en las que participamos', '1', 
+        '2018-02-05', '2018-02-05', '30');
 
       INSERT INTO cor1440_gen_mindicadorpf (id, proyectofinanciero_id, 
         indicadorpf_id, formulacion, frecuenciaanual, 
