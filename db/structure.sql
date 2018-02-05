@@ -1068,12 +1068,13 @@ CREATE TABLE cor1440_gen_mindicadorpf (
     proyectofinanciero_id integer,
     indicadorpf_id integer,
     formulacion character varying(512),
-    frecuenciaanual integer,
+    frecuenciaanual character varying(128),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     descd1 character varying(500),
     descd2 character varying(500),
-    descd3 character varying(500)
+    descd3 character varying(500),
+    meta double precision
 );
 
 
@@ -5748,6 +5749,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180203035955'),
 ('20180203102441'),
 ('20180205032945'),
-('20180205033819');
+('20180205033819'),
+('20180205110747');
 
 
