@@ -1070,7 +1070,10 @@ CREATE TABLE cor1440_gen_mindicadorpf (
     formulacion character varying(512),
     frecuenciaanual integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    descd1 character varying(500),
+    descd2 character varying(500),
+    descd3 character varying(500)
 );
 
 
@@ -1145,7 +1148,8 @@ CREATE TABLE cor1440_gen_pmindicadorpf (
     analisis character varying(5000),
     acciones character varying(5000),
     responsables character varying(5000),
-    plazo character varying(5000)
+    plazo character varying(5000),
+    fecha date
 );
 
 
@@ -5742,6 +5746,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180129024117'),
 ('20180203032539'),
 ('20180203035955'),
-('20180203102441');
+('20180203102441'),
+('20180205032945'),
+('20180205033819');
 
 

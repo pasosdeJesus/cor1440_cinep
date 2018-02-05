@@ -81,16 +81,18 @@ module Cor1440Gen
                 "fechaformulacion<='#{ffin}'"
               cd1 = base + " AND estado IN ('C', 'J', 'M')"
               #byebug
-              d1 = ActiveRecord::Base.connection.execute(cd1).first.count
+              d1 = ActiveRecord::Base.connection.execute(cd1).first['count']
               cd2 = base 
-              d2 = ActiveRecord::Base.connection.execute(cd2).first.count
-              resind = d1/d2
+              d2 = ActiveRecord::Base.connection.execute(cd2).first['count']
+              resind = 100*d1.to_f/d2.to_f
           when 'IG-FG-02'
 
           end
           respond_to do |format|
             format.json { 
               render json: {
+                fechaloc:  Sip::FormatoFechaHelper.fecha_estandar_local(
+                  Date.today),
                 hmindicadorpf_id: hmi, 
                 dmed1: d1, 
                 dmed2: d2, 

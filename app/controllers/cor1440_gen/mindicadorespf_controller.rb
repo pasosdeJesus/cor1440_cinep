@@ -18,6 +18,9 @@ module Cor1440Gen
         "proyectofinanciero_id",
         "indicadorpf_id",
         "frecuenciaanual",
+        "descd1",
+        "descd2",
+        "descd3",
         "pmindicador"
       ]
     end
@@ -45,7 +48,7 @@ module Cor1440Gen
       params.require(:mindicadorpf).permit(
         atributos_form - ["pmindicador"] + [
           'pmindicador_attributes' => [
-            'finicio_localizada', 'ffin_localizada', 
+            'fecha_localizada', 'finicio_localizada', 'ffin_localizada', 
             'restiempo', 'dmed1', 'dmed2', 'dmed3', 
             'rind', 'meta', 'porcump', 'analisis', 'acciones', 'responsables', 
             'plazo', 'id', '_destroy'
