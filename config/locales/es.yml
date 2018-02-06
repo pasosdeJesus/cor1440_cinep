@@ -15,6 +15,7 @@ es:
     direccion: Dirección
     fechacreacion: Creación
     fechadeshabilitacion: Deshabilitación 
+    nivelrelacion: Nivel de relacion
     oficina: Oficina
     pais: País
     proyecto: "Programa / Servicio / Producto"
@@ -45,6 +46,8 @@ es:
         Actor: Actor
         Actores: Actores
         grupo: Equipo(s)
+        nivelrelacion: Nivel de relación
+        nivelrelacion_id: Nivel de relación
         personacontacto: Persona Contacto
         pais_id: País
         regiongrupo: Región(es)
@@ -170,15 +173,15 @@ es:
         uresponsable: "Responsable(s)"
         "{:uresponsable_ids=>[]}": "Responsable(s)"
       "efecto":
+        Efecto: 'Avance en indicador de efecto'
+        Efectos: 'Avance en indicadores de efecto'
         actor: Actor social
         anexo_efecto: Anexos / Medios de verificación
         fecha_localizada: Fecha
         indicadorpf: Indicador
-        nivelrelacion: Nivel de relacion
-        nivelrelacion_id: Nivel de relacion
         indicadorpf_id: Indicador
       "nivelrelacion":
-        Nivelrelacion: Nivel de relacion
+        Nivelrelacion: Nivel de relación
         Nivelesrelacion: Niveles de relacion
       "nucleoconflicto":
         Nucleoconflict: Núcleo de conflicto
