@@ -74,7 +74,7 @@ module Cor1440Gen
           d2 = 0.0
           d3 = 0.0
           ids = []
-          eap = ApplicationHelper::ESTADOS_APROBADO.map { |l| "'#{l}'" }
+          eap = ::ApplicationHelper::ESTADOS_APROBADO.map { |l| "'#{l}'" }
           eap = eap.join(', ')
           case tipoind.nombre
           when 'IG-FG-01'
