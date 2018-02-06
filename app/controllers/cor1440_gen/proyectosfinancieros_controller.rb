@@ -179,7 +179,7 @@ module Cor1440Gen
         "nombre",
       ] +
         [ :financiador_ids =>  [] ] +
-        [ "mesformulacion_localizado",
+        [ "fechaformulacion_localizada",
           "fechainicio_localizada",
           "fechacierre_localizada"
       ] +

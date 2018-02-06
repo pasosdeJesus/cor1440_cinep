@@ -251,18 +251,16 @@ module Cor1440Gen
       where(estado: e)
     }
 
-    #scope :filtro_mesformulacion_localizadoini, lambda { |f|
-    #    byebug
-    #    fi = f+'-01'
-    #    where('fechaformulacion >= ?', fi)
-    #}
+    
+    scope :filtro_fechaformulacion_localizadaini, lambda { |f|
+      where('fechaformulacion >= ?', 
+            Sip::FormatoFechaHelper.fecha_local_estandar(f))
+    }
 
-
-    #scope :filtro_mesformulacion_localizadofin, lambda { |f|
-    #    byebug
-    #    ff = f+'-28'
-    #    where('fechaformulacion <= ?', ff)
-    #}
+    scope :filtro_fechaformulacion_localizadafin, lambda { |f|
+      where('fechaformulacion <= ?', 
+            Sip::FormatoFechaHelper.fecha_local_estandar(f))
+    }
 
     def presenta(atr)
       if (atr == 'estado')
