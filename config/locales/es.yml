@@ -86,7 +86,9 @@ es:
         cor1440_gen_proyectofinanciero: 'Compromiso institucional'
         cor1440_gen_indicadorpf: 'Indicador'
         frecuenciaanual: 'Frecuencia de medición anual'
+        indicadorpf: 'Indicador'
         pmindicador: 'Puntos de medición'
+        proyectofinanciero: 'Compromiso institucional'
         descd1: Descripción de dato intermedio 1
         descd2: Descripción de dato intermedio 2
         descd3: Descripción de dato intermedio 3
