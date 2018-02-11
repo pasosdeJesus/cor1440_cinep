@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Rails (internacionalización)
-gem "rails", '~> 5.1.0'
+gem "rails", '~> 5.2.0.rc1'
 gem "rails-i18n"
 
 # Postgresql
-gem "pg", '~> 0.21'
+gem "pg"#, '~> 0.21'
 
 gem 'puma'
 
