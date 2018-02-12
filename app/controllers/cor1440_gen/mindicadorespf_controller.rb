@@ -133,15 +133,15 @@ module Cor1440Gen
 
            when 'E2I1'
             base = "SELECT COUNT(*) FROM (SELECT DISTINCT actor_id
-               FROM efecto WHERE
+               FROM efecto AS e
                WHERE e.fecha>='#{fini}' AND e.fecha<='#{ffin}'
-               e.indicadorpf_id='20'"
+               AND e.indicadorpf_id='20') AS s"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
             base = "SELECT COUNT(*) FROM actor WHERE 
                (fechadeshabilitacion IS NULL 
-                OR fechadeshabilitacion < #{fini}
-                OR fechadeshabilitacion > #{ffin}
-               ) AND nivelrelacion='1'"
+                OR fechadeshabilitacion < '#{fini}'
+                OR fechadeshabilitacion > '#{ffin}'
+               ) AND nivelrelacion_id='1'"
             d2 = ActiveRecord::Base.connection.execute(base).first['count']
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
