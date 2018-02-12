@@ -51,7 +51,7 @@ Rails.application.routes.draw do
       "cor1440_gen/proyectosfinancieros#duracion", 
       as: :duracion 
     get "/api/cor1440cinep/mideindicador" => 
-      "cor1440_gen/proyectosfinancieros#mideindicador", 
+      "cor1440_gen/mindicadorpf#mideindicador", 
       as: :mideindicador
 
     get "/reportes/indicador11" => "reportes#indicador11", 

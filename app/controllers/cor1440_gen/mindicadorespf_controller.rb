@@ -33,6 +33,162 @@ module Cor1440Gen
       return new_minidicadorpf_path()
     end
 
+    # Mide indicador
+    # Calcula medición de un indicador
+    def mideindicador
+      prob = ''
+      if params[:finicio_localizada] && 
+        params[:ffin_localizada] && params[:indicadorpf_id] &&
+        params[:hmindicadorpf_id] 
+        fini = Sip::FormatoFechaHelper.fecha_local_estandar(
+          params[:finicio_localizada])
+        fini = Date.strptime(fini, '%Y-%m-%d')
+        ffin = Sip::FormatoFechaHelper.fecha_local_estandar(
+          params[:ffin_localizada])
+        ffin = Date.strptime(ffin, '%Y-%m-%d')
+        indid = params[:indicadorpf_id].to_i
+        ind = Cor1440Gen::Indicadorpf.find(indid)
+        tipoind = ind.tipoindicador
+        hmi = params[:hmindicadorpf_id].to_i
+        if fini && ffin && ind && tipoind
+          resind = 0.0
+          d1 = 0.0
+          d2 = 0.0
+          d3 = 0.0
+          ids = []
+          eap = ::ApplicationHelper::ESTADOS_APROBADO.map { |l| "'#{l}'" }
+          eap = eap.join(', ')
+          case tipoind.nombre
+          when 'IG-FG-01'
+            base = "SELECT COUNT(*) FROM cor1440_gen_proyectofinanciero " +
+              "WHERE fechaformulacion>='#{fini}' AND "+
+              "fechaformulacion<='#{ffin}'"
+            cd1 = base + " AND estado IN (#{eap})"
+            d1 = ActiveRecord::Base.connection.execute(cd1).first['count']
+            cd2 = base 
+            d2 = ActiveRecord::Base.connection.execute(cd2).first['count']
+            resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil;
+          when 'IG-FG-02'
+            base = "SELECT COUNT(*) FROM cor1440_gen_proyectofinanciero " +
+              "WHERE fechaformulacion>='#{fini}' AND "+
+              "fechaformulacion<='#{ffin}'"
+            cd1 = base
+            resind = ActiveRecord::Base.connection.execute(cd1).first['count']
+          when 'IG-FG-03'
+
+          when 'IG-SC-01'
+            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
+               AND fechareal<=(fechaplaneada+7) "
+            d1 = ActiveRecord::Base.connection.execute(base).first['count']
+            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
+               AND fechareal<=(fechaplaneada+7) "
+            d1 += ActiveRecord::Base.connection.execute(base).first['count']
+
+            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
+            d2 = ActiveRecord::Base.connection.execute(base).first['count']
+            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
+            d2 += ActiveRecord::Base.connection.execute(base).first['count']
+            resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
+
+          when 'IG-SC-02'
+            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
+               AND devoluciones!='t'"
+            d1 = ActiveRecord::Base.connection.execute(base).first['count']
+            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
+            d2 = ActiveRecord::Base.connection.execute(base).first['count']
+            resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
+
+          when 'IG-SC-03'
+            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
+               AND devoluciones!='t'"
+            d1 = ActiveRecord::Base.connection.execute(base).first['count']
+            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
+            d2 = ActiveRecord::Base.connection.execute(base).first['count']
+            resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
+          when 'E1I1'
+            base = "SELECT COUNT(*) FROM efecto WHERE 
+               fecha>='#{fini}' AND fecha<='#{ffin}'
+               AND indicadorpf_id='18'"
+            resind = ActiveRecord::Base.connection.execute(base).first['count'].to_f
+           when 'E1I2'
+            base = "SELECT COUNT(actor_id) FROM efecto WHERE 
+               fecha>='#{fini}' AND fecha<='#{ffin}'
+               AND indicadorpf_id='19'"
+            d1 = ActiveRecord::Base.connection.execute(base).first['count']
+            base = "SELECT COUNT(*) FROM (SELECT DISTINCT regiongrupo_id FROM efecto AS e
+              JOIN actor_regiongrupo AS ar ON ar.actor_id=e.actor_id 
+              WHERE e.fecha>='#{fini}' AND e.fecha<='#{ffin}'
+               AND e.indicadorpf_id='19') AS s"
+            d2 = ActiveRecord::Base.connection.execute(base)
+            d2 = d2.first ? d2.first['count'] : 0
+            resind = d2.to_f
+
+           when 'E2I1'
+            base = "SELECT COUNT(*) FROM (SELECT DISTINCT actor_id
+               FROM efecto WHERE
+               WHERE e.fecha>='#{fini}' AND e.fecha<='#{ffin}'
+               e.indicadorpf_id='20'"
+            d1 = ActiveRecord::Base.connection.execute(base).first['count']
+            base = "SELECT COUNT(*) FROM actor WHERE 
+               (fechadeshabilitacion IS NULL 
+                OR fechadeshabilitacion < #{fini}
+                OR fechadeshabilitacion > #{ffin}
+               ) AND nivelrelacion='1'"
+            d2 = ActiveRecord::Base.connection.execute(base).first['count']
+            resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
+
+           when 'E3I1'
+            base = "SELECT COUNT(*) FROM efecto WHERE 
+               fecha>='#{fini}' AND fecha<='#{ffin}'
+               AND indicadorpf_id='21'"
+            d1 = ActiveRecord::Base.connection.execute(base).first['count'].to_f
+            resind = d1
+           when 'E3I2'
+            base = "SELECT COUNT(*) FROM efecto WHERE 
+               fecha>='#{fini}' AND fecha<='#{ffin}'
+               AND indicadorpf_id='22'"
+            d1 = ActiveRecord::Base.connection.execute(base).first['count'].to_f
+            resind = d1.to_f
+
+         end
+          respond_to do |format|
+            format.json { 
+              render json: {
+                fechaloc:  Sip::FormatoFechaHelper.fecha_estandar_local(
+                  Date.today),
+                hmindicadorpf_id: hmi, 
+                dmed1: d1, 
+                dmed2: d2, 
+                dmed3: d3, 
+                rind: resind }, 
+                status: :ok
+              return
+            }
+          end
+        else
+          prob = 'Falla al convertir parametros'
+        end
+      else
+        prob = 'Indispensables parametros fechaini_localizada ' +
+          ', fechacierre_localizada e indicadorpf_id'
+      end
+      respond_to do |format|
+        format.html { render action: "error" }
+        format.json { render json: prob, 
+                      status: :unprocessable_entity 
+        }
+      end
+
+      
+    end
     def genclase
       return 'F'
     end
