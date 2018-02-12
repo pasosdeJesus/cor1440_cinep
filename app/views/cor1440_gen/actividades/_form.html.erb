@@ -1,6 +1,6 @@
 <%= simple_form_for @actividad, 
   :url => cor1440_gen.actividades_path(@actividad).sub(/\./,"/"), 
-  :html => { :class => 'form-horizontal' } do |f| 
+  :html => { } do |f| 
 %>
 <div data-role="content" class="form-inputs">
   <div id="errores">
@@ -22,263 +22,182 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">Planeación</div><div class="panel-body">
-      <%= f.input :fecha_localizada, 
-        :input_html => { "data-behaviour" => "datepicker"}, 
-        :as => :string
-      %>
-      <%= f.input :nombre,
-        label: 'Nombre / Escenario de toma de decisión / Acción Colectiva'
-      %>
-      <%= f.input :duracion, 
-        label: 'Duración estimada',
-        as: :integer
-       %>
-      <%= f.input(:mduracion, collection: [
-                  "Minutos",
-                  "Horas",
-                  "Días",
-                  "Meses"
-        ], 
-        label: 'Unidad de duración',
-        input_html: { class: 'chosen-select' }
-        ) 
-      %>
-      <%= f.association :departamento,
-        collection: (Sip::Departamento.where(
-          id_pais: 170,
-          fechadeshabilitacion: nil).order(:nombre)),
-          label: "Departamento",
-          label_method: :nombre,
-          value_method: :id,
-          input_html: { class: 'chosen-select' }
-      %>
-      <%= f.association :municipio,
-        collection: (Sip::Municipio.where(
-          id_departamento: f.object.departamento_id,
-          fechadeshabilitacion: nil).order(:nombre)),
-          label: "Municipio",
-          label_method: :nombre,
-          value_method: :id#,
-      #input_html: { class: 'chosen-select' } --debe actualizarse chosen
-      # cuando departamento se actualiza
-      %>
-      <%= f.input :lugar,
-        label: 'Lugar'
-      %>
-      <!--%= f.input :duracion %-->
-      <!--%= f.input :oficina_id, as: :hidden, value: 101 %-->
-
+      <div class='row'>
+        <div class='col-sm-offset-0 col-sm-4'>
+          <%= f.input :fecha_localizada, 
+            :input_html => { "data-behaviour" => "datepicker"}, 
+            :as => :string %>
+        </div>
+        <div class='col-sm-4'>
+         <%= f.input :duracion, 
+           label: 'Duración estimada',
+           as: :integer %>
+       </div>
+       <div class='col-sm-4'>
+         <%= f.input(:mduracion, collection: [
+           "Minutos",
+            "Horas",
+            "Días",
+            "Meses" ], 
+            label: 'Unidad de duración',
+            input_html: { class: 'chosen-select' }) %>
+        </div>
+      </div> <!-- row -->
+      <div class='row'>
+        <div class='col-sm-offset-0 col-sm-12'>
+          <%= f.input :nombre,
+            label: 'Nombre' %>
+       </div>
+      </div> <!-- row -->
+      <div class='row'>
+       <div class='col-sm-offset-0 col-sm-6'>
+         <%= f.association :departamento,
+           collection: (Sip::Departamento.where(
+             id_pais: 170,
+             fechadeshabilitacion: nil).order(:nombre)),
+           label: "Departamento",
+           label_method: :nombre,
+           value_method: :id,
+           input_html: { class: 'chosen-select' }
+         %>
+       </div>
+       <div class='col-sm-6'>
+         <%= f.association :municipio,
+           collection: (Sip::Municipio.where(
+             id_departamento: f.object.departamento_id,
+             fechadeshabilitacion: nil).order(:nombre)),
+           label: "Municipio",
+           label_method: :nombre,
+           value_method: :id
+         %>
+       </div>
+      </div> <!-- row -->
       <% mgu = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario) %>
 
       <% gd = f.object.grupo.count > 0 ? f.object.grupo.map(&:id) : 
         (mgu.count > 0 ? mgu.first.id : nil) %>
-      <%= f.association :grupo,
-        collection: mgu,
-        label: 'Equipo',
-        label_method: :nombre, 
-        value_method: :id,
-        include_blank: false,
-        selected:  gd,
-        input_html: { class: 'chosen-select' } %>
+      <div class='row'>
+       <div class='col-sm-offset-0 col-sm-6'>
+         <%= f.association :grupo,
+           collection: mgu,
+           label: 'Equipo',
+           label_method: :nombre, 
+           value_method: :id,
+           include_blank: false,
+           selected:  gd,
+           input_html: { class: 'chosen-select' } %>
 
-      <% wu = mgu.count == 0 ?  'TRUE=FALSE' : 
-        "fechadeshabilitacion IS NULL 
+         <% wu = mgu.count == 0 ?  'TRUE=FALSE' : 
+           "fechadeshabilitacion IS NULL 
          AND  id IN (SELECT usuario_id FROM sip_grupo_usuario WHERE 
          (sip_grupo_id IN (#{mgu.map(&:id).join(', ')})))
-        " 
-      %>
+           " 
+         %>
 
-      <% umgu = Sip::Usuario.where(wu).
-        order(:nombres, :apellidos, :nusuario) %>
+         <% umgu = Sip::Usuario.where(wu).
+           order(:nombres, :apellidos, :nusuario) %>
 
-      <%= f.association :responsable,
-        collection: umgu,
-        include_blank: false,
-        label: "Responsable del equipo",
-        label_method: lambda { |t| 
-          r = ""
-          r += t.nombres + " " if t.nombres
-          r += t.apellidos if t.apellidos
-          r += ' -  ' + t.nusuario
-          r 
-        },
-        value_method: :id,
-        selected:  f.object.usuario_id ? f.object.usuario_id : 
-        current_usuario.id,
-        input_html: { class: 'chosen-select' } %>
+         <%= f.input :responsable, 
+           as: :hidden, 
+           input_html: {
+             value: f.object.usuario_id ? f.object.usuario_id : 
+             current_usuario.id 
+           } %>
+       </div>
+       <div class='col-sm-6'>
+         <%= f.association :proyectofinanciero,
+           collection: Cor1440Gen::Proyectofinanciero.all.
+           order(:referenciacinep),
+           label_method: :referenciacinep, 
+           value_method: :id,
+           input_html: { class: 'chosen-select' }
+         %>
+       </div>
+      </div> <!-- row -->
 
-      <%= f.association :usuario,
-        collection: umgu,
-        include_blank: false,
-        label: "Corresponsables del equipo",
-        label_method: lambda { |t| 
-          r = ""
-          r += t.nombres + " " if t.nombres
-          r += t.apellidos if t.apellidos
-          r += ' -  ' + t.nusuario
-          r 
-        },
-        value_method: :id,
-        input_html: { class: 'chosen-select' }
-      %>
-      <!-- incluido en actividadtipo %= f.input :papel,
-        label: 'Papel en la Actividad'
-      %-->
-      <%= f.association :actividadtipo, 
-        collection: Cor1440Gen::Actividadtipo.habilitados,
-        label_method: :nombre, 
-        value_method: :id,
-        input_html: { class: 'chosen-select' }
-      %>
-      <%= f.association :proyectofinanciero,
-        collection: Cor1440Gen::Proyectofinanciero.all.
-          order(:referenciacinep),
-        label_method: :referenciacinep, 
-        value_method: :id,
-        input_html: { class: 'chosen-select' }
-      %>
-      <%= f.association :proyecto,
-        collection: Cor1440Gen::Proyecto.habilitados,
-        label: 'Programa/Servicio/Producto',
-        label_method: :nombre, 
-        value_method: :id,
-        input_html: { class: 'chosen-select' }
-      %>
-      <%= f.input :objetivo, as: :text %>
+      <div class='row'>
+        <div class='col-sm-offset-0 col-sm-12'>
+          <%= f.input :objetivo, as: :text %>
+        </div> 
+      </div> <!-- row -->
     
-      <%= f.input(:convocante, collection: [
-                  "COMPAÑIA DE JESÚS",
-                  "EL BANCO DE DATOS",
-                  "EL CINEP/PPP",
-                  "ENTIDAD ESTATAL",
-                  "ONG",
-                  "OTRO",
-                  "SISTEMA ONU",
-                  "UNA AGENCIA FINANCIADORA"
-        ], 
-        label: '¿Quién convocó la actividad?',
-        include_blank: false,
-        input_html: { class: 'chosen-select' }) 
-      %>
-
     </div> <!-- panel-body -->
   </div> <!-- panel panel-default -->
-  <div class="panel panel-default">
-    <div class="panel-heading">Plan Trienal CINEP</div><div class="panel-body">
-      <!--%= f.association :actividadareas, 
-        collection: Cor1440Gen::Actividadarea.habilitados,
-        label_method: :nombre, 
-        value_method: :id 
-        %-->
-      <%= f.association :actor, 
-        collection: ::Actor.habilitados.where.not(id: 102).where.not(id: 103),
-        label: "Otros actores sociales/institucionales acompañados o que participan",
-        label_method: :nombre, 
-        value_method: :id,
-        input_html: { class: 'chosen-select' }
-      %>
-      <%= f.association :nucleoconflicto, 
-        collection: ::Nucleoconflicto.habilitados,
-        label_method: :nombre, 
-        value_method: :id,
-        label: 'Principal núcleo de conflico que transforma',
-        input_html: { class: 'chosen-select' }
-      %>
-      <%= f.association :otronucleoconflicto, 
-        collection: ::Nucleoconflicto.habilitados,
-        label: "Otros núcleos de conflico que transforma",
-        label_method: :nombre, 
-        value_method: :id,
-        input_html: { class: 'chosen-select' }
-      %>
-      <div class="panel panel-default">
-        <div class="panel-heading">Objetivo Específico 1. Participación en Escenarios de Toma de Decisión con Publicaciones CINEP</div>
-        <div class="panel-body">
-          <%= f.association :publicacion, 
-            collection: ::Publicacion.habilitados,
-            label: "Publicaciones/Insumos CINEP usados en Escenario de Toma de Decisión",
-            label_method: :nombre, 
-            value_method: :id,
-            input_html: { class: 'chosen-select' }
-          %>
-          <%= f.association :redactor, 
-            collection: ::Redactor.habilitados,
-            label_method: :nombre, 
-            value_method: :id,
-            label: 'Red de Actores a la que se víncula Escenario de Toma de Decisión',
-            input_html: { class: 'chosen-select' }
-          %>
-          <%= f.input(:alcance, collection: [ "Local",
-                      "Regional",
-                      "Nacional",
-                      "Internacional"
-          ], 
-            label: 'Alcance',
-            input_html: { class: 'chosen-select' },
-            include_blank: false ) 
-          %>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">Objetivo Específico 2.  Acompañamiento a Actores Sociales en Acciones Colectivas e Incidencia</div>
-        <div class="panel-body">
-          <%= f.input :accionincidencia, 
-            boolean_style: :nested,
-            inline_label: '¿Incide en Transformación de Nucleos de Conflicto?'
-          %>
-          <%= f.input :accioncgenero, 
-            boolean_style: :nested,
-            inline_label: '¿Acción Colectiva vinculada a Derechos de Género?'
-          %>
-          <%= f.input :accioncetnia, 
-            boolean_style: :nested,
-            inline_label: '¿Acción Colectiva vinculada a Derecho de Étnia?'
-          %>
-        </div>
-      </div>
 
-    </div> <!-- panel-body -->
-  </div> <!-- panel panel-default -->
   <div class="panel panel-default">
     <div class="panel-heading">Desarrollo</div><div class="panel-body">
-      <%= f.input :participantes,
-        label: 'Personas acompañadas o que participan',
-        as: :text
-      %>
-      <!--%= f.input :totorg, label: 'Total organizaciones' %-->
-      <%= f.input :mujeres,
-        label: 'Mujeres'
-      %>
-      <%= f.input :hombres,
-        label: 'Hombres'
-      %>
-      <%= f.input :negros,
-        label: 'Negros'
-      %>
-      <%= f.input :indigenas,
-        label: 'Indigenas'
-      %>
-      <%= f.input :mestizos,
-        label: 'Mestizos'
-      %>
-      <%= f.input :blancos,
-        label: 'Blancos'
-      %>
-      <%= f.input :desarrollo,
-        label: 'Desarrollo de la Actividad',
-        as: :text
-      %>
+      <div class='row'>
+        <div class='col-sm-offset-0 col-sm-6'>
+          <%= f.association :actor, 
+            collection: ::Actor.habilitados.where.not(id: 102).where.not(id: 103),
+            label: "Actores sociales",
+            label_method: :nombre, 
+            value_method: :id,
+            input_html: { class: 'chosen-select' }
+          %>
+        </div> 
+        <div class='col-sm-offset-0 col-sm-6'>
+          <%= f.association :publicacion, 
+            collection: ::Publicacion.habilitados,
+            label: "Publicaciones CINEP usadas",
+            label_method: :nombre, 
+            value_method: :id,
+            input_html: { class: 'chosen-select' }
+          %>
+        </div> 
+      </div> <!-- row -->
+
+      <!--div class='row'>
+        <div class='col-sm-offset-0 col-sm-12'>
+          <%= f.input :participantes,
+            label: 'Personas acompañadas o que participan',
+            as: :text
+          %>
+        </div> 
+      </div!--> <!-- row -->
+
+      <div class='row'>
+        <div class='col-sm-offset-0 col-sm-2'>
+          <%= f.input :mujeres,
+            label: 'Mujeres'
+          %>
+        </div> 
+        <div class='col-sm-offset-0 col-sm-2'>
+          <%= f.input :hombres,
+            label: 'Hombres'
+          %>
+        </div> 
+        <div class='col-sm-offset-0 col-sm-2'>
+          <%= f.input :negros,
+            label: 'Negros'
+          %>
+        </div> 
+        <div class='col-sm-offset-0 col-sm-2'>
+          <%= f.input :indigenas,
+            label: 'Indigenas'
+          %>
+        </div> 
+        <div class='col-sm-offset-0 col-sm-2'>
+          <%= f.input :mestizos,
+            label: 'Mestizos'
+          %>
+        </div> 
+        <div class='col-sm-offset-0 col-sm-2'>
+          <%= f.input :blancos,
+            label: 'Blancos' %>
+        </div> 
+      </div> <!-- row -->
     </div> <!-- panel-body -->
   </div> <!-- panel panel-default -->
   <div class="panel panel-default">
     <div class="panel-heading">Evaluación/Seguimiento</div><div class="panel-body">
       <%= f.input :resultado, as: :text %>
-      <%= f.input :observaciones,
+      <!--%= f.input :observaciones,
         label: 'Compromisos / Observaciones',
         as: :text
-      %>
+      %-->
 
-      <%= f.input(:valora, collection: [
+      <!--%= f.input(:valora, collection: [
                   1,
                   2,
                   3,
@@ -288,7 +207,7 @@
         input_html: { class: 'chosen-select' },
         label: 'Valore la actividad en términos de importancia, efecto y proyección (1-5)',
         include_blank: true) 
-      %>
+      %-->
     </div> <!-- panel-body -->
   </div> <!-- panel panel-default -->
 
