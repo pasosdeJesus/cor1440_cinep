@@ -69,6 +69,13 @@ module Cor1440Gen
     end
 
 
+    has_many :indicadorobjetivo, foreign_key: 'proyectofinanciero_id',
+      validate: true, dependent: :destroy, 
+      class_name: 'Cor1440Gen::Indicadorpf'
+    accepts_nested_attributes_for :indicadorobjetivo,
+      allow_destroy: true, reject_if: :all_blank
+
+
     #has_many :oficina_proyectofinanciero, dependent: :delete_all,
     #  class_name: '::OficinaProyectofinanciero',
     #  foreign_key: 'proyectofinanciero_id'
