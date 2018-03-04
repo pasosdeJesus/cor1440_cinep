@@ -157,6 +157,11 @@ module Cor1440Gen
                AND indicadorpf_id='22'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count'].to_f
             resind = d1.to_f
+           else
+            base = "SELECT COUNT(*) FROM efecto WHERE 
+               fecha>='#{fini}' AND fecha<='#{ffin}'
+               AND indicadorpf_id='#{ind.id}'"
+            resind = ActiveRecord::Base.connection.execute(base).first['count'].to_f
 
          end
           respond_to do |format|

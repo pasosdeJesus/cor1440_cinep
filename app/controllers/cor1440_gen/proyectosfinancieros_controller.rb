@@ -956,6 +956,7 @@ module Cor1440Gen
         :actividadpf_attributes =>  [
               :id, :resultadopf_id,
               :nombrecorto, :titulo, 
+              :actividadtipo_id,
               :descripcion, :_destroy
         ] 
       )

@@ -70,13 +70,19 @@ es:
         Convenio: "Convenio interinstitucional marco"
         Convenios: "Convenios interinstitucionales marco"
       "cor1440_gen/actividad":
+        actividadpf: Actividad de compromiso institucional
         actividadtipo: Tipo
+        creadopor: "Creado por"
+        etnia_onr: 'Otra/NR'
+        fecha_localizada: Fecha
         minutos: Horas
+        mduracion: "Unidad de duración"
+        objetivopf: Objetivo de compromiso institucional
         observaciones: Compromisos/Observaciones
         proyecto: "Programa / Servicio / Producto"
         proyectos: "Programas / Servicios / Productos"
         regionsjr: Dependencia
-        fecha_localizada: Fecha
+        sexo_onr: 'Otro/NR'
       "cor1440_gen/actividadarea":
         Actividadarea: Componente Plan Trienal 
         Actividadareas: Componentes Plan Trienal 

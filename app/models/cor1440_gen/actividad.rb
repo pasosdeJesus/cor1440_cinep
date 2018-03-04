@@ -14,6 +14,9 @@ module Cor1440Gen
     belongs_to :municipio, class_name: 'Sip::Municipio'
     belongs_to :redactor, class_name: '::Redactor'
     belongs_to :nucleoconflicto, class_name: '::Nucleoconflicto'
+    
+    belongs_to :creadopor, class_name: '::Usuario',
+      foreign_key: 'creadopor_id'
 
     has_many :actividad_actor, dependent: :delete_all,
       class_name: '::ActividadActor', foreign_key: 'actividad_id'
@@ -32,6 +35,13 @@ module Cor1440Gen
     has_many :publicacion, through: :actividad_publicacion,
       class_name: '::Publicacion'
 
+    has_many :actividad_objetivopf, dependent: :delete_all,
+      class_name: 'Cor1440Gen::ActividadObjetivopf', 
+      foreign_key: 'actividad_id'
+    has_many :objetivopf, through: :actividad_objetivopf,
+      class_name: 'Cor1440Gen::Objetivopf'
+
+
     validates :desarrollo, length: { maximum: 5000 }
     validates :resultado, length: { maximum: 5000 }
     validates :papel, length: { maximum: 5000 }
@@ -45,6 +55,33 @@ module Cor1440Gen
     # Deshabilita validacion con oficina que proviene de
     # Cor1440Gen::Concerns::Models::Actividad
     def rol_usuario
+    end
+
+    def presenta(atr)
+      case atr.to_s
+      when 'grupo'
+        self.grupo.inject("") { |memo, i| 
+          (memo == "" ? "" : memo + "; ") + i.nombre
+        }
+      when 'actividadpf'
+        self.actividadpf.inject("") { |memo, i| 
+          (memo == "" ? "" : memo + "; ") + i.titulo
+        }
+      when 'objetivopf'
+        self.objetivopf.inject("") { |memo, i| 
+          (memo == "" ? "" : memo + "; ") + i.objetivo
+        }
+      when 'actor'
+        self.actor.inject("") { |memo, i| 
+          (memo == "" ? "" : memo + "; ") + i.nombre
+        }
+      when 'publicacion'
+        self.publicacion.inject("") { |memo, i| 
+          (memo == "" ? "" : memo + "; ") + i.nombre
+        }
+      else
+        presenta_gen(atr)
+      end
     end
 
 
