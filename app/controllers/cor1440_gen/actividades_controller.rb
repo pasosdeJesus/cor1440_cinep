@@ -2,16 +2,33 @@
 require_dependency "cor1440_gen/concerns/controllers/actividades_controller"
 
 module Cor1440Gen
-  class ActividadesController < ApplicationController
+  class ActividadesController < Sip::ModelosController
     include Cor1440Gen::Concerns::Controllers::ActividadesController
 
     helper Cor1440Gen::GruposHelper
 
+    def clase
+      'Cor1440Gen::Actividad'
+    end
+
+    def new
+      @registro = @actividad = Actividad.new
+      @registro.current_usuario = current_usuario
+      @registro.oficina_id = 1
+      @registro.creadopor_id = current_usuario.id
+      @registro.save!(validate: false)
+      @apf = ActividadProyectofinanciero.new
+      @apf.proyectofinanciero_id = 18  # Plan trienal 2018-2020
+      @apf.actividad_id = @registro.id
+      @apf.save!(validate: false)
+      redirect_to cor1440_gen.edit_actividad_path(@registro)
+    end
 
     def create
       @actividad = Actividad.new(actividad_params)
       @actividad.oficina_id = 1
       @actividad.current_usuario = current_usuario
+      @actividad.creadopor_id = current_usuario.id
       create_gen
     end
 
@@ -52,43 +69,64 @@ module Cor1440Gen
       return ac
     end
 
+
+    def show
+      authorize! :read, clase.constantize
+      @registro = clase.constantize.find(params[:id])
+      render 'sip/modelos/show', layout: 'application'
+    end
+
     # Encabezado comun para HTML y PDF (primeras filas)
     def encabezado_comun
       atributos_presenta.map {|a| Cor1440Gen::Actividad.human_attribute_name(a)}
     end
 
+    def atributos_show
+      [ :id, :fecha, :creadopor, :duracion, :mduracion,
+        :nombre, :departamento, :municipio,
+        :grupo, :proyectosfinancieros, :actividadpf,
+        :objetivopf, :actor, :publicacion,
+        :mujeres, :hombres, :sexo_onr,
+        :negros, :indigenas, :etnia_onr,
+        :observaciones, :anexos
+      ]
+    end
+
     def atributos_presenta
-      [ :id, :fecha, :responsable, :nombre, :departamento,
-        :actividadtipos, :objetivo, :proyectos, :proyectosfinancieros, 
-        :resultado, :contexto, :mujeres, :hombres, :blancos,
-        :mestizos, :indigenas, :negros
+      [ :id, :fecha, :creadopor, :duracion, :mduracion,
+        :nombre, :departamento, :municipio,
+        :grupo, :proyectosfinancieros, :actividadpf,
+        :objetivopf, :actor, :publicacion,
+        :mujeres, :hombres, :sexo_onr,
+        :negros, :indigenas, :etnia_onr
       ]
     end
 
     def fila_comun(actividad)
       return [actividad.id,
         actividad.fecha_localizada, 
-        actividad.responsable ? actividad.responsable.nusuario : "",
+        actividad.creadopor ? actividad.creadopor.nusuario : "",
+        actividad.duracion ? actividad.duracion : "",
+        actividad.mduracion ? actividad.mduracion : "",
         actividad.nombre ? actividad.nombre : "",
         actividad.departamento ? actividad.departamento.nombre : "",
-        actividad.actividadtipo.inject("") { |memo, i| 
-          (memo == "" ? "" : memo + "; ") + i.nombre 
-        },
-        actividad.objetivo , 
-        actividad.proyecto.inject("") { |memo, i| 
-          (memo == "" ? "" : memo + "; ") + i.nombre 
-        },
+        actividad.municipio ? actividad.municipio.nombre : "",
+        actividad.presenta('grupo'),
         actividad.proyectofinanciero.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.referenciacinep
         },
-        actividad.resultado,
-        actividad.contexto,
+        actividad.presenta('actividadpf'),
+        actividad.objetivopf.inject("") { |memo, i| 
+          (memo == "" ? "" : memo + "; ") + i.numero
+        },
+        actividad.presenta('actor'),
+        actividad.presenta('publicacion'),
         actividad.mujeres,
         actividad.hombres,
-        actividad.blancos,
-        actividad.mestizos,
+        actividad.sexo_onr,
+        actividad.negros,
         actividad.indigenas,
-        actividad.negros
+        actividad.etnia_onr
       ]
     end
 
@@ -96,27 +134,28 @@ module Cor1440Gen
       {
         id: a[0],
         fecha: a[1],
-        responsable: a[2],
-        nombre: a[3],
-        departamento: a[4],
-        tipos_de_actividad: a[5],
-        objetivo: a[6],
-        proyecto: a[7],
-        convenios_financieros: a[8],
-        resultado: a[9],
-        contexto: a[10],
-        mujeres: a[11],
-        hombres: a[12],
-        blancos: a[13],
-        mestizos: a[14],
-        indigenas: a[15],
-        negros: a[16],
+        creadopor: a[2],
+        duracion: a[3],
+        mduracion: a[4],
+        nombre: a[5],
+        departamento: a[6],
+        municipio: a[7],
+        grupo: a[8],
+        convenios_financieros: a[9],
+        actividad_de_convenio: a[10],
+        objetivo_de_convenio: a[11],
+        actor: a[12],
+        publicacion: a[13],
+        mujeres: a[14],
+        hombres: a[15],
+        sexo_onr: a[16],
+        negros: a[17],
+        indigenas: a[18],
+        etnia_onr: a[19],
         observaciones: ac.observaciones,
         creacion: ac.created_at,
-        actualizacion: ac.updated_at,
-        corresponsables: ac.usuario.inject("") { |memo, i| 
-                (memo == "" ? "" : memo + "; ") + i.nusuario },
-            }
+        actualizacion: ac.updated_at
+      }
     end
 
     # No confiar parametros a Internet, sólo permitir lista blanca
@@ -134,10 +173,10 @@ module Cor1440Gen
         :totorg, 
         :mujeres, 
         :hombres, 
+        :sexo_onr, 
         :negros, 
         :indigenas, 
-        :mestizos, 
-        :blancos, 
+        :etnia_onr, 
         :desarrollo, 
         :valora,
         :contexto,
@@ -152,6 +191,8 @@ module Cor1440Gen
         :oficina_id,
         :actividadarea_ids => [],
         :actividadtipo_ids => [],
+        :actividadpf_ids => [],
+        :objetivopf_ids => [],
         :actor_ids => [],
         :grupo_ids => [],
         :otronucleoconflicto_ids => [],
