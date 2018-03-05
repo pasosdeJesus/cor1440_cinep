@@ -44,3 +44,6 @@ config/initializers/punto_montaje.rb
 config/routes.rb
 config/unicorn.conf.minimal.rb    
 public/heb412/
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
