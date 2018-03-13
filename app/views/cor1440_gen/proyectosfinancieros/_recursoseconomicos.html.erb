@@ -1,105 +1,216 @@
 
+<% ih_et = { class: 'editable-entramite' } %>
+<% ih_et[:readonly] = 'readonly' if f.object.estado != 'E' %>
+<% ih_ee = { class: 'editable-enejecucion' } %>
+<% ih_ee[:readonly] = 'readonly' if f.object.estado != 'J' %>
+
 <div class='row'>
-  <div class="col-sm-offset-0 col-sm-6">
-    <%  ih_tm = { class: 'chosen-select editable-entramite' }
-        ih_tm[:readonly] = 'readonly' if f.object.estado != 'E'
-    %>
+  <div class="col-sm-4">
+    Tipo de moneda
+  </div>
+  <div class="col-sm-4">
+    <% ih_tm = ih_et %>
+    <% ih_tm[:class] += ' chosen-select' if f.object.estado == 'E' %>
+    <% ih_tm[:disabled] = 'disbled' if f.object.estado != 'E' %>
     <%= f.association :tipomoneda,
       collection: ::Tipomoneda.habilitados,
       label_method: :nombre,
       value_method: :id,
-      input_html: ih_tm
-    %>
-  </div>
-  <div class="col-sm-6">
-    <% ctf = f.object.tipomoneda_id && f.object.tipomoneda.nombre != 'PESO' ?  ::Tasacambio.where(tipomoneda_id: f.object.tipomoneda_id) : ::Tasacambio.where('TRUE=FALSE') %>
-    <%  ih_tf = { class: 'chosen-select editable-entramite' }
-        ih_tf[:readonly] = 'readonly' if f.object.estado != 'E'
-    %>
-    <%= f.association :tasaformulacion,
-      collection: ctf,
-      label_method: lambda {|r| r.presenta_nombre },
-      input_html: ih_tf
-   %>
-  </div>
-</div>
-    
-<div class='row'>
-  <div class="col-sm-offset-0 col-sm-6">
-    <% ptp = f.object.tipomoneda_id.nil? ? nil :
-      (f.object.tipomoneda.nombre == 'PESO' ? f.object.presupuestototal : 
-       (f.object.tasaformulacion_id.nil? ? nil : 
-       f.object.presupuestototal*f.object.tasaformulacion.enpesos)
-      ) 
-    %>
-    <% ih_pt = {
-      "data-toggle" => 'tooltip',
-      class: 'editable-entramite',
-      title: ptp.nil? ? '' : "$#{ptp.a_decimal_localizado}",
-      value: f.object.presupuestototal_localizado || '0.0'
-      }
-      ih_pt[:readonly] = 'readonly' if f.object.estado != 'E'
-    %>
-    <%= f.input :presupuestototal_localizado,
-    input_html: ih_pt  %>
-  </div>
-  <div class="col-sm-6">
-    <% ih_ap = { }; %>
-    <%= f.input :apresupuesto,
-      input_html: ih_ap %>
+      label: false,
+      input_html: ih_tm %>
   </div>
 </div>
 
-<div class='row'>
-  <div class="col-sm-offset-0 col-sm-6">
-    <% ih_m = { value: f.object.monto_localizado || '0.0',
-                class: 'editable-entramite' }
-       ih_m[:readonly] = 'readonly' if f.object.estado != 'E' %>
-    <%= f.input :monto_localizado, 
-      as: :string ,
-      input_html: ih_m
-    %>
-  </div>
-  <div class="col-sm-offset-0 col-sm-6">
-    <% ih_mp = { value: f.object.montopesos_localizado || '0.0',
-                class: 'editable-entramite' }
-       ih_mp[:readonly] = 'readonly' if f.object.estado != 'E' %>
-    <%= f.input :montopesos_localizado, 
-      as: :string,
-      input_html: ih_mp
-    %>
-  </div>
+<div class="table-responsive-md">
+  <table class="table table-bordered">
+    <thead>
+      <tr class="table-active">
+        <th>Concepto</th>
+        <th colspan='2'>Formulación</th>
+        <th colspan='2'>Ejecución</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Tasa de cambio</th>
+        <td colspan='2'>
+          <% ctf = f.object.tipomoneda_id && 
+            f.object.tipomoneda.nombre != 'PESO' ?  
+            ::Tasacambio.where(tipomoneda_id: f.object.tipomoneda_id) : 
+            ::Tasacambio.where('TRUE=FALSE') %>
+          <% ih_tf = ih_et %>
+          <% ih_tf[:readonly] = 'readonly' if f.object.tipomoneda_id &&
+            f.object.tipomoneda.nombre == 'PESO' %>
+          <% ih_tf[:class] += ' chosen-select' %>
+          <%= f.input :tasa_localizado,
+            input_html: ih_et,
+            label: false
+          %>
+        </td>
+        <td colspan='2'>
+          <% ih_te = ih_ee %>
+          <% ih_te[:readonly] = 'readonly' if f.object.tipomoneda_id &&
+            f.object.tipomoneda.nombre == 'PESO' %>
+          <%= f.input :tasaej_localizado, 
+            input_html: ih_te,
+            label: false %>
+        </td>
+      </tr> 
+
+      <tr>
+        <th></th>
+        <th>Moneda</th>
+        <th>Pesos</th>
+        <th>Moneda</th>
+        <th>Pesos</th>
+      </tr>
+
+      <tr>
+        <th>Aporte financiador</th>
+        <td>
+          <% ih_m = ih_et %>
+          <% ih_m[:value] = f.object.monto_localizado || '0.0' %>
+          <%= f.input :monto_localizado, 
+            as: :string,
+            label: false,
+            input_html: ih_m %>
+        </td>
+        <td>
+          <%= f.input :montopesos_localizado, 
+            as: :string,
+            input_html: {readonly: 'readonly',
+              value: f.object.montopesos_localizado || '0.0' },
+            label: false
+          %>
+        </td>
+        <td>
+          <%= f.input :montoej_localizado, 
+            input_html: ih_ee,
+            label: false %>
+        </td>
+        <td>
+          <%= f.input :montoejp_localizado, 
+            input_html: {readonly: 'readonly' },
+            label: false %>
+        </td>
+      </tr>
+      <tr>
+        <th>Aporte CINEP/PPP</th>
+        <td>
+           <%= f.input :aportecinep_localizado, 
+             as: :string,
+             label: false,
+             input_html: ih_et %>
+        </td>
+        <td>
+          <%= f.input :aportecinepp_localizado, 
+            input_html: {readonly: 'readonly' },
+            label: false %>
+        </td>
+        <td>
+          <%= f.input :aportecinepej_localizado, 
+            input_html: ih_ee,
+            label: false %>
+        </td>
+        <td>
+          <%= f.input :aportecinepejp_localizado, 
+            input_html: {readonly: 'readonly' },
+            label: false %>
+        </td>
+      </tr>
+      <tr>
+        <th>Aportes Otros donantes</th>
+        <td>
+          <%= f.input :aotrosfin_localizado, 
+            label: false,
+            input_html: ih_et,
+            as: :string %>
+        </td>
+        <td>
+          <%= f.input :aporteotrosp_localizado, 
+            input_html: {readonly: 'readonly' },
+            label: false %>
+        </td>
+        <td>
+          <%= f.input :aporteotrosej_localizado, 
+            input_html: ih_ee,
+            label: false %>
+        </td>
+        <td>
+          <%= f.input :aporteotrosejp_localizado, 
+            input_html: {readonly: 'readonly' },
+            label: false %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Saldo</th>
+        <td>
+          <%= f.input :saldo_localizado,
+            input_html: ih_et,
+            label: false %>
+        </td>
+        <td>
+          <%= f.input :saldop_localizado,
+            input_html: {readonly: 'readonly' },
+            label: false %>
+        </td>
+        <td>
+          <%= f.input :saldoej_localizado,
+            input_html: ih_ee,
+            label: false %>
+        </td>
+        <td>
+          <%= f.input :saldoejp_localizado,
+            input_html: {readonly: 'readonly' },
+            label: false %>
+        </td>
+      </tr>
+      <tr class="table-dark">
+        <th>Presupuesto Total</th>
+        <td>
+           <% ptp = f.object.tipomoneda_id.nil? ? nil :
+            (f.object.tipomoneda.nombre == 'PESO' ? f.object.presupuestototal : 
+             (f.object.tasaformulacion_id.nil? ? nil : 
+             f.object.presupuestototal*f.object.tasaformulacion.enpesos)
+            ) 
+          %>
+          <% ih_pt = {
+            "data-toggle" => 'tooltip',
+            class: 'editable-entramite',
+            title: ptp.nil? ? '' : "$#{ptp.a_decimal_localizado}",
+            value: f.object.presupuestototal_localizado || '0.0'
+            }
+            ih_pt[:readonly] = 'readonly' if f.object.estado != 'E'
+          %>
+          <%= f.input :presupuestototal_localizado,
+            input_html: {readonly: 'readonly' },
+            label: false %>
+        </td> 
+        <td>
+          <%= f.input :presupuestototalp_localizado,
+            input_html: {readonly: 'readonly' },
+            label: false %>
+        </td>
+        <td>
+          <%= f.input :presupuestototalej_localizado,
+            input_html: {readonly: 'readonly' },
+            label: false %>
+        </td>
+        <td>
+          <%= f.input :presupuestototalejp_localizado,
+            input_html: {readonly: 'readonly' },
+            label: false %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div class='row'>
-  <div class="col-sm-offset-0 col-sm-6">
-    <% ih_ac = { class: 'editable-entramite' }
-       ih_ac[:readonly] = 'readonly' if f.object.estado != 'E' %>
-     <%= f.input :aportecinep_localizado, 
-       as: :string,
-       input_html: ih_ac %>
-  </div>
-  <div class="col-sm-offset-0 col-sm-6">
-    <%= f.input :otrosaportescinep %>
-  </div>
-</div>
-
-<div class='row'>
-  <div class="col-sm-offset-0 col-sm-6">
-    <%= f.input :aotrosfin_localizado, as: :string %>
-  </div>
-  <div class="col-sm-offset-0 col-sm-6">
-    <%= f.input :aotrosesp %>
-  </div>
-</div>
-
-<div class='row'>
-  <div class="col-sm-6">
-    <%= f.input :aaportes, as: :text, input_html: { rows: 3 } %>
-  </div>
-  <div class="col-sm-6">
-    <%= f.input :saldo_localizado %>
-  </div>
+  <%= f.input :aaportes, 
+    as: :text, 
+    input_html: { rows: 3 } %>
 </div>
 
 <div class='row'>

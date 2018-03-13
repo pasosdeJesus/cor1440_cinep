@@ -8,6 +8,15 @@ module Cor1440Gen
     attr_accessor :current_usuario
     attr_accessor :duracion
     attr_accessor :semestreformulacion
+    attr_accessor :montoejp_localizado
+    attr_accessor :aportecinepp_localizado
+    attr_accessor :aportecinepejp_localizado
+    attr_accessor :aporteotrosp_localizado
+    attr_accessor :aporteotrosejp_localizado
+    attr_accessor :saldop_localizado
+    attr_accessor :saldoejp_localizado
+    attr_accessor :presupuestototalp_localizado
+    attr_accessor :presupuestototalejp_localizado
 
     include Cor1440Gen::Concerns::Models::Proyectofinanciero
     include ApplicationHelper
@@ -68,7 +77,79 @@ module Cor1440Gen
       fechaformulacion.year.to_s + "-" + fechaformulacion.month.to_s
     end
 
+    def montoejp_localizado
+      if montoej && tasaej
+        return montoej * tasaej
+      else
+        return 0
+      end
+    end
 
+    def aportecinepp_localizado
+      if aportecinep && tasa
+        return aportecinep * tasa
+      else
+        return 0
+      end
+    end
+ 
+    def aportecinepejp_localizado
+      if aportecinepej && tasaej
+        return aportecinepej * tasaej
+      else
+        return 0
+      end
+    end
+ 
+    def aporteotrosp_localizado
+      if aotrosfin && tasa
+        return aotrosfin * tasa
+      else
+        return 0
+      end
+    end
+ 
+    def aporteotrosejp_localizado
+      if aporteotrosej && tasaej
+        return aporteotrosej * tasaej
+      else
+        return 0
+      end
+    end
+ 
+    def saldop_localizado
+      if saldo && tasa
+        return saldo * tasa
+      else
+        return 0
+      end
+    end
+ 
+    def saldoejp_localizado
+      if saldoej && tasaej
+        return saldoej * tasaej
+      else
+        return 0
+      end
+    end
+ 
+    def presupuestototalp_localizado
+      if presupuestototal && tasa
+        return presupuestototal * tasa
+      else
+        return 0
+      end
+    end
+ 
+    def presupuestototalejp_localizado
+      if presupuestototalej && tasaej
+        return presupuestototalej * tasaej
+      else
+        return 0
+      end
+    end
+ 
+ 
     has_many :indicadorobjetivo, foreign_key: 'proyectofinanciero_id',
       validate: true, dependent: :destroy, 
       class_name: 'Cor1440Gen::Indicadorpf'
@@ -164,6 +245,13 @@ module Cor1440Gen
     flotante_localizado :aportecinep
     validates :aportecinep, numericality: 
       { allow_blank: true, less_than: 1000000000000000000 }
+    flotante_localizado :tasa
+    flotante_localizado :tasaej
+    flotante_localizado :montoej
+    flotante_localizado :aportecinepej
+    flotante_localizado :aporteotrosej
+    flotante_localizado :saldoej
+    flotante_localizado :presupuestototalej
     validates :emailrespagencia, length: { maximum: 100}
 
     #requerido para cuadro general de seguimiento

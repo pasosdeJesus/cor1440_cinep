@@ -1,4 +1,4 @@
-class CreateJoinTableActividadObjetivopf < ActiveRecord::Migration[5.2]
+class CreateJoinTableActividadObjetivopf < ActiveRecord::Migration[5.1]
   def change
     create_table :cor1440_gen_actividad_objetivopf, id: false do |t| 
       t.integer :actividad_id

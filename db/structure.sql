@@ -1352,7 +1352,14 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     observacionescierre character varying(5000),
     fechaformulacion date DEFAULT ('now'::text)::date NOT NULL,
     montopesos numeric DEFAULT 0.0,
-    tasaformulacion_id integer
+    tasaformulacion_id integer,
+    tasa double precision,
+    tasaej double precision,
+    montoej double precision,
+    aportecinepej double precision,
+    aporteotrosej double precision,
+    saldoej double precision,
+    presupuestototalej double precision
 );
 
 
@@ -5994,6 +6001,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180223091622'),
 ('20180302163143'),
 ('20180303192259'),
-('20180303200724');
+('20180303200724'),
+('20180313023554');
 
 
