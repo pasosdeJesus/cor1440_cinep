@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>tabla-departamento</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">departamento editar</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>open</td>
+	<td>/<datalist><option>http://archivoprensa.cinep.org.co:4000/act/admin/actividadareas</option><option>/</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option></datalist></td>
+	<td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Departamentos/Estados<datalist><option>link=Departamentos/Estados</option><option>//a[contains(text(),'Departamentos/Estados')]</option><option>//a[contains(@href, 'admin/departamentos')]</option><option>//article/ul/li[5]/a</option></datalist></td><td>61,7</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>xpath=(//a[contains(text(),'Nuevo')])[3]</option><option>//a[contains(@href, '/admin/departamentos/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>26,17</td>
+</tr>
+<tr><td>clickAt</td><td>id=departamento_nombre<datalist><option>id=departamento_nombre</option><option>name=departamento[nombre]</option><option>//input[@id='departamento_nombre']</option><option>//form[@id='new_departamento']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>72,23</td>
+</tr>
+<tr><td>type</td><td>id=departamento_nombre<datalist><option>id=departamento_nombre</option><option>name=departamento[nombre]</option><option>//input[@id='departamento_nombre']</option><option>//form[@id='new_departamento']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='departamento_id_pais_chosen']/a/span<datalist><option>//div[@id='departamento_id_pais_chosen']/a/span</option><option>//a/span</option></datalist></td><td>34,14</td>
+</tr>
+<tr><td>type</td><td>xpath=(//input[@type='text'])[2]<datalist><option>xpath=(//input[@type='text'])[2]</option><option>//div[@id='departamento_id_pais_chosen']/div/div/input</option><option>//div/div/input</option></datalist></td><td>col</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='departamento_id_pais_chosen']/div/ul/li<datalist><option>//div[@id='departamento_id_pais_chosen']/div/ul/li</option><option>//div[3]/div/div/ul/li</option></datalist></td><td>48,20</td>
+</tr>
+<tr><td>clickAt</td><td>id=departamento_observaciones<datalist><option>id=departamento_observaciones</option><option>name=departamento[observaciones]</option><option>//textarea[@id='departamento_observaciones']</option><option>//form[@id='new_departamento']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>21,25</td>
+</tr>
+<tr><td>type</td><td>id=departamento_observaciones<datalist><option>id=departamento_observaciones</option><option>name=departamento[observaciones]</option><option>//textarea[@id='departamento_observaciones']</option><option>//form[@id='new_departamento']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>//input[@name='commit']</option><option>//form[@id='new_departamento']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>38,18</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/departamentos/100003')])[2]</option><option>//a[3]</option></datalist></td><td>50,12</td>
+</tr>
+</tbody></table>
+</body>
+</html>
