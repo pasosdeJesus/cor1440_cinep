@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 22998a05dcd511ea920f10eb9d40241872679f0c
+  revision: e37c093c09ebc59b588fdd3c305432174c0c8815
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 743da820744d0ef727c7a6f77bff2f20403c5cff
+  revision: 19812c34411a4a9d9de737705854f133ff68d65c
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
