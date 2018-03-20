@@ -1,10 +1,10 @@
 # encoding: UTF-8
 
-require 'sip/concerns/models/grupo'
+require 'jn316_gen/concerns/models/grupo'
 
 module Sip
   class Grupo < ActiveRecord::Base
-    include Sip::Concerns::Models::Grupo
+    include Jn316Gen::Concerns::Models::Grupo
 
     has_many :regiongrupo, foreign_key: "grupo_id", validate: true, 
       class_name: '::Regiongrupo'
