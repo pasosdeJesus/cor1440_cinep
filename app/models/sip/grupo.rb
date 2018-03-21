@@ -14,5 +14,8 @@ module Sip
     has_many :actividad, through: :actividad_grupo,
       class_name: 'Cor1440Gen::Actividad'
 
+    has_many :grupo_proyectofinanciero, dependent: :delete_all,
+      class_name: '::GrupoProyectofinanciero', foreign_key: 'grupo_id'
+
   end
 end
