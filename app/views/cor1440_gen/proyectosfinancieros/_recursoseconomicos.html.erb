@@ -9,9 +9,9 @@
     Tipo de moneda
   </div>
   <div class="col-sm-4">
-    <% ih_tm = ih_et %>
-    <% ih_tm[:class] += ' chosen-select' if f.object.estado == 'E' %>
-    <% ih_tm[:disabled] = 'disbled' if f.object.estado != 'E' %>
+    <% ih_tm = ih_et.clone %>
+    <% ih_tm[:class] += ' chosen-select' #if f.object.estado == 'E' %>
+    <% #ih_tm[:disabled] = 'disabled' if f.object.estado != 'E' %>
     <%= f.association :tipomoneda,
       collection: ::Tipomoneda.habilitados,
       label_method: :nombre,
@@ -38,19 +38,26 @@
             f.object.tipomoneda.nombre != 'PESO' ?  
             ::Tasacambio.where(tipomoneda_id: f.object.tipomoneda_id) : 
             ::Tasacambio.where('TRUE=FALSE') %>
-          <% ih_tf = ih_et %>
-          <% ih_tf[:readonly] = 'readonly' if f.object.tipomoneda_id &&
-            f.object.tipomoneda.nombre == 'PESO' %>
-          <% ih_tf[:class] += ' chosen-select' %>
+          <% ih_tf = ih_et.clone %>
+          <% if f.object.tipomoneda_id %>
+              <% if f.object.tipomoneda.nombre == 'PESO' %>
+                <% ih_tf[:value] = 1 %>
+                <% ih_tf[:readonly] = 'readonly' %>
+              <% end%>
+          <% end %>
           <%= f.input :tasa_localizado,
-            input_html: ih_et,
+            input_html: ih_tf,
             label: false
           %>
         </td>
         <td colspan='2'>
-          <% ih_te = ih_ee %>
-          <% ih_te[:readonly] = 'readonly' if f.object.tipomoneda_id &&
-            f.object.tipomoneda.nombre == 'PESO' %>
+          <% ih_te = ih_ee.clone %>
+          <% if f.object.tipomoneda_id %>
+              <% if f.object.tipomoneda.nombre == 'PESO' %>
+                <% ih_te[:value] = 1 %>
+                <% ih_te[:readonly] = 'readonly' %>
+              <% end%>
+          <% end %>
           <%= f.input :tasaej_localizado, 
             input_html: ih_te,
             label: false %>
@@ -68,7 +75,7 @@
       <tr>
         <th>Aporte financiador</th>
         <td>
-          <% ih_m = ih_et %>
+          <% ih_m = ih_et.clone %>
           <% ih_m[:value] = f.object.monto_localizado || '0.0' %>
           <%= f.input :monto_localizado, 
             as: :string,

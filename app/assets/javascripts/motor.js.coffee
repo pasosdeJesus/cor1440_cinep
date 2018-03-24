@@ -6,6 +6,8 @@
 #//= require cocoon
 
 @reconocer_decimal_locale_es_CO = (n) ->
+  if n == ""
+    return 0
   i = 0
   r = ""
   while i<n.length
@@ -23,7 +25,7 @@
       vcpl = new Intl.NumberFormat('es-CO').format(vcp)
       $('#' + campo).attr('title', '$ ' + vcpl).tooltip('fixTitle').tooltip('show')
 
-@establece_duracion = (obdur) ->
+@establece_duracion = (root, obdur) ->
   $('#proyectofinanciero_duracion').val(obdur.duracion)
 
 @recalcula_duracion = (root) ->
@@ -37,30 +39,51 @@
   else
     $('#proyectofinanciero_duracion').val('')
 
-@recalcula_montospesos_localizado = (root) ->
-  tm = $('#proyectofinanciero_tipomoneda_id').val()
-  ml = $('#proyectofinanciero_monto_localizado').val()
-  if tm == "1"  # PESO
-    $('#proyectofinanciero_montopesos_localizado').val(ml)
-    $('#proyectofinanciero_presupuestototal_localizado').attr('data-original-title', $('#proyectofinanciero_presupuestototal_localizado').val())
-  else if typeof ml != 'undefined' && typeof tm != 'undefined'
-    tf2 = $('#proyectofinanciero_tasaformulacion_id option:selected').text().split(' ')
-    if tf2.length != 2
-      return
-    tf = reconocer_decimal_locale_es_CO(tf2[1])
-    m = reconocer_decimal_locale_es_CO(ml)
-    mp = tf*m
-    mpl = new Intl.NumberFormat('es-CO').format(mp)
-    $('#proyectofinanciero_montopesos_localizado').val(mpl)
+@cor1440_cinep_recalcula_montospesos_localizado = (root) ->
+  tfl = $('#proyectofinanciero_tasa_localizado').val()
+  tf = reconocer_decimal_locale_es_CO(tfl)
+  sum = 0
+  sump = 0
+  $.each [['monto', 'montopesos'], ['aportecinep', 'aportecinepp'],
+          ['aotrosfin', 'aporteotrosp'], ['saldo', 'saldop']], (i, c) ->
+    vl = $('#proyectofinanciero_' + c[0] + '_localizado').val()
+    v = reconocer_decimal_locale_es_CO(vl)
+    sum += v
+    vp = v * tf 
+    vpl = new Intl.NumberFormat('es-CO').format(vp)
+    $('#proyectofinanciero_' + c[1] + '_localizado').val(vpl)
+    sump += vp
 
-    recalcula_aemergente_pesos_localizado('proyectofinanciero_presupuestototal_localizado', tf)
-    recalcula_aemergente_pesos_localizado('proyectofinanciero_aportecinep_localizado', tf)
-    recalcula_aemergente_pesos_localizado('proyectofinanciero_aotrosfin_localizado', tf)
-    
+  suml = new Intl.NumberFormat('es-CO').format(sum)
+  sumpl = new Intl.NumberFormat('es-CO').format(sump)
+  $('#proyectofinanciero_presupuestototal_localizado').val(suml)
+  $('#proyectofinanciero_presupuestototalp_localizado').val(sumpl)
+
+  # Repetimos para datos en ejecucion
+  tel = $('#proyectofinanciero_tasaej_localizado').val()
+  te = reconocer_decimal_locale_es_CO(tel)
+  sum = 0
+  sump = 0
+  $.each [['montoej', 'montoejp'], ['aportecinepej', 'aportecinepejp'],
+          ['aporteotrosej', 'aporteotrosejp'], ['saldoej', 'saldoejp']], (i, c) ->
+    vl = $('#proyectofinanciero_' + c[0] + '_localizado').val()
+    v = reconocer_decimal_locale_es_CO(vl)
+    sum += v
+    vp = v * te
+    vpl = new Intl.NumberFormat('es-CO').format(vp)
+    $('#proyectofinanciero_' + c[1] + '_localizado').val(vpl)
+    sump += vp
+
+  suml = new Intl.NumberFormat('es-CO').format(sum)
+  sumpl = new Intl.NumberFormat('es-CO').format(sump)
+  $('#proyectofinanciero_presupuestototalej_localizado').val(suml)
+  $('#proyectofinanciero_presupuestototalejp_localizado').val(sumpl)
+
+
   return
 
 
-@cor1440_gen_llena_medicion = (res) ->
+@cor1440_gen_llena_medicion = (root, res) ->
   hid = res.hmindicadorpf_id
   $('[id$=_' + hid + '_fecha_localizada]').val(res.fechaloc)
   $('[id$=_' + hid + '_dmed1]').val(res.dmed1)
@@ -89,19 +112,58 @@
     datos, cor1440_gen_llena_medicion)  
   return
 
+@cor1440_cinep_recalcula_montopeso = (root) ->
+  debugger
+
+@cor1440_cinep_cambia_tipomoneda = (root, res) ->
+  if res.length > 0
+    t = res[0]['presenta_nombre'].split(' ')[1]
+  else 
+    t = 0
+  $('#proyectofinanciero_tasa_localizado').val(t)
+  if $('#proyectofinanciero_tasaej_localizado').val() == ''
+    $('#proyectofinanciero_tasaej_localizado').val(t)
+  cor1440_cinep_recalcula_montospesos_localizado(root)
+
 @cor1440_cinep_prepara_eventos_unicos = (root) ->
   sip_arregla_puntomontaje(root)
-  $('#proyectofinanciero_tipomoneda_id').chosen().change( (e) ->
-    sip_llena_select_con_AJAX($(this), 'proyectofinanciero_tasaformulacion_id', 'tasascambio', 'bustipomoneda_id', 'con Tasa de cambio', root, true, 'id', 'presenta_nombre', recalcula_montospesos_localizado)
+  $('#proyectofinanciero_tipomoneda_id').change( (e) ->
+      val = $(this).val()
+      if val == "1"  # PESO
+        $('#proyectofinanciero_tasa_localizado').val(1)
+        $('#proyectofinanciero_tasaej_localizado').val(1)
+        cor1440_cinep_recalcula_montospesos_localizado(root)
+      else
+        param = {}
+        param['bustipomoneda_id'] = val
+        param['presenta_nombre'] = 1
+        param['aniomax'] = $('#proyectofinanciero_anioformulacion').val()
+        param['mesmax'] = $('#proyectofinanciero_mesformulacion').val()
+        param = {filtro: param}
+        sip_ajax_recibe_json(root, 'tasascambio', param, 
+          cor1440_cinep_cambia_tipomoneda)
   )
+  $('#proyectofinanciero_tasa_localizado').change( (e) ->
+    cor1440_cinep_recalcula_montospesos_localizado(root)
+  )
+  $('#proyectofinanciero_tasaej_localizado').change( (e) ->
+    cor1440_cinep_recalcula_montospesos_localizado(root)
+  )
+
+  $.each ['monto', 'aportecinep', 'aotrosfin', 'saldo', 'saldop',
+    'montoej', 'aportecinepej', 'aporteotrosej', 'saldoej'], (i, c) ->
+    $('#proyectofinanciero_' + c + '_localizado').change( (e) ->
+      cor1440_cinep_recalcula_montospesos_localizado(root)
+    )
+
   $('#proyectofinanciero_monto_localizado').change( (e) ->
-    recalcula_montospesos_localizado(root)
+    cor1440_cinep_recalcula_montospesos_localizado(root)
   )
   $('#proyectofinanciero_presupuestototal_localizado').change( (e) ->
-    recalcula_montospesos_localizado(root)
+    cor1440_cinep_recalcula_montospesos_localizado(root)
   )
   $('#proyectofinanciero_tasaformulacion_id').chosen().change( (e) ->
-    recalcula_montospesos_localizado(root)
+    cor1440_cinep_recalcula_montospesos_localizado(root)
   )
 
   $('#proyectofinanciero_mesformulacion').change( (e) ->
@@ -116,9 +178,6 @@
   )
   $('#proyectofinanciero_fechacierre_localizada').change( (e) ->
     recalcula_duracion(root)
-  )
-  $('#proyectofinanciero_tipomoneda_id').chosen().change( (e) ->
-    sip_llena_select_con_AJAX($(this), 'proyectofinanciero_tasaformulacion_id', 'tasascambio', 'bustipomoneda_id', 'con Tasa de cambio', root, true, 'id', 'presenta_nombre', recalcula_montospesos_localizado)
   )
 
   $('#proyectofinanciero_estado').chosen().change( (e) ->
@@ -140,11 +199,29 @@
         $(this).data('chosen').search_field_disabled();
       );
       $('.editable-entramite.chosen-select').trigger('chosen:updated')
-
-      #$('.editable-entramite').removeClass('chosen-select')
-      #$('.editable-entramite').attr('readonly', 'readonly')
+    if $(this).val() == 'J'
+      $('.editable-enejecucion').removeAttr('readonly')
+      $('.editable-enejecucion.chosen-select').off()
+      $('.editable-enejecucion.chosen-select').on('chosen:updated', () ->
+        $(this).removeAttr('disabled');
+        $(this).removeAttr('readonly');
+        $(this).data('chosen').search_field_disabled();
+      );
+      $('.editable-enejecucion.chosen-select').trigger('chosen:updated')
+    else
+      $('.editable-enejecucion').attr('readonly', 'readonly')
+      $('.editable-enejecucion.chosen-select').off()
+      $('.editable-enejecucion.chosen-select').on('chosen:updated', () ->
+        $(this).attr('disabled', 'disabled');
+        $(this).attr('readonly', 'readonly');
+        $(this).data('chosen').search_field_disabled();
+      );
+      $('.editable-enejecucion.chosen-select').trigger('chosen:updated')
   )
+
   $('#proyectofinanciero_estado').trigger('change')
+
+
 
   $(document).on('change', '#efecto_indicadorpf_id', (e) ->
     ruta = document.location.pathname

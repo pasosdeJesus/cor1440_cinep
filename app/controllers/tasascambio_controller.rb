@@ -26,6 +26,14 @@ class TasascambioController < Sip::ModelosController
     ] 
   end
 
+  
+  def filtrar(cons, params)
+    if params[:aniomax] && params[:mesmax]
+      cons = cons.where("fecha<='#{params[:aniomax].to_i}-#{params[:mesmax].to_i}-01'")
+    end
+    return super(cons, params)
+  end
+
   def index_reordenar(registros)
     return registros.reorder(fecha: :desc, tipomoneda_id: :asc)
   end
