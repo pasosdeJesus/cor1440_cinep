@@ -10,14 +10,16 @@
   </div>
   <div class="col-sm-4">
     <% ih_tm = ih_et.clone %>
-    <% ih_tm[:class] += ' chosen-select' #if f.object.estado == 'E' %>
-    <% #ih_tm[:disabled] = 'disabled' if f.object.estado != 'E' %>
     <%= f.association :tipomoneda,
       collection: ::Tipomoneda.habilitados,
       label_method: :nombre,
       value_method: :id,
       label: false,
       input_html: ih_tm %>
+  </div>
+  <div class="col-sm-4">
+    <%= link_to "Ver tasas de referencia", 
+      main_app.tasascambio_path, target: '_blank' %>
   </div>
 </div>
 
