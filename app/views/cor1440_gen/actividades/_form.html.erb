@@ -140,7 +140,14 @@
   </div> <!-- panel panel-default -->
 
   <div class="panel panel-default">
-    <div class="panel-heading">Desarrollo</div><div class="panel-body">
+    <div class="panel-heading">Desarrollo y Resultado</div><div class="panel-body">
+
+      <div id="camposdinamicos" class="valorcampoacts-div valorcampoacts">
+        <%= f.simple_fields_for :valorcampoact do |v| %>
+          <% render partial: 'valorcampoact_campos', locals: { f: f, v: v} %>
+        <% end %>
+      </div>
+
       <div class='row'>
         <div class='col-sm-offset-0 col-sm-6'>
           <%= f.association :actor, 
@@ -206,11 +213,7 @@
           %>
         </div> 
       </div> <!-- row -->
-    </div> <!-- panel-body -->
-  </div> <!-- panel panel-default -->
 
-  <div class="panel panel-default">
-    <div class="panel-heading">Observaciones</div><div class="panel-body">
       <%= f.input :observaciones, as: :text %>
 
       <!--%= f.input(:valora, collection: [
