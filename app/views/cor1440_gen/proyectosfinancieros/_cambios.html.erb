@@ -1,0 +1,25 @@
+<p>
+<table border=1 width="100%">
+  <thead>
+    <tr>
+      <th>Cuando</th><th>IP</th><th>Usuario</th><th>Comentario sobre el Cambio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="cambiosproyectofinanciero">
+    <%= f.simple_fields_for :cambiosproyectofinanciero do |p| %>
+      <%= render 'cambiosproyectofinanciero_campos', :f => p %>
+    <% end %>
+  </tbody>
+</table>
+</p>
+<p><div class="links">
+  <%= link_to_add_association 'Añadir Cambio', f, 
+    :cambiosproyectofinanciero,
+    :"data-association-insertion-node" => "tbody#cambiosproyectofinanciero", 
+    :"data-association-insertion-method" => "append", 
+    partial: 'cambiosproyectofinanciero_campos',
+    :class => 'btn-primary'
+  %>
+</div></p>
+

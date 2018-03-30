@@ -1,0 +1,47 @@
+<tr class='nested-fields'>
+  <td>
+    <%= f.input :cuando, as: :string,
+      label: false,
+      input_html: { 
+        readonly: "readonly",
+        value: f.object.cuando ? f.object.cuando : Time.now
+      } %>
+  </td>
+  <td>
+    <%= f.input :ip, 
+      label: false,
+      input_html: { 
+        readonly: "readonly",
+        value: f.object.ip ? f.object.ip : request.remote_ip 
+      } %>
+  </td>
+  <td>
+    <%= f.input :nusuario, 
+      label: false,
+      input_html: { 
+        readonly: "readonly",
+        value: f.object.usuario ? f.object.usuario.nusuario : current_usuario.nusuario
+      } %>
+    <%= f.input :usuario_id, 
+      as: :hidden, 
+      input_html: { 
+        value: f.object.usuario_id ? f.object.usuario_id : current_usuario.id
+      } %>
+  </td>
+  <td>
+    <% oi = { rows: 2 } %>
+    <% oi[:readonly] = 'readonly' if f.object.usuario_id != current_usuario.id &&
+      !f.object.usuario.nil? %>
+    <%= f.input :comentarios,
+      label: false,
+      as: :text, 
+      input_html: oi %>
+  </td>
+  <td>
+    <%= f.input :id, as: :hidden %>
+    <%= link_to_remove_association "Eliminar", f, 
+        :class => 'btn-danger' 
+    %>
+    <div><%= f.error_notification %></div>
+  </td>
+</tr>
