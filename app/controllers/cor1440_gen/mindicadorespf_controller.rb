@@ -55,7 +55,6 @@ module Cor1440Gen
           d1 = 0.0
           d2 = 0.0
           d3 = 0.0
-          ids = []
           eap = ::ApplicationHelper::ESTADOS_APROBADO.map { |l| "'#{l}'" }
           eap = eap.join(', ')
           case tipoind.nombre
@@ -118,7 +117,7 @@ module Cor1440Gen
                fecha>='#{fini}' AND fecha<='#{ffin}'
                AND indicadorpf_id='18'"
             resind = ActiveRecord::Base.connection.execute(base).first['count'].to_f
-           when 'E1I2'
+          when 'E1I2'
             base = "SELECT COUNT(actor_id) FROM efecto WHERE 
                fecha>='#{fini}' AND fecha<='#{ffin}'
                AND indicadorpf_id='19'"
@@ -131,7 +130,7 @@ module Cor1440Gen
             d2 = d2.first ? d2.first['count'] : 0
             resind = d2.to_f
 
-           when 'E2I1'
+          when 'E2I1'
             base = "SELECT COUNT(*) FROM (SELECT DISTINCT actor_id
                FROM efecto AS e
                WHERE e.fecha>='#{fini}' AND e.fecha<='#{ffin}'
@@ -145,25 +144,25 @@ module Cor1440Gen
             d2 = ActiveRecord::Base.connection.execute(base).first['count']
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
-           when 'E3I1'
+          when 'E3I1'
             base = "SELECT COUNT(*) FROM efecto WHERE 
                fecha>='#{fini}' AND fecha<='#{ffin}'
                AND indicadorpf_id='21'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count'].to_f
             resind = d1
-           when 'E3I2'
+          when 'E3I2'
             base = "SELECT COUNT(*) FROM efecto WHERE 
                fecha>='#{fini}' AND fecha<='#{ffin}'
                AND indicadorpf_id='22'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count'].to_f
             resind = d1.to_f
-           else
+          else
             base = "SELECT COUNT(*) FROM efecto WHERE 
                fecha>='#{fini}' AND fecha<='#{ffin}'
                AND indicadorpf_id='#{ind.id}'"
             resind = ActiveRecord::Base.connection.execute(base).first['count'].to_f
 
-         end
+          end
           respond_to do |format|
             format.json { 
               render json: {
