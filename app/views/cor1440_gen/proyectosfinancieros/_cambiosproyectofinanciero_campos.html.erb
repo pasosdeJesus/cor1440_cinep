@@ -39,9 +39,11 @@
   </td>
   <td>
     <%= f.input :id, as: :hidden %>
-    <%= link_to_remove_association "Eliminar", f, 
-        :class => 'btn-danger' 
-    %>
+    <% if f.object.usuario_id == current_usuario.id ||
+         f.object.usuario.nil? %>
+       <%= link_to_remove_association "Eliminar", f, 
+         :class => 'btn-danger' %>
+    <% end %>
     <div><%= f.error_notification %></div>
   </td>
 </tr>
