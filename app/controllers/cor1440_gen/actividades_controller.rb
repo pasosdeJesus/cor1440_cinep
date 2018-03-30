@@ -161,51 +161,44 @@ module Cor1440Gen
     # No confiar parametros a Internet, sólo permitir lista blanca
     def actividad_params
       params.require(:actividad).permit(
-        :grupo_id, :minutos, :nombre, 
-        :objetivo, :proyecto, :resultado,
-        :fecha_localizada, :actividad, :observaciones, 
-        :usuario_id,
-        :departamento_id,
-        :municipio_id,
-        :lugar, 
-        :convocante, 
-        :participantes, 
-        :totorg, 
-        :mujeres, 
-        :hombres, 
-        :sexo_onr, 
-        :negros, 
-        :indigenas, 
-        :etnia_onr, 
-        :desarrollo, 
-        :valora,
-        :contexto,
-        :duracion,
-        :mduracion,
-        :alcance,
+        :actividad, 
         :accionincidencia,
         :accioncgenero,
         :accioncetnia,
+        :alcance,
+        :convocante, 
+        :contexto,
+        :departamento_id,
+        :desarrollo, 
+        :duracion,
+        :etnia_onr, 
+        :fecha_localizada, 
+        :grupo_id, 
+        :hombres, 
+        :indigenas, 
+        :lugar, 
+        :mduracion,
+        :minutos, 
+        :mujeres, 
+        :municipio_id,
+        :negros, 
+        :nombre, 
         :nucleoconflicto_id,
-        :redactor_id,
         :oficina_id,
+        :objetivo, 
+        :observaciones,         
+        :participantes, 
+        :proyecto, 
+        :redactor_id,
+        :resultado,
+        :sexo_onr, 
+        :totorg, 
+        :usuario_id,
+        :valora,
         :actividadarea_ids => [],
-        :actividadtipo_ids => [],
         :actividadpf_ids => [],
-        :objetivopf_ids => [],
-        :actor_ids => [],
-        :grupo_ids => [],
-        :otronucleoconflicto_ids => [],
-        :publicacion_ids => [],
-        :proyecto_ids => [],
-        :proyectofinanciero_ids => [],
-        :usuario_ids => [],
         :actividad_rangoedadac_attributes => [
           :id, :rangoedadac_id, :fl, :fr, :ml, :mr, :_destroy
-        ],
-        :contextoinv_attributes => [
-          :id, :fechainicio, :fechafin, :usuario_id,
-          :regiongrupo_id
         ],
         :actividad_sip_anexo_attributes => [
           :id,
@@ -213,8 +206,26 @@ module Cor1440Gen
           :_destroy,
           :sip_anexo_attributes => [
             :id, :descripcion, :adjunto, :_destroy
-      ]
-      ]
+          ]
+        ],
+        :actividadtipo_ids => [],
+        :actor_ids => [],
+        :contextoinv_attributes => [
+          :id, :fechainicio, :fechafin, :usuario_id,
+          :regiongrupo_id
+        ],
+        :grupo_ids => [],
+        :objetivopf_ids => [],
+        :otronucleoconflicto_ids => [],
+        :proyecto_ids => [],
+        :proyectofinanciero_ids => [],
+        :publicacion_ids => [],
+        :usuario_ids => [],
+        :valorcampoact_attributes => [
+          :id,
+          :campoact_id,
+          :valor
+        ]
       )
     end
   end

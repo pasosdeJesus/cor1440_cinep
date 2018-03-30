@@ -222,6 +222,18 @@
   $('#proyectofinanciero_estado').trigger('change')
 
 
+  $('#actividad_actividadpf_ids').chosen().change( (e) ->
+    ruta = document.location.pathname
+    if ruta.length == 0
+      return
+    if ruta[0] == '/'
+      ruta = ruta.substr(1)
+    datos = {
+      actividadpf_ids: $(this).val()
+    }
+    sip_envia_ajax_datos_ruta_y_pinta(ruta, datos,
+      '#camposdinamicos', '#camposdinamicos')
+  )
 
   $(document).on('change', '#efecto_indicadorpf_id', (e) ->
     ruta = document.location.pathname
