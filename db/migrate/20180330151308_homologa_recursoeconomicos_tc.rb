@@ -38,8 +38,9 @@ class HomologaRecursoeconomicosTc < ActiveRecord::Migration[5.1]
       npresupuestototal = p.monto + p.aportecinep + p.aotrosfin + p.saldo
       if  p.presupuestototal != npresupuestototal 
         comentacambio += "Cambió el presupuesto total que " +
-          "antes era #{p.presupuestototal_localizado} y después #{npresupuestototal_localizado}. "
+          "antes era #{p.presupuestototal_localizado} y después "
         p.presupuestototal = npresupuestototal 
+        comentacambio += "#{p.presupuestototal_localizado}. "
       end
 
       if p.otrosaportescinep && p.otrosaportescinep.length > 0
@@ -54,7 +55,8 @@ class HomologaRecursoeconomicosTc < ActiveRecord::Migration[5.1]
         c.usuario = Usuario.where(nusuario: 'vtamara').take
         c.comentarios = "Tras cambiar pestaña Recursos Económicos en " +
           "Mar.2018 y homologar: " + comentacambio
-        puts c.to_s
+        c.proyectofinanciero_id = p.id
+        puts "Comentario en proyecto #{p.id}"
         c.save!
       end
 
