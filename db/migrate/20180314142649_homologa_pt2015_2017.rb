@@ -61,25 +61,24 @@ class HomologaPt20152017 < ActiveRecord::Migration[5.1]
       INSERT INTO cor1440_gen_actividadtipo (id, nombre, fechacreacion, created_at, updated_at) VALUES (81, 'CAMPOS PLAN TRIENAL OE1', '2018-03-15', '2018-03-15', '2018-03-15');
       INSERT INTO cor1440_gen_actividadtipo (id, nombre, fechacreacion, created_at, updated_at) VALUES (82, 'CAMPOS PLAN TRIENAL OE2', '2018-03-15', '2018-03-15', '2018-03-15');
 
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (20, 79, 'PROGRAMA-SERVICIO-PRODUCTO');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (21, 79, 'OBJETIVO');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (22, 79, '¿QUIEN CONVOCÓ?');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (23, 79, 'N');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (24, 79, 'PERSONAS ACOMPAÑADA O QUE PARTICIPAN');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (25, 79, 'MESTIZOS');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (26, 79, 'BLANCOS');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (27, 79, 'DESARROLLO DE LA ACTIVIDAD');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (28, 79, 'RESULTADO');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (29, 79, 'COMPROMISOS-OBSERVACIONES');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (30, 79, 'VALORACIÓN');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (31, 80, 'PRINCIPAL NÚCLEO DE CONFLICTO');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (32, 80, 'OTROS NÚCLEOS DE CONFLICTO');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (33, 81, 'RED DE ACTORES ');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (34, 81, 'ALCANCE');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (35, 82, 'INCIDE EN TRANSFORMACIÓN DE NÚCLEOS DE CONFLICTO');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (36, 82, 'ACCIÓN COLECTIVA VINCULADA A DERECHOS DE GENERO');
-INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (37, 82, 'ACCIÓN COLECTIVA VINCULADA A DERECHOS DE ETNIA');
-
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (20, 79, 'Programa-Servicio-Producto');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (21, 79, 'Objetivo');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (22, 79, '¿Quien convocó?');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (23, 79, 'Personas acompañadas o que participan');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (24, 79, 'Negros');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (25, 79, 'Mestizos');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (26, 79, 'Blancos');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (27, 79, 'Desarrollo de la actividad');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (28, 79, 'Resultado');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (29, 79, 'Valoración');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (30, 80, 'Principal núcleo de conflicto');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (31, 80, 'Otros núcleos de conflicto');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (32, 81, 'Red de actores ');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (33, 81, 'Alcance');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (34, 82, 'Incide en transformación de núcleos de conflicto');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (35, 82, 'Acción colectiva vinculada a derechos de genero');
+      INSERT INTO cor1440_gen_campoact (id, actividadtipo_id, nombrecampo) VALUES (36, 82, 'Acción colectiva vinculada a derechos de etnia');
+      
 
       INSERT INTO cor1440_gen_actividadpf (id, proyectofinanciero_id, resultadopf_id, nombrecorto, titulo, actividadtipo_id) VALUES (40, 20, 25, 'A1', 'ORGANIZACIÓN DE ACTIVIDAD DE FORMACIÓN', 40);
       INSERT INTO cor1440_gen_actividadpf (id, proyectofinanciero_id, resultadopf_id, nombrecorto, titulo, actividadtipo_id) VALUES (41, 20, 25, 'A2', 'PARTICIPACIÓN EN ACTIVIDAD DE FORMACIÓN', 41);
