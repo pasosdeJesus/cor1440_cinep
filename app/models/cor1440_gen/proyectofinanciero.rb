@@ -4,6 +4,11 @@ require 'cor1440_gen/concerns/models/proyectofinanciero'
 
 module Cor1440Gen
   class Proyectofinanciero < ActiveRecord::Base
+
+    include Cor1440Gen::Concerns::Models::Proyectofinanciero
+    include ApplicationHelper
+
+
     @current_usuario = nil
     attr_accessor :current_usuario
     attr_accessor :duracion
@@ -17,9 +22,9 @@ module Cor1440Gen
     attr_accessor :saldoejp_localizado
     attr_accessor :presupuestototalp_localizado
     attr_accessor :presupuestototalejp_localizado
-
-    include Cor1440Gen::Concerns::Models::Proyectofinanciero
-    include ApplicationHelper
+    cattr_accessor :ip
+    cattr_accessor :current_usuario
+    serialize :cambios
 
     belongs_to :respgp, class_name: '::Usuario',
       foreign_key: 'respgp_id'
@@ -237,6 +242,11 @@ module Cor1440Gen
     accepts_nested_attributes_for :productopf, 
       allow_destroy: true, reject_if: :all_blank
 
+    has_many :cambiosproyectofinanciero, dependent: :delete_all,
+      class_name: 'Cor1440Gen::Cambiosproyectofinanciero',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    accepts_nested_attributes_for :cambiosproyectofinanciero, 
+      allow_destroy: true, reject_if: :all_blank
 
 
     validates :anotacionescontab, length: { maximum: 5000}
@@ -370,6 +380,18 @@ module Cor1440Gen
         presenta_gen(atr)
       end
     end
+
+# after_update o after_commit solo ven cambios a este objeto
+#    after_commit do
+#      if saved_changes != {}
+#        c = Cor1440Gen::Cambiosproyectofinanciero.new(cuando: updated_at,
+#                                                      usuario_id: current_usuario.id,
+#                                                      ip: ip,
+#                                                      proyectofinanciero_id: self.id,
+#                                                      cambios: saved_changes)
+#        c.save!
+#      end
+#    end
 
   end
 end

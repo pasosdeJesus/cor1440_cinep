@@ -52,7 +52,10 @@
             class="enviarautomatico" 
             aria-controls="anexos" role="tab" 
             data-toggle="tab">Anexos</a></li>
-
+          <li role="presentation"><a href="#cambios" 
+            class="enviarautomatico" 
+            aria-controls="cambios" role="tab" 
+            data-toggle="tab">Control de Cambios</a></li>
         </ul>
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="basicos">
@@ -89,6 +92,9 @@
             <% else %>
               <%= render 'anexos', :f => f %> 
             <% end %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="cambios">
+            <%= render 'cambios', :f => f %>
           </div>
 
 

@@ -803,7 +803,8 @@ module Cor1440Gen
       @registro = @basica = @proyectofinanciero = Proyectofinanciero.find(
         Proyectofinanciero.connection.quote_string(params[:id]).to_i
       )
-      #@proyectofinanciero.current_usuario = current_usuario
+      @registro.ip = request.remote_ip
+      @registro.current_usuario = current_usuario
     end
 
     # No confiar parametros a Internet, sólo permitir lista blanca
@@ -886,6 +887,15 @@ module Cor1440Gen
           :sip_anexo_attributes => [
             :id, :descripcion, :adjunto, :_destroy
           ]
+        ],
+        :cambiosproyectofinanciero_attributes => [
+          :id,
+          :cuando,
+          :ip,
+          :proyectofinanciero_id,
+          :usuario_id,
+          :comentarios,
+          :_destroy
         ],
         :desembolso_attributes => [
           :id,

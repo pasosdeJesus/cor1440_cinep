@@ -946,6 +946,40 @@ ALTER SEQUENCE cor1440_gen_actividadtipo_id_seq OWNED BY cor1440_gen_actividadti
 
 
 --
+-- Name: cor1440_gen_cambiosproyectofinanciero; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cor1440_gen_cambiosproyectofinanciero (
+    id bigint NOT NULL,
+    cuando timestamp without time zone,
+    ip character varying(100),
+    usuario_id integer,
+    proyectofinanciero_id integer,
+    cambios character varying(5000),
+    comentarios character varying(5000)
+);
+
+
+--
+-- Name: cor1440_gen_cambiosproyectofinanciero_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cor1440_gen_cambiosproyectofinanciero_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_cambiosproyectofinanciero_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cor1440_gen_cambiosproyectofinanciero_id_seq OWNED BY cor1440_gen_cambiosproyectofinanciero.id;
+
+
+--
 -- Name: cor1440_gen_campoact; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3597,6 +3631,13 @@ ALTER TABLE ONLY cor1440_gen_actividadtipo ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
+-- Name: cor1440_gen_cambiosproyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_cambiosproyectofinanciero ALTER COLUMN id SET DEFAULT nextval('cor1440_gen_cambiosproyectofinanciero_id_seq'::regclass);
+
+
+--
 -- Name: cor1440_gen_campoact id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4035,6 +4076,14 @@ ALTER TABLE ONLY cor1440_gen_actividadpf
 
 ALTER TABLE ONLY cor1440_gen_actividadtipo
     ADD CONSTRAINT cor1440_gen_actividadtipo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cor1440_gen_cambiosproyectofinanciero cor1440_gen_cambiosproyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_cambiosproyectofinanciero
+    ADD CONSTRAINT cor1440_gen_cambiosproyectofinanciero_pkey PRIMARY KEY (id);
 
 
 --
@@ -5281,6 +5330,14 @@ ALTER TABLE ONLY cor1440_gen_actividad_objetivopf
 
 
 --
+-- Name: cor1440_gen_cambiosproyectofinanciero fk_rails_8df1f2e905; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_cambiosproyectofinanciero
+    ADD CONSTRAINT fk_rails_8df1f2e905 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
 -- Name: sal7711_gen_articulo fk_rails_8e3e0703f9; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5350,6 +5407,14 @@ ALTER TABLE ONLY cor1440_gen_actividad_proyectofinanciero
 
 ALTER TABLE ONLY cor1440_gen_proyectofinanciero
     ADD CONSTRAINT fk_rails_aa3f51f24a FOREIGN KEY (tasaformulacion_id) REFERENCES tasacambio(id);
+
+
+--
+-- Name: cor1440_gen_cambiosproyectofinanciero fk_rails_ad88a8cfe6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_cambiosproyectofinanciero
+    ADD CONSTRAINT fk_rails_ad88a8cfe6 FOREIGN KEY (usuario_id) REFERENCES usuario(id);
 
 
 --
@@ -6004,6 +6069,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180303200724'),
 ('20180313023554'),
 ('20180314142649'),
-('20180320230847');
+('20180320230847'),
+('20180330104304');
 
 
