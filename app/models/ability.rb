@@ -46,7 +46,7 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_GESTIONDECALIDAD = "Gestión de Calidad"
   GRUPO_EXTERNOS = "Externos"
   GRUPO_COMUNICACIONES = "Comunicaciones"
-  GRUPO_DERECHOSHUMANOS = "Área Derechos Humanos y Derecho Internacional Humanitario"
+  GRUPO_DERECHOSHUMANOS = "Línea Derechos Humanos y Derecho Internacional Humanitario"
   GRUPO_CIUDADANIAYPAZ = "Área Ciudadanías e Iniciativas de Paz y Reconciliación"
   GRUPO_CONFLICTOESTADOYDESARROLLO = "Área Conflicto, Estado y Desarrollo"
   GRUPO_MOVILIZACIONTERRITORIOEINTERCULTURALIDAD = "Área Movilización, Territorio e Interculturalidad"
