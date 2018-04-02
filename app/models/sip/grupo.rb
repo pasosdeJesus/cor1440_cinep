@@ -14,6 +14,11 @@ module Sip
     has_many :actividad, through: :actividad_grupo,
       class_name: 'Cor1440Gen::Actividad'
 
+    has_many :actor_grupo, dependent: :delete_all,
+      class_name: '::ActorGrupo', foreign_key: 'sip_grupo_id'
+    has_many :actor, through: :actor_grupo,
+      class_name: 'Cor1440Gen::Actor'
+
     has_many :grupo_proyectofinanciero, dependent: :delete_all,
       class_name: '::GrupoProyectofinanciero', foreign_key: 'grupo_id'
 

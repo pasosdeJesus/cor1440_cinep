@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: b27fabf60123bdc2f67a9003f63dcb06b816532a
+  revision: 47ad0bc5d36b53b4bbd50a02fde9fbad1f2a9090
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -140,7 +140,7 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
-    bootstrap-datepicker-rails (1.7.1.1)
+    bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
     camertron-eprun (1.1.1)
