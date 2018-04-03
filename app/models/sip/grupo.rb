@@ -22,5 +22,10 @@ module Sip
     has_many :grupo_proyectofinanciero, dependent: :delete_all,
       class_name: '::GrupoProyectofinanciero', foreign_key: 'grupo_id'
 
+    has_many :grupo_subgrupo, dependent: :delete_all,
+      class_name: '::GrupoSubgrupo', foreign_key: 'grupo_id', 
+      validate: true
+    has_many :subgrupo, through: :grupo_subgrupo,
+      class_name: 'Sip::Grupo'
   end
 end

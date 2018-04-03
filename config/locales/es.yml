@@ -188,6 +188,8 @@ es:
         fecha_localizada: Fecha
         indicadorpf: Indicador
         indicadorpf_id: Indicador
+      "sip/grupo":
+        "{:subgrupo_ids=>[]}": Subgrupos
       "nivelrelacion":
         Nivelrelacion: Nivel de relación
         Nivelesrelacion: Niveles de relacion

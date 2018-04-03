@@ -1770,6 +1770,36 @@ CREATE TABLE grupo_proyectofinanciero (
 
 
 --
+-- Name: grupo_subgrupo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE grupo_subgrupo (
+    id bigint NOT NULL,
+    grupo_id integer,
+    subgrupo_id integer
+);
+
+
+--
+-- Name: grupo_subgrupo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE grupo_subgrupo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: grupo_subgrupo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE grupo_subgrupo_id_seq OWNED BY grupo_subgrupo.id;
+
+
+--
 -- Name: grupoper_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -3764,6 +3794,13 @@ ALTER TABLE ONLY efecto_valorcampotind ALTER COLUMN id SET DEFAULT nextval('efec
 
 
 --
+-- Name: grupo_subgrupo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY grupo_subgrupo ALTER COLUMN id SET DEFAULT nextval('grupo_subgrupo_id_seq'::regclass);
+
+
+--
 -- Name: heb412_gen_campohc id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4228,6 +4265,14 @@ ALTER TABLE ONLY efecto_valorcampotind
 
 ALTER TABLE ONLY sip_etiqueta
     ADD CONSTRAINT etiqueta_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: grupo_subgrupo grupo_subgrupo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY grupo_subgrupo
+    ADD CONSTRAINT grupo_subgrupo_pkey PRIMARY KEY (id);
 
 
 --
@@ -4930,6 +4975,14 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
+-- Name: grupo_subgrupo fk_rails_20cec9f9a1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY grupo_subgrupo
+    ADD CONSTRAINT fk_rails_20cec9f9a1 FOREIGN KEY (grupo_id) REFERENCES sip_grupo(id);
+
+
+--
 -- Name: actividad_grupo fk_rails_214969d697; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5455,6 +5508,14 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 ALTER TABLE ONLY contextoinv
     ADD CONSTRAINT fk_rails_c2808a2b4f FOREIGN KEY (regiongrupo_id) REFERENCES regiongrupo(id);
+
+
+--
+-- Name: grupo_subgrupo fk_rails_c29a37734f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY grupo_subgrupo
+    ADD CONSTRAINT fk_rails_c29a37734f FOREIGN KEY (subgrupo_id) REFERENCES sip_grupo(id);
 
 
 --
@@ -6072,6 +6133,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180320230847'),
 ('20180330104304'),
 ('20180330151308'),
-('20180330211214');
+('20180330211214'),
+('20180402214147');
 
 
