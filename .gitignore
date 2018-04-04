@@ -47,3 +47,7 @@ public/heb412/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore encrypted secrets key file.
+config/secrets.yml.key
+config/secrets.yml.enc
