@@ -47,12 +47,15 @@ Rails.application.routes.draw do
       path_names: { new: 'nueva', edit: 'edita' }
 
 
+
     get "/api/cor1440cinep/duracion" => 
       "cor1440_gen/proyectosfinancieros#duracion", 
       as: :duracion 
     get "/api/cor1440cinep/mideindicador" => 
-      "cor1440_gen/mindicadorpf#mideindicador", 
+      "cor1440_gen/mindicadorespf#mideindicador", 
       as: :mideindicador
+
+    get "/admin/grupos/:id/creardirac" => "sip/admin/grupos#crear_dirac", as: :crear_dirac
 
     get "/reportes/indicador11" => "reportes#indicador11", 
       as: :reportes_indicador11
