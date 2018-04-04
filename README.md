@@ -4,10 +4,10 @@
 Sistema de información de procesos en CINEP/PPP
 
 ### Requerimientos
-* Ruby version >= 2.4
+* Ruby version >= 2.5
 * Ruby on Rails 5.1.x
-* PostgreSQL >= 9.6 con extensión unaccent disponible
-* Recomendado sobre adJ 6.0 (que incluye todos los componentes mencionados).  
+* PostgreSQL >= 10.1 con extensión unaccent disponible
+* Recomendado sobre adJ 6.2 (que incluye todos los componentes mencionados).  
 
 Estas instrucciones suponen que opera en este ambiente, puedes ver más sobre
 la instalación de Ruby on Rails en adJ en 
@@ -15,9 +15,20 @@ la instalación de Ruby on Rails en adJ en
 
 
 ### Arquitectura
+
 Es una aplicación que emplea el motor genérico estilo Pasos de Jesús ```sip```
  [https://github.com/pasosdeJesus/sip]
 y el motor cor1440_gen [https://github.com/pasosdeJesus/cor1440_gen]
+
+
+### Manejo de usuarios
+
+* Si hay directorio LDAP se autentica con este.
+* Si se configura un directorio activo puede realizar algunas operaciones  
+  con este.
+
+Para esto usa la gema jn316_gen, y la configuración de estos es como
+ese explica en <https://github.com/pasosdeJesus/jn316_gen>
 
 ### Configuracion, uso, desarrollo
 

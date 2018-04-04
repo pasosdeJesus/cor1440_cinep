@@ -221,7 +221,6 @@
 
   $('#proyectofinanciero_estado').trigger('change')
 
-
   $('#actividad_actividadpf_ids').chosen().change( (e) ->
     ruta = document.location.pathname
     if ruta.length == 0

@@ -1,0 +1,6 @@
+<% if can? :manage, Sip::Grupo %>
+  <%= link_to t('.crearendirac', :default => 'Crear en directorio activo'),
+    admin_grupo_path(@registro) + "/creardirac", 
+    {class: 'btn', "data-turbolinks" => false }
+  %>
+<% end %>
