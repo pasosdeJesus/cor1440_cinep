@@ -86,4 +86,28 @@ module ApplicationHelper
     "/proyectosfinancieros"
   end
 
+  # Concatena lista de nombres de supergrupos de g a l sin repetir
+  def self.supergrupos_grupo(g, l)
+    if g.nil?
+      return
+    end
+    nl = ::GrupoSubgrupo.where(subgrupo_id: g.id)
+    nl.each do |sg|
+      if !l.include?(sg.grupo.nombre)
+        l << sg.grupo.nombre
+        supergrupos_grupo(sg.grupo, l)
+      end
+    end
+  end
+
+  # Retorna lista de nombres de supergrupos de usuario u
+  def self.supergrupos_usuario(u)
+    l = []
+    u.sip_grupo.each do |g|
+      l << g.nombre
+      supergrupos_grupo(g, l)
+    end
+    return l
+  end
+
 end

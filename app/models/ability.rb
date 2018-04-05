@@ -47,9 +47,7 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_EXTERNOS = "Externos"
   GRUPO_COMUNICACIONES = "Comunicaciones"
   GRUPO_DERECHOSHUMANOS = "Línea Derechos Humanos y Derecho Internacional Humanitario"
-  GRUPO_CIUDADANIAYPAZ = "Área Ciudadanías e Iniciativas de Paz y Reconciliación"
-  GRUPO_CONFLICTOESTADOYDESARROLLO = "Área Conflicto, Estado y Desarrollo"
-  GRUPO_MOVILIZACIONTERRITORIOEINTERCULTURALIDAD = "Área Movilización, Territorio e Interculturalidad"
+  GRUPO_LINEA = "Línea"
   def tablasbasicas 
     super() - [ ['Cor1440Gen', 'proyectofinanciero'] ] + 
       [
@@ -139,7 +137,7 @@ class Ability  < Cor1440Gen::Ability
     if !usuario || usuario.fechadeshabilitacion
       return
     end
-    lgrupos = usuario.sip_grupo.map(&:nombre)
+    lgrupos = ApplicationHelper.supergrupos_usuario(usuario) #nombres
     can :descarga_anexo, Sip::Anexo
     if !usuario.nil? && !usuario.rol.nil? then
       can :nuevo, Cor1440Gen::Actividad
@@ -157,11 +155,9 @@ class Ability  < Cor1440Gen::Ability
         can :fichaimp, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichapdf, Cor1440Gen::Proyectofinanciero # Los de su grupo
 
-        # Sólo equipos
-        if lgrupos.include?(GRUPO_DERECHOSHUMANOS) || 
-          lgrupos.include?(GRUPO_CIUDADANIAYPAZ) ||
-          lgrupos.include?(GRUPO_CONFLICTOESTADOYDESARROLLO) ||
-          lgrupos.include?(GRUPO_MOVILIZACIONTERRITORIOEINTERCULTURALIDAD)
+        lineas = lgrupos.select {|g| g.start_with?(GRUPO_LINEA)}
+        # Sólo investigadores
+        if lineas.length > 0
           can [:create, :read, :update], ::Actor
           can :manage, :tablasbasicas
           can :manage, ::Efecto
