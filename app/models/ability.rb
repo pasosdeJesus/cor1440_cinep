@@ -148,6 +148,7 @@ class Ability  < Cor1440Gen::Ability
         can :read, Heb412Gen::Doc
         can :read, Heb412Gen::Plantillahcm
         can :read, ::Usuario # Directorio institucional
+        can :read, Sip::Grupo # Directorio institucional
         can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
         #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
         can :manage, Cor1440Gen::Informe # limitar a oficina?
@@ -191,7 +192,6 @@ class Ability  < Cor1440Gen::Ability
         end
         if lgrupos.include?(GRUPO_GESTIONHUMANA)
           can [:edit, :update, :create], ::Usuario
-          can [:read], Sip::Grupo
         end
         if lgrupos.include?(GRUPO_COMUNICACIONES)
           can :manage, Sal7711Gen::Articulo

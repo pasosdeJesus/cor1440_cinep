@@ -9,7 +9,7 @@
         next
       end
       gruposya<<g.id
-      r << "<li><i class='icon-group'></i>#{CGI::escapeHTML(g.nombre)}</li>"
+      r << "<li><i class='fa fa-group'></i>#{CGI::escapeHTML(g.nombre)}</li>"
       subnivel = Sip::Grupo.where(
         'id IN (SELECT subgrupo_id FROM grupo_subgrupo WHERE grupo_id=?)', g.id).
         reorder(:nombre)
@@ -20,7 +20,7 @@
         r << "<ul>"
         r << genera_nivel(subnivel, gruposya)
         usnivel.each do |u|
-          r << "<li><i class='icon-user'></i>#{CGI::escapeHTML(u.presenta_nombre)}</li>"
+          r << "<li><i class='fa fa-user'></i>#{CGI::escapeHTML(u.presenta_nombre)}</li>"
         end
         r << "</ul>"
       end

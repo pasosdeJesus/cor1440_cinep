@@ -6,7 +6,7 @@ module Sip
   module Admin
     class GruposController < Sip::Admin::BasicasController
       include Jn316Gen::Concerns::Controllers::GruposController
-      load_and_authorize_resource  class: Sip::Grupo
+      load_and_authorize_resource  class: Sip::Grupo, except: :arbol
 
       def atributos_index
         [ "id", "nombre", "cn", "gidNumber", "ultimasincldap_localizada" ] +
@@ -61,6 +61,7 @@ module Sip
       end
 
       def arbol
+        authorize! :read, Sip::Grupo
         render layout: 'application'
       end
 
