@@ -1,6 +1,23 @@
 <h1>Directorio de grupos y usuarios</h1>
 
 <% 
+
+  def unusuario(u, mens = '')
+    r = "<li><i class='fa fa-user'></i> " +
+      "#{CGI::escapeHTML(u.presenta_nombre)} " +
+      "<a href='mailto:#{CGI::escapeHTML(u.email)}'>" +
+      "<i class='fa fa-envelope'></i></a> " 
+    if u.oficina
+      r << "Of: #{CGI::escapeHTML(u.oficina.nombre)}. "
+    end
+    if u.extension
+      r << "Ext: #{CGI::escapeHTML(u.extension)}. " 
+    end
+    r << mens
+    r << "</li>"
+    return r
+  end
+
   def genera_nivel(ng, gruposya)
     r = ''
     ng.each do |g|
@@ -20,16 +37,7 @@
         r << "<ul>"
         r << genera_nivel(subnivel, gruposya)
         usnivel.each do |u|
-          r << "<li><i class='fa fa-user'></i> " +
-            "#{CGI::escapeHTML(u.presenta_nombre)} " +
-            "<a href='mailto:#{CGI::escapeHTML(u.email)}'><i class='fa fa-envelope'></i></a> " 
-          if u.oficina
-            r << "Of: #{CGI::escapeHTML(u.oficina.nombre)}. "
-          end
-          if u.extension
-            r << "Ext: #{CGI::escapeHTML(u.extension)}. " 
-          end
-          "</li>"
+          r << unusuario(u)
         end
         r << "</ul>"
       end
@@ -40,6 +48,13 @@
   primernivel = Sip::Grupo.where(
     "id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo) AND cn<>'desactivados' AND cn<>'usuario'").reorder(:nombre)
   ad = genera_nivel(primernivel, [])
+  usprimernivel = ::Usuario.where(
+    'id NOT in (SELECT usuario_id FROM sip_grupo_usuario)').
+  reorder(:nombres, :apellidos)
+  usprimernivel.each do |u|
+    ad << unusuario(u, 'SIN GRUPO')
+  end
+
 %>
 <ul>
   <%= ad.html_safe %>
