@@ -22,7 +22,7 @@
         usnivel.each do |u|
           r << "<li><i class='fa fa-user'></i> " +
             "#{CGI::escapeHTML(u.presenta_nombre)} " +
-            "<a href='mailto:#{CGI::escapeHTML(u.email)}'><i class='fa fa-email'></i></a> " 
+            "<a href='mailto:#{CGI::escapeHTML(u.email)}'><i class='fa fa-envelope'></i></a> " 
           if u.oficina
             r << "Of: #{CGI::escapeHTML(u.oficina.nombre)}. "
           end
