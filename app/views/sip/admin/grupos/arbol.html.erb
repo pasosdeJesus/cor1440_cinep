@@ -1,0 +1,31 @@
+<h1>Directorio de grupos y usuarios</h1>
+
+<% 
+  def genera_nivel(ng, gruposya)
+    r = "<ul>"
+    gruposya << ng.map(&:id)
+    ng.each do |g|
+      r << "<li>#{CGI::escapeHTML(g.nombre)}</li>"
+      subnivel = Sip::Grupo.where(
+        'id IN (SELECT subgrupo_id FROM grupo_subgrupo WHERE grupo_id=?)', g.id).
+        reorder(:nombre)
+      r << genera_nivel(subnivel, gruposya)
+      usnivel = ::Usuario.where(
+        'id in (SELECT usuario_id FROM sip_grupo_usuario WHERE sip_grupo_id=?)', 
+        g.id).reorder(:nombres, :apellidos)
+      usnivel.each do |u|
+        r << "<li>#{CGI::escapeHTML(u.presenta_nombre)}</li>"
+      end
+    end
+    r << "</ul>"
+    return r
+  end
+
+  primernivel = Sip::Grupo.where(
+    'id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo)').reorder(:nombre)
+  ad = genera_nivel(primernivel, [])
+%>
+
+<%= ad.html_safe %>
+  
+

@@ -60,6 +60,10 @@ module Sip
           flash: mflash
       end
 
+      def arbol
+        render layout: 'application'
+      end
+
     end
   end
 end
