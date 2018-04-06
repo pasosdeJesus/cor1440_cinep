@@ -32,7 +32,9 @@
         reorder(:nombre)
       usnivel = ::Usuario.where(
         'id in (SELECT usuario_id FROM sip_grupo_usuario WHERE sip_grupo_id=?)', 
-        g.id).reorder(:nombres, :apellidos)
+        g.id).
+        where('fechadeshabilitacion IS NULL').
+        reorder(:nombres, :apellidos)
       if subnivel.count>0 || usnivel.count>0
         r << "<ul>"
         r << genera_nivel(subnivel, gruposya)
