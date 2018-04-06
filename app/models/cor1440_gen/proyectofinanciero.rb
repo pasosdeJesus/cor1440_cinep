@@ -28,6 +28,8 @@ module Cor1440Gen
 
     belongs_to :respgp, class_name: '::Usuario',
       foreign_key: 'respgp_id'
+    belongs_to :respgp2, class_name: '::Usuario',
+      foreign_key: 'respgp2_id'
     belongs_to :tasaformulacion, class_name: '::Tasacambio',
       foreign_key: 'tasaformulacion_id'
     belongs_to :tipomoneda, class_name: '::Tipomoneda',
@@ -248,57 +250,63 @@ module Cor1440Gen
     accepts_nested_attributes_for :cambiosproyectofinanciero, 
       allow_destroy: true, reject_if: :all_blank
 
-
-    validates :anotacionescontab, length: { maximum: 5000}
-    validates :aotrosesp, length: { maximum: 500}
-    flotante_localizado :aotrosfin
-    flotante_localizado :aportecinep
-    validates :aportecinep, numericality: 
-      { allow_blank: true, less_than: 1000000000000000000 }
-    flotante_localizado :tasa
-    flotante_localizado :tasaej
-    flotante_localizado :montoej
-    flotante_localizado :aportecinepej
-    flotante_localizado :aporteotrosej
-    flotante_localizado :saldoej
-    flotante_localizado :presupuestototalej
-    validates :emailrespagencia, length: { maximum: 100}
-
-    #requerido para cuadro general de seguimiento
-    validates :estado, presence: true, allow_blank: false
-
     campofecha_localizado :fechaliquidacion
     campofecha_localizado :fechaformulacion
 
-    #requerido para cuadro general de seguimiento
+    flotante_localizado :aotrosfin
+    flotante_localizado :aportecinep
+    flotante_localizado :aportecinepej
+    flotante_localizado :aporteotrosej
+    flotante_localizado :monto
+    flotante_localizado :montoej
+    flotante_localizado :montopesos
+    flotante_localizado :presupuestototal
+    flotante_localizado :presupuestototalej
+    flotante_localizado :saldo
+    flotante_localizado :saldoej
+    flotante_localizado :tasa
+    flotante_localizado :tasaej
+
+    validates :anotacionescontab, length: { maximum: 5000}
+    validates :aotrosesp, length: { maximum: 500}
+    validates :aportecinep, numericality: 
+      { allow_blank: true, less_than: 1000000000000000000 }
+    validates :domiciliofinanciador, allow_blank: true,
+      length: { maximum: 511}
+    validates :emailrespagencia, length: { maximum: 100}
+    validates :estado, presence: true, allow_blank: false
     validates :fechaformulacion, presence: true  
-    
     validates :fuentefinanciador, length: { maximum: 1000 }
     validates :gestiones, length: { maximum: 5000}
-    flotante_localizado :monto
     validates :monto, numericality: 
       { less_than: 1000000000000000000 }
-    flotante_localizado :montopesos
     validates :montopesos, numericality: 
       { less_than: 1000000000000000000 }
+    validates :nitfinanciador, allow_blank: true,
+      length: { maximum: 31}
     validates :objeto, length: { maximum: 5000}
     validates :observacionestramite, length: { maximum: 5000}
     validates :observacionesejecucion, length: { maximum: 5000}
     validates :observacionescierre, length: { maximum: 5000}
     validates :otrosaportescinep, length: { maximum: 500}
-    flotante_localizado :presupuestototal
     validates :presupuestototal, numericality: 
       { less_than: 1000000000000000000 }
+    validates :razonsocialfinanciador, allow_blank: true,
+      length: { maximum: 511}
     validates :referencia, allow_blank: true,
       length: { maximum: 1000 }
     validates :referenciacinep, allow_blank: true,
       length: { maximum: 1000 }
+    validates :replegalfinanciador, allow_blank: true,
+      length: { maximum: 511}
     validates :respagencia, length: { maximum: 100}
-    flotante_localizado :saldo
     validates :saldo, numericality: {allow_blank: true,
                                      less_than: 1000000000000000000 }
+    validates :skypefinanciador, allow_blank: true,
+      length: { maximum: 127}
     validates :telrespagencia, length: { maximum: 100}
-
+    validates :webfinanciador, allow_blank: true,
+      length: { maximum: 511}
 
     validate :dificultad_valida
     def dificultad_valida

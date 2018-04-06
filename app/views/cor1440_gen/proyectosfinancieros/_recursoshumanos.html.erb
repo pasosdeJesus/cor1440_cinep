@@ -6,7 +6,6 @@
 %>
 
 <p>
-
 <div class='row'>
   <div class="col-sm-offset-0 col-sm-6">
     <table border=1 width="100%">
@@ -42,7 +41,7 @@
       </thead>
       <tbody id="proyectofinanciero_uresponsable">
         <%= f.simple_fields_for :proyectofinanciero_uresponsable do |pu| %>
-          <%= render 'proyectofinanciero_uresponsable_campos', :f => pu %>
+          <%= render 'proyectofinanciero_uresponsable_campos', f: pu %>
         <% end %>
       </tbody>
     </table>
@@ -94,6 +93,8 @@
 <% umgu = Sip::Usuario.where(wu).
         order(:nombres, :apellidos, :nusuario) %>
 
+<% coordgp = Sip::Grupo.where(cn: 'CoordinadorGerenciaDeProyectos').take %>
+<% respom = coordgp ? coordgp : current_usuario %>
 <%= f.association :respgp,
   collection: umgu,
   include_blank: true,
@@ -105,7 +106,21 @@
     r 
   },
   value_method: :id,
-  selected:  f.object.respgp_id ? f.object.respgp_id : current_usuario.id,
+  selected:  f.object.respgp_id ? f.object.respgp_id : respom,
+  input_html: { class: 'chosen-select' } %>
+
+<%= f.association :respgp2,
+  collection: umgu,
+  include_blank: true,
+  label_method: lambda { |t| 
+    r = ""
+    r += t.nombres + " " if t.nombres
+    r += t.apellidos if t.apellidos
+    r += ' -  ' + t.nusuario
+    r 
+  },
+  value_method: :id,
+  selected:  f.object.respgp2_id ? f.object.respgp2_id : respom,
   input_html: { class: 'chosen-select' } %>
 
 

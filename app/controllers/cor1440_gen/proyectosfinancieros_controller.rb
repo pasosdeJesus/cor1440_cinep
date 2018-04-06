@@ -74,6 +74,7 @@ module Cor1440Gen
         [ :grupo_ids =>  [] ] +
         [ 
           "respgp_id",
+          "respgp2_id",
           "estado",
           "monto_localizado",
         ] 
@@ -105,6 +106,7 @@ module Cor1440Gen
         "proyectofinanciero_uresponsable",
         "proyectofinanciero_usuario",
         "respgp",
+        "respgp2",
         "anotacionesrh",
         "tipomoneda",
         "tasaformulacion",
@@ -832,6 +834,7 @@ module Cor1440Gen
         :copiasdesoporte,
         :cuentasbancarias,
         :dificultad,
+        :domiciliofinanciador, 
         :emailrespagencia, 
         :empresaauditoria,
         :estado,
@@ -853,6 +856,7 @@ module Cor1440Gen
         :montoejp_localizado,
         :montopesos_localizado,
         :nombre, 
+        :nitfinanciador, 
         :objeto,
         :observaciones,
         :observacionescierre,
@@ -863,10 +867,13 @@ module Cor1440Gen
         :presupuestototalej_localizado, 
         :presupuestototalejp_localizado,
         :presupuestototalp_localizado, 
+        :razonsocialfinanciador, 
         :referencia, 
         :referenciacinep, 
+        :replegalfinanciador, 
         :reportarrendimientosfinancieros,
         :respgp_id,
+        :respgp2_id,
         :reinvertirrendimientosfinancieros,
         :respagencia, 
         :tasa_localizado, 
@@ -878,7 +885,10 @@ module Cor1440Gen
         :saldoej_localizado,
         :saldoejp_localizado,
         :saldop_localizado,
+        :skypefinanciador, 
         :sucursal,
+        :webfinanciador, 
+
         :anexo_proyectofinanciero_attributes => [
           :id,
           :proyectofinanciero_id,

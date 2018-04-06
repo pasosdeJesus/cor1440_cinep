@@ -1393,7 +1393,14 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     aportecinepej double precision,
     aporteotrosej double precision,
     saldoej double precision,
-    presupuestototalej double precision
+    presupuestototalej double precision,
+    respgp2_id integer,
+    razonsocialfinanciador character varying(511),
+    nitfinanciador character varying(31),
+    replegalfinanciador character varying(511),
+    domiciliofinanciador character varying(511),
+    webfinanciador character varying(511),
+    skypefinanciador character varying(127)
 );
 
 
@@ -5743,6 +5750,14 @@ ALTER TABLE ONLY usuario
 
 
 --
+-- Name: cor1440_gen_proyectofinanciero fk_rails_ffc5f844f0; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_proyectofinanciero
+    ADD CONSTRAINT fk_rails_ffc5f844f0 FOREIGN KEY (respgp2_id) REFERENCES usuario(id);
+
+
+--
 -- Name: sip_persona persona_id_pais_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6134,6 +6149,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180330104304'),
 ('20180330151308'),
 ('20180330211214'),
-('20180402214147');
+('20180402214147'),
+('20180406095207');
 
 

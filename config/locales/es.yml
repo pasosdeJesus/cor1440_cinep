@@ -45,7 +45,7 @@ es:
       "actor":
         Actor: Actor
         Actores: Actores
-        grupo: Equipo(s)
+        grupo: Grupo(s)
         nivelrelacion: Nivel de relación
         nivelrelacion_id: Nivel de relación
         personacontacto: Persona Contacto
@@ -53,7 +53,7 @@ es:
         regiongrupo: Región(es)
         sectoractor_id: Sector del Actor
         "{:regiongrupo_ids=>[]}": Región(es)
-        "{:grupo_ids=>[]}": Equipo(s)
+        "{:grupo_ids=>[]}": Grupo(s)
       "anexo_proyectofinanciero":
         tipoanexo: Tipo de anexo
       "contextoinv":
@@ -124,6 +124,7 @@ es:
         cuentasbancarias: "Cuentas bancarias"
         desembolso: 'Desembolsos'
         duracion: "Duración"
+        domiciliofinanciador: 'Domicilio'
         emailrespagencia: "Correo del responsable agencia"
         empresaauditoria: "Empresa de Auditorías y Relacionados"
         fechacierre: "Termina"
@@ -137,7 +138,7 @@ es:
         fuentefinanciador: "Fuente de financiacion"
         formatosespecificos: "Formatos específicos"
         formatossolicitudpago: "Formatos de solicitud de pago"
-        "{:grupo_ids=>[]}": "Equipo(s)"
+        "{:grupo_ids=>[]}": "Grupo(s)"
         informesauditorias: "Informes auditorías"
         informeauditoria: "Informes auditorías"
         informefinanciero: "Informes financieros"
@@ -152,6 +153,7 @@ es:
         montopesos: "Aporte financiador en pesos durate formulación"
         montopesos_localizado: "Aporte financiador en pesos durante formulación"
         nombre: 'Titulo'
+        nitfinanciador: 'NIT'
         observaciones: 'Observaciones financiador'
         observacionestramite: "Observaciones durante el trámite"
         observacionesejecucion: "Observaciones durante la ejecución"
@@ -163,16 +165,21 @@ es:
         productopf: "Productos"
         proyectofinanciero_uresponsable: "Responsable(s)"
         proyectofinanciero_usuario: "Cargos"
+        razonsocialfinanciador: 'Razón Social'
         referencia: "Referencia"
         referenciacinep: "Referencia CINEP/PPP"
         reinvertirrendimientosfinancieros: "Reinvertir rendimientos financieros"
         rendimientosfinancieros: "Rendimientos financieros"
+        replegalfinanciador: 'Representante Legal'
         reportarrendimientosfinancieros: "Reportar rendimientos financieros"
         respagencia: "Responsable de la Agencia"
         respgp: "Responsable GP"
         respgp_id: "Responsable GP"
+        respgp2: "Segundo(a) Responsable GP"
+        respgp2_id: "Segundo(a) Responsable GP"
         saldo_localizado: "Saldo"
         semestreformulacion: "Semestre de formulación"
+        skypefinanciador: 'Skype'
         tasaformulacion: "Tasa de cambio en formulación"
         tasaformulacion_localizado: "Tasa de cambio en formulación"
         telrespagencia: "Teléfono responsable agencia"
@@ -180,6 +187,7 @@ es:
         tipoanexo: "Tipo de anexo"
         uresponsable: "Responsable(s)"
         "{:uresponsable_ids=>[]}": "Responsable(s)"
+        webfinanciador: 'Página web'
       "efecto":
         Efecto: 'Avance en indicador de efecto'
         Efectos: 'Avance en indicadores de efecto'
