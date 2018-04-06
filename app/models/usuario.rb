@@ -13,7 +13,7 @@ class Usuario < ActiveRecord::Base
   end
 
   def grupos 
-    sip_grupo.map(&:nombre).join("; ")
+    ApplicationHelper.supergrupos_usuario(self).join("; ")
   end
 
 
