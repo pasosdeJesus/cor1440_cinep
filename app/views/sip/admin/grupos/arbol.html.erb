@@ -1,4 +1,4 @@
-<h1>Directorio de grupos y usuarios</h1>
+<h1>Directorio/Organigrama de grupos y usuarios</h1>
 
 <% 
 
@@ -12,6 +12,9 @@
     end
     if u.extension
       r << "Ext: #{CGI::escapeHTML(u.extension)}. " 
+    end
+    if ApplicationHelper.supergrupos_usuario(u).include?('Externos')
+      r << " Externo. "
     end
     r << mens
     r << "</li>"
@@ -48,7 +51,9 @@
   end
 
   primernivel = Sip::Grupo.where(
-    "id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo) AND cn<>'desactivados' AND cn<>'usuario'").reorder(:nombre)
+    "id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo) " +
+    "AND cn<>'Desactivados' AND cn<>'Usuarios' AND cn<>'Externos'").
+    reorder(:nombre)
   ad = genera_nivel(primernivel, [])
   usprimernivel = ::Usuario.where(
     'id NOT in (SELECT usuario_id FROM sip_grupo_usuario)').

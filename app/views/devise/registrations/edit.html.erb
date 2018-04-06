@@ -40,7 +40,7 @@
     <div class='input string'>
       <label class='string control-label'>Grupos:</label>
       <ul>
-        <% g = ApplicationHelper.supergrupos_usuario(@usuario) - ['usuario'] %>
+        <% g = ApplicationHelper.supergrupos_usuario(@usuario) - ['Usuarios'] %>
         <% g.each do |nombre| %>
           <li> <%= nombre %> </li>
         <% end %>
