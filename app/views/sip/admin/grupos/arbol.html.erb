@@ -9,7 +9,7 @@
         next
       end
       gruposya<<g.id
-      r << "<li><i class='fa fa-group'></i>#{CGI::escapeHTML(g.nombre)}</li>"
+      r << "<li><i class='fa fa-group'></i> #{CGI::escapeHTML(g.nombre)}</li>"
       subnivel = Sip::Grupo.where(
         'id IN (SELECT subgrupo_id FROM grupo_subgrupo WHERE grupo_id=?)', g.id).
         reorder(:nombre)
@@ -20,7 +20,16 @@
         r << "<ul>"
         r << genera_nivel(subnivel, gruposya)
         usnivel.each do |u|
-          r << "<li><i class='fa fa-user'></i>#{CGI::escapeHTML(u.presenta_nombre)}</li>"
+          r << "<li><i class='fa fa-user'></i> " +
+            "#{CGI::escapeHTML(u.presenta_nombre)} " +
+            "<a href='mailto:#{CGI::escapeHTML(u.email)}'><i class='fa fa-email'></i></a> " 
+          if u.oficina
+            r << "Of: #{CGI::escapeHTML(u.oficina.nombre)}. "
+          end
+          if u.extension
+            r << "Ext: #{CGI::escapeHTML(u.extension)}. " 
+          end
+          "</li>"
         end
         r << "</ul>"
       end
@@ -29,7 +38,7 @@
   end
 
   primernivel = Sip::Grupo.where(
-    'id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo)').reorder(:nombre)
+    "id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo) AND cn<>'desactivados' AND cn<>'usuario'").reorder(:nombre)
   ad = genera_nivel(primernivel, [])
 %>
 <ul>
