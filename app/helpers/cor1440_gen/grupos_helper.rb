@@ -8,8 +8,8 @@ module Cor1440Gen
            current_usuario.rol == Ability::ROLDIR
         misgrupossinu = Sip::Grupo.habilitados.where("nombre<>'usuario'")
       else
-        misgrupossinu = 
-          ApplicationHelper.supergrupos_usuario(current_usuario) - ['usuario']
+        cg = ::ApplicationHelper.supergrupos_usuario(current_usuario) - ['usuario']
+        misgrupossinu = Sip::Grupo.habilitados.where("nombre IN ('#{cg.join("', '")}')")
       end
     end
 
