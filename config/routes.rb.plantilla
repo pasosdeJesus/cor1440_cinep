@@ -57,6 +57,8 @@ Rails.application.routes.draw do
 
     get "/admin/grupos/:id/creardirac" => "sip/admin/grupos#crear_dirac", as: :crear_dirac
 
+    get "/admin/grupos/arbol" => "sip/admin/grupos#arbol", as: :grupos_arbol
+
     get "/reportes/indicador11" => "reportes#indicador11", 
       as: :reportes_indicador11
     get "/reportes/objetivoe2" => "reportes#objetivoe2", 
