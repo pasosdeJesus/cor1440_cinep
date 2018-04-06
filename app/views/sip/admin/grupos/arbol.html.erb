@@ -2,22 +2,29 @@
 
 <% 
   def genera_nivel(ng, gruposya)
-    r = "<ul>"
-    gruposya << ng.map(&:id)
+    r = ''
     ng.each do |g|
-      r << "<li>#{CGI::escapeHTML(g.nombre)}</li>"
+      #byebug
+      if gruposya.include?(g.id)
+        next
+      end
+      gruposya<<g.id
+      r << "<li><i class='icon-group'></i>#{CGI::escapeHTML(g.nombre)}</li>"
       subnivel = Sip::Grupo.where(
         'id IN (SELECT subgrupo_id FROM grupo_subgrupo WHERE grupo_id=?)', g.id).
         reorder(:nombre)
-      r << genera_nivel(subnivel, gruposya)
       usnivel = ::Usuario.where(
         'id in (SELECT usuario_id FROM sip_grupo_usuario WHERE sip_grupo_id=?)', 
         g.id).reorder(:nombres, :apellidos)
-      usnivel.each do |u|
-        r << "<li>#{CGI::escapeHTML(u.presenta_nombre)}</li>"
+      if subnivel.count>0 || usnivel.count>0
+        r << "<ul>"
+        r << genera_nivel(subnivel, gruposya)
+        usnivel.each do |u|
+          r << "<li><i class='icon-user'></i>#{CGI::escapeHTML(u.presenta_nombre)}</li>"
+        end
+        r << "</ul>"
       end
     end
-    r << "</ul>"
     return r
   end
 
@@ -25,7 +32,8 @@
     'id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo)').reorder(:nombre)
   ad = genera_nivel(primernivel, [])
 %>
-
-<%= ad.html_safe %>
+<ul>
+  <%= ad.html_safe %>
+</ul>
   
 
