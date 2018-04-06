@@ -50,9 +50,10 @@
   ad = genera_nivel(primernivel, [])
   usprimernivel = ::Usuario.where(
     'id NOT in (SELECT usuario_id FROM sip_grupo_usuario)').
-  reorder(:nombres, :apellidos)
+    where('fechadeshabilitacion IS NULL').
+    reorder(:nombres, :apellidos)
   usprimernivel.each do |u|
-    ad << unusuario(u, 'SIN GRUPO')
+    ad << unusuario(u, 'SIN GRUPO. ')
   end
 
 %>
