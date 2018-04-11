@@ -245,4 +245,13 @@ es:
       "sip/oficina":
         Oficinas: Oficina
         Oficina: Oficina
+      "sip/persona":
+        tdocumento_id: Tipo de identificación
+        numerodocumento: Número de documento
+        pais_id: País de nacimiento
+        departamento_id: Departamento de nacimiento
+        municipio_id: Municipio de nacimiento
+        clase_id: Centro poblado de nacimiento
+      usuario:
+        nusuario: Usuario
 

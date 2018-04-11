@@ -1344,7 +1344,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    monto numeric(20,2) DEFAULT 0.0,
+    monto numeric DEFAULT 0.0,
     referencia character varying(1000),
     referenciacinep character varying(1000),
     fuentefinanciador character varying(1000),
@@ -1361,7 +1361,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric(20,2) DEFAULT 0.0,
+    presupuestototal numeric DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -1393,7 +1393,14 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     aportecinepej double precision,
     aporteotrosej double precision,
     saldoej double precision,
-    presupuestototalej double precision
+    presupuestototalej double precision,
+    respgp2_id integer,
+    razonsocialfinanciador character varying(511),
+    nitfinanciador character varying(31),
+    replegalfinanciador character varying(511),
+    domiciliofinanciador character varying(511),
+    webfinanciador character varying(511),
+    skypefinanciador character varying(127)
 );
 
 
@@ -1491,12 +1498,12 @@ ALTER SEQUENCE cor1440_gen_resultadopf_id_seq OWNED BY cor1440_gen_resultadopf.i
 CREATE TABLE cor1440_gen_tipoindicador (
     id bigint NOT NULL,
     nombre character varying(32),
-    medircon integer,
     espcampos character varying(1000),
     espvaloresomision character varying(1000),
     espvalidaciones character varying(1000),
     esptipometa character varying(32),
-    espfuncionmedir character varying(1000)
+    espfuncionmedir character varying(1000),
+    medircon integer
 );
 
 
@@ -2525,7 +2532,6 @@ CREATE TABLE sal7711_gen_articulo (
     pagina character varying(20),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    url character varying(5000),
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
@@ -2533,9 +2539,10 @@ CREATE TABLE sal7711_gen_articulo (
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
-    pais_id integer,
     titulo character varying(1024),
-    observaciones character varying(5000)
+    observaciones character varying(5000),
+    url character varying(5000),
+    pais_id integer
 );
 
 
@@ -3069,6 +3076,7 @@ CREATE TABLE sip_persona (
     id_departamento integer,
     id_municipio integer,
     id_clase integer,
+    lugardocumento character varying(127),
     CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
     CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
     CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
@@ -3451,6 +3459,12 @@ CREATE TABLE usuario (
     "uidNumber" integer,
     telefonos character varying(256),
     extension character varying(128),
+    persona_id integer,
+    direccionresidencia character varying(255),
+    numhijos integer DEFAULT 0,
+    numhijosmen12 integer DEFAULT 0,
+    labdepartamento_id integer,
+    labmunicipio_id integer,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -3465,7 +3479,7 @@ CREATE VIEW v_solicitud_informes1 AS
     informenarrativo.fechaplaneada,
     informenarrativo.fechareal,
     informenarrativo.devoluciones,
-    ('INFOMRE NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
+    ('INFORME NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
     informenarrativo.seguimiento
    FROM informenarrativo
 UNION
@@ -3520,14 +3534,14 @@ CREATE VIEW v_solicitud_informes AS
     s.observaciones,
     s.seguimiento,
         CASE
-            WHEN (s.fechareal <= s.fechaplaneada) THEN 'SI'::text
-            WHEN (s.fechareal > s.fechaplaneada) THEN 'NO'::text
-            WHEN ((s.fechareal IS NULL) AND (('now'::text)::date > s.fechaplaneada)) THEN 'NO'::text
+            WHEN (s.fechareal <= (s.fechaplaneada + 7)) THEN 'SI'::text
+            WHEN (s.fechareal > (s.fechaplaneada + 7)) THEN 'NO'::text
+            WHEN ((s.fechareal IS NULL) AND (('now'::text)::date > (s.fechaplaneada + 7))) THEN 'NO'::text
             ELSE ''::text
         END AS a_tiempo
    FROM (cor1440_gen_proyectofinanciero p
      JOIN v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[122, 123, 125, 116]))
+  WHERE (p.id = ANY (ARRAY[136, 122, 123, 125, 116]))
   ORDER BY s.fechaplaneada;
 
 
@@ -5143,6 +5157,14 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 
 --
+-- Name: usuario fk_rails_46c248bf39; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_rails_46c248bf39 FOREIGN KEY (labdepartamento_id) REFERENCES sip_departamento(id);
+
+
+--
 -- Name: informenarrativo fk_rails_473bd646f9; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5308,6 +5330,14 @@ ALTER TABLE ONLY anexo_proyectofinanciero
 
 ALTER TABLE ONLY convenio
     ADD CONSTRAINT fk_rails_77dbba47fe FOREIGN KEY (tipoconvenio_id) REFERENCES tipoconvenio(id);
+
+
+--
+-- Name: usuario fk_rails_7947b08826; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_rails_7947b08826 FOREIGN KEY (persona_id) REFERENCES sip_persona(id);
 
 
 --
@@ -5492,6 +5522,14 @@ ALTER TABLE ONLY cor1440_gen_indicadorpf
 
 ALTER TABLE ONLY cor1440_gen_actividad_actividadpf
     ADD CONSTRAINT fk_rails_baad271930 FOREIGN KEY (actividad_id) REFERENCES cor1440_gen_actividad(id);
+
+
+--
+-- Name: usuario fk_rails_bc35a29f9e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_rails_bc35a29f9e FOREIGN KEY (labmunicipio_id) REFERENCES sip_municipio(id);
 
 
 --
@@ -5740,6 +5778,14 @@ ALTER TABLE ONLY sal7711_gen_articulo_categoriaprensa
 
 ALTER TABLE ONLY usuario
     ADD CONSTRAINT fk_rails_ff046f92e5 FOREIGN KEY (oficina_id) REFERENCES sip_oficina(id);
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero fk_rails_ffc5f844f0; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_proyectofinanciero
+    ADD CONSTRAINT fk_rails_ffc5f844f0 FOREIGN KEY (respgp2_id) REFERENCES usuario(id);
 
 
 --
@@ -6093,6 +6139,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026130000'),
 ('20171026144919'),
 ('20171026172501'),
+('20171114185712'),
 ('20171123212504'),
 ('20171128234148'),
 ('20171130125044'),
@@ -6133,6 +6180,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180330104304'),
 ('20180330151308'),
 ('20180330211214'),
-('20180402214147');
+('20180402214147'),
+('20180406095207'),
+('20180409085315'),
+('20180409231903');
 
 

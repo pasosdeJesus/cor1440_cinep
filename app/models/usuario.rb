@@ -8,6 +8,64 @@ class Usuario < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, 
     :trackable, :lockable
 
+  belongs_to :oficina, class_name: 'Sip::Oficina',
+    foreign_key: "oficina_id", validate: true
+
+  belongs_to :persona, class_name: 'Sip::Persona',
+    foreign_key: "persona_id", validate: true
+  accepts_nested_attributes_for :persona, reject_if: :all_blank
+
+  belongs_to :labdepartamento, class_name: 'Sip::Departamento',
+    foreign_key: "labdepartamento_id", validate: true
+  
+  belongs_to :labmunicipio, class_name: 'Sip::Municipio',
+    foreign_key: "labmunicipio_id", validate: true
+
+  #attr labmundep
+
+  def labmundep
+    if labdepartamento_id && labmunicipio_id
+      labdepartamento.nombre + " / " + labmunicipio.nombre
+    elsif labdepartamento_id
+      labdepartamento.nombre 
+    else
+      ""
+    end
+  end
+
+  def labmundep=(v)
+    labdepartamento_id = labmunicipio_id = nil
+    pmd = v.split(" / ")
+    if pmd.length == 1 # solo departamento
+      ldep = Sip::Departamento.all.where('nombre=?', pmd[0])
+      ldep = ldep.where(
+        'id_pais=?', 170) # Colombia
+      dep = ldep.take
+      if dep
+        labdepartamento_id = dep.id
+      end
+    else # departamento y municipio
+      ldep = Sip::Departamento.all.where('nombre=?', pmd[1])
+      ldep = ldep.where(
+        'id_pais=?', 170) # Colombia
+      dep = ldep.take
+      if dep
+        labdepartamento_id = dep.id
+        mun = Sip::Municipio.all.where(
+          'nombre=? AND id_departamento=?', pmd[0], dep.id).take
+        if mun
+          labmunicipio_id = mun.id
+        end
+      end
+    end
+  end
+
+  cattr_accessor :gruposysupragrupos
+
+  def gruposysupragrupos
+    ApplicationHelper.supergrupos_usuario(self).join("; ")
+  end
+
   def habilitado
     fechadeshabilitacion.nil? ? 'SI' : 'NO'
   end
@@ -16,11 +74,13 @@ class Usuario < ActiveRecord::Base
     ApplicationHelper.supergrupos_usuario(self).join("; ")
   end
 
-
   validates_presence_of :nombres
   validates_presence_of :apellidos
-  validates :telefonos, length: { maximum: 256}
+  validates :direccionresidencia, length: { maximum: 255}
   validates :extension, length: { maximum: 128}
+  validates :telefonos, length: { maximum: 256}
+  validates :numhijos, :numericality => { :greater_than_or_equal_to => 0 }
+  validates :numhijosmen12, :numericality => { :greater_than_or_equal_to => 0 }
 
   has_many :proyectofinanciero_usuario, #dependent: :destroy,
     class_name: '::ProyectofinancieroUsuario',
@@ -36,8 +96,6 @@ class Usuario < ActiveRecord::Base
     class_name: '::ProyectofinancieroUresponsable',
     foreign_key: 'uresponsable_id'
 
-  belongs_to :oficina, class_name: 'Sip::Oficina',
-    foreign_key: "oficina_id", validate: true
 
   has_many :actividad_usuario, dependent: :delete_all,
     class_name: 'Cor1440Gen::ActividadUsuario',

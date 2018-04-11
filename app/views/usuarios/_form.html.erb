@@ -1,0 +1,83 @@
+<%= simple_form_for @registro do |f| %>
+  <% if f.object.persona.nil? %>
+    <% f.object.persona = Sip::Persona.new %>
+  <% end %>
+  <article>
+    <div data-role="content" class="form-inputs">
+
+      <%= render partial: 'sip/hogar/errores', locals: { f: f } %> 
+
+      <div role="tabpanel">       
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#contacto" 
+            class="fichacambia" aria-controls="contacto" role="tab" 
+            data-toggle="tab">Datos de contacto</a></li>
+
+          <li role="presentation"><a href="#personales" class="fichacambia" 
+            aria-controls="personales" role="tab" 
+            data-toggle="tab">Datos personales</a></li>
+
+          <% if can? :edit, ::Usuario %>
+            <li role="presentation"><a href="#histlab" class="fichacambia" 
+              aria-controls="histlab" role="tab" 
+              data-toggle="tab">Historia laboral</a></li>
+  
+            <li role="presentation"><a href="#contactual" class="fichacambia" 
+              aria-controls="contactual" role="tab" 
+              data-toggle="tab">Contratación actual</a></li>
+  
+            <li role="presentation"><a href="#anexos" class="fichacambia" 
+              aria-controls="anexos" role="tab" 
+              data-toggle="tab">Anexos</a></li>
+          <% end %>
+          <% if can? :manage, ::Usuario %>
+            <li role="presentation"><a href="#ti" class="fichacambia" 
+              aria-controls="ti" role="tab" 
+              data-toggle="tab">Recursos TI</a></li>
+          <% end %>
+        </ul>
+        <div class="tab-content">
+          <%= f.simple_fields_for :persona do |p| %>
+            <div role="tabpanel" class="tab-pane active" id="contacto" > 
+              <%= render 'contacto', :f => f, :p => p %>
+            </div> 
+
+            <% if can? :edit, ::Usuario %>
+              <div role="tabpanel" class="tab-pane" id="personales" > 
+                <%= render 'personales', :f => f, :p => p %>
+              </div>
+  
+              <div role="tabpanel" class="tab-pane" id="histlab" > 
+                <%= render 'histlab', :f => f, :p => p %>
+              </div>
+  
+              <div role="tabpanel" class="tab-pane" id="contactual" > 
+                <%= render 'contactual', :f => f, :p => p %>
+              </div>
+
+              <!--div role="tabpanel" class="tab-pane" id="anexos"--> 
+                <!--%= render 'sivel2_gen/casos/anexos', :f => f  %-->
+              <!--/div-->
+            <% end %>
+
+            <% if can? :manage, ::Usuario %>
+              <div role="tabpanel" class="tab-pane" id="ti" > 
+                <%= render 'ti', :f => f, :p => p %>
+              </div>
+            <% end %>
+
+          <% end %>
+        </div> <!-- tab-content -->
+      </div> <!-- tabpanel -->
+    </div> <!-- form-inputs -->
+
+    <div class="form-actions">
+      <%= f.button :submit, 'Validar y Guardar', :class => 'btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+        main_app.usuarios_path, :class => 'btn' 
+      %>
+    </div> <!-- form-action -->
+  </article>
+
+<% end %> <!-- simple_form_for @registro -->
+

@@ -1,0 +1,86 @@
+
+<%= p.input :id, as: :hidden %>
+
+<div class="row">
+  <div class="col-sm-6">
+    <%= f.input :nusuario, 
+      readonly: cannot?(:create, ::Usuario) 
+    %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :id, readonly: true %>
+  </div>
+</div> <!-- row -->
+
+<% 
+  ph = 'N'
+  ac = {'data-autocompleta' => 'no' }
+  #debugger
+  if (!p.object.nombres || p.object.nombres == 'N' || p.object.nombres == '')
+    ph = 'Buscar'
+    ac = { }
+  end
+%>
+
+<div class="row">
+  <div class="col-sm-6">
+    <%= p.input :nombres, placeholder: ph,
+      readonly: cannot?(:create, ::Usuario),
+      value_method: lambda {|t| '' if t.nombres == 'N'},
+      input_html: ac
+    %>
+  </div>
+  <div class="col-sm-6">
+    <%= p.input :apellidos, placeholder: 'N',
+      readonly: cannot?(:create, ::Usuario),
+      value_method: lambda {|t| '' if t.apellidos == 'N'}
+    %>
+  </div>
+</div> <!-- row -->
+
+<div class="row">
+  <div class="col-sm-6">
+    <%= f.association :sip_grupo, 
+      readonly: cannot?(:edit, ::Usuario),
+      collection: Sip::Grupo.habilitados,
+      input_html: { class: 'chosen-select' },
+      label_method: :nombre,
+      value_method: :id,
+      label: 'Proyecto (elegir el más específico)'
+    %>  
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :gruposysupragrupos, 
+      label: 'Grupos y supragrupos',
+      readonly: true %>
+  </div>
+</div> <!-- row -->
+
+<div class="row">
+  <div class="col-sm-6">
+    <%= f.association :oficina, 
+      readonly: cannot?(:edit, ::Usuario),
+      collection: Sip::Oficina.habilitados,
+      label_method: :nombre,
+      value_method: :id 
+    %>  
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :extension,
+      readonly: cannot?(:edit, ::Usuario) 
+    %>
+  </div>
+</div>   <!-- row -->
+
+<div class="row">
+  <div class="col-sm-6">
+    <%= f.input :email,
+      readonly: cannot?(:create, ::Usuario) 
+    %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :telefonos,
+      readonly: cannot?(:edit, ::Usuario) 
+    %>
+  </div>
+</div> <!-- row -->

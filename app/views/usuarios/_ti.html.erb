@@ -1,0 +1,21 @@
+
+<%= f.input :encrypted_password %>
+
+<%= f.input :uidNumber,
+  readonly: true
+%>
+
+<%= f.input :no_modificar_ldap,
+  as: :boolean,
+  inline_label: "No modificar directorio LDAP",
+  boolean_style: :nested
+%>
+
+<%= f.input :failed_attempts %>
+
+<%= f.input :unlock_token%>
+
+<%= f.input :locked_at, 
+  as: :string, 
+  input_html: { class: 'datepicker'} %>
+

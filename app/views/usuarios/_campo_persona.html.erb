@@ -1,0 +1,8 @@
+<% if f.object.persona.nil? %>
+  <% f.object.persona = Sip::Persona.new %>
+<% end %>
+
+<%= f.simple_fields_for :persona do |p| %>
+  <%= render 'sip/personas/persona_fields', f: p, fvictima: f  %>
+<% end %>
+
