@@ -3,10 +3,10 @@
 <% 
 
   def unusuario(u, mens = '')
-    r = "<li><i class='fa fa-user'></i> " +
+    r = "<li><i class='fa fa-user'></i>\n " +
       "#{CGI::escapeHTML(u.presenta_nombre)} " +
       "<a href='mailto:#{CGI::escapeHTML(u.email)}'>" +
-      "<i class='fa fa-envelope'></i></a> " 
+      "<i class='fa fa-envelope'></i></a>\n " 
     if u.oficina
       r << "Of: #{CGI::escapeHTML(u.oficina.nombre)}. "
     end
@@ -29,7 +29,7 @@
         next
       end
       gruposya<<g.id
-      r << "<li><i class='fa fa-group'></i> #{CGI::escapeHTML(g.nombre)}</li>"
+      r << "<li><i class='fa fa-group'></i> #{CGI::escapeHTML(g.nombre)}</li>\n"
       subnivel = Sip::Grupo.where(
         'id IN (SELECT subgrupo_id FROM grupo_subgrupo WHERE grupo_id=?)', g.id).
         reorder(:nombre)
@@ -39,27 +39,37 @@
         where('fechadeshabilitacion IS NULL').
         reorder(:nombres, :apellidos)
       if subnivel.count>0 || usnivel.count>0
-        r << "<ul>"
+        r << "<ul>\n"
         r << genera_nivel(subnivel, gruposya)
         usnivel.each do |u|
           r << unusuario(u)
         end
-        r << "</ul>"
+        r << "</ul>\n"
       end
     end
     return r
   end
 
+  ad = ""
+  nivelcero = Sip::Grupo.where(
+    "id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo) " ).reorder(:nombre)
+  if nivelcero.count == 0
+    ad << "<p>Problema: No hay grupos sin supragrupos</p>"
+  elsif nivelcero.count > 2 || nivelcero[0].nombre != 'Desactivados' ||
+    nivelcero[1].nombre != 'Usuarios'
+    ad << "<p>Problema: Los únicos grupos sin supragrupos deberían ser Usuarios y Desactivados, pero se ven #{nivelcero.map(&:nombre).inspect}</p>"
+  end
+
   primernivel = Sip::Grupo.where(
-    "id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo) " +
-    "AND cn<>'Desactivados' AND cn<>'Usuarios' AND cn<>'Externos'").
+    "id IN (SELECT subgrupo_id FROM grupo_subgrupo WHERE grupo_id IN (SELECT id FROM sip_grupo WHERE cn = 'Usuarios')) " +
+    "AND cn<>'Desactivados' AND cn<>'Externos'").
     reorder(:nombre)
-  ad = genera_nivel(primernivel, [])
-  usprimernivel = ::Usuario.where(
+  ad << genera_nivel(primernivel, [])
+  ussingrupo = ::Usuario.where(
     'id NOT in (SELECT usuario_id FROM sip_grupo_usuario)').
     where('fechadeshabilitacion IS NULL').
     reorder(:nombres, :apellidos)
-  usprimernivel.each do |u|
+  ussingrupo.each do |u|
     ad << unusuario(u, 'SIN GRUPO. ')
   end
 
