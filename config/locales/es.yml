@@ -247,11 +247,15 @@ es:
         Oficina: Oficina
       "sip/persona":
         tdocumento_id: Tipo de identificación
-        numerodocumento: Número de documento
-        pais_id: País de nacimiento
-        departamento_id: Departamento de nacimiento
-        municipio_id: Municipio de nacimiento
-        clase_id: Centro poblado de nacimiento
+        numerodocumento: Número de identificación
+        lugardocumento: Lugar de expedición de identificación
+        pais: País de nacimiento
+        departamento: Departamento de nacimiento
+        municipio: Municipio de nacimiento
+        clase: Centro poblado de nacimiento
       usuario:
+        direccionresidencia: Dirección de residencia
         nusuario: Usuario
+        numhijos: Número de hijos
+        numhijosmen12: Número de hijos menores de 12
 
