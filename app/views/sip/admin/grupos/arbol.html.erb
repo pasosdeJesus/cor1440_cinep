@@ -31,7 +31,8 @@
       gruposya<<g.id
       r << "<li><i class='fa fa-group'></i> #{CGI::escapeHTML(g.nombre)}</li>\n"
       subnivel = Sip::Grupo.where(
-        'id IN (SELECT subgrupo_id FROM grupo_subgrupo WHERE grupo_id=?)', g.id).
+        'id IN (SELECT subgrupo_id FROM grupo_subgrupo WHERE grupo_id=?)', 
+        g.id).where('fechadeshabilitacion IS NULL').
         reorder(:nombre)
       usnivel = ::Usuario.where(
         'id in (SELECT usuario_id FROM sip_grupo_usuario WHERE sip_grupo_id=?)', 
@@ -52,7 +53,8 @@
 
   ad = ""
   nivelcero = Sip::Grupo.where(
-    "id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo) " ).reorder(:nombre)
+    "id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo) " ).
+    where('fechadeshabilitacion IS NULL').reorder(:nombre)
   if nivelcero.count == 0
     ad << "<p>Problema: No hay grupos sin supragrupos</p>"
   elsif nivelcero.count > 2 || nivelcero[0].nombre != 'Desactivados' ||
@@ -63,6 +65,7 @@
   primernivel = Sip::Grupo.where(
     "id IN (SELECT subgrupo_id FROM grupo_subgrupo WHERE grupo_id IN (SELECT id FROM sip_grupo WHERE cn = 'Usuarios')) " +
     "AND cn<>'Desactivados' AND cn<>'Externos'").
+    where('fechadeshabilitacion IS NULL').
     reorder(:nombre)
   ad << genera_nivel(primernivel, [])
   ussingrupo = ::Usuario.where(
