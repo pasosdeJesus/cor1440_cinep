@@ -91,8 +91,8 @@ gem 'cor1440_gen', git: "https://github.com/pasosdeJesus/cor1440_gen.git"
 #gem "cor1440_gen", path: '../cor1440_gen'
 
 # Motor Jn316_gen
-gem 'jn316_gen', git: "https://github.com/pasosdeJesus/jn316_gen.git"
-#gem "jn316_gen", path: '../jn316_gen'
+#gem 'jn316_gen', git: "https://github.com/pasosdeJesus/jn316_gen.git"
+gem "jn316_gen", path: '../jn316_gen'
 
 # Motor sal7711_gen
 gem 'sal7711_gen', git: "https://github.com/pasosdeJesus/sal7711_gen.git"
@@ -116,7 +116,7 @@ end
 
 group :test, :development, :ensayo do
   # Depurar
-  #gem 'byebug'
+  gem 'byebug'
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo

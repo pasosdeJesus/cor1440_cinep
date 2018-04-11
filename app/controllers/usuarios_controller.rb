@@ -68,6 +68,15 @@ class UsuariosController < Sip::ModelosController
     return r
   end
 
+  def medio_create(usuario)
+    usuario.nombres = params[:usuario][:persona_attributes][:nombres]
+    usuario.apellidos = params[:usuario][:persona_attributes][:apellidos]
+  end
+
+  def medio_update(usuario)
+    medio_create(usuario)
+  end
+
 #  def prefiltrar()
 #    byebug
 #    if params.nil?
@@ -89,10 +98,10 @@ class UsuariosController < Sip::ModelosController
 
   def usuario_params
     p = params.require(:usuario).permit(
-      :apellidos, 
       :current_sign_in_at, 
       :current_sign_in_ip, 
       :descripcion, 
+      :direccionresidencia, 
       :email, 
       :encrypted_password, 
       :extension,
@@ -104,9 +113,9 @@ class UsuariosController < Sip::ModelosController
       :last_sign_in_at, 
       :last_sign_in_ip, 
       :locked_at,
-      :lugardocumento,
       :no_modificar_ldap, 
-      :nombres, 
+      :numhijos, 
+      :numhijosmen12, 
       :nusuario, 
       :oficina_id,
       :password, 
@@ -120,7 +129,7 @@ class UsuariosController < Sip::ModelosController
       :unlock_token, 
       :etiqueta_ids => [],
       :persona_attributes => [
-        :apelldios,
+        :apellidos,
         :anionac,
         :dianac,
         :id, 
@@ -130,6 +139,7 @@ class UsuariosController < Sip::ModelosController
         :id_pais,
         :labdepartamento_id,
         :labmunicipio_id,
+        :lugardocumento,
         :mesnac,
         :nombres,
         :numerodocumento,

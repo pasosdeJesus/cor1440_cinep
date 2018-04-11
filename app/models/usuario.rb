@@ -66,6 +66,8 @@ class Usuario < ActiveRecord::Base
     ApplicationHelper.supergrupos_usuario(self).join("; ")
   end
 
+  attr_accessor :habilitado
+
   def habilitado
     fechadeshabilitacion.nil? ? 'SI' : 'NO'
   end

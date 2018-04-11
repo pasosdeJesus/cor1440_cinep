@@ -22,15 +22,6 @@ GIT
       sip
 
 GIT
-  remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 61075c0373d41479b628b43a3854e09d46dc1d7d
-  specs:
-    jn316_gen (1.0.a1)
-      net-ldap
-      rails
-      sip
-
-GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
   revision: b4755a740235e5c4894d47839889e011c9be0e9a
   specs:
@@ -91,6 +82,14 @@ GIT
       nokogiri (>= 1.5.0)
       rubyzip (~> 1.2.0)
 
+PATH
+  remote: ../jn316_gen
+  specs:
+    jn316_gen (1.0.a1)
+      net-ldap
+      rails
+      sip
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -143,6 +142,7 @@ GEM
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
+    byebug (10.0.2)
     camertron-eprun (1.1.1)
     cancancan (2.1.3)
     capybara (2.18.0)
@@ -408,6 +408,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
+  byebug
   cancancan
   capybara
   chosen-rails
