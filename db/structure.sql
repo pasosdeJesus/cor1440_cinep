@@ -1386,7 +1386,6 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     observacionescierre character varying(5000),
     fechaformulacion date DEFAULT ('now'::text)::date NOT NULL,
     montopesos numeric DEFAULT 0.0,
-    tasaformulacion_id integer,
     tasa double precision,
     tasaej double precision,
     montoej double precision,
@@ -5410,14 +5409,6 @@ ALTER TABLE ONLY cor1440_gen_actividad_proyectofinanciero
 
 
 --
--- Name: cor1440_gen_proyectofinanciero fk_rails_aa3f51f24a; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY cor1440_gen_proyectofinanciero
-    ADD CONSTRAINT fk_rails_aa3f51f24a FOREIGN KEY (tasaformulacion_id) REFERENCES tasacambio(id);
-
-
---
 -- Name: cor1440_gen_cambiosproyectofinanciero fk_rails_ad88a8cfe6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6108,6 +6099,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180402214147'),
 ('20180406095207'),
 ('20180409085315'),
-('20180409231903');
+('20180409231903'),
+('20180413210209');
 
 
