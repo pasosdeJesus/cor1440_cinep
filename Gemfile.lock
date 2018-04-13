@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 92c88e466b9b0dbee871c78a9cb57aae2583c5e4
+  revision: 4deaff497454c12759d44c694635c7e240d44b32
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 209d2db311076fef7df6154514276132c1d4fd87
+  revision: 66f7ce0f00a67944a055bdae9415337512adff58
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 2635a16bedfecef1dad46fac1f989488a7b8cd37
+  revision: f83c521b717322ca4eaf2ce35031d58c6e6bc6dc
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -144,9 +144,10 @@ GIT
 
 GIT
   remote: https://github.com/vtamara/cocoon.git
-  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
+  revision: f8fbad8d9d6bb087223221d70733b58a3d2efd8a
+  branch: new_id_with_ajax
   specs:
-    cocoon (1.2.6)
+    cocoon (1.2.11)
 
 GEM
   remote: https://rubygems.org/
