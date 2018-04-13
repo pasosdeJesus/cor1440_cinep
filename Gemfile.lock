@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 92c88e466b9b0dbee871c78a9cb57aae2583c5e4
+  revision: 2725da9c03d6df9670e558d63c72bad0fcf13ad4
+  branch: rails5.2
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,7 +13,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 2fa18367ab59639c25e86c8717c8afee7f44fce8
+  revision: 4ecbd9590fbbbc8d0d33e25ee897775dd7c3f67d
+  branch: rails5.2
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -23,7 +25,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 916f267f69d50c824f2f3092d62a801f44b3e11b
+  revision: 13dfb35053b40d54f82f16ae5b99cf1423284394
+  branch: rails5.2
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -32,7 +35,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 2b03de25d84c8070758c714f047626f0013ebf52
+  revision: 498fd46c03dff057568f46b4d7d5cba7ef73e756
+  branch: rails5.2
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -40,7 +44,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: ae5ed8f603c9a509f2bcac4285ea81d2d58c096b
+  revision: d9a6316be1837deaf8aec7b8bdac1e9c66b031c1
+  branch: rails5.2
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -48,7 +53,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: e0b1b8b653dd0cf8f401b4bd0410245eefe3f608
+  revision: 90bf41d2fd38c4aee4c21eb8cc9dd4537760b08a
+  branch: rails5.2
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -56,7 +62,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 5eebe7289bb6057449d44b91e690a5b50c46f728
+  revision: 627612ebb1716fb75159da25d06a28d42507460e
+  branch: rails5.2
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -94,39 +101,43 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (5.1.6)
-      actionpack (= 5.1.6)
+    actioncable (5.2.0)
+      actionpack (= 5.2.0)
       nio4r (~> 2.0)
-      websocket-driver (~> 0.6.1)
-    actionmailer (5.1.6)
-      actionpack (= 5.1.6)
-      actionview (= 5.1.6)
-      activejob (= 5.1.6)
+      websocket-driver (>= 0.6.1)
+    actionmailer (5.2.0)
+      actionpack (= 5.2.0)
+      actionview (= 5.2.0)
+      activejob (= 5.2.0)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (5.1.6)
-      actionview (= 5.1.6)
-      activesupport (= 5.1.6)
+    actionpack (5.2.0)
+      actionview (= 5.2.0)
+      activesupport (= 5.2.0)
       rack (~> 2.0)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.1.6)
-      activesupport (= 5.1.6)
+    actionview (5.2.0)
+      activesupport (= 5.2.0)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    activejob (5.1.6)
-      activesupport (= 5.1.6)
+    activejob (5.2.0)
+      activesupport (= 5.2.0)
       globalid (>= 0.3.6)
-    activemodel (5.1.6)
-      activesupport (= 5.1.6)
-    activerecord (5.1.6)
-      activemodel (= 5.1.6)
-      activesupport (= 5.1.6)
-      arel (~> 8.0)
-    activesupport (5.1.6)
+    activemodel (5.2.0)
+      activesupport (= 5.2.0)
+    activerecord (5.2.0)
+      activemodel (= 5.2.0)
+      activesupport (= 5.2.0)
+      arel (>= 9.0)
+    activestorage (5.2.0)
+      actionpack (= 5.2.0)
+      activerecord (= 5.2.0)
+      marcel (~> 0.3.1)
+    activesupport (5.2.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
@@ -135,11 +146,13 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     andand (1.3.3)
     ansi (1.5.0)
-    arel (8.0.0)
+    arel (9.0.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    bootsnap (1.3.0)
+      msgpack (~> 1.0)
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
@@ -216,6 +229,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
+    marcel (0.3.2)
+      mimemagic (~> 0.3.2)
     method_source (0.9.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -243,6 +258,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
+    msgpack (1.2.4)
     multi_json (1.13.1)
     net-ldap (0.16.1)
     nio4r (2.3.0)
@@ -283,17 +299,18 @@ GEM
     rack (2.0.4)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
-    rails (5.1.6)
-      actioncable (= 5.1.6)
-      actionmailer (= 5.1.6)
-      actionpack (= 5.1.6)
-      actionview (= 5.1.6)
-      activejob (= 5.1.6)
-      activemodel (= 5.1.6)
-      activerecord (= 5.1.6)
-      activesupport (= 5.1.6)
+    rails (5.2.0)
+      actioncable (= 5.2.0)
+      actionmailer (= 5.2.0)
+      actionpack (= 5.2.0)
+      actionview (= 5.2.0)
+      activejob (= 5.2.0)
+      activemodel (= 5.2.0)
+      activerecord (= 5.2.0)
+      activestorage (= 5.2.0)
+      activesupport (= 5.2.0)
       bundler (>= 1.3.0)
-      railties (= 5.1.6)
+      railties (= 5.2.0)
       sprockets-rails (>= 2.0.0)
     rails-controller-testing (1.0.2)
       actionpack (~> 5.x, >= 5.0.1)
@@ -312,9 +329,9 @@ GEM
       rails_stdout_logging
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
-    railties (5.1.6)
-      actionpack (= 5.1.6)
-      activesupport (= 5.1.6)
+    railties (5.2.0)
+      actionpack (= 5.2.0)
+      activesupport (= 5.2.0)
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
@@ -381,8 +398,6 @@ GEM
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2018.4)
-      tzinfo (>= 1.0.0)
     uglifier (4.1.9)
       execjs (>= 0.3.0, < 3)
     unicorn (5.4.0)
@@ -395,7 +410,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    websocket-driver (0.6.5)
+    websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
     will_paginate (3.1.6)
@@ -407,6 +422,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  bootsnap (>= 1.1.0)
   bootstrap-datepicker-rails
   cancancan
   capybara
@@ -438,7 +454,7 @@ DEPENDENCIES
   pry-rescue
   pry-stack_explorer
   puma
-  rails (~> 5.1.0)
+  rails (~> 5.2.0)
   rails-controller-testing
   rails-i18n
   rails_12factor
@@ -457,7 +473,6 @@ DEPENDENCIES
   twitter-bootstrap-rails
   twitter_cldr
   tzinfo
-  tzinfo-data
   uglifier
   unicorn
   web-console
