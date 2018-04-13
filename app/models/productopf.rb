@@ -17,6 +17,10 @@ class Productopf < ActiveRecord::Base
   campofecha_localizado :fechaplaneada
   campofecha_localizado :fechareal
 
+  campofecha_mesanio :fechainiprod
+  campofecha_mesanio :fechafinprod
+
+  flotante_localizado :costoprevisto
   validate :fechaplaneada_posterior_inicio
   def fechaplaneada_posterior_inicio
     if fechaplaneada && 

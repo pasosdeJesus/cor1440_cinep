@@ -8,6 +8,33 @@
     %>
   </td>
   <td>
+    <%= f.input :fechainiprod_anio, 
+      label: false,
+      :input_html => { "data-behaviour" => "datepicker" },
+      :as => :string %> - 
+    <%= f.input :fechainiprod_mes, 
+      label: false,
+      :input_html => { "data-behaviour" => "datepicker" },
+      :as => :string 
+    %>
+  </td>
+  <td>
+    <%= f.input :fechafinprod_anio, 
+      label: false,
+      :input_html => { "data-behaviour" => "datepicker" },
+      :as => :string %> - 
+    <%= f.input :fechafinprod_mes, 
+      label: false,
+      :input_html => { "data-behaviour" => "datepicker" },
+      :as => :string 
+    %> 
+  </td>
+  <td>
+    <%= f.input :costoprevisto_localizado,
+      label: false
+    %>
+  </td>
+  <td>
     <%= f.input :fechaplaneada_localizada, 
       label: false,
       :input_html => { "data-behaviour" => "datepicker" },
@@ -26,12 +53,6 @@
       boolean_style: :nested,
       label: false
     %>
-  </td>
-  <td>
-    <%= f.input :detalle, 
-      label: false, 
-      as: :text, 
-      input_html: { rows: 2 } %>
   </td>
   <td>
     <%= f.input :seguimiento, 

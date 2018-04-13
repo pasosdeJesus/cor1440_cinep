@@ -137,8 +137,8 @@
         param = {}
         param['bustipomoneda_id'] = val
         param['presenta_nombre'] = 1
-        param['aniomax'] = $('#proyectofinanciero_anioformulacion').val()
-        param['mesmax'] = $('#proyectofinanciero_mesformulacion').val()
+        param['aniomax'] = $('#proyectofinanciero_fechaformulacion_anio').val()
+        param['mesmax'] = $('#proyectofinanciero_fechaformulacion_mes').val()
         param = {filtro: param}
         sip_ajax_recibe_json(root, 'tasascambio', param, 
           cor1440_cinep_cambia_tipomoneda)
@@ -166,9 +166,9 @@
     cor1440_cinep_recalcula_montospesos_localizado(root)
   )
 
-  $('#proyectofinanciero_mesformulacion').change( (e) ->
+  $('#proyectofinanciero_fechaformulacion_mes').change( (e) ->
     s = 2
-    if $('#proyectofinanciero_mesformulacion').val() <= 6
+    if $('#proyectofinanciero_fechaformulacion_mes').val() <= 6
       s = 1
     $('#proyectofinanciero_semestreformulacion').val(s)
   )

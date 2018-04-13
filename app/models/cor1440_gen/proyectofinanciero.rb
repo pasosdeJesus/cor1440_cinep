@@ -53,36 +53,37 @@ module Cor1440Gen
       end
     end
 
+    campofecha_mesanio :fechaformulacion
 
-    def anioformulacion
-      fechaformulacion.year 
-    end
-
-    def mesformulacion
-      fechaformulacion.month
-    end
-
-    def anioformulacion=(a)
-      if self.fechaformulacion 
-        self.fechaformulacion = Date.new(a.to_i, 
-                                         self.fechaformulacion.month, 15) 
-      else
-        self.fechaformulacion = Date.new(a.to_i, 6, 15)
-      end
-    end
-
-    def mesformulacion=(m)
-      if self.fechaformulacion 
-        self.fechaformulacion = Date.new(self.fechaformulacion.year, 
-                                         m.to_i, 15)
-      else
-        self.fechaformulacion = Date.new(Date.today.year, m.to_i, 15)
-      end
-    end
-
-    def mesformulacion_localizado
-      fechaformulacion.year.to_s + "-" + fechaformulacion.month.to_s
-    end
+#    def anioformulacion
+#      fechaformulacion.year 
+#    end
+#
+#    def mesformulacion
+#      fechaformulacion.month
+#    end
+#
+#    def anioformulacion=(a)
+#      if self.fechaformulacion 
+#        self.fechaformulacion = Date.new(a.to_i, 
+#                                         self.fechaformulacion.month, 15) 
+#      else
+#        self.fechaformulacion = Date.new(a.to_i, 6, 15)
+#      end
+#    end
+#
+#    def mesformulacion=(m)
+#      if self.fechaformulacion 
+#        self.fechaformulacion = Date.new(self.fechaformulacion.year, 
+#                                         m.to_i, 15)
+#      else
+#        self.fechaformulacion = Date.new(Date.today.year, m.to_i, 15)
+#      end
+#    end
+#
+#    def mesformulacion_localizado
+#      fechaformulacion.year.to_s + "-" + fechaformulacion.month.to_s
+#    end
 
     def montoejp_localizado
       if montoej && tasaej

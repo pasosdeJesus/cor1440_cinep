@@ -2257,7 +2257,10 @@ CREATE TABLE productopf (
     devoluciones boolean,
     seguimiento character varying(5000),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    fechainiprod date,
+    fechafinprod date,
+    costoprevisto numeric
 );
 
 
@@ -6100,6 +6103,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180406095207'),
 ('20180409085315'),
 ('20180409231903'),
-('20180413210209');
+('20180413210209'),
+('20180413211849'),
+('20180413213754');
 
 

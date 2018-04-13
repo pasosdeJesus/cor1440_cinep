@@ -183,8 +183,8 @@
         <td>
            <% ptp = f.object.tipomoneda_id.nil? ? nil :
             (f.object.tipomoneda.nombre == 'PESO' ? f.object.presupuestototal : 
-             (f.object.tasaformulacion_id.nil? ? nil : 
-             f.object.presupuestototal*f.object.tasaformulacion.enpesos)
+             (f.object.tasa.nil? ? nil : 
+             f.object.presupuestototal*f.object.tasa )
             ) 
           %>
           <% ih_pt = {
