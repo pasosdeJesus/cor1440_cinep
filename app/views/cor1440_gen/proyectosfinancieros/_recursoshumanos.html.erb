@@ -1,6 +1,7 @@
-<% 
-  if can? :manage, Sip::Grupo
-    cg = Sip::Grupo.habilitado
+<% byebug
+  if current_usuario.rol == Ability::ROLADMIN || 
+    current_usuario.rol == Ability::ROLDIR
+    cg = Sip::Grupo.habilitados
   else
     cg = Sip::Grupo.investigacion
   end
