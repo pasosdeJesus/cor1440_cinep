@@ -1,5 +1,12 @@
+<% 
+  if can? :manage, Sip::Grupo
+    cg = Sip::Grupo.habilitado
+  else
+    cg = Sip::Grupo.investigacion
+  end
+%>
 <%= f.association :grupo,
-  collection: Sip::Grupo.habilitados,
+  collection: cg,
   label_method: :nombre,
   value_method: :id,
   input_html: { class: 'chosen-select' }
