@@ -17,10 +17,6 @@ class Productopf < ActiveRecord::Base
   campofecha_localizado :fechaplaneada
   campofecha_localizado :fechareal
 
-  campofecha_mesanio :fechainiprod
-  campofecha_mesanio :fechafinprod
-
-  flotante_localizado :costoprevisto
   validate :fechaplaneada_posterior_inicio
   def fechaplaneada_posterior_inicio
     if fechaplaneada && 
@@ -50,7 +46,7 @@ class Productopf < ActiveRecord::Base
       proyectofinanciero.fechainicio &&
       fechareal < proyectofinanciero.fechainicio then
       errors.add(:fechareal,
-                 "La fecha de envío debe ser posterior a la de inicio")
+                 "La fecha de envío debe ser posterior a la de inicio del compromiso")
     end
   end
 
@@ -64,6 +60,44 @@ class Productopf < ActiveRecord::Base
                  "La fecha de envío debe ser anterior a la de terminación")
     end
   end
+
+  campofecha_mesanio :fechainiprod
+  campofecha_mesanio :fechafinprod
+
+  validate :fechainiprod_anterior_fechafinprod
+  def fechainiprod_anterior_fechafinprod
+    if fechainiprod && fechafinprod &&
+            fechainiprod > fechafinprod then
+      errors.add(:fechainiprod_mes,
+                 "La fecha de inicio de producción debe ser anterior a la de terminación")
+    end
+  end
+
+  validate :fechainiprod_posterior_inicio
+  def fechainiprod_posterior_inicio
+    if fechainiprod && 
+      proyectofinanciero &&
+      proyectofinanciero.fechainicio &&
+      fechainiprod < proyectofinanciero.fechainicio then
+      errors.add(:fechainiprod_mes,
+                 "La fecha de inicio de producción debe ser posterior a la de inicio del compromiso")
+    end
+  end
+
+  validate :fechafinprod_anterior_cierre
+  def fechafinprod_anterior_cierre
+    byebug
+    if fechafinprod && 
+            proyectofinanciero &&
+            proyectofinanciero.fechacierre &&
+            fechafinprod > proyectofinanciero.fechacierre then
+      errors.add(:fechafinprod_mes,
+                 "La fecha de finalización de producción debe ser anterior a la de terminación del compromiso financiero")
+    end
+  end
+
+
+  flotante_localizado :costoprevisto
 
 
 

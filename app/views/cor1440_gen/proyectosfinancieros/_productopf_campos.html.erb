@@ -8,26 +8,27 @@
     %>
   </td>
   <td>
-    <%= f.input :fechainiprod_anio, 
-      label: false,
-      :input_html => { "data-behaviour" => "datepicker" },
-      :as => :string %> - 
     <%= f.input :fechainiprod_mes, 
       label: false,
-      :input_html => { "data-behaviour" => "datepicker" },
-      :as => :string 
-    %>
+      collection: Sip::ModeloHelper::MESES %> -
+    <%= f.input :fechainiprod_anio, 
+      label: false,
+      as: :integer,
+      input_html: {
+        value: f.object.fechainiprod_anio || Date.today.year
+      }
+    %> 
   </td>
   <td>
-    <%= f.input :fechafinprod_anio, 
-      label: false,
-      :input_html => { "data-behaviour" => "datepicker" },
-      :as => :string %> - 
     <%= f.input :fechafinprod_mes, 
       label: false,
-      :input_html => { "data-behaviour" => "datepicker" },
-      :as => :string 
-    %> 
+      collection: Sip::ModeloHelper::MESES %> -
+    <%= f.input :fechafinprod_anio, 
+      label: false,
+      as: :integer,
+      input_html: {
+        value: f.object.fechafinprod_anio || Date.today.year
+      } %> 
   </td>
   <td>
     <%= f.input :costoprevisto_localizado,

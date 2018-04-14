@@ -945,11 +945,16 @@ module Cor1440Gen
         ],
         :grupo_ids => [],
         :productopf_attributes => [
+          :costoprevisto_localizado,
+          :detalle,
+          :devoluciones,
+          :fechainiprod_anio, 
+          :fechainiprod_mes, 
+          :fechafinprod_anio, 
+          :fechafinprod_mes, 
           :fechaplaneada_localizada,
           :fechareal_localizada,
           :id,
-          :detalle,
-          :devoluciones,
           :seguimiento,
           :tipoproductopf_id,
           :_destroy
