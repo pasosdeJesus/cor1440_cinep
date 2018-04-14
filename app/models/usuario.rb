@@ -8,18 +8,24 @@ class Usuario < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, 
     :trackable, :lockable
 
-  belongs_to :oficina, class_name: 'Sip::Oficina',
-    foreign_key: "oficina_id", validate: true
-
-  belongs_to :persona, class_name: 'Sip::Persona',
-    foreign_key: "persona_id", validate: true
-  accepts_nested_attributes_for :persona, reject_if: :all_blank
+  belongs_to :cargo, class_name: '::Cargo',
+    foreign_key: "cargo_id", validate: true
 
   belongs_to :labdepartamento, class_name: 'Sip::Departamento',
     foreign_key: "labdepartamento_id", validate: true
   
   belongs_to :labmunicipio, class_name: 'Sip::Municipio',
     foreign_key: "labmunicipio_id", validate: true
+
+  belongs_to :oficina, class_name: 'Sip::Oficina',
+    foreign_key: "oficina_id", validate: true
+
+  belongs_to :perfilprofesional, class_name: '::Perfilprofesional',
+    foreign_key: "perfilprofesional_id", validate: true
+  
+  belongs_to :persona, class_name: 'Sip::Persona',
+    foreign_key: "persona_id", validate: true
+  accepts_nested_attributes_for :persona, reject_if: :all_blank
 
   #attr labmundep
 

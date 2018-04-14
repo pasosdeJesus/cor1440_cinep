@@ -192,6 +192,9 @@ class Ability  < Cor1440Gen::Ability
         end
         if lgrupos.include?(GRUPO_GESTIONHUMANA)
           can [:edit, :update, :create], ::Usuario
+          can :manage, ::Cargo
+          can :manage, ::Perfilprofesional
+          can :manage, :tablasbasicas
         end
         if lgrupos.include?(GRUPO_COMUNICACIONES)
           can :manage, Sal7711Gen::Articulo

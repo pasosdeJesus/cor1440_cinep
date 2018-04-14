@@ -98,6 +98,7 @@ class UsuariosController < Sip::ModelosController
 
   def usuario_params
     p = params.require(:usuario).permit(
+      :cargo_id,
       :current_sign_in_at, 
       :current_sign_in_ip, 
       :descripcion, 
@@ -119,6 +120,7 @@ class UsuariosController < Sip::ModelosController
       :nusuario, 
       :oficina_id,
       :password, 
+      :perfilprofesional_id,
       :reset_password_token, 
       :reset_password_sent_at, 
       :remember_created_at, 
