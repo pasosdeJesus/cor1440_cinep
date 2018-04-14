@@ -256,8 +256,10 @@ es:
         municipio: Municipio de nacimiento
         clase: Centro poblado de nacimiento
       usuario:
+        cargo: Cargo
         direccionresidencia: Dirección de residencia
         nusuario: Usuario
         numhijos: Número de hijos
         numhijosmen12: Número de hijos menores de 12
+        perfilprofesional: Perfil profesional
 

@@ -1,17 +1,1 @@
-<%= f.association :cargo,
-    collection: ::Cargo.habilitados,
-    include_blank: true,
-    label_method: :nombre,
-    value_method: :id,
-    input_html: {
-      value: f.object.cargo_id || '1'
-    } %>
 
-<%= f.association :perfilprofesional,
-    collection: ::Perfilprofesional.habilitados,
-    include_blank: true,
-    label_method: :nombre,
-    value_method: :id,
-    input_html: {
-      value: f.object.perfilprofesional_id || '1'
-    } %>
