@@ -86,7 +86,6 @@ class Productopf < ActiveRecord::Base
 
   validate :fechafinprod_anterior_cierre
   def fechafinprod_anterior_cierre
-    byebug
     if fechafinprod && 
             proyectofinanciero &&
             proyectofinanciero.fechacierre &&
