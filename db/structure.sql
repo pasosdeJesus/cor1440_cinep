@@ -2373,7 +2373,8 @@ CREATE TABLE proyectofinanciero_usuario (
     cargo_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    porcentaje integer
+    porcentaje integer,
+    perfilprofesional_id integer
 );
 
 
@@ -4887,6 +4888,14 @@ ALTER TABLE ONLY cor1440_gen_resultadopf
 
 
 --
+-- Name: proyectofinanciero_usuario fk_rails_06be7b769b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY proyectofinanciero_usuario
+    ADD CONSTRAINT fk_rails_06be7b769b FOREIGN KEY (perfilprofesional_id) REFERENCES perfilprofesional(id);
+
+
+--
 -- Name: cor1440_gen_actividad_actividadpf fk_rails_08b9aa072b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6168,6 +6177,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180414092457'),
 ('20180414095556'),
 ('20180414100044'),
-('20180414100850');
+('20180414100850'),
+('20180416102122'),
+('20180417023024');
 
 

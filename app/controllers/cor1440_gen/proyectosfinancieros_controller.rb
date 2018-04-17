@@ -686,7 +686,9 @@ module Cor1440Gen
               (memo == '' ? '' : memo + "\n") + 
                 (i.usuario ? i.usuario.nombres + ' ' +
                 i.usuario.apellidos : "Por contratar") +
-                " (" + i.cargo.nombre.capitalize + ")" + 
+                " (" + i.cargo.nombre.capitalize + ", "
+                " (" + i.perfilprofesional.nombre.capitalize + 
+                ")" + 
                 (i.porcentaje ? " " + i.porcentaje.to_s + "%" : '')
           })
         end
@@ -960,10 +962,11 @@ module Cor1440Gen
           :_destroy
         ],
         :proyectofinanciero_usuario_attributes => [
-          :id,
           :cargo_id,
-          :usuario_id,
+          :id,
+          :perfilprofesional_id,
           :porcentaje,
+          :usuario_id,
           :_destroy
         ],
         :proyectofinanciero_uresponsable_attributes => [

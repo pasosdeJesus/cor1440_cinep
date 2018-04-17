@@ -1,13 +1,5 @@
 <tr class='nested-fields'>
   <td>
-    <%= f.association :cargo,
-      collection: ::Cargo.habilitados,
-      label: false,
-      label_method: :nombre,
-      value_method: :id
-    %>
-  </td>
-  <td>
     <% col = ::Usuario.order(:nombres, :apellidos).habilitados %>
     <%= f.association :usuario,
       collection: col,
@@ -17,6 +9,22 @@
       include_blank: "POR CONTRATAR",
       input_html: { class: 'chosen-select' } %>
   </td>
+  <td>
+    <%= f.association :cargo,
+      collection: ::Cargo.habilitados,
+      label: false,
+      label_method: :nombre,
+      value_method: :id %>
+  </td>
+
+  <td>
+    <%= f.association :perfilprofesional,
+      collection: ::Perfilprofesional.habilitados,
+      label: false,
+      label_method: :nombre,
+      value_method: :id %>
+  </td>
+
   <td>
     <% @porc = *(1..100) %>
     <%= f.input :porcentaje, 
