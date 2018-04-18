@@ -1,29 +1,48 @@
+<div class="row">
+  <div class="col-sm-4">
+    <%= c.input :numero %>
+  </div>
+  <div class="col-sm-4">
+    <%= c.input :fechaini_localizada, :input_html => { 
+      "data-behaviour" => "datepicker" },
+      :as => :string %>
+  </div>
+  <div class="col-sm-4">
+    <%= c.input :fechafin_localizada, :input_html => { 
+      "data-behaviour" => "datepicker" },
+      :as => :string %>
+  </div>
+</div>
 
-<%= f.input :direccionresidencia %>
+<div class="row">
+  <div class="col-sm-6">
+    <%= f.association :cargo,
+      collection: ::Cargo.habilitados,
+      include_blank: true,
+      label_method: :nombre,
+      value_method: :id,
+      input_html: {
+        value: f.object.cargo_id || '1'
+      } %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.association :perfilprofesional,
+      collection: ::Perfilprofesional.habilitados,
+      include_blank: true,
+      label_method: :nombre,
+      value_method: :id,
+      input_html: {
+        value: f.object.perfilprofesional_id || '1'
+      } %>
+  </div>
+</div>
 
-<%= f.input :numhijos %>
-
-<%= f.input :numhijosmen12 %>
-
-<%= f.association :cargo,
-    collection: ::Cargo.habilitados,
-    include_blank: true,
-    label_method: :nombre,
-    value_method: :id,
-    input_html: {
-      value: f.object.cargo_id || '1'
-    } %>
-
-<%= f.association :perfilprofesional,
-    collection: ::Perfilprofesional.habilitados,
-    include_blank: true,
-    label_method: :nombre,
-    value_method: :id,
-    input_html: {
-      value: f.object.perfilprofesional_id || '1'
-    } %>
-
-<%= f.input :fechacreacion_localizada %>
-
-<%= f.input :fechadeshabilitacion_localizada %>
+<div class="row">
+  <div class="col-sm-6">
+    <%= c.input :salario %>
+  </div>
+  <div class="col-sm-6">
+    <%= c.input :salarioanterior %>
+  </div>
+</div>
 

@@ -56,6 +56,12 @@ es:
         "{:grupo_ids=>[]}": Grupo(s)
       "anexo_proyectofinanciero":
         tipoanexo: Tipo de anexo
+      "contrato":
+        numero: Número de contrato
+        fechaini_localizada: Fecha de iniciación de contrato actual
+        fechafin_localizada: Fecha de terminación de contrato actual
+        salario: Salario actual
+        salarioanterior: Salario anterior
       "contextoinv":
         regiongrupo: Región
       "convenio":
@@ -262,4 +268,6 @@ es:
         numhijos: Número de hijos
         numhijosmen12: Número de hijos menores de 12
         perfilprofesional: Perfil profesional
-
+      "vinculacion":
+        fechaini_localizada: Fecha de inicio
+        fechafin_localizada: Fecha de terminación

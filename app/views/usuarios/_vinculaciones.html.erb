@@ -1,0 +1,23 @@
+<table border=1 width="100%">
+  <thead>
+    <tr>
+      <th>Fecha de Inicio</th>
+      <th>Fecha de terminación</th>
+      <th>Observaciones</th>
+    </tr>
+  </thead>
+  <tbody id="vinculaciones">
+    <%= f.simple_fields_for :vinculacion do |v| %>
+      <%= render 'vinculacion_campos', :f => v %>
+    <% end %>
+  </tbody>
+</table>
+<div class="links">
+  <%= link_to_add_association 'Añadir Vinculación', f, 
+    :vinculacion,
+    :"data-association-insertion-node" => "tbody#vinculaciones", 
+    :"data-association-insertion-method" => "append", 
+    partial: 'vinculacion_campos',
+    :class => 'btn-primary'
+  %>
+</div>

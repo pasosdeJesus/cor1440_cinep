@@ -18,6 +18,20 @@ class UsuariosController < Sip::ModelosController
     ]
   end
 
+  def atributos_show
+    [ "id",
+      "nusuario",
+      "nombres",
+      "apellidos",
+      "email",
+      "oficina_id",
+      "extension",
+      "grupos",
+      "habilitado",
+    ]
+  end
+
+
   def atributos_form
     r = []
     if can?(:create, ::Usuario)
@@ -130,6 +144,25 @@ class UsuariosController < Sip::ModelosController
       :uidNumber,
       :unlock_token, 
       :etiqueta_ids => [],
+      :anexo_usuario_attributes => [
+        :id,
+        :proyectofinanciero_id,
+        :_destroy,
+        :sip_anexo_attributes => [
+          :adjunto, 
+          :descripcion, 
+          :id, 
+          :_destroy
+        ]
+      ],
+      :contrato_attributes => [
+        :fechaini_localizada,
+        :fechafin_localizada,
+        :id,
+        :numero,
+        :salario,
+        :salarioanterior
+      ],
       :persona_attributes => [
         :apellidos,
         :anionac,
@@ -149,6 +182,13 @@ class UsuariosController < Sip::ModelosController
         :numhijosmen12,
         :sexo,
         :tdocumento_id
+      ],
+      :vinculacion_attributes => [
+        :fechaini_localizada,
+        :fechafin_localizada,
+        :id,
+        :observaciones,
+        :_destroy
       ],
       :sip_grupo_ids => []
     )

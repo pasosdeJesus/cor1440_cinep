@@ -1,12 +1,19 @@
-<%= p.input :tdocumento_id,
-  collection: Sip::Tdocumento.habilitados,
-  label_method: :nombre,
-  value_method: :id 
-%>
 
-<%= p.input :numerodocumento %>
-
-<%= p.input :lugardocumento %>
+<div class="row">
+  <div class="col-sm-4">
+    <%= p.input :tdocumento_id,
+      collection: Sip::Tdocumento.habilitados,
+      label_method: :nombre,
+      value_method: :id 
+    %>
+  </div>
+  <div class="col-sm-4">
+    <%= p.input :numerodocumento %>
+  </div>
+  <div class="col-sm-4">
+    <%= p.input :lugardocumento %>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-sm-4">
@@ -33,37 +40,59 @@
       collection: @meses
     %>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <% @dias = *(1..31) %>
     <%= p.input :dianac, collection: @dias %>
   </div>
+  <div class="col-sm-3">
+    <%= p.input :sexo, collection: [["SIN INFORMACIÓN", :S], 
+                                    ["FEMENINO", :F], ["MASCULINO", :M]], 
+    include_blank: false %>
+  </div>
 </div>
 
-<%= p.input :sexo, collection: [["SIN INFORMACIÓN", :S], 
-  ["FEMENINO", :F], ["MASCULINO", :M]], 
-  include_blank: false 
-%>
-<%= p.association :pais,
-  collection: Sip::Pais.habilitados,
-  label_method: :nombre,
-  value_method: :id 
-%>
-<%= p.association :departamento,
-  collection: (Sip::Departamento.habilitados.where(
-    id_pais: p.object.id_pais)),
-  label_method: :nombre,
-  value_method: :id 
-%>
-<%= p.association :municipio,
-  collection: ( Sip::Municipio.habilitados.where(
-      id_departamento: p.object.id_departamento)),
-  label_method: :nombre,
-  value_method: :id 
-%>
-<%= p.association :clase,
-  collection: (Sip::Clase.habilitados.where(
-    id_municipio: p.object.id_municipio)),
-  label_method: :nombre,
-  value_method: :id 
-%>
+<div class="row">
+  <div class="col-sm-3">
+    <%= p.association :pais,
+      collection: Sip::Pais.habilitados,
+      label_method: :nombre,
+      value_method: :id %>
+  </div>
+  <div class="col-sm-3">
+    <%= p.association :departamento,
+      collection: (Sip::Departamento.habilitados.where(
+        id_pais: p.object.id_pais)),
+        label_method: :nombre,
+        value_method: :id %>
+  </div>
+  <div class="col-sm-3">
+    <%= p.association :municipio,
+      collection: ( Sip::Municipio.habilitados.where(
+        id_departamento: p.object.id_departamento)),
+        label_method: :nombre,
+        value_method: :id 
+      %>
+  </div>
+  <div class="col-sm-3">
+    <%= p.association :clase,
+      collection: (Sip::Clase.habilitados.where(
+        id_municipio: p.object.id_municipio)),
+        label_method: :nombre,
+        value_method: :id 
+      %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-4">
+    <%= f.input :direccionresidencia %>
+  </div>
+  <div class="col-sm-4">
+    <%= f.input :numhijos %>
+  </div>
+  <div class="col-sm-4">
+    <%= f.input :numhijosmen12 %>
+  </div>
+</div>
 

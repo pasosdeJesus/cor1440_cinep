@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 19a78401de477a0247fbf187a8adc72a8118f3c0
+  revision: ab85c5c58a66ffa78ed761021671ce8d449d2a95
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -167,7 +167,7 @@ GEM
       railties (>= 3.0)
     builder (3.2.3)
     camertron-eprun (1.1.1)
-    cancancan (2.1.4)
+    cancancan (2.2.0)
     capybara (2.18.0)
       addressable
       mini_mime (>= 0.1.3)

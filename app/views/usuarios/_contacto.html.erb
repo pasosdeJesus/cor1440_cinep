@@ -40,10 +40,15 @@
 
 <div class="row">
   <div class="col-sm-6">
+    <% if can? :create, ::Usuario %>
+      <% sgih = {class: 'chosen-select'} %>
+    <% else %>
+      <% sgih = {disabled: true} %>
+    <% end %>
     <%= f.association :sip_grupo, 
-      readonly: cannot?(:edit, ::Usuario),
+      readonly: cannot?(:create, ::Usuario),
       collection: Sip::Grupo.habilitados,
-      input_html: { class: 'chosen-select' },
+      input_html: sgih,
       label_method: :nombre,
       value_method: :id,
       label: 'Proyecto (elegir el más específico)'

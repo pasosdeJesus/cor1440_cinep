@@ -2,6 +2,10 @@
   <% if f.object.persona.nil? %>
     <% f.object.persona = Sip::Persona.new %>
   <% end %>
+  <% if f.object.contrato.nil? %>
+    <% f.object.contrato = ::Contrato.new %>
+  <% end %>
+
   <article>
     <div data-role="content" class="form-inputs">
 
@@ -13,14 +17,14 @@
             class="fichacambia" aria-controls="contacto" role="tab" 
             data-toggle="tab">Datos de contacto</a></li>
 
-          <li role="presentation"><a href="#personales" class="fichacambia" 
-            aria-controls="personales" role="tab" 
-            data-toggle="tab">Datos personales</a></li>
-
-          <% if can? :edit, ::Usuario %>
-            <li role="presentation"><a href="#histlab" class="fichacambia" 
-              aria-controls="histlab" role="tab" 
-              data-toggle="tab">Historia laboral</a></li>
+          <% if can? :create, ::Usuario %>
+            <li role="presentation"><a href="#personales" class="fichacambia" 
+              aria-controls="personales" role="tab" 
+              data-toggle="tab">Datos personales</a></li>
+  
+            <li role="presentation"><a href="#vinculaciones" class="fichacambia" 
+              aria-controls="vinculaciones" role="tab" 
+              data-toggle="tab">Vinculaciones anteriores</a></li>
   
             <li role="presentation"><a href="#contactual" class="fichacambia" 
               aria-controls="contactual" role="tab" 
@@ -38,35 +42,38 @@
         </ul>
         <div class="tab-content">
           <%= f.simple_fields_for :persona do |p| %>
-            <div role="tabpanel" class="tab-pane active" id="contacto" > 
-              <%= render 'contacto', :f => f, :p => p %>
-            </div> 
-
-            <% if can? :edit, ::Usuario %>
-              <div role="tabpanel" class="tab-pane" id="personales" > 
-                <%= render 'personales', :f => f, :p => p %>
-              </div>
+            <%= f.simple_fields_for :contrato do |c| %>
+              <div role="tabpanel" class="tab-pane active" id="contacto" > 
+                <%= render 'contacto', :f => f, :p => p, :c => c %>
+              </div> 
   
-              <div role="tabpanel" class="tab-pane" id="histlab" > 
-                <%= render 'histlab', :f => f, :p => p %>
-              </div>
+              <% if can? :edit, ::Usuario %>
+                <div role="tabpanel" class="tab-pane" id="personales" > 
+                  <%= render 'personales', :f => f, :p => p, :c => c %>
+                </div>
+    
+                <div role="tabpanel" class="tab-pane" id="vinculaciones" > 
+                  <%= render 'vinculaciones', :f => f, :p => p, :c => c %>
+                </div>
+    
+                <div role="tabpanel" class="tab-pane" id="contactual" > 
+                  <%= render 'contactual', :f => f, :p => p, :c => c %>
+                </div>
   
-              <div role="tabpanel" class="tab-pane" id="contactual" > 
-                <%= render 'contactual', :f => f, :p => p %>
-              </div>
+                <div role="tabpanel" class="tab-pane" id="anexos" > 
+                  <%= render 'anexos', :f => f  %>
+                </div>
+              <% end %>
+  
+              <% if can? :manage, ::Usuario %>
+                <div role="tabpanel" class="tab-pane" id="ti" > 
+                  <%= render 'ti', :f => f, :p => p %>
+                </div>
+              <% end %>
 
-              <!--div role="tabpanel" class="tab-pane" id="anexos"--> 
-                <!--%= render 'sivel2_gen/casos/anexos', :f => f  %-->
-              <!--/div-->
-            <% end %>
+            <% end %> <!-- contrato -->
+          <% end %> <!-- persona -->
 
-            <% if can? :manage, ::Usuario %>
-              <div role="tabpanel" class="tab-pane" id="ti" > 
-                <%= render 'ti', :f => f, :p => p %>
-              </div>
-            <% end %>
-
-          <% end %>
         </div> <!-- tab-content -->
       </div> <!-- tabpanel -->
     </div> <!-- form-inputs -->

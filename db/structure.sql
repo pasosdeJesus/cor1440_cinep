@@ -368,6 +368,36 @@ CREATE SEQUENCE anexo_seq
 
 
 --
+-- Name: anexo_usuario; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE anexo_usuario (
+    id bigint NOT NULL,
+    anexo_id integer,
+    usuario_id integer
+);
+
+
+--
+-- Name: anexo_usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE anexo_usuario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: anexo_usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE anexo_usuario_id_seq OWNED BY anexo_usuario.id;
+
+
+--
 -- Name: antecedente_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -504,6 +534,39 @@ CREATE SEQUENCE contextoinv_id_seq
 --
 
 ALTER SEQUENCE contextoinv_id_seq OWNED BY contextoinv.id;
+
+
+--
+-- Name: contrato; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE contrato (
+    id bigint NOT NULL,
+    numero character varying(127),
+    salarioanterior numeric,
+    salario numeric,
+    fechaini date,
+    fechafin date
+);
+
+
+--
+-- Name: contrato_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE contrato_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: contrato_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE contrato_id_seq OWNED BY contrato.id;
 
 
 --
@@ -3504,6 +3567,7 @@ CREATE TABLE usuario (
     nombres character varying(127),
     perfilprofesional_id integer,
     cargo_id integer,
+    contrato_id integer,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -3519,6 +3583,38 @@ CREATE SEQUENCE victima_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: vinculacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE vinculacion (
+    id bigint NOT NULL,
+    usuario_id integer,
+    fechaini date,
+    fechafin date,
+    observaciones character varying(5000)
+);
+
+
+--
+-- Name: vinculacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE vinculacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vinculacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE vinculacion_id_seq OWNED BY vinculacion.id;
 
 
 --
@@ -3555,6 +3651,13 @@ ALTER TABLE ONLY anexo_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('a
 
 
 --
+-- Name: anexo_usuario id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_usuario ALTER COLUMN id SET DEFAULT nextval('anexo_usuario_id_seq'::regclass);
+
+
+--
 -- Name: cargo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -3566,6 +3669,13 @@ ALTER TABLE ONLY cargo ALTER COLUMN id SET DEFAULT nextval('cargo_id_seq'::regcl
 --
 
 ALTER TABLE ONLY contextoinv ALTER COLUMN id SET DEFAULT nextval('contextoinv_id_seq'::regclass);
+
+
+--
+-- Name: contrato id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY contrato ALTER COLUMN id SET DEFAULT nextval('contrato_id_seq'::regclass);
 
 
 --
@@ -3989,6 +4099,13 @@ ALTER TABLE ONLY tipoproductopf ALTER COLUMN id SET DEFAULT nextval('tipoproduct
 
 
 --
+-- Name: vinculacion id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY vinculacion ALTER COLUMN id SET DEFAULT nextval('vinculacion_id_seq'::regclass);
+
+
+--
 -- Name: actor actor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4013,6 +4130,14 @@ ALTER TABLE ONLY anexo_proyectofinanciero
 
 
 --
+-- Name: anexo_usuario anexo_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_usuario
+    ADD CONSTRAINT anexo_usuario_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4034,6 +4159,14 @@ ALTER TABLE ONLY cargo
 
 ALTER TABLE ONLY contextoinv
     ADD CONSTRAINT contextoinv_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: contrato contrato_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY contrato
+    ADD CONSTRAINT contrato_pkey PRIMARY KEY (id);
 
 
 --
@@ -4701,6 +4834,14 @@ ALTER TABLE ONLY usuario
 
 
 --
+-- Name: vinculacion vinculacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY vinculacion
+    ADD CONSTRAINT vinculacion_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: index_actor_on_pais_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -5288,6 +5429,14 @@ ALTER TABLE ONLY informeauditoria
 
 
 --
+-- Name: vinculacion fk_rails_698ada5273; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY vinculacion
+    ADD CONSTRAINT fk_rails_698ada5273 FOREIGN KEY (usuario_id) REFERENCES usuario(id);
+
+
+--
 -- Name: cor1440_gen_pmindicadorpf fk_rails_701d924c54; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5381,6 +5530,14 @@ ALTER TABLE ONLY proyectofinanciero_uresponsable
 
 ALTER TABLE ONLY tasacambio
     ADD CONSTRAINT fk_rails_834c638220 FOREIGN KEY (tipomoneda_id) REFERENCES tipomoneda(id);
+
+
+--
+-- Name: usuario fk_rails_83add769ae; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_rails_83add769ae FOREIGN KEY (contrato_id) REFERENCES contrato(id);
 
 
 --
@@ -5488,6 +5645,14 @@ ALTER TABLE ONLY cor1440_gen_cambiosproyectofinanciero
 
 
 --
+-- Name: anexo_usuario fk_rails_aee8dfa79a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_usuario
+    ADD CONSTRAINT fk_rails_aee8dfa79a FOREIGN KEY (usuario_id) REFERENCES usuario(id);
+
+
+--
 -- Name: actividad_publicacion fk_rails_afe68ea314; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5525,6 +5690,14 @@ ALTER TABLE ONLY usuario
 
 ALTER TABLE ONLY cor1440_gen_informe
     ADD CONSTRAINT fk_rails_c02831dd89 FOREIGN KEY (filtroactividadarea) REFERENCES cor1440_gen_actividadarea(id);
+
+
+--
+-- Name: anexo_usuario fk_rails_c1def44150; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY anexo_usuario
+    ADD CONSTRAINT fk_rails_c1def44150 FOREIGN KEY (anexo_id) REFERENCES sip_anexo(id);
 
 
 --
@@ -6179,6 +6352,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180414100044'),
 ('20180414100850'),
 ('20180416102122'),
-('20180417023024');
+('20180417023024'),
+('20180417124259'),
+('20180417150807'),
+('20180417155830');
 
 

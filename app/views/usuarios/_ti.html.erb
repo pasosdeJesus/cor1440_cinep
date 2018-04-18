@@ -1,21 +1,42 @@
 
 <%= f.input :encrypted_password %>
 
-<%= f.input :uidNumber,
-  readonly: true
-%>
+<div class="row">
+  <div class="col-sm-6">
+    <%= f.input :uidNumber,
+      readonly: true %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :no_modificar_ldap,
+      as: :boolean,
+      inline_label: "No modificar directorio LDAP",
+      boolean_style: :nested %>
+  </div>
+</div>
 
-<%= f.input :no_modificar_ldap,
-  as: :boolean,
-  inline_label: "No modificar directorio LDAP",
-  boolean_style: :nested
-%>
+<div class="row">
+  <div class="col-sm-6">
+    <%= f.input :fechacreacion_localizada, :input_html => { 
+      "data-behaviour" => "datepicker" },
+      :as => :string %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :fechadeshabilitacion_localizada, :input_html => { 
+      "data-behaviour" => "datepicker" },
+      :as => :string %>
+  </div>
+</div>
 
-<%= f.input :failed_attempts %>
-
-<%= f.input :unlock_token%>
-
-<%= f.input :locked_at, 
-  as: :string, 
-  input_html: { class: 'datepicker'} %>
-
+<div class="row">
+  <div class="col-sm-4">
+    <%= f.input :failed_attempts %>
+  </div>
+  <div class="col-sm-4">
+    <%= f.input :unlock_token%>
+  </div>
+  <div class="col-sm-4">
+    <%= f.input :locked_at, 
+      as: :string, 
+      input_html: { class: 'datepicker'} %>
+  </div>
+</div>

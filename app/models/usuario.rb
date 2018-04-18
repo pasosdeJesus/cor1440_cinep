@@ -11,6 +11,10 @@ class Usuario < ActiveRecord::Base
   belongs_to :cargo, class_name: '::Cargo',
     foreign_key: "cargo_id", validate: true
 
+  belongs_to :contrato, class_name: '::Contrato',
+    foreign_key: "contrato_id", validate: true
+  accepts_nested_attributes_for :contrato, reject_if: :all_blank
+
   belongs_to :labdepartamento, class_name: 'Sip::Departamento',
     foreign_key: "labdepartamento_id", validate: true
   
@@ -90,11 +94,20 @@ class Usuario < ActiveRecord::Base
   validates :numhijos, :numericality => { :greater_than_or_equal_to => 0 }
   validates :numhijosmen12, :numericality => { :greater_than_or_equal_to => 0 }
 
-  has_many :proyectofinanciero_usuario, #dependent: :destroy,
-    class_name: '::ProyectofinancieroUsuario',
+  has_many :actividad_usuario, dependent: :delete_all,
+    class_name: 'Cor1440Gen::ActividadUsuario',
     foreign_key: 'usuario_id'
-  has_many :proyectofinanciero, through: :proyectofinanciero_usuario,
-    class_name: 'Cor1440Gen::Proyectofinanciero'
+  has_many :actividad, through: :actividad_usuario,
+    class_name: 'Cor1440Gen::Actividad'
+
+  has_many :anexo_usuario, dependent: :delete_all,
+    class_name: '::AnexoUsuario',
+    foreign_key: 'usuario_id', validate: true
+  accepts_nested_attributes_for :anexo_usuario, 
+    allow_destroy: true, reject_if: :all_blank
+  has_many :sip_anexo, :through => :anexo_usuario, 
+    class_name: 'Sip::Anexo'
+  accepts_nested_attributes_for :sip_anexo,  reject_if: :all_blank
 
   has_many :coordinador_proyectofinanciero, #dependent: :destroy,
     class_name: '::CoordinadorProyectofinanciero',
@@ -104,12 +117,17 @@ class Usuario < ActiveRecord::Base
     class_name: '::ProyectofinancieroUresponsable',
     foreign_key: 'uresponsable_id'
 
-
-  has_many :actividad_usuario, dependent: :delete_all,
-    class_name: 'Cor1440Gen::ActividadUsuario',
+  has_many :proyectofinanciero_usuario, #dependent: :destroy,
+    class_name: '::ProyectofinancieroUsuario',
     foreign_key: 'usuario_id'
-  has_many :actividad, through: :actividad_usuario,
-    class_name: 'Cor1440Gen::Actividad'
+  has_many :proyectofinanciero, through: :proyectofinanciero_usuario,
+    class_name: 'Cor1440Gen::Proyectofinanciero'
+
+  has_many :vinculacion, dependent: :delete_all,
+    class_name: '::Vinculacion',
+    foreign_key: 'usuario_id', validate: true
+  accepts_nested_attributes_for :vinculacion, 
+    allow_destroy: true, reject_if: :all_blank
 
   before_destroy :usuario_sin_proyectofinanciero
 
