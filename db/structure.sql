@@ -3407,6 +3407,40 @@ ALTER SEQUENCE tipoanexo_id_seq OWNED BY tipoanexo.id;
 
 
 --
+-- Name: tipocontrato; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE tipocontrato (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: tipocontrato_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tipocontrato_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tipocontrato_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tipocontrato_id_seq OWNED BY tipocontrato.id;
+
+
+--
 -- Name: tipoconvenio; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3568,6 +3602,7 @@ CREATE TABLE usuario (
     perfilprofesional_id integer,
     cargo_id integer,
     contrato_id integer,
+    tipocontrato_id integer DEFAULT 1,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -4075,6 +4110,13 @@ ALTER TABLE ONLY tasacambio ALTER COLUMN id SET DEFAULT nextval('tasacambio_id_s
 --
 
 ALTER TABLE ONLY tipoanexo ALTER COLUMN id SET DEFAULT nextval('tipoanexo_id_seq'::regclass);
+
+
+--
+-- Name: tipocontrato id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipocontrato ALTER COLUMN id SET DEFAULT nextval('tipocontrato_id_seq'::regclass);
 
 
 --
@@ -4775,6 +4817,14 @@ ALTER TABLE ONLY sip_tclase
 
 ALTER TABLE ONLY tipoanexo
     ADD CONSTRAINT tipoanexo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tipocontrato tipocontrato_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipocontrato
+    ADD CONSTRAINT tipocontrato_pkey PRIMARY KEY (id);
 
 
 --
@@ -5869,6 +5919,14 @@ ALTER TABLE ONLY grupo_proyectofinanciero
 
 
 --
+-- Name: usuario fk_rails_e28904a594; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_rails_e28904a594 FOREIGN KEY (tipocontrato_id) REFERENCES tipocontrato(id);
+
+
+--
 -- Name: cor1440_gen_valorcampoact fk_rails_e36cf046d1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6355,6 +6413,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180417023024'),
 ('20180417124259'),
 ('20180417150807'),
-('20180417155830');
+('20180417155830'),
+('20180418005742'),
+('20180418010010');
 
 

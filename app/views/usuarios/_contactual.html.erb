@@ -15,7 +15,17 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-4">
+    <%= f.association :tipocontrato,
+      collection: ::Tipocontrato.habilitados,
+      include_blank: true,
+      label_method: :nombre,
+      value_method: :id,
+      input_html: {
+        value: f.object.tipocontrato_id || '1'
+      } %>
+  </div>
+  <div class="col-sm-4">
     <%= f.association :cargo,
       collection: ::Cargo.habilitados,
       include_blank: true,
@@ -25,7 +35,7 @@
         value: f.object.cargo_id || '1'
       } %>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-4">
     <%= f.association :perfilprofesional,
       collection: ::Perfilprofesional.habilitados,
       include_blank: true,

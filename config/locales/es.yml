@@ -23,6 +23,7 @@ es:
     proyectofinanciero: Compromiso institucional
     regionsjr: Dependencia
     sectoractor: Sector del Actor
+    tipocontrato: Tipo de contrato
     telefono: Teléfono
   activerecord:
     models:
@@ -238,6 +239,9 @@ es:
       "tipoanexo":
         Tipoanexo: Tipo de anexo 
         Tiposanexo: Tipos de anexo
+      "tipocontrato":
+        Tipocontrato: Tipo de contrato
+        Tiposcontratos: Tipos de contrato
       "tipoconvenio":
         Tipoconvenio: Tipo de convenio
         Tiposconvenio: Tipos de convenio

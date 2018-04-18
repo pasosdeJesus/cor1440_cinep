@@ -36,6 +36,7 @@ class Ability  < Cor1440Gen::Ability
     'Grupo Gestion de Calidad: Editar documentos en Nube y plantilas, asi como descripciones de cada carpeta. ' +
     'Grupo Archivo y Correspondencia: Editar usuarios pero sólo los campos extensión, oficina y teléfonos personales. ' +
     'Grupo Gestión Humana: Agregar y editar usuarios, campos privados de gestión humana, grupos y campos públicos. ' +
+    'Grupo Gestión Humana: Maneja tablas básicas perfil profesional, cargos, tipos de contrato. ' +
     'Grupo Comunicaciones: Gestionar publicaciones. '  #ROLOPERADOR, 5
 
   ]
@@ -60,6 +61,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'regiongrupo'],
         ['', 'sectoractor'],
         ['', 'tipoanexo'],
+        ['', 'tipocontrato'],
         ['', 'tipoconvenio'],
         ['', 'tipomoneda'],
         ['', 'tipoproductopf'],
@@ -194,6 +196,7 @@ class Ability  < Cor1440Gen::Ability
           can [:edit, :update, :create], ::Usuario
           can :manage, ::Cargo
           can :manage, ::Perfilprofesional
+          can :manage, ::Tipocontrato
           can :manage, :tablasbasicas
         end
         if lgrupos.include?(GRUPO_COMUNICACIONES)

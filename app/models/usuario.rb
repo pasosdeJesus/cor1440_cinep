@@ -31,6 +31,9 @@ class Usuario < ActiveRecord::Base
     foreign_key: "persona_id", validate: true
   accepts_nested_attributes_for :persona, reject_if: :all_blank
 
+  belongs_to :tipocontrato, class_name: "Tipocontrato",
+    foreign_key: "tipocontrato_id", validate: true
+
   #attr labmundep
 
   def labmundep
