@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: ab85c5c58a66ffa78ed761021671ce8d449d2a95
+  revision: 2ad886a6292fdad6de70d5327920fbd083174bb3
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -212,7 +212,7 @@ GEM
       railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    i18n (1.0.0)
+    i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     interception (0.5)
     jbuilder (2.7.0)

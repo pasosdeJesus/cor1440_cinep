@@ -192,12 +192,14 @@ module Cor1440Gen
       CREATE VIEW v_solicitud_informes1 AS (#{cons});
       CREATE VIEW v_solicitud_informes AS (
       SELECT p.id AS compromiso_id, p.referenciacinep AS titulo, 
-      ARRAY_TO_STRING(ARRAY(SELECT nombres || ' ' || apellidos FROM sip_persona 
+      ARRAY_TO_STRING(ARRAY(SELECT sip_persona.nombres || ' ' || 
+        sip_persona.apellidos FROM sip_persona 
         JOIN usuario ON sip_persona.id=usuario.persona_id 
         JOIN coordinador_proyectofinanciero 
         ON usuario.id=coordinador_proyectofinanciero.coordinador_id
         WHERE proyectofinanciero_id=p.id), ', ') AS coordinador,
-      ARRAY_TO_STRING(ARRAY(SELECT nombres || ' ' || apellidos FROM sip_persona
+      ARRAY_TO_STRING(ARRAY(SELECT sip_persona.nombres || ' ' || 
+        sip_persona.apellidos FROM sip_persona
         JOIN usuario ON sip_persona.id=usuario.persona_id 
         JOIN proyectofinanciero_uresponsable
         ON usuario.id=proyectofinanciero_uresponsable.uresponsable_id
