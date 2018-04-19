@@ -2181,6 +2181,40 @@ CREATE SEQUENCE maternidad_seq
 
 
 --
+-- Name: niveleducacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE niveleducacion (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: niveleducacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE niveleducacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: niveleducacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE niveleducacion_id_seq OWNED BY niveleducacion.id;
+
+
+--
 -- Name: nivelrelacion; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3603,6 +3637,7 @@ CREATE TABLE usuario (
     cargo_id integer,
     contrato_id integer,
     tipocontrato_id integer DEFAULT 1,
+    niveleducacion_id integer DEFAULT 1,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -4047,6 +4082,13 @@ ALTER TABLE ONLY informefinanciero ALTER COLUMN id SET DEFAULT nextval('informef
 --
 
 ALTER TABLE ONLY informenarrativo ALTER COLUMN id SET DEFAULT nextval('informenarrativo_id_seq'::regclass);
+
+
+--
+-- Name: niveleducacion id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY niveleducacion ALTER COLUMN id SET DEFAULT nextval('niveleducacion_id_seq'::regclass);
 
 
 --
@@ -4566,6 +4608,14 @@ ALTER TABLE ONLY informefinanciero
 
 ALTER TABLE ONLY informenarrativo
     ADD CONSTRAINT informenarrativo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: niveleducacion niveleducacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY niveleducacion
+    ADD CONSTRAINT niveleducacion_pkey PRIMARY KEY (id);
 
 
 --
@@ -5265,6 +5315,14 @@ ALTER TABLE ONLY grupo_subgrupo
 
 ALTER TABLE ONLY actividad_grupo
     ADD CONSTRAINT fk_rails_214969d697 FOREIGN KEY (grupo_id) REFERENCES sip_grupo(id);
+
+
+--
+-- Name: usuario fk_rails_272649683b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_rails_272649683b FOREIGN KEY (niveleducacion_id) REFERENCES niveleducacion(id);
 
 
 --
@@ -6492,6 +6550,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180417150807'),
 ('20180417155830'),
 ('20180418005742'),
-('20180418010010');
+('20180418010010'),
+('20180419210718'),
+('20180419212113');
 
 

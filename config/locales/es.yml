@@ -204,6 +204,9 @@ es:
         indicadorpf_id: Indicador
       "sip/grupo":
         "{:subgrupo_ids=>[]}": Subgrupos
+      "niveleducacion":
+        Niveleducacion: Nivel de educación
+        Niveleseducacion: Niveles de educación
       "nivelrelacion":
         Nivelrelacion: Nivel de relación
         Nivelesrelacion: Niveles de relacion

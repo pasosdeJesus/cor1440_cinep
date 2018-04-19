@@ -55,6 +55,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'actor'],
         ['', 'cargo'],
         ['', 'nivelrelacion'],
+        ['', 'niveleducacion'],
         ['', 'nucleoconflicto'],
         ['', 'perfilprofesional'],
         ['', 'publicacion'],

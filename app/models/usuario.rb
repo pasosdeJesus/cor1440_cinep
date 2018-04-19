@@ -21,6 +21,9 @@ class Usuario < ActiveRecord::Base
   belongs_to :labmunicipio, class_name: 'Sip::Municipio',
     foreign_key: "labmunicipio_id", validate: true
 
+  belongs_to :niveleducacion, class_name: "::Niveleducacion",
+    foreign_key: "niveleducacion_id", validate: true
+
   belongs_to :oficina, class_name: 'Sip::Oficina',
     foreign_key: "oficina_id", validate: true
 
@@ -31,8 +34,9 @@ class Usuario < ActiveRecord::Base
     foreign_key: "persona_id", validate: true
   accepts_nested_attributes_for :persona, reject_if: :all_blank
 
-  belongs_to :tipocontrato, class_name: "Tipocontrato",
+  belongs_to :tipocontrato, class_name: "::Tipocontrato",
     foreign_key: "tipocontrato_id", validate: true
+
 
   #attr labmundep
 

@@ -95,4 +95,16 @@
     <%= f.input :numhijosmen12 %>
   </div>
 </div>
+<div class="row">
+  <div class="col-sm-4">
+   <%= f.association :niveleducacion,
+      collection: ::Niveleducacion.habilitados,
+      label_method: :nombre,
+      value_method: :id %>
+  </div>
+  <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4">
+  </div>
+</div>
 
