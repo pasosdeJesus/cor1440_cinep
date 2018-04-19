@@ -3609,6 +3609,83 @@ CREATE TABLE usuario (
 
 
 --
+-- Name: v_solicitud_informes1; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW v_solicitud_informes1 AS
+ SELECT informenarrativo.proyectofinanciero_id,
+    informenarrativo.fechaplaneada,
+    informenarrativo.fechareal,
+    informenarrativo.devoluciones,
+    ('INFORME NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
+    informenarrativo.seguimiento
+   FROM informenarrativo
+UNION
+ SELECT informefinanciero.proyectofinanciero_id,
+    informefinanciero.fechaplaneada,
+    informefinanciero.fechareal,
+    informefinanciero.devoluciones,
+    ('INFORME FINANCIERO: '::text || (informefinanciero.detalle)::text) AS observaciones,
+    informefinanciero.seguimiento
+   FROM informefinanciero
+UNION
+ SELECT informeauditoria.proyectofinanciero_id,
+    informeauditoria.fechaplaneada,
+    informeauditoria.fechareal,
+    informeauditoria.devoluciones,
+    ('INFORME DE AUDITORÍA: '::text || (informeauditoria.detalle)::text) AS observaciones,
+    informeauditoria.seguimiento
+   FROM informeauditoria
+UNION
+ SELECT productopf.proyectofinanciero_id,
+    productopf.fechaplaneada,
+    productopf.fechareal,
+    productopf.devoluciones,
+    (((tipoproductopf.nombre)::text || ': '::text) || (productopf.detalle)::text) AS observaciones,
+    productopf.seguimiento
+   FROM (productopf
+     JOIN tipoproductopf ON ((productopf.tipoproductopf_id = tipoproductopf.id)));
+
+
+--
+-- Name: v_solicitud_informes; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW v_solicitud_informes AS
+ SELECT p.id AS compromiso_id,
+    p.referenciacinep AS titulo,
+    array_to_string(ARRAY( SELECT (((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text)
+           FROM ((sip_persona
+             JOIN usuario ON ((sip_persona.id = usuario.persona_id)))
+             JOIN coordinador_proyectofinanciero ON ((usuario.id = coordinador_proyectofinanciero.coordinador_id)))
+          WHERE (coordinador_proyectofinanciero.proyectofinanciero_id = p.id)), ', '::text) AS coordinador,
+    array_to_string(ARRAY( SELECT (((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text)
+           FROM ((sip_persona
+             JOIN usuario ON ((sip_persona.id = usuario.persona_id)))
+             JOIN proyectofinanciero_uresponsable ON ((usuario.id = proyectofinanciero_uresponsable.uresponsable_id)))
+          WHERE (proyectofinanciero_uresponsable.proyectofinanciero_id = p.id)), ', '::text) AS responsable,
+    s.fechaplaneada,
+    s.fechareal,
+        CASE
+            WHEN s.devoluciones THEN 'SI'::text
+            WHEN (s.devoluciones IS NULL) THEN ''::text
+            ELSE 'NO'::text
+        END AS devoluciones,
+    s.observaciones,
+    s.seguimiento,
+        CASE
+            WHEN (s.fechareal <= (s.fechaplaneada + 7)) THEN 'SI'::text
+            WHEN (s.fechareal > (s.fechaplaneada + 7)) THEN 'NO'::text
+            WHEN ((s.fechareal IS NULL) AND (CURRENT_DATE > (s.fechaplaneada + 7))) THEN 'NO'::text
+            ELSE ''::text
+        END AS a_tiempo
+   FROM (cor1440_gen_proyectofinanciero p
+     JOIN v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
+  WHERE (p.id = ANY (ARRAY[140, 149, 150, 154, 156, 117, 106, 18, 152, 133, 136, 138, 141, 142, 143, 144, 145, 147, 137, 101, 102, 122, 123, 125, 104, 157, 118, 109, 111, 155, 103, 116, 19, 115, 20, 120, 126, 119, 131, 132, 146, 127, 130, 128, 129, 134]))
+  ORDER BY s.fechaplaneada;
+
+
+--
 -- Name: victima_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
