@@ -9,12 +9,14 @@ es:
   attributes:
     actividadarea: Componente Plan Trienal 
     actividadareas: Componentes Plan Trienal 
+    areaestudios: Área de estudios
     articulo: Publicación
     articulos: Publicaciones
     departamento: Departamento
     direccion: Dirección
     fechacreacion: Creación
     fechadeshabilitacion: Deshabilitación 
+    nivelestudio: Nivel de estudio
     nivelrelacion: Nivel de relacion
     oficina: Oficina
     pais: País
@@ -43,6 +45,9 @@ es:
         one: "Publicación"
         other: "Publicaciones"
     attributes:
+      "areaestudios":
+        Areaestudios: Área de estudios
+        Areasestudios: Áreas de estudios
       "actor":
         Actor: Actor
         Actores: Actores

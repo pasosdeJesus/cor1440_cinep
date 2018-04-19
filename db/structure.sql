@@ -422,6 +422,40 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
+-- Name: areaestudios; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE areaestudios (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: areaestudios_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE areaestudios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: areaestudios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE areaestudios_id_seq OWNED BY areaestudios.id;
+
+
+--
 -- Name: cargo; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3805,6 +3839,13 @@ ALTER TABLE ONLY anexo_usuario ALTER COLUMN id SET DEFAULT nextval('anexo_usuari
 
 
 --
+-- Name: areaestudios id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY areaestudios ALTER COLUMN id SET DEFAULT nextval('areaestudios_id_seq'::regclass);
+
+
+--
 -- Name: cargo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4304,6 +4345,14 @@ ALTER TABLE ONLY anexo_usuario
 
 ALTER TABLE ONLY ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: areaestudios areaestudios_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY areaestudios
+    ADD CONSTRAINT areaestudios_pkey PRIMARY KEY (id);
 
 
 --
@@ -6552,6 +6601,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180418005742'),
 ('20180418010010'),
 ('20180419210718'),
-('20180419212113');
+('20180419212113'),
+('20180419222803');
 
 

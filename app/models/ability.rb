@@ -53,6 +53,7 @@ class Ability  < Cor1440Gen::Ability
     super() - [ ['Cor1440Gen', 'proyectofinanciero'] ] + 
       [
         ['', 'actor'],
+        ['', 'areaestudios'],
         ['', 'cargo'],
         ['', 'nivelrelacion'],
         ['', 'niveleducacion'],
@@ -196,7 +197,9 @@ class Ability  < Cor1440Gen::Ability
         end
         if lgrupos.include?(GRUPO_GESTIONHUMANA)
           can [:edit, :update, :create], ::Usuario
+          can :manage, ::Areaestudios
           can :manage, ::Cargo
+          can :manage, ::Nivelestudio
           can :manage, ::Perfilprofesional
           can :manage, ::Tipocontrato
           can :manage, :tablasbasicas
