@@ -15,6 +15,9 @@ class Informeauditoria < ActiveRecord::Base
   campofecha_localizado :fechaplaneada
   campofecha_localizado :fechareal
 
+  flotante_localizado :presupuestodonante
+  flotante_localizado :presupuestoorg
+
   validate :fechaplaneada_posterior_inicio
   def fechaplaneada_posterior_inicio
     if fechaplaneada && 

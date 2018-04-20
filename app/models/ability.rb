@@ -64,6 +64,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'redactor'],
         ['', 'regiongrupo'],
         ['', 'sectoractor'],
+        ['', 'sectorapc'],
         ['', 'tipoanexo'],
         ['', 'tipocontrato'],
         ['', 'tipoconvenio'],
@@ -188,6 +189,7 @@ class Ability  < Cor1440Gen::Ability
           can :manage, Cor1440Gen::Financiador
           can :manage, Cor1440Gen::Mindicadorpf
           can :manage, Cor1440Gen::Proyectofinanciero
+          can :manage, Cor1440Gen::Sectorapc
         end
         if lgrupos.include?(GRUPO_GESTIONDECALIDAD)
           can :manage, Heb412Gen::Doc

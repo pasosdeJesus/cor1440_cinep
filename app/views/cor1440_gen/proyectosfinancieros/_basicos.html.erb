@@ -3,7 +3,7 @@
 <%= f.input :referenciacinep %>
 
 <div class='row'>
-  <div class="col-sm-offset-0 col-sm-6">
+  <div class="col-sm-offset-0 col-sm-4">
     <%= f.association :financiador,
       collection: Cor1440Gen::Financiador.habilitados,
       label_method: :nombre,
@@ -11,9 +11,18 @@
       input_html: { class: 'chosen-select' }
     %>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-4">
     <%= f.input :fuentefinanciador %>
   </div>
+  <div class="col-sm-4">
+    <%= f.association :sectorapc,
+      collection: ::Sectorapc.habilitados,
+      label_method: :nombre,
+      value_method: :id
+    %>
+
+  </div>
+
 </div>
 
 

@@ -195,6 +195,7 @@ es:
         respgp2: "Segundo(a) Responsable GP"
         respgp2_id: "Segundo(a) Responsable GP"
         saldo_localizado: "Saldo"
+        sectorapc: "Sector APC"
         semestreformulacion: "Semestre de formulación"
         skypefinanciador: 'Skype'
         tasaformulacion: "Tasa de cambio en formulación"

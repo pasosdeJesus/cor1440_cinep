@@ -1501,7 +1501,8 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     replegalfinanciador character varying(511),
     domiciliofinanciador character varying(511),
     webfinanciador character varying(511),
-    skypefinanciador character varying(127)
+    skypefinanciador character varying(127),
+    sectorapc_id integer
 );
 
 
@@ -2088,7 +2089,9 @@ CREATE TABLE informeauditoria (
     fechaplaneada date,
     fechareal date,
     devoluciones boolean,
-    seguimiento character varying(5000)
+    seguimiento character varying(5000),
+    presupuestodonante numeric,
+    presupuestoorg numeric
 );
 
 
@@ -2895,6 +2898,40 @@ CREATE SEQUENCE sectoractor_id_seq
 --
 
 ALTER SEQUENCE sectoractor_id_seq OWNED BY sectoractor.id;
+
+
+--
+-- Name: sectorapc; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sectorapc (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sectorapc_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sectorapc_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sectorapc_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sectorapc_id_seq OWNED BY sectorapc.id;
 
 
 --
@@ -4272,6 +4309,13 @@ ALTER TABLE ONLY sectoractor ALTER COLUMN id SET DEFAULT nextval('sectoractor_id
 
 
 --
+-- Name: sectorapc id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sectorapc ALTER COLUMN id SET DEFAULT nextval('sectorapc_id_seq'::regclass);
+
+
+--
 -- Name: sip_anexo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4841,6 +4885,14 @@ ALTER TABLE ONLY sal7711_gen_categoriaprensa
 
 ALTER TABLE ONLY sectoractor
     ADD CONSTRAINT sectoractor_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sectorapc sectorapc_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sectorapc
+    ADD CONSTRAINT sectorapc_pkey PRIMARY KEY (id);
 
 
 --
@@ -5500,6 +5552,14 @@ ALTER TABLE ONLY actor_regiongrupo
 
 ALTER TABLE ONLY cor1440_gen_valorcampoact
     ADD CONSTRAINT fk_rails_3060a94455 FOREIGN KEY (campoact_id) REFERENCES cor1440_gen_campoact(id);
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero fk_rails_3792591d9e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cor1440_gen_proyectofinanciero
+    ADD CONSTRAINT fk_rails_3792591d9e FOREIGN KEY (sectorapc_id) REFERENCES sectorapc(id);
 
 
 --
@@ -6678,6 +6738,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180419225552'),
 ('20180420011442'),
 ('20180420162929'),
-('20180420190517');
+('20180420190517'),
+('20180420200319'),
+('20180420201358'),
+('20180420203459');
 
 

@@ -26,6 +26,8 @@ module Cor1440Gen
     cattr_accessor :current_usuario
     serialize :cambios
 
+    belongs_to :sectorapc, class_name: '::Sectorapc',
+      foreign_key: 'sectorapc_id'
     belongs_to :respgp, class_name: '::Usuario',
       foreign_key: 'respgp_id'
     belongs_to :respgp2, class_name: '::Usuario',

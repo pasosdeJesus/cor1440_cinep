@@ -890,6 +890,7 @@ module Cor1440Gen
         :saldoej_localizado,
         :saldoejp_localizado,
         :saldop_localizado,
+        :sectorapc_id,
         :skypefinanciador, 
         :sucursal,
         :webfinanciador, 
@@ -925,6 +926,8 @@ module Cor1440Gen
           :devoluciones,
           :seguimiento,
           :fechaplaneada_localizada,
+          :presupuestodonante_localizado,
+          :presupuestoorg_localizado,
           :fechareal_localizada,
           :id,
           :_destroy
