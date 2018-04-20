@@ -59,6 +59,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'niveleducacion'],
         ['', 'nucleoconflicto'],
         ['', 'perfilprofesional'],
+        ['', 'profesion'],
         ['', 'publicacion'],
         ['', 'redactor'],
         ['', 'regiongrupo'],
@@ -201,6 +202,7 @@ class Ability  < Cor1440Gen::Ability
           can :manage, ::Cargo
           can :manage, ::Nivelestudio
           can :manage, ::Perfilprofesional
+          can :manage, ::Profesion
           can :manage, ::Tipocontrato
           can :manage, :tablasbasicas
         end

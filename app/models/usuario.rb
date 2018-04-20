@@ -34,6 +34,9 @@ class Usuario < ActiveRecord::Base
     foreign_key: "persona_id", validate: true
   accepts_nested_attributes_for :persona, reject_if: :all_blank
 
+  belongs_to :profesion, class_name: '::Profesion',
+    foreign_key: "profesion_id", validate: true
+
   belongs_to :tipocontrato, class_name: "::Tipocontrato",
     foreign_key: "tipocontrato_id", validate: true
 
@@ -81,6 +84,15 @@ class Usuario < ActiveRecord::Base
 
   def gruposysupragrupos
     ApplicationHelper.supergrupos_usuario(self).join("; ")
+  end
+
+  mattr_accessor :areaestudios
+  def areaestudios
+    if profesion
+      profesion.areaestudios.nombre
+    else
+      'SIN INFORMACIÓN'
+    end
   end
 
   attr_accessor :habilitado

@@ -103,11 +103,14 @@
       value_method: :id %>
   </div>
   <div class="col-sm-4">
+    <%= f.association :profesion,
+      collection: ::Profesion.habilitados,
+      label_method: :nombre,
+      value_method: :id %>
   </div>
   <div class="col-sm-4">
    <%= f.input :areaestudios, readonly: true %>
   </div>
 
-  </div>
 </div>
 

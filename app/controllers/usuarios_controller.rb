@@ -136,6 +136,7 @@ class UsuariosController < Sip::ModelosController
       :oficina_id,
       :password, 
       :perfilprofesional_id,
+      :profesion_id,
       :reset_password_token, 
       :reset_password_sent_at, 
       :remember_created_at, 

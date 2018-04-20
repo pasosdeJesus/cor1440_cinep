@@ -16,7 +16,7 @@ es:
     direccion: Dirección
     fechacreacion: Creación
     fechadeshabilitacion: Deshabilitación 
-    nivelestudio: Nivel de estudio
+    niveleducacion: Nivel de educacion
     nivelrelacion: Nivel de relacion
     oficina: Oficina
     pais: País
@@ -221,6 +221,9 @@ es:
       "perfilprofesional":  
         Perfilprofesional: Perfil Profesional
         Perfilesprofesionales: Perfiles Profesionales
+      "profesion":
+        Profesion: Profesión
+        Profesiones: Profesiones
       "publicacion":
         Publicacion: Publicación CINEP/PPP
         Publicaciones: Publicaciones CINEP/PPP

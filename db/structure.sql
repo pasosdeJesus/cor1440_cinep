@@ -2449,6 +2449,41 @@ ALTER SEQUENCE productopf_id_seq OWNED BY productopf.id;
 
 
 --
+-- Name: profesion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE profesion (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    areaestudios_id integer DEFAULT 1,
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: profesion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE profesion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: profesion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE profesion_id_seq OWNED BY profesion.id;
+
+
+--
 -- Name: profesion_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -3672,6 +3707,7 @@ CREATE TABLE usuario (
     contrato_id integer,
     tipocontrato_id integer DEFAULT 1,
     niveleducacion_id integer DEFAULT 1,
+    profesion_id integer DEFAULT 1,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -4158,6 +4194,13 @@ ALTER TABLE ONLY perfilprofesional ALTER COLUMN id SET DEFAULT nextval('perfilpr
 --
 
 ALTER TABLE ONLY productopf ALTER COLUMN id SET DEFAULT nextval('productopf_id_seq'::regclass);
+
+
+--
+-- Name: profesion id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY profesion ALTER COLUMN id SET DEFAULT nextval('profesion_id_seq'::regclass);
 
 
 --
@@ -4705,6 +4748,14 @@ ALTER TABLE ONLY sip_persona
 
 ALTER TABLE ONLY productopf
     ADD CONSTRAINT productopf_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: profesion profesion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY profesion
+    ADD CONSTRAINT profesion_pkey PRIMARY KEY (id);
 
 
 --
@@ -5639,6 +5690,14 @@ ALTER TABLE ONLY coordinador_proyectofinanciero
 
 
 --
+-- Name: profesion fk_rails_5bb470dd0c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY profesion
+    ADD CONSTRAINT fk_rails_5bb470dd0c FOREIGN KEY (areaestudios_id) REFERENCES areaestudios(id);
+
+
+--
 -- Name: actividad_publicacion fk_rails_60dbe4c315; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5756,6 +5815,14 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 ALTER TABLE ONLY proyectofinanciero_uresponsable
     ADD CONSTRAINT fk_rails_824959275e FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: usuario fk_rails_824d7925ee; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_rails_824d7925ee FOREIGN KEY (profesion_id) REFERENCES profesion(id);
 
 
 --
@@ -6602,6 +6669,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180418010010'),
 ('20180419210718'),
 ('20180419212113'),
-('20180419222803');
+('20180419222803'),
+('20180419225552'),
+('20180420011442');
 
 

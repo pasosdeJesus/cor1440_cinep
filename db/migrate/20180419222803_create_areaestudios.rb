@@ -21,7 +21,7 @@ class CreateAreaestudios < ActiveRecord::Migration[5.2]
       INSERT INTO areaestudios(id, nombre, fechacreacion, created_at, updated_at) 
       VALUES (5, 'CIENCIAS CONTABLES', '2018-04-19', '2018-04-19', '2018-04-19');
       INSERT INTO areaestudios(id, nombre, fechacreacion, created_at, updated_at) 
-      VALUES (6, 'CIENCIAS CONTABLES', '2018-04-19', '2018-04-19', '2018-04-19');
+      VALUES (6, 'CIENCIAS EXACTAS', '2018-04-19', '2018-04-19', '2018-04-19');
       INSERT INTO areaestudios(id, nombre, fechacreacion, created_at, updated_at) 
       VALUES (7, 'CIENCIAS ECONÓMICAS', '2018-04-19', '2018-04-19', '2018-04-19');
       INSERT INTO areaestudios(id, nombre, fechacreacion, created_at, updated_at) 
