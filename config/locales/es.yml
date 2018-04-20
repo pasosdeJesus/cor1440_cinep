@@ -242,10 +242,34 @@ es:
         Regiongrupo: Regiones para un grupo
         "{:departamento_ids=>[]}": Departamentos completos
         "{:municipio_ids=>[]}": Otros municipios
+      "sal7711_gen/articulo":
+        Articulo: Publicación 
+        Articulos: Publicaciones
       "sectoractor":
         Sectoractor: Sector de un Actor
         Sectoresactores: Sectores de Actores
         enplantrienal: En Glosario del Plan Trienal
+      "sectorapc":
+        Sectorapc: Sector APC
+        Sectoresapces: Sectores APC
+      "sip/oficina":
+        Oficinas: Oficina
+        Oficina: Oficina
+      "sip/persona":
+        tdocumento_id: Tipo de identificación
+        numerodocumento: Número de identificación
+        lugardocumento: Lugar de expedición de identificación
+        pais: País de nacimiento
+        departamento: Departamento de nacimiento
+        municipio: Municipio de nacimiento
+        clase: Centro poblado de nacimiento
+      usuario:
+        cargo: Cargo
+        direccionresidencia: Dirección de residencia
+        nusuario: Usuario
+        numhijos: Número de hijos
+        numhijosmen12: Número de hijos menores de 12
+        perfilprofesional: Perfil profesional
       "tasacambio":
         enpesos: Tasa en pesos
         enpesos_localizado: Tasa en pesos
@@ -269,27 +293,7 @@ es:
       "tipoproductopf":
         Tipoproductopf: Tipo de producto de un compromiso institucional
         Tiposproductopf: Tipos de productos de un compromiso institucional
-      "sal7711_gen/articulo":
-        Articulo: Publicación 
-        Articulos: Publicaciones
-      "sip/oficina":
-        Oficinas: Oficina
-        Oficina: Oficina
-      "sip/persona":
-        tdocumento_id: Tipo de identificación
-        numerodocumento: Número de identificación
-        lugardocumento: Lugar de expedición de identificación
-        pais: País de nacimiento
-        departamento: Departamento de nacimiento
-        municipio: Municipio de nacimiento
-        clase: Centro poblado de nacimiento
-      usuario:
-        cargo: Cargo
-        direccionresidencia: Dirección de residencia
-        nusuario: Usuario
-        numhijos: Número de hijos
-        numhijosmen12: Número de hijos menores de 12
-        perfilprofesional: Perfil profesional
+
       "vinculacion":
         fechaini_localizada: Fecha de inicio
         fechafin_localizada: Fecha de terminación
