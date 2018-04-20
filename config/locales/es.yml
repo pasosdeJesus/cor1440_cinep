@@ -98,6 +98,12 @@ es:
       "cor1440_gen/actividadarea":
         Actividadarea: Componente Plan Trienal 
         Actividadareas: Componentes Plan Trienal 
+      "cor1440_gen/financiador":
+        domicilio: Domicilio
+        razonsocial: Razón social
+        nit: NIT
+        replegal: Representante legal
+        web: Página web
       "cor1440_gen/mindicadorpf":
         Mindicadorpf: Medición de un indicador
         Mindicadorespf: Mediciones de indicadores

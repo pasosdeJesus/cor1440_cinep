@@ -16,7 +16,15 @@ module Cor1440Gen
       end
 
       def atributos_index
-        ["id", "nombre", "pais_id", "observaciones", 
+        ["id", 
+         "nombre", 
+         "pais_id", 
+         "domicilio",
+         "razonsocial",
+         "nit",
+         "replegal",
+         "web",
+         "observaciones", 
          "fechacreacion_localizada", 
          "fechadeshabilitacion_localizada"]
       end
@@ -27,7 +35,8 @@ module Cor1440Gen
       end
 
       def financiador_params
-        params.require(:financiador).permit(*atributos_form)
+        a = atributos_form - ["id"]
+        params.require(:financiador).permit(*a)
       end
     end
   end
