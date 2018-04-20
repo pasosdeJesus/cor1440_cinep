@@ -200,7 +200,7 @@ class Ability  < Cor1440Gen::Ability
           can [:edit, :update, :create], ::Usuario
           can :manage, ::Areaestudios
           can :manage, ::Cargo
-          can :manage, ::Nivelestudio
+          can :manage, ::Niveleducacion
           can :manage, ::Perfilprofesional
           can :manage, ::Profesion
           can :manage, ::Tipocontrato
