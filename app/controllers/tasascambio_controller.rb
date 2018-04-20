@@ -29,7 +29,7 @@ class TasascambioController < Sip::ModelosController
   
   def filtrar(cons, params)
     if params[:aniomax] && params[:mesmax]
-      cons = cons.where("fecha<='#{params[:aniomax].to_i}-#{params[:mesmax].to_i}-01'")
+      cons = cons.where("fecha<='#{params[:aniomax].to_i}-#{params[:mesmax].to_i}-28'")
     end
     return super(cons, params)
   end
