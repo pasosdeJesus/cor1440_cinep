@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 7d51516d88ce268fd3fa61f227c6be987eda61a3
+  revision: cb9dedaaf9e400d2c6f51da997830b1ae92f5a45
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: b6c3b0a2c534951133d294255254a81169050c68
+  revision: 4c228db2ef8d877a7614df6dd9063bea7935905b
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 9d06754624dd2ca8173b7c9f3b2c567d84fd3a3c
+  revision: 610d83dd3dfff3d060315e550713fe3b802f7522
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: d329cb4505f43b04c69679ef8d28e28a71d046bf
+  revision: ee62594785c0929464c6195417ccb6278319effe
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: aba7dc23245c3eaff50b438abe95ed893476fbad
+  revision: 97ff7228a05b166113d66abf1ee0eed1b31e8437
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: c1f7312fa37aaa40eb3ddc1346334268dcc2f78d
+  revision: b2c8dd6d34c453b5f94b8efd4232d14d8189ac33
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: c6241ec04badfb984025ad3f3ba8c546b1e0372e
+  revision: 0b58f2d524076863f7c18637ad9d124def8bc247
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -309,7 +309,7 @@ GEM
       pry (>= 0.9.11)
     public_suffix (3.0.2)
     puma (3.11.4)
-    rack (2.0.4)
+    rack (2.0.5)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails-controller-testing (1.0.2)
@@ -392,7 +392,7 @@ GEM
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.9)
+    uglifier (4.1.10)
       execjs (>= 0.3.0, < 3)
     unicorn (5.4.0)
       kgio (~> 2.6)

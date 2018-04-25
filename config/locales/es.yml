@@ -215,6 +215,8 @@ es:
         indicadorpf: Indicador
         indicadorpf_id: Indicador
       "sip/grupo":
+        procesogh: Proceso Interno
+        procesogh_id: Proceso Interno
         "{:subgrupo_ids=>[]}": Subgrupos
       "niveleducacion":
         Niveleducacion: Nivel de educación
@@ -228,6 +230,9 @@ es:
       "perfilprofesional":  
         Perfilprofesional: Perfil Profesional
         Perfilesprofesionales: Perfiles Profesionales
+      "procesogh":
+        Procesogh: Proceso Interno
+        Procesosgh: Procesos Internos
       "profesion":
         Profesion: Profesión
         Profesiones: Profesiones
@@ -251,7 +256,7 @@ es:
         enplantrienal: En Glosario del Plan Trienal
       "sectorapc":
         Sectorapc: Sector APC
-        Sectoresapces: Sectores APC
+        Sectoresapc: Sectores APC
       "sip/oficina":
         Oficinas: Oficina
         Oficina: Oficina
@@ -270,6 +275,7 @@ es:
         numhijos: Número de hijos
         numhijosmen12: Número de hijos menores de 12
         perfilprofesional: Perfil profesional
+        procesogh: Proceso interno
       "tasacambio":
         enpesos: Tasa en pesos
         enpesos_localizado: Tasa en pesos
