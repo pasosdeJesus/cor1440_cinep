@@ -19,5 +19,6 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'tipocontrato', 'tiposcontratos'
   inflect.irregular 'tipoconvenio', 'tiposconvenio'
   inflect.irregular 'tipomoneda', 'tiposmoneda'
+  inflect.irregular 'tiponomina', 'tiposnomina'
   inflect.irregular 'tipoproductopf', 'tiposproductopf'
 end

@@ -4,6 +4,9 @@ class Contrato < ActiveRecord::Base
   include Sip::Modelo
   include Sip::Localizacion
 
+  belongs_to :tipocontrato, class_name: "::Tipocontrato",
+    foreign_key: "tipocontrato_id", validate: true
+
   has_one :usuario, inverse_of: :contrato
 
   campofecha_localizado :fechaini
@@ -12,7 +15,6 @@ class Contrato < ActiveRecord::Base
   flotante_localizado :salarioanterior
 
   mattr_accessor :procesogh
-
   def procesogh
     r = ""
     sep = ""
@@ -23,6 +25,15 @@ class Contrato < ActiveRecord::Base
       end
     end
     return r;
+  end
+
+  mattr_accessor :tiponomina
+  def tiponomina
+    r = ""
+    if tipocontrato && tipocontrato.tiponomina
+      r = tipocontrato.tiponomina.nombre
+    end
+    return r
   end
 
   validate :fechas_ordenadas

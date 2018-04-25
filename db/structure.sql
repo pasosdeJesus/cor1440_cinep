@@ -580,7 +580,8 @@ CREATE TABLE contrato (
     salarioanterior numeric,
     salario numeric,
     fechaini date,
-    fechafin date
+    fechafin date,
+    tipocontrato_id integer DEFAULT 1 NOT NULL
 );
 
 
@@ -3597,7 +3598,8 @@ CREATE TABLE tipocontrato (
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    tiponomina_id integer DEFAULT 1 NOT NULL
 );
 
 
@@ -3692,6 +3694,40 @@ ALTER SEQUENCE tipomoneda_id_seq OWNED BY tipomoneda.id;
 
 
 --
+-- Name: tiponomina; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE tiponomina (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: tiponomina_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tiponomina_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tiponomina_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tiponomina_id_seq OWNED BY tiponomina.id;
+
+
+--
 -- Name: tipoproductopf; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3782,7 +3818,6 @@ CREATE TABLE usuario (
     perfilprofesional_id integer,
     cargo_id integer,
     contrato_id integer,
-    tipocontrato_id integer DEFAULT 1,
     niveleducacion_id integer DEFAULT 1,
     profesion_id integer DEFAULT 1,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
@@ -4425,6 +4460,13 @@ ALTER TABLE ONLY tipoconvenio ALTER COLUMN id SET DEFAULT nextval('tipoconvenio_
 --
 
 ALTER TABLE ONLY tipomoneda ALTER COLUMN id SET DEFAULT nextval('tipomoneda_id_seq'::regclass);
+
+
+--
+-- Name: tiponomina id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tiponomina ALTER COLUMN id SET DEFAULT nextval('tiponomina_id_seq'::regclass);
 
 
 --
@@ -5178,6 +5220,14 @@ ALTER TABLE ONLY tipomoneda
 
 
 --
+-- Name: tiponomina tiponomina_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tiponomina
+    ADD CONSTRAINT tiponomina_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: tipoproductopf tipoproductopf_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5610,6 +5660,14 @@ ALTER TABLE ONLY actor_regiongrupo
 
 ALTER TABLE ONLY cor1440_gen_valorcampoact
     ADD CONSTRAINT fk_rails_3060a94455 FOREIGN KEY (campoact_id) REFERENCES cor1440_gen_campoact(id);
+
+
+--
+-- Name: contrato fk_rails_31397bfaea; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY contrato
+    ADD CONSTRAINT fk_rails_31397bfaea FOREIGN KEY (tipocontrato_id) REFERENCES tipocontrato(id);
 
 
 --
@@ -6157,6 +6215,14 @@ ALTER TABLE ONLY proyectofinanciero_usuario
 
 
 --
+-- Name: tipocontrato fk_rails_c7b9a3fdfa; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipocontrato
+    ADD CONSTRAINT fk_rails_c7b9a3fdfa FOREIGN KEY (tiponomina_id) REFERENCES tiponomina(id);
+
+
+--
 -- Name: cor1440_gen_financiador_proyectofinanciero fk_rails_ca93eb04dc; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6290,14 +6356,6 @@ ALTER TABLE ONLY heb412_gen_campoplantillahcm
 
 ALTER TABLE ONLY grupo_proyectofinanciero
     ADD CONSTRAINT fk_rails_e0f6406d5d FOREIGN KEY (grupo_id) REFERENCES sip_grupo(id);
-
-
---
--- Name: usuario fk_rails_e28904a594; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY usuario
-    ADD CONSTRAINT fk_rails_e28904a594 FOREIGN KEY (tipocontrato_id) REFERENCES tipocontrato(id);
 
 
 --
@@ -6802,6 +6860,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180420203459'),
 ('20180424112441'),
 ('20180424184600'),
-('20180424192034');
+('20180424192034'),
+('20180425114343'),
+('20180425122603'),
+('20180425124530');
 
 

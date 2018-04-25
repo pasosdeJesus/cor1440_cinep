@@ -275,7 +275,8 @@ es:
         numhijos: Número de hijos
         numhijosmen12: Número de hijos menores de 12
         perfilprofesional: Perfil profesional
-        procesogh: Proceso interno
+        procesogh_i: Proceso interno
+        tiponomina_id: Tipo de nómina
       "tasacambio":
         enpesos: Tasa en pesos
         enpesos_localizado: Tasa en pesos
@@ -293,6 +294,9 @@ es:
       "tipoconvenio":
         Tipoconvenio: Tipo de convenio
         Tiposconvenio: Tipos de convenio
+      "tiponomina":
+        Tiponomina: Tipo de nomina
+        Tiposnomina: Tipos de nomina
       "tipomoneda":
         Tipomoneda: Tipo de moneda
         Tiposmoneda: Tipos de moneda

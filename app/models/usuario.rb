@@ -37,9 +37,6 @@ class Usuario < ActiveRecord::Base
   belongs_to :profesion, class_name: '::Profesion',
     foreign_key: "profesion_id", validate: true
 
-  belongs_to :tipocontrato, class_name: "::Tipocontrato",
-    foreign_key: "tipocontrato_id", validate: true
-
 
   #attr labmundep
 

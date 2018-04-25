@@ -143,7 +143,6 @@ class UsuariosController < Sip::ModelosController
       :rol, 
       :sign_in_count, 
       :telefonos, 
-      :tipocontrato_id, 
       :uidNumber,
       :unlock_token, 
       :etiqueta_ids => [],
@@ -164,7 +163,8 @@ class UsuariosController < Sip::ModelosController
         :id,
         :numero,
         :salario,
-        :salarioanterior
+        :salarioanterior,
+        :tipocontrato_id
       ],
       :persona_attributes => [
         :apellidos,

@@ -69,6 +69,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'tipoanexo'],
         ['', 'tipocontrato'],
         ['', 'tipoconvenio'],
+        ['', 'tiponomina'],
         ['', 'tipomoneda'],
         ['', 'tipoproductopf'],
         ['Sip', 'grupo'],
@@ -209,6 +210,7 @@ class Ability  < Cor1440Gen::Ability
           can :manage, ::Profesion
           can :read, Sip::Grupo
           can :manage, ::Tipocontrato
+          can :manage, ::Tiponomina
           can :manage, :tablasbasicas
         end
         if lgrupos.include?(GRUPO_COMUNICACIONES)
