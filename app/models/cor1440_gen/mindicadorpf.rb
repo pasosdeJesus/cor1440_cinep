@@ -5,10 +5,10 @@ module Cor1440Gen
     include Sip::Modelo
     include Sip::Localizacion
 
-    belongs_to :cor1440_gen_proyectofinanciero, 
+    belongs_to :proyectofinanciero, 
       class_name: 'Cor1440Gen::Proyectofinanciero', 
       foreign_key: 'proyectofinanciero_id'
-    belongs_to :cor1440_gen_indicadorpf, 
+    belongs_to :indicadorpf, 
       class_name: 'Cor1440Gen::Indicadorpf', 
       foreign_key: 'indicadorpf_id'
 

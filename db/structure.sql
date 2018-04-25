@@ -2417,6 +2417,40 @@ CREATE SEQUENCE presponsable_seq
 
 
 --
+-- Name: procesogh; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE procesogh (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: procesogh_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE procesogh_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: procesogh_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE procesogh_id_seq OWNED BY procesogh.id;
+
+
+--
 -- Name: productopf; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3122,7 +3156,8 @@ CREATE TABLE sip_grupo (
     updated_at timestamp without time zone NOT NULL,
     ultimasincldap date,
     cn character varying(255),
-    "gidNumber" integer
+    "gidNumber" integer,
+    procesogh_id integer DEFAULT 1
 );
 
 
@@ -4232,6 +4267,13 @@ ALTER TABLE ONLY perfilprofesional ALTER COLUMN id SET DEFAULT nextval('perfilpr
 
 
 --
+-- Name: procesogh id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY procesogh ALTER COLUMN id SET DEFAULT nextval('procesogh_id_seq'::regclass);
+
+
+--
 -- Name: productopf id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4789,6 +4831,14 @@ ALTER TABLE ONLY perfilprofesional
 
 ALTER TABLE ONLY sip_persona
     ADD CONSTRAINT persona_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: procesogh procesogh_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY procesogh
+    ADD CONSTRAINT procesogh_pkey PRIMARY KEY (id);
 
 
 --
@@ -5472,6 +5522,14 @@ ALTER TABLE ONLY grupo_subgrupo
 
 ALTER TABLE ONLY actividad_grupo
     ADD CONSTRAINT fk_rails_214969d697 FOREIGN KEY (grupo_id) REFERENCES sip_grupo(id);
+
+
+--
+-- Name: sip_grupo fk_rails_2562d186cc; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sip_grupo
+    ADD CONSTRAINT fk_rails_2562d186cc FOREIGN KEY (procesogh_id) REFERENCES procesogh(id);
 
 
 --
@@ -6741,6 +6799,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180420190517'),
 ('20180420200319'),
 ('20180420201358'),
-('20180420203459');
+('20180420203459'),
+('20180424112441'),
+('20180424184600'),
+('20180424192034');
 
 

@@ -6,6 +6,8 @@ module Sip
   class Grupo < ActiveRecord::Base
     include Jn316Gen::Concerns::Models::Grupo
 
+    belongs_to :procesogh, class_name: '::Procesogh',
+      foreign_key: "procesogh_id", validate: true
     scope :investigacion, -> () {
       where("cn LIKE 'Linea%' OR cn LIKE 'Area%'").order(:nombre)
     }

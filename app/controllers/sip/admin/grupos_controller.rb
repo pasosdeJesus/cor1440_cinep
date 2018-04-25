@@ -11,21 +11,25 @@ module Sip
       def atributos_index
         [ "id", "nombre", "cn", "gidNumber", "ultimasincldap_localizada" ] +
           [ :subgrupo_ids => [] ] +
-          ["observaciones", "fechacreacion", "fechadeshabilitacion" ]
+          ["procesogh_id", "fechacreacion", "fechadeshabilitacion" ]
       end
 
       def atributos_show
         [ "id", "nombre", "cn", "gidNumber", "ultimasincldap_localizada" ] +
           [ :usuario_ids => [] ] +
           [ :subgrupo_ids => [] ] +
-          ["observaciones", "fechacreacion", "fechadeshabilitacion" ]
+          ["procesogh_id",
+           "observaciones", 
+           "fechacreacion", 
+           "fechadeshabilitacion" ]
       end
 
       def atributos_form
         [ "nombre", "cn", "gidNumber", "ultimasincldap_localizada" ] +
           [ :usuario_ids => [] ] +
           [ :subgrupo_ids => [] ] +
-          ["observaciones", 
+          ["procesogh_id",
+           "observaciones", 
            "no_modificar_ldap",
            "fechacreacion_localizada", 
            "fechadeshabilitacion_localizada" ]

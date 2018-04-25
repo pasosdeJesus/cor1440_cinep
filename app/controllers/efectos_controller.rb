@@ -32,6 +32,9 @@ class EfectosController < Sip::ModelosController
   def new
     @registro = clase.constantize.new
     @registro.fecha = Date.today
+    if params[:indicadorpf_id] && params[:indicadorpf_id].to_i > 0
+      @registro.indicadorpf_id = params[:indicadorpf_id].to_i
+    end
     @registro.save!(validate: false)
     redirect_to main_app.edit_efecto_path(@registro)
   end
