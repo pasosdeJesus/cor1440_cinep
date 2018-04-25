@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class MueveTipocontratoDeUsuarioAContrato < ActiveRecord::Migration[5.2]
   def up
     add_column :contrato, :tipocontrato_id, :integer, null: false, 

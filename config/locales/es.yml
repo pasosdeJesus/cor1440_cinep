@@ -62,6 +62,9 @@ es:
         "{:grupo_ids=>[]}": Grupo(s)
       "anexo_proyectofinanciero":
         tipoanexo: Tipo de anexo
+      "cajacompensacion":
+        Cajacompensacion: 'Caja de compensación'
+        Cajascompensacion: 'Cajas de compensación'
       "contrato":
         numero: Número de contrato
         fechaini_localizada: Fecha de iniciación de contrato actual
@@ -214,10 +217,12 @@ es:
         fecha_localizada: Fecha
         indicadorpf: Indicador
         indicadorpf_id: Indicador
-      "sip/grupo":
-        procesogh: Proceso Interno
-        procesogh_id: Proceso Interno
-        "{:subgrupo_ids=>[]}": Subgrupos
+      "empresaps":
+        Empresaps: 'Empresa prestradora de salud'
+        Empresasps: 'Empresas prestadoras de salud'
+      "fondopensiones":
+        Fondopensiones: 'Fondo de pensiones'
+        Fondospensiones: 'Fondos de pensiones'
       "niveleducacion":
         Niveleducacion: Nivel de educación
         Niveleseducacion: Niveles de educación
@@ -257,6 +262,10 @@ es:
       "sectorapc":
         Sectorapc: Sector APC
         Sectoresapc: Sectores APC
+      "sip/grupo":
+        procesogh: Proceso Interno
+        procesogh_id: Proceso Interno
+        "{:subgrupo_ids=>[]}": Subgrupos
       "sip/oficina":
         Oficinas: Oficina
         Oficina: Oficina
@@ -270,13 +279,16 @@ es:
         clase: Centro poblado de nacimiento
       usuario:
         cargo: Cargo
+        cajacompensacion: Caja de compensación
+        empresaeps: Empresa prestadora de salud
         direccionresidencia: Dirección de residencia
+        fondopensiones: Fondo de pensiones
         nusuario: Usuario
         numhijos: Número de hijos
         numhijosmen12: Número de hijos menores de 12
         perfilprofesional: Perfil profesional
-        procesogh_i: Proceso interno
-        tiponomina_id: Tipo de nómina
+        procesogh: Proceso interno
+        tiponomina: Tipo de nómina
       "tasacambio":
         enpesos: Tasa en pesos
         enpesos_localizado: Tasa en pesos

@@ -8,12 +8,16 @@ class Usuario < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, 
     :trackable, :lockable
 
-  belongs_to :cargo, class_name: '::Cargo',
-    foreign_key: "cargo_id", validate: true
+  belongs_to :cajacompensacion, validate: true
 
-  belongs_to :contrato, class_name: '::Contrato',
-    foreign_key: "contrato_id", validate: true
+  belongs_to :cargo, validate: true
+
+  belongs_to :contrato, validate: true
   accepts_nested_attributes_for :contrato, reject_if: :all_blank
+
+  belongs_to :empresaps, validate: true
+
+  belongs_to :fondopensiones, validate: true
 
   belongs_to :labdepartamento, class_name: 'Sip::Departamento',
     foreign_key: "labdepartamento_id", validate: true
@@ -27,15 +31,13 @@ class Usuario < ActiveRecord::Base
   belongs_to :oficina, class_name: 'Sip::Oficina',
     foreign_key: "oficina_id", validate: true
 
-  belongs_to :perfilprofesional, class_name: '::Perfilprofesional',
-    foreign_key: "perfilprofesional_id", validate: true
+  belongs_to :perfilprofesional, validate: true
   
   belongs_to :persona, class_name: 'Sip::Persona',
     foreign_key: "persona_id", validate: true
   accepts_nested_attributes_for :persona, reject_if: :all_blank
 
-  belongs_to :profesion, class_name: '::Profesion',
-    foreign_key: "profesion_id", validate: true
+  belongs_to :profesion, validate: true
 
 
   #attr labmundep

@@ -95,6 +95,7 @@
     <%= f.input :numhijosmen12 %>
   </div>
 </div>
+
 <div class="row">
   <div class="col-sm-4">
    <%= f.association :niveleducacion,
@@ -112,5 +113,26 @@
    <%= f.input :areaestudios, readonly: true %>
   </div>
 
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+   <%= f.association :empresaps,
+      collection: ::Empresaps.habilitados,
+      label_method: :nombre,
+      value_method: :id %>
+  </div>
+  <div class="col-sm-4">
+    <%= f.association :fondopensiones,
+      collection: ::Fondopensiones.habilitados,
+      label_method: :nombre,
+      value_method: :id %>
+  </div>
+  <div class="col-sm-4">
+    <%= f.association :cajacompensacion,
+      collection: ::Cajacompensacion.habilitados,
+      label_method: :nombre,
+      value_method: :id %>
+  </div>
 </div>
 

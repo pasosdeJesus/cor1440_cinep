@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class AsociaTipocontratoTiponomina < ActiveRecord::Migration[5.2]
   def up
     add_column :tipocontrato, :tiponomina_id, :integer, null: false, default: 1

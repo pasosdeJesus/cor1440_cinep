@@ -456,6 +456,40 @@ ALTER SEQUENCE areaestudios_id_seq OWNED BY areaestudios.id;
 
 
 --
+-- Name: cajacompensacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cajacompensacion (
+    id bigint NOT NULL,
+    nombre character varying(500),
+    observaciones character varying(5000),
+    fechacreacion date,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: cajacompensacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cajacompensacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cajacompensacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cajacompensacion_id_seq OWNED BY cajacompensacion.id;
+
+
+--
 -- Name: cargo; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1786,6 +1820,40 @@ ALTER SEQUENCE efecto_valorcampotind_id_seq OWNED BY efecto_valorcampotind.id;
 
 
 --
+-- Name: empresaps; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE empresaps (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: empresaps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE empresaps_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: empresaps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE empresaps_id_seq OWNED BY empresaps.id;
+
+
+--
 -- Name: escolaridad_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1843,6 +1911,40 @@ CREATE SEQUENCE filiacion_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: fondopensiones; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE fondopensiones (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: fondopensiones_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE fondopensiones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: fondopensiones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE fondopensiones_id_seq OWNED BY fondopensiones.id;
 
 
 --
@@ -3820,6 +3922,9 @@ CREATE TABLE usuario (
     contrato_id integer,
     niveleducacion_id integer DEFAULT 1,
     profesion_id integer DEFAULT 1,
+    empresaps_id integer,
+    cajacompensacion_id integer,
+    fondopensiones_id integer,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -3991,6 +4096,13 @@ ALTER TABLE ONLY anexo_usuario ALTER COLUMN id SET DEFAULT nextval('anexo_usuari
 --
 
 ALTER TABLE ONLY areaestudios ALTER COLUMN id SET DEFAULT nextval('areaestudios_id_seq'::regclass);
+
+
+--
+-- Name: cajacompensacion id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cajacompensacion ALTER COLUMN id SET DEFAULT nextval('cajacompensacion_id_seq'::regclass);
 
 
 --
@@ -4215,6 +4327,20 @@ ALTER TABLE ONLY efecto ALTER COLUMN id SET DEFAULT nextval('efecto_id_seq'::reg
 --
 
 ALTER TABLE ONLY efecto_valorcampotind ALTER COLUMN id SET DEFAULT nextval('efecto_valorcampotind_id_seq'::regclass);
+
+
+--
+-- Name: empresaps id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY empresaps ALTER COLUMN id SET DEFAULT nextval('empresaps_id_seq'::regclass);
+
+
+--
+-- Name: fondopensiones id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY fondopensiones ALTER COLUMN id SET DEFAULT nextval('fondopensiones_id_seq'::regclass);
 
 
 --
@@ -4532,6 +4658,14 @@ ALTER TABLE ONLY areaestudios
 
 
 --
+-- Name: cajacompensacion cajacompensacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cajacompensacion
+    ADD CONSTRAINT cajacompensacion_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: cargo cargo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4764,11 +4898,27 @@ ALTER TABLE ONLY efecto_valorcampotind
 
 
 --
+-- Name: empresaps empresaps_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY empresaps
+    ADD CONSTRAINT empresaps_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sip_etiqueta etiqueta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sip_etiqueta
     ADD CONSTRAINT etiqueta_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: fondopensiones fondopensiones_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY fondopensiones
+    ADD CONSTRAINT fondopensiones_pkey PRIMARY KEY (id);
 
 
 --
@@ -6079,6 +6229,14 @@ ALTER TABLE ONLY cor1440_gen_resultadopf
 
 
 --
+-- Name: usuario fk_rails_969301a776; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_rails_969301a776 FOREIGN KEY (empresaps_id) REFERENCES empresaps(id);
+
+
+--
 -- Name: sal7711_gen_articulo fk_rails_97ebadca1b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6180,6 +6338,14 @@ ALTER TABLE ONLY cor1440_gen_informe
 
 ALTER TABLE ONLY anexo_usuario
     ADD CONSTRAINT fk_rails_c1def44150 FOREIGN KEY (anexo_id) REFERENCES sip_anexo(id);
+
+
+--
+-- Name: usuario fk_rails_c280879a8f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_rails_c280879a8f FOREIGN KEY (fondopensiones_id) REFERENCES fondopensiones(id);
 
 
 --
@@ -6404,6 +6570,14 @@ ALTER TABLE ONLY cor1440_gen_actividad
 
 ALTER TABLE ONLY cor1440_gen_actividadpf
     ADD CONSTRAINT fk_rails_f941b0c512 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: usuario fk_rails_fa2bc91a6c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_rails_fa2bc91a6c FOREIGN KEY (cajacompensacion_id) REFERENCES cajacompensacion(id);
 
 
 --
@@ -6863,6 +7037,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180424192034'),
 ('20180425114343'),
 ('20180425122603'),
-('20180425124530');
+('20180425124530'),
+('20180425135438'),
+('20180425140915'),
+('20180425140955'),
+('20180425142817');
 
 

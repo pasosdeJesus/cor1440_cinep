@@ -112,17 +112,20 @@ class UsuariosController < Sip::ModelosController
 
   def usuario_params
     p = params.require(:usuario).permit(
+      :cajacompensacion_id,
       :cargo_id,
       :current_sign_in_at, 
       :current_sign_in_ip, 
       :descripcion, 
       :direccionresidencia, 
       :email, 
+      :empresaps_id,
       :encrypted_password, 
       :extension,
       :failed_attempts, 
       :fechacreacion_localizada, 
       :fechadeshabilitacion_localizada, 
+      :fondopensiones_id,
       :id, 
       :idioma, 
       :last_sign_in_at, 

@@ -54,7 +54,10 @@ class Ability  < Cor1440Gen::Ability
       [
         ['', 'actor'],
         ['', 'areaestudios'],
+        ['', 'cajacompensacion'],
         ['', 'cargo'],
+        ['', 'empresaps'],
+        ['', 'fondopensiones'],
         ['', 'nivelrelacion'],
         ['', 'niveleducacion'],
         ['', 'nucleoconflicto'],
@@ -204,6 +207,9 @@ class Ability  < Cor1440Gen::Ability
           can [:edit, :update, :create], ::Usuario
           can :manage, ::Areaestudios
           can :manage, ::Cargo
+          can :manage, ::Cajacompensacion
+          can :manage, ::Empresaps
+          can :manage, ::Fondopensiones
           can :manage, ::Niveleducacion
           can :manage, ::Perfilprofesional
           can :manage, ::Procesogh

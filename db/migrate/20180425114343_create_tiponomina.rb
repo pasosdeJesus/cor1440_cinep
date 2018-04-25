@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class CreateTiponomina < ActiveRecord::Migration[5.2]
   def up
     create_table :tiponomina do |t|
