@@ -5,6 +5,6 @@ class Sectorapc < ActiveRecord::Base
 
   has_many :cor1440_gen_proyectofinanciero, 
     class_name: "Cor1440Gen::Proyectofinanciero",  
-    foreign_key: "sectorapcontrato_id", validate: true 
+    foreign_key: "sectorapc_id", validate: true 
 
 end
