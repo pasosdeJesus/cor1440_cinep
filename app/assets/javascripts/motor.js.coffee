@@ -113,9 +113,6 @@
     datos, cor1440_gen_llena_medicion)  
   return
 
-@cor1440_cinep_recalcula_montopeso = (root) ->
-  debugger
-
 @cor1440_cinep_cambia_tipomoneda = (root, res) ->
   if res.length > 0
     t = res[0]['presenta_nombre'].split(' ')[1]
@@ -250,8 +247,32 @@
   )
 
   $('#proyectofinanciero_grupo_ids').chosen().change( (e) ->
+    sip_arregla_puntomontaje(root)
+    t = Date.now()
+    d = -1
+    if (root.change_proyectofinanciero_grupo_ids_t)
+      d = (t - root.change_proyectofinanciero_grupo_ids_t)/1000
+    root.change_proyectofinanciero_grupo_ids_t = t
+    # NO se permite mas de un envio en 2 segundos 
+    if (d > 0 && d <= 2)
+      return
+  
     l = $(this).val()
-    #debugger
+    param = {filtro: {
+      ids: l
+    }}
+    x = $.getJSON(root.puntomontaje + 'admin/grupos/coordinadores.json', param)
+    x.done((data) ->
+      if data.length > 0
+        data.forEach( (c) ->
+           
+        )
+    )
+    x.error((m1, m2, m3) -> 
+      alert(
+        'Problema al buscar coordinadores. ' + param + ' ' + m1 + ' ' + m2 + ' ' + m3)
+      )
+
     # Obtener coordinador de la línea y si falta agregarlo como
     # coordinador 
 
@@ -259,6 +280,7 @@
 
   # Cambio a persona en tabla cargos
   $(document).on('change', '[id^=proyectofinanciero_proyectofinanciero_usuario_attributes][id$=usuario_id]', (e, inserted) ->
+    return
     id=$(this).attr('id')
     elige_perfilprofesional = () ->
       if vp == '' || vp == '1'

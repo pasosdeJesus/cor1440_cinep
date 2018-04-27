@@ -69,6 +69,32 @@ module Sip
         render layout: 'application'
       end
 
+      def coordinadores
+        if params && params[:filtro] && params[:filtro][:ids] && 
+          params[:filtro][:ids] != ''
+          ids = params[:filtro][:ids]
+          lc = []
+          ids.each do |idg|
+            g = Sip::Grupo.find(idg.to_i)
+            bc = 'Coordinador' + g.cn.sub('Linea', '')
+            gc = Sip::Grupo.where(cn: bc).take
+            if gc
+              gc.usuario.each do |u|
+                lc << u.id
+              end
+            end
+          end
+          if lc.length > 0
+            respond_to do |format|
+              format.json {
+                render inline: lc.to_json
+              }
+            end
+          end
+        end
+      end
+
+
     end
   end
 end
