@@ -18,19 +18,7 @@ class UsuariosController < Sip::ModelosController
     ]
   end
 
-  def atributos_show
-    [ "id",
-      "nusuario",
-      "nombres",
-      "apellidos",
-      "email",
-      "oficina_id",
-      "extension",
-      "grupos",
-      "habilitado",
-    ]
-  end
-
+ 
 
   def atributos_form
     r = []
@@ -81,6 +69,59 @@ class UsuariosController < Sip::ModelosController
     end
     return r
   end
+
+  def atributos_show
+    r = []
+    if can?(:read, ::Usuario)
+      r += [ 
+        "nusuario",
+        "persona",
+        "descripcion"
+      ]
+    end
+    if can?(:manage, ::Usuario)
+      r += ["rol"]
+    end
+    if can?(:read, ::Usuario)
+      r += [
+        "oficina_id",
+        "extension",
+        "telefonos",
+      ]
+    end
+    if can?(:read, ::Usuario)
+      r += [
+        "email",
+        "sip_grupo"
+      ]
+    end
+    if can?(:create, ::Usuario)
+      r += [
+        "direccionresidencia",
+        "numhijos",
+        "numhijosmen12",
+        "fechacreacion_localizada",
+        "fechadeshabilitacion_localizada",
+      ]
+    end
+    if can?(:manage, ::Usuario)
+      r += [
+        "idioma",
+        "encrypted_password",
+        "no_modificar_ldap",
+        "uidNumber",
+        "failed_attempts",
+        "unlock_token",
+        "locked_at"
+      ]
+    end
+    return r
+  end
+ 
+  def atributos_show_json
+    atributos_show + ['tipocontrato_id', 'perfilprofesional_id']
+  end
+
 
   def medio_create(usuario)
     usuario.nombres = params[:usuario][:persona_attributes][:nombres]

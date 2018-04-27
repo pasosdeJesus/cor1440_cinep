@@ -26,6 +26,14 @@
   </td>
 
   <td>
+    <%= f.association :tipocontrato,
+      collection: ::Tipocontrato.habilitados,
+      label: false,
+      label_method: :nombre,
+      value_method: :id %>
+  </td>
+
+  <td>
     <% @porc = *(1..100) %>
     <%= f.input :porcentaje, 
       collection: @porc, 

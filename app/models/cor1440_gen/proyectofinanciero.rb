@@ -223,10 +223,16 @@ module Cor1440Gen
     accepts_nested_attributes_for :desembolso, 
       allow_destroy: true, reject_if: :all_blank
 
-    has_many :informenarrativo, dependent: :delete_all,
-      class_name: '::Informenarrativo',
+    has_many :informeauditoria, dependent: :delete_all,
+      class_name: '::Informeauditoria',
       foreign_key: 'proyectofinanciero_id', validate: true
-    accepts_nested_attributes_for :informenarrativo, 
+    accepts_nested_attributes_for :informeauditoria, 
+      allow_destroy: true, reject_if: :all_blank
+
+    has_many :informeevaluacion, dependent: :delete_all,
+      class_name: '::Informeevaluacion',
+      foreign_key: 'proyectofinanciero_id', validate: true
+    accepts_nested_attributes_for :informeevaluacion, 
       allow_destroy: true, reject_if: :all_blank
 
     has_many :informefinanciero, dependent: :delete_all,
@@ -235,10 +241,10 @@ module Cor1440Gen
     accepts_nested_attributes_for :informefinanciero, 
       allow_destroy: true, reject_if: :all_blank
 
-    has_many :informeauditoria, dependent: :delete_all,
-      class_name: '::Informeauditoria',
+    has_many :informenarrativo, dependent: :delete_all,
+      class_name: '::Informenarrativo',
       foreign_key: 'proyectofinanciero_id', validate: true
-    accepts_nested_attributes_for :informeauditoria, 
+    accepts_nested_attributes_for :informenarrativo, 
       allow_destroy: true, reject_if: :all_blank
 
     has_many :productopf, dependent: :delete_all,

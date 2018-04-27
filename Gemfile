@@ -121,7 +121,7 @@ group :development do
 end
 
 group :test, :development, :ensayo do
-  # Depurar
+  #Depurar
   #gem 'byebug'
 end
 

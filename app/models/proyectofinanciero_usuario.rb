@@ -10,6 +10,8 @@ class ProyectofinancieroUsuario < ActiveRecord::Base
     foreign_key: 'cargo_id'
   belongs_to :perfilprofesional, class_name: '::Perfilprofesional',
     foreign_key: 'perfilprofesional_id'
+  belongs_to :tipocontrato, class_name: '::Tipocontrato',
+    foreign_key: 'tipocontrato_id'
 
   validates :porcentaje, numericality: {
     greater_than_or_equal: 0, less_than_or_equal_to: 100 

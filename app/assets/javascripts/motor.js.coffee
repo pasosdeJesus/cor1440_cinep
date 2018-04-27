@@ -5,6 +5,7 @@
 #//= require jquery-ui/widgets/autocomplete
 #//= require cocoon
 
+
 @reconocer_decimal_locale_es_CO = (n) ->
   if n == ""
     return 0
@@ -247,6 +248,40 @@
       '#camposdinamicos', '#camposdinamicos')
 
   )
+
+  $('#proyectofinanciero_grupo_ids').chosen().change( (e) ->
+    l = $(this).val()
+    #debugger
+    # Obtener coordinador de la línea y si falta agregarlo como
+    # coordinador 
+
+  )
+
+  # Cambio a persona en tabla cargos
+  $(document).on('change', '[id^=proyectofinanciero_proyectofinanciero_usuario_attributes][id$=usuario_id]', (e, inserted) ->
+    id=$(this).attr('id')
+    elige_perfilprofesional = () ->
+      if vp == '' || vp == '1'
+        sip_elige_opcion_select_con_AJAX($(this),  'usuarios',
+          aid_perfilprofesional, 'perfilprofesional_id', 'Perfil profesional',
+          elige_perfilprofesional)
+     
+    aid_tipocontrato= id.replace('usuario_id', 'tipocontrato_id')
+    aid_perfilprofesional = id.replace('usuario_id', 'perfilprofesional_id')
+   
+    lid = [] 
+    lcampo = [] 
+    vp = $('#' + aid_perfilprofesional).val() 
+    if vp == '' || vp == '1'
+      lid.push([aid_perfilprofesional, 'perfilprofesional_id'])
+    vtn = $('#' + aid_tipocontrato).val() 
+    if vtn == '' || vtn == '1'
+      lid.push([aid_tipocontrato, 'tipocontrato_id'])
+    if lid.length > 0
+      sip_elige_opcion_select_con_AJAX($(this),  'usuarios', 
+        lid, 'Datos de usuario')
+  )
+
   # Si se agrega con cocoon un campo de seleccion que se espera con
   # chosen, usa chosen
   $(document).on('cocoon:after-insert', '', (e,inserted) ->

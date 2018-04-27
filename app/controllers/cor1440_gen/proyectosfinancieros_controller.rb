@@ -128,6 +128,7 @@ module Cor1440Gen
         "informenarrativo",
         "informefinanciero",
         "productopf",
+        "informeevaluacion",
         "informeauditoria",
         "empresaauditoria",
         "anotacionesinf",
@@ -688,8 +689,8 @@ module Cor1440Gen
               (memo == '' ? '' : memo + "\n") + 
                 (i.usuario ? i.usuario.nombres + ' ' +
                 i.usuario.apellidos : "Por contratar") +
-                " (" + i.cargo.nombre.capitalize + ", "
-                " (" + i.perfilprofesional.nombre.capitalize + 
+                " (" + i.cargo.nombre.capitalize + ", " +
+                " - "+ i.perfilprofesional.nombre.capitalize + 
                 ")" + 
                 (i.porcentaje ? " " + i.porcentaje.to_s + "%" : '')
           })
@@ -932,6 +933,14 @@ module Cor1440Gen
           :id,
           :_destroy
         ],
+        :informeevaluacion_attributes => [
+          :detalle,
+          :resultado,
+          :fechaplaneada_localizada,
+          :fechareal_localizada,
+          :id,
+          :_destroy
+        ],
         :informefinanciero_attributes => [
           :detalle,
           :devoluciones,
@@ -971,6 +980,7 @@ module Cor1440Gen
           :id,
           :perfilprofesional_id,
           :porcentaje,
+          :tipocontrato_id,
           :usuario_id,
           :_destroy
         ],

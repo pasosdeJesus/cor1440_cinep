@@ -2218,6 +2218,39 @@ ALTER SEQUENCE informeauditoria_id_seq OWNED BY informeauditoria.id;
 
 
 --
+-- Name: informeevaluacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE informeevaluacion (
+    id bigint NOT NULL,
+    proyectofinanciero_id integer NOT NULL,
+    detalle character varying(5000),
+    fechaplaneada date,
+    fechareal date,
+    resultado character varying(5000)
+);
+
+
+--
+-- Name: informeevaluacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE informeevaluacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: informeevaluacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE informeevaluacion_id_seq OWNED BY informeevaluacion.id;
+
+
+--
 -- Name: informefinanciero; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2685,7 +2718,8 @@ CREATE TABLE proyectofinanciero_usuario (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     porcentaje integer,
-    perfilprofesional_id integer
+    perfilprofesional_id integer,
+    tipocontrato_id integer DEFAULT 1
 );
 
 
@@ -4386,6 +4420,13 @@ ALTER TABLE ONLY informeauditoria ALTER COLUMN id SET DEFAULT nextval('informeau
 
 
 --
+-- Name: informeevaluacion id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY informeevaluacion ALTER COLUMN id SET DEFAULT nextval('informeevaluacion_id_seq'::regclass);
+
+
+--
 -- Name: informefinanciero id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4967,6 +5008,14 @@ ALTER TABLE ONLY heb412_gen_plantillahcm
 
 ALTER TABLE ONLY informeauditoria
     ADD CONSTRAINT informeauditoria_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: informeevaluacion informeevaluacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY informeevaluacion
+    ADD CONSTRAINT informeevaluacion_pkey PRIMARY KEY (id);
 
 
 --
@@ -5645,6 +5694,14 @@ ALTER TABLE ONLY cor1440_gen_financiador_proyectofinanciero
 
 
 --
+-- Name: informeevaluacion fk_rails_0dc2f89fdb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY informeevaluacion
+    ADD CONSTRAINT fk_rails_0dc2f89fdb FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
+
+
+--
 -- Name: anexo_proyectofinanciero fk_rails_0ea362f58d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6266,6 +6323,14 @@ ALTER TABLE ONLY cor1440_gen_financiador
 
 ALTER TABLE ONLY anexo_efecto
     ADD CONSTRAINT fk_rails_a3fa2e726c FOREIGN KEY (anexo_id) REFERENCES sip_anexo(id);
+
+
+--
+-- Name: proyectofinanciero_usuario fk_rails_a4c07cb119; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY proyectofinanciero_usuario
+    ADD CONSTRAINT fk_rails_a4c07cb119 FOREIGN KEY (tipocontrato_id) REFERENCES tipocontrato(id);
 
 
 --
@@ -7041,6 +7106,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180425135438'),
 ('20180425140915'),
 ('20180425140955'),
-('20180425142817');
+('20180425142817'),
+('20180426132957'),
+('20180426134701');
 
 

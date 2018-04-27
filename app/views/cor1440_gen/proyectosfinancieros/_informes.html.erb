@@ -93,6 +93,34 @@
 <table border=1 width="100%">
   <thead>
     <tr>
+      <th>Evaluación</th>
+      <th>Fecha Planeada</th>
+      <th>Fecha Envío</th>
+      <th>Resultado</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="informeevaluacion">
+    <%= f.simple_fields_for :informeevaluacion do |d| %>
+      <%= render 'informeevaluacion_campos', :f => d %>
+    <% end %>
+  </tbody>
+</table>
+<div class="links">
+  <%= link_to_add_association 'Añadir Evaluación', f, 
+    :informeevaluacion,
+    :"data-association-insertion-node" => "tbody#informeevaluacion", 
+    :"data-association-insertion-method" => "append", 
+    partial: 'informeevaluacion_campos',
+    :class => 'btn-primary'
+  %>
+</div>
+</p>
+
+<p>
+<table border=1 width="100%">
+  <thead>
+    <tr>
       <th>Informe auditoría</th>
       <th>Fecha planeada</th>
       <th>Presupuesto donante</th>

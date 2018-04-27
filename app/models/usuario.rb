@@ -94,6 +94,15 @@ class Usuario < ActiveRecord::Base
     end
   end
 
+  mattr_accessor :tipocontrato_id
+  def tipocontrato_id
+    if contrato && contrato.tipocontrato 
+      contrato.tipocontrato.id
+    else
+      1
+    end
+  end
+
   attr_accessor :habilitado
 
   def habilitado
