@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>pruebas-suit</title>
+	<title>quitar-choosen</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -65,7 +65,7 @@
 </tr>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/admin/actores/312/edita')]</option><option>//a[2]</option></datalist></td><td>20,19</td>
 </tr>
-<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='actor_sectoractor_ids_chosen']/ul/li/a</option><option>//div[3]/div/ul/li/a</option></datalist></td><td>5,4</td>
+<tr><td>clickAt</td><td>//div[@id='actor_sectoractor_ids_chosen']/ul/li/a<datalist><option>css=a.search-choice-close</option><option>//div[@id='actor_sectoractor_ids_chosen']/ul/li/a</option><option>//div[3]/div/ul/li/a</option></datalist></td><td>5,4</td>
 </tr>
 <tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='actor_regiongrupo_ids_chosen']/ul/li/a</option><option>//div[4]/div/ul/li/a</option></datalist></td><td>7,6</td>
 </tr>
@@ -79,6 +79,68 @@
 	<td></td>
 </tr>
 <tr><td>click</td><td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-areas-de-estudios</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>34,21</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>91,20</td>
+</tr>
+<tr><td>clickAt</td><td>link=Áreas de estudios<datalist><option>link=Áreas de estudios</option><option>//a[contains(text(),'Áreas de estudios')]</option><option>//a[contains(@href, 'admin/areasestudios')]</option><option>//article/ul/li[2]/a</option></datalist></td><td>102,8</td>
+</tr>
+<tr><td>mouseOver</td><td>link=Cajas de compensación<datalist><option>link=Cajas de compensación</option><option>//a[contains(text(),'Cajas de compensación')]</option><option>//a[contains(@href, 'admin/cajascompensacion')]</option><option>//article/ul/li[3]/a</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/admin/areasestudios/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>25,11</td>
+</tr>
+<tr><td>clickAt</td><td>id=areaestudios_nombre<datalist><option>id=areaestudios_nombre</option><option>name=areaestudios[nombre]</option><option>css=#areaestudios_nombre</option><option>//input[@id='areaestudios_nombre']</option><option>//form[@id='new_areaestudios']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>63,22</td>
+</tr>
+<tr><td>type</td><td>id=areaestudios_nombre<datalist><option>id=areaestudios_nombre</option><option>name=areaestudios[nombre]</option><option>css=#areaestudios_nombre</option><option>//input[@id='areaestudios_nombre']</option><option>//form[@id='new_areaestudios']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=areaestudios_observaciones<datalist><option>id=areaestudios_observaciones</option><option>name=areaestudios[observaciones]</option><option>css=#areaestudios_observaciones</option><option>//textarea[@id='areaestudios_observaciones']</option><option>//form[@id='new_areaestudios']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>64,5</td>
+</tr>
+<tr><td>type</td><td>id=areaestudios_observaciones<datalist><option>id=areaestudios_observaciones</option><option>name=areaestudios[observaciones]</option><option>css=#areaestudios_observaciones</option><option>//textarea[@id='areaestudios_observaciones']</option><option>//form[@id='new_areaestudios']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_areaestudios']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>39,27</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/areasestudios/105')])[2]</option><option>//a[3]</option></datalist></td><td>30,11</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-cajas-de-compensacion</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>49,19</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>71,11</td>
+</tr>
+<tr><td>clickAt</td><td>link=Cajas de compensación<datalist><option>link=Cajas de compensación</option><option>//a[contains(text(),'Cajas de compensación')]</option><option>//a[contains(@href, 'admin/cajascompensacion')]</option><option>//article/ul/li[3]/a</option></datalist></td><td>133,6</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/admin/cajascompensacion/nueva')]</option><option>//div[2]/a</option></datalist></td><td>43,20</td>
+</tr>
+<tr><td>clickAt</td><td>id=cajacompensacion_nombre<datalist><option>id=cajacompensacion_nombre</option><option>name=cajacompensacion[nombre]</option><option>css=#cajacompensacion_nombre</option><option>//input[@id='cajacompensacion_nombre']</option><option>//form[@id='new_cajacompensacion']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>284,9</td>
+</tr>
+<tr><td>type</td><td>id=cajacompensacion_nombre<datalist><option>id=cajacompensacion_nombre</option><option>name=cajacompensacion[nombre]</option><option>css=#cajacompensacion_nombre</option><option>//input[@id='cajacompensacion_nombre']</option><option>//form[@id='new_cajacompensacion']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=cajacompensacion_observaciones<datalist><option>id=cajacompensacion_observaciones</option><option>name=cajacompensacion[observaciones]</option><option>css=#cajacompensacion_observaciones</option><option>//textarea[@id='cajacompensacion_observaciones']</option><option>//form[@id='new_cajacompensacion']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>272,35</td>
+</tr>
+<tr><td>type</td><td>id=cajacompensacion_observaciones<datalist><option>id=cajacompensacion_observaciones</option><option>name=cajacompensacion[observaciones]</option><option>css=#cajacompensacion_observaciones</option><option>//textarea[@id='cajacompensacion_observaciones']</option><option>//form[@id='new_cajacompensacion']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_cajacompensacion']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>12,22</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/cajascompensacion/105')])[2]</option><option>//a[3]</option></datalist></td><td>29,20</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -292,6 +354,36 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
+<tr><td rowspan="1" colspan="3">tabla-empresas-prestadoras-de-salud</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>67,27</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>97,14</td>
+</tr>
+<tr><td>clickAt</td><td>link=Empresas prestadoras de salud<datalist><option>link=Empresas prestadoras de salud</option><option>//a[contains(text(),'Empresas prestadoras de salud')]</option><option>//a[contains(@href, 'admin/empresasps')]</option><option>//article/ul/li[8]/a</option></datalist></td><td>169,7</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/admin/empresasps/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>20,18</td>
+</tr>
+<tr><td>clickAt</td><td>id=empresaps_nombre<datalist><option>id=empresaps_nombre</option><option>name=empresaps[nombre]</option><option>css=#empresaps_nombre</option><option>//input[@id='empresaps_nombre']</option><option>//form[@id='new_empresaps']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>97,25</td>
+</tr>
+<tr><td>type</td><td>id=empresaps_nombre<datalist><option>id=empresaps_nombre</option><option>name=empresaps[nombre]</option><option>css=#empresaps_nombre</option><option>//input[@id='empresaps_nombre']</option><option>//form[@id='new_empresaps']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=empresaps_observaciones<datalist><option>id=empresaps_observaciones</option><option>name=empresaps[observaciones]</option><option>css=#empresaps_observaciones</option><option>//textarea[@id='empresaps_observaciones']</option><option>//form[@id='new_empresaps']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>81,39</td>
+</tr>
+<tr><td>type</td><td>id=empresaps_observaciones<datalist><option>id=empresaps_observaciones</option><option>name=empresaps[observaciones]</option><option>css=#empresaps_observaciones</option><option>//textarea[@id='empresaps_observaciones']</option><option>//form[@id='new_empresaps']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_empresaps']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>23,11</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/empresasps/104')])[2]</option><option>//a[3]</option></datalist></td><td>30,22</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
 <tr><td rowspan="1" colspan="3">tabla-etiqueta</td></tr>
 </thead>
 <tbody>
@@ -407,6 +499,42 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
+<tr><td rowspan="1" colspan="3">tabla-fondos-de-pensiones</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>39,20</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>68,17</td>
+</tr>
+<tr><td>clickAt</td><td>link=Fondos de pensiones<datalist><option>link=Fondos de pensiones</option><option>//a[contains(text(),'Fondos de pensiones')]</option><option>//a[contains(@href, 'admin/fondospensiones')]</option><option>//li[11]/a</option></datalist></td><td>110,2</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/admin/fondospensiones/nueva')]</option><option>//div[2]/a</option></datalist></td><td>19,9</td>
+</tr>
+<tr><td>clickAt</td><td>id=fondopensiones_nombre<datalist><option>id=fondopensiones_nombre</option><option>name=fondopensiones[nombre]</option><option>css=#fondopensiones_nombre</option><option>//input[@id='fondopensiones_nombre']</option><option>//form[@id='new_fondopensiones']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>174,22</td>
+</tr>
+<tr><td>type</td><td>id=fondopensiones_nombre<datalist><option>id=fondopensiones_nombre</option><option>name=fondopensiones[nombre]</option><option>css=#fondopensiones_nombre</option><option>//input[@id='fondopensiones_nombre']</option><option>//form[@id='new_fondopensiones']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>mouseDownAt</td><td>id=fondopensiones_observaciones<datalist><option>id=fondopensiones_observaciones</option><option>name=fondopensiones[observaciones]</option><option>css=#fondopensiones_observaciones</option><option>//textarea[@id='fondopensiones_observaciones']</option><option>//form[@id='new_fondopensiones']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>149,20</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>id=fondopensiones_observaciones<datalist><option>id=fondopensiones_observaciones</option><option>name=fondopensiones[observaciones]</option><option>css=#fondopensiones_observaciones</option><option>//textarea[@id='fondopensiones_observaciones']</option><option>//form[@id='new_fondopensiones']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>149,20</td>
+</tr>
+<tr><td>mouseUpAt</td><td>id=fondopensiones_observaciones<datalist><option>id=fondopensiones_observaciones</option><option>name=fondopensiones[observaciones]</option><option>css=#fondopensiones_observaciones</option><option>//textarea[@id='fondopensiones_observaciones']</option><option>//form[@id='new_fondopensiones']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>149,20</td>
+</tr>
+<tr><td>clickAt</td><td>id=fondopensiones_observaciones<datalist><option>id=fondopensiones_observaciones</option><option>name=fondopensiones[observaciones]</option><option>css=#fondopensiones_observaciones</option><option>//textarea[@id='fondopensiones_observaciones']</option><option>//form[@id='new_fondopensiones']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>149,20</td>
+</tr>
+<tr><td>type</td><td>id=fondopensiones_observaciones<datalist><option>id=fondopensiones_observaciones</option><option>name=fondopensiones[observaciones]</option><option>css=#fondopensiones_observaciones</option><option>//textarea[@id='fondopensiones_observaciones']</option><option>//form[@id='new_fondopensiones']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_fondopensiones']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>32,18</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/fondospensiones/105')])[2]</option><option>//a[3]</option></datalist></td><td>31,13</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
 <tr><td rowspan="1" colspan="3">tabla-grupo</td></tr>
 </thead>
 <tbody>
@@ -451,7 +579,7 @@
 </tr>
 <tr><td>type</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>77</td>
 </tr>
-<tr><td>clickAt</td><td>id=grupo_ultimasincldap<datalist><option>id=grupo_ultimasincldap</option><option>name=grupo[ultimasincldap]</option><option>css=#grupo_ultimasincldap</option><option>//input[@id='grupo_ultimasincldap']</option><option>//form[@id='new_grupo']/div[5]/input</option><option>//div[5]/input</option></datalist></td><td>36,13</td>
+<tr><td>clickAt</td><td>//div[5]/input<datalist><option>id=grupo_ultimasincldap</option><option>name=grupo[ultimasincldap]</option><option>css=#grupo_ultimasincldap</option><option>//input[@id='grupo_ultimasincldap']</option><option>//form[@id='new_grupo']/div[5]/input</option><option>//div[5]/input</option></datalist></td><td>36,13</td>
 </tr>
 <tr><td>clickAt</td><td>//tr[2]/td[2]<datalist><option>//tr[2]/td[2]</option></datalist></td><td>11,16</td>
 </tr>
@@ -469,11 +597,9 @@
 	<td>name=commit<datalist><option>name=commit</option></datalist></td>
 	<td></td>
 </tr>
-<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/admin/grupos/119/edita')]</option><option>//a[2]</option></datalist></td><td>20,22</td>
+<tr><td>clickAt</td><td>id=grupo_no_modificar_ldap<datalist><option>id=grupo_no_modificar_ldap</option><option>css=#grupo_no_modificar_ldap</option><option>//input[@id='grupo_no_modificar_ldap']</option><option>//form[@id='new_grupo']/div[9]/label/input</option><option>//label/input</option></datalist></td><td>563,5</td>
 </tr>
-<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='grupo_usuario_ids_chosen']/ul/li/a</option><option>//div[6]/div/ul/li/a</option></datalist></td><td>8,7</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option></datalist></td><td></td>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_grupo']/div[12]/input</option><option>//div[12]/input</option></datalist></td><td>30,18</td>
 </tr>
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option>name=commit</option><option></option></datalist></td><td></td>
 </tr>
@@ -529,6 +655,78 @@
 	<td>click</td>
 	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
 	<td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-niveles-de-educacion</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000//<datalist><option>http://crecer.cinep.org.co:4000//</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>53,15</td>
+</tr>
+<tr><td>mouseDownAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>61.328125,16</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>61.328125,16</td>
+</tr>
+<tr><td>mouseUpAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>61.328125,16</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>62,17</td>
+</tr>
+<tr><td>clickAt</td><td>link=Niveles de educación<datalist><option>link=Niveles de educación</option><option>//a[contains(text(),'Niveles de educación')]</option><option>//a[contains(@href, 'admin/niveleseducacion')]</option><option>//li[14]/a</option></datalist></td><td>62,13</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/admin/niveleseducacion/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>51,9</td>
+</tr>
+<tr><td>clickAt</td><td>id=niveleducacion_nombre<datalist><option>id=niveleducacion_nombre</option><option>name=niveleducacion[nombre]</option><option>css=#niveleducacion_nombre</option><option>//input[@id='niveleducacion_nombre']</option><option>//form[@id='new_niveleducacion']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>145,19</td>
+</tr>
+<tr><td>type</td><td>id=niveleducacion_nombre<datalist><option>id=niveleducacion_nombre</option><option>name=niveleducacion[nombre]</option><option>css=#niveleducacion_nombre</option><option>//input[@id='niveleducacion_nombre']</option><option>//form[@id='new_niveleducacion']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=niveleducacion_observaciones<datalist><option>id=niveleducacion_observaciones</option><option>name=niveleducacion[observaciones]</option><option>css=#niveleducacion_observaciones</option><option>//textarea[@id='niveleducacion_observaciones']</option><option>//form[@id='new_niveleducacion']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>105,14</td>
+</tr>
+<tr><td>type</td><td>id=niveleducacion_observaciones<datalist><option>id=niveleducacion_observaciones</option><option>name=niveleducacion[observaciones]</option><option>css=#niveleducacion_observaciones</option><option>//textarea[@id='niveleducacion_observaciones']</option><option>//form[@id='new_niveleducacion']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_niveleducacion']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>21,21</td>
+</tr>
+<tr><td>mouseDownAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/niveleseducacion/104')])[2]</option><option>//a[3]</option></datalist></td><td>34.09375,33</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/niveleseducacion/104')])[2]</option><option>//a[3]</option></datalist></td><td>34.09375,33</td>
+</tr>
+<tr><td>mouseUpAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/niveleseducacion/104')])[2]</option><option>//a[3]</option></datalist></td><td>34.09375,33</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/niveleseducacion/104')])[2]</option><option>//a[3]</option></datalist></td><td>34,33</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-niveles-de-relacion</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/<datalist><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>61,18</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>115,5</td>
+</tr>
+<tr><td>clickAt</td><td>link=Niveles de relacion<datalist><option>link=Niveles de relacion</option><option>//a[contains(text(),'Niveles de relacion')]</option><option>//a[contains(@href, 'admin/nivelesrelacion')]</option><option>//li[10]/a</option></datalist></td><td>109,11</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/admin/nivelesrelacion/nueva')]</option><option>//div[2]/a</option></datalist></td><td>30,19</td>
+</tr>
+<tr><td>clickAt</td><td>id=nivelrelacion_nombre<datalist><option>id=nivelrelacion_nombre</option><option>name=nivelrelacion[nombre]</option><option>css=#nivelrelacion_nombre</option><option>//input[@id='nivelrelacion_nombre']</option><option>//form[@id='new_nivelrelacion']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>225,19</td>
+</tr>
+<tr><td>type</td><td>id=nivelrelacion_nombre<datalist><option>id=nivelrelacion_nombre</option><option>name=nivelrelacion[nombre]</option><option>css=#nivelrelacion_nombre</option><option>//input[@id='nivelrelacion_nombre']</option><option>//form[@id='new_nivelrelacion']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=nivelrelacion_observaciones<datalist><option>id=nivelrelacion_observaciones</option><option>name=nivelrelacion[observaciones]</option><option>css=#nivelrelacion_observaciones</option><option>//textarea[@id='nivelrelacion_observaciones']</option><option>//form[@id='new_nivelrelacion']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>197,7</td>
+</tr>
+<tr><td>type</td><td>id=nivelrelacion_observaciones<datalist><option>id=nivelrelacion_observaciones</option><option>name=nivelrelacion[observaciones]</option><option>css=#nivelrelacion_observaciones</option><option>//textarea[@id='nivelrelacion_observaciones']</option><option>//form[@id='new_nivelrelacion']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_nivelrelacion']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>16,17</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/nivelesrelacion/101')])[2]</option><option>//a[3]</option></datalist></td><td>6,12</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -691,6 +889,104 @@
 	<td>click</td>
 	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
 	<td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-perfiles-profesionales</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>mouseDownAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>45.359375,17</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>45.359375,17</td>
+</tr>
+<tr><td>mouseUpAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>45.359375,17</td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>45,17</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>45,19</td>
+</tr>
+<tr><td>clickAt</td><td>link=Perfiles Profesionales<datalist><option>link=Perfiles Profesionales</option><option>//a[contains(text(),'Perfiles Profesionales')]</option><option>//a[contains(@href, 'admin/perfilesprofesionales')]</option><option>//li[14]/a</option></datalist></td><td>85,4</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/admin/perfilesprofesionales/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>41,16</td>
+</tr>
+<tr><td>clickAt</td><td>id=perfilprofesional_nombre<datalist><option>id=perfilprofesional_nombre</option><option>name=perfilprofesional[nombre]</option><option>css=#perfilprofesional_nombre</option><option>//input[@id='perfilprofesional_nombre']</option><option>//form[@id='new_perfilprofesional']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>39,9</td>
+</tr>
+<tr><td>type</td><td>id=perfilprofesional_nombre<datalist><option>id=perfilprofesional_nombre</option><option>name=perfilprofesional[nombre]</option><option>css=#perfilprofesional_nombre</option><option>//input[@id='perfilprofesional_nombre']</option><option>//form[@id='new_perfilprofesional']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=perfilprofesional_observaciones<datalist><option>id=perfilprofesional_observaciones</option><option>name=perfilprofesional[observaciones]</option><option>css=#perfilprofesional_observaciones</option><option>//textarea[@id='perfilprofesional_observaciones']</option><option>//form[@id='new_perfilprofesional']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>46,34</td>
+</tr>
+<tr><td>type</td><td>id=perfilprofesional_observaciones<datalist><option>id=perfilprofesional_observaciones</option><option>name=perfilprofesional[observaciones]</option><option>css=#perfilprofesional_observaciones</option><option>//textarea[@id='perfilprofesional_observaciones']</option><option>//form[@id='new_perfilprofesional']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_perfilprofesional']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>45,29</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/perfilesprofesionales/101')])[2]</option><option>//a[3]</option></datalist></td><td>40,22</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-procesos-internos</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>36,27</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>63,16</td>
+</tr>
+<tr><td>clickAt</td><td>link=Procesos Internos<datalist><option>link=Procesos Internos</option><option>//a[contains(text(),'Procesos Internos')]</option><option>//a[contains(@href, 'admin/procesosgh')]</option><option>//li[20]/a</option></datalist></td><td>76,10</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/admin/procesosgh/nueva')]</option><option>//div[2]/a</option></datalist></td><td>44,21</td>
+</tr>
+<tr><td>clickAt</td><td>id=procesogh_nombre<datalist><option>id=procesogh_nombre</option><option>name=procesogh[nombre]</option><option>css=#procesogh_nombre</option><option>//input[@id='procesogh_nombre']</option><option>//form[@id='new_procesogh']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>309,12</td>
+</tr>
+<tr><td>type</td><td>id=procesogh_nombre<datalist><option>id=procesogh_nombre</option><option>name=procesogh[nombre]</option><option>css=#procesogh_nombre</option><option>//input[@id='procesogh_nombre']</option><option>//form[@id='new_procesogh']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>id=procesogh_observaciones<datalist><option>id=procesogh_observaciones</option><option>name=procesogh[observaciones]</option><option>css=#procesogh_observaciones</option><option>//textarea[@id='procesogh_observaciones']</option><option>//form[@id='new_procesogh']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>243,5</td>
+</tr>
+<tr><td>type</td><td>id=procesogh_observaciones<datalist><option>id=procesogh_observaciones</option><option>name=procesogh[observaciones]</option><option>css=#procesogh_observaciones</option><option>//textarea[@id='procesogh_observaciones']</option><option>//form[@id='new_procesogh']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_procesogh']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>23,24</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/procesosgh/102')])[2]</option><option>//a[3]</option></datalist></td><td>50,26</td>
+</tr>
+<tr><td>assertConfirmation</td><td>¿Está seguro(a)?<datalist><option>¿Está seguro(a)?</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-profesiones</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/<datalist><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>63,24</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>76,12</td>
+</tr>
+<tr><td>clickAt</td><td>link=Profesiones<datalist><option>link=Profesiones</option><option>//a[contains(text(),'Profesiones')]</option><option>//a[contains(@href, 'admin/profesiones')]</option><option>//li[21]/a</option></datalist></td><td>57,8</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/admin/profesiones/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>34,11</td>
+</tr>
+<tr><td>clickAt</td><td>id=profesion_nombre<datalist><option>id=profesion_nombre</option><option>name=profesion[nombre]</option><option>css=#profesion_nombre</option><option>//input[@id='profesion_nombre']</option><option>//form[@id='new_profesion']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>31,6</td>
+</tr>
+<tr><td>type</td><td>id=profesion_nombre<datalist><option>id=profesion_nombre</option><option>name=profesion[nombre]</option><option>css=#profesion_nombre</option><option>//input[@id='profesion_nombre']</option><option>//form[@id='new_profesion']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=profesion_observaciones<datalist><option>id=profesion_observaciones</option><option>name=profesion[observaciones]</option><option>css=#profesion_observaciones</option><option>//textarea[@id='profesion_observaciones']</option><option>//form[@id='new_profesion']/div[4]/textarea</option><option>//textarea</option></datalist></td><td>28,2</td>
+</tr>
+<tr><td>type</td><td>id=profesion_observaciones<datalist><option>id=profesion_observaciones</option><option>name=profesion[observaciones]</option><option>css=#profesion_observaciones</option><option>//textarea[@id='profesion_observaciones']</option><option>//form[@id='new_profesion']/div[4]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_profesion']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>25,22</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/profesiones/101')])[2]</option><option>//a[3]</option></datalist></td><td>13,25</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -963,7 +1259,7 @@
 </tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>select</td><td>id=regiongrupo_grupo_id<datalist><option>id=regiongrupo_grupo_id</option><option>name=regiongrupo[grupo_id]</option><option>css=#regiongrupo_grupo_id</option><option>//select[@id='regiongrupo_grupo_id']</option><option>//form[@id='new_regiongrupo']/div[4]/select</option><option>//select</option></datalist></td><td>label=TI</td>
+<tr><td>clickAt</td><td>css=#regiongrupo_grupo_id<datalist><option>id=regiongrupo_grupo_id</option><option>name=regiongrupo[grupo_id]</option><option>css=#regiongrupo_grupo_id</option><option>//select[@id='regiongrupo_grupo_id']</option><option>//form[@id='new_regiongrupo']/div[4]/select</option><option>//select</option></datalist></td><td>label=TI</td>
 </tr>
 <tr><td>mouseDownAt</td><td>id=regiongrupo_grupo_id<datalist><option>id=regiongrupo_grupo_id</option><option>name=regiongrupo[grupo_id]</option><option>css=#regiongrupo_grupo_id</option><option>//select[@id='regiongrupo_grupo_id']</option><option>//form[@id='new_regiongrupo']/div[4]/select</option><option>//select</option></datalist></td><td>-31,-314</td>
 </tr>
@@ -998,6 +1294,36 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/regionesgrupo/104')])[2]</option><option>//a[3]</option></datalist></td><td>38,17</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-sectores-apc</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>50,15</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>100,11</td>
+</tr>
+<tr><td>clickAt</td><td>link=Sectores APC<datalist><option>link=Sectores APC</option><option>//a[contains(text(),'Sectores APC')]</option><option>//a[contains(@href, 'admin/sectoresapc')]</option><option>//li[27]/a</option></datalist></td><td>41,5</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/admin/sectoresapc/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>41,16</td>
+</tr>
+<tr><td>clickAt</td><td>id=sectorapc_nombre<datalist><option>id=sectorapc_nombre</option><option>name=sectorapc[nombre]</option><option>css=#sectorapc_nombre</option><option>//input[@id='sectorapc_nombre']</option><option>//form[@id='new_sectorapc']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>68,16</td>
+</tr>
+<tr><td>type</td><td>id=sectorapc_nombre<datalist><option>id=sectorapc_nombre</option><option>name=sectorapc[nombre]</option><option>css=#sectorapc_nombre</option><option>//input[@id='sectorapc_nombre']</option><option>//form[@id='new_sectorapc']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>id=sectorapc_observaciones<datalist><option>id=sectorapc_observaciones</option><option>name=sectorapc[observaciones]</option><option>css=#sectorapc_observaciones</option><option>//textarea[@id='sectorapc_observaciones']</option><option>//form[@id='new_sectorapc']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>75,20</td>
+</tr>
+<tr><td>type</td><td>id=sectorapc_observaciones<datalist><option>id=sectorapc_observaciones</option><option>name=sectorapc[observaciones]</option><option>css=#sectorapc_observaciones</option><option>//textarea[@id='sectorapc_observaciones']</option><option>//form[@id='new_sectorapc']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_sectorapc']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>47,14</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/sectoresapc/102')])[2]</option><option>//a[3]</option></datalist></td><td>29,26</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -1195,6 +1521,36 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
+<tr><td rowspan="1" colspan="3">tabla-tipo-contrato</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>75,25</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>57,12</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tipos de contrato<datalist><option>link=Tipos de contrato</option><option>//a[contains(text(),'Tipos de contrato')]</option><option>//a[contains(@href, 'admin/tiposcontratos')]</option><option>//li[24]/a</option></datalist></td><td>26,3</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nuevo')])[2]</option><option>//a[contains(@href, '/admin/tiposcontratos/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>44,13</td>
+</tr>
+<tr><td>clickAt</td><td>id=tipocontrato_nombre<datalist><option>id=tipocontrato_nombre</option><option>name=tipocontrato[nombre]</option><option>css=#tipocontrato_nombre</option><option>//input[@id='tipocontrato_nombre']</option><option>//form[@id='new_tipocontrato']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>139,22</td>
+</tr>
+<tr><td>type</td><td>id=tipocontrato_nombre<datalist><option>id=tipocontrato_nombre</option><option>name=tipocontrato[nombre]</option><option>css=#tipocontrato_nombre</option><option>//input[@id='tipocontrato_nombre']</option><option>//form[@id='new_tipocontrato']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=tipocontrato_observaciones<datalist><option>id=tipocontrato_observaciones</option><option>name=tipocontrato[observaciones]</option><option>css=#tipocontrato_observaciones</option><option>//textarea[@id='tipocontrato_observaciones']</option><option>//form[@id='new_tipocontrato']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>87,33</td>
+</tr>
+<tr><td>type</td><td>id=tipocontrato_observaciones<datalist><option>id=tipocontrato_observaciones</option><option>name=tipocontrato[observaciones]</option><option>css=#tipocontrato_observaciones</option><option>//textarea[@id='tipocontrato_observaciones']</option><option>//form[@id='new_tipocontrato']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_tipocontrato']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>34,14</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/tiposcontratos/103')])[2]</option><option>//a[3]</option></datalist></td><td>25,25</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
 <tr><td rowspan="1" colspan="3">tabla-tipo-de-convenio</td></tr>
 </thead>
 <tbody>
@@ -1311,6 +1667,36 @@
 	<td>click</td>
 	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
 	<td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tipo-de-nomina</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/<datalist><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>73,13</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>97,10</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tipos de nomina<datalist><option>link=Tipos de nomina</option><option>//a[contains(text(),'Tipos de nomina')]</option><option>//a[contains(@href, 'admin/tiposnomina')]</option><option>//li[35]/a</option></datalist></td><td>50,7</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nueva')])[3]</option><option>//a[contains(@href, '/admin/tiposnomina/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>28,12</td>
+</tr>
+<tr><td>clickAt</td><td>id=tiponomina_nombre<datalist><option>id=tiponomina_nombre</option><option>name=tiponomina[nombre]</option><option>css=#tiponomina_nombre</option><option>//input[@id='tiponomina_nombre']</option><option>//form[@id='new_tiponomina']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>117,17</td>
+</tr>
+<tr><td>type</td><td>id=tiponomina_nombre<datalist><option>id=tiponomina_nombre</option><option>name=tiponomina[nombre]</option><option>css=#tiponomina_nombre</option><option>//input[@id='tiponomina_nombre']</option><option>//form[@id='new_tiponomina']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=tiponomina_observaciones<datalist><option>id=tiponomina_observaciones</option><option>name=tiponomina[observaciones]</option><option>css=#tiponomina_observaciones</option><option>//textarea[@id='tiponomina_observaciones']</option><option>//form[@id='new_tiponomina']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>84,14</td>
+</tr>
+<tr><td>type</td><td>id=tiponomina_observaciones<datalist><option>id=tiponomina_observaciones</option><option>name=tiponomina[observaciones]</option><option>css=#tiponomina_observaciones</option><option>//textarea[@id='tiponomina_observaciones']</option><option>//form[@id='new_tiponomina']/div[3]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_tiponomina']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>29,23</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/tiposnomina/103')])[2]</option><option>//a[3]</option></datalist></td><td>67,19</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -1617,11 +2003,13 @@
 </tr>
 <tr><td>clickAt</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>113,13</td>
 </tr>
-<tr><td>type</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aab</td>
+<tr><td>type</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>//input[@id='usuario_nusuario']</option><option>//form[@id='new_usuario']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
 </tr>
-<tr><td>clickAt</td><td>id=usuario_nombres<datalist><option>id=usuario_nombres</option><option>name=usuario[nombres]</option><option>//input[@id='usuario_nombres']</option><option>//form[@id='new_usuario']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>45,9</td>
+<tr><td>clickAt</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>css=#usuario_email</option><option>//input[@id='usuario_email']</option><option>//div[@id='contacto']/div[6]/div/div/input</option><option>//div[6]/div/div/input</option></datalist></td><td>131,20</td>
 </tr>
-<tr><td>type</td><td>id=usuario_nombres<datalist><option>id=usuario_nombres</option><option>name=usuario[nombres]</option><option>//input[@id='usuario_nombres']</option><option>//form[@id='new_usuario']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>Alba</td>
+<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>css=#usuario_email</option><option>//input[@id='usuario_email']</option><option>//div[@id='contacto']/div[6]/div/div/input</option><option>//div[6]/div/div/input</option></datalist></td><td>aaa@aaa.org</td>
+</tr>
+<tr><td>type</td><td>name=usuario[nombres]<datalist><option>id=usuario_nombres</option><option>name=usuario[nombres]</option><option>//input[@id='usuario_nombres']</option><option>//form[@id='new_usuario']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>Alba</td>
 </tr>
 <tr><td>clickAt</td><td>id=usuario_apellidos<datalist><option>id=usuario_apellidos</option><option>name=usuario[apellidos]</option><option>//input[@id='usuario_apellidos']</option><option>//form[@id='new_usuario']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>31,14</td>
 </tr>
@@ -1643,15 +2031,7 @@
 </tr>
 <tr><td>clickAt</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>74,7</td>
 </tr>
-<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>aab@aaa.org</td>
-</tr>
-<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>aab@aaa.org</td>
-</tr>
-<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>aab@aaa.org</td>
-</tr>
-<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>aab@aaa.org</td>
-</tr>
-<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>aab@aaa.org</td>
+<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>//input[@id='usuario_email']</option><option>//form[@id='new_usuario']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>aah@aaa.org</td>
 </tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
