@@ -615,7 +615,9 @@ CREATE TABLE contrato (
     salario numeric,
     fechaini date,
     fechafin date,
-    tipocontrato_id integer DEFAULT 1 NOT NULL
+    tipocontrato_id integer DEFAULT 1 NOT NULL,
+    ciudadresidencia character varying(127),
+    ciudadlabora character varying(127)
 );
 
 
@@ -7108,6 +7110,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180425140955'),
 ('20180425142817'),
 ('20180426132957'),
-('20180426134701');
+('20180426134701'),
+('20180427160857');
 
 

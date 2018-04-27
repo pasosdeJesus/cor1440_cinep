@@ -111,6 +111,8 @@ class UsuariosController < Sip::ModelosController
         "perfilprofesional_id",
         "salario",
         "salarioanterior",
+        "ciudadresidencia",
+        "ciudadlabora",
         "procesogh",
         "tiponomina",
         "vinculaciones",
@@ -220,6 +222,8 @@ class UsuariosController < Sip::ModelosController
         ]
       ],
       :contrato_attributes => [
+        :ciudadresidencia,
+        :ciudadlabora,
         :fechaini_localizada,
         :fechafin_localizada,
         :id,

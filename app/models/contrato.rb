@@ -14,6 +14,9 @@ class Contrato < ActiveRecord::Base
   flotante_localizado :salario
   flotante_localizado :salarioanterior
 
+  validates :ciudadresidencia, length: { maximum: 127}
+  validates :ciudadlabora, length: { maximum: 127}
+
   mattr_accessor :procesogh
   def procesogh
     r = ""

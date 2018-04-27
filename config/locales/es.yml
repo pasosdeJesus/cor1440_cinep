@@ -66,9 +66,11 @@ es:
         Cajacompensacion: 'Caja de compensación'
         Cajascompensacion: 'Cajas de compensación'
       "contrato":
-        numero: Número de contrato
+        ciudadresidencia: Ciudad de residencia
+        ciudadlabora: Ciudad donde labora
         fechaini_localizada: Fecha de iniciación de contrato actual
         fechafin_localizada: Fecha de terminación de contrato actual
+        numero: Número de contrato
         procesogh: Proceso interno
         salario: Salario actual
         salarioanterior: Salario anterior

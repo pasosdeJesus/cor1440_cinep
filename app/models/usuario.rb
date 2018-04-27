@@ -109,6 +109,22 @@ class Usuario < ActiveRecord::Base
     fechadeshabilitacion.nil? ? 'SI' : 'NO'
   end
 
+  def ciudadresidencia
+    if contrato
+      contrato.ciudadresidencia
+    else
+      ""
+    end
+  end
+
+  def ciudadlabora
+    if contrato
+      contrato.ciudadlabora
+    else
+      ""
+    end
+  end
+
 
   def gruposesp
     sip_grupo.map(&:nombre).join("; ")
