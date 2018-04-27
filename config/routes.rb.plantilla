@@ -59,6 +59,21 @@ Rails.application.routes.draw do
 
     get "/admin/grupos/arbol" => "sip/admin/grupos#arbol", as: :grupos_arbol
 
+    get "/admin/grupos/coordinadores" => "sip/admin/grupos#coordinadores", 
+      as: :grupos_coordinadores
+
+    get "/admin/grupos/procesosgh" => "sip/admin/grupos#procesosgh", 
+      as: :grupos_procesosgh
+
+    get "/admin/grupos/supragrupos" => "sip/admin/grupos#supragrupos", 
+      as: :grupos_supragrupos
+
+    get "/admin/profesiones/:id/areaestudios" => "admin/profesiones#areaestudios", 
+      as: :profesiones_areaestudios
+
+    get "/admin/tiposcontratos/:id/tiponomina" => "admin/tiposcontratos#tiponomina", 
+      as: :tiposcontratos_areaestudios
+
     get "/reportes/indicador11" => "reportes#indicador11", 
       as: :reportes_indicador11
     get "/reportes/objetivoe2" => "reportes#objetivoe2", 
