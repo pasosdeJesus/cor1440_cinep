@@ -281,7 +281,7 @@ es:
         departamento: Departamento de nacimiento
         municipio: Municipio de nacimiento
         clase: Centro poblado de nacimiento
-      usuario:
+      "usuario":
         anexo_usuario: Anexos
         cargo: Cargo
         cajacompensacion: Caja de compensación
@@ -302,6 +302,7 @@ es:
         perfilprofesional: Perfil profesional
         procesogh: Proceso interno
         salarioanterior: Salario anterior
+        sip_grupo_ids: Grupo
         tdocumento: Tipo de documento
         tiponomina: Tipo de nómina
       "tasacambio":

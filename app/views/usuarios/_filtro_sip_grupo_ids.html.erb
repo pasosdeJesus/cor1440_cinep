@@ -1,0 +1,12 @@
+
+<%= f.input :bussip_grupo_ids,
+  collection: Sip::Grupo.all,
+  label: false,
+  label_method: :nombre,
+  selected: Sip::ModeloHelper.poromision(params, :bussip_grupo_ids),
+  input_html: {
+    class: 'chosen-select',
+    'data-enviarautomatico' => ''
+  },
+  include_blank: true
+%>

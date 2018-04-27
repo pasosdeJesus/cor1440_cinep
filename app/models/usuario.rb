@@ -313,12 +313,21 @@ class Usuario < ActiveRecord::Base
     return r.strip
   end
 
+  def presenta(atr)
+    case atr
+    when 'sip_grupo_ids'
+      sip_grupo.map(&:nombre).join("; ")
+    else
+      presenta_gen(atr)
+    end
+  end
+
   scope :filtro_oficina_id, lambda {|o|
     where(oficina_id: o)
   }
 
   scope :filtro_sip_grupo_ids, lambda {|g|
-    where(grupo_id: g)
+    joins(:sip_grupo_usuario).where('sip_grupo_usuario.sip_grupo_id = ?', g)
   }
 
   scope :filtro_habilitado, lambda {|o|
