@@ -4,7 +4,9 @@
   selected: Sip::ModeloHelper.poromision(params, :bushabilitado),
   input_html: {
     class: 'chosen-select',
-    'data-enviarautomatico' => ''
+    'data-enviarautomatico' => '',
+    value: params && params[:filtro] && params[:filtro][:habilitado] ? 
+      params[:filtro][:habilitado] : 'SI'
   },
-  include_blank: true
+  include_blank: false
 %>

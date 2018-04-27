@@ -140,7 +140,11 @@ class UsuariosController < Sip::ModelosController
   end
 
   def index_reordenar(c)
-    c.reorder([:apellidos])
+    if !params || !params[:filtro] || !params[:filtro][:bushabilitado]
+      c = c.where("usuario.fechadeshabilitacion IS NULL")
+    end
+    c = c.reorder([:apellidos])
+    return c
   end
 
   def medio_create(usuario)
@@ -152,22 +156,8 @@ class UsuariosController < Sip::ModelosController
     medio_create(usuario)
   end
 
-#  def prefiltrar()
-#    byebug
-#    if params.nil?
-#      params = ActionController::Parameters.new({
-#         filtro: {
-#          bushabilitado: 'SI'
-#         }
-#      })
-#    elsif !params[:filtro]
-#      params[:filtro] = ActionController::Parameters.new({
-#        bushabilitado: 'SI'
-#      })
-#    elsif !params[:filtro][:bushabilitado]
-#      params[:filtro][:bushabilitado] = 'SI'
-#    end
-#  end
+  def prefiltrar
+  end
 
   private
 
