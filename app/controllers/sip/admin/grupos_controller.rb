@@ -68,7 +68,8 @@ module Sip
         authorize! :read, Sip::Grupo
         render layout: 'application'
       end
-
+    
+      # API
       def coordinadores
         if params && params[:filtro] && params[:filtro][:ids] && 
           params[:filtro][:ids] != ''
@@ -94,6 +95,44 @@ module Sip
         end
       end
 
+      # API
+      def procesosgh
+        if !params || !params[:ids] || params[:ids] == ''
+          render json: 'Sin parametro id', status: :unprocessable_entity
+          return false
+        end
+        ls = []
+        params[:ids].each do |idg|
+          if idg.to_i > 0
+            g = Sip::Grupo.find(idg.to_i)
+            if g.procesogh && !ls.include?(g.procesogh.nombre)
+              ls << g.procesogh.nombre
+            end
+          end
+        end
+        lso = ls.localize(:es).sort.to_a
+        render json: {res: lso.join("; ")}, status: :ok
+      end
+
+      # API
+      def supragrupos
+        if !params || !params[:ids] || params[:ids] == ''
+          render json: 'Sin parametro id', status: :unprocessable_entity
+          return false
+        end
+        ls = []
+        params[:ids].each do |idg|
+          if idg.to_i > 0
+            g = Sip::Grupo.find(idg.to_i)
+            if g
+              ls << g.nombre if !ls.include?(g.nombre)
+              ApplicationHelper.supergrupos_grupo(g, ls)
+            end
+          end
+        end
+        lso = ls.localize(:es).sort.to_a
+        render json: {res: lso.join("; ")}, status: :ok
+      end
 
     end
   end

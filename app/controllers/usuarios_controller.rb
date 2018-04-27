@@ -75,41 +75,56 @@ class UsuariosController < Sip::ModelosController
     if can?(:read, ::Usuario)
       r += [ 
         "nusuario",
-        "persona",
-        "descripcion"
-      ]
-    end
-    if can?(:manage, ::Usuario)
-      r += ["rol"]
-    end
-    if can?(:read, ::Usuario)
-      r += [
+        "id",
+        "nombres",
+        "apellidos",
+        "gruposesp",
+        "grupos",
         "oficina_id",
         "extension",
-        "telefonos",
-      ]
-    end
-    if can?(:read, ::Usuario)
-      r += [
         "email",
-        "sip_grupo"
       ]
     end
     if can?(:create, ::Usuario)
       r += [
+        "telefonos",
+        "tdocumento",
+        "numerodocumento",
+        "lugardocumento",
+        "fechanacb",
+        "sexonac",
+        "lugarnacimiento",
         "direccionresidencia",
         "numhijos",
         "numhijosmen12",
-        "fechacreacion_localizada",
-        "fechadeshabilitacion_localizada",
+        "niveleducacion",
+        "profesion",
+        "areaestudios",
+        "empresaps",
+        "fondopensiones",
+        "cajacompensacion",
+        "numerocontrato",
+        "fechaini_localizada",
+        "fechafin_localizada",
+        "tipocontrato",
+        "cargo_id",
+        "perfilprofesional_id",
+        "salario",
+        "salarioanterior",
+        "procesogh",
+        "tiponomina",
+        "vinculaciones",
+        "anexo_usuario"
       ]
     end
     if can?(:manage, ::Usuario)
       r += [
+        "rol",
         "idioma",
         "encrypted_password",
-        "no_modificar_ldap",
         "uidNumber",
+        "fechacreacion_localizada",
+        "fechadeshabilitacion_localizada",
         "failed_attempts",
         "unlock_token",
         "locked_at"
@@ -122,6 +137,9 @@ class UsuariosController < Sip::ModelosController
     atributos_show + ['tipocontrato_id', 'perfilprofesional_id']
   end
 
+  def index_reordenar(c)
+    c.reorder([:apellidos])
+  end
 
   def medio_create(usuario)
     usuario.nombres = params[:usuario][:persona_attributes][:nombres]

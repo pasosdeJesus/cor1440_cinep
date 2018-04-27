@@ -1,0 +1,14 @@
+<p><table border="1">
+  <tr>
+    <th>Fecha de inicio</th>
+    <th>Fecha de terminacion</th>
+    <th>Observaciones</th>
+  </tr>
+  <% @registro.vinculacion.each do |v| %>
+    <tr>
+      <td><%= v.fechaini_localizada %></td>
+      <td><%= v.fechafin_localizada %></td>
+      <td><%= v.observaciones %></td>
+    </tr>
+  <% end %>
+</table></p>

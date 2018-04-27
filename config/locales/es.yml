@@ -69,8 +69,10 @@ es:
         numero: Número de contrato
         fechaini_localizada: Fecha de iniciación de contrato actual
         fechafin_localizada: Fecha de terminación de contrato actual
+        procesogh: Proceso interno
         salario: Salario actual
         salarioanterior: Salario anterior
+        tiponomina: Tipo de nomina
       "contextoinv":
         regiongrupo: Región
       "convenio":
@@ -278,16 +280,27 @@ es:
         municipio: Municipio de nacimiento
         clase: Centro poblado de nacimiento
       usuario:
+        anexo_usuario: Anexos
         cargo: Cargo
         cajacompensacion: Caja de compensación
-        empresaeps: Empresa prestadora de salud
+        empresaps: Empresa prestadora de salud
         direccionresidencia: Dirección de residencia
+        fechaini_localizada: Fecha de inicio
+        fechafin_localizada: Fecha de terminación
+        fechanacb: Fecha de nacimiento
         fondopensiones: Fondo de pensiones
+        gruposesp: Grupos
+        grupos: Grupos y Supragrupos
+        lugardocumento: Lugar de documento
+        lugarnacimiento: Lugar de nacimiento
         nusuario: Usuario
+        numerodocumento: Número de documento
         numhijos: Número de hijos
         numhijosmen12: Número de hijos menores de 12
         perfilprofesional: Perfil profesional
         procesogh: Proceso interno
+        salarioanterior: Salario anterior
+        tdocumento: Tipo de documento
         tiponomina: Tipo de nómina
       "tasacambio":
         enpesos: Tasa en pesos

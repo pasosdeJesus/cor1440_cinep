@@ -87,7 +87,7 @@ class Usuario < ActiveRecord::Base
 
   mattr_accessor :areaestudios
   def areaestudios
-    if profesion
+    if profesion && profesion.areaestudios
       profesion.areaestudios.nombre
     else
       'SIN INFORMACIÓN'
@@ -109,9 +109,139 @@ class Usuario < ActiveRecord::Base
     fechadeshabilitacion.nil? ? 'SI' : 'NO'
   end
 
+
+  def gruposesp
+    sip_grupo.map(&:nombre).join("; ")
+  end
+
   def grupos 
     ApplicationHelper.supergrupos_usuario(self).join("; ")
   end
+
+  def fechaini_localizada
+    if contrato
+      contrato.fechaini_localizada
+    else
+      ""
+    end
+  end
+
+  def fechafin_localizada
+    if contrato
+      contrato.fechafin_localizada
+    else
+      ""
+    end
+  end
+
+
+  def fechanacb
+    r = ""
+    if persona.anionac
+      r += persona.anionac.to_s
+    end
+    r += " - "
+    if persona.mesnac
+      r += persona.mesnac.to_s
+    end
+    r += " - "
+    if persona.dianac
+      r += persona.dianac.to_s
+    end
+    return r
+  end
+ 
+  def lugardocumento
+    if persona
+      persona.lugardocumento
+    else
+      ""
+    end
+  end
+
+  def lugarnacimiento
+    r = ""
+    if persona && persona.pais
+      r += persona.pais.nombre
+      if persona.departamento
+        r += " / " + persona.departamento.nombre
+        if persona.municipio
+          r += " / " + persona.municipio.nombre
+          if persona.clase
+            r += " / " + persona.clase.nombre
+          end
+        end
+      end
+    end
+
+    return r
+  end
+
+  def numerocontrato
+    if contrato
+      contrato.numero
+    else
+      ""
+    end
+  end
+
+  def numerodocumento
+    if persona
+      persona.numerodocumento
+    else
+      ""
+    end
+  end
+
+  def procesogh
+    if contrato && contrato.procesogh
+      contrato.procesogh
+    else
+      ""
+    end
+  end
+
+
+  def salario
+    if contrato
+      contrato.salario
+    else
+      ""
+    end
+  end
+
+  def salarioanterior
+    if contrato
+      contrato.salarioanterior
+    else
+      ""
+    end
+  end
+
+  def tdocumento
+    if persona && persona.tdocumento
+      persona.tdocumento.nombre
+    else
+      ""
+    end
+  end
+ 
+  def tipocontrato
+    if contrato && contrato.tipocontrato
+      contrato.tipocontrato.nombre
+    else
+      ""
+    end
+  end
+
+  def tiponomina
+    if contrato && contrato.tiponomina
+      contrato.tiponomina
+    else
+      ""
+    end
+  end
+
 
   validates_presence_of :nombres
   validates_presence_of :apellidos

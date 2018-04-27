@@ -246,7 +246,39 @@
 
   )
 
+  # Campos dinamicos en formulario de usuario
+  $('#usuario_sip_grupo_ids').chosen().change( (e) ->
+    #usuario_gruposysupragrupos
+    ids=$(this).val()
+    if !Array.isArray(ids)
+      ids = [ids]
+    params = { ids: ids }
+    actualiza_procesogh = (root) ->
+      sip_cambia_cuadrotexto_AJAX('admin/grupos/procesosgh', params,
+        'usuario_contrato_attributes_procesogh', 'Procesogh')
+    sip_cambia_cuadrotexto_AJAX('admin/grupos/supragrupos', params,
+        'usuario_gruposysupragrupos', 'Supragrupos', actualiza_procesogh)
+      
+  )
+
+  $('#usuario_profesion_id').change( (e) ->
+    idp=$(this).val()
+    params = { id: idp }
+    sip_cambia_cuadrotexto_AJAX('admin/profesiones/' + idp + '/areaestudios', 
+      params, 'usuario_areaestudios', 'Area de estudios')
+      
+  )
+
+  $('#usuario_contrato_attributes_tipocontrato_id').change ( (e) ->
+    idt=$(this).val()
+    params = { id: idt }
+    sip_cambia_cuadrotexto_AJAX('admin/tiposcontratos/' + idt + '/tiponomina', 
+      params, 'usuario_contrato_attributes_tiponomina', 'Tipo de nomina')
+  )
+
+  # Campos dinámicos en formulario de compromiso institucional
   $('#proyectofinanciero_grupo_ids').chosen().change( (e) ->
+    return
     sip_arregla_puntomontaje(root)
     t = Date.now()
     d = -1
@@ -280,13 +312,7 @@
 
   # Cambio a persona en tabla cargos
   $(document).on('change', '[id^=proyectofinanciero_proyectofinanciero_usuario_attributes][id$=usuario_id]', (e, inserted) ->
-    return
     id=$(this).attr('id')
-    elige_perfilprofesional = () ->
-      if vp == '' || vp == '1'
-        sip_elige_opcion_select_con_AJAX($(this),  'usuarios',
-          aid_perfilprofesional, 'perfilprofesional_id', 'Perfil profesional',
-          elige_perfilprofesional)
      
     aid_tipocontrato= id.replace('usuario_id', 'tipocontrato_id')
     aid_perfilprofesional = id.replace('usuario_id', 'perfilprofesional_id')

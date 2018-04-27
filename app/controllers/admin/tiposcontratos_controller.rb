@@ -4,7 +4,7 @@ module Admin
   class TiposcontratosController < Sip::Admin::BasicasController
     before_action :set_tipocontrato, 
       only: [:show, :edit, :update, :destroy]
-    load_and_authorize_resource  class: ::Tipocontrato
+    load_and_authorize_resource  class: ::Tipocontrato, except: [:tiponomina]
 
     def clase 
       "::Tipocontrato"
@@ -23,6 +23,23 @@ module Admin
 
     def genclase
       'M'
+    end
+
+    # API
+    def tiponomina
+      authorize! :read, ::Tipocontrato
+      authorize! :read, ::Tiponomina
+      if !params[:id] || params[:id].to_i < 1
+        render json: 'Sin parametro id', status: :unprocessable_entity
+        return false
+      end
+      tc = Tipocontrato.find(params[:id])
+      if !tc.tiponomina
+        render json: 'Sin contrato sin tipo de nomina', 
+          status: :unprocessable_entity
+        return false
+      end
+      render json: {res: tc.tiponomina.nombre}, status: :ok
     end
 
     def tipocontrato_params
