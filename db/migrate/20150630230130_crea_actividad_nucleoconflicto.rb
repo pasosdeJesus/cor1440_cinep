@@ -1,4 +1,4 @@
-class CreaActividadNucleoconflicto < ActiveRecord::Migration
+class CreaActividadNucleoconflicto < ActiveRecord::Migration[4.2]
   def change
     create_join_table :actividad, :nucleoconflicto, {
       table_name: 'actividad_nucleoconflicto' 

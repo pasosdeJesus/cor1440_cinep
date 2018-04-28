@@ -1,4 +1,4 @@
-class AddDesarrolloToActividad < ActiveRecord::Migration
+class AddDesarrolloToActividad < ActiveRecord::Migration[4.2]
   def change
     add_column :sivel2_gen_actividad, :desarrollo, :string, limit: 5000
     add_column :sivel2_gen_actividad, :papel, :string, limit: 5000

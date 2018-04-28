@@ -1,4 +1,4 @@
-class ExtiendeProyectofinancieroContinfo < ActiveRecord::Migration
+class ExtiendeProyectofinancieroContinfo < ActiveRecord::Migration[4.2]
   def change
     remove_column :cor1440_gen_proyectofinanciero, :rendimientosfinancieros,
       :decimal, precision: 20, scale: 2

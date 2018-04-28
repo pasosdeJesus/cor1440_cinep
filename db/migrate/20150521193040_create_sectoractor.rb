@@ -1,4 +1,4 @@
-class CreateSectoractor < ActiveRecord::Migration
+class CreateSectoractor < ActiveRecord::Migration[4.2]
   def up
     create_table :sectoractor do |t|
       t.string :nombre, limit: 500, null: false

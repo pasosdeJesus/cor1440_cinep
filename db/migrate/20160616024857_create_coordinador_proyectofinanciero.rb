@@ -1,4 +1,4 @@
-class CreateCoordinadorProyectofinanciero < ActiveRecord::Migration
+class CreateCoordinadorProyectofinanciero < ActiveRecord::Migration[4.2]
   def up
     create_table :coordinador_proyectofinanciero do |t|
       t.integer :proyectofinanciero_id

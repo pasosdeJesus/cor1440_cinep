@@ -1,4 +1,4 @@
-class LlenaTipomoneda < ActiveRecord::Migration
+class LlenaTipomoneda < ActiveRecord::Migration[4.2]
   def up
     # Referencia http://www.xe.com/iso4217.php
     execute <<-SQL

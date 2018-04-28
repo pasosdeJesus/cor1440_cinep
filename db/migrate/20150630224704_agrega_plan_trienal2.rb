@@ -1,4 +1,4 @@
-class AgregaPlanTrienal2 < ActiveRecord::Migration
+class AgregaPlanTrienal2 < ActiveRecord::Migratio[4.2]
   def change
     add_column :cor1440_gen_actividad, :nucleoconflicto_id, :integer
     add_column :cor1440_gen_actividad, :redactor_id, :integer

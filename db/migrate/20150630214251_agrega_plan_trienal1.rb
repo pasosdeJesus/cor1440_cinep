@@ -1,4 +1,4 @@
-class AgregaPlanTrienal1 < ActiveRecord::Migration
+class AgregaPlanTrienal1 < ActiveRecord::Migration[4.2]
   def change
     add_column :cor1440_gen_actividad, :alcance, :string, limit: 50
     add_column :cor1440_gen_actividad, :accionincidencia, :boolean

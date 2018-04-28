@@ -1,4 +1,4 @@
-class CreaPublicacion < ActiveRecord::Migration
+class CreaPublicacion < ActiveRecord::Migration[4.2]
   def up
     create_table :publicacion do |t|
       t.string :nombre, limit: 500, null: false

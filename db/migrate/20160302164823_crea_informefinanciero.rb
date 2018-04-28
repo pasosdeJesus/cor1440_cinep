@@ -1,4 +1,4 @@
-class CreaInformefinanciero < ActiveRecord::Migration
+class CreaInformefinanciero < ActiveRecord::Migration[4.2]
   def change
     create_table :informefinanciero do |t|
       t.integer :proyectofinanciero_id, null: false

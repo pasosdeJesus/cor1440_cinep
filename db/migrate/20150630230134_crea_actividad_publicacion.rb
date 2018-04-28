@@ -1,4 +1,4 @@
-class CreaActividadPublicacion < ActiveRecord::Migration
+class CreaActividadPublicacion < ActiveRecord::Migration[4.2]
   def change
     create_join_table :actividad, :publicacion, {
       table_name: 'actividad_publicacion' 

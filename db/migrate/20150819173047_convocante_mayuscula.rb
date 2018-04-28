@@ -1,4 +1,4 @@
-class ConvocanteMayuscula < ActiveRecord::Migration
+class ConvocanteMayuscula < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       UPDATE cor1440_gen_actividad SET convocante=UPPER(convocante);

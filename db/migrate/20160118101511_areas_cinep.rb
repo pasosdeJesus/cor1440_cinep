@@ -1,4 +1,4 @@
-class AreasCinep < ActiveRecord::Migration
+class AreasCinep < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       INSERT INTO sip_oficina (id, nombre, fechacreacion, created_at) 

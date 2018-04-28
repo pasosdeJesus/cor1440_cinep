@@ -1,4 +1,4 @@
-class CreaCargo < ActiveRecord::Migration
+class CreaCargo < ActiveRecord::Migration[4.2]
   def change
     create_table :cargo do |t|
       t.string :nombre, limit: 500, null: false

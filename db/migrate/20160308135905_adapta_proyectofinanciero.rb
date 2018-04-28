@@ -1,4 +1,4 @@
-class AdaptaProyectofinanciero < ActiveRecord::Migration
+class AdaptaProyectofinanciero < ActiveRecord::Migration[4.2]
   def change
     remove_column :cor1440_gen_proyectofinanciero, :rendimientosfinancieros, :string
     remove_column :cor1440_gen_proyectofinanciero, :autenticarcompulsar, :string

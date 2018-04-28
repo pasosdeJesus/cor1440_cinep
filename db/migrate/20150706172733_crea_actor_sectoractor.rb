@@ -1,4 +1,4 @@
-class CreaActorSectoractor < ActiveRecord::Migration
+class CreaActorSectoractor < ActiveRecord::Migration[4.2]
   def change
     create_join_table :actor, :sectoractor, {
       table_name: 'actor_sectoractor' 

@@ -1,4 +1,4 @@
-class ProyectofinancieroUsuario < ActiveRecord::Migration
+class ProyectofinancieroUsuario < ActiveRecord::Migration[4.2]
   def change
     create_table :proyectofinanciero_usuario do |t|
       t.integer :proyectofinanciero_id, null: false

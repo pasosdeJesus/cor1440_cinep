@@ -1,4 +1,4 @@
-class CreaNucleoconflicto < ActiveRecord::Migration
+class CreaNucleoconflicto < ActiveRecord::Migration[4.2]
   def up
     create_table :nucleoconflicto do |t|
       t.string :nombre, limit: 500, null: false

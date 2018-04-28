@@ -1,4 +1,4 @@
-class AgregaGeoActividad < ActiveRecord::Migration
+class AgregaGeoActividad < ActiveRecord::Migration[4.2]
   def change
     add_column :cor1440_gen_actividad, :departamento_id, :integer
     add_column :cor1440_gen_actividad, :municipio_id, :integer

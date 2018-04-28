@@ -1,4 +1,4 @@
-class CreaActor < ActiveRecord::Migration
+class CreaActor < ActiveRecord::Migration[4.2]
   def up
     create_table :actor do |t|
       t.string :nombre, limit: 500, null: false

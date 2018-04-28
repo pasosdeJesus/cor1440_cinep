@@ -1,4 +1,4 @@
-class LlenaTipoanexo < ActiveRecord::Migration
+class LlenaTipoanexo < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       INSERT INTO tipoanexo (id, nombre, fechacreacion, created_at, updated_at) 

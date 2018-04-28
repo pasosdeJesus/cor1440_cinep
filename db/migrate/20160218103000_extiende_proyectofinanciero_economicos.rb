@@ -1,4 +1,4 @@
-class ExtiendeProyectofinancieroEconomicos < ActiveRecord::Migration
+class ExtiendeProyectofinancieroEconomicos < ActiveRecord::Migration[4.2]
   def change
     add_column :cor1440_gen_proyectofinanciero, :tipomoneda_id, :integer
     add_column :cor1440_gen_proyectofinanciero, :saldo, :decimal, 

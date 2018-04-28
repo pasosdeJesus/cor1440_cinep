@@ -1,4 +1,4 @@
-class CreateAnexoProyectofinanciero < ActiveRecord::Migration
+class CreateAnexoProyectofinanciero < ActiveRecord::Migration[4.2]
   def change
     create_table :anexo_proyectofinanciero do |t|
       t.integer :anexo_id

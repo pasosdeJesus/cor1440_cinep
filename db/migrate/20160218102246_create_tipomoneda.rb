@@ -1,4 +1,4 @@
-class CreateTipomoneda < ActiveRecord::Migration
+class CreateTipomoneda < ActiveRecord::Migration[4.2]
   def change
     create_table :tipomoneda do |t|
       t.string :nombre, limit: 500, null: false

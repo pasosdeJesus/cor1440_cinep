@@ -1,4 +1,4 @@
-class ExtiendeProyectofinanciero < ActiveRecord::Migration
+class ExtiendeProyectofinanciero < ActiveRecord::Migration[4.2]
   def change
     add_column :cor1440_gen_proyectofinanciero, :referencia, :string, limit: 1000
     add_column :cor1440_gen_proyectofinanciero, :referenciacinep, 

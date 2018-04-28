@@ -1,4 +1,4 @@
-class CreaTipoanexo < ActiveRecord::Migration
+class CreaTipoanexo < ActiveRecord::Migration[4.2]
   def change
     create_table :tipoanexo do |t|
       t.string :nombre, limit: 500, null: false

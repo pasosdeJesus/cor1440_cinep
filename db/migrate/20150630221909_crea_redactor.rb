@@ -1,4 +1,4 @@
-class CreaRedactor < ActiveRecord::Migration
+class CreaRedactor < ActiveRecord::Migration[4.2]
   def up
     create_table :redactor do |t|
       t.string :nombre, limit: 500, null: false

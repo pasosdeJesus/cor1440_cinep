@@ -1,4 +1,4 @@
-class AmpliaDescripcion < ActiveRecord::Migration
+class AmpliaDescripcion < ActiveRecord::Migration[4.2]
   def up
     execute  <<-SQL
     ALTER TABLE desembolso ALTER COLUMN detalle TYPE VARCHAR(5000);
