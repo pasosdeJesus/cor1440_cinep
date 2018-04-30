@@ -153,16 +153,16 @@ class Usuario < ActiveRecord::Base
 
   def fechanacb
     r = ""
-    if persona.anionac
-      r += persona.anionac.to_s
-    end
-    r += " - "
-    if persona.mesnac
-      r += persona.mesnac.to_s
-    end
-    r += " - "
     if persona.dianac
       r += persona.dianac.to_s
+    end
+    r += "/"
+    if persona.mesnac
+      r += (I18n.t :abbr_month_names, :scope => :date)[persona.mesnac]
+    end
+    r += "/"
+    if persona.anionac
+      r += persona.anionac.to_s
     end
     return r
   end

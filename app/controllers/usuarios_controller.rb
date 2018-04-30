@@ -2,7 +2,7 @@
 
 require 'jn316_gen/concerns/controllers/usuarios_controller'
 
-class UsuariosController < Sip::ModelosController
+class UsuariosController < Heb412Gen::ModelosController
   include Jn316Gen::Concerns::Controllers::UsuariosController
 
   def atributos_index
@@ -156,7 +156,64 @@ class UsuariosController < Sip::ModelosController
     medio_create(usuario)
   end
 
-  def prefiltrar
+  def vistas_manejadas
+    ['Usuario']
+  end
+
+  def vista_listado_ods(vista, registro)
+    l = []
+    ats = atributos_show.map {|x| 
+      case x 
+      when 'cargo_id'
+       'cargo'
+      when 'perfilprofesional_id'
+       'perfilprofesional'
+      else
+        x
+      end
+    }
+    ats.delete('anexo_usuario')
+    ats += ['created_at', 'updated_at']
+    #ats1 = Ability::CAMPOS_PLANTILLAS_PROPIAS['Usuario'][:campos]
+    #puts "ats1-ats="; puts ats1-ats; puts "ats2-ats="; puts ats2-ats
+    #puts ats
+    registro.each do |r|
+      puts "Registro #{r.id}"
+      f = { }
+      ats.each do |a|
+        puts "Atributo #{a}"
+        if r[a]
+          f[a] = r[a].to_s
+        elsif r.respond_to?(a)
+          r1 = r.send(a)
+          if r1.respond_to?('presenta_nombre')
+            f[a] = r1.send('presenta_nombre')
+          else
+            f[a] = r1.to_s
+          end
+        else
+          case a
+          when 'sexonac'
+            f[a] = r.persona ? r.persona.sexo : 'S'
+          when 'fechaini_localizada'
+            byebug
+            f[a] = r.contrato ? r.contrato.fechaini_localizada.to_s : ''
+          when 'fechafin_localizada'
+            f[a] = r.contrato ? r.contrato.fechafin_localizada.to_s : ''
+          when 'vinculaciones'
+            f[a] = r.vinculacion.inject("") {|memo,x| 
+              memo + x.fechaini_localizada.to_s + " - " + x.fechafin.to_s + " " + 
+                x.observaciones 
+            } 
+          else
+            f[a] = ""
+          end
+        end
+        puts "Atributo #{a}, valor #{f[a]}"
+      end
+      l << f
+    end
+    return l
   end
 
   private

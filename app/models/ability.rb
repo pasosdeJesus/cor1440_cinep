@@ -79,7 +79,7 @@ class Ability  < Cor1440Gen::Ability
         ['Sip', 'oficina']
     ]
   end
-  
+
   # Tablas no básicas pero que tienen índice
   NOBASICAS_INDSEQID =  [
     ['', 'proyectofinanciero_usuario'], 
@@ -99,6 +99,62 @@ class Ability  < Cor1440Gen::Ability
   end
 
   CAMPOS_PLANTILLAS_PROPIAS = {
+    'Usuario' => {
+      campos: [
+        'apellidos', 
+        'areaestudios',
+        'cajacompensacion',
+        'cargo',
+        'ciudadlabora',
+        'ciudadresidencia',
+        'created_at',
+        'direccionresidencia',
+        'email', 
+        'encrypted_password',
+        'extension',
+        'email',
+        'empresaps',
+        'failed_attempts',
+        'fechacreacion_localizada',
+        'fechadeshabilitacion_localizada',
+        'fechaini_localizada',
+        'fechafin_localizada',
+        'fechanacb',
+        'fondopensiones',
+        'grupos',
+        'gruposesp',
+        'id', 
+        'idioma',
+        'locked_at',
+        'lugardocumento',
+        'lugarnacimiento',
+        'niveleducacion',
+        'nombres', 
+        'numerocontrato',
+        'numerodocumento',
+        'numhijos',
+        'numhijosmen12',
+        'nusuario', 
+        'oficina_id',
+        'perfilprofesional',
+        'procesogh',
+        'profesion',
+        'rol',
+        'salario',
+        'salarioanterior',
+        'sexonac',
+        'tdocumento',
+        'telefonos',
+        'tipocontrato',
+        'tiponomina',
+        'vinculaciones',
+        'uidNumber',
+        'unlock_token',
+        'updated_at',
+        ],
+        controlador: '::UsuariosController',
+        ruta: '/usuarios'
+    },
     'Actividad' => { 
       campos: [
         'id', 'fecha', 'responsable', 'nombre', 
@@ -138,8 +194,9 @@ class Ability  < Cor1440Gen::Ability
   }
 
   def campos_plantillas 
-    Heb412Gen::Ability::CAMPOS_PLANTILLAS_PROPIAS.
+    c = Heb412Gen::Ability::CAMPOS_PLANTILLAS_PROPIAS.
       clone.merge(CAMPOS_PLANTILLAS_PROPIAS)
+    return c
   end
 
   # Ver documentacion de este metodo en app/models/ability de sip
