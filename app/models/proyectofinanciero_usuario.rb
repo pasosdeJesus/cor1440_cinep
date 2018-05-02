@@ -13,6 +13,8 @@ class ProyectofinancieroUsuario < ActiveRecord::Base
   belongs_to :tipocontrato, class_name: '::Tipocontrato',
     foreign_key: 'tipocontrato_id'
 
+  validates :cargo, presence: true
+
   validates :porcentaje, numericality: {
     greater_than_or_equal: 0, less_than_or_equal_to: 100 
   }, allow_blank: true

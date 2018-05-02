@@ -481,7 +481,7 @@ module Cor1440Gen
       hoja = libro.worksheets(8)
       fila = 2
       reg = @registros #.where("estado IN ('J', 'C', 'M')")
-      tf = ::Tasacambio.where(id: reg.map(&:tasaformulacion_id).uniq).order(:fecha)
+      tf = ::Tasacambio.where(enpesos: reg.map(&:tasa).uniq).order(:fecha)
      
       cons = 1
       tf.each do |t|
