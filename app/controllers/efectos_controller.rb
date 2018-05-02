@@ -13,19 +13,19 @@ class EfectosController < Sip::ModelosController
 
   def atributos_index
     [ "id", 
-      "indicadorpf_id",
-      "actor_id",
-      "fecha_localizada",
+      "indicadorpf_id"] +
+    [ :actor_ids=>[]] +
+    [ "fecha_localizada",
       "anexo_efecto"
     ] 
   end
 
   def atributos_form
-    [ "indicadorpf_id",
-      "actor_id",
-      "fecha_localizada",
-      "efecto_valorcampotind",
-      "anexo_efecto"
+    [ "indicadorpf_id"] +
+    [ :actor_ids=>[]] +
+    [ "fecha_localizada",
+       "efecto_valorcampotind",
+       "anexo_efecto"
     ] 
   end
 
@@ -103,8 +103,16 @@ class EfectosController < Sip::ModelosController
     params.require(:efecto).permit(
       :id, 
       :indicadorpf_id,
-      :actor_id,
       :fecha_localizada,
+      :actor_ids => [],
+      :anexo_efecto_attributes => [
+        :id,
+        :efecto_id,
+        :_destroy,
+        :sip_anexo_attributes => [
+          :id, :descripcion, :adjunto, :_destroy
+        ]
+      ],
       :efecto_valorcampotind_attributes => [
         :id,
         :efecto_id,
@@ -116,14 +124,7 @@ class EfectosController < Sip::ModelosController
           :_destroy
         ]
       ],
-      :anexo_efecto_attributes => [
-        :id,
-        :efecto_id,
-        :_destroy,
-        :sip_anexo_attributes => [
-          :id, :descripcion, :adjunto, :_destroy
-        ]
-      ],
+
     )
   end
 end

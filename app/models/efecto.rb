@@ -6,8 +6,11 @@ class Efecto < ActiveRecord::Base
 
   belongs_to :indicadorpf, class_name: 'Cor1440Gen::Indicadorpf',
             foreign_key: "indicadorpf_id", validate: true
-  belongs_to :actor, class_name: '::Actor',
-            foreign_key: "actor_id", validate: true
+  #belongs_to :actor, class_name: '::Actor',
+  #          foreign_key: "actor_id", validate: true
+
+  has_many :actor_efecto, dependent: :delete_all
+  has_many :actor, through: :actor_efecto
 
   campofecha_localizado :fecha
 
@@ -30,7 +33,7 @@ class Efecto < ActiveRecord::Base
   accepts_nested_attributes_for :valorcampotind,  reject_if: :all_blank
 
   validates :indicadorpf_id, presence: true
-  validates :actor_id, presence: true
+  validates :actor_efecto, presence: true
   validates :fecha, presence: true
 
   scope :filtro_indicadorpf_id, lambda { |i|

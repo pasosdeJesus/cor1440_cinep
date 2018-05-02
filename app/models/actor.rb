@@ -8,6 +8,9 @@ class Actor < ActiveRecord::Base
   belongs_to :nivelrelacion, class_name: "::Nivelrelacion",
     foreign_key: "nivelrelacion_id", validate: true
 
+  has_many :actor_efecto, dependent: :delete_all
+  has_many :efecto, through: :actor_efecto
+
   has_many :actor_sectoractor, class_name: '::ActorSectoractor',
     foreign_key: "actor_id", validate: true, dependent: :delete_all
   has_many :sectoractor, class_name: '::Sectoractor',

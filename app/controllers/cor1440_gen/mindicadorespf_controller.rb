@@ -117,24 +117,29 @@ module Cor1440Gen
                fecha>='#{fini}' AND fecha<='#{ffin}'
                AND indicadorpf_id='18'"
             resind = ActiveRecord::Base.connection.execute(base).first['count'].to_f
+
           when 'E1I2'
-            base = "SELECT COUNT(actor_id) FROM efecto WHERE 
-               fecha>='#{fini}' AND fecha<='#{ffin}'
+            base = "SELECT COUNT(actor_id) FROM efecto
+               JOIN actor_efecto ON efecto.id=actor_efecto.efecto_id 
+               WHERE fecha>='#{fini}' AND fecha<='#{ffin}'
                AND indicadorpf_id='19'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
-            base = "SELECT COUNT(*) FROM (SELECT DISTINCT regiongrupo_id FROM efecto AS e
-              JOIN actor_regiongrupo AS ar ON ar.actor_id=e.actor_id 
-              WHERE e.fecha>='#{fini}' AND e.fecha<='#{ffin}'
-               AND e.indicadorpf_id='19') AS s"
+            base = "SELECT COUNT(*) FROM 
+              (SELECT DISTINCT regiongrupo_id FROM efecto 
+              JOIN actor_efecto ON efecto.id=actor_efecto.efecto_id 
+              JOIN actor_regiongrupo ON actor_regiongrupo.actor_id=actor_efecto.actor_id 
+              WHERE efecto.fecha>='#{fini}' AND efecto.fecha<='#{ffin}'
+              AND efecto.indicadorpf_id='19') AS s"
             d2 = ActiveRecord::Base.connection.execute(base)
             d2 = d2.first ? d2.first['count'] : 0
             resind = d2.to_f
 
           when 'E2I1'
             base = "SELECT COUNT(*) FROM (SELECT DISTINCT actor_id
-               FROM efecto AS e
-               WHERE e.fecha>='#{fini}' AND e.fecha<='#{ffin}'
-               AND e.indicadorpf_id='20') AS s"
+               FROM efecto 
+               JOIN actor_efecto ON efecto.id=actor_efecto.efecto_id 
+               WHERE efecto.fecha>='#{fini}' AND efecto.fecha<='#{ffin}'
+               AND efecto.indicadorpf_id='20') AS s"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
             base = "SELECT COUNT(*) FROM actor WHERE 
                (fechadeshabilitacion IS NULL 
