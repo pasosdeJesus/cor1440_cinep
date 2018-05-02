@@ -246,6 +246,16 @@ CREATE TABLE actor (
 
 
 --
+-- Name: actor_efecto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE actor_efecto (
+    actor_id bigint NOT NULL,
+    efecto_id bigint NOT NULL
+);
+
+
+--
 -- Name: actor_grupo; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1767,7 +1777,7 @@ ALTER SEQUENCE desembolso_id_seq OWNED BY desembolso.id;
 CREATE TABLE efecto (
     id bigint NOT NULL,
     indicadorpf_id integer,
-    actor_id integer,
+    actor_id_porborrar integer,
     fecha date
 );
 
@@ -5648,6 +5658,14 @@ ALTER TABLE ONLY oficina_proyectofinanciero
 
 
 --
+-- Name: actor_efecto fk_rails_043ee8d6b5; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor_efecto
+    ADD CONSTRAINT fk_rails_043ee8d6b5 FOREIGN KEY (actor_id) REFERENCES actor(id);
+
+
+--
 -- Name: cor1440_gen_mindicadorpf fk_rails_06564b910d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6608,14 +6626,6 @@ ALTER TABLE ONLY actor_grupo
 
 
 --
--- Name: efecto fk_rails_e7b8b0f924; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY efecto
-    ADD CONSTRAINT fk_rails_e7b8b0f924 FOREIGN KEY (actor_id) REFERENCES actor(id);
-
-
---
 -- Name: cor1440_gen_actividad_valorcampotind fk_rails_e8cd697f5d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6661,6 +6671,14 @@ ALTER TABLE ONLY coordinador_proyectofinanciero
 
 ALTER TABLE ONLY sal7711_gen_articulo_categoriaprensa
     ADD CONSTRAINT fk_rails_fcf649bab3 FOREIGN KEY (categoriaprensa_id) REFERENCES sal7711_gen_categoriaprensa(id);
+
+
+--
+-- Name: actor_efecto fk_rails_fedc30fafe; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY actor_efecto
+    ADD CONSTRAINT fk_rails_fedc30fafe FOREIGN KEY (efecto_id) REFERENCES efecto(id);
 
 
 --
@@ -7114,6 +7132,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180427160857'),
 ('20180427194732'),
 ('20180427235322'),
-('20180501225617');
+('20180501225617'),
+('20180502083127');
 
 

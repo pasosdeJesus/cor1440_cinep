@@ -216,7 +216,8 @@ es:
       "efecto":
         Efecto: 'Avance en indicador de efecto'
         Efectos: 'Avance en indicadores de efecto'
-        actor: Actor social
+        actor: Actor(es) social(es)
+        "{:actor_ids=>[]}": Actor(es) social(es)
         anexo_efecto: Anexos / Medios de verificación
         fecha_localizada: Fecha
         indicadorpf: Indicador
