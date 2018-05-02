@@ -30,7 +30,7 @@ tmp/
 
 # particulares de esta aplicacion
 app/views/redirige/index.html
-public/act/assets/
+public/assets/
 archivo/
 config/initializers/sip.rb
 herram/
