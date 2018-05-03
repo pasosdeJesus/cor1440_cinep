@@ -526,7 +526,28 @@ module Cor1440Gen
       return n
     end
  
-       
+    
+    def index(c = nil)
+      authorize! :index, Cor1440Gen::Proyectofinanciero
+      if c == nil
+        c = Cor1440Gen::Proyectofinanciero.all
+      end
+      if params[:grupo_ids] && params[:grupo_ids] != ''
+        grupo_ids = params[:grupo_ids].map {|x| x.to_i}
+        c = c.where("cor1440_gen_proyectofinanciero.id IN 
+                     (SELECT proyectofinanciero_id 
+                      FROM grupo_proyectofinanciero WHERE
+                      grupo_id IN (#{grupo_ids.join(',')}))")
+      end
+      if params[:fecha] && params[:fecha] != ''
+        fecha = fecha_local_estandar params[:fecha]
+        c = c.where('fechainicio <= ? AND ' +
+                    '(? <= fechacierre OR fechacierre IS NULL) ', 
+                    fecha, fecha)
+      end
+      super(c)
+    end   
+
     def index_otros_formatos(format, params)
       format.ods {
         if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 then

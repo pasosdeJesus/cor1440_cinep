@@ -22,7 +22,8 @@ $(document).on('turbolinks:load ready page:load', function() {
 	  exports : window;
 	sip_prepara_eventos_comunes(root, '/act');
 	heb412_gen_prepara_eventos_comunes(root);
-	cor1440_gen_prepara_eventos_comunes(root);
+	cor1440_gen_prepara_eventos_comunes(root, 
+            {'sin_eventos_cambia_proyecto': true});
 	cor1440_cinep_prepara_eventos_unicos(root);
 
 	formato_fecha = 'dd/M/yyyy'

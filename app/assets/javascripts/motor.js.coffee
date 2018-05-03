@@ -41,6 +41,7 @@
     $('#proyectofinanciero_duracion').val('')
 
 @cor1440_cinep_recalcula_montospesos_localizado = (root) ->
+
   tfl = $('#proyectofinanciero_tasa_localizado').val()
   tf = reconocer_decimal_locale_es_CO(tfl)
   sum = 0
@@ -123,8 +124,96 @@
     $('#proyectofinanciero_tasaej_localizado').val(t)
   cor1440_cinep_recalcula_montospesos_localizado(root)
 
+
+@cor1440_cinep_actividad_actualiza_camposdinamicos = (root) ->
+  ruta = document.location.pathname
+  if ruta.length == 0
+    return
+  if ruta[0] == '/'
+    ruta = ruta.substr(1)
+  datos = {
+    actividadpf_ids: $('#actividad_actividadpf_ids').val()
+  }
+  sip_envia_ajax_datos_ruta_y_pinta(ruta, datos,
+    '#camposdinamicos', '#camposdinamicos')
+
+ 
+@cor1440_cinep_actividad_actualiza_actividadpf =  (root) ->
+  params = {
+    pfl: $('#actividad_proyectofinanciero_ids').val(),
+  }
+  sip_llena_select_con_AJAX2('actividadespf', params, 
+    'actividad_actividadpf_ids', 'con Actividades de compromiso', root,
+    'id', 'nombre', cor1440_cinep_actividad_actualiza_camposdinamicos)
+
+
+@cor1440_cinep_actividad_actualiza_objetivopf =  (root) ->
+  params = {
+    pfl: $('#actividad_proyectofinanciero_ids').val(),
+  }
+  sip_llena_select_con_AJAX2('objetivospf', params,
+    'actividad_objetivopf_ids', 'con Objetivos de compromiso', root,
+    'id', 'nombre', cor1440_cinep_actividad_actualiza_actividadpf)
+
+
+@cor1440_cinep_actividad_actualiza_pf = (root) ->
+  params = {
+    fecha: $('#actividad_fecha_localizada').val(),
+    grupo_ids: $('#actividad_grupo_ids').val()
+  }
+  sip_llena_select_con_AJAX2('proyectosfinancieros', params, 
+    'actividad_proyectofinanciero_ids', 'con Compromisos', 
+    root, 'id', 'referenciacinep', 
+    cor1440_cinep_actividad_actualiza_objetivopf)
+
+
 @cor1440_cinep_prepara_eventos_unicos = (root) ->
   sip_arregla_puntomontaje(root)
+
+  # Actividad
+  $('#actividad_fecha_localizada').datepicker({
+    format: root.formato_fecha,
+    autoclose: true,
+    todayHighlight: true,
+    language: 'es'
+  }).on('changeDate', (ev) ->
+    cor1440_cinep_actividad_actualiza_pf(root)
+  )
+
+  $('#actividad_fecha_localizada').on('change', (ev) ->
+    cor1440_cinep_actividad_actualiza_pf(root)
+  )
+
+  $('#actividad_grupo_ids').chosen().change( (e) ->
+    cor1440_cinep_actividad_actualiza_pf(root)
+  )
+
+  $("#actividad_proyectofinanciero_ids").chosen().change( (e) ->
+    cor1440_cinep_actividad_actualiza_objetivopf(root)
+  )
+
+  $('#actividad_actividadpf_ids').chosen().change( (e) ->
+    cor1440_cinep_actividad_actualiza_camposdinamicos(root)
+  )
+
+
+  # Efecto
+  $(document).on('change', '#efecto_indicadorpf_id', (e) ->
+    ruta = document.location.pathname
+    if ruta.length == 0
+      return
+    if ruta[0] == '/'
+      ruta = ruta.substr(1)
+    datos = {
+      indicadorpf_id: $(this).val()
+    }
+    sip_envia_ajax_datos_ruta_y_pinta(ruta, datos,
+      '#camposdinamicos', '#camposdinamicos')
+
+  )
+
+
+  # Proyecto financiero - Compromiso Institucional
   $('#proyectofinanciero_tipomoneda_id').change( (e) ->
       val = $(this).val()
       if val == "1"  # PESO
@@ -219,64 +308,25 @@
 
   $('#proyectofinanciero_estado').trigger('change')
 
-  $('#actividad_actividadpf_ids').chosen().change( (e) ->
-    ruta = document.location.pathname
-    if ruta.length == 0
-      return
-    if ruta[0] == '/'
-      ruta = ruta.substr(1)
-    datos = {
-      actividadpf_ids: $(this).val()
-    }
-    sip_envia_ajax_datos_ruta_y_pinta(ruta, datos,
-      '#camposdinamicos', '#camposdinamicos')
+  $(document).on('change', '[id^=proyectofinanciero_proyectofinanciero_usuario_attributes][id$=usuario_id]', (e, inserted) ->
+    id=$(this).attr('id')
+     
+    aid_tipocontrato= id.replace('usuario_id', 'tipocontrato_id')
+    aid_perfilprofesional = id.replace('usuario_id', 'perfilprofesional_id')
+   
+    lid = [] 
+    lcampo = [] 
+    vp = $('#' + aid_perfilprofesional).val() 
+    if vp == '' || vp == '1'
+      lid.push([aid_perfilprofesional, 'perfilprofesional_id'])
+    vtn = $('#' + aid_tipocontrato).val() 
+    if vtn == '' || vtn == '1'
+      lid.push([aid_tipocontrato, 'tipocontrato_id'])
+    if lid.length > 0
+      sip_elige_opcion_select_con_AJAX($(this),  'usuarios', 
+        lid, 'Datos de usuario')
   )
 
-  $(document).on('change', '#efecto_indicadorpf_id', (e) ->
-    ruta = document.location.pathname
-    if ruta.length == 0
-      return
-    if ruta[0] == '/'
-      ruta = ruta.substr(1)
-    datos = {
-      indicadorpf_id: $(this).val()
-    }
-    sip_envia_ajax_datos_ruta_y_pinta(ruta, datos,
-      '#camposdinamicos', '#camposdinamicos')
-
-  )
-
-  # Campos dinamicos en formulario de usuario
-  $('#usuario_sip_grupo_ids').chosen().change( (e) ->
-    #usuario_gruposysupragrupos
-    ids=$(this).val()
-    if !Array.isArray(ids)
-      ids = [ids]
-    params = { ids: ids }
-    actualiza_procesogh = (root) ->
-      sip_cambia_cuadrotexto_AJAX('admin/grupos/procesosgh', params,
-        'usuario_contrato_attributes_procesogh', 'Procesogh')
-    sip_cambia_cuadrotexto_AJAX('admin/grupos/supragrupos', params,
-        'usuario_gruposysupragrupos', 'Supragrupos', actualiza_procesogh)
-      
-  )
-
-  $('#usuario_profesion_id').change( (e) ->
-    idp=$(this).val()
-    params = { id: idp }
-    sip_cambia_cuadrotexto_AJAX('admin/profesiones/' + idp + '/areaestudios', 
-      params, 'usuario_areaestudios', 'Area de estudios')
-      
-  )
-
-  $('#usuario_contrato_attributes_tipocontrato_id').change ( (e) ->
-    idt=$(this).val()
-    params = { id: idt }
-    sip_cambia_cuadrotexto_AJAX('admin/tiposcontratos/' + idt + '/tiponomina', 
-      params, 'usuario_contrato_attributes_tiponomina', 'Tipo de nomina')
-  )
-
-  # Campos dinámicos en formulario de compromiso institucional
   $('#proyectofinanciero_grupo_ids').chosen().change( (e) ->
     return
     sip_arregla_puntomontaje(root)
@@ -310,25 +360,38 @@
 
   )
 
-  # Cambio a persona en tabla cargos
-  $(document).on('change', '[id^=proyectofinanciero_proyectofinanciero_usuario_attributes][id$=usuario_id]', (e, inserted) ->
-    id=$(this).attr('id')
-     
-    aid_tipocontrato= id.replace('usuario_id', 'tipocontrato_id')
-    aid_perfilprofesional = id.replace('usuario_id', 'perfilprofesional_id')
-   
-    lid = [] 
-    lcampo = [] 
-    vp = $('#' + aid_perfilprofesional).val() 
-    if vp == '' || vp == '1'
-      lid.push([aid_perfilprofesional, 'perfilprofesional_id'])
-    vtn = $('#' + aid_tipocontrato).val() 
-    if vtn == '' || vtn == '1'
-      lid.push([aid_tipocontrato, 'tipocontrato_id'])
-    if lid.length > 0
-      sip_elige_opcion_select_con_AJAX($(this),  'usuarios', 
-        lid, 'Datos de usuario')
+
+  # Usuario
+ 
+  $('#usuario_sip_grupo_ids').chosen().change( (e) ->
+    #usuario_gruposysupragrupos
+    ids=$(this).val()
+    if !Array.isArray(ids)
+      ids = [ids]
+    params = { ids: ids }
+    actualiza_procesogh = (root) ->
+      sip_cambia_cuadrotexto_AJAX('admin/grupos/procesosgh', params,
+        'usuario_contrato_attributes_procesogh', 'Procesogh')
+    sip_cambia_cuadrotexto_AJAX('admin/grupos/supragrupos', params,
+        'usuario_gruposysupragrupos', 'Supragrupos', actualiza_procesogh)
+      
   )
+
+  $('#usuario_profesion_id').change( (e) ->
+    idp=$(this).val()
+    params = { id: idp }
+    sip_cambia_cuadrotexto_AJAX('admin/profesiones/' + idp + '/areaestudios', 
+      params, 'usuario_areaestudios', 'Area de estudios')
+      
+  )
+
+  $('#usuario_contrato_attributes_tipocontrato_id').change ( (e) ->
+    idt=$(this).val()
+    params = { id: idt }
+    sip_cambia_cuadrotexto_AJAX('admin/tiposcontratos/' + idt + '/tiponomina', 
+      params, 'usuario_contrato_attributes_tiponomina', 'Tipo de nomina')
+  )
+
 
   # Si se agrega con cocoon un campo de seleccion que se espera con
   # chosen, usa chosen

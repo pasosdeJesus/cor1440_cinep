@@ -28,8 +28,8 @@ class Ability  < Cor1440Gen::Ability
     'Ver documentos en nube y plantillas, así como descripciones de cada carpeta. ' +
     'Ver listado de usuarios y su información pública. ' +
     'Administrar actividades e informes de su grupo. ' +
-    'Equipos de investigación: Ver, editar y agregar actores sociales. ' +
-    'Equipo Derechos Humanos: En formulario de actividades usan contexto. ' +
+    'Áreas de investigación: Ver, editar y agregar actores sociales. ' +
+    'Área Derechos Humanos: En formulario de actividades usan contexto. Ver reportes trienal 2015-2017 ' +
     'Grupo Gerencia de Proyectos: Administrar actividades de todos los grupos. ' +
     'Grupo Gerencia de Proyectos: Administrar convenios institucionales. ' +
     'Grupo Gerencia de Proyectos: Administrar algunas tablas básicas: tipos de anexos, tipos de convenios, tipos de moneda, financiadores y cargos. ' +
