@@ -31,12 +31,12 @@
       <% end %>
       <% if can? :manage, ::Efecto %>
         <%= drop_down "Indicadores" do %>
-          <%= menu_item "Avance en indicadores de Efecto", 
-            main_app.efectos_path %>
-          <% if can? :edit, Cor1440Gen::Proyectofinanciero %>
+          <!--%= menu_item "Avance en indicadores de Efecto", 
+            main_app.efectos_path %-->
+          <!--% if can? :edit, Cor1440Gen::Proyectofinanciero %-->
             <%= menu_item "Medición", 
               main_app.mindicadorespf_path %>
-          <% end %>
+          <!--% end %-->
         <% end %>
       <% end %>
 

@@ -231,6 +231,9 @@ class Ability  < Cor1440Gen::Ability
           can [:create, :read, :update], ::Actor
           can :manage, :tablasbasicas
           can :manage, ::Efecto
+          can :index, Cor1440Gen::Mindicadorpf
+          can :objetivospf, Cor1440Gen::Proyectofinanciero
+          can :actividadespf, Cor1440Gen::Proyectofinanciero
         end
 
         # Contexto es para equipo derechos humanos 
