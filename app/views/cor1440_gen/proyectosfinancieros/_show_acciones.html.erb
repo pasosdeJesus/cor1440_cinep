@@ -12,8 +12,7 @@
     
     <div class="col-sm-3">
        <% if can? :read, Cor1440Gen::Proyectofinanciero %>
-         <% oppres = [['', '']] %>  
-         <% oppres += @plantillas if @plantillas %>
+         <% oppres = @plantillas ? @plantillas : [['','']] %>
          <%= f.input :plantilla_id, collection: oppres, 
            label: false, include_blank: false %>
       <% end %>
