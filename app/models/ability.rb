@@ -188,6 +188,48 @@ class Ability  < Cor1440Gen::Ability
       controlador: 'Cor1440Gen::Proyectofinanciero',
       ruta: '/proyectosfinancieros'
     },
+    'Compromiso Insitucional' => { 
+      campos: [
+        'nombre', 'referencia', 'referenciacinep',
+        'respagencia', 'emailrespagencia',
+        'telrespagencia', 'fuentefinanciador', 'observaciones',
+        'saldo', 'otrosaportescinep',
+        'empresaauditoria',
+        'centrocosto', 'cuentasbancarias', 
+        'sucursal', 'rendimientosfinancieros',
+        'informesespecificos', 'informessolicitudpago', 
+        'anotacionescontab', 'gestiones',
+        'acuse', 'autenticarcompulsar', 'copiasdesoporte', 
+         'reportarrendimientosfinancieros',
+         'reinvertirrendimientosfinancieros',
+         'aportefinanciador',  
+         'saldo',  
+         'aportefinancierocinep',  
+         'presupuestototal',  
+         'publicaciones',  
+         'fechainicio',  
+         'fechacierre',  
+         'fechaliquidacion',
+         'duracion',
+         'anotacionesdb', 
+         'anotacionesrh', 
+         'anotacionesre',
+         'anotacionesinf', 
+         'anotacionescontab',
+         'anotaciones',
+         'formatosespecificos',
+         'tipomoneda',
+         'responsable',
+         'financiador',
+         'paisfinanciador',
+         'organigramacinep',
+         'coordinador',
+         'equipotrabajo'
+      ],
+      controlador: 'Cor1440Gen::Proyectofinanciero',
+      ruta: '/proyectosfinancieros'
+    },
+
 
 
 
@@ -216,6 +258,7 @@ class Ability  < Cor1440Gen::Ability
         can :read, ::Tasacambio
         can :read, Heb412Gen::Doc
         can :read, Heb412Gen::Plantillahcm
+        can :read, Heb412Gen::Plantilladoc
         can :read, ::Usuario # Directorio institucional
         can :read, Sip::Grupo # Directorio institucional
         can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
@@ -259,6 +302,7 @@ class Ability  < Cor1440Gen::Ability
         if lgrupos.include?(GRUPO_GESTIONDECALIDAD)
           can :manage, Heb412Gen::Doc
           can :manage, Heb412Gen::Plantillahcm
+          can :manage, Heb412Gen::Plantilladoc
         end
         if lgrupos.include?(GRUPO_ARCHIVOYCORRESPONDENCIA)
           can [:edit, :update], ::Usuario
@@ -298,6 +342,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, Cor1440Gen::Tipoindicador
         can :manage, Heb412Gen::Doc
         can :manage, Heb412Gen::Plantillahcm
+        can :manage, Heb412Gen::Plantilladoc
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|
           c = Ability.tb_clase(t)

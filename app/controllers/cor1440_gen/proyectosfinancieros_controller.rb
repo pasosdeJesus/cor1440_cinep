@@ -146,6 +146,15 @@ module Cor1440Gen
       ]
     end
 
+    def show_plantillas
+      @plantillas = [['', '']]
+      @plantillas = Heb412Gen::Plantilladoc.where(
+        "vista IN ('Compromiso Institucional')").
+      select('nombremenu, id').map { 
+          |co| [co.nombremenu, "#{co.id}.odt"] 
+        }
+ 
+    end
 
     def new
       @registro = clase.constantize.new
@@ -590,9 +599,14 @@ module Cor1440Gen
       return registros.reorder([:estado, :referenciacinep, :id])
     end
 
-    def genera_odf
+    def genera_odf(plantilla_id, narchivo)
+      plantilla = Heb412Gen::Plantilladoc.find(plantilla_id)
+      if !plantilla
+        return
+      end
+      narchivo << File.basename(plantilla.ruta)
       # Ejemplo de https://github.com/sandrods/odf-report
-      report = ODFReport::Report.new("#{Rails.root}/public/heb412/Sistemas Integrados de Gestión/1 Gestión de Calidad/07 Seguimiento y control/3 Formatos/RE-SC-07 Ficha de Seguimiento y Control.odt") do |r|
+      report = ODFReport::Report.new("#{Rails.root}/public/heb412/#{plantilla.ruta}") do |r|
         cn = [:nombre, :referencia, :referenciacinep, 
               :respagencia, :emailrespagencia,
               :telrespagencia, :fuentefinanciador, :observaciones,
@@ -662,6 +676,13 @@ module Cor1440Gen
         end
         r.add_field(:formatosespecificos, cf > 0 ? 'Si' : 'No')
 
+        fh = Sip::FormatoFechaHelper::fecha_estandar_local(Date.today.to_s)
+        r.add_field(:fechahoy, fh)
+        fhf = Date.today + 12
+        r.add_field(
+          :fechahoymasdiezhabiles, 
+          Sip::FormatoFechaHelper::fecha_estandar_local(fhf.to_s))
+
         # Referencian otra
         r.add_field(:tipomoneda, @proyectofinanciero.tipomoneda &&
                     @proyectofinanciero.tipomoneda ? 
@@ -710,8 +731,10 @@ module Cor1440Gen
               (memo == '' ? '' : memo + "\n") + 
                 (i.usuario ? i.usuario.nombres + ' ' +
                 i.usuario.apellidos : "Por contratar") +
-                " (" + i.cargo.nombre.capitalize + ", " +
-                " - "+ i.perfilprofesional.nombre.capitalize + 
+                " (" + 
+                (i.cargo ? i.cargo.nombre.capitalize : '') + ", " +
+                " - "+ 
+                (i.perfilprofesional ? i.perfilprofesional.nombre.capitalize : '') + 
                 ")" + 
                 (i.porcentaje ? " " + i.porcentaje.to_s + "%" : '')
           })
@@ -798,31 +821,34 @@ module Cor1440Gen
     def fichaimp
       @registro = @basica = @proyectosfinancieros = Proyectofinanciero.where(
         id: @proyectofinanciero.id)
-
-      report = genera_odf
+      puts params
+      narchivo = ''
+      report = genera_odf(params[:idplantilla].to_i, narchivo)
       # El enlace en la vista debe tener data-turbolinks=false
       send_data report.generate,
         type: 'application/vnd.oasis.opendocument.text',
         disposition: 'attachment',
-        filename: 'RE-SC-07.odt'
+        filename: narchivo
     end
 
     def fichapdf
       @registro = @basica = @proyectosfinancieros = Proyectofinanciero.where(
         id: @proyectofinanciero.id)
 
-      report = genera_odf
-      report.generate("/tmp/RE-SC-07.odt")
-      if File.exist?('/tmp/RE-SC-07.pdf')
-        File.delete('/tmp/RE-SC-07.pdf')
+      narchivo = ''
+      report = genera_odf(params[:idplantilla].to_i, narchivo)
+      nase = narchivo.split(".")[0]
+      report.generate("/tmp/#{narchivo}")
+      if File.exist?("/tmp/#{nase}.pdf")
+        File.delete("/tmp/#{nase}.pdf")
       end
-      res = `libreoffice --headless --convert-to pdf /tmp/RE-SC-07.odt --outdir /tmp/`
+      res = `libreoffice --headless --convert-to pdf /tmp/#{narchivo} --outdir /tmp/`
       puts res
-      if File.exist?('/tmp/RE-SC-07.pdf')
-        send_file '/tmp/RE-SC-07.pdf',
+      if File.exist?("/tmp/#{nase}.pdf")
+        send_file "/tmp/#{nase}.pdf",
           type: 'application/pdf',
           disposition: 'attachment',
-          filename: 'RE-SC-07.pdf'
+          filename: nase + '.pdf'
       end
     end
 
