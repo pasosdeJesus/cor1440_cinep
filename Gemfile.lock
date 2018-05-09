@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: f37d01b018fe48c61785d0669f60b58d2f093b2c
+  revision: 602d738d107a71a99e373014377569835040fffe
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -11,8 +11,19 @@ GIT
       sip
 
 GIT
+  remote: https://github.com/pasosdeJesus/heb412_gen.git
+  revision: ca35076d2ce94f745659ab0e64359a7cf83dda0a
+  specs:
+    heb412_gen (1.0.a1)
+      chosen-rails
+      font-awesome-rails
+      redcarpet
+      rspreadsheet
+      sip
+
+GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 2c351b4e10f6514f95f0d5b09f3891274046f842
+  revision: 1249e4c6ec1624ec225b366eff096abcdc5299ad
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -42,6 +53,28 @@ GIT
     sal7711_web (1.0.a3)
       rails
       sal7711_gen
+
+GIT
+  remote: https://github.com/pasosdeJesus/sip.git
+  revision: ac69ecfb972d5f2d8792fc011be7eb1c8abbb9fa
+  specs:
+    sip (2.0.b5)
+      bootstrap-datepicker-rails
+      cancancan
+      chosen-rails
+      colorize
+      devise
+      devise-i18n
+      jquery-rails
+      jquery-ui-rails
+      minitest
+      paperclip
+      rails
+      rails-i18n
+      simple_form
+      twitter-bootstrap-rails
+      twitter_cldr
+      will_paginate
 
 GIT
   remote: https://github.com/rails/rails.git
@@ -111,41 +144,10 @@ GIT
 
 GIT
   remote: https://github.com/vtamara/cocoon.git
-  revision: f8fbad8d9d6bb087223221d70733b58a3d2efd8a
+  revision: f710fc1759612895846adeb7a7753e4191ddeb10
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
-
-PATH
-  remote: ../heb412_gen
-  specs:
-    heb412_gen (1.0.a1)
-      chosen-rails
-      font-awesome-rails
-      redcarpet
-      rspreadsheet
-      sip
-
-PATH
-  remote: ../sip
-  specs:
-    sip (2.0.b5)
-      bootstrap-datepicker-rails
-      cancancan
-      chosen-rails
-      colorize
-      devise
-      devise-i18n
-      jquery-rails
-      jquery-ui-rails
-      minitest
-      paperclip
-      rails
-      rails-i18n
-      simple_form
-      twitter-bootstrap-rails
-      twitter_cldr
-      will_paginate
 
 GEM
   remote: https://rubygems.org/
@@ -164,7 +166,6 @@ GEM
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
-    byebug (10.0.2)
     camertron-eprun (1.1.1)
     cancancan (2.2.0)
     capybara (3.0.3)
@@ -409,7 +410,6 @@ DEPENDENCIES
   bcrypt
   bootsnap (>= 1.1.0)
   bootstrap-datepicker-rails
-  byebug
   cancancan
   capybara
   chosen-rails
