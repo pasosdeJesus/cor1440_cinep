@@ -46,6 +46,9 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_GESTIONHUMANA = "Gestión Humana"
   GRUPO_GESTIONDECALIDAD = "Gestión de Calidad"
   GRUPO_EXTERNOS = "Externos"
+  GRUPO_USUARIOS = "Usuarios"
+  GRUPO_DESACTIVADOS = "Desactivados"
+  GRUPOS_GENERICOS = [GRUPO_EXTERNOS, GRUPO_USUARIOS, GRUPO_DESACTIVADOS]
   GRUPO_COMUNICACIONES = "Comunicaciones"
   GRUPO_DERECHOSHUMANOS = "Línea Derechos Humanos y Derecho Internacional Humanitario"
   GRUPO_LINEA = "Línea"
