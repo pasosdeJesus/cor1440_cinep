@@ -63,7 +63,8 @@
   end
 
   primernivel = Sip::Grupo.where(
-    "id IN (SELECT subgrupo_id FROM grupo_subgrupo WHERE grupo_id IN (SELECT id FROM sip_grupo WHERE cn = 'Usuarios')) " +
+    "id IN (SELECT subgrupo_id FROM (SELECT subgrupo_id, count(*) 
+     FROM grupo_subgrupo GROUP BY 1) AS s WHERE s.count=1) " +
     "AND cn<>'Desactivados' AND cn<>'Externos'").
     where('fechadeshabilitacion IS NULL').
     reorder(:nombre)
