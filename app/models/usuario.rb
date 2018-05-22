@@ -153,6 +153,7 @@ class Usuario < ActiveRecord::Base
 
   def fechanacb
     r = ""
+    return r if persona.nil?
     if persona.dianac
       r += persona.dianac.to_s
     end
