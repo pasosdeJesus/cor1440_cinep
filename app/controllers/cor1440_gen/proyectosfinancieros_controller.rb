@@ -593,8 +593,9 @@ module Cor1440Gen
       elsif mg1.where(nombre: ::Ability::GRUPO_COMPROMISOS).count == 0 &&
         current_usuario.rol != ::Ability::ROLDIR &&
         current_usuario.rol != ::Ability::ROLADMIN
-        registros = registros.joins(:grupo_proyectofinanciero).where(
-          "grupo_id IN (#{mgi})")
+        registros = registros.where(
+          "id IN (SELECT proyectofinanciero_id FROM grupo_proyectofinanciero " +
+          " WHERE grupo_id IN (#{mgi}))")
       end
       return registros.reorder([:estado, :referenciacinep, :id])
     end
