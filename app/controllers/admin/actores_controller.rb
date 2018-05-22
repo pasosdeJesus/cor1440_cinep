@@ -57,6 +57,27 @@ module Admin
       ]
     end
 
+
+    def index(c = nil)
+      authorize! :index, ::Actor
+      if c == nil
+        c = ::Actor.all
+      end
+      if params[:grupo_ids] && params[:grupo_ids] != ''
+        grupo_ids = params[:grupo_ids].map {|x| x.to_i}
+        c = c.where("actor.id IN 
+                     (SELECT actor_id 
+                      FROM actor_grupo WHERE
+                      sip_grupo_id IN (#{grupo_ids.join(',')}))")
+      end
+      if params[:fecha] && params[:fecha] != ''
+        fecha = Sip::FormatoFechaHelper.fecha_local_estandar params[:fecha]
+        c = c.where(
+          '(? <= fechadeshabilitacion OR fechadeshabilitacion IS NULL) ', fecha)
+      end
+      super(c)
+    end   
+
     def genclase
       'M'
     end
