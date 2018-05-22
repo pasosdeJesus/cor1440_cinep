@@ -1,7 +1,15 @@
-          <%= f.association :actor, 
-            collection: ::Actor.habilitados.where.not(id: 102).where.not(id: 103),
-            label: "Actores sociales",
-            label_method: :nombre, 
-            value_method: :id,
-            input_html: { class: 'chosen-select' }
-          %>
+<% a1 = ::Actor.habilitados %>
+<% lg = [] %>
+<% lg += f.object.grupo_ids if f.object.grupo_ids %>
+<% a1 = Admin::ActoresController::filtra_grupos_fecha(
+  a1, lg, f.object.fecha) %>
+<% a1l= a1.map(&:id) + f.object.actor_ids %>
+<% a2 = ::Actor.where(id: a1l) %>
+<%  #Actor.habilitados.where.not(id: 102).where.not(id: 103), %>
+<%= f.association :actor, 
+  collection: a2,
+  label: "Actores sociales",
+  label_method: :nombre, 
+  value_method: :id,
+  input_html: { class: 'chosen-select' }
+%>

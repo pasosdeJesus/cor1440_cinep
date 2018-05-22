@@ -57,24 +57,36 @@ module Admin
       ]
     end
 
+    def self.filtra_grupos_fecha(c, grupo_ids, fecha)
+      if grupo_ids && grupo_ids.length > 0
+        c = c.where("actor.id IN 
+                     (SELECT actor_id 
+                      FROM actor_grupo WHERE
+                      sip_grupo_id IN (#{grupo_ids.join(',')}))")
+      end
+      if fecha
+        c = c.where(
+          '(? <= fechadeshabilitacion OR fechadeshabilitacion IS NULL) ', fecha)
+      end
+
+      return c
+    end
 
     def index(c = nil)
       authorize! :index, ::Actor
       if c == nil
         c = ::Actor.all
       end
+      grupo_ids = nil
       if params[:grupo_ids] && params[:grupo_ids] != ''
         grupo_ids = params[:grupo_ids].map {|x| x.to_i}
-        c = c.where("actor.id IN 
-                     (SELECT actor_id 
-                      FROM actor_grupo WHERE
-                      sip_grupo_id IN (#{grupo_ids.join(',')}))")
       end
+      fecha = nil
       if params[:fecha] && params[:fecha] != ''
         fecha = Sip::FormatoFechaHelper.fecha_local_estandar params[:fecha]
-        c = c.where(
-          '(? <= fechadeshabilitacion OR fechadeshabilitacion IS NULL) ', fecha)
       end
+      c = ::Admin::ActoresController::filtra_grupos_fecha(
+        c, grupo_ids, fecha)
       super(c)
     end   
 
