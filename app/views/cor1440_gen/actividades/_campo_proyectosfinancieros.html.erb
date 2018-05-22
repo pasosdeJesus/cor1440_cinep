@@ -1,0 +1,21 @@
+         <% pf = Cor1440Gen::Proyectofinanciero.all %>
+         <% pf = pf.where('fechainicio <= ?', f.object.fecha) if f.object && f.object.fecha %>
+         <% pf = pf.where('fechacierre >= ?', f.object.fecha) if f.object && f.object.fecha %>
+         <% if f.object && f.object.grupo && f.object.grupo.count > 0 %>
+           <% pf = pf.where("id IN (SELECT proyectofinanciero_id 
+                            FROM grupo_proyectofinanciero 
+                            WHERE grupo_id IN (#{f.object.grupo.map(&:id).join(', ')}))") %>
+         <% elsif mgu.count == 0 %>
+          <% pf = pf.where('TRUE=FALSE') %>
+         <% else %>
+          <% pf = pf.where("id IN (SELECT proyectofinanciero_id 
+                            FROM grupo_proyectofinanciero 
+                            WHERE grupo_id IN (#{mgu.map(&:id).join(', ')}))") %>
+         <% end %>
+         <% pf = pf.order(:referenciacinep) %>
+         <%= f.association :proyectofinanciero,
+           collection: pf,
+           label_method: :referenciacinep, 
+           value_method: :id,
+           input_html: { class: 'chosen-select' }
+         %>

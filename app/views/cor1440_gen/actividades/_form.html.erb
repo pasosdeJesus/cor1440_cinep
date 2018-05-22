@@ -73,9 +73,12 @@
        </div>
       </div> <!-- row -->
       <% mgu = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario) %>
-
+      <% mgui = mgu.map(&:id) %>
+      <% gp = mgu.where("nombre LIKE '#{Ability::GRUPO_LINEA}%'").
+        order(:nombre).first %>
       <% gd = f.object.grupo.count > 0 ? f.object.grupo.map(&:id) : 
-        (mgu.count > 0 ? mgu.first.id : nil) %>
+      (gp ? [gp.id] : nil) %>
+      <% colg = Sip::Grupo.where(id: mgui + gd) %>
       <div class='row'>
        <div class='col-sm-offset-0 col-sm-6'>
          <%= f.association :grupo,
@@ -105,39 +108,11 @@
            } %>
        </div>
        <div class='col-sm-6'>
-         <% pf = Cor1440Gen::Proyectofinanciero.all %>
-         <% pf = pf.where('fechainicio <= ?', f.object.fecha) if f.object && f.object.fecha %>
-         <% pf = pf.where('fechacierre >= ?', f.object.fecha) if f.object && f.object.fecha %>
-         <% if f.object && f.object.grupo && f.object.grupo.count > 0 %>
-          <% pf = pf.where("id IN (SELECT proyectofinanciero_id 
-                            FROM grupo_proyectofinanciero 
-                            WHERE grupo_id IN (#{f.object.grupo.map(&:id).join(', ')}))") %>
-         <% elsif mgu.count == 0 %>
-          <% pf = pf.where('TRUE=FALSE') %>
-         <% else %>
-          <% pf = pf.where("id IN (SELECT proyectofinanciero_id 
-                            FROM grupo_proyectofinanciero 
-                            WHERE grupo_id IN (#{mgu.map(&:id).join(', ')}))") %>
-         <% end %>
-         <% pf = pf.order(:referenciacinep) %>
-         <%= f.association :proyectofinanciero,
-           collection: pf,
-           label_method: :referenciacinep, 
-           value_method: :id,
-           input_html: { class: 'chosen-select' }
-         %>
+         <%= render partial: 'campo_proyectosfinancieros', locals: {f: f} %>
        </div>
       </div> <!-- row -->
 
       <div class='row'>
-        <div class='col-sm-offset-0 col-sm-6'>
-          <%= f.association :actividadpf, 
-            collection: ::Cor1440Gen::Actividadpf.where(
-              proyectofinanciero_id: f.object.proyectofinanciero.map(&:id)),
-            label_method: :titulo, #lambda { |t| t.nombrecorto + ':' + t.titulo},
-            value_method: :id,
-            input_html: { class: 'chosen-select' } %>
-        </div>
         <div class='col-sm-offset-0 col-sm-6'>
           <%= f.association :objetivopf, 
             collection: ::Cor1440Gen::Objetivopf.where(
@@ -145,6 +120,9 @@
             label_method: lambda { |t| t.numero + ': ' + t.objetivo}, 
             value_method: :id,
             input_html: { class: 'chosen-select' } %>
+        </div>
+        <div class='col-sm-offset-0 col-sm-6'>
+          <%= render partial: 'campo_actividadpf', locals: {f: f} %>
         </div>
 
       </div> <!-- row -->
@@ -156,30 +134,14 @@
   <div class="panel panel-default">
     <div class="panel-heading">Desarrollo y Resultado</div><div class="panel-body">
 
-      <div id="camposdinamicos" class="valorcampoacts-div valorcampoacts">
-        <%= f.simple_fields_for :valorcampoact do |v| %>
-          <% render partial: 'valorcampoact_campos', locals: { f: f, v: v} %>
-        <% end %>
-      </div>
+      <%= render partial: 'campo_valorcampoact', locals: {f: f} %>
 
       <div class='row'>
         <div class='col-sm-offset-0 col-sm-6'>
-          <%= f.association :actor, 
-            collection: ::Actor.habilitados.where.not(id: 102).where.not(id: 103),
-            label: "Actores sociales",
-            label_method: :nombre, 
-            value_method: :id,
-            input_html: { class: 'chosen-select' }
-          %>
+          <%= render partial: 'campo_actor', locals: {f: f} %>
         </div> 
         <div class='col-sm-offset-0 col-sm-6'>
-          <%= f.association :publicacion, 
-            collection: ::Publicacion.habilitados,
-            label: "Publicaciones CINEP usadas",
-            label_method: :nombre, 
-            value_method: :id,
-            input_html: { class: 'chosen-select' }
-          %>
+          <%= render partial: 'campo_publicacion', locals: {f: f} %>
         </div> 
       </div> <!-- row -->
 
@@ -230,17 +192,6 @@
 
       <%= f.input :observaciones, as: :text %>
 
-      <!--%= f.input(:valora, collection: [
-                  1,
-                  2,
-                  3,
-                  4,
-                  5
-        ], 
-        input_html: { class: 'chosen-select' },
-        label: 'Valore la actividad en términos de importancia, efecto y proyección (1-5)',
-        include_blank: true) 
-      %-->
     </div> <!-- panel-body -->
   </div> <!-- panel panel-default -->
 
@@ -272,21 +223,7 @@
     </div> <!-- panel panel-default -->
   <% end %>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">Medios de Verificación / Anexos</div><div class="panel-body">
-   
-      <div class="anexos-div anexosdiv">
-        <%= f.simple_fields_for :actividad_sip_anexo do |a| %>
-          <%= render 'actividad_sip_anexo_fields', :f => a %>
-        <% end %>
-        <div class="links">
-          <%= link_to_add_association 'Añadir Anexo', f, 
-            :actividad_sip_anexo, :class => 'btn-primary' 
-          %>
-        </div>
-      </div> <!-- anexos-div -->
-    </div> <!-- panel-body -->
-  </div> <!-- panel panel-default -->
+  <%= render partial: 'campo_anexos', locals: {f: f} %>
  
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

@@ -1,0 +1,7 @@
+          <%= f.association :actor, 
+            collection: ::Actor.habilitados.where.not(id: 102).where.not(id: 103),
+            label: "Actores sociales",
+            label_method: :nombre, 
+            value_method: :id,
+            input_html: { class: 'chosen-select' }
+          %>
