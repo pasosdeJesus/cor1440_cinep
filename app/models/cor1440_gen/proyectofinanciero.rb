@@ -374,14 +374,12 @@ module Cor1440Gen
     }
 
     
-    scope :filtro_fechaformulacion_localizadaini, lambda { |f|
-      where('fechaformulacion >= ?', 
-            Sip::FormatoFechaHelper.fecha_local_estandar(f))
+    scope :filtro_fechaformulacionini, lambda { |f|
+      where('fechaformulacion >= ?', f)
     }
 
-    scope :filtro_fechaformulacion_localizadafin, lambda { |f|
-      where('fechaformulacion <= ?', 
-            Sip::FormatoFechaHelper.fecha_local_estandar(f))
+    scope :filtro_fechaformulacionfin, lambda { |f|
+      where('fechaformulacion <= ?', f)
     }
 
     def presenta(atr)

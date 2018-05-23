@@ -44,11 +44,11 @@ class Efecto < ActiveRecord::Base
     where('actor_id=?', a)
   }
 
-  scope :filtro_fecha_localizadaini, lambda { |f|
-    where('fecha >= ?', Sip::FormatoFechaHelper.fecha_local_estandar(f))
+  scope :filtro_fechaini, lambda { |f|
+    where('fecha >= ?', f)
   }
 
-  scope :filtro_fecha_localizadafin, lambda { |f|
-    where('fecha <= ?', Sip::FormatoFechaHelper.fecha_local_estandar(f))
+  scope :filtro_fechafin, lambda { |f|
+    where('fecha <= ?', f)
   }
 end

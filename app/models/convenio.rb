@@ -70,24 +70,20 @@ class Convenio < ActiveRecord::Base
         where(tipoconvenio_id: idt)
   } 
 
-  scope :filtro_fechainicio_localizadaini, lambda { |f|
-    where('fechainicio >= ?', 
-          Sip::FormatoFechaHelper.fecha_local_estandar(f))
+  scope :filtro_fechainicioini, lambda { |f|
+    where('fechainicio >= ?', f)
   }
 
-  scope :filtro_fechainicio_localizadafin, lambda { |f|
-    where('fechainicio <= ?', 
-          Sip::FormatoFechaHelper.fecha_local_estandar(f))
+  scope :filtro_fechainiciofin, lambda { |f|
+    where('fechainicio <= ?', f)
   }
 
-  scope :filtro_fechacierre_localizadaini, lambda { |f|
-    where('fechacierre >= ?', 
-          Sip::FormatoFechaHelper.fecha_local_estandar(f))
+  scope :filtro_fechacierreini, lambda { |f|
+    where('fechacierre >= ?', f)
   }
 
-  scope :filtro_fechacierre_localizadafin, lambda { |f|
-    where('fechacierre <= ?', 
-          Sip::FormatoFechaHelper.fecha_local_estandar(f))
+  scope :filtro_fechacierrefin, lambda { |f|
+    where('fechacierre <= ?', f)
   }
 
 

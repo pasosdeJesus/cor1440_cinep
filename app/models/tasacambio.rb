@@ -23,12 +23,12 @@ class Tasacambio < ActiveRecord::Base
     where(tipomoneda_id: t)
   }
 
-  scope :filtro_fecha_localizadaini, lambda { |f|
-      where('fecha >= ?', Sip::FormatoFechaHelper.fecha_local_estandar(f))
+  scope :filtro_fechaini, lambda { |f|
+      where('fecha >= ?', f)
   }
 
-  scope :filtro_fecha_localizadafin, lambda { |f|
-      where('fecha <= ?', Sip::FormatoFechaHelper.fecha_local_estandar(f))
+  scope :filtro_fechafin, lambda { |f|
+      where('fecha <= ?', f)
   }
 
   scope :filtro_enpesos_localizadoini, lambda {|p|
