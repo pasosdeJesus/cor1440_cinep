@@ -1,0 +1,12 @@
+<%= f.input :busgrupo,
+  collection: Sip::Grupo.habilitados,
+  include_blank: true,
+  label_method: :presenta_nombre,
+  value_method: :id,
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :busgrupo),
+  input_html: {
+    class: 'chosen-select',
+    'data-enviarautomatico' => ''
+  }
+%>

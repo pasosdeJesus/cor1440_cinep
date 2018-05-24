@@ -135,6 +135,7 @@ group :test do
   gem "spring"
   gem 'connection_pool'
   gem 'minitest'
+  gem 'minitest-rails'
   gem 'minitest-reporters'
   gem 'poltergeist'
   gem 'minitest-rails-capybara'

@@ -1,0 +1,12 @@
+<%= f.input :busdepartamento,
+  collection: Sip::Departamento.habilitados.where(id_pais: 170),
+  include_blank: true,
+  label_method: :presenta_nombre,
+  value_method: :id,
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :busdepartamento),
+  input_html: {
+    class: 'chosen-select',
+    'data-enviarautomatico' => ''
+  }
+%>
