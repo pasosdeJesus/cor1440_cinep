@@ -19,6 +19,85 @@ SET row_security = off;
 SET search_path = public, pg_catalog;
 
 --
+-- Data for Name: nivelrelacion; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO nivelrelacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (1, 'ACTOR DE SENTIDO', 'Trabajamos para ellos misionalmente, son beneficiarios', '2018-02-02', NULL, '2018-02-02 00:00:00', '2018-02-02 00:00:00');
+INSERT INTO nivelrelacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (2, 'ACTOR DE MISIÓN', 'Trabajamos con ellos como pares para lo misional', '2018-02-02', NULL, '2018-02-02 00:00:00', '2018-02-02 00:00:00');
+INSERT INTO nivelrelacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (3, 'ACTOR ESTRATÉGICO', 'Pueden financiarnos o nos ayudan en incidencia', '2018-02-02', NULL, '2018-02-02 00:00:00', '2018-02-06 16:23:44.775827');
+INSERT INTO nivelrelacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (4, 'ACTOR DE INCIDENCIA', 'En quienes queremos influir para la toma de decisiones.  Falta limitar si solo es incidencia política,  o si por ejemplo lograr publicación en medios masivos también se considera.  Si solo es inicidencia política sobra sector formula política pública.', '2018-02-02', NULL, '2018-02-02 00:00:00', '2018-02-06 16:54:50.275062');
+
+
+--
+-- Name: nivelrelacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('nivelrelacion_id_seq', 100, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.1
+-- Dumped by pg_dump version 10.1
+
+SET statement_timeout = 0;
+
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: tiponomina; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO tiponomina (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (1, 'SIN INFORMACIÓN', NULL, '2018-04-25', NULL, '2018-04-25 00:00:00', '2018-04-25 00:00:00');
+INSERT INTO tiponomina (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (2, 'AUXILIO', NULL, '2018-04-25', NULL, '2018-04-25 00:00:00', '2018-04-25 00:00:00');
+INSERT INTO tiponomina (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (3, 'HONORARIOS', NULL, '2018-04-25', NULL, '2018-04-25 00:00:00', '2018-04-25 00:00:00');
+INSERT INTO tiponomina (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (4, 'SALARIO', NULL, '2018-04-25', NULL, '2018-04-25 00:00:00', '2018-04-25 00:00:00');
+INSERT INTO tiponomina (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (5, 'N/A', NULL, '2018-04-25', NULL, '2018-04-25 00:00:00', '2018-04-25 00:00:00');
+
+
+--
+-- Name: tiponomina_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('tiponomina_id_seq', 100, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.1
+-- Dumped by pg_dump version 10.1
+
+SET statement_timeout = 0;
+
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
 -- Data for Name: sectoractor; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -69,6 +148,8 @@ SELECT pg_catalog.setval('sectoractor_id_seq', 124, true);
 --
 -- PostgreSQL database dump complete
 --
+
+
 
 --
 -- PostgreSQL database dump
@@ -848,44 +929,6 @@ SELECT pg_catalog.setval('fondopensiones_id_seq', 100, true);
 -- PostgreSQL database dump complete
 --
 
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 10.1
--- Dumped by pg_dump version 10.1
-
-SET statement_timeout = 0;
-
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
-
---
--- Data for Name: nivelrelacion; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO nivelrelacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (1, 'ACTOR DE SENTIDO', 'Trabajamos para ellos misionalmente, son beneficiarios', '2018-02-02', NULL, '2018-02-02 00:00:00', '2018-02-02 00:00:00');
-INSERT INTO nivelrelacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (2, 'ACTOR DE MISIÓN', 'Trabajamos con ellos como pares para lo misional', '2018-02-02', NULL, '2018-02-02 00:00:00', '2018-02-02 00:00:00');
-INSERT INTO nivelrelacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (3, 'ACTOR ESTRATÉGICO', 'Pueden financiarnos o nos ayudan en incidencia', '2018-02-02', NULL, '2018-02-02 00:00:00', '2018-02-06 16:23:44.775827');
-INSERT INTO nivelrelacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (4, 'ACTOR DE INCIDENCIA', 'En quienes queremos influir para la toma de decisiones.  Falta limitar si solo es incidencia política,  o si por ejemplo lograr publicación en medios masivos también se considera.  Si solo es inicidencia política sobra sector formula política pública.', '2018-02-02', NULL, '2018-02-02 00:00:00', '2018-02-06 16:54:50.275062');
-
-
---
--- Name: nivelrelacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('nivelrelacion_id_seq', 100, true);
-
-
---
--- PostgreSQL database dump complete
---
 
 --
 -- PostgreSQL database dump
@@ -1510,46 +1553,6 @@ INSERT INTO tipoconvenio (id, nombre, observaciones, fechacreacion, fechadeshabi
 --
 
 SELECT pg_catalog.setval('tipoconvenio_id_seq', 100, true);
-
-
---
--- PostgreSQL database dump complete
---
-
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 10.1
--- Dumped by pg_dump version 10.1
-
-SET statement_timeout = 0;
-
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
-
---
--- Data for Name: tiponomina; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO tiponomina (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (1, 'SIN INFORMACIÓN', NULL, '2018-04-25', NULL, '2018-04-25 00:00:00', '2018-04-25 00:00:00');
-INSERT INTO tiponomina (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (2, 'AUXILIO', NULL, '2018-04-25', NULL, '2018-04-25 00:00:00', '2018-04-25 00:00:00');
-INSERT INTO tiponomina (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (3, 'HONORARIOS', NULL, '2018-04-25', NULL, '2018-04-25 00:00:00', '2018-04-25 00:00:00');
-INSERT INTO tiponomina (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (4, 'SALARIO', NULL, '2018-04-25', NULL, '2018-04-25 00:00:00', '2018-04-25 00:00:00');
-INSERT INTO tiponomina (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (5, 'N/A', NULL, '2018-04-25', NULL, '2018-04-25 00:00:00', '2018-04-25 00:00:00');
-
-
---
--- Name: tiponomina_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('tiponomina_id_seq', 100, true);
 
 
 --

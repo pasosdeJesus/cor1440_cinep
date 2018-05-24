@@ -97,7 +97,9 @@ class Ability  < Cor1440Gen::Ability
 
   def tablasbasicas_prio 
     super() + [
-      ['', 'sectoractor']
+      ['', 'nivelrelacion'],
+      ['', 'sectoractor'],
+      ['', 'tiponomina']
     ]
   end
 
