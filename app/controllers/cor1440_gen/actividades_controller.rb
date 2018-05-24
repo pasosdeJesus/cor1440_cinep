@@ -92,6 +92,34 @@ module Cor1440Gen
       ]
     end
 
+    def atributos_form
+      atributos_show - [:proyectosfinancieros] + [:proyectofinanciero] - [:id]
+    end
+
+    def atributos_index
+      [ :id, 
+        :fecha, 
+        :responsable, 
+        :nombre, 
+        :departamento,
+        :municipio,
+        :grupo, 
+        :proyectofinanciero, 
+        :actividadpf,
+        :actor,
+        :publicacion,
+        :mujeres,
+        :hombres,
+        :sexo_onr,
+        :negros,
+        :indigenas,
+        :etnia_onr,
+        :poblacion, 
+        :anexos
+      ]
+    end
+
+
     def atributos_presenta
       [ :id, :fecha, :creadopor, :duracion, :mduracion,
         :nombre, :departamento, :municipio,

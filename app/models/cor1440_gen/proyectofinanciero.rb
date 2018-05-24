@@ -292,7 +292,7 @@ module Cor1440Gen
     validates :montopesos, numericality: 
       { less_than: 1000000000000000000 }
     validates :nitfinanciador, allow_blank: true,
-      length: { maximum: 31}
+      length: { maximum: 127}
     validates :objeto, length: { maximum: 5000}
     validates :observacionestramite, length: { maximum: 5000}
     validates :observacionesejecucion, length: { maximum: 5000}

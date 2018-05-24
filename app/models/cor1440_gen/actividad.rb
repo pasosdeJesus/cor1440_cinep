@@ -85,5 +85,13 @@ module Cor1440Gen
     end
 
 
+    scope :filtro_departamento, lambda { |did|
+      where(departamento_id: did)
+    }
+
+    scope :filtro_grupo, lambda { |gid|
+      joins(:actividad_grupo).where('actividad_grupo.grupo_id = ?', gid)
+    }
+
   end
 end

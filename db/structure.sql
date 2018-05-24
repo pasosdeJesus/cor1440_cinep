@@ -1544,7 +1544,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     presupuestototalej double precision,
     respgp2_id integer,
     razonsocialfinanciador character varying(511),
-    nitfinanciador character varying(31),
+    nitfinanciador character varying(127),
     replegalfinanciador character varying(511),
     domiciliofinanciador character varying(511),
     webfinanciador character varying(511),
@@ -7186,6 +7186,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180509114933'),
 ('20180509125608'),
 ('20180519102415'),
-('20180522102059');
+('20180522102059'),
+('20180523103836');
 
 
