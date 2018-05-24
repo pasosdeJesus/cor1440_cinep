@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: ead894aa4ac307fbd86ff2a30b859e46104a02c8
+  revision: ab973e112e3aca994679e2aa27f947489a6a5e55
   branch: vista_actividad_sipmodelo
   specs:
     cor1440_gen (1.0b2)
