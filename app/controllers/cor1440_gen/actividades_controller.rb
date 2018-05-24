@@ -37,36 +37,18 @@ module Cor1440Gen
       update_gen
     end
 
-    def self.filtramas(par, ac, current_usuario = nil)
+    def index_reordenar(c)
       mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).
         map(&:id).join(', ')
       if mg == ''
-        ac = ac.where('TRUE=FALSE')
+        c = c.where('TRUE=FALSE')
       else
-        ac = ac.where("cor1440_gen_actividad.id in 
+        c = c.where("cor1440_gen_actividad.id in 
         (SELECT actividad_id FROM actividad_grupo WHERE grupo_id IN (#{mg}))")
       end
-      @busresponsable = param_escapa(par, 'busresponsable')
-      if @busresponsable != '' then
-        ac = ac.where(responsable: @busresponsable)
-      end
+      c = c.reorder('cor1440_gen_actividad.fecha DESC') 
 
-      @busdepartamento = param_escapa(par, 'busdepartamento')
-      if @busdepartamento != '' then
-        ac = ac.where(departamento_id: @busdepartamento)
-      end
-
-      @busresultado = param_escapa(par, 'busresultado')
-      if @busresultado != '' then
-        ac = ac.where("unaccent(resultado) ILIKE unaccent(?)", "%#{@busresultado}%")
-      end
-
-      @buscontexto = param_escapa(par, 'buscontexto')
-      if @buscontexto != '' then
-        ac = ac.where("unaccent(contexto) ILIKE unaccent(?)", "%#{@buscontexto}%")
-      end
-
-      return ac
+      return c
     end
 
 
@@ -82,13 +64,28 @@ module Cor1440Gen
     end
 
     def atributos_show
-      [ :id, :fecha, :creadopor, :duracion, :mduracion,
-        :nombre, :departamento, :municipio,
-        :grupo, :proyectosfinancieros, :actividadpf,
-        :objetivopf, :actor, :publicacion,
-        :mujeres, :hombres, :sexo_onr,
-        :negros, :indigenas, :etnia_onr,
-        :observaciones, :anexos
+      [ :id, 
+        :fecha, 
+        :creadopor, 
+        :duracion, 
+        :mduracion,
+        :nombre, 
+        :departamento, 
+        :municipio,
+        :grupo, 
+        :proyectosfinancieros, 
+        :actividadpf,
+        :objetivopf, 
+        :actor, 
+        :publicacion,
+        :mujeres, 
+        :hombres, 
+        :sexo_onr,
+        :negros, 
+        :indigenas, 
+        :etnia_onr,
+        :observaciones, 
+        :anexos
       ]
     end
 
@@ -99,7 +96,7 @@ module Cor1440Gen
     def atributos_index
       [ :id, 
         :fecha, 
-        :responsable, 
+        :creadopor, 
         :nombre, 
         :departamento,
         :municipio,
