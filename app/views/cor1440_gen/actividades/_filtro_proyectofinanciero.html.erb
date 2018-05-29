@@ -1,0 +1,15 @@
+<% col = Cor1440Gen::Proyectofinanciero.where(
+  'id IN (SELECT DISTINCT proyectofinanciero_id ' + 
+  '  FROM cor1440_gen_actividad_proyectofinanciero)') %>
+<%= f.input :busproyectofinanciero,
+  collection: col.order(:referenciacinep),
+  include_blank: true,
+  label_method: :referenciacinep,
+  value_method: :id,
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :busproyectofinanciero),
+  input_html: {
+    class: 'chosen-select',
+    'data-enviarautomatico' => ''
+  }
+%>

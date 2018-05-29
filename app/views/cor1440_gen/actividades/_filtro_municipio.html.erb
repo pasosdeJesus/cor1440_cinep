@@ -1,0 +1,15 @@
+<% col = Sip::Municipio.where(
+  'id IN (SELECT DISTINCT municipio_id ' + 
+  '  FROM cor1440_gen_actividad)') %>
+<%= f.input :busmunicipio,
+  collection: col.order(:nombre),
+  include_blank: true,
+  label_method: :presenta_nombre,
+  value_method: :id,
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :busmunicipio),
+  input_html: {
+    class: 'chosen-select',
+    'data-enviarautomatico' => ''
+  }
+%>

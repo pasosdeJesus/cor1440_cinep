@@ -106,6 +106,10 @@ module Cor1440Gen
       joins(:actividad_grupo).where('actividad_grupo.grupo_id = ?', gid)
     }
 
+    scope :filtro_municipio, lambda { |idm|
+      where(municipio_id: idm)
+    }
+
     scope :filtro_publicacion, lambda { |pid|
       where("id IN (SELECT actividad_id FROM actividad_publicacion
         WHERE publicacion_id = ?)", pid)
