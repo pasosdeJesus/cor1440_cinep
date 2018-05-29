@@ -147,6 +147,7 @@ es:
         coordinador: "Coordinador(es)"
         cuentasbancarias: "Cuentas bancarias"
         desembolso: 'Desembolsos'
+        dificultad: 'Dificultad en formulación'
         duracion: "Duración"
         domiciliofinanciador: 'Domicilio'
         emailrespagencia: "Correo del responsable agencia"
