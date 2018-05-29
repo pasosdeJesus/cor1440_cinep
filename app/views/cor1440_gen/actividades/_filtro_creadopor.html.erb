@@ -2,9 +2,9 @@
   'id IN (SELECT DISTINCT creadopor_id ' + 
   '  FROM cor1440_gen_actividad)') %>
 <%= f.input :buscreadopor,
-  collection: col.order(:nusuario),
+  collection: col.order(:nombres, :apellidos),
   include_blank: true,
-  label_method: :nusuario,
+  label_method: :presenta_nombre,
   value_method: :id,
   label: false,
   selected: Sip::ModeloHelper.poromision(params, :buscreadopor),
