@@ -63,21 +63,25 @@ class Actor < ActiveRecord::Base
     nombre
   end
 
-  scope :filtro_sectoractor_ids, lambda { |s|
-    joins(:actor_sectoractor).where('actor_sectoractor.sectoractor_id=?', s)
-  }
   
   scope :filtro_grupo_ids, lambda { |g|
     joins(:actor_grupo).where('actor_grupo.sip_grupo_id=?', g)
   }
 
-  scope :filtro_regiongrupo_ids, lambda { |r|
-    joins(:actor_regiongrupo).where('actor_regiongrupo.regiongrupo_id=?', r)
+  scope :filtro_nivelderelacion, lambda { |n|
+    where(nivelrelacion_id: n)
   }
 
   scope :filtro_personacontacto, lambda { |p|
     where("personacontacto ILIKE '%' || unaccent(?) || '%'", p)
   }
 
+  scope :filtro_regiongrupo_ids, lambda { |r|
+    joins(:actor_regiongrupo).where('actor_regiongrupo.regiongrupo_id=?', r)
+  }
+
+  scope :filtro_sectoractor_ids, lambda { |s|
+    joins(:actor_sectoractor).where('actor_sectoractor.sectoractor_id=?', s)
+  }
 
 end
