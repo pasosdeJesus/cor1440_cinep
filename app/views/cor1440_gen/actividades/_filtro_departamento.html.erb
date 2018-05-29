@@ -1,5 +1,8 @@
+<% col = Sip::Departamento.where(
+  'id IN (SELECT DISTINCT departamento_id ' + 
+  '  FROM cor1440_gen_actividad)') %>
 <%= f.input :busdepartamento,
-  collection: Sip::Departamento.habilitados.where(id_pais: 170),
+  collection: col.where(id_pais: 170),
   include_blank: true,
   label_method: :presenta_nombre,
   value_method: :id,

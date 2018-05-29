@@ -1,8 +1,5 @@
-<% #byebug %>
 <% col = ::Publicacion.where(
-  'id IN (SELECT DISTINCT publicacion_id ' + 
-  '  FROM actividad_publicacion)') %>
-<% puts "publicacion: col.count=#{col.count}" %>
+  'id IN (SELECT DISTINCT publicacion_id FROM actividad_publicacion)') %>
 <%= f.input :buspublicacion,
   collection: col.order(:nombre),
   include_blank: true,

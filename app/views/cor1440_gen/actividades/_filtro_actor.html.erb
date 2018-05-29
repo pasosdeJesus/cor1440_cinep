@@ -1,6 +1,8 @@
+<% col = ::Actor.where(
+  'id IN (SELECT DISTINCT actor_id ' + 
+  '  FROM actividad_actor)') %>
 <%= f.input :busactor,
-  collection: ::Actor.where(
-    'id IN (SELECT DISTINCT actor_id FROM actividad_actor)').order(:nombre),
+  collection: col.order(:nombre),
   include_blank: true,
   label_method: :nombre,
   value_method: :id,

@@ -1,5 +1,7 @@
+<% col = Sip::Grupo.where(
+  'id IN (SELECT DISTINCT grupo_id FROM actividad_grupo)') %>
 <%= f.input :busgrupo,
-  collection: Sip::Grupo.habilitados,
+  collection: col.habilitados,
   include_blank: true,
   label_method: :presenta_nombre,
   value_method: :id,

@@ -1,5 +1,8 @@
+<% col = ::Usuario.where(
+  'id IN (SELECT DISTINCT creadopor_id ' + 
+  '  FROM cor1440_gen_actividad)') %>
 <%= f.input :buscreadopor,
-  collection: ::Usuario.habilitados.order(:nusuario),
+  collection: col.order(:nusuario),
   include_blank: true,
   label_method: :nusuario,
   value_method: :id,
