@@ -1,0 +1,17 @@
+<% #byebug %>
+<% col = ::Publicacion.where(
+  'id IN (SELECT DISTINCT publicacion_id ' + 
+  '  FROM actividad_publicacion)') %>
+<% puts "publicacion: col.count=#{col.count}" %>
+<%= f.input :buspublicacion,
+  collection: col.order(:nombre),
+  include_blank: true,
+  label_method: :nombre,
+  value_method: :id,
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :buspublicacion),
+  input_html: {
+    class: 'chosen-select',
+    'data-enviarautomatico' => ''
+  }
+%>

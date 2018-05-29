@@ -1,0 +1,18 @@
+<% #byebug %>
+<% col = Cor1440Gen::Actividadpf.where(
+  'id IN (SELECT DISTINCT actividadpf_id ' + 
+  '  FROM cor1440_gen_actividad_actividadpf)') %>
+<% #col = Cor1440Gen::Actividadpf.all %>
+<% puts "col.count=#{col.count}" %>
+<%= f.input :busactividadpf,
+  collection: col.order(:descripcion),
+  include_blank: true,
+  label_method: :descripcion,
+  value_method: :id,
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :busactividadpf),
+  input_html: {
+    class: 'chosen-select',
+    'data-enviarautomatico' => ''
+  }
+%>

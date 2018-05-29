@@ -84,6 +84,11 @@ module Cor1440Gen
       end
     end
 
+    scope :filtro_actividadpf, lambda { |aid|
+      where("id IN (SELECT actividad_id FROM cor1440_gen_actividad_actividadpf
+        WHERE actividadpf_id = ?)", aid)
+    }
+
     scope :filtro_actor, lambda { |aid|
       where("id IN (SELECT actividad_id FROM actividad_actor 
         WHERE actor_id = ?)", aid)
@@ -100,6 +105,12 @@ module Cor1440Gen
     scope :filtro_grupo, lambda { |gid|
       joins(:actividad_grupo).where('actividad_grupo.grupo_id = ?', gid)
     }
+
+    scope :filtro_publicacion, lambda { |pid|
+      where("id IN (SELECT actividad_id FROM actividad_publicacion
+        WHERE publicacion_id = ?)", pid)
+    }
+
 
   end
 end
