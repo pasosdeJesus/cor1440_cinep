@@ -111,7 +111,6 @@ module Cor1440Gen
         :negros,
         :indigenas,
         :etnia_onr,
-        :poblacion, 
         :anexos
       ]
     end

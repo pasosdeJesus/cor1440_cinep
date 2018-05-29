@@ -84,6 +84,14 @@ module Cor1440Gen
       end
     end
 
+    scope :filtro_actor, lambda { |aid|
+      where("id IN (SELECT actividad_id FROM actividad_actor 
+        WHERE actor_id = ?)", aid)
+    }
+
+    scope :filtro_creadopor, lambda { |uid|
+      where(creadopor_id: uid)
+    }
 
     scope :filtro_departamento, lambda { |did|
       where(departamento_id: did)

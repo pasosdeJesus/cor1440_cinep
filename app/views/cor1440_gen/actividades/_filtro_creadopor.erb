@@ -1,0 +1,12 @@
+<%= f.input :buscreadopor,
+  collection: ::Usuario.habilitados.order(:nusuario),
+  include_blank: true,
+  label_method: :nusuario,
+  value_method: :id,
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :buscreadopor),
+  input_html: {
+    class: 'chosen-select',
+    'data-enviarautomatico' => ''
+  }
+%>

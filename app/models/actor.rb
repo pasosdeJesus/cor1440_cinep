@@ -68,7 +68,7 @@ class Actor < ActiveRecord::Base
     joins(:actor_grupo).where('actor_grupo.sip_grupo_id=?', g)
   }
 
-  scope :filtro_nivelderelacion, lambda { |n|
+  scope :filtro_nivelrelacion_id, lambda { |n|
     where(nivelrelacion_id: n)
   }
 
