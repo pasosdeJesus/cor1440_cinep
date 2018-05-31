@@ -224,6 +224,15 @@
 
 
   # Proyecto financiero - Compromiso Institucional
+  #
+
+  $(document).on('click', 'a.enviarautomatico_y_repintapf[href^="#"]', (e) ->
+    sip_enviarautomatico_formulario_y_repinta($('form').attr('id'), 
+      ['informes'], 'POST', false)
+    return
+  )
+
+ 
   $('#proyectofinanciero_tipomoneda_id').change( (e) ->
       val = $(this).val()
       if val == "1"  # PESO

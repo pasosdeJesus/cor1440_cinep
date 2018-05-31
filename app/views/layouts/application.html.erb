@@ -69,9 +69,6 @@
            <%= menu_item "Plantillas documentos para un registro",
              heb412_gen.plantillasdoc_path %>
         <% end %>
-        <% if can? :manage, ::Usuario %>
-          <%= menu_item "Sincroniza Grupos y Usuarios de LDAP", jn316_gen.sincronizarug_path %>
-        <% end %>
         <% if can? :read, ::Usuario %>
           <%= menu_item "Directorio/Organigrama", main_app.grupos_arbol_path %>
           <%= menu_item "Usuarios", main_app.usuarios_path %>

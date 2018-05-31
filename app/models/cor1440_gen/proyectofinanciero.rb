@@ -57,106 +57,58 @@ module Cor1440Gen
 
     campofecha_mesanio :fechaformulacion
 
-#    def anioformulacion
-#      fechaformulacion.year 
-#    end
-#
-#    def mesformulacion
-#      fechaformulacion.month
-#    end
-#
-#    def anioformulacion=(a)
-#      if self.fechaformulacion 
-#        self.fechaformulacion = Date.new(a.to_i, 
-#                                         self.fechaformulacion.month, 15) 
-#      else
-#        self.fechaformulacion = Date.new(a.to_i, 6, 15)
-#      end
-#    end
-#
-#    def mesformulacion=(m)
-#      if self.fechaformulacion 
-#        self.fechaformulacion = Date.new(self.fechaformulacion.year, 
-#                                         m.to_i, 15)
-#      else
-#        self.fechaformulacion = Date.new(Date.today.year, m.to_i, 15)
-#      end
-#    end
-#
-#    def mesformulacion_localizado
-#      fechaformulacion.year.to_s + "-" + fechaformulacion.month.to_s
-#    end
-
     def montoejp_localizado
-      if montoej && tasaej
-        return montoej * tasaej
-      else
-        return 0
-      end
+      r = 0
+      r = montoej * tasaej if montoej && tasaej
+      r.a_decimal_localizado
     end
 
     def aportecinepp_localizado
-      if aportecinep && tasa
-        return aportecinep * tasa
-      else
-        return 0
-      end
+      r = 0
+      r = aportecinep * tasa if aportecinep && tasa
+      r.a_decimal_localizado
     end
  
     def aportecinepejp_localizado
-      if aportecinepej && tasaej
-        return aportecinepej * tasaej
-      else
-        return 0
-      end
+      r = 0
+      r = aportecinepej * tasaej if aportecinepej && tasaej
+      r.a_decimal_localizado
     end
  
     def aporteotrosp_localizado
-      if aotrosfin && tasa
-        return aotrosfin * tasa
-      else
-        return 0
-      end
+      r = 0
+      r = aotrosfin * tasa if aotrosfin && tasa
+      r.a_decimal_localizado
     end
  
     def aporteotrosejp_localizado
-      if aporteotrosej && tasaej
-        return aporteotrosej * tasaej
-      else
-        return 0
-      end
+      r = 0
+      r = aporteotrosej * tasaej if aporteotrosej && tasaej
+      r.a_decimal_localizado
     end
  
     def saldop_localizado
-      if saldo && tasa
-        return saldo * tasa
-      else
-        return 0
-      end
+      r = 0
+      r = saldo * tasa if saldo && tasa
+      r.a_decimal_localizado
     end
  
     def saldoejp_localizado
-      if saldoej && tasaej
-        return saldoej * tasaej
-      else
-        return 0
-      end
+      r = 0
+      r = saldoej * tasaej  if saldoej && tasaej
+      r.a_decimal_localizado
     end
  
     def presupuestototalp_localizado
-      if presupuestototal && tasa
-        return presupuestototal * tasa
-      else
-        return 0
-      end
+      r = 0 
+      r = presupuestototal * tasa if presupuestototal && tasa
+      r.a_decimal_localizado
     end
  
     def presupuestototalejp_localizado
-      if presupuestototalej && tasaej
-        return presupuestototalej * tasaej
-      else
-        return 0
-      end
+      r = 0
+      r = presupuestototalej * tasaej if presupuestototalej && tasaej
+      r.a_decimal_localizado
     end
  
  
@@ -166,12 +118,6 @@ module Cor1440Gen
     accepts_nested_attributes_for :indicadorobjetivo,
       allow_destroy: true, reject_if: :all_blank
 
-
-    #has_many :oficina_proyectofinanciero, dependent: :delete_all,
-    #  class_name: '::OficinaProyectofinanciero',
-    #  foreign_key: 'proyectofinanciero_id'
-    #has_many :oficina, through: :oficina_proyectofinanciero,
-    #  class_name: 'Sip::Oficina'
 
     has_many :grupo_proyectofinanciero, dependent: :delete_all,
       class_name: '::GrupoProyectofinanciero',

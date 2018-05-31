@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: b2ad4d184c377cb209d614c2474ae7e130e535d9
+  revision: f8d25caa15ce6999e5c1fe5b6fe8ad46a8d610ec
   branch: vista_actividad_sipmodelo
   specs:
     cor1440_gen (1.0b2)
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 70d095214566207b9c6240ff9abafaa0ba99cde2
+  revision: 857aa2e4d1a6f7bb13557496149da484302b1c12
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails

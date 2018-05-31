@@ -15,12 +15,6 @@
     %>
   </td>
   <td>
-    <%= f.input :resultado, 
-      label: false, 
-      as: :text, 
-      input_html: { rows: 2 } %>
-  </td>
-  <td>
     <%= f.input :id, as: :hidden %>
     <%= link_to_remove_association "Eliminar", f, 
         :class => 'btn-danger' 
