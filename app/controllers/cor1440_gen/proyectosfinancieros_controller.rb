@@ -843,13 +843,16 @@ module Cor1440Gen
       if File.exist?("/tmp/#{nase}.pdf")
         File.delete("/tmp/#{nase}.pdf")
       end
-      res = `libreoffice --headless --convert-to pdf /tmp/#{narchivo} --outdir /tmp/`
-      puts res
+      res = `libreoffice --headless --convert-to pdf "/tmp/#{narchivo}" --outdir /tmp/`
+      puts "OJO res=#{res}, narchivo=#{narchivo}, nase=#{nase}"
       if File.exist?("/tmp/#{nase}.pdf")
         send_file "/tmp/#{nase}.pdf",
           type: 'application/pdf',
           disposition: 'attachment',
           filename: nase + '.pdf'
+      else
+        flash.now[:error] = "No se encontró el archivo /tmp/#{nase}.pdf"
+        redirect_to main_app.root_path
       end
     end
 
