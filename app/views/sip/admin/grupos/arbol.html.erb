@@ -51,10 +51,10 @@
     return r
   end
 
+  # Grupos debe ser bosque con 2 raices: usuarios y desactivados.
   ad = ""
   nivelcero = Sip::Grupo.where(
-    "id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo) " ).
-    where('fechadeshabilitacion IS NULL').reorder(:nombre)
+    "id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo) " ).reorder(:nombre)
   if nivelcero.count == 0
     ad << "<p>Problema: No hay grupos sin supragrupos</p>"
   elsif nivelcero.count > 2 || nivelcero[0].nombre != 'Desactivados' ||
@@ -62,13 +62,31 @@
     ad << "<p>Problema: Los únicos grupos sin supragrupos deberían ser Usuarios y Desactivados, pero se ven #{nivelcero.map(&:nombre).inspect}</p>"
   end
 
-  primernivel = Sip::Grupo.where(
-    "id IN (SELECT subgrupo_id FROM (SELECT subgrupo_id, count(*) 
-     FROM grupo_subgrupo GROUP BY 1) AS s WHERE s.count=1) " +
-    "AND cn<>'Desactivados' AND cn<>'Externos'").
-    where('fechadeshabilitacion IS NULL').
-    reorder(:nombre)
-  ad << genera_nivel(primernivel, [])
+  # Los grupos deshabilitados deben ser subgrupo de desactivado
+  gdes = Sip::Grupo.where(nombre: 'Desactivados').take
+  if gdes
+    maldeshabilitados = Sip::Grupo.where(
+      "fechadeshabilitacion IS NOT NULL AND " +
+      "id NOT IN (SELECT subgrupo_id FROM grupo_subgrupo " +
+      "WHERE grupo_id=#{gdes.id})")
+    if maldeshabilitados.count > 0
+      ad << "<p>Problema: Los grupos deshabilitados deben estar como subgrupos
+      de Desactivados y no están #{maldeshabilitados.map(&:nombre).join(", ")}"
+    end
+  end
+
+  gus = Sip::Grupo.where(nombre: 'Usuarios').take
+  if gus
+    # El primer nivel son los hijos de usuarios
+    primernivel = Sip::Grupo.where(
+      "id IN (SELECT subgrupo_id FROM grupo_subgrupo WHERE " +
+      "grupo_id = #{gus.id}) " +
+      " AND cn<>'Externos'").
+      where('fechadeshabilitacion IS NULL').
+      reorder(:nombre)
+      ad << genera_nivel(primernivel, [])
+  end
+
   ussingrupo = ::Usuario.where(
     'id NOT in (SELECT usuario_id FROM sip_grupo_usuario)').
     where('fechadeshabilitacion IS NULL').
