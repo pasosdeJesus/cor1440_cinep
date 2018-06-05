@@ -33,30 +33,20 @@ class CreaRegiongrupoDh < ActiveRecord::Migration[5.2]
         fechacreacion, created_at, updated_at) 
         VALUES (16, 'EXTERIOR', '#{ldh.id}', '2018-06-04', 
           '2018-06-04', '2018-06-04');
-      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, 
-        sip_departamento_id) VALUES (10, 13); -- BOLÍVAR
-      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, 
-        sip_departamento_id) VALUES (10, 8); -- ATLÁNTICO
-      
-      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, 
-        sip_departamento_id) VALUES (11, 50); -- META
 
-      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, 
-        sip_departamento_id) VALUES (12, 41); -- HUILA
 
-      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, 
-        sip_departamento_id) VALUES (13, 5); -- ANTIOQUIA
-      
-      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, 
-        sip_departamento_id) VALUES (14, 27); -- CUNDINAMARCA
-      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, 
-        sip_departamento_id) VALUES (14, 11); -- BOGOTÁ
-      
-      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, 
-        sip_departamento_id) VALUES (15, 63); -- QUINDIO
-      
-      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, 
-        sip_departamento_id) VALUES (16, 10000); -- EXTERIOR
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (10, 48);
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (10, 7);
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (11, 37);
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (12, 32);
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (13, 35);
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (14, 27);
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (14, 11);
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (15, 63);
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (15, 13);
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (15, 41);
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (16, 3);
+
     SQL
   end
 
