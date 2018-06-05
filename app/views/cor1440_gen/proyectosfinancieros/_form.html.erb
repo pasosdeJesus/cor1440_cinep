@@ -25,78 +25,88 @@
 
       <div role="tabpanel">
         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#basicos" 
-            class="enviarautomatico_y_repintapf" aria-controls="basicos" role="tab" 
-            data-toggle="tab">Datos básicos</a></li>
-          <li role="presentation"><a href="#recursoshumanos" 
-            class="enviarautomatico_y_repintapf" aria-controls="recursoshumanos" role="tab" 
-            data-toggle="tab">Recursos humanos</a></li>
-          <li role="presentation"><a href="#recursoseconomicos" 
-            class="enviarautomatico_y_repintapf" aria-controls="recursoseconomicos" role="tab" 
-            data-toggle="tab">Recursos económicos y desembolsos</a></li>
-          <li role="presentation"><a href="#informes" 
-            class="enviarautomatico" aria-controls="informes" role="tab" 
-            data-toggle="tab">Informes y auditorias</a></li>
-          <li role="presentation"><a href="#contabilidad" 
-            class="enviarautomatico_y_repintapf" aria-controls="contabilidad" role="tab" 
-            data-toggle="tab">Contabilidad</a></li>
-          <li role="presentation"><a href="#datosfinanciador" 
-            class="enviarautomatico_y_repintapf" aria-controls="datosfinanciador" role="tab" 
-             data-toggle="tab">Datos del financiador</a></li>
-          <% if can? :manage, Cor1440Gen::Indicadorpf %>
+          <% if can? :manage, Cor1440Gen::Proyectofinanciero%>
+            <li role="presentation" class="active"><a href="#basicos" 
+                                                      class="enviarautomatico_y_repintapf" aria-controls="basicos" role="tab" 
+                                                                                                                   data-toggle="tab">Datos básicos</a></li>
+            <li role="presentation"><a href="#recursoshumanos" 
+                                       class="enviarautomatico_y_repintapf" aria-controls="recursoshumanos" role="tab" 
+                                                                                                            data-toggle="tab">Recursos humanos</a></li>
+            <li role="presentation"><a href="#recursoseconomicos" 
+                                       class="enviarautomatico_y_repintapf" aria-controls="recursoseconomicos" role="tab" 
+                                                                                                               data-toggle="tab">Recursos económicos y desembolsos</a></li>
+            <li role="presentation"><a href="#informes" 
+                                       class="enviarautomatico" aria-controls="informes" role="tab" 
+                                                                                         data-toggle="tab">Informes y auditorias</a></li>
+            <li role="presentation"><a href="#contabilidad" 
+                                       class="enviarautomatico_y_repintapf" aria-controls="contabilidad" role="tab" 
+                                                                                                         data-toggle="tab">Contabilidad</a></li>
+            <li role="presentation">
+                <a href="#datosfinanciador" 
+                   class="enviarautomatico_y_repintapf" 
+                   aria-controls="datosfinanciador" role="tab" 
+                   data-toggle="tab">Datos del financiador</a></li>
+          <% end %>
+          <% if can? :edit, Cor1440Gen::Indicadorpf %>
             <li role="presentation"><a href="#marcologico" 
               class="enviarautomatico_y_repintapf" aria-controls="marcologico" role="tab" 
               data-toggle="tab">Marco Lógico</a></li>
           <% end %>
-          <li role="presentation"><a href="#anexos" 
-            class="enviarautomatico_y_repintapf" 
-            aria-controls="anexos" role="tab" 
-            data-toggle="tab">Anexos</a></li>
-          <li role="presentation"><a href="#cambios" 
-            class="enviarautomatico_y_repintapf" 
-            aria-controls="cambios" role="tab" 
-            data-toggle="tab">Control de Cambios</a></li>
+
+          <% if can? :manage, Cor1440Gen::Proyectofinanciero%>
+            <li role="presentation"><a href="#anexos" 
+              class="enviarautomatico_y_repintapf" 
+              aria-controls="anexos" role="tab" 
+              data-toggle="tab">Anexos</a></li>
+            <li role="presentation"><a href="#cambios" 
+              class="enviarautomatico_y_repintapf" 
+              aria-controls="cambios" role="tab" 
+              data-toggle="tab">Control de Cambios</a></li>
+          <% end %>
         </ul>
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="basicos">
-            <%= render 'basicos', :f => f %>
-          </div> 
+          <% if can? :manage, Cor1440Gen::Proyectofinanciero%>
+            <div role="tabpanel" class="tab-pane active" id="basicos">
+              <%= render 'basicos', :f => f %>
+            </div> 
 
-          <div role="tabpanel" class="tab-pane" id="recursoshumanos">
-            <%= render 'recursoshumanos', :f => f %>
-          </div>
+            <div role="tabpanel" class="tab-pane" id="recursoshumanos">
+              <%= render 'recursoshumanos', :f => f %>
+            </div>
 
-          <div role="tabpanel" class="tab-pane" id="recursoseconomicos">
-            <%= render 'recursoseconomicos', :f => f %>
-          </div>
+            <div role="tabpanel" class="tab-pane" id="recursoseconomicos">
+              <%= render 'recursoseconomicos', :f => f %>
+            </div>
 
-          <div role="tabpanel" class="tab-pane" id="informes">
-            <%= render 'informes', :f => f %>
-          </div>
+            <div role="tabpanel" class="tab-pane" id="informes">
+              <%= render 'informes', :f => f %>
+            </div>
 
-          <div role="tabpanel" class="tab-pane" id="contabilidad">
-            <%= render 'contabilidad', :f => f %>
-          </div>
-
-          <div role="tabpanel" class="tab-pane" id="datosfinanciador">
-            <%= render 'datosfinanciador', :f => f %>
-          </div>
-          <% if can? :manage, Cor1440Gen::Indicadorpf %>
+            <div role="tabpanel" class="tab-pane" id="contabilidad">
+              <%= render 'contabilidad', :f => f %>
+            </div>
+            
+            <div role="tabpanel" class="tab-pane" id="datosfinanciador">
+              <%= render 'datosfinanciador', :f => f %>
+            </div>
+          <% end %> 
+          <% if can? :edit, Cor1440Gen::Indicadorpf %>
             <div role="tabpanel" class="tab-pane" id="marcologico">
               <%= render 'marcologico', :f => f %>
             </div>
           <% end %> 
-          <div role="tabpanel" class="tab-pane" id="anexos">
-            <% if f.object.id.nil? %>
-              <p>Antes de agregar anexos se debe guardar el compromiso institucional</p>
-            <% else %>
-              <%= render 'anexos', :f => f %> 
-            <% end %>
-          </div>
-          <div role="tabpanel" class="tab-pane" id="cambios">
-            <%= render 'cambios', :f => f %>
-          </div>
-
+          <% if can? :manage, Cor1440Gen::Proyectofinanciero%>
+            <div role="tabpanel" class="tab-pane" id="anexos">
+              <% if f.object.id.nil? %>
+                <p>Antes de agregar anexos se debe guardar el compromiso institucional</p>
+              <% else %>
+                <%= render 'anexos', :f => f %> 
+              <% end %>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="cambios">
+              <%= render 'cambios', :f => f %>
+            </div>
+          <% end %> 
 
         </div> <!-- tab-content -->
       </div> <!-- tabpanel -->
