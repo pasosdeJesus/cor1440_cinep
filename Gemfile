@@ -7,7 +7,7 @@ gem "rails", '~> 5.2.0', git: 'https://github.com/rails/rails.git', ref: '4887f9
 
 gem "rails-i18n"
 
-gem 'bootsnap', '>=1.1.0', require: false
+#gem 'bootsnap', '>=1.1.0', require: false
 
 # Postgresql
 gem "pg"#, '~> 0.21'
@@ -122,7 +122,7 @@ end
 
 group :test, :development, :ensayo do
   #Depurar
-  #gem 'byebug'
+  #gem 'byebug', '10.0.0'
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo

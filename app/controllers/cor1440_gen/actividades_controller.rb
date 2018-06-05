@@ -32,6 +32,45 @@ module Cor1440Gen
       create_gen
     end
 
+    def asegura_contexto(actividad)
+      if can? :edit, :contextoac
+        if actividad.fecha && actividad.departamento_id &&
+          actividad.municipio_id 
+          grupo = actividad.grupo.take
+          if grupo.nil?
+            actividad.contextoinv_id = nil
+          end
+          region = ::Regiongrupo.incluye_municipio(grupo.id,
+                                                   actividad.departamento_id,
+                                                   actividad.municipio_id).take
+          if region.nil?
+            actividad.contextoinv_id = nil
+          end
+          fini = Sip::FormatoFechaHelper.inicio_semestre(actividad.fecha)
+          ffin = Sip::FormatoFechaHelper.fin_semestre(actividad.fecha)
+          r = actividad.usuario_id
+          if r.nil?
+            actividad.contextoinv_id = nil
+          end
+          c = ::Contextoinv.where(fechainicio: fini, fechafin: ffin,
+                              regiongrupo_id: region.id, usuario_id: r).take
+          if c.nil?
+            c = ::Contextoinv.new(fechainicio: fini, fechafin: ffin,
+                                  regiongrupo_id: region.id, usuario_id: r)
+            c.save!
+          end
+          actividad.contextoinv_id = c.id
+        end
+      end
+    end
+
+    def edit
+      edit_cor1440_gen
+      asegura_contexto(@registro)
+      @registro.save!(validate: false)
+      render layout: 'application'
+    end
+
     def update
       params[:actividad][:oficina_id] = 1
       update_gen
@@ -235,8 +274,8 @@ module Cor1440Gen
         :actividadtipo_ids => [],
         :actor_ids => [],
         :contextoinv_attributes => [
-          :id, :fechainicio, :fechafin, :usuario_id,
-          :regiongrupo_id
+          :id, 
+          :contexto
         ],
         :grupo_ids => [],
         :objetivopf_ids => [],

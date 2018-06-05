@@ -77,8 +77,9 @@
       <% gp = mgu.where("nombre LIKE '#{Ability::GRUPO_LINEA}%'").
         order(:nombre).first %>
       <% gd = f.object.grupo.count > 0 ? f.object.grupo.map(&:id) : 
-      (gp ? [gp.id] : nil) %>
-      <% colg = Sip::Grupo.where(id: mgui + gd) %>
+        (gp ? [gp.id] : nil) %>
+      <% gruposids = mgui + gd %>
+      <% colg = Sip::Grupo.where(id: gruposids) %>
       <div class='row'>
        <div class='col-sm-offset-0 col-sm-6'>
          <%= f.association :grupo,
@@ -89,23 +90,15 @@
            include_blank: false,
            selected:  gd,
            input_html: { class: 'chosen-select' } %>
-
-         <% wu = mgu.count == 0 ?  'TRUE=FALSE' : 
-           "fechadeshabilitacion IS NULL 
-         AND  id IN (SELECT usuario_id FROM sip_grupo_usuario WHERE 
-         (sip_grupo_id IN (#{mgu.map(&:id).join(', ')})))
-           " 
-         %>
-
-         <% umgu = Sip::Usuario.where(wu).
-           order(:nombres, :apellidos, :nusuario) %>
-
-         <%= f.input :responsable, 
-           as: :hidden, 
-           input_html: {
-             value: f.object.usuario_id ? f.object.usuario_id : 
-             current_usuario.id 
-           } %>
+       
+         <% if cannot? :edit, :contextoac %>
+           <%= f.input :responsable, 
+             as: :hidden, 
+             input_html: {
+               value: f.object.usuario_id ? f.object.usuario_id : 
+               current_usuario.id 
+             } %>
+         <% end %>
        </div>
        <div class='col-sm-6'>
          <%= render partial: 'campo_proyectosfinancieros', locals: {f: f, mgu: mgu} %>
@@ -195,33 +188,7 @@
     </div> <!-- panel-body -->
   </div> <!-- panel panel-default -->
 
-  <% if can? :edit, :contextoac %>
-    <div class="panel panel-default">
-      <div class="panel-heading">Contexto</div><div class="panel-body">
-        <!--%= f.input :contexto, as: :text %-->
-        <%= f.simple_fields_for :contextoinv, 
-            ::Contextoinv.new do |c| %>
-          <%= c.input :id, as: :hidden %>
-          <%= c.input :usuario_id, as: :hidden, input_html: { 
-            value: f.object.usuario_id ? f.object.usuario_id : 
-            current_usuario
-          } %>
-          <%= c.input :fechainicio,
-            :input_html => { 
-            "data-behaviour" => "datepicker" },
-            :as => :string, :label => "Fecha Inicial" 
-          %>
-          <%= c.input :fechafin,
-            :input_html => { 
-            "data-behaviour" => "datepicker" },
-            :as => :string, :label => "Fecha Final" 
-          %>
-          <%= c.association :regiongrupo %>
-          <%= c.input :contexto %>
-        <% end %>
-      </div> <!-- panel-body -->
-    </div> <!-- panel panel-default -->
-  <% end %>
+  <%= render partial: 'contexto', locals: {f: f, gruposids: gruposids} %>
 
   <%= render partial: 'campo_anexos', locals: {f: f} %>
  
