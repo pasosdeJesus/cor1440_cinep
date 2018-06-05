@@ -36,6 +36,9 @@ module Sip
       class_name: 'Sip::Grupo'
 
     validate :subgrupos_son_arbol
+    # Decide que los subgrupos de un grupo formen arbol
+    # Según https://managementmania.com/en/organigram esto es suficiente
+    # para organigramas de organizaciones con estructura lineal
     def subgrupos_son_arbol
       gp = rec_subgrupo_son_arbol(self, [id])
       if gp != []
