@@ -38,7 +38,16 @@ class CreaRegiongrupoDh < ActiveRecord::Migration[5.2]
       INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (10, 48);
       INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (10, 7);
       INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (11, 37);
-      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (12, 32);
+
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (12, 38); -- NARIÑO
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (12, 47); -- VALLE
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (12, 41); -- QUINDIO
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (12, 42); -- RISARALDA
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (12, 13); -- CALDAS
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (12, 46); -- TOLIMA
+      INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (12, 52); -- PUTUMAYO
+
+
       INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (13, 35);
       INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (14, 27);
       INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (14, 11);
@@ -46,6 +55,7 @@ class CreaRegiongrupoDh < ActiveRecord::Migration[5.2]
       INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (15, 13);
       INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (15, 41);
       INSERT INTO regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (16, 3);
+
 
     SQL
   end
