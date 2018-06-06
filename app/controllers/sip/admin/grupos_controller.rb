@@ -9,30 +9,49 @@ module Sip
       load_and_authorize_resource  class: Sip::Grupo, except: :arbol
 
       def atributos_index
-        [ "id", "nombre", "cn", "gidNumber", "ultimasincldap_localizada" ] +
-          [ :subgrupo_ids => [] ] +
-          ["procesogh_id", "fechacreacion", "fechadeshabilitacion" ]
+        [ :id, 
+          :nombre, 
+          :cn, 
+          :gidNumber, 
+          :ultimasincldap_localizada 
+        ] +
+        [ :subgrupo_ids => [] ] +
+        [ :procesogh_id, 
+          :fechacreacion, 
+          :fechadeshabilitacion 
+        ]
       end
 
       def atributos_show
-        [ "id", "nombre", "cn", "gidNumber", "ultimasincldap_localizada" ] +
-          [ :usuario_ids => [] ] +
-          [ :subgrupo_ids => [] ] +
-          ["procesogh_id",
-           "observaciones", 
-           "fechacreacion", 
-           "fechadeshabilitacion" ]
+        [ :id, 
+          :nombre, 
+          :cn, 
+          :gidNumber, 
+          :ultimasincldap_localizada 
+        ] +
+        [ :usuario_ids => [] ] +
+        [ :subgrupo_ids => [] ] +
+        [ :procesogh_id, 
+          :observaciones,
+          :fechacreacion_localizada, 
+          :fechadeshabilitacion_localizada 
+        ]
       end
 
       def atributos_form
-        [ "nombre", "cn", "gidNumber", "ultimasincldap_localizada" ] +
-          [ :usuario_ids => [] ] +
-          [ :subgrupo_ids => [] ] +
-          ["procesogh_id",
-           "observaciones", 
-           "no_modificar_ldap",
-           "fechacreacion_localizada", 
-           "fechadeshabilitacion_localizada" ]
+        [ :nombre, 
+          :cn, 
+          :gidNumber, 
+          :ultimasincldap_localizada 
+        ] +
+        [ :usuario_ids => [] ] +
+        [ :subgrupo_ids => [] ] +
+        [ :procesogh_id, 
+          :observaciones,
+          "no_modificar_ldap",
+          :fechacreacion_localizada, 
+          :fechadeshabilitacion_localizada 
+        ]
       end
 
       def crear_dirac

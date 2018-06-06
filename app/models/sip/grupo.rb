@@ -35,34 +35,43 @@ module Sip
     has_many :subgrupo, through: :grupo_subgrupo,
       class_name: 'Sip::Grupo'
 
-    validate :subgrupos_son_arbol
-    # Decide que los subgrupos de un grupo formen arbol
-    # Según https://managementmania.com/en/organigram esto es suficiente
-    # para organigramas de organizaciones con estructura lineal
-    def subgrupos_son_arbol
-      gp = rec_subgrupo_son_arbol(self, [id])
+    validate :subgrupos_sin_ciclos
+    # Decide que los subgrupos de un grupo no tengan ciclos
+    # Según https://managementmania.com/en/organigram si fuese un
+    # arbol sería suficiente para organigramas de organizaciones con 
+    # estructura lineal.
+    # Sin embargo ausencia de ciclos no equivale a árbol, así que
+    # es más expresivo lo que permitimos
+    def subgrupos_sin_ciclos
+      gp = rec_subgrupo_sin_ciclos(self, id)
       if gp != []
-        lc = gp.map { |lg| lg.join(" -> ") }
-        errors.add(:subgrupo, "Problema(s) en rama(s): #{lc.join('; ')}")
+        errors.add(:subgrupo, "Ciclo en rama(s): #{gp.join('->')}")
       end
     end
 
-    # Decide que las identificaciones de grupos en visitados no 
-    # están en el subárbol que comienza en grupo.
-    # Retorna lista de ciclos que encuentra o vació si no hay
-    def rec_subgrupo_son_arbol(grupo, visitados)
+    # Decide que el grupo con identificacion buscando no esté en descendientes
+    # de grupo ni que la grupo.id esté entre los descendientes
+    # Retorna lista con ciclo o vació si no hay
+    def rec_subgrupo_sin_ciclos(grupo, buscando)
       sub = grupo.subgrupo
       if sub.count > 0
         sids = sub.map(&:id)
-        int = sids & visitados
-        if (int != [])
-          inom = int.map {|i| [Sip::Grupo.find(i).nombre]}
-          return inom
+        if sids.include?(buscando)
+          return [grupo.nombre, Sip::Grupo.find(buscando).nombre]
+        end
+        if sids.include?(grupo.id)
+          return [grupo.nombre, grupo.nombre]
         end
         sub.each do |g|
-          gp = rec_subgrupo_son_arbol(g, visitados + sids)
+          gp = rec_subgrupo_sin_ciclos(g, buscando)
           if  gp != []
-            return gp.map { |sg| [grupo.nombre] + sg }
+            return [grupo.nombre] + gp
+          end
+          if grupo.id != buscando
+            gp = rec_subgrupo_sin_ciclos(g, grupo.id)
+            if  gp != []
+              return [grupo.nombre] + gp
+            end
           end
         end
       end

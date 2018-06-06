@@ -34,37 +34,39 @@ module Cor1440Gen
 
     def asegura_contexto(actividad)
       if can? :edit, :contextoac
-        if actividad.fecha && actividad.departamento_id &&
-          actividad.municipio_id 
-          grupo = actividad.grupo.take
-          if grupo.nil?
+        if actividad.fecha.nil? || actividad.departamento_id.nil? ||
+          actividad.grupo.count == 0 || actividad.usuario_id.nil?
             actividad.contextoinv_id = nil
-            return
-          end
-          region = ::Regiongrupo.incluye_municipio(grupo.id,
-                                                   actividad.departamento_id,
-                                                   actividad.municipio_id).take
-          if region.nil? || region.id.nil?
-            actividad.contextoinv_id = nil
-            return
-          end
-          puts "OJO region.id=#{region.id}"
-          fini = Sip::FormatoFechaHelper.inicio_semestre(actividad.fecha)
-          ffin = Sip::FormatoFechaHelper.fin_semestre(actividad.fecha)
-          r = actividad.usuario_id
-          if r.nil?
-            actividad.contextoinv_id = nil
-            return
-          end
-          c = ::Contextoinv.where(fechainicio: fini, fechafin: ffin,
-                              regiongrupo_id: region.id, usuario_id: r).take
-          if c.nil?
-            c = ::Contextoinv.new(fechainicio: fini, fechafin: ffin,
-                                  regiongrupo_id: region.id, usuario_id: r)
-            c.save!
-          end
-          actividad.contextoinv_id = c.id
         end
+        grupo = actividad.grupo.take
+        if grupo.nil?
+            actividad.contextoinv_id = nil
+            return
+        end
+        region = ::Regiongrupo.incluye_municipio(grupo.id,
+                                                 actividad.departamento_id,
+                                                 actividad.municipio_id).take
+        if region.nil? || region.id.nil?
+          actividad.contextoinv_id = nil
+          return
+        end
+        puts "OJO region.id=#{region.id}"
+        fini = Sip::FormatoFechaHelper.inicio_semestre(actividad.fecha)
+        ffin = Sip::FormatoFechaHelper.fin_semestre(actividad.fecha)
+        r = actividad.usuario_id
+        if r.nil?
+          actividad.contextoinv_id = nil
+          return
+        end
+        c = ::Contextoinv.where(fechainicio: fini, fechafin: ffin,
+                                regiongrupo_id: region.id, usuario_id: r).take
+        if c.nil?
+          c = ::Contextoinv.new(fechainicio: fini, fechafin: ffin,
+                                regiongrupo_id: region.id, usuario_id: r)
+          c.save!
+        end
+
+        actividad.contextoinv_id = c.id
       end
     end
 
