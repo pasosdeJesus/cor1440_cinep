@@ -763,7 +763,19 @@ CREATE TABLE cor1440_gen_actividad (
     contextoinv_id integer,
     sexo_onr integer,
     etnia_onr integer,
-    creadopor_id integer
+    creadopor_id integer,
+    hombres_proceso integer,
+    mujeres_proceso integer,
+    sexo_onr_proceso integer,
+    hombres_nobef integer,
+    mujeres_nobef integer,
+    sexo_onr_nobef integer,
+    negros_proceso integer,
+    indigenas_proceso integer,
+    etnia_onr_proceso integer,
+    negros_nobef integer,
+    indigenas_nobef integer,
+    etnia_onr_nobef integer
 );
 
 
@@ -7188,6 +7200,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180519102415'),
 ('20180522102059'),
 ('20180523103836'),
-('20180605025410');
+('20180605025410'),
+('20180607180122');
 
 

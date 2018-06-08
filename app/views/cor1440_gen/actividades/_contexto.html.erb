@@ -1,29 +1,4 @@
 <% if can?(:edit, :contextoac) %>
-  <% wu = gruposids.count == 0 ?  'TRUE=FALSE' : 
-    "fechadeshabilitacion IS NULL 
-         AND  id IN (SELECT usuario_id FROM sip_grupo_usuario WHERE 
-         (sip_grupo_id IN (#{gruposids.join(', ')})))
-    " 
-  %>
-
-  <% umgu = Sip::Usuario.where(wu).
-    order(:nombres, :apellidos, :nusuario) %>
-
-  <%= f.association :responsable,
-    collection: umgu,
-    include_blank: false,
-    label: "Responsable del equipo",
-    label_method: lambda { |t| 
-      r = ""
-      r += t.nombres + " " if t.nombres
-      r += t.apellidos if t.apellidos
-      r += ' -  ' + t.nusuario
-      r 
-    },
-    value_method: :id,
-    selected:  f.object.usuario_id ? f.object.usuario_id : 
-      current_usuario.id,
-    input_html: { class: 'chosen-select' } %>
   <% if f.object.contextoinv_id %>
     <div class="panel panel-default">
       <div class="panel-heading">Contexto</div><div class="panel-body">

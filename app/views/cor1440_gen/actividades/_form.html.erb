@@ -72,18 +72,16 @@
          %>
        </div>
       </div> <!-- row -->
-      <% mgu = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario) %>
-      <% mgui = mgu.map(&:id) %>
-      <% gp = mgu.where("nombre LIKE '#{Ability::GRUPO_LINEA}%'").
+      <% mgui = @misgrupos.map(&:id) %>
+      <% gp = @misgrupos.where("nombre LIKE '#{Ability::GRUPO_LINEA}%'").
         order(:nombre).first %>
       <% gd = f.object.grupo.count > 0 ? f.object.grupo.map(&:id) : 
-        (gp ? [gp.id] : nil) %>
+        (gp ? [gp.id] : []) %>
       <% gruposids = mgui + gd %>
-      <% colg = Sip::Grupo.where(id: gruposids) %>
       <div class='row'>
        <div class='col-sm-offset-0 col-sm-6'>
          <%= f.association :grupo,
-           collection: mgu,
+           collection: @colgrupos,
            label: 'Grupo',
            label_method: :nombre, 
            value_method: :id,
@@ -101,7 +99,7 @@
          <% end %>
        </div>
        <div class='col-sm-6'>
-         <%= render partial: 'campo_proyectosfinancieros', locals: {f: f, mgu: mgu} %>
+         <%= render partial: 'campo_proyectosfinancieros', locals: {f: f} %>
        </div>
       </div> <!-- row -->
 
@@ -117,8 +115,17 @@
         <div class='col-sm-offset-0 col-sm-6'>
           <%= render partial: 'campo_actividadpf', locals: {f: f} %>
         </div>
-
       </div> <!-- row -->
+
+      <div class='row'>
+        <div class='col-sm-offset-0 col-sm-6'>
+          <%= render partial: 'campo_responsable', locals: {f: f} %>
+        </div>
+        <div class='col-sm-offset-0 col-sm-6'>
+          <%= render partial: 'campo_corresponsables', locals: {f: f} %>
+        </div>
+      </div> <!-- row -->
+
 
     
     </div> <!-- panel-body -->
@@ -147,41 +154,122 @@
         </div> 
       </div!--> <!-- row -->
 
-      <div class='row'>
-        <div class='col-sm-offset-0 col-sm-4'>
-          <%= f.input :mujeres,
-            label: 'Mujeres'
-          %>
-        </div> 
-        <div class='col-sm-offset-0 col-sm-4'>
-          <%= f.input :hombres,
-            label: 'Hombres'
-          %>
-        </div> 
-        <div class='col-sm-offset-0 col-sm-4'>
-          <%= f.input :sexo_onr,
-            label: 'Otros/NR'
-          %>
-        </div> 
-      </div> <!-- row -->
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Mujeres</th>
+            <th scope="col">Hombres</th>
+            <th scope="col">Otros/NR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Beneficiarios de proceso</th>
+            <td>
+              <%= f.input :mujeres_proceso, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :hombres_proceso, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :sexo_onr_proceso, 
+                label: false %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Beneficiarios ocasionales</th>
+            <td>
+              <%= f.input :mujeres, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :hombres, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :sexo_onr, 
+                label: false %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">No beneficiarios</th>
+            <td>
+              <%= f.input :mujeres_nobef, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :hombres_nobef, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :sexo_onr_nobef, 
+                label: false %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-      <div class='row'>
-        <div class='col-sm-offset-0 col-sm-4'>
-          <%= f.input :negros,
-            label: 'Afros/Negros/Palenqueros/Raizales'
-          %>
-        </div> 
-        <div class='col-sm-offset-0 col-sm-4'>
-          <%= f.input :indigenas,
-            label: 'Indigenas'
-          %>
-        </div> 
-        <div class='col-sm-offset-0 col-sm-4'>
-          <%= f.input :etnia_onr,
-            label: 'Otros/NR'
-          %>
-        </div> 
-      </div> <!-- row -->
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Afros/Negros/Palenqueros/Raizales</th>
+            <th scope="col">Indígenas</th>
+            <th scope="col">Otros/NR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Beneficiarios de proceso</th>
+            <td>
+              <%= f.input :negros_proceso, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :indigenas_proceso, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :etnia_onr_proceso, 
+                label: false %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Beneficiarios ocasionales</th>
+            <td>
+              <%= f.input :negros, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :indigenas, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :etnia_onr, 
+                label: false %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">No beneficiarios</th>
+            <td>
+              <%= f.input :negros_nobef, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :indigenas_nobef, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :etnia_onr_nobef, 
+                label: false %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
 
       <%= f.input :observaciones, as: :text %>
 

@@ -1,0 +1,12 @@
+<% if f.object && f.object.nombre == 'Desactivados' %>
+  <% col = Sip::Grupo.all %>
+<% else %>
+  <% col = Sip::Grupo.habilitados %>
+<% end %>
+<%= f.association :subgrupo,
+  collection: col,
+  label_method: :nombre,
+  input_html: {
+    class: 'chosen-select'
+  }
+ %>

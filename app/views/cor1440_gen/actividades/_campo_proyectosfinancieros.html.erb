@@ -5,12 +5,12 @@
            <% pf = pf.where("id IN (SELECT proyectofinanciero_id 
                             FROM grupo_proyectofinanciero 
                             WHERE grupo_id IN (#{f.object.grupo.map(&:id).join(', ')}))") %>
-         <% elsif mgu.count == 0 %>
+         <% elsif @misgrupos.count == 0 %>
           <% pf = pf.where('TRUE=FALSE') %>
          <% else %>
           <% pf = pf.where("id IN (SELECT proyectofinanciero_id 
                             FROM grupo_proyectofinanciero 
-                            WHERE grupo_id IN (#{mgu.map(&:id).join(', ')}))") %>
+                            WHERE grupo_id IN (#{@misgrupos.map(&:id).join(', ')}))") %>
          <% end %>
          <% pf = pf.order(:referenciacinep) %>
          <%= f.association :proyectofinanciero,

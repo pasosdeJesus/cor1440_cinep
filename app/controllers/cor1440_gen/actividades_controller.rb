@@ -12,6 +12,8 @@ module Cor1440Gen
     end
 
     def new
+      @colgrupos = @misgrupos = 
+        Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
       @registro = @actividad = Actividad.new
       @registro.current_usuario = current_usuario
       @registro.oficina_id = 1
@@ -70,10 +72,26 @@ module Cor1440Gen
       end
     end
 
+    def filtra_usuario_responsable(lista_usuarios)
+      wu = @colgrupos.count == 0 ?  'TRUE=FALSE' : 
+        "fechadeshabilitacion IS NULL 
+         AND  id IN (SELECT usuario_id FROM sip_grupo_usuario WHERE 
+         (sip_grupo_id IN (#{@colgrupos.map(&:id).join(', ')})))"
+      lista_usuarios = lista_usuarios.where(wu).
+        order(:nombres, :apellidos, :nusuario) 
+      return lista_usuarios
+    end
+
+
     def edit
       edit_cor1440_gen
       asegura_contexto(@registro)
       @registro.save!(validate: false)
+      @misgrupos = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
+      mgui = @misgrupos.map(&:id)
+      gd = @registro.grupo.count > 0 ? @registro.grupo.map(&:id) :  []
+      gruposids = mgui + gd
+      @colgrupos = Sip::Grupo.where(id: gruposids)
       render layout: 'application'
     end
 
@@ -241,16 +259,26 @@ module Cor1440Gen
         :desarrollo, 
         :duracion,
         :etnia_onr, 
+        :etnia_onr_nobef, 
+        :etnia_onr_proceso, 
         :fecha_localizada, 
         :grupo_id, 
         :hombres, 
+        :hombres_nobef, 
+        :hombres_proceso, 
         :indigenas, 
+        :indigenas_nobef, 
+        :indigenas_proceso, 
         :lugar, 
         :mduracion,
         :minutos, 
         :mujeres, 
+        :mujeres_nobef, 
+        :mujeres_proceso, 
         :municipio_id,
         :negros, 
+        :negros_nobef, 
+        :negros_proceso, 
         :nombre, 
         :nucleoconflicto_id,
         :oficina_id,
@@ -261,6 +289,8 @@ module Cor1440Gen
         :redactor_id,
         :resultado,
         :sexo_onr, 
+        :sexo_onr_nobef, 
+        :sexo_onr_proceso, 
         :totorg, 
         :usuario_id,
         :valora,
