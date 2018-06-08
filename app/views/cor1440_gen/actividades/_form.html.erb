@@ -161,6 +161,7 @@
             <th scope="col">Mujeres</th>
             <th scope="col">Hombres</th>
             <th scope="col">Otros/NR</th>
+            <th scope="col">Total</th>
           </tr>
         </thead>
         <tbody>
@@ -178,6 +179,13 @@
               <%= f.input :sexo_onr_proceso, 
                 label: false %>
             </td>
+            <td id='tot_genero_proceso'>
+              <%= 
+                s = f.object.hombres_proceso ? f.object.hombres_proceso : 0
+                s += f.object.mujeres_proceso ? f.object.mujeres_proceso : 0
+                s += f.object.sexo_onr_proceso ? f.object.sexo_onr_proceso : 0
+                s %>
+            </td>
           </tr>
           <tr>
             <th scope="row">Beneficiarios ocasionales</th>
@@ -193,6 +201,14 @@
               <%= f.input :sexo_onr, 
                 label: false %>
             </td>
+            <td id='tot_genero_oc'>
+              <%=
+                s = f.object.hombres ? f.object.hombres : 0
+                s += f.object.mujeres ? f.object.mujeres : 0
+                s += f.object.sexo_onr ? f.object.sexo_onr : 0
+                s %>
+
+            </td>
           </tr>
           <tr>
             <th scope="row">No beneficiarios</th>
@@ -207,6 +223,13 @@
             <td>
               <%= f.input :sexo_onr_nobef, 
                 label: false %>
+            </td>
+            <td id='tot_genero_nobef'>
+              <%=
+                s = f.object.hombres_nobef ? f.object.hombres_nobef : 0
+                s += f.object.mujeres_nobef ? f.object.mujeres_nobef : 0
+                s += f.object.sexo_onr_nobef ? f.object.sexo_onr_nobef : 0
+                s %>
             </td>
           </tr>
         </tbody>
@@ -236,6 +259,16 @@
               <%= f.input :etnia_onr_proceso, 
                 label: false %>
             </td>
+            <td id='tot_etnia_proceso'>
+              <%=
+                s = f.object.negros_proceso ? f.object.negros_proceso : 0
+                s += f.object.indigenas_proceso ? 
+                  f.object.indigenas_proceso : 0
+                s += f.object.etnia_onr_proceso ? 
+                  f.object.etnia_onr_proceso : 0
+                s %>
+
+            </td>
           </tr>
           <tr>
             <th scope="row">Beneficiarios ocasionales</th>
@@ -251,6 +284,13 @@
               <%= f.input :etnia_onr, 
                 label: false %>
             </td>
+            <td id='tot_etnia_oc'>
+              <%=
+                s = f.object.negros ? f.object.negros : 0
+                s += f.object.indigenas ? f.object.indigenas : 0
+                s += f.object.etnia_onr ? f.object.etnia_onr : 0
+                s %>
+          </td>
           </tr>
           <tr>
             <th scope="row">No beneficiarios</th>
@@ -266,10 +306,16 @@
               <%= f.input :etnia_onr_nobef, 
                 label: false %>
             </td>
+            <td id='tot_etnia_nobef'>
+              <%=
+                s = f.object.negros_nobef ? f.object.negros_nobef : 0
+                s += f.object.indigenas_nobef ? f.object.indigenas_nobef : 0
+                s += f.object.etnia_onr_nobef ? f.object.etnia_onr_nobef : 0
+                s %>
+            </td>
           </tr>
         </tbody>
       </table>
-
 
       <%= f.input :observaciones, as: :text %>
 
