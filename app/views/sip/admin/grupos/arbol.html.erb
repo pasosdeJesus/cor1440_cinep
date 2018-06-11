@@ -59,7 +59,7 @@
     ad << "<p>Problema: No hay grupos sin supragrupos</p>"
   elsif nivelcero.count != 2 || 
     nivelcero[0].nombre != 'Desactivados' || nivelcero[1].nombre != 'Usuarios'
-    ad << "<p>Problema: Los únicos grupos sin supragrupos deberían ser Usuarios y Desactivados, pero se ven #{nivelcero.map(&:nombre).inspect}</p>"
+    ad << "<p>Problema: Los únicos grupos sin supragrupos deberían ser Usuarios y Desactivados, pero se ven #{CGI::escapeHTML(nivelcero.map(&:nombre).inspect)}</p>"
   end
 
   # Los grupos deshabilitados deben ser subgrupo de desactivado
