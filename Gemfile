@@ -122,7 +122,7 @@ end
 
 group :test, :development, :ensayo do
   #Depurar
-  #gem 'byebug', '10.0.0'
+  #gem 'byebug'
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo
