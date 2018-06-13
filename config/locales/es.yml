@@ -100,6 +100,7 @@ es:
         observaciones: Compromisos/Observaciones
         proyecto: "Programa / Servicio / Producto"
         proyectos: "Programas / Servicios / Productos"
+        publicacion: 'Producto CINEP/PPP'
         regionsjr: Dependencia
         sexo_onr: 'Otro/NR'
       "cor1440_gen/actividadarea":
@@ -248,8 +249,8 @@ es:
         Profesion: Profesión
         Profesiones: Profesiones
       "publicacion":
-        Publicacion: Publicación CINEP/PPP
-        Publicaciones: Publicaciones CINEP/PPP
+        Publicacion: Producto CINEP/PPP
+        Publicaciones: Productos CINEP/PPP
       "redactor":
         Redactor: Red de actores
         Redesactor: Redes de actores
