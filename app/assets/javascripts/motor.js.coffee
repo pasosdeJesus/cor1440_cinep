@@ -226,12 +226,40 @@
   # Proyecto financiero - Compromiso Institucional
   #
 
-  $(document).on('click', 'a.enviarautomatico_y_repintapf[href^="#"]', (e) ->
-    sip_enviarautomatico_formulario_y_repinta($('form').attr('id'), 
-      ['informes'], 'POST', false)
-    return
-  )
+  #$(document).on('click', 'a.enviarautomatico_y_repintapf[href^="#"]', (e) ->
+  #  tabact = $('li.active[role=presentation] a').attr('href').substr(1)
+  #  ltabf = $('li[role=presentation] a')
+  #  ltab = []
+  #  ltab.push(ltabf[i].hash.substr(1)) for i in [0 .. (ltabf.length-1)]
+  #  d = ltab.filter (l) -> l != tabact
 
+  #  sip_enviarautomatico_formulario_y_repinta($('form').attr('id'), 
+  #    d, 'POST', false)
+  #  return
+  #)
+
+  # En pestañas:
+ 
+  # antes de mostrar una pestaña repintarla
+  $('a.enviarautomatico_formulario_y_repintapf[data-toggle="tab"]').on('hide.bs.tab', (e) ->
+    # e.target.hash.substr(1) # pestaña anterior
+    idp = e.relatedTarget.hash.substr(1) # nueva pestaña
+    sip_enviarautomatico_formulario_y_repinta($('form').attr('id'), 
+      [idp], 'POST', false)
+  ) 
+
+  # Después de mostrar una pestaña repintar las demás que quedan escondidas 
+  $('a.enviarautomatico_y_repintapf[data-toggle="tab"]').on('hidden.bs.tab', (e) ->
+    # e.target.hash.substr(1) # pestaña anterior
+    idn = e.relatedTarget.hash.substr(1) # nueva pestaña
+    ltabf = $('li[role=presentation] a')
+    ltab = []
+    ltab.push(ltabf[i].hash.substr(1)) for i in [0 .. (ltabf.length-1)]
+    d = ltab.filter (l) -> l != idn
+
+    sip_enviarautomatico_formulario_y_repinta($('form').attr('id'), 
+      d, 'POST', false)
+  ) 
  
   $('#proyectofinanciero_tipomoneda_id').change( (e) ->
       val = $(this).val()

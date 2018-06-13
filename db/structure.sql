@@ -6899,7 +6899,7 @@ ALTER TABLE ONLY sip_ubicacion
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user", public;
+SET search_path TO public, pg_catalog;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20131128151014'),
@@ -7206,6 +7206,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180607180122'),
 ('20180611222635'),
 ('20180612024009'),
-('20180612030340');
+('20180612030340'),
+('20180612090934');
 
 
