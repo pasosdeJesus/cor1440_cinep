@@ -148,7 +148,7 @@ module Cor1440Gen
         :indigenas, 
         :etnia_onr,
         :observaciones, 
-        :anexos
+        :anexo
       ]
     end
 
@@ -174,7 +174,7 @@ module Cor1440Gen
         :negros,
         :indigenas,
         :etnia_onr,
-        :anexos
+        :anexo
       ]
     end
 
