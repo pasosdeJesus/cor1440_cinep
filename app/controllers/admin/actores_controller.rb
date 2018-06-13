@@ -58,7 +58,9 @@ module Admin
     end
 
     def self.filtra_grupos_fecha(c, grupo_ids, fecha)
-      if grupo_ids && grupo_ids.length > 0
+      gid_dir = Sip::Grupo.where(nombre: 'Dirección').take
+      gid_dir = gid_dir ? gid_dir.id : -1
+      if grupo_ids && grupo_ids.length > 0 && !grupo_ids.include?(gid_dir)
         c = c.where("actor.id IN 
                      (SELECT actor_id 
                       FROM actor_grupo WHERE
