@@ -4,8 +4,7 @@
 <% a1 = Admin::ActoresController::filtra_grupos_fecha(
   a1, lg, f.object.fecha) %>
 <% a1l= a1.map(&:id) + f.object.actor_ids %>
-<% a2 = ::Actor.where(id: a1l) %>
-<%  #Actor.habilitados.where.not(id: 102).where.not(id: 103), %>
+<% a2 = ::Actor.where(id: a1l).order(:nombre) %>
 <%= f.association :actor, 
   collection: a2,
   label: "Actores sociales",
