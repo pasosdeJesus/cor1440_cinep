@@ -35,6 +35,11 @@ module Sip
     has_many :subgrupo, through: :grupo_subgrupo,
       class_name: 'Sip::Grupo'
 
+    has_many :grupo_supergrupo_inmediato, dependent: :delete_all,
+      class_name: '::GrupoSubgrupo', foreign_key: 'subgrupo_id'
+#    has_many :supergrupo_inmediato, through: :grupo_supergrupo_inmediato,
+#      class_name: 'Sip::Grupo'
+
     validate :subgrupos_sin_ciclos
     # Decide que los subgrupos de un grupo no tengan ciclos
     # Según https://managementmania.com/en/organigram si fuese un
