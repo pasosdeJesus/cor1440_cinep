@@ -89,14 +89,6 @@
            selected:  gd,
            input_html: { class: 'chosen-select' } %>
        
-         <% if cannot? :edit, :contextoac %>
-           <%= f.input :responsable, 
-             as: :hidden, 
-             input_html: {
-               value: f.object.usuario_id ? f.object.usuario_id : 
-               current_usuario.id 
-             } %>
-         <% end %>
        </div>
        <div class='col-sm-6'>
          <%= render partial: 'campo_proyectosfinancieros', locals: {f: f} %>
