@@ -2520,16 +2520,6 @@ ALTER SEQUENCE nucleoconflicto_id_seq OWNED BY nucleoconflicto.id;
 
 
 --
--- Name: oficina_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE oficina_proyectofinanciero (
-    oficina_id integer NOT NULL,
-    proyectofinanciero_id integer NOT NULL
-);
-
-
---
 -- Name: organizacion_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -5712,14 +5702,6 @@ ALTER TABLE ONLY actor_sectoractor
 
 
 --
--- Name: oficina_proyectofinanciero fk_rails_01cc410e26; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY oficina_proyectofinanciero
-    ADD CONSTRAINT fk_rails_01cc410e26 FOREIGN KEY (oficina_id) REFERENCES sip_oficina(id);
-
-
---
 -- Name: actor_efecto fk_rails_043ee8d6b5; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6085,14 +6067,6 @@ ALTER TABLE ONLY cor1440_gen_actividad_sip_anexo
 
 ALTER TABLE ONLY cor1440_gen_indicadorpf
     ADD CONSTRAINT fk_rails_4a0bd96143 FOREIGN KEY (objetivopf_id) REFERENCES cor1440_gen_objetivopf(id);
-
-
---
--- Name: oficina_proyectofinanciero fk_rails_4a1ff4a976; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY oficina_proyectofinanciero
-    ADD CONSTRAINT fk_rails_4a1ff4a976 FOREIGN KEY (proyectofinanciero_id) REFERENCES cor1440_gen_proyectofinanciero(id);
 
 
 --
@@ -6899,7 +6873,7 @@ ALTER TABLE ONLY sip_ubicacion
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO public, pg_catalog;
+SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20131128151014'),
@@ -7207,6 +7181,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180611222635'),
 ('20180612024009'),
 ('20180612030340'),
-('20180612090934');
+('20180612090934'),
+('20180615094624');
 
 
