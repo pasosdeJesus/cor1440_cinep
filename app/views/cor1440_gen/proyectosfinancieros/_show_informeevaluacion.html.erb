@@ -2,19 +2,13 @@
   <tr>
     <th>Detalle</th>
     <th>Fecha planeada</th>
-    <th>Presupuesto donante</th>
-    <th>Presupuesto CINEP/PPP</th>
     <th>Fecha real</th>
-    <th>Devoluciones</th>
   </tr>
   <% @registro.informeauditoria.each do |i| %>
     <tr>
       <td><%= i.detalle if i.detalle %></td>
       <td><%= i.fechaplaneada_localizada %></td>
-      <td><%= i.presupuestodonante_localizado %></td>
-      <td><%= i.presupuestoorg_localizado %></td>
       <td><%= i.fechareal_localizada %></td>
-      <td><%= i.devoluciones ? 'Si' : 'No' %></td>
     </tr>
   <% end %>
 </table></p>

@@ -169,6 +169,7 @@ es:
         "{:grupo_ids=>[]}": "Grupo(s)"
         informesauditorias: "Informes auditorías"
         informeauditoria: "Informes auditorías"
+        informeevaluacion: "Evaluaciones"
         informefinanciero: "Informes financieros"
         informefinanciero: "Informes financieros"
         informesnarrativos: "Informes narrativos"
