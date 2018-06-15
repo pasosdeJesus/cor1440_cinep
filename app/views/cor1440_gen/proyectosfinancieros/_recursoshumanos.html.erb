@@ -98,7 +98,7 @@
 <% wu = "fechadeshabilitacion IS NULL 
          AND  id IN (SELECT usuario_id FROM sip_grupo_usuario 
          JOIN sip_grupo ON sip_grupo.id=sip_grupo_usuario.sip_grupo_id
-         WHERE sip_grupo.cn='GerenciaDeProyectos')"
+         WHERE sip_grupo.cn LIKE '%GerenciaDeProyectos')"
 %>
 
 <% umgu = Sip::Usuario.where(wu).
