@@ -81,8 +81,13 @@ Rails.application.routes.draw do
     get "/reportes/cuadroactividades" => "reportes#cuadroactividades", 
       as: :reportes_cuadroactividades
 
-    get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :fichaimp
-    get "/proyectosfinancieros/:id/fichapdf" => "cor1440_gen/proyectosfinancieros#fichapdf", as: :fichapdf
+    get "/actividades/:id/fichaimp" => "cor1440_gen/actividades#fichaimp", 
+      as: :actividad_fichaimp
+    get "/actividades/:id/fichapdf" => "cor1440_gen/actividades#fichapdf", 
+      as: :actividad_fichapdf
+
+    get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :pf_fichaimp
+    get "/proyectosfinancieros/:id/fichapdf" => "cor1440_gen/proyectosfinancieros#fichapdf", as: :pf_fichapdf
 
     namespace :admin do
       ab = ::Ability.new
