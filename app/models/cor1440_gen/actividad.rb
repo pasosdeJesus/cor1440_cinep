@@ -59,21 +59,25 @@ module Cor1440Gen
 
     def presenta(atr)
       case atr.to_s
-      when 'grupo'
-        self.grupo.inject("") { |memo, i| 
-          (memo == "" ? "" : memo + "; ") + i.nombre
-        }
       when 'actividadpf'
         self.actividadpf.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.titulo
         }
-      when 'objetivopf'
-        self.objetivopf.inject("") { |memo, i| 
-          (memo == "" ? "" : memo + "; ") + i.objetivo
-        }
       when 'actor'
         self.actor.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre
+        }
+      when 'departamento_s'
+        self.departamento_id ? self.departamento.nombre : ''
+      when 'grupo'
+        self.grupo.inject("") { |memo, i| 
+          (memo == "" ? "" : memo + "; ") + i.nombre
+        }
+      when 'municipio_s'
+        self.municipio_id ? self.municipio.nombre : ''
+      when 'objetivopf'
+        self.objetivopf.inject("") { |memo, i| 
+          (memo == "" ? "" : memo + "; ") + i.objetivo
         }
       when 'publicacion'
         self.publicacion.inject("") { |memo, i| 

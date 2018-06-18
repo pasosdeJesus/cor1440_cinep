@@ -4,9 +4,10 @@ require 'date'
 require 'cor1440_gen/concerns/controllers/proyectosfinancieros_controller'
 
 module Cor1440Gen
-  class ProyectosfinancierosController < Sip::ModelosController
+  class ProyectosfinancierosController < Heb412Gen::ModelosController
     helper ::ApplicationHelper
     include ::ApplicationHelper
+#    include Heb412Gen::Concerns::Controllers::ModelosController
     include Cor1440Gen::Concerns::Controllers::ProyectosfinancierosController
     include ::Sip::ModeloHelper
 
@@ -153,7 +154,6 @@ module Cor1440Gen
       select('nombremenu, id').map { 
           |co| [co.nombremenu, "#{co.id}.odt"] 
         }
- 
     end
 
     def new
@@ -818,44 +818,6 @@ module Cor1440Gen
       end
       return report
     end
-
-    def fichaimp
-      @registro = @basica = @proyectosfinancieros = Proyectofinanciero.where(
-        id: @proyectofinanciero.id)
-      puts params
-      narchivo = ''
-      report = genera_odf(params[:idplantilla].to_i, narchivo)
-      # El enlace en la vista debe tener data-turbolinks=false
-      send_data report.generate,
-        type: 'application/vnd.oasis.opendocument.text',
-        disposition: 'attachment',
-        filename: narchivo
-    end
-
-    def fichapdf
-      @registro = @basica = @proyectosfinancieros = Proyectofinanciero.where(
-        id: @proyectofinanciero.id)
-
-      narchivo = ''
-      report = genera_odf(params[:idplantilla].to_i, narchivo)
-      nase = narchivo.split(".")[0]
-      report.generate("/tmp/#{narchivo}")
-      if File.exist?("/tmp/#{nase}.pdf")
-        File.delete("/tmp/#{nase}.pdf")
-      end
-      res = `libreoffice --headless --convert-to pdf "/tmp/#{narchivo}" --outdir /tmp/`
-      puts "OJO res=#{res}, narchivo=#{narchivo}, nase=#{nase}"
-      if File.exist?("/tmp/#{nase}.pdf")
-        send_file "/tmp/#{nase}.pdf",
-          type: 'application/pdf',
-          disposition: 'attachment',
-          filename: nase + '.pdf'
-      else
-        flash.now[:error] = "No se encontró el archivo /tmp/#{nase}.pdf"
-        redirect_to main_app.root_path
-      end
-    end
-
 
     private
 

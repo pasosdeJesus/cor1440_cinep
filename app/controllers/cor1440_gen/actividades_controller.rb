@@ -2,7 +2,7 @@
 require_dependency "cor1440_gen/concerns/controllers/actividades_controller"
 
 module Cor1440Gen
-  class ActividadesController < Sip::ModelosController
+  class ActividadesController < Heb412Gen::ModelosController
     include Cor1440Gen::Concerns::Controllers::ActividadesController
 
     helper Cor1440Gen::GruposHelper
@@ -115,10 +115,13 @@ module Cor1440Gen
     end
 
 
-    def show
-      authorize! :read, clase.constantize
-      @registro = clase.constantize.find(params[:id])
-      render 'sip/modelos/show', layout: 'application'
+    def show_plantillas
+      @plantillas = [['', '']]
+      @plantillas = Heb412Gen::Plantilladoc.where(
+        "vista IN ('Actividad')").
+      select('nombremenu, id').map { 
+          |co| [co.nombremenu, "#{co.id}.odt"] 
+        }
     end
 
     # Encabezado comun para HTML y PDF (primeras filas)

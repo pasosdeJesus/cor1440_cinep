@@ -163,8 +163,11 @@ class Ability  < Cor1440Gen::Ability
     },
     'Actividad' => { 
       campos: [
-        'id', 'fecha', 'responsable', 'nombre', 
-        'departamento', 'tipos_de_actividad', 'objetivo', 
+        'id', 'fecha', 'fecha_localizada',
+        'responsable', 'nombre', 
+        'departamento', 'municipio', 
+        'departamento_s', 'municipio_s', 
+        'tipos_de_actividad', 'objetivo', 
         'proyecto', 'convenios_financieros', 'resultado', 
         'contexto', 'mujeres', 'hombres', 
         'blancos', 'mestizos', 'indigenas', 
