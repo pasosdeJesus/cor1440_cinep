@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: bb22fc360d854482807ab7be03219ec2b3bce2ca
+  revision: 0604d7b9e7b661ff1c1bbd4d9408b3c06e249daa
   branch: vista_actividad_sipmodelo
   specs:
     cor1440_gen (1.0b2)
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: c8eb683a6f5339395926ea4a9942770b0a6f98a5
+  revision: c11adfb44817cfdef38a2599dc03bfcf54b10f52
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
