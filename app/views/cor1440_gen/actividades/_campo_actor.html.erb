@@ -7,7 +7,7 @@
 <% a2 = ::Actor.where(id: a1l).order(:nombre) %>
 <%= f.association :actor, 
   collection: a2,
-  label: "Actores sociales",
+  label: "Actores sociales en listado de asistencia",
   label_method: :nombre, 
   value_method: :id,
   input_html: { class: 'chosen-select' }
