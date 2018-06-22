@@ -71,7 +71,7 @@
       "WHERE grupo_id=#{gdes.id})")
     if maldeshabilitados.count > 0
       ad << "<p>Problema: Los grupos deshabilitados deben estar como subgrupos
-      de Desactivados y no están #{maldeshabilitados.map(&:nombre).join(", ")}"
+      de Desactivados y no están #{CGI::escapeHTML(maldeshabilitados.map(&:nombre).join(", "))}"
     end
   end
 
