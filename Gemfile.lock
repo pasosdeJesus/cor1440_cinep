@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: def968983a4ec88317cf3cb825b36b58cf8903db
-  branch: vista_actividad_sipmodelo
+  revision: 6b8d8631d38950f976249b8f43ba2d9ad07a75fc
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -33,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 5efd5c70df0c424f9258f50e4cd0f9cd964d82bb
+  revision: 1d93d64bfc524fc2e06cd16d9ee4733b02c616de
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -41,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 367048b2c46d40c52fb35c4a4f7c1cf0a5c4c1f3
+  revision: c3f1157c8657e3f2789b4f7bd1e82c381b848f46
   specs:
     sal7711_ld (1.0.a3)
       rails
