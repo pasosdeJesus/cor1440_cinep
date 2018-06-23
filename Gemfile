@@ -127,24 +127,21 @@ end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo
 group :test do
-  gem 'simplecov'
+  gem 'spring'
 
   gem 'rails-controller-testing'
 
-  # Acelera ejecutando en fondo.  https://github.com/jonleighton/spring
-  gem "spring"
+  gem 'launchy'
+
+  gem 'simplecov'
+
+  gem 'selenium-webdriver'
   gem 'connection_pool'
-  gem 'minitest'
-  gem 'minitest-rails'
   gem 'minitest-reporters'
-  gem 'poltergeist'
   gem 'minitest-rails-capybara'
-
-  gem "spork"
-
+  gem 'poltergeist'
 
   # Pruebas de regresión que no requieren javascript
-  gem "capybara"
   
   # Para examinar errores, usar "rescue rspec" en lugar de "rspec"
   gem 'pry-rescue'

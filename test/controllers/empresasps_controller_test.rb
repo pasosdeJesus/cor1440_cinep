@@ -1,6 +1,10 @@
+# encoding: utf-8
 require 'test_helper'
 
 class EmpresaspsControllerTest < ActionController::TestCase
+#  include Engine.routes.url_helpers
+#  include Devise::Test::IntegrationHelpers
+
   setup do
     skip
     @empresaps = Empresaps(:one)
