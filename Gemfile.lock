@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 83339c86faac32f44829d7e63962fc28c22c7328
+  revision: c7bd03475762014f6bd805338e41c734c57808dd
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 1d93d64bfc524fc2e06cd16d9ee4733b02c616de
+  revision: fbbd574e46d0e6de38283a90ef79549aeaad5fd8
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: c3f1157c8657e3f2789b4f7bd1e82c381b848f46
+  revision: 9a7972420e9d4e51d58582817525d674114838bb
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 1e780416547d8ee3f143e5c2367c45ff7df936b4
+  revision: fddfd0b986715f8e88281fcd2be0fa28a4ba9238
   specs:
     sal7711_web (1.0.a3)
       rails
