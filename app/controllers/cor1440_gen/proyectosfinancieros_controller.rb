@@ -82,7 +82,7 @@ module Cor1440Gen
     end
 
     def atributos_show
-      [ 
+      ats = [ 
         "referenciacinep",
         "nombre",
         "referencia", 
@@ -110,15 +110,7 @@ module Cor1440Gen
         "respgp2",
         "anotacionesrh",
         "tipomoneda",
-        "tasaformulacion",
-        "presupuestototal_localizado",
-        "apresupuesto",
-        "monto_localizado",
-        "montopesos_localizado",
-        "aportecinep_localizado",
-        "otrosaportescinep",
-        "aotrosfin_localizado",
-        "aotrosesp",
+        "presupuesto",
         "aaportes",
         "acuse",
         "reportarrendimientosfinancieros",
@@ -138,12 +130,17 @@ module Cor1440Gen
         "cuentasbancarias",
         "saldo_localizado",
         "gestiones",
-        "anotacionescontab",
-        "respagencia",
-        "emailrespagencia",
-        "telrespagencia",
-        "observaciones",
-        "anexo_proyectofinanciero"
+        "anotacionescontab"]
+
+      if can?(:manage, @registro)
+        ats += ["respagencia",
+                "emailrespagencia",
+                "telrespagencia"]
+      end
+
+      ats += ["observaciones",
+              'marcologico',
+              "anexo_proyectofinanciero"
       ]
     end
 

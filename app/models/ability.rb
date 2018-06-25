@@ -288,14 +288,14 @@ class Ability  < Cor1440Gen::Ability
           can :actividadespf, Cor1440Gen::Proyectofinanciero
         end
 
+        #byebug
         coords = lgrupos.select {|g| g.start_with?(GRUPO_COORDINADOR)}
         # Posibilidad de editar Marco Logico para coordinadores
         if coords.length > 0
           pc = ::Cor1440Gen::Proyectofinanciero.
             where('cor1440_gen_proyectofinanciero.id IN 
                 (SELECT proyectofinanciero_id FROM 
-                coordinador_proyectofinanciero WHERE coordinador_id=?)
-                  AND respgp_id IS NULL',
+                coordinador_proyectofinanciero WHERE coordinador_id=?)',
                 usuario.id)
           can [:edit, :update], pc
           can [:edit], Cor1440Gen::Indicadorpf
@@ -318,7 +318,9 @@ class Ability  < Cor1440Gen::Ability
           # Oficina Gerencia de Proyectos
           can :manage, Cor1440Gen::Financiador
           can :manage, Cor1440Gen::Mindicadorpf
-          can :manage, Cor1440Gen::Proyectofinanciero
+          can [:read, :index, :show, :create], Cor1440Gen::Proyectofinanciero
+          can [:manage], Cor1440Gen::Proyectofinanciero.where(
+            'respgp_id IS NOT NULL')
           can :manage, ::Sectorapc
         end
         if lgrupos.include?(GRUPO_GESTIONDECALIDAD)

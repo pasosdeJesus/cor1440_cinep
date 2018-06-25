@@ -1,0 +1,50 @@
+<p>
+<table border="1">
+  <tr>
+    <th>Objetivos/Efectos</th>
+    <th>Indicadores de Objetivo/Efecto</th>
+  </tr>
+  <% @registro.objetivopf.each do |o| %>
+    <tr>
+      <td><%= o.numero %> <%= o.objetivo %></td>
+      <td>
+        <ul>
+          <% o.indicadorpf.each do |io| %>
+            <li><%= io.numero %> <%= io.indicador%></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
+  <tr>
+    <th>Resultados/Productos</th>
+    <th>Indicadores de Resultado</th>
+  </tr>
+  <% @registro.resultadopf.each do |r| %>
+    <tr>
+      <td><%= r.numero %> <%= r.resultado %></td>
+      <td>
+        <ul>
+          <% r.indicadorpf.each do |ir| %>
+            <li><%= ir.numero %> <%= ir.indicador%></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
+  <tr>
+    <th colspan=2>Actividades</th>
+  </tr>
+  <% @registro.actividadpf.each do |a| %>
+    <tr>
+      <td colspan=2>
+        <%= a.nombrecorto %> <%= a.titulo %> 
+        <% if a.actividadtipo_id %>
+          (Tipo: <%= a.actividadtipo.nombre %>)
+        <% end%>
+        <%= a.descripcion %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</p>

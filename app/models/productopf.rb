@@ -84,16 +84,16 @@ class Productopf < ActiveRecord::Base
     end
   end
 
-  validate :fechafinprod_anterior_cierre
-  def fechafinprod_anterior_cierre
-    if fechafinprod && 
-            proyectofinanciero &&
-            proyectofinanciero.fechacierre &&
-            fechafinprod > proyectofinanciero.fechacierre then
-      errors.add(:fechafinprod_mes,
-                 "La fecha de finalización de producción debe ser anterior a la de terminación del compromiso financiero")
-    end
-  end
+#  validate :fechafinprod_anterior_cierre
+#  def fechafinprod_anterior_cierre
+#    if fechafinprod && 
+#            proyectofinanciero &&
+#            proyectofinanciero.fechacierre &&
+#            fechafinprod > proyectofinanciero.fechacierre then
+#      errors.add(:fechafinprod_mes,
+#                 "La fecha de finalización de producción debe ser anterior a la de terminación del compromiso financiero")
+#    end
+#  end
 
 
   flotante_localizado :costoprevisto

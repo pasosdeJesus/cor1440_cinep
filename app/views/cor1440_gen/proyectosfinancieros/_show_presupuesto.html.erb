@@ -1,0 +1,57 @@
+<p>
+<table border="1">
+  <tr>
+    <th></th>
+    <th colspan=2>Formulación</th>
+    <th colspan=2>Aprobación</th>
+  </tr>
+  <tr>
+    <th>Tasa de cambio</th>
+    <td colspan=2><%= @registro.tasa_localizado %></td>
+    <td colspan=2><%= @registro.tasaej_localizado  %></td>
+  </tr>
+  <tr>
+    <th></th>
+    <th>Moneda</th>
+    <th>Pesos</th>
+    <th>Moneda</th>
+    <th>Pesos</th>
+  </tr>
+  <tr>
+    <th>Aporte financiador</th>
+    <td><%= @registro.monto_localizado %></td>
+    <td><%= @registro.montopesos_localizado %></td>
+    <td><%= @registro.montoej_localizado %></td>
+    <td><%= @registro.montoejp_localizado %></td>
+  </tr>
+  <tr>
+    <th>Aporte CINEP/PPP</th>
+    <td><%= @registro.aportecinep_localizado %></td>
+    <td><%= @registro.aportecinepp_localizado %></td>
+    <td><%= @registro.aportecinepej_localizado %></td>
+    <td><%= @registro.aportecinepejp_localizado %></td>
+  </tr>
+  <tr>
+    <th>Aportes otros donantes</th>
+    <td><%= @registro.aotrosfin_localizado %></td>
+    <td><%= @registro.aporteotrosp_localizado %></td>
+    <td><%= @registro.aporteotrosej_localizado %></td>
+    <td><%= @registro.aporteotrosejp_localizado %></td>
+  </tr>
+  <tr>
+    <th>Saldo</th>
+    <td><%= @registro.saldo_localizado %></td>
+    <td><%= @registro.saldop_localizado %></td>
+    <td><%= @registro.saldoej_localizado %></td>
+    <td><%= @registro.saldoejp_localizado %></td>
+  </tr>
+  <tr>
+    <th>Presupuesto total</th>
+    <td><%= @registro.presupuestototal_localizado %></td>
+    <td><%= @registro.presupuestototalp_localizado %></td>
+    <td><%= @registro.presupuestototalej_localizado %></td>
+    <td><%= @registro.presupuestototalejp_localizado %></td>
+  </tr>
+
+</table>
+</p>
