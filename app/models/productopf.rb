@@ -98,6 +98,4 @@ class Productopf < ActiveRecord::Base
 
   flotante_localizado :costoprevisto
 
-
-
 end

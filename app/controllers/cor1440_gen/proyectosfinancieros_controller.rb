@@ -602,6 +602,8 @@ module Cor1440Gen
       if !plantilla
         return
       end
+      camposab = current_ability.
+        campos_plantillas['Compromiso Institucional'][:campos]
       narchivo << File.basename(plantilla.ruta)
       # Ejemplo de https://github.com/sandrods/odf-report
       report = ODFReport::Report.new("#{Rails.root}/public/heb412/#{plantilla.ruta}") do |r|
@@ -617,6 +619,11 @@ module Cor1440Gen
               #:formatosespecificos, :formatossolicitudpago ]
         cn.each do |s|
           r.add_field(s, @proyectofinanciero[s] ? @proyectofinanciero[s] : '')
+        end
+        [:sectorapc, :tutorarea, :coordinadorlinea, :nitfinanciador, 
+         :presupuestototalej, :montoej, :aportecinepej, :aporteotrosej, 
+         :duracion].each do |s|
+          r.add_field(s, @proyectofinanciero.presenta(s))
         end
 
         # Booleanos

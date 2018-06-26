@@ -329,14 +329,37 @@ module Cor1440Gen
     }
 
     def presenta(atr)
-      if (atr == 'estado')
+      case atr.to_s
+      when 'estado'
         Sip::ModeloHelper.etiqueta_coleccion(::ApplicationHelper::ESTADO, estado)
-      elsif (atr == 'monto_localizado')
+      when 'monto_localizado'
         if tipomoneda_id.nil?
           monto_localizado
         else
           monto_localizado + ' ' + tipomoneda.codiso4217
         end
+      when 'tutorarea'
+        l = self.grupo.select {|g| g.nombre.start_with?('Línea')}
+        return '' if l.count == 0
+        gus = Sip::Grupo.where(nombre: 'Usuarios').take
+        return '' if !gus
+        ra = ::GrupoSubgrupo.where(subgrupo_id: l.first.id).where(
+          "grupo_id<>#{gus.id}").take
+        return '' if !ra 
+        a = Sip::Grupo.find(ra.grupo_id)
+        ta = Sip::Grupo.where("cn LIKE 'Tutor#{a.cn[4..-1]}'").take
+        return '' if !ta
+        gu = Sip::GrupoUsuario.where(sip_grupo_id: ta.id).take
+        return '' if !gu
+        ::Usuario.find(gu.usuario_id).presenta_nombre
+      when 'coordinadorlinea'
+        l = self.grupo.select {|g| g.nombre.start_with?('Línea')}
+        return '' if l.count == 0
+        ta = Sip::Grupo.where("cn LIKE 'Coordinador#{l[0].cn[5..-1]}'").take
+        return '' if !ta
+        gu = Sip::GrupoUsuario.where(sip_grupo_id: ta.id).take
+        return '' if !gu
+        ::Usuario.find(gu.usuario_id).presenta_nombre
       else
         presenta_gen(atr)
       end
