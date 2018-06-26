@@ -198,6 +198,83 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
+<tr><td rowspan="1" colspan="3">tabla-grupo</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>open</td>
+	<td>/<datalist><option>http://archivoprensa.cinep.org.co:4000/</option><option>/</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Grupos<datalist><option>link=Grupos</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Nuevo<datalist><option>link=Nuevo</option></datalist></td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=grupo_nombre<datalist><option>id=grupo_nombre</option></datalist></td>
+	<td>bbb</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=grupo_cn<datalist><option>id=grupo_cn</option><option>name=grupo[cn]</option><option>css=#grupo_cn</option><option>//input[@id='grupo_cn']</option><option>//form[@id='new_grupo']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>75,10</td>
+</tr>
+<tr><td>type</td><td>id=grupo_cn<datalist><option>id=grupo_cn</option><option>name=grupo[cn]</option><option>css=#grupo_cn</option><option>//input[@id='grupo_cn']</option><option>//form[@id='new_grupo']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>ddd</td>
+</tr>
+<tr><td>clickAt</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>65,9</td>
+</tr>
+<tr><td>type</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>-1</td>
+</tr>
+<tr><td>clickAt</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>1114,22</td>
+</tr>
+<tr><td>clickAt</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>33,15</td>
+</tr>
+<tr><td>type</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>77</td>
+</tr>
+<tr><td>clickAt</td><td>//div[5]/input<datalist><option>id=grupo_ultimasincldap</option><option>name=grupo[ultimasincldap]</option><option>css=#grupo_ultimasincldap</option><option>//input[@id='grupo_ultimasincldap']</option><option>//form[@id='new_grupo']/div[5]/input</option><option>//div[5]/input</option></datalist></td><td>36,13</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[2]/td[2]<datalist><option>//tr[2]/td[2]</option></datalist></td><td>11,16</td>
+</tr>
+<tr><td>addSelection</td><td>id=grupo_usuario_ids<datalist><option>id=grupo_usuario_ids</option><option>css=#grupo_usuario_ids</option><option>//select[@id='grupo_usuario_ids']</option><option>//form[@id='new_grupo']/div[6]/select</option><option>//select</option></datalist></td><td>label=Javier Giraldo</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="18"]<datalist><option>css=option[value="18"]</option><option>//option[@value='18']</option><option>//select[@id='grupo_usuario_ids']/option[62]</option><option>//option[62]</option></datalist></td><td>73,-1000</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=grupo_observaciones<datalist><option>id=grupo_observaciones</option></datalist></td>
+	<td>bbb</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>name=commit<datalist><option>name=commit</option></datalist></td>
+	<td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/admin/grupos/160/edita')]</option><option>//a[2]</option></datalist></td><td>32,21</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='grupo_usuario_ids_chosen']/ul/li/a</option><option>//div[6]/div/ul/li/a</option></datalist></td><td>11,11</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_grupo_160']/div[13]/input</option><option>//div[13]/input</option></datalist></td><td>47,16</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/grupos/160')])[3]</option><option>//a[4]</option></datalist></td><td>61,28</td>
+</tr>
+<tr><td></td><td><datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/grupos/119')])[2]</option><option>//a[3]</option><option></option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
 <tr><td rowspan="1" colspan="3">centro-poblado</td></tr>
 </thead>
 <tbody>
@@ -531,83 +608,6 @@
 <tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/fondospensiones/105')])[2]</option><option>//a[3]</option></datalist></td><td>31,13</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">tabla-grupo</td></tr>
-</thead>
-<tbody>
-<tr>
-	<td>open</td>
-	<td>/<datalist><option>http://archivoprensa.cinep.org.co:4000/</option><option>/</option></datalist></td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option></datalist></td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Grupos<datalist><option>link=Grupos</option></datalist></td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Nuevo<datalist><option>link=Nuevo</option></datalist></td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=grupo_nombre<datalist><option>id=grupo_nombre</option></datalist></td>
-	<td>bbb</td>
-</tr>
-<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>id=grupo_cn<datalist><option>id=grupo_cn</option><option>name=grupo[cn]</option><option>css=#grupo_cn</option><option>//input[@id='grupo_cn']</option><option>//form[@id='new_grupo']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>75,10</td>
-</tr>
-<tr><td>type</td><td>id=grupo_cn<datalist><option>id=grupo_cn</option><option>name=grupo[cn]</option><option>css=#grupo_cn</option><option>//input[@id='grupo_cn']</option><option>//form[@id='new_grupo']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>ddd</td>
-</tr>
-<tr><td>clickAt</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>65,9</td>
-</tr>
-<tr><td>type</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>-1</td>
-</tr>
-<tr><td>clickAt</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>1114,22</td>
-</tr>
-<tr><td>clickAt</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>33,15</td>
-</tr>
-<tr><td>type</td><td>id=grupo_gidNumber<datalist><option>id=grupo_gidNumber</option><option>name=grupo[gidNumber]</option><option>css=#grupo_gidNumber</option><option>//input[@id='grupo_gidNumber']</option><option>//form[@id='new_grupo']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>77</td>
-</tr>
-<tr><td>clickAt</td><td>//div[5]/input<datalist><option>id=grupo_ultimasincldap</option><option>name=grupo[ultimasincldap]</option><option>css=#grupo_ultimasincldap</option><option>//input[@id='grupo_ultimasincldap']</option><option>//form[@id='new_grupo']/div[5]/input</option><option>//div[5]/input</option></datalist></td><td>36,13</td>
-</tr>
-<tr><td>clickAt</td><td>//tr[2]/td[2]<datalist><option>//tr[2]/td[2]</option></datalist></td><td>11,16</td>
-</tr>
-<tr><td>addSelection</td><td>id=grupo_usuario_ids<datalist><option>id=grupo_usuario_ids</option><option>css=#grupo_usuario_ids</option><option>//select[@id='grupo_usuario_ids']</option><option>//form[@id='new_grupo']/div[6]/select</option><option>//select</option></datalist></td><td>label=Javier Giraldo</td>
-</tr>
-<tr><td>clickAt</td><td>css=option[value="18"]<datalist><option>css=option[value="18"]</option><option>//option[@value='18']</option><option>//select[@id='grupo_usuario_ids']/option[62]</option><option>//option[62]</option></datalist></td><td>73,-1000</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=grupo_observaciones<datalist><option>id=grupo_observaciones</option></datalist></td>
-	<td>bbb</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>name=commit<datalist><option>name=commit</option></datalist></td>
-	<td></td>
-</tr>
-<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/admin/grupos/160/edita')]</option><option>//a[2]</option></datalist></td><td>32,21</td>
-</tr>
-<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='grupo_usuario_ids_chosen']/ul/li/a</option><option>//div[6]/div/ul/li/a</option></datalist></td><td>11,11</td>
-</tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_grupo_160']/div[13]/input</option><option>//div[13]/input</option></datalist></td><td>47,16</td>
-</tr>
-<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/grupos/160')])[3]</option><option>//a[4]</option></datalist></td><td>61,28</td>
-</tr>
-<tr><td></td><td><datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/grupos/119')])[2]</option><option>//a[3]</option><option></option></datalist></td><td></td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -3407,6 +3407,228 @@
 </tr>
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/proyectosfinancieros/306')])[2]</option><option>//div[4]/a</option></datalist></td><td>8,6</td>
 </tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-datos-basicos-mes-formulacion</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>70,22</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Compromiso Institucional<datalist><option>link=Nuevo Compromiso Institucional</option><option>//a[contains(text(),'Nuevo Compromiso Institucional')]</option><option>//a[contains(@href, '/proyectosfinancieros/nuevo')]</option><option>//li[3]/ul/li[2]/a</option></datalist></td><td>85,6</td>
+</tr>
+<tr><td>select</td><td>id=proyectofinanciero_fechaformulacion_mes<datalist><option>id=proyectofinanciero_fechaformulacion_mes</option><option>name=proyectofinanciero[fechaformulacion_mes]</option><option>css=#proyectofinanciero_fechaformulacion_mes</option><option>//select[@id='proyectofinanciero_fechaformulacion_mes']</option><option>//div[@id='basicos']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>label=MAYO</td>
+</tr>
+<tr><td>mouseDownAt</td><td>id=proyectofinanciero_fechaformulacion_mes<datalist><option>id=proyectofinanciero_fechaformulacion_mes</option><option>name=proyectofinanciero[fechaformulacion_mes]</option><option>css=#proyectofinanciero_fechaformulacion_mes</option><option>//select[@id='proyectofinanciero_fechaformulacion_mes']</option><option>//div[@id='basicos']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>-390.0520935058594,-398.5659942626953</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>id=proyectofinanciero_fechaformulacion_mes<datalist><option>id=proyectofinanciero_fechaformulacion_mes</option><option>name=proyectofinanciero[fechaformulacion_mes]</option><option>css=#proyectofinanciero_fechaformulacion_mes</option><option>//select[@id='proyectofinanciero_fechaformulacion_mes']</option><option>//div[@id='basicos']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>-390.0520935058594,-398.5659942626953</td>
+</tr>
+<tr><td>mouseUpAt</td><td>id=proyectofinanciero_fechaformulacion_mes<datalist><option>id=proyectofinanciero_fechaformulacion_mes</option><option>name=proyectofinanciero[fechaformulacion_mes]</option><option>css=#proyectofinanciero_fechaformulacion_mes</option><option>//select[@id='proyectofinanciero_fechaformulacion_mes']</option><option>//div[@id='basicos']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>-390.0520935058594,-398.5659942626953</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_fechaformulacion_mes<datalist><option>id=proyectofinanciero_fechaformulacion_mes</option><option>name=proyectofinanciero[fechaformulacion_mes]</option><option>css=#proyectofinanciero_fechaformulacion_mes</option><option>//select[@id='proyectofinanciero_fechaformulacion_mes']</option><option>//div[@id='basicos']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>-390,-399</td>
+</tr>
+<tr><td>select</td><td>id=proyectofinanciero_fechaformulacion_mes<datalist><option>id=proyectofinanciero_fechaformulacion_mes</option><option>name=proyectofinanciero[fechaformulacion_mes]</option><option>css=#proyectofinanciero_fechaformulacion_mes</option><option>//select[@id='proyectofinanciero_fechaformulacion_mes']</option><option>//div[@id='basicos']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>label=SEPTIEMBRE</td>
+</tr>
+<tr><td>mouseDownAt</td><td>id=proyectofinanciero_fechaformulacion_mes<datalist><option>id=proyectofinanciero_fechaformulacion_mes</option><option>name=proyectofinanciero[fechaformulacion_mes]</option><option>css=#proyectofinanciero_fechaformulacion_mes</option><option>//select[@id='proyectofinanciero_fechaformulacion_mes']</option><option>//div[@id='basicos']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>-390.0520935058594,-398.5659942626953</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>id=proyectofinanciero_fechaformulacion_mes<datalist><option>id=proyectofinanciero_fechaformulacion_mes</option><option>name=proyectofinanciero[fechaformulacion_mes]</option><option>css=#proyectofinanciero_fechaformulacion_mes</option><option>//select[@id='proyectofinanciero_fechaformulacion_mes']</option><option>//div[@id='basicos']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>-390.0520935058594,-398.5659942626953</td>
+</tr>
+<tr><td>mouseUpAt</td><td>id=proyectofinanciero_fechaformulacion_mes<datalist><option>id=proyectofinanciero_fechaformulacion_mes</option><option>name=proyectofinanciero[fechaformulacion_mes]</option><option>css=#proyectofinanciero_fechaformulacion_mes</option><option>//select[@id='proyectofinanciero_fechaformulacion_mes']</option><option>//div[@id='basicos']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>-390.0520935058594,-398.5659942626953</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_fechaformulacion_mes<datalist><option>id=proyectofinanciero_fechaformulacion_mes</option><option>name=proyectofinanciero[fechaformulacion_mes]</option><option>css=#proyectofinanciero_fechaformulacion_mes</option><option>//select[@id='proyectofinanciero_fechaformulacion_mes']</option><option>//div[@id='basicos']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>-390,-399</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_306']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>82,23</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/proyectosfinancieros/306')])[2]</option><option>//div[4]/a</option></datalist></td><td>8,6</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-datos-basicos-fecha-liquidacion</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/<datalist><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>102,15</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Compromiso Institucional<datalist><option>link=Nuevo Compromiso Institucional</option><option>//a[contains(text(),'Nuevo Compromiso Institucional')]</option><option>//a[contains(@href, '/proyectosfinancieros/nuevo')]</option><option>//li[3]/ul/li[2]/a</option></datalist></td><td>89,16</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_fechaliquidacion_localizada<datalist><option>id=proyectofinanciero_fechaliquidacion_localizada</option><option>name=proyectofinanciero[fechaliquidacion_localizada]</option><option>css=#proyectofinanciero_fechaliquidacion_localizada</option><option>//input[@id='proyectofinanciero_fechaliquidacion_localizada']</option><option>//div[@id='basicos']/div[6]/div[4]/div/input</option><option>//div[6]/div[4]/div/input</option></datalist></td><td>90,20</td>
+</tr>
+<tr><td>clickAt</td><td>css=td.today.day<datalist><option>css=td.today.day</option><option>//div[2]/div/table/tbody/tr[4]/td[4]</option></datalist></td><td>18,14</td>
+</tr>
+<tr><td>clickAt</td><td>css=html<datalist><option>css=html</option><option>//html</option></datalist></td><td>415,982</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_343']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>90,22</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/proyectosfinancieros/343')])[2]</option><option>//div[4]/a</option></datalist></td><td>25,11</td>
+</tr>
+<tr><td>clickAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>82,11</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Compromiso Institucional<datalist><option>link=Nuevo Compromiso Institucional</option><option>//a[contains(text(),'Nuevo Compromiso Institucional')]</option><option>//a[contains(@href, '/proyectosfinancieros/nuevo')]</option><option>//li[3]/ul/li[2]/a</option></datalist></td><td>62,11</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_fechaliquidacion_localizada<datalist><option>id=proyectofinanciero_fechaliquidacion_localizada</option><option>name=proyectofinanciero[fechaliquidacion_localizada]</option><option>css=#proyectofinanciero_fechaliquidacion_localizada</option><option>//input[@id='proyectofinanciero_fechaliquidacion_localizada']</option><option>//div[@id='basicos']/div[6]/div[4]/div/input</option><option>//div[6]/div[4]/div/input</option></datalist></td><td>95,13</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[6]/td[5]<datalist><option>//tr[6]/td[5]</option></datalist></td><td>13,13</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_348']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>86,9</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/proyectosfinancieros/348')])[2]</option><option>//div[4]/a</option></datalist></td><td>35,16</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-datos-basicos-anotaciones</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/<datalist><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>56,13</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Compromiso Institucional<datalist><option>link=Nuevo Compromiso Institucional</option><option>//a[contains(text(),'Nuevo Compromiso Institucional')]</option><option>//a[contains(@href, '/proyectosfinancieros/nuevo')]</option><option>//li[3]/ul/li[2]/a</option></datalist></td><td>51,15</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_anotacionesdb<datalist><option>id=proyectofinanciero_anotacionesdb</option><option>name=proyectofinanciero[anotacionesdb]</option><option>css=#proyectofinanciero_anotacionesdb</option><option>//textarea[@id='proyectofinanciero_anotacionesdb']</option><option>//div[@id='basicos']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>337,40</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_anotacionesdb<datalist><option>id=proyectofinanciero_anotacionesdb</option><option>name=proyectofinanciero[anotacionesdb]</option><option>css=#proyectofinanciero_anotacionesdb</option><option>//textarea[@id='proyectofinanciero_anotacionesdb']</option><option>//div[@id='basicos']/div[7]/textarea</option><option>//textarea</option></datalist></td><td>ccccccccc</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_351']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>27,26</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/proyectosfinancieros/351')])[2]</option><option>//div[4]/a</option></datalist></td><td>43,28</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-datos-basicos-estado</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/<datalist><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>95,23</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Compromiso Institucional<datalist><option>link=Nuevo Compromiso Institucional</option><option>//a[contains(text(),'Nuevo Compromiso Institucional')]</option><option>//a[contains(@href, '/proyectosfinancieros/nuevo')]</option><option>//li[3]/ul/li[2]/a</option></datalist></td><td>76,21</td>
+</tr>
+<tr><td>clickAt</td><td>css=div &gt; b<datalist><option>css=div &gt; b</option><option>//div[@id='proyectofinanciero_estado_chosen']/a/div/b</option><option>//div/b</option></datalist></td><td>3,8</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='proyectofinanciero_estado_chosen']/div/ul/li[4]<datalist><option>//div[@id='proyectofinanciero_estado_chosen']/div/ul/li[4]</option><option>//div/div/div/ul/li[4]</option></datalist></td><td>576,914</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_353']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>90,7</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/proyectosfinancieros/354')])[2]</option><option>//div[4]/a</option></datalist></td><td>47,19</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-datos-basicos-dificultad-formulacion</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/<datalist><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>134,24</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Compromiso Institucional<datalist><option>link=Nuevo Compromiso Institucional</option><option>//a[contains(text(),'Nuevo Compromiso Institucional')]</option><option>//a[contains(@href, '/proyectosfinancieros/nuevo')]</option><option>//li[3]/ul/li[2]/a</option></datalist></td><td>82,16</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>mouseDown</td><td>css=div.chosen-search &gt; input.chosen-search-input<datalist><option>css=div.chosen-search &gt; input.chosen-search-input</option><option>xpath=(//input[@type='text'])[12]</option><option>//div[@id='proyectofinanciero_dificultad_chosen']/div/div/input</option><option>//div[2]/div/div/div/div/input</option></datalist></td><td></td>
+</tr>
+<tr><td>mouseUp</td><td>css=#proyectofinanciero_dificultad_chosen &gt; a.chosen-single &gt; span<datalist><option>css=#proyectofinanciero_dificultad_chosen &gt; a.chosen-single &gt; span</option><option>//div[@id='proyectofinanciero_dificultad_chosen']/a/span</option><option>//div[8]/div[2]/div/div/a/span</option></datalist></td><td></td>
+</tr>
+<tr><td>mouseDownAt</td><td>css=li.active-result.highlighted<datalist><option>css=li.active-result.highlighted</option><option>//div[@id='proyectofinanciero_dificultad_chosen']/div/ul/li[3]</option><option>//div/div/div/ul/li[3]</option></datalist></td><td>87.34368896484375,5.270782470703125</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>css=li.active-result.highlighted<datalist><option>css=li.active-result.highlighted</option><option>//div[@id='proyectofinanciero_dificultad_chosen']/div/ul/li[3]</option><option>//div/div/div/ul/li[3]</option></datalist></td><td>87.34368896484375,5.270782470703125</td>
+</tr>
+<tr><td>mouseUpAt</td><td>css=li.active-result.highlighted<datalist><option>css=li.active-result.highlighted</option><option>//div[@id='proyectofinanciero_dificultad_chosen']/div/ul/li[3]</option><option>//div/div/div/ul/li[3]</option></datalist></td><td>87.34368896484375,5.270782470703125</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='proyectofinanciero_dificultad_chosen']/div/ul/li[3]<datalist><option>//div[@id='proyectofinanciero_dificultad_chosen']/div/ul/li[3]</option><option>//div/div/div/ul/li[3]</option></datalist></td><td>775,886</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_364']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>89,17</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/proyectosfinancieros/362')])[2]</option><option>//div[4]/a</option></datalist></td><td>48,11</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-datos-basicos-observaciones-tramite</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/<datalist><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>142,31</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo Compromiso Institucional<datalist><option>link=Nuevo Compromiso Institucional</option><option>//a[contains(text(),'Nuevo Compromiso Institucional')]</option><option>//a[contains(@href, '/proyectosfinancieros/nuevo')]</option><option>//li[3]/ul/li[2]/a</option></datalist></td><td>124,11</td>
+</tr>
+<tr><td>mouseDownAt</td><td>id=proyectofinanciero_observacionestramite<datalist><option>id=proyectofinanciero_observacionestramite</option><option>name=proyectofinanciero[observacionestramite]</option><option>css=#proyectofinanciero_observacionestramite</option><option>//textarea[@id='proyectofinanciero_observacionestramite']</option><option>//div[@id='basicos']/div[9]/div/div/textarea</option><option>//div[9]/div/div/textarea</option></datalist></td><td>273.44791412353516,34.2603759765625</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>id=proyectofinanciero_observacionestramite<datalist><option>id=proyectofinanciero_observacionestramite</option><option>name=proyectofinanciero[observacionestramite]</option><option>css=#proyectofinanciero_observacionestramite</option><option>//textarea[@id='proyectofinanciero_observacionestramite']</option><option>//div[@id='basicos']/div[9]/div/div/textarea</option><option>//div[9]/div/div/textarea</option></datalist></td><td>273.44791412353516,34.2603759765625</td>
+</tr>
+<tr><td>mouseUpAt</td><td>id=proyectofinanciero_observacionestramite<datalist><option>id=proyectofinanciero_observacionestramite</option><option>name=proyectofinanciero[observacionestramite]</option><option>css=#proyectofinanciero_observacionestramite</option><option>//textarea[@id='proyectofinanciero_observacionestramite']</option><option>//div[@id='basicos']/div[9]/div/div/textarea</option><option>//div[9]/div/div/textarea</option></datalist></td><td>273.44791412353516,34.2603759765625</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_observacionestramite<datalist><option>id=proyectofinanciero_observacionestramite</option><option>name=proyectofinanciero[observacionestramite]</option><option>css=#proyectofinanciero_observacionestramite</option><option>//textarea[@id='proyectofinanciero_observacionestramite']</option><option>//div[@id='basicos']/div[9]/div/div/textarea</option><option>//div[9]/div/div/textarea</option></datalist></td><td>273,35</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_observacionestramite<datalist><option>id=proyectofinanciero_observacionestramite</option><option>name=proyectofinanciero[observacionestramite]</option><option>css=#proyectofinanciero_observacionestramite</option><option>//textarea[@id='proyectofinanciero_observacionestramite']</option><option>//div[@id='basicos']/div[9]/div/div/textarea</option><option>//div[9]/div/div/textarea</option></datalist></td><td>dddddddddddd</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_366']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>39,19</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/proyectosfinancieros/366')])[2]</option><option>//div[4]/a</option></datalist></td><td>52,25</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-datos-basicos-observaciones-ejecucion</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/<datalist><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-datos-basicos-observaciones-cierre</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/<datalist><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-recursos-humanos-grupo</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://crecer.cinep.org.co:4000/<datalist><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-recursos-humanos-porcentaje</td></tr>
+</thead>
+<tbody>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-recursos-humanos-responsable</td></tr>
+</thead>
+<tbody>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromiso-institucionales-recursos-humanos-coordinador</td></tr>
+</thead>
+<tbody>
 </tbody></table>
 </body>
 </html>
