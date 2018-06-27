@@ -16,6 +16,14 @@ module Cor1440Gen
       dependent: :destroy, class_name: 'Cor1440Gen::Pmindicadorpf'
     accepts_nested_attributes_for :pmindicador, allow_destroy: true, 
       reject_if: :all_blank
-    
+
+    scope :filtro_proyectofinanciero_id, lambda { |pf|
+        where(proyectofinanciero_id: pf)
+    }
+
+    scope :filtro_indicadorpf_id, lambda { |ipf|
+        where(indicadorpf_id: ipf)
+    }
+
   end
 end

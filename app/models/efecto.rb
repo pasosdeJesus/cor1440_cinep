@@ -6,8 +6,8 @@ class Efecto < ActiveRecord::Base
 
   belongs_to :indicadorpf, class_name: 'Cor1440Gen::Indicadorpf',
             foreign_key: "indicadorpf_id", validate: true
-  #belongs_to :actor, class_name: '::Actor',
-  #          foreign_key: "actor_id", validate: true
+  belongs_to :registradopor, class_name: '::Usuario',
+            foreign_key: "registradopor_id", validate: true
 
   has_many :actor_efecto, dependent: :delete_all
   has_many :actor, through: :actor_efecto
@@ -36,12 +36,8 @@ class Efecto < ActiveRecord::Base
   validates :actor_efecto, presence: true
   validates :fecha, presence: true
 
-  scope :filtro_indicadorpf_id, lambda { |i|
-    where('indicadorpf_id=?', i)
-  }
-  
   scope :filtro_actor_id, lambda { |a|
-    where('actor_id=?', a)
+    where('actor_id = ?', a)
   }
 
   scope :filtro_fechaini, lambda { |f|
@@ -51,4 +47,13 @@ class Efecto < ActiveRecord::Base
   scope :filtro_fechafin, lambda { |f|
     where('fecha <= ?', f)
   }
+
+  scope :filtro_indicadorpf_id, lambda { |i|
+    where('indicadorpf_id = ?', i)
+  }
+ 
+  scope :filtro_registradopor_id, lambda { |r|
+    where('registradopor_id = ?', i)
+  }
+  
 end

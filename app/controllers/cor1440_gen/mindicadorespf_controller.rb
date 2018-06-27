@@ -18,9 +18,6 @@ module Cor1440Gen
         "proyectofinanciero_id",
         "indicadorpf_id",
         "frecuenciaanual",
-        "descd1",
-        "descd2",
-        "descd3",
         "pmindicador"
       ]
     end

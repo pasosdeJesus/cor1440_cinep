@@ -16,6 +16,7 @@ class EfectosController < Sip::ModelosController
       "indicadorpf_id"] +
     [ :actor_ids=>[]] +
     [ "fecha_localizada",
+      "registradopor_id",
       "anexo_efecto"
     ] 
   end
@@ -35,6 +36,7 @@ class EfectosController < Sip::ModelosController
     if params[:indicadorpf_id] && params[:indicadorpf_id].to_i > 0
       @registro.indicadorpf_id = params[:indicadorpf_id].to_i
     end
+    @registro.registradopor_id = current_usuario.id
     @registro.save!(validate: false)
     redirect_to main_app.edit_efecto_path(@registro)
   end

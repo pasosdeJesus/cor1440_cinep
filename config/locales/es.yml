@@ -119,8 +119,10 @@ es:
         cor1440_gen_indicadorpf: 'Indicador'
         frecuenciaanual: 'Frecuencia de medición anual'
         indicadorpf: 'Indicador'
+        indicadorpf_id: 'Indicador'
         pmindicador: 'Puntos de medición'
         proyectofinanciero: 'Compromiso institucional'
+        proyectofinanciero_id: 'Compromiso institucional'
         descd1: Descripción de dato intermedio 1
         descd2: Descripción de dato intermedio 2
         descd3: Descripción de dato intermedio 3
@@ -225,6 +227,8 @@ es:
         fecha_localizada: Fecha
         indicadorpf: Indicador
         indicadorpf_id: Indicador
+        registradopor: Registrado por
+        registradopor_id: Registrado por
       "empresaps":
         Empresaps: 'Empresa prestradora de salud'
         Empresasps: 'Empresas prestadoras de salud'
