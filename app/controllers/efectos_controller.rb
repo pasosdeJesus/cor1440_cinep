@@ -72,12 +72,23 @@ class EfectosController < Sip::ModelosController
   def edit
     authorize! :edit, ::Efecto
     @registro = ::Efecto.find(params[:id])
+    if @registro.registradopor_id.nil?
+      @registro.registradopor_id = current_usuario.id
+      @registro.save!(validate: false)
+    end
     if params['indicadorpf_id'] && params['indicadorpf_id'].to_i > 0
       @registro.indicadorpf_id = params['indicadorpf_id'].to_i
       @registro.valorcampotind = []
     end
     asegura_camposdinamicos(@registro)
     render layout: 'application'
+  end
+
+  def destroy(mens = "", verifica_tablas_union=true)
+    @registro.anexo_efecto = []
+    @registro.actor = []
+    @registro.valorcampotind = []
+    destroy_gen(mens, verifica_tablas_union)
   end
 
   def index_reordenar(registros)
