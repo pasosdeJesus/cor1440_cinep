@@ -9,7 +9,7 @@ module Cor1440Gen
 
     belongs_to :contextoinv, class_name: '::Contextoinv'
     accepts_nested_attributes_for :contextoinv
-    
+
     belongs_to :departamento, class_name: 'Sip::Departamento'
     belongs_to :municipio, class_name: 'Sip::Municipio'
     belongs_to :redactor, class_name: '::Redactor'
@@ -41,13 +41,35 @@ module Cor1440Gen
     has_many :objetivopf, through: :actividad_objetivopf,
       class_name: 'Cor1440Gen::Objetivopf'
 
+    flotante_localizado :duracion
 
+    attr_accessor :duracionhoras_localizado
+    def duracionhoras_localizado
+      r = 0
+      if duracion
+        if mduracion
+          case mduracion
+          when 'Minutos'
+            r = duracion*10/60.0
+            r = r.round / 10.0
+          when 'Días'
+            r = duracion * 8
+          when 'Meses'
+            r = duracion * 8 * 25
+          else # Horas
+            r = duracion 
+          end
+        end
+      end
+      r.a_decimal_localizado
+    end
+    
     validates :desarrollo, length: { maximum: 5000 }
     validates :resultado, length: { maximum: 5000 }
     validates :papel, length: { maximum: 5000 }
     validates :participantes, length: { maximum: 5000 }
     validates :lugar, length: { maximum: 5000 }
-    validates :duracion, numericality: { only_integer: true, 
+    validates :duracion, numericality: { 
       greater_than: 0,
       allow_nil: true 
     }

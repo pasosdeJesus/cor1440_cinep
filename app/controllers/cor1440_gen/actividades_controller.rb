@@ -82,21 +82,25 @@ module Cor1440Gen
       return lista_usuarios
     end
 
+    def recalcula_misgrupos(usuario, registro)
+      @misgrupos = Cor1440Gen::GruposHelper.mis_grupos_sinus(usuario)
+      mgui = @misgrupos.map(&:id)
+      gd = registro.grupo.count > 0 ? registro.grupo.map(&:id) :  []
+      gruposids = mgui + gd
+      @colgrupos = Sip::Grupo.where(id: gruposids)
+    end
 
     def edit
       edit_cor1440_gen
       asegura_contexto(@registro)
       @registro.save!(validate: false)
-      @misgrupos = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
-      mgui = @misgrupos.map(&:id)
-      gd = @registro.grupo.count > 0 ? @registro.grupo.map(&:id) :  []
-      gruposids = mgui + gd
-      @colgrupos = Sip::Grupo.where(id: gruposids)
+      recalcula_misgrupos(current_usuario, @registro)
       render layout: 'application'
     end
 
     def update
       params[:actividad][:oficina_id] = 1
+      recalcula_misgrupos(current_usuario, @registro)
       update_gen
     end
 
@@ -134,8 +138,9 @@ module Cor1440Gen
         :fecha, 
         :creadopor, 
         :nombre, 
-        :duracion, 
+        :duracion_localizado, 
         :mduracion,
+        :duracionhoras_localizado,
         :departamento, 
         :municipio,
         :grupo, 
@@ -183,12 +188,26 @@ module Cor1440Gen
 
 
     def atributos_presenta
-      [ :id, :fecha, :creadopor, :duracion, :mduracion,
-        :nombre, :departamento, :municipio,
-        :grupo, :proyectosfinancieros, :actividadpf,
-        :objetivopf, :actor, :publicacion,
-        :mujeres, :hombres, :sexo_onr,
-        :negros, :indigenas, :etnia_onr
+      [ :id, 
+        :fecha, 
+        :creadopor, 
+        :duracion, 
+        :mduracion,
+        :nombre, 
+        :departamento, 
+        :municipio,
+        :grupo, 
+        :proyectosfinancieros, 
+        :actividadpf,
+        :objetivopf, 
+        :actor, 
+        :publicacion,
+        :mujeres, 
+        :hombres, 
+        :sexo_onr,
+        :negros, 
+        :indigenas, 
+        :etnia_onr
       ]
     end
 
@@ -260,7 +279,7 @@ module Cor1440Gen
         :contexto,
         :departamento_id,
         :desarrollo, 
-        :duracion,
+        :duracion_localizado,
         :etnia_onr, 
         :etnia_onr_nobef, 
         :etnia_onr_proceso, 

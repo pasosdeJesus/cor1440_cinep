@@ -752,7 +752,7 @@ CREATE TABLE cor1440_gen_actividad (
     departamento_id integer,
     municipio_id integer,
     contexto character varying(5000),
-    duracion integer,
+    duracion numeric,
     mduracion character varying(50),
     alcance character varying(50),
     accionincidencia boolean,
@@ -7242,6 +7242,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180612090934'),
 ('20180615094624'),
 ('20180626123640'),
-('20180627100822');
+('20180627100822'),
+('20180628005903');
 
 

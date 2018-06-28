@@ -11,6 +11,7 @@ module Cor1440Gen
         cg = ::ApplicationHelper.supergrupos_usuario(current_usuario) - ['Usuarios']
         misgrupossinu = Sip::Grupo.habilitados.where("nombre IN ('#{cg.join("', '")}')")
       end
+      return misgrupossinu
     end
 
   end

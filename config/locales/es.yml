@@ -92,8 +92,11 @@ es:
         actividadpf: Actividad de compromiso institucional
         actividadtipo: Tipo
         creadopor: "Creado por"
+        duracion: "Duración"
+        duracion_localizado: "Duración"
+        duracionhoras_localizado: "Duración en horas"
         etnia_onr: 'Otra/NR'
-        fecha_localizada: Fecha
+        fecha_localizada: Fecha Inicio
         minutos: Horas
         mduracion: "Unidad de duración"
         objetivopf: Objetivo de compromiso institucional
@@ -151,7 +154,6 @@ es:
         cuentasbancarias: "Cuentas bancarias"
         desembolso: 'Desembolsos'
         dificultad: 'Dificultad en formulación'
-        duracion: "Duración"
         domiciliofinanciador: 'Domicilio'
         emailrespagencia: "Correo del responsable agencia"
         empresaauditoria: "Empresa de Auditorías y Relacionados"

@@ -602,8 +602,8 @@ module Cor1440Gen
       if !plantilla
         return
       end
-      camposab = current_ability.
-        campos_plantillas['Compromiso Institucional'][:campos]
+      #camposab = current_ability.
+      #  campos_plantillas['Compromiso Institucional'][:campos]
       narchivo << File.basename(plantilla.ruta)
       # Ejemplo de https://github.com/sandrods/odf-report
       report = ODFReport::Report.new("#{Rails.root}/public/heb412/#{plantilla.ruta}") do |r|
