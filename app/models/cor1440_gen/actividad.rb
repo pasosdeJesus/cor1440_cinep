@@ -73,6 +73,13 @@ module Cor1440Gen
       greater_than: 0,
       allow_nil: true 
     }
+    validate :tot_participantes
+    def tot_participantes
+      if hombres+mujeres+sexo_onr != negros+indigenas+etnia_onr
+        errors.add(:sexo_onr, 'La suma de participantes por genero debería ' +
+                   'ser la misma de participantes por etnia')
+      end
+    end
 
     # Deshabilita validacion con oficina que proviene de
     # Cor1440Gen::Concerns::Models::Actividad

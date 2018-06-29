@@ -176,6 +176,26 @@
     root, 'id', 'referenciacinep', 
     cor1440_cinep_actividad_actualiza_actores)
 
+@cor1440_cinep_actividad_etnia_onr = (root) ->
+  tg = parseInt($('#actividad_hombres').val()) + 
+    parseInt($('#actividad_mujeres').val()) + 
+    parseInt($('#actividad_sexo_onr').val())
+  pe = parseInt($('#actividad_negros').val()) + 
+    parseInt($('#actividad_indigenas').val())
+  fe = 0
+  if tg > pe
+    fe = tg - pe
+  $('#actividad_etnia_onr').val(fe)
+
+@cor1440_cinep_actividad_totales_part = (root) ->
+  tg = parseInt($('#actividad_hombres').val()) + 
+    parseInt($('#actividad_mujeres').val()) + 
+    parseInt($('#actividad_sexo_onr').val())
+  te = parseInt($('#actividad_negros').val()) + 
+    parseInt($('#actividad_indigenas').val()) +
+    parseInt($('#actividad_etnia_onr').val())
+  $('#tot_genero').html(tg)
+  $('#tot_etnia').html(te)
 
 @cor1440_cinep_prepara_eventos_unicos = (root) ->
   sip_arregla_puntomontaje(root)
@@ -206,6 +226,29 @@
     cor1440_cinep_actividad_actualiza_camposdinamicos(root)
   )
 
+  $('#actividad_mujeres').change( (e) ->
+    cor1440_cinep_actividad_etnia_onr (root)
+    cor1440_cinep_actividad_totales_part (root)
+  )
+  $('#actividad_hombres').change( (e) ->
+    cor1440_cinep_actividad_etnia_onr (root)
+    cor1440_cinep_actividad_totales_part (root)
+  )
+  $('#actividad_sexo_onr').change( (e) ->
+    cor1440_cinep_actividad_etnia_onr (root)
+    cor1440_cinep_actividad_totales_part (root)
+  )
+  $('#actividad_negros').change( (e) ->
+    cor1440_cinep_actividad_etnia_onr (root)
+    cor1440_cinep_actividad_totales_part (root)
+  )
+  $('#actividad_indigenas').change( (e) ->
+    cor1440_cinep_actividad_etnia_onr (root)
+    cor1440_cinep_actividad_totales_part (root)
+  )
+  $('#actividad_etnia_onr').change( (e) ->
+    cor1440_cinep_actividad_totales_part (root)
+  )
 
   # Efecto
   $(document).on('change', '#efecto_indicadorpf_id', (e) ->

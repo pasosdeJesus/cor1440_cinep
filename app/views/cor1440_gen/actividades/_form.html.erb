@@ -170,7 +170,7 @@
               <%= f.input :sexo_onr, 
                 label: false %>
             </td>
-            <td id='tot_genero_oc'>
+            <td id='tot_genero'>
               <%=
                 s = f.object.hombres ? f.object.hombres : 0
                 s += f.object.mujeres ? f.object.mujeres : 0
@@ -204,7 +204,7 @@
               <%= f.input :etnia_onr, 
                 label: false %>
             </td>
-            <td id='tot_etnia_oc'>
+            <td id='tot_etnia'>
               <%=
                 s = f.object.negros ? f.object.negros : 0
                 s += f.object.indigenas ? f.object.indigenas : 0
