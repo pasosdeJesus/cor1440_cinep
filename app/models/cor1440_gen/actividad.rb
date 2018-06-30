@@ -75,7 +75,8 @@ module Cor1440Gen
     }
     validate :tot_participantes
     def tot_participantes
-      if hombres+mujeres+sexo_onr != negros+indigenas+etnia_onr
+      if hombres && mujeres && sexo_onr && negros && indigenas && etnia_onr &&
+        hombres+mujeres+sexo_onr != negros+indigenas+etnia_onr
         errors.add(:sexo_onr, 'La suma de participantes por genero debería ' +
                    'ser la misma de participantes por etnia')
       end
