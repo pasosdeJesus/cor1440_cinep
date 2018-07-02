@@ -37,20 +37,20 @@ Puede seguir las mismas instrucciones de sivel2:
 Los cambios son:
 
 * El usuario por defecto para la base de datos es cor1440cinep
-* Al iniciar una nueva aplicación se crea usuario cor1440cinep con clave
-  cor1440cinep
-* La aplicacion se monta sobre ```/act```, si se necesita redirigir ```/```
-  copiar y cambiar plantilla
-  ```
-	cp app/views/redirige/index.html.erb.plantilla app/views/redirige/index.html.erb
-	vim app/views/redirige/index.html.erb
-  ```
-
+* Al iniciar una nueva aplicación se crea usuario cor1440 con clave
+  cor1440
+* La aplicacion se monta sobre ```/```
 * La conexión LDAP si la hace cifrada requiere un certificao firmado cuyo
   subject sea el nombre del servidor al que se conecta y con una autoridad
   ceritificadora reconocida por el servidor donde reside la aplicación.
   Si usa su propia autoridad certificadora asegurese de incluir la llave
   pública entre las conocidas por el sistema (en adJ /etc/ssl/cert.pem).
+* El envio de alertas depende de:
+1. que se tenga una cuenta configurada en un servidor SMTP 
+2. Que se configure una tarea cron para ejecutarse a diario con:
+
+SMTP_MAQ=serv.midominio.org SMTP_PUERTO=465 SMTP_DOMINIO=midominio.org SMTP_USUARIO=crecer SMTP_CLAVE=ClaveCRECER bundle exec rails runner -e production /var/www/htdocs/cor1440cinep/scripts/a_diario_runner.rb
+
 
 ### Plantilla
 

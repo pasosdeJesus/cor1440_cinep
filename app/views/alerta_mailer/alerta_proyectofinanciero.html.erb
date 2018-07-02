@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Proximanete un proyecto <%= @tiene%></h1>
+    <p>
+    El proyecto <%= @pf.referenciacinep %> 
+    <%= @tiene %>
+    <%= @cuando %>
+    </p>
+    <% @complemento.each do |l| %>
+      <p>
+        <%= l %>
+      </p>
+    <% end %>
+  </body>
+</html>

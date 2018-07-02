@@ -80,7 +80,7 @@ class Productopf < ActiveRecord::Base
       proyectofinanciero.fechainicio &&
       fechainiprod < proyectofinanciero.fechainicio then
       errors.add(:fechainiprod_mes,
-                 "La fecha de inicio de producción debe ser posterior a la de inicio del compromiso")
+                 "La fecha de inicio de producción (#{fechainiprod}) debe ser posterior a la de inicio del compromiso (#{proyectofinanciero.fechainicio})")
     end
   end
 
