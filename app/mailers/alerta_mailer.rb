@@ -21,10 +21,10 @@ class AlertaMailer < ApplicationMailer
     return if !@pf
     puts "pf.id=#{@pf.id}"
     puts "pf.referenciacinep=#{@pf.referenciacinep}"
-    puts "pf.inspect=#{@pf.inspect}"
     @respgp = @pf.respgp
-    puts "respgp=#{@respgp}"
+    puts "respgp=#{@respgp.id}"
     return if !@respgp || !@respgp.email
+    puts "respgp.email=#{@respgp.email}"
     puts "enviando con tema #{@tiene}"
     mail(to: @respgp.email, 
          subject: "[CRECER] Proximamente un proyecto #{@tiene}")
