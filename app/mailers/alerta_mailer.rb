@@ -22,13 +22,12 @@ class AlertaMailer < ApplicationMailer
     puts "pf.id=#{@pf.id}"
     puts "pf.referenciacinep=#{@pf.referenciacinep}"
     puts "pf.inspect=#{@pf.inspect}"
-    #@respgp = @pf.respgp
-    #puts "respgp=#{@respgp}"
-    #return if !@respgp
+    @respgp = @pf.respgp
+    puts "respgp=#{@respgp}"
+    return if !@respgp || !@respgp.email
     puts "enviando con tema #{@tiene}"
-    mail(to: 'vtamara@pasosdeJesus.org', 
+    mail(to: @respgp.email, 
          subject: "[CRECER] Proximamente un proyecto #{@tiene}")
-    #mail(to: @respgp.correo, subject: "[CRECER] Proximamente un proyecto #{@tiene}")
   end
 
 end
