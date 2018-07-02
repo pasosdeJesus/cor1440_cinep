@@ -4,7 +4,7 @@
     <th>Fecha planeada</th>
     <th>Fecha real</th>
   </tr>
-  <% @registro.informeauditoria.each do |i| %>
+  <% @registro.informeevaluacion.each do |i| %>
     <tr>
       <td><%= i.detalle if i.detalle %></td>
       <td><%= i.fechaplaneada_localizada %></td>
