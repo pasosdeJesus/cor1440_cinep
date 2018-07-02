@@ -46,10 +46,9 @@ Los cambios son:
   Si usa su propia autoridad certificadora asegurese de incluir la llave
   pública entre las conocidas por el sistema (en adJ /etc/ssl/cert.pem).
 * El envio de alertas depende de:
-1. que se tenga una cuenta configurada en un servidor SMTP 
-2. Que se configure una tarea cron para ejecutarse a diario con:
-
-SMTP_MAQ=serv.midominio.org SMTP_PUERTO=465 SMTP_DOMINIO=midominio.org SMTP_USUARIO=crecer SMTP_CLAVE=ClaveCRECER bundle exec rails runner -e production /var/www/htdocs/cor1440cinep/scripts/a_diario_runner.rb
+1. Que se tenga una cuenta configurada en un servidor SMTP 
+2. Que copie y configure datos de bin/cron-diario.sh.plantilla en bin/cron-diario.sh y que agregué las variables de correo en cada arranque de la aplicación
+3. Que programa una tarea cron diaria para ejecutar bin/cron-diario.sh
 
 
 ### Plantilla
