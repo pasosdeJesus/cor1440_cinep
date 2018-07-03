@@ -53,7 +53,7 @@ class Efecto < ActiveRecord::Base
   }
  
   scope :filtro_registradopor_id, lambda { |r|
-    where('registradopor_id = ?', i)
+    where('registradopor_id = ?', r)
   }
   
 end

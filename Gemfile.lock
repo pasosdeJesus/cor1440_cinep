@@ -1,16 +1,4 @@
 GIT
-  remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: c61f82b378485667775427397aa6913971826ac6
-  specs:
-    cor1440_gen (1.0b2)
-      devise
-      heb412_gen
-      jquery-rails
-      paperclip
-      rails
-      sip
-
-GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
   revision: 012cc640def9ebee78267708d11f2d8d71730a66
   specs:
@@ -148,6 +136,17 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
+
+PATH
+  remote: ../cor1440_gen
+  specs:
+    cor1440_gen (1.0b2)
+      devise
+      heb412_gen
+      jquery-rails
+      paperclip
+      rails
+      sip
 
 GEM
   remote: https://rubygems.org/
