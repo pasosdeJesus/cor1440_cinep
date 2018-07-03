@@ -20,12 +20,12 @@
     <th>Resultados/Productos</th>
     <th>Indicadores de Resultado</th>
   </tr>
-  <% @registro.resultadopf.each do |r| %>
+  <% @registro.resultadopf.order(:id).each do |r| %>
     <tr>
       <td><%= r.numero %> <%= r.resultado %></td>
       <td>
         <ul>
-          <% r.indicadorpf.each do |ir| %>
+          <% r.indicadorpf.order(:id).each do |ir| %>
             <li><%= ir.numero %> <%= ir.indicador%></li>
           <% end %>
         </ul>
@@ -35,10 +35,10 @@
   <tr>
     <th colspan=2>Actividades</th>
   </tr>
-  <% @registro.actividadpf.each do |a| %>
+  <% @registro.actividadpf.order(:nombrecorto).each do |a| %>
     <tr>
       <td colspan=2>
-        <%= a.nombrecorto %> <%= a.titulo %> 
+        <%= a.nombrecorto %> <%= a.titulo %>.
         <% if a.actividadtipo_id %>
           (Tipo: <%= a.actividadtipo.nombre %>)
         <% end%>
