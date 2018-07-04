@@ -7,7 +7,6 @@ module Cor1440Gen
 
     def update
       params[:tipoindicador][:campotind_attributes].each do |p| 
-          byebug
         if p[1]['_destroy'] == "1" && p[1][:id].to_i > 0
           ::EfectoValorcampotind.where(valorcampotind_id: p[1][:id]).destroy_all
           Cor1440Gen::Valorcampotind.where(campotind_id: p[1][:id]).destroy_all
