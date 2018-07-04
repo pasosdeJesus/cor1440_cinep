@@ -81,5 +81,18 @@ class Efecto < ActiveRecord::Base
   scope :filtro_registradopor_id, lambda { |r|
     where('registradopor_id = ?', r)
   }
-  
+ 
+  def presenta(atr)
+    case atr
+    when 'indicadorpf_id'
+      if indicadorpf_id
+        indicadorpf.numero
+      else
+        ''
+      end
+    else
+      presenta_gen(atr)
+    end
+  end 
+
 end
