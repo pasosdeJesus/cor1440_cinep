@@ -32,9 +32,31 @@ class Efecto < ActiveRecord::Base
     class_name: '::Cor1440Gen::Valorcampotind'
   accepts_nested_attributes_for :valorcampotind,  reject_if: :all_blank
 
-  validates :indicadorpf_id, presence: true
   validates :actor_efecto, presence: true
   validates :fecha, presence: true
+  validates :nombre, presence: true, length: { maximum: 128} 
+  validates :indicadorpf_id, presence: true
+
+  validate :tiene_anexo
+  def tiene_anexo
+    if !anexo_efecto.present?
+      errors.add(:anexo_efecto, 
+                 'Debe tener medios de verificación anexos')
+    end
+  end
+
+  attr_accessor :linea
+  def linea
+    #byebug
+    g=Cor1440Gen::GruposHelper.mis_grupos_sinus(registradopor)
+    return '' if g.nil?
+    g = g.where("nombre like 'Línea%'")
+    if g.count == 1
+      g.take.nombre
+    else
+      ''
+    end
+  end
 
   scope :filtro_actor_id, lambda { |a|
     where('actor_id = ?', a)
@@ -51,6 +73,10 @@ class Efecto < ActiveRecord::Base
   scope :filtro_indicadorpf_id, lambda { |i|
     where('indicadorpf_id = ?', i)
   }
+
+  scope :filtro_nombre, lambda {|n|
+        where("unaccent(nombre) ILIKE '%' || unaccent(?) || '%'", n)
+  } 
  
   scope :filtro_registradopor_id, lambda { |r|
     where('registradopor_id = ?', r)

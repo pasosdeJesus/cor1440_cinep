@@ -1868,7 +1868,8 @@ CREATE TABLE efecto (
     indicadorpf_id integer,
     actor_id_porborrar integer,
     fecha date,
-    registradopor_id integer
+    registradopor_id integer,
+    nombre character varying(500)
 );
 
 
@@ -7324,6 +7325,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180627100822'),
 ('20180628005903'),
 ('20180630005551'),
-('20180703115744');
+('20180703115744'),
+('20180704094831');
 
 

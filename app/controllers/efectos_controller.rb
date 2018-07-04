@@ -16,6 +16,7 @@ class EfectosController < Sip::ModelosController
       "indicadorpf_id"] +
     [ :actor_ids=>[]] +
     [ "fecha_localizada",
+      "nombre",
       "registradopor_id",
       "anexo_efecto"
     ] 
@@ -25,8 +26,9 @@ class EfectosController < Sip::ModelosController
     [ "indicadorpf_id"] +
     [ :actor_ids=>[]] +
     [ "fecha_localizada",
-       "efecto_valorcampotind",
-       "anexo_efecto"
+      "nombre",
+      "efecto_valorcampotind",
+      "anexo_efecto"
     ] 
   end
 
@@ -117,6 +119,7 @@ class EfectosController < Sip::ModelosController
       :id, 
       :indicadorpf_id,
       :fecha_localizada,
+      :nombre,
       :actor_ids => [],
       :anexo_efecto_attributes => [
         :id,
