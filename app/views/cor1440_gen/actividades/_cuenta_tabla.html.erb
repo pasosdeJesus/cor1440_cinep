@@ -161,50 +161,56 @@
                  cor1440_gen_actividad_proyectofinanciero WHERE 
                 proyectofinanciero_id=?)', @pfid)
          %>
-       <td><em>Sin Actividad de compromiso institucional</em></td>
-         <td>
-           <% tot = consb.count %>
-           <% ttot += tot %>
-           <%= tot %>
-         </td>
-         <td>
-           <% muj = consb.sum(:mujeres) %>
-           <% tmuj += muj %>
-           <%= muj %>
-         </td>
-         <td>
-           <% hom = consb.sum(:hombres) %>
-           <% thom += hom %>
-           <%= hom%>
-         </td>
-         <td>
-           <% sonr = consb.sum(:sexo_onr) %>
-           <% tsonr += sonr %>
-           <%= sonr %>
-         </td>
-         <td>
-           <% afr = consb.sum(:negros) %>
-           <% tafr += afr %>
-           <%= afr %>
-         </td>
-         <td>
-           <% ind = consb.sum(:indigenas) %>
-           <% tind += ind %>
-           <%= ind %>
-         </td>
-         <td>
-           <% eonr = consb.sum(:etnia_onr) %>
-           <% teonr += eonr %>
-           <%= eonr %>
-         </td>
-         <td>
-          <%= consb.joins(:actividad_actor).joins('JOIN actor_sectoractor ON
+       <td><em>Sin Actividad de compromiso institucional</em><br>
+        <% sep = '' %>
+        <% consb.each do |a| %>
+          <%= sep %><%= link_to(a.id, cor1440_gen.actividad_path(a.id)) %> 
+          <% sep = ", " %>
+        <% end %>
+      </td>
+      <td>
+        <% tot = consb.count %>
+        <% ttot += tot %>
+        <%= tot %>
+      </td>
+      <td>
+        <% muj = consb.sum(:mujeres) %>
+        <% tmuj += muj %>
+        <%= muj %>
+      </td>
+      <td>
+        <% hom = consb.sum(:hombres) %>
+        <% thom += hom %>
+        <%= hom%>
+      </td>
+      <td>
+        <% sonr = consb.sum(:sexo_onr) %>
+        <% tsonr += sonr %>
+        <%= sonr %>
+      </td>
+      <td>
+        <% afr = consb.sum(:negros) %>
+        <% tafr += afr %>
+        <%= afr %>
+      </td>
+      <td>
+        <% ind = consb.sum(:indigenas) %>
+        <% tind += ind %>
+        <%= ind %>
+      </td>
+      <td>
+        <% eonr = consb.sum(:etnia_onr) %>
+        <% teonr += eonr %>
+        <%= eonr %>
+      </td>
+      <td>
+        <%= consb.joins(:actividad_actor).joins('JOIN actor_sectoractor ON
               actividad_actor.actor_id=actor_sectoractor.actor_id').
               joins('JOIN sectoractor 
                     ON actor_sectoractor.sectoractor_id=sectoractor.id').
-              select('sectoractor.nombre').
-              distinct.map(&:nombre).join('; ') %>
-         </td>
+                    select('sectoractor.nombre').
+                    distinct.map(&:nombre).join('; ') %>
+    </td>
     </tr>
     <tr>
       <th>Total de actividades/participaciones</th>
