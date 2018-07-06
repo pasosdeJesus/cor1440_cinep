@@ -85,6 +85,9 @@ Rails.application.routes.draw do
       as: :actividad_fichaimp
     get "/actividades/:id/fichapdf" => "cor1440_gen/actividades#fichapdf", 
       as: :actividad_fichapdf
+    
+    get "/actividades/cuenta" => "cor1440_gen/actividades#cuenta", 
+      as: :actividades_cuenta
 
     get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :pf_fichaimp
     get "/proyectosfinancieros/:id/fichapdf" => "cor1440_gen/proyectosfinancieros#fichapdf", as: :pf_fichapdf

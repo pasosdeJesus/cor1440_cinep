@@ -1,0 +1,220 @@
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th rowspan='2'>
+        Actividades
+      </th>
+      <th rowspan='2'>
+        Total<br>Actividades
+      </th>
+      <th colspan='3'>Participaciones por genero</th>
+      <th colspan='3'>Participaciones por etnia</th>
+      <th rowspan='2'>
+        Sectores de los actores sociales
+      </th>
+    </tr>
+    <tr>
+      <th>Mujeres</th>
+      <th>Hombres</th>
+      <th>O/NR</th>
+      <th>Afros</th>
+      <th>Indigenas</th>
+      <th>O/NR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% a = Cor1440Gen::Actividadpf.where(
+      proyectofinanciero_id: @pfid).order(:nombrecorto) %>
+    <% ttot = 0 %>
+    <% tmuj = 0 %>
+    <% thom = 0 %>
+    <% tsonr = 0 %>
+    <% tafr = 0 %>
+    <% tind = 0 %>
+    <% teonr = 0 %>
+    <% a.each do |a| %>
+      <tr>
+        <% # Aqui sólo contamos actividades con una sola una actividad de convenio %>
+        <% consb = @baseactividad.where('cor1440_gen_actividad.id IN 
+          (SELECT actividad_id FROM cor1440_gen_actividad_actividadpf
+           WHERE actividadpf_id=?)',a.id).
+           where('cor1440_gen_actividad.id NOT IN 
+          (SELECT actividad_id FROM cor1440_gen_actividad_actividadpf
+          JOIN cor1440_gen_actividadpf ON 
+            cor1440_gen_actividad_actividadpf.actividadpf_id=
+            cor1440_gen_actividadpf.id
+           WHERE cor1440_gen_actividadpf.proyectofinanciero_id=?
+           AND actividadpf_id<>?)', @pfid, a.id)
+         %>
+        <td><%= a.nombrecorto %> <%= a.titulo%></td>
+        <td>
+          <% tot = consb.count %>
+          <% ttot += tot %>
+          <%= tot %>
+        </td>
+        <td>
+          <% muj = consb.sum(:mujeres) %>
+          <% tmuj += muj %>
+          <%= muj %>
+        </td>
+        <td>
+          <% hom = consb.sum(:hombres) %>
+          <% thom += hom %>
+          <%= hom%>
+        </td>
+        <td>
+          <% sonr = consb.sum(:sexo_onr) %>
+          <% tsonr += sonr %>
+          <%= sonr %>
+        </td>
+        <td>
+          <% afr = consb.sum(:negros) %>
+          <% tafr += afr %>
+          <%= afr %>
+        </td>
+        <td>
+          <% ind = consb.sum(:indigenas) %>
+          <% tind += ind %>
+          <%= ind %>
+        </td>
+        <td>
+          <% eonr = consb.sum(:etnia_onr) %>
+          <% teonr += eonr %>
+          <%= eonr %>
+        </td>
+        <td>
+          <%= consb.joins(:actividad_actor).joins('JOIN actor_sectoractor ON
+              actividad_actor.actor_id=actor_sectoractor.actor_id').
+              joins('JOIN sectoractor 
+                    ON actor_sectoractor.sectoractor_id=sectoractor.id').
+              select('sectoractor.nombre').
+            distinct.map(&:nombre).join('; ') %>
+      </tr>
+    <% end %>
+    <tr>
+      <% consb = @baseactividad.where('cor1440_gen_actividad.id IN 
+          (SELECT actividad_id FROM (SELECT actividad_id, 
+            COUNT(actividadpf_id) FROM cor1440_gen_actividad_actividadpf
+           JOIN cor1440_gen_actividadpf ON 
+            cor1440_gen_actividad_actividadpf.actividadpf_id=
+            cor1440_gen_actividadpf.id
+           WHERE cor1440_gen_actividadpf.proyectofinanciero_id = ?
+           AND cor1440_gen_actividad_actividadpf.actividad_id =
+             cor1440_gen_actividad.id GROUP BY 1) AS s WHERE count>1)',@pfid)
+         %>
+       <td><em>Con más de una Actividad de compromiso institucional</em></td>
+         <td>
+           <% tot = consb.count %>
+           <% ttot += tot %>
+           <%= tot %>
+         </td>
+         <td>
+           <% muj = consb.sum(:mujeres) %>
+           <% tmuj += muj %>
+           <%= muj %>
+         </td>
+         <td>
+           <% hom = consb.sum(:hombres) %>
+           <% thom += hom %>
+           <%= hom%>
+         </td>
+         <td>
+           <% sonr = consb.sum(:sexo_onr) %>
+           <% tsonr += sonr %>
+           <%= sonr %>
+         </td>
+         <td>
+           <% afr = consb.sum(:negros) %>
+           <% tafr += afr %>
+           <%= afr %>
+         </td>
+         <td>
+           <% ind = consb.sum(:indigenas) %>
+           <% tind += ind %>
+           <%= ind %>
+         </td>
+         <td>
+           <% eonr = consb.sum(:etnia_onr) %>
+           <% teonr += eonr %>
+           <%= eonr %>
+         </td>
+         <td>
+          <%= consb.joins(:actividad_actor).joins('JOIN actor_sectoractor ON
+              actividad_actor.actor_id=actor_sectoractor.actor_id').
+              joins('JOIN sectoractor 
+                    ON actor_sectoractor.sectoractor_id=sectoractor.id').
+              select('sectoractor.nombre').
+              distinct.map(&:nombre).join('; ') %>
+       </td>
+
+    </tr>
+
+    <tr>
+      <% consb = @baseactividad.where('cor1440_gen_actividad.id NOT IN 
+          (SELECT actividad_id FROM cor1440_gen_actividad_actividadpf
+           JOIN cor1440_gen_actividadpf ON 
+            cor1440_gen_actividad_actividadpf.actividadpf_id=
+            cor1440_gen_actividadpf.id
+           WHERE cor1440_gen_actividadpf.proyectofinanciero_id=?)',@pfid).
+           where('cor1440_gen_actividad.id IN (SELECT actividad_id FROM 
+                 cor1440_gen_actividad_proyectofinanciero WHERE 
+                proyectofinanciero_id=?)', @pfid)
+         %>
+       <td><em>Sin Actividad de compromiso institucional</em></td>
+         <td>
+           <% tot = consb.count %>
+           <% ttot += tot %>
+           <%= tot %>
+         </td>
+         <td>
+           <% muj = consb.sum(:mujeres) %>
+           <% tmuj += muj %>
+           <%= muj %>
+         </td>
+         <td>
+           <% hom = consb.sum(:hombres) %>
+           <% thom += hom %>
+           <%= hom%>
+         </td>
+         <td>
+           <% sonr = consb.sum(:sexo_onr) %>
+           <% tsonr += sonr %>
+           <%= sonr %>
+         </td>
+         <td>
+           <% afr = consb.sum(:negros) %>
+           <% tafr += afr %>
+           <%= afr %>
+         </td>
+         <td>
+           <% ind = consb.sum(:indigenas) %>
+           <% tind += ind %>
+           <%= ind %>
+         </td>
+         <td>
+           <% eonr = consb.sum(:etnia_onr) %>
+           <% teonr += eonr %>
+           <%= eonr %>
+         </td>
+         <td>
+          <%= consb.joins(:actividad_actor).joins('JOIN actor_sectoractor ON
+              actividad_actor.actor_id=actor_sectoractor.actor_id').
+              joins('JOIN sectoractor 
+                    ON actor_sectoractor.sectoractor_id=sectoractor.id').
+              select('sectoractor.nombre').
+              distinct.map(&:nombre).join('; ') %>
+         </td>
+    </tr>
+    <tr>
+      <th>Total de actividades/participaciones</th>
+      <th><%= ttot %></th>
+      <th><%= tmuj %></th>
+      <th><%= thom %></th>
+      <th><%= tsonr %></th>
+      <th><%= tafr %></th>
+      <th><%= tind %></th>
+      <th><%= teonr %></th>
+    </tr>
+  </tbody>
+</table>

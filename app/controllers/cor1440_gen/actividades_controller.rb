@@ -7,6 +7,9 @@ module Cor1440Gen
 
     helper Cor1440Gen::GruposHelper
 
+    include Sip::ConsultasHelper
+    include Sip::FormatoFechaHelper
+
     def clase
       'Cor1440Gen::Actividad'
     end
@@ -32,6 +35,44 @@ module Cor1440Gen
       @actividad.current_usuario = current_usuario
       @actividad.creadopor_id = current_usuario.id
       create_gen
+    end
+
+    def cuenta
+      @pfid = params[:filtro] && params[:filtro][:proyectofinanciero_id] ? 
+        params[:filtro][:proyectofinanciero_id].to_i : 18  
+      @baseactividad = Cor1440Gen::Actividad.all
+      if params[:filtro] && params[:filtro][:grupo_id] && params[:filtro][:grupo_id] != ""
+        grupo = Sip::Grupo.find(params[:filtro][:grupo_id].to_i)
+        if grupo
+          @grupoid = grupo.id
+          @baseactividad = @baseactividad.where(
+            'cor1440_gen_actividad.id IN (SELECT actividad_id 
+             FROM actividad_grupo WHERE grupo_id = ?)', @grupoid)
+        end
+      end
+      if !params[:filtro] || !params[:filtro]['fechaini'] || params[:filtro]['fechaini'] != ""
+        if !params[:filtro] || !params[:filtro]['fechaini']
+          @fechaini = inicio_semestre_ant
+          #@fechaini = fecha_estandar_local fi
+        else
+          @fechaini = fecha_local_estandar(params[:filtro]['fechaini'])
+        end
+        @baseactividad = @baseactividad.where('cor1440_gen_actividad.fecha >= ?', @fechaini)
+      end
+      if !params[:filtro] || !params[:filtro]['fechafin'] || params[:filtro]['fechafin'] != ""
+        if !params[:filtro] || !params[:filtro]['fechafin']
+          @fechafin = fin_semestre_ant
+        else
+          @fechafin = fecha_local_estandar(params[:filtro]['fechafin'])
+        end
+        @baseactividad = @baseactividad.where('cor1440_gen_actividad.fecha <= ?', @fechafin)
+      end
+
+      respond_to do |format|
+        format.html { render layout: 'application' }
+        format.json { head :no_content }
+        format.js { render }
+      end
     end
 
     def asegura_contexto(actividad)
