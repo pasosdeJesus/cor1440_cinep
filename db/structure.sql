@@ -1548,7 +1548,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    monto numeric(20,2) DEFAULT 0.0,
+    monto numeric DEFAULT 0.0,
     referencia character varying(1000),
     referenciacinep character varying(1000),
     fuentefinanciador character varying(1000),
@@ -1565,7 +1565,7 @@ CREATE TABLE cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric(20,2) DEFAULT 0.0,
+    presupuestototal numeric DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -1736,12 +1736,12 @@ ALTER SEQUENCE cor1440_gen_sectoractor_id_seq OWNED BY cor1440_gen_sectoractor.i
 CREATE TABLE cor1440_gen_tipoindicador (
     id bigint NOT NULL,
     nombre character varying(32),
-    medircon integer,
     espcampos character varying(1000),
     espvaloresomision character varying(1000),
     espvalidaciones character varying(1000),
     esptipometa character varying(32),
-    espfuncionmedir character varying(1000)
+    espfuncionmedir character varying(1000),
+    medircon integer
 );
 
 
@@ -3040,7 +3040,6 @@ CREATE TABLE sal7711_gen_articulo (
     pagina character varying(20),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    url character varying(5000),
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
@@ -3048,9 +3047,10 @@ CREATE TABLE sal7711_gen_articulo (
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
-    pais_id integer,
     titulo character varying(1024),
-    observaciones character varying(5000)
+    observaciones character varying(5000),
+    url character varying(5000),
+    pais_id integer
 );
 
 
@@ -4065,8 +4065,6 @@ CREATE TABLE usuario (
     updated_at timestamp without time zone,
     regionsjr_id integer,
     oficina_id integer DEFAULT 1,
-    nombres character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying NOT NULL,
-    apellidos character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying NOT NULL,
     ultimasincldap date,
     "uidNumber" integer,
     telefonos character varying(256),
@@ -4077,6 +4075,8 @@ CREATE TABLE usuario (
     numhijosmen12 integer DEFAULT 0,
     labdepartamento_id integer,
     labmunicipio_id integer,
+    apellidos character varying(127),
+    nombres character varying(127),
     perfilprofesional_id integer,
     cargo_id integer,
     contrato_id integer,
@@ -4099,7 +4099,7 @@ CREATE VIEW v_solicitud_informes1 AS
     informenarrativo.fechaplaneada,
     informenarrativo.fechareal,
     informenarrativo.devoluciones,
-    ('INFOMRE NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
+    ('INFORME NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
     informenarrativo.seguimiento
    FROM informenarrativo
 UNION
@@ -4136,12 +4136,14 @@ UNION
 CREATE VIEW v_solicitud_informes AS
  SELECT p.id AS compromiso_id,
     p.referenciacinep AS titulo,
-    array_to_string(ARRAY( SELECT (((usuario.nombres)::text || ' '::text) || (usuario.apellidos)::text)
-           FROM (usuario
+    array_to_string(ARRAY( SELECT (((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text)
+           FROM ((sip_persona
+             JOIN usuario ON ((sip_persona.id = usuario.persona_id)))
              JOIN coordinador_proyectofinanciero ON ((usuario.id = coordinador_proyectofinanciero.coordinador_id)))
           WHERE (coordinador_proyectofinanciero.proyectofinanciero_id = p.id)), ', '::text) AS coordinador,
-    array_to_string(ARRAY( SELECT (((usuario.nombres)::text || ' '::text) || (usuario.apellidos)::text)
-           FROM (usuario
+    array_to_string(ARRAY( SELECT (((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text)
+           FROM ((sip_persona
+             JOIN usuario ON ((sip_persona.id = usuario.persona_id)))
              JOIN proyectofinanciero_uresponsable ON ((usuario.id = proyectofinanciero_uresponsable.uresponsable_id)))
           WHERE (proyectofinanciero_uresponsable.proyectofinanciero_id = p.id)), ', '::text) AS responsable,
     s.fechaplaneada,
@@ -4154,14 +4156,14 @@ CREATE VIEW v_solicitud_informes AS
     s.observaciones,
     s.seguimiento,
         CASE
-            WHEN (s.fechareal <= s.fechaplaneada) THEN 'SI'::text
-            WHEN (s.fechareal > s.fechaplaneada) THEN 'NO'::text
-            WHEN ((s.fechareal IS NULL) AND (('now'::text)::date > s.fechaplaneada)) THEN 'NO'::text
+            WHEN (s.fechareal <= (s.fechaplaneada + 7)) THEN 'SI'::text
+            WHEN (s.fechareal > (s.fechaplaneada + 7)) THEN 'NO'::text
+            WHEN ((s.fechareal IS NULL) AND (CURRENT_DATE > (s.fechaplaneada + 7))) THEN 'NO'::text
             ELSE ''::text
         END AS a_tiempo
    FROM (cor1440_gen_proyectofinanciero p
      JOIN v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[122, 123, 125, 116]))
+  WHERE (p.id = ANY (ARRAY[156, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 176, 177, 179, 117, 106, 18, 152, 180, 161, 150, 133, 140, 136, 138, 141, 142, 143, 144, 145, 147, 158, 159, 175, 178, 137, 149, 101, 102, 122, 123, 125, 104, 157, 118, 109, 111, 155, 103, 116, 19, 115, 20, 120, 126, 119, 131, 162, 132, 146, 127, 130, 128, 129, 134]))
   ORDER BY s.fechaplaneada;
 
 
@@ -7219,6 +7221,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026130000'),
 ('20171026144919'),
 ('20171026172501'),
+('20171114185712'),
 ('20171123212504'),
 ('20171128234148'),
 ('20171130125044'),
@@ -7305,6 +7308,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180501225617'),
 ('20180502083127'),
 ('20180509111948'),
+('20180509114933'),
 ('20180509125608'),
 ('20180519102415'),
 ('20180522102059'),
