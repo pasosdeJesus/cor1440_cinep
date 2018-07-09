@@ -114,10 +114,22 @@ module Cor1440Gen
     end
 
     def filtra_usuario_responsable(lista_usuarios)
-      wu = @colgrupos.count == 0 ?  'TRUE=FALSE' : 
+      li = @colgrupos.map(&:id)
+      ln = @colgrupos.map(&:cn)
+      nn = []
+      ln.each do |n|
+        if n[0..4] == 'Linea'
+          nn << 'Coordinador' + n[5..-1]
+          ng = Sip::Grupo.where(cn: nn).take
+          if ng
+            li << ng.id
+          end
+        end
+      end
+      wu = li.count == 0 ?  'TRUE=FALSE' : 
         "fechadeshabilitacion IS NULL 
          AND  id IN (SELECT usuario_id FROM sip_grupo_usuario WHERE 
-         (sip_grupo_id IN (#{@colgrupos.map(&:id).join(', ')})))"
+         (sip_grupo_id IN (#{li.join(', ')})))"
       lista_usuarios = lista_usuarios.where(wu).
         order(:nombres, :apellidos, :nusuario) 
       return lista_usuarios
