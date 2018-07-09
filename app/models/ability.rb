@@ -54,8 +54,15 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_LINEA = "Línea"
   GRUPO_COORDINADOR = "Coordinador(a)"
   def tablasbasicas 
-    super() - [ ['Cor1440Gen', 'proyectofinanciero'] ] + 
-      [
+    super() - [ 
+      ['Cor1440Gen', 'actividadarea'] ,
+      ['Cor1440Gen', 'actorsocial'] ,
+      ['Cor1440Gen', 'proyecto'] ,
+      ['Cor1440Gen', 'proyectofinanciero'] ,
+      ['Cor1440Gen', 'sectoractor'],
+      ['Sip', 'etiqueta'] ,
+    ] + 
+    [
         ['', 'actor'],
         ['', 'areaestudios'],
         ['', 'cajacompensacion'],
@@ -64,7 +71,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'fondopensiones'],
         ['', 'nivelrelacion'],
         ['', 'niveleducacion'],
-        ['', 'nucleoconflicto'],
+#        ['', 'nucleoconflicto'],
         ['', 'perfilprofesional'],
         ['', 'procesogh'],
         ['', 'profesion'],

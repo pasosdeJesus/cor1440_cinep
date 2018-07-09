@@ -7,8 +7,8 @@ es:
     one: '%{count} día'
     other: '%{count} días'
   attributes:
-    actividadarea: Componente Plan Trienal 
-    actividadareas: Componentes Plan Trienal 
+    actividadarea: Componente plan trienal 
+    actividadareas: Componentes plan trienal 
     areaestudios: Área de estudios
     articulo: Publicación
     articulos: Publicaciones
@@ -20,11 +20,11 @@ es:
     nivelrelacion: Nivel de relacion
     oficina: Oficina
     pais: País
-    proyecto: "Programa / Servicio / Producto"
+    proyecto: "Programa/Servicio/Producto"
     proyectosfinancieros: Compromisos institucionales
     proyectofinanciero: Compromiso institucional
     regionsjr: Dependencia
-    sectoractor: Sector del Actor
+    sectoractor: Sector del actor social
     tipocontrato: Tipo de contrato
     telefono: Teléfono
   activerecord:
@@ -36,8 +36,8 @@ es:
         one: "Compromiso institucional"
         other: "Compromisos institucionales"
       "cor1440_gen/proyecto": 
-        one: "Programa / Servicio / Producto"
-        other: "Programas / Servicios / Productos"
+        one: "Programa/Servicio/Producto"
+        other: "Programas/Servicios/Productos"
       "tasacambio":
         one: Tasa de cambio
         other: Tasas de cambio
@@ -49,15 +49,15 @@ es:
         Areaestudios: Área de estudios
         Areasestudios: Áreas de estudios
       "actor":
-        Actor: Actor
-        Actores: Actores
+        Actor: Actor social
+        Actores: Actores sociales
         grupo: Grupo(s)
         nivelrelacion: Nivel de relación
         nivelrelacion_id: Nivel de relación
-        personacontacto: Persona Contacto
+        personacontacto: Persona contacto
         pais_id: País
         regiongrupo: Región(es)
-        sectoractor_id: Sector del Actor
+        sectoractor_id: Sector del actor
         "{:regiongrupo_ids=>[]}": Región(es)
         "{:grupo_ids=>[]}": Grupo(s)
       "anexo_proyectofinanciero":
@@ -96,19 +96,19 @@ es:
         duracion_localizado: "Duración"
         duracionhoras_localizado: "Duración en horas"
         etnia_onr: 'Otra/NR'
-        fecha_localizada: Fecha Inicio
+        fecha_localizada: Fecha inicio
         minutos: Horas
         mduracion: "Unidad de duración"
         objetivopf: Objetivo de compromiso institucional
         observaciones: Compromisos/Observaciones
-        proyecto: "Programa / Servicio / Producto"
-        proyectos: "Programas / Servicios / Productos"
+        proyecto: "Programa/Servicio/Producto"
+        proyectos: "Programas/Servicios/Productos"
         publicacion: 'Producto CINEP/PPP'
         regionsjr: Dependencia
         sexo_onr: 'Otro/NR'
       "cor1440_gen/actividadarea":
-        Actividadarea: Componente Plan Trienal 
-        Actividadareas: Componentes Plan Trienal 
+        Actividadarea: Componente plan trienal 
+        Actividadareas: Componentes plan trienal 
       "cor1440_gen/financiador":
         domicilio: Domicilio
         razonsocial: Razón social
@@ -130,17 +130,17 @@ es:
         descd2: Descripción de dato intermedio 2
         descd3: Descripción de dato intermedio 3
       "cor1440_gen/proyecto":
-        Proyecto: Programa / Servicio / Producto
-        Proyectos: Programas / Servicios / Productos
+        Proyecto: Programa/Servicio/Producto
+        Proyectos: Programas/Servicios/Productos
       "cor1440_gen/proyectofinanciero":
         Proyectofinanciero: "Compromiso institucional"
         Proyectosfinancieros: "Compromisos institucionales"
-        aaportes: "Anotaciones aportes financieros CINEP/Otros Donantes"
-        anotacionescontab: "Anotaciones Contabilidad"
-        anotacionesdb: "Anotaciones Datos Básicos"
-        anotacionesrh: "Anotaciones Recursos Humanos"
-        anotacionesre: "Anotaciones Recursos Económicos y Financieros"
-        anotacionesinf: "Anotaciones Informes y Auditorías"
+        aaportes: "Anotaciones aportes financieros CINEP/Otros donantes"
+        anotacionescontab: "Anotaciones contabilidad"
+        anotacionesdb: "Anotaciones datos básicos"
+        anotacionesrh: "Anotaciones recursos humanos"
+        anotacionesre: "Anotaciones recursos económicos y financieros"
+        anotacionesinf: "Anotaciones informes y auditorías"
         aotrosfin_localizado: 'Aportes financieros otros donantes'
         aotrosesp: 'Aportes en especies otros donantes'
         aportecinep: "Aporte financiero CINEP/PPP en formulación"
@@ -156,7 +156,7 @@ es:
         dificultad: 'Dificultad en formulación'
         domiciliofinanciador: 'Domicilio'
         emailrespagencia: "Correo del responsable agencia"
-        empresaauditoria: "Empresa de Auditorías y Relacionados"
+        empresaauditoria: "Empresa de auditorías y relacionados"
         fechacierre: "Termina"
         fechacierre_localizada: "Termina"
         fechaformulacion: "Fecha de formulación"
@@ -196,18 +196,18 @@ es:
         productopf: "Productos"
         proyectofinanciero_uresponsable: "Responsable(s)"
         proyectofinanciero_usuario: "Cargos"
-        razonsocialfinanciador: 'Razón Social'
+        razonsocialfinanciador: 'Razón social'
         referencia: "Referencia"
         referenciacinep: "Referencia CINEP/PPP"
         reinvertirrendimientosfinancieros: "Reinvertir rendimientos financieros"
         rendimientosfinancieros: "Rendimientos financieros"
-        replegalfinanciador: 'Representante Legal'
+        replegalfinanciador: 'Representante legal'
         reportarrendimientosfinancieros: "Reportar rendimientos financieros"
-        respagencia: "Responsable de la Agencia"
-        respgp: "Responsable GP"
-        respgp_id: "Responsable GP"
-        respgp2: "Segundo(a) Responsable GP"
-        respgp2_id: "Segundo(a) Responsable GP"
+        respagencia: "Responsable de la agencia"
+        respgp: "Responsable GP."
+        respgp_id: "Responsable GP."
+        respgp2: "Segundo(a) Responsable GP."
+        respgp2_id: "Segundo(a) Responsable GP."
         saldo_localizado: "Saldo"
         sectorapc: "Sector APC"
         semestreformulacion: "Semestre de formulación"
@@ -247,11 +247,11 @@ es:
         Nucleoconflict: Núcleo de conflicto
         Nucleosconflicto: Núcleos de conflicto
       "perfilprofesional":  
-        Perfilprofesional: Perfil Profesional
-        Perfilesprofesionales: Perfiles Profesionales
+        Perfilprofesional: Perfil profesional
+        Perfilesprofesionales: Perfiles profesionales
       "procesogh":
-        Procesogh: Proceso Interno
-        Procesosgh: Procesos Internos
+        Procesogh: Proceso interno
+        Procesosgh: Procesos internos
       "profesion":
         Profesion: Profesión
         Profesiones: Profesiones
@@ -270,15 +270,15 @@ es:
         Articulo: Publicación 
         Articulos: Publicaciones
       "sectoractor":
-        Sectoractor: Sector de un Actor
-        Sectoresactores: Sectores de Actores
-        enplantrienal: En Glosario del Plan Trienal
+        Sectoractor: Sector de un actor social
+        Sectoresactores: Sectores de actores
+        enplantrienal: En Glosario del plan trienal
       "sectorapc":
         Sectorapc: Sector APC
         Sectoresapc: Sectores APC
       "sip/grupo":
-        procesogh: Proceso Interno
-        procesogh_id: Proceso Interno
+        procesogh: Proceso interno
+        procesogh_id: Proceso interno
         "{:subgrupo_ids=>[]}": Subgrupos
       "sip/oficina":
         Oficinas: Oficina
@@ -302,7 +302,7 @@ es:
         fechanacb: Fecha de nacimiento
         fondopensiones: Fondo de pensiones
         gruposesp: Grupos
-        grupos: Grupos y Supragrupos
+        grupos: Grupos y supragrupos
         lugardocumento: Lugar de documento
         lugarnacimiento: Lugar de nacimiento
         nusuario: Usuario
