@@ -163,6 +163,9 @@ module Cor1440Gen
       @registro.fechaformulacion = Date.today
       @registro.nombre = 'N'
       @registro.dificultad = 'M'
+      if can?(:creacomogp, Cor1440Gen::Proyectofinanciero)
+        @registro.respgp_id = current_usuario.id
+      end
       @registro.save!
       redirect_to main_app.edit_proyectofinanciero_path(@registro)
       #render 'edit', layout: 'application'
