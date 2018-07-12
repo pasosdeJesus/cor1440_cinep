@@ -2,11 +2,16 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      .resaltaci {
+        color: red;
+      }
+    </style>
   </head>
   <body>
     <h1>Proximanete un proyecto <%= @tiene%></h1>
     <p>
-    El proyecto <%= @pf.referenciacinep %> 
+    El proyecto <span class='resaltaci'><%= @pf.referenciacinep %></span>
     <%= @tiene %>
     <%= @cuando %>
     </p>
