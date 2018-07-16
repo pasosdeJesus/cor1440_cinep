@@ -1,1 +1,1 @@
-SMTP_MAQ=correo.miservidor.org SMTP_PUERTO=465 SMTP_DOMINIO=miservidor.org SMTP_USUARIO=crecer SMTP_CLAVE=ClaveCrecer bundle exec rails runner -e development scripts/a_diario_runner.rb
+SMTP_MAQ=correo.miservidor.org SMTP_PUERTO=465 SMTP_DOMINIO=miservidor.org SMTP_USUARIO=crecer SMTP_CLAVE=ClaveCrecer bin/rails runner -e development scripts/a_diario_runner.rb
