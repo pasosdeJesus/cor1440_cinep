@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: ce8a7fdd2d07a5afce57ff6d5cc6a7361ca4605b
+  revision: 7d7b197343630f6da7ecb595e23bfc1a4f68ddcf
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 662a6b7fad5aa9558e3e5a71efaa8f43d06161d5
+  revision: c1636d1970ae4bdaa2276c90ecd03956977c2213
   specs:
     sal7711_web (1.0.a3)
       rails
