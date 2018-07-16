@@ -1,6 +1,6 @@
 <% col = ::Usuario.where(
-  'id IN (SELECT DISTINCT creadopor_id ' + 
-  '  FROM cor1440_gen_actividad)') %>
+  'id IN (SELECT DISTINCT id ' + 
+  '  FROM usuario)') %>
 <%= f.input :buscreadopor,
   collection: col.order(:nombres, :apellidos),
   include_blank: true,
