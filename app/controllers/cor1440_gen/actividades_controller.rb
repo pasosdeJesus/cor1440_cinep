@@ -197,7 +197,7 @@ module Cor1440Gen
         :departamento, 
         :municipio,
         :grupo, 
-        :proyectosfinancieros, 
+        :proyectofinanciero, 
         :actividadpf,
         :objetivopf, 
         :actor, 

@@ -176,24 +176,23 @@
     root, 'id', 'referenciacinep', 
     cor1440_cinep_actividad_actualiza_actores)
 
+@valent_id = (id) ->
+  if $('#' + id).val() == ""
+    0
+  else
+    parseInt($('#' + id).val()) 
+
 @cor1440_cinep_actividad_etnia_onr = (root) ->
-  tg = parseInt($('#actividad_hombres').val()) + 
-    parseInt($('#actividad_mujeres').val()) + 
-    parseInt($('#actividad_sexo_onr').val())
-  pe = parseInt($('#actividad_negros').val()) + 
-    parseInt($('#actividad_indigenas').val())
+  tg = valent_id('actividad_hombres') + valent_id('actividad_mujeres') + valent_id('actividad_sexo_onr')
+  pe = valent_id('actividad_negros') + valent_id('actividad_indigenas') 
   fe = 0
   if tg > pe
     fe = tg - pe
   $('#actividad_etnia_onr').val(fe)
 
 @cor1440_cinep_actividad_totales_part = (root) ->
-  tg = parseInt($('#actividad_hombres').val()) + 
-    parseInt($('#actividad_mujeres').val()) + 
-    parseInt($('#actividad_sexo_onr').val())
-  te = parseInt($('#actividad_negros').val()) + 
-    parseInt($('#actividad_indigenas').val()) +
-    parseInt($('#actividad_etnia_onr').val())
+  tg = valent_id('actividad_hombres') + valent_id('actividad_mujeres') + valent_id('actividad_sexo_onr')
+  te = valent_id('actividad_negros') + valent_id('actividad_indigenas') + valent_id('actividad_etnia_onr')
   $('#tot_genero').html(tg)
   $('#tot_etnia').html(te)
 
