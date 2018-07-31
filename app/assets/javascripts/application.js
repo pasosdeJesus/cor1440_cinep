@@ -39,7 +39,7 @@ $(document).on('turbolinks:load ready page:load', function() {
 	$('.chosen-select').chosen({
 		allow_single_deselect: true,
 		no_results_text: 'No hay opciones',
-		placeholder_text_multiple: 'Eleja una o más opciones',
+		placeholder_text_multiple: 'Elija una o más opciones',
 		placeholder_text_single: 'Elija una opción',
 		width: '200px'
 	});

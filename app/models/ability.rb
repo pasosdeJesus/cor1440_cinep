@@ -61,6 +61,7 @@ class Ability  < Cor1440Gen::Ability
       ['Cor1440Gen', 'proyectofinanciero'] ,
       ['Cor1440Gen', 'sectoractor'],
       ['Sip', 'etiqueta'] ,
+      ['Sip', 'sectoractor'] ,
     ] + 
     [
         ['', 'actor'],

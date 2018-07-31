@@ -144,6 +144,11 @@ module Cor1440Gen
       ]
     end
 
+    def vistas_manejadas
+      ['Compromiso Institucional', 'Cuadro General de Seguimiento',
+      'Cronograma de Solicitud de Informes']
+    end
+
     def show_plantillas
       @plantillas = [['', '']]
       @plantillas = Heb412Gen::Plantilladoc.where(

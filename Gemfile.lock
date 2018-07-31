@@ -56,7 +56,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2c0f37050726ede41611cf531967a66a790d7129
+  revision: 0b9fa59becc052a0e4207072baa95a11452e9bd6
+  branch: sip_grupoper
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -265,7 +266,7 @@ GEM
       minitest-capybara (~> 0.8)
       minitest-metadata (~> 0.6)
       minitest-rails (~> 3.0)
-    minitest-reporters (1.3.0)
+    minitest-reporters (1.3.1)
       ansi
       builder
       minitest (>= 5.0)
@@ -279,7 +280,7 @@ GEM
       nokogiri (>= 1.5.0)
       rubyzip (~> 1.2.0)
     orm_adapter (0.5.0)
-    paperclip (6.0.0)
+    paperclip (6.1.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       mime-types
@@ -311,7 +312,7 @@ GEM
     public_suffix (3.0.2)
     puma (3.12.0)
     rack (2.0.5)
-    rack-test (1.0.0)
+    rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails-controller-testing (1.0.2)
       actionpack (~> 5.x, >= 5.0.1)
@@ -344,7 +345,7 @@ GEM
       rubyzip (~> 1.1)
     ruby-progressbar (1.9.0)
     rubyzip (1.2.1)
-    sass (3.5.6)
+    sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -355,7 +356,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.13.0)
+    selenium-webdriver (3.13.1)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     simple_form (4.0.1)
@@ -395,9 +396,9 @@ GEM
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.15)
+    uglifier (4.1.17)
       execjs (>= 0.3.0, < 3)
-    unicorn (5.4.0)
+    unicorn (5.4.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.7)
@@ -474,4 +475,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.16.1
+   1.16.3

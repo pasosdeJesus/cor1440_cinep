@@ -9,8 +9,10 @@ class Productopf < ActiveRecord::Base
 
   belongs_to :tipoproductopf, class_name: '::Tipoproductopf',
     foreign_key: 'tipoproductopf_id'
+
   validates :detalle, length: { maximum: 5000}
   validates :seguimiento, length: { maximum: 5000}
+  validates :tipoproductopf, presence: true
 
   default_scope { order(:id) }
 
