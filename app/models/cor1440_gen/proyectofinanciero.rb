@@ -263,6 +263,13 @@ module Cor1440Gen
     validates :webfinanciador, allow_blank: true,
       length: { maximum: 511}
 
+    validate :fechainicio_posterior2000 
+    def fechainicio_posterior2000
+      if fechainicio && fechainicio < Date.new(2000,1,1)
+        errors.add(:fechainicio, 'Fecha de inicio debe ser posterior a 1/Ene/2000')
+      end
+    end
+
     validate :dificultad_valida
     def dificultad_valida
       cv = ::ApplicationHelper::DIFICULTAD.map {|r| r[1].to_s}
