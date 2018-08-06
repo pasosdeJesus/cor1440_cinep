@@ -17,6 +17,22 @@ module Cor1440Gen
       end
       return misgrupossinu
     end
+ 
+    # De una base de compromisos, filtra los de unos grupos
+    # @param pf Base de compromisos
+    # @param grupos grupos para filtrar
+    def self.compromisos_grupos(pf, grupos)
+      if grupos.count == 0
+        pf = pf.where('TRUE=FALSE')
+      else
+        pf = pf.where(
+          "id IN (SELECT proyectofinanciero_id " +
+          "FROM grupo_proyectofinanciero " +
+          "WHERE grupo_id IN (#{grupos.map(&:id).join(', ')}))")
+      end
+      pf = pf.order(:referenciacinep)
+      return pf
+    end
 
   end
 end

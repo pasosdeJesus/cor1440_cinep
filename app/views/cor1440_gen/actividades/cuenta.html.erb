@@ -42,8 +42,21 @@
 
     <div class="row filtro-fila">
       <div class="col-sm-offset-2 col-sm-4">
+        <%= f.input :grupo_id,
+          collection: @misgrupos,
+          label_method: :nombre,
+          value_method: :id,
+          label: false,
+          include_blank: '-- Grupo',
+          selected: @grupoid,
+          input_html: { 
+              'data-contarautomatico' => "",
+              class: 'chosen-select' 
+            } %>
+      </div>
+      <div class="col-sm-4">
         <%= f.input :proyectofinanciero_id,
-          collection: Cor1440Gen::Proyectofinanciero.all,
+          collection: @miscompromisos,
           label_method: :nombre,
           value_method: :id,
           label: false,
@@ -54,19 +67,6 @@
               class: 'chosen-select' 
             }
         %>
-      </div>
-      <div class="col-sm-4">
-        <%= f.input :grupo_id,
-          collection: Sip::Grupo.habilitados,
-          label_method: :nombre,
-          value_method: :id,
-          label: false,
-          include_blank: '-- Grupo',
-          selected: @grupoid,
-          input_html: { 
-              'data-contarautomatico' => "",
-              class: 'chosen-select' 
-            } %>
       </div>
     </div> <!-- row -->
 
