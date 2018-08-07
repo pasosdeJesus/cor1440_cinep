@@ -176,7 +176,6 @@ module Cor1440Gen
       #render 'edit', layout: 'application'
     end
 
-
     def validar_filtramas
       if params && params[:validarpf] && 
         params[:validarpf][:respgp_id] &&
@@ -184,6 +183,105 @@ module Cor1440Gen
         @validarpf.respgp_id = params[:validarpf][:respgp_id].to_i
         @registro = @registro.where(respgp_id: @validarpf.respgp_id)
       end
+    end
+
+    def validar_mas_registro(registro, detalle)
+      # Recursos económicos en formulación
+      tasaf = 0
+      if !registro.tasa 
+        detalle << "Falta tasa de formulación"
+      elsif registro.tasa <= 0
+        detalle << "Tasa de formulación ≤ 0"
+      else
+        tasaf = registro.tasa
+      end
+      montof = 0
+      if !registro.monto 
+        detalle << "Falta Aporte financiador en moneda durante formulación"
+      elsif registro.monto < 0
+        detalle << "Aporte financiador en moneda durante formulación < 0"
+      else 
+        montof = registro.monto
+      end
+      if !registro.montopesos 
+        detalle << "Falta Aporte financiador en pesos durante formulación"
+      end
+      if registro.montopesos != tasaf * montof
+        detalle << "Aporte financiador en pesos durante formulación no corresponde a conversioń"
+      end
+      pt = montof
+      if !registro.aportecinep 
+        detalle << "Falta aporte CINEP/PPP en moneda durante formulación"
+      elsif registro.aportecinep < 0 
+        detalle << "Aporte CINEP/PPP en moneda durante formulación < 0"
+      else
+        pt += registro.aportecinep
+      end
+      if !registro.aotrosfin 
+        detalle << "Falta aporte de otros donantes durante formulación"
+      elsif registro.aotrosfin < 0 
+        detalle << "Aporte de otros donantes en moneda durante formulación < 0"
+      else
+        pt += registro.aotrosfin
+      end
+      if !registro.saldo 
+        detalle << "Falta Saldo en moneda durante formulación"
+      elsif registro.saldo < 0 
+        detalle << "Saldo en moneda durante formulación < 0"
+      else
+        pt += registro.saldo
+      end
+      if !registro.presupuestototal
+        detalle << "Falta presupuesto total en moneda durante formulación"
+      elsif registro.presupuestototal != pt
+        detalle << "Presupuesto total en moneda durante formulación no corresponde a suma de los valores en formulación"
+      end
+
+      # Recursos económicos en ejecución
+      tasaej = 0
+      if !registro.tasaej
+        detalle << "Falta tasa de ejecución"
+      elsif registro.tasaej <= 0
+        detalle << "Tasa de ejecución ≤ 0"
+      else
+        tasaej = registro.tasaej
+      end
+      montoej = 0
+      if !registro.montoej
+        detalle << "Falta Aporte financiador en moneda durante ejecución"
+      elsif registro.montoej < 0
+        detalle << "Aporte financiador en moneda durante ejecución < 0"
+      else 
+        montoej = registro.montoej
+      end
+      pe = montoej
+      if !registro.aportecinepej
+        detalle << "Falta aporte CINEP/PPP en moneda durante ejecución"
+      elsif registro.aportecinepej < 0 
+        detalle << "Aporte CINEP/PPP en moneda durante ejecución < 0"
+      else
+        pe += registro.aportecinepej
+      end
+      if !registro.aporteotrosej
+        detalle << "Falta aporte de otros donantes durante ejecución"
+      elsif registro.aporteotrosej < 0 
+        detalle << "Aporte de otros donantes en moneda durante ejecución < 0"
+      else
+        pt += registro.aporteotrosej
+      end
+      if !registro.saldoej 
+        detalle << "Falta Saldo en moneda durante ejecución"
+      elsif registro.saldoej < 0 
+        detalle << "Saldo en moneda durante ejecución < 0"
+      else
+        pt += registro.saldoej
+      end
+      if !registro.presupuestototalej
+        detalle << "Falta presupuesto total en moneda durante ejecución"
+      elsif registro.presupuestototalej != pt
+        detalle << "Presupuesto total en moneda durante ejecución no corresponde a suma de los valores en ejecución"
+      end
+
     end
 
     def vista_solicitud_informes
