@@ -1,0 +1,16 @@
+<div class="row filtro-fila">
+  <div class="col-sm-offset-0 col-sm-3">
+    Responsable en gerencia de proyectos
+  </div>
+  <div class="col-sm-offset-0 col-sm-3">
+    <% egp = Cor1440Gen::GruposHelper.usuarios_gerenciaproyectos %>
+    <%= f.input :respgp_id, 
+      collection: egp,
+      label: false,
+      label_method: :presenta_nombre,
+      include_blank: true,
+      selected: @validarpf.respgp_id ?  @validarpf.respgp_id : nil
+    %>
+  </div>
+
+</div>

@@ -1,0 +1,102 @@
+
+<h2>Tasas y valores en formulación con problemas</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Tasa</th>
+      <th>Aporte financiador moneda</th>
+      <th>Aporte financiador pesos</th>
+      <th>Aporte CINEP/PPP moneda</th>
+      <th>Aporte otros donantes moneda</th>
+      <th>Saldo moneda</th>
+      <th>Presupuesto total moneda</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @registro.where(
+      "tasa<=0 OR monto < 0 OR montopesos<>tasa*monto OR
+      aportecinep < 0 OR aotrosfin < 0 OR
+      saldo < 0 OR presupuestototal <= 0 OR 
+      presupuestototal <> (monto+aportecinep+aotrosfin+saldo)").
+      each do |pf| %>
+      <tr>
+        <td>
+          <%= link_to(pf.id, pf) %>
+        </td>
+
+        <% st = pf.tasa <= 0 ? "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.tasa_localizado %></td>
+
+        <% st = pf.monto < 0 ? "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.monto_localizado %></td>
+
+        <% st = pf.montopesos != pf.tasa * pf.monto ? 
+          "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.montopesos_localizado %></td>
+
+        <% st = pf.aportecinep < 0 ? "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.aportecinep_localizado %></td>
+
+        <% st = pf.aotrosfin < 0 ? "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.aotrosfin_localizado %></td>
+
+        <% st = pf.saldo < 0 ? "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.saldo_localizado %></td>
+
+        <% st = pf.presupuestototal < 0 || pf.presupuestototal != 
+          (pf.monto+pf.aportecinep+pf.aotrosfin+pf.saldo) ? "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.presupuestototal_localizado %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Tasas y valores en ejecución con problemas</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Tasa</th>
+      <th>Aporte financiador moneda</th>
+      <th>Aporte CINEP/PPP moneda</th>
+      <th>Aporte otros donantes moneda</th>
+      <th>Saldo moneda</th>
+      <th>Presupuesto total moneda</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @registro.where(
+      "tasaej<=0 OR montoej < 0 OR
+      aportecinepej < 0 OR aporteotrosej < 0 OR
+      saldoej < 0 OR presupuestototalej <= 0 OR 
+      presupuestototalej <> (montoej+aportecinepej+aportecinepej+saldoej)").
+      each do |pf| %>
+      <tr>
+        <td>
+          <%= link_to(pf.id, pf) %>
+        </td>
+
+        <% st = pf.tasaej <= 0 ? "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.tasaej_localizado %></td>
+
+        <% st = pf.montoej < 0 ? "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.montoej_localizado %></td>
+
+        <% st = pf.aportecinepej < 0 ? "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.aportecinepej_localizado %></td>
+
+        <% st = pf.aporteotrosej < 0 ? "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.aporteotrosej_localizado %></td>
+
+        <% st = pf.saldoej < 0 ? "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.saldoej_localizado %></td>
+
+        <% st = pf.presupuestototalej < 0 || pf.presupuestototalej != 
+          (pf.montoej + pf.aportecinepej + pf.aporteotrosej + pf.saldoej) ? 
+          "color: red" : "" %>
+        <td style="<%= st %>"><%= pf.presupuestototalej_localizado %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -95,14 +95,8 @@
 </div>
 </p>
 
-<% wu = "fechadeshabilitacion IS NULL 
-         AND  id IN (SELECT usuario_id FROM sip_grupo_usuario 
-         JOIN sip_grupo ON sip_grupo.id=sip_grupo_usuario.sip_grupo_id
-         WHERE sip_grupo.cn LIKE '%GerenciaDeProyectos')"
-%>
-
-<% umgu = Sip::Usuario.where(wu).
-        order(:nombres, :apellidos, :nusuario) %>
+<% umgu = Cor1440Gen::GruposHelper.usuarios_gerenciaproyectos.
+  where(fechadeshabilitacion: nil) %>
 
 <% coordgp = Sip::Grupo.where(cn: 'CoordinadorGerenciaDeProyectos').take %>
 <% respom = coordgp ? coordgp : current_usuario %>

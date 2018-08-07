@@ -7,13 +7,13 @@ module Cor1440Gen
   class ProyectosfinancierosController < Heb412Gen::ModelosController
     helper ::ApplicationHelper
     include ::ApplicationHelper
-#    include Heb412Gen::Concerns::Controllers::ModelosController
     include Cor1440Gen::Concerns::Controllers::ProyectosfinancierosController
     include ::Sip::ModeloHelper
 
     before_action :set_proyectofinanciero, 
       only: [:show, :edit, :update, :destroy]
-    load_and_authorize_resource class: Cor1440Gen::Proyectofinanciero
+    load_and_authorize_resource class: Cor1440Gen::Proyectofinanciero,
+      except: [:duracion]
 
     include Sip::ConsultasHelper
 
@@ -172,8 +172,18 @@ module Cor1440Gen
         @registro.respgp_id = current_usuario.id
       end
       @registro.save!
-      redirect_to main_app.edit_proyectofinanciero_path(@registro)
+      redirect_to cor1440_gen.edit_proyectofinanciero_path(@registro)
       #render 'edit', layout: 'application'
+    end
+
+
+    def validar_filtramas
+      if params && params[:validarpf] && 
+        params[:validarpf][:respgp_id] &&
+        params[:validarpf][:respgp_id] != ''
+        @validarpf.respgp_id = params[:validarpf][:respgp_id].to_i
+        @registro = @registro.where(respgp_id: @validarpf.respgp_id)
+      end
     end
 
     def vista_solicitud_informes

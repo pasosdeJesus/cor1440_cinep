@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: e1deae92ec15dcf975ec77f87dffc594d803e7c1
+  revision: e8de8f935a5f34dec7148e31a6cc588ae31243de
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -356,7 +356,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.13.1)
+    selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     simple_form (4.0.1)
