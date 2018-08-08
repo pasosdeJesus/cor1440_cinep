@@ -303,7 +303,7 @@
       d, 'POST', false)
   ) 
  
-  $('#proyectofinanciero_tipomoneda_id').change( (e) ->
+  $(document).on('change', '#proyectofinanciero_tipomoneda_id', (e) ->
       val = $(this).val()
       if val == "1"  # PESO
         $('#proyectofinanciero_tasa_localizado').val(1)
@@ -319,83 +319,45 @@
         sip_ajax_recibe_json(root, 'tasascambio', param, 
           cor1440_cinep_cambia_tipomoneda)
   )
-  $('#proyectofinanciero_tasa_localizado').change( (e) ->
+  $(document).on('change', '#proyectofinanciero_tasa_localizado', (e) ->
     cor1440_cinep_recalcula_montospesos_localizado(root)
   )
-  $('#proyectofinanciero_tasaej_localizado').change( (e) ->
+  $(document).on('change', '#proyectofinanciero_tasaej_localizado', (e) ->
     cor1440_cinep_recalcula_montospesos_localizado(root)
   )
 
   $.each ['monto', 'aportecinep', 'aotrosfin', 'saldo', 'saldop',
     'montoej', 'aportecinepej', 'aporteotrosej', 'saldoej'], (i, c) ->
-    $('#proyectofinanciero_' + c + '_localizado').change( (e) ->
+    $(document).on('change', '#proyectofinanciero_' + c + '_localizado', (e) ->
       cor1440_cinep_recalcula_montospesos_localizado(root)
     )
 
-  $('#proyectofinanciero_monto_localizado').change( (e) ->
+  $(document).on('change', '#proyectofinanciero_presupuestototal_localizado', (e) ->
+  
     cor1440_cinep_recalcula_montospesos_localizado(root)
   )
-  $('#proyectofinanciero_presupuestototal_localizado').change( (e) ->
-    cor1440_cinep_recalcula_montospesos_localizado(root)
-  )
-  $('#proyectofinanciero_tasaformulacion_id').chosen().change( (e) ->
+  $(document).on('change', '#proyectofinanciero_tasaformulacion_id', (e) ->
     cor1440_cinep_recalcula_montospesos_localizado(root)
   )
 
-  $('#proyectofinanciero_fechaformulacion_mes').change( (e) ->
+  $(document).on('change', '#proyectofinanciero_fechaformulacion_mes', (e) ->
     s = 2
     if $('#proyectofinanciero_fechaformulacion_mes').val() <= 6
       s = 1
     $('#proyectofinanciero_semestreformulacion').val(s)
   )
 
-  $('#proyectofinanciero_fechainicio_localizada').change( (e) ->
+  $(document).on('change', '#proyectofinanciero_fechainicio_localizada', (e) ->
     recalcula_duracion(root)
   )
-  $('#proyectofinanciero_fechacierre_localizada').change( (e) ->
+  $(document).on('change', '#proyectofinanciero_fechacierre_localizada', (e) ->
     recalcula_duracion(root)
   )
 
-  $('#proyectofinanciero_estado').chosen().change( (e) ->
-    if $(this).val() == 'E'
-      $('.editable-entramite').removeAttr('readonly')
-      $('.editable-entramite.chosen-select').off()
-      $('.editable-entramite.chosen-select').on('chosen:updated', () ->
-        $(this).removeAttr('disabled');
-        $(this).removeAttr('readonly');
-        $(this).data('chosen').search_field_disabled();
-      );
-      $('.editable-entramite.chosen-select').trigger('chosen:updated')
-    else
-      $('.editable-entramite').attr('readonly', 'readonly')
-      $('.editable-entramite.chosen-select').off()
-      $('.editable-entramite.chosen-select').on('chosen:updated', () ->
-        $(this).attr('disabled', 'disabled');
-        $(this).attr('readonly', 'readonly');
-        $(this).data('chosen').search_field_disabled();
-      );
-      $('.editable-entramite.chosen-select').trigger('chosen:updated')
-    if $(this).val() == 'J'
-      $('.editable-enejecucion').removeAttr('readonly')
-      $('.editable-enejecucion.chosen-select').off()
-      $('.editable-enejecucion.chosen-select').on('chosen:updated', () ->
-        $(this).removeAttr('disabled');
-        $(this).removeAttr('readonly');
-        $(this).data('chosen').search_field_disabled();
-      );
-      $('.editable-enejecucion.chosen-select').trigger('chosen:updated')
-    else
-      $('.editable-enejecucion').attr('readonly', 'readonly')
-      $('.editable-enejecucion.chosen-select').off()
-      $('.editable-enejecucion.chosen-select').on('chosen:updated', () ->
-        $(this).attr('disabled', 'disabled');
-        $(this).attr('readonly', 'readonly');
-        $(this).data('chosen').search_field_disabled();
-      );
-      $('.editable-enejecucion.chosen-select').trigger('chosen:updated')
+  $(document).on('change', '#proyectofinanciero_estado', (e) ->
+    sip_enviarautomatico_formulario_y_repinta($('form').attr('id'), 
+      ['recursoseconomicos'], 'POST', false)
   )
-
-  $('#proyectofinanciero_estado').trigger('change')
 
   $(document).on('change', '[id^=proyectofinanciero_proyectofinanciero_usuario_attributes][id$=usuario_id]', (e, inserted) ->
     id=$(this).attr('id')
@@ -416,7 +378,8 @@
         lid, 'Datos de usuario')
   )
 
-  $('#proyectofinanciero_grupo_ids').chosen().change( (e) ->
+  $(document).on('change', '#proyectofinanciero_grupo_ids', (e) ->
+#  $('#proyectofinanciero_grupo_ids').chosen().change( (e) ->
     return
     sip_arregla_puntomontaje(root)
     t = Date.now()
@@ -452,7 +415,8 @@
 
   # Usuario
  
-  $('#usuario_sip_grupo_ids').chosen().change( (e) ->
+  $(document).on('change', '#usuario_sip_grupo_ids', (e) ->
+#  $('#usuario_sip_grupo_ids').chosen().change( (e) ->
     #usuario_gruposysupragrupos
     ids=$(this).val()
     if !Array.isArray(ids)
@@ -466,7 +430,8 @@
       
   )
 
-  $('#usuario_profesion_id').change( (e) ->
+  $(document).on('change', '#usuario_profesion_id', (e) ->
+#  $('#usuario_profesion_id').change( (e) ->
     idp=$(this).val()
     params = { id: idp }
     sip_cambia_cuadrotexto_AJAX('admin/profesiones/' + idp + '/areaestudios', 
@@ -474,7 +439,8 @@
       
   )
 
-  $('#usuario_contrato_attributes_tipocontrato_id').change ( (e) ->
+  $(document).on('change', '#usuario_contrato_attributes_tipocontrato_id', (e) ->
+#  $('#usuario_contrato_attributes_tipocontrato_id').change ( (e) ->
     idt=$(this).val()
     params = { id: idt }
     sip_cambia_cuadrotexto_AJAX('admin/tiposcontratos/' + idt + '/tiponomina', 
