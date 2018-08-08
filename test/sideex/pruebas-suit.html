@@ -295,7 +295,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Centros Poblados<datalist><option>link=Centros Poblados</option></datalist></td>
+	<td>link=Centros poblados<datalist><option>link=Centros Poblados</option><option>link=Centros poblados</option></datalist></td>
 	<td></td>
 </tr>
 <tr>
@@ -702,18 +702,22 @@
 </tr>
 <tr>
 	<td>type</td>
+	<td>id=pais_nombre<datalist><option>id=pais_nombre</option></datalist></td>
+	<td>aaa</td>
+</tr>
+<tr><td>runScript</td><td>$('#pais_id').removeAttr('type')<datalist><option>$('#pais_id').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr>
+	<td>type</td>
 	<td>id=pais_id<datalist><option>id=pais_id</option></datalist></td>
 	<td>7</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=pais_nombre<datalist><option>id=pais_nombre</option></datalist></td>
-	<td>aaa</td>
-</tr>
-<tr>
-	<td>type</td>
 	<td>id=pais_nombreiso<datalist><option>id=pais_nombreiso</option></datalist></td>
 	<td>aa</td>
+</tr>
+<tr><td>runScript</td><td>$('#pais_codiso').removeAttr('type')<datalist><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
 </tr>
 <tr>
 	<td>type</td>
@@ -739,6 +743,8 @@
 	<td>click</td>
 	<td>link=Eliminar<datalist><option>link=Eliminar</option></datalist></td>
 	<td></td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Paises</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
