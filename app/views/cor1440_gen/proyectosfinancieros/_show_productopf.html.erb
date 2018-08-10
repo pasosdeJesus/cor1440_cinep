@@ -8,7 +8,7 @@
     <th>Fecha planeada</th>
     <th>Fecha envio</th>
     <th>Devoluciones</th>
-    <th>Seguimiento</th>
+    <th>Detalle</th>
   </tr>
   <% @registro.productopf.each do |p| %>
     <tr>
@@ -27,7 +27,7 @@
       <td><%= p.fechaplaneada_localizada %></td>
       <td><%= p.fechareal_localizada %></td>
       <td><%= p.devoluciones ? 'Si' : 'No' %></td>
-      <td><%= p.seguimiento %></td>
+      <td><%= p.detalle%></td>
     </tr>
   <% end %>
 </table>
