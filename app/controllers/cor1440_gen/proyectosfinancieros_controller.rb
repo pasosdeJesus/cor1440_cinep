@@ -186,6 +186,22 @@ module Cor1440Gen
     end
 
     def validar_mas_registro(registro, detalle)
+
+      # Para proyectos con responsable en gerencia de proyectos,
+      # los grupos deben limitarse a las líneas.
+    
+      if registro.respgp_id
+        if registro.grupo.length == 0
+          detalle << "Falta línea de investigación"
+        else
+          registro.grupo.each do |g|
+            if !Sip::Grupo.investigacion.map(&:id).include?(g.id)
+              detalle << "Proyecto manejado por oficial de proyectos que tiene grupos diferentes a las líneas de investigación"
+            end
+          end
+        end
+      end
+     
       # Recursos económicos en formulación
       tasaf = 0
       if !registro.tasa 
