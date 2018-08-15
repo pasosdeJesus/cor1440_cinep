@@ -350,23 +350,34 @@ module Cor1440Gen
         return '' if l.count == 0
         gus = Sip::Grupo.where(nombre: 'Usuarios').take
         return '' if !gus
-        ra = ::GrupoSubgrupo.where(subgrupo_id: l.first.id).where(
-          "grupo_id<>#{gus.id}").take
-        return '' if !ra 
-        a = Sip::Grupo.find(ra.grupo_id)
-        ta = Sip::Grupo.where("cn LIKE 'Tutor#{a.cn[4..-1]}'").take
-        return '' if !ta
-        gu = Sip::GrupoUsuario.where(sip_grupo_id: ta.id).take
-        return '' if !gu
-        ::Usuario.find(gu.usuario_id).presenta_nombre
+        ra = ::GrupoSubgrupo.where(
+          "subgrupo_id in (?)", l.map(&:id)).where(
+          "grupo_id<>#{gus.id}")
+        return '' if ra.count == 0
+        lt = []
+        ra.each do |pa|
+          a = Sip::Grupo.find(pa.grupo_id)
+          if a.cn[0..3] == 'Area'
+            ta = Sip::Grupo.where("cn LIKE 'Tutor#{a.cn[4..-1]}'").take
+            return "Falta grupo tutor de #{a.nombre}" if !ta
+            gu = Sip::GrupoUsuario.where(sip_grupo_id: ta.id).take
+            return "Falta usuario en grupo tutor #{a.nombre}" if !gu
+            lt << ::Usuario.find(gu.usuario_id).presenta_nombre
+          end
+        end
+        lt.uniq.join('; ')
       when 'coordinadorlinea'
-        l = self.grupo.select {|g| g.nombre.start_with?('Línea')}
-        return '' if l.count == 0
-        ta = Sip::Grupo.where("cn LIKE 'Coordinador#{l[0].cn[5..-1]}'").take
-        return '' if !ta
-        gu = Sip::GrupoUsuario.where(sip_grupo_id: ta.id).take
-        return '' if !gu
-        ::Usuario.find(gu.usuario_id).presenta_nombre
+        vl = self.grupo.select {|g| g.nombre.start_with?('Línea')}
+        return '' if vl.count == 0
+        lc = []
+        vl.each do |l|
+          ta = Sip::Grupo.where("cn LIKE 'Coordinador#{l.cn[5..-1]}'").take
+          return "Falta grupo coordinador para línea #{l.nombre}" if !ta
+          gu = Sip::GrupoUsuario.where(sip_grupo_id: ta.id).take
+          return "Falta usuario en grupo coordinador para línea #{l.nombre}" if !gu
+          lc << ::Usuario.find(gu.usuario_id).presenta_nombre
+        end
+        lc.uniq.join('; ')
       else
         presenta_gen(atr)
       end
