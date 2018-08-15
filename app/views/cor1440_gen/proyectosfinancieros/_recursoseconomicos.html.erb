@@ -222,7 +222,11 @@
 <div class='row'>
   <%= f.input :aaportes, 
     as: :text, 
-    input_html: { rows: 3 } %>
+    input_html: { 
+      rows: 3,
+      "data-toggle" => 'tooltip',
+      "title" => 'Estas observaciones no saldran en la ficha de seguimiento y control RE-SC-07' 
+    } %>
 </div>
 
 <div class='row'>
