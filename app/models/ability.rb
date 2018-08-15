@@ -344,9 +344,10 @@ class Ability  < Cor1440Gen::Ability
           # Oficina Gerencia de Proyectos
           can :manage, Cor1440Gen::Financiador
           can :manage, Cor1440Gen::Mindicadorpf
-          can [:read, :index, :show, :create], Cor1440Gen::Proyectofinanciero
+          can [:read, :index, :show, :create, :validar], 
+            Cor1440Gen::Proyectofinanciero
           can :creacomogp, Cor1440Gen::Proyectofinanciero
-          can [:manage], Cor1440Gen::Proyectofinanciero.where(
+          can [:manage, :validar], Cor1440Gen::Proyectofinanciero.where(
             'respgp_id IS NOT NULL')
           can :manage, ::Sectorapc
         end
