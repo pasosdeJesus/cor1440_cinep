@@ -333,22 +333,23 @@ class Ability  < Cor1440Gen::Ability
         end
 
         if lgrupos.include?(GRUPO_COMPROMISOS)
+          # Oficina Gerencia de Proyectos
           can :manage, ::Convenio
+          can :manage, Cor1440Gen::Actividad
+          can :manage, Cor1440Gen::Mindicadorpf
+          can [:creacomogp, :read, :index, :show, :create, :validar], 
+            Cor1440Gen::Proyectofinanciero
+          can [:manage, :validar], Cor1440Gen::Proyectofinanciero.where(
+            'respgp_id IS NOT NULL')
+
+          can :manage, :tablasbasicas
+          can :manage, ::Sectorapc
           can :manage, ::Tasacambio
           can :manage, ::Tipoanexo
           can :manage, ::Tipoconvenio
           can :manage, ::Tipomoneda
-          can :manage, ::Cargo
-          can :manage, :tablasbasicas
-          can :manage, Cor1440Gen::Actividad
-          # Oficina Gerencia de Proyectos
+          can :manage, ::Tipoproductopf
           can :manage, Cor1440Gen::Financiador
-          can :manage, Cor1440Gen::Mindicadorpf
-          can [:read, :index, :show, :create], Cor1440Gen::Proyectofinanciero
-          can :creacomogp, Cor1440Gen::Proyectofinanciero
-          can [:manage], Cor1440Gen::Proyectofinanciero.where(
-            'respgp_id IS NOT NULL')
-          can :manage, ::Sectorapc
         end
         if lgrupos.include?(GRUPO_GESTIONDECALIDAD)
           can :manage, Heb412Gen::Doc

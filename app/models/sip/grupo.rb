@@ -10,7 +10,7 @@ module Sip
       foreign_key: "procesogh_id", validate: true
 
     scope :investigacion, -> () {
-      where("cn LIKE 'Linea%' OR cn LIKE 'Area%'").order(:nombre)
+      where("cn LIKE 'Linea%'").order(:nombre)
     }
 
     has_many :regiongrupo, foreign_key: "grupo_id", validate: true, 

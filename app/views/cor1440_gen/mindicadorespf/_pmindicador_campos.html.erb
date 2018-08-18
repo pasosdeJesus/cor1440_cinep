@@ -40,22 +40,11 @@
   <td>
     <%= f.input :meta,
       label: false %>
-  </td><td>
-    <%= f.input :porcump,
-      label: false %>
-  </td><td>
-    <%= f.input :analisis,
-      label: false %>
-  </td><td>
-    <%= f.input :acciones,
-      label: false %>
-  </td><td>
-    <%= f.input :responsables,
-      label: false %>
-  </td><td>
-    <%= f.input :plazo,
-      label: false %>
   </td>
+  <td> 
+    <%= f.input :porcump, label: false %> 
+  </td>
+  <!--td> <%= f.input :analisis, label: false %> </td><td> <%= f.input :acciones, label: false %> </td><td> <%= f.input :responsables, label: false %> </td><td> <%= f.input :plazo, label: false %> </td-->
   <td>
     <%= f.input :id, as: :hidden %>
     <%= link_to t('Calcular'), '#',
