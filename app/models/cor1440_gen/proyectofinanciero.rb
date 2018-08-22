@@ -358,7 +358,7 @@ module Cor1440Gen
         ra.each do |pa|
           a = Sip::Grupo.find(pa.grupo_id)
           if a.cn[0..3] == 'Area'
-            ta = Sip::Grupo.where("cn LIKE 'Tutor#{a.cn[4..-1]}'").take
+            ta = Sip::Grupo.where("cn LIKE ?", "Tutor#{a.cn[4..-1]}").take
             return "Falta grupo tutor de #{a.nombre}" if !ta
             gu = Sip::GrupoUsuario.where(sip_grupo_id: ta.id).take
             return "Falta usuario en grupo tutor #{a.nombre}" if !gu
@@ -371,7 +371,7 @@ module Cor1440Gen
         return '' if vl.count == 0
         lc = []
         vl.each do |l|
-          ta = Sip::Grupo.where("cn LIKE 'Coordinador#{l.cn[5..-1]}'").take
+          ta = Sip::Grupo.where("cn LIKE ?", "Coordinador#{l.cn[5..-1]}").take
           return "Falta grupo coordinador para línea #{l.nombre}" if !ta
           gu = Sip::GrupoUsuario.where(sip_grupo_id: ta.id).take
           return "Falta usuario en grupo coordinador para línea #{l.nombre}" if !gu

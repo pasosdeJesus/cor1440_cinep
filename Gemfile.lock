@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 5e94974f157e31c2f2a66827ffa236c98313c6f3
+  revision: 642ad1e6948f82b3fe183b9cf86afff5e2c4ca04
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: e083a3f1c294e1d18be8c3ac4ba3aa88377aec88
+  revision: d931824e10891d20236c18152e594f8a523413c5
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 9059bd628fd7807479ba77c93ca389f94639d295
+  revision: f52540df5c93bac197ea925018f56af2b583e619
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 5f67df0f8837b972c6789bab0afb1322718a46a1
+  revision: 7d6ba9665a5ec6481b4180ed8367c3040ddaa63c
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 2c1a7b6e309210d7c48bc21a3777ffd3203ddda9
+  revision: ccd92045c9a59b6e43316ccb90688742fa21b2d9
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: fbb1dba41daf3583f901dbae564266d95b3bc29e
+  revision: 031c6204ff0eb8cd21c3d9de33b779433727ab1e
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2a607bf09ccd34a2c314a473f2166cb738b26e18
+  revision: 209b5a1f9bfac21ec2e4c59cfabeb9afd39a011e
   branch: sip_grupoper
   specs:
     sip (2.0.b5)
@@ -382,9 +382,9 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     ttfunk (1.5.1)
-    turbolinks (5.1.1)
-      turbolinks-source (~> 5.1)
-    turbolinks-source (5.1.0)
+    turbolinks (5.2.0)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     twitter-bootstrap-rails (4.0.0)
       actionpack (~> 5.0, >= 5.0.1)
       execjs (~> 2.7)
