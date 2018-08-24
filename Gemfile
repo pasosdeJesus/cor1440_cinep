@@ -85,7 +85,7 @@ gem 'redcarpet'
 
 
 # Motor generico
-gem 'sip', git: "https://github.com/pasosdeJesus/sip.git", branch: 'sip_grupoper'
+gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
 #gem 'sip', path: '../sip'
 
 # Motor heb412_gen

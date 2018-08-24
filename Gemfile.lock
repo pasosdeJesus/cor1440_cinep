@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 642ad1e6948f82b3fe183b9cf86afff5e2c4ca04
+  revision: e1295e7ed8d828b3381decd43fb8d77b5bb64520
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -56,8 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 209b5a1f9bfac21ec2e4c59cfabeb9afd39a011e
-  branch: sip_grupoper
+  revision: 966601b093d17570b0d95f3af7e3bc441feaa748
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -475,4 +474,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.16.3
+   1.16.4
