@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-DIAS=18
+DIAS=20
 def envia(pid, tiene, cuando, fecha, maslineas=[])
     puts "Enviando por #{pid}, #{tiene}, #{cuando}, #{fecha}"
     AlertaMailer.with(
@@ -121,7 +121,7 @@ def run
           estado NOT IN ('R', 'O'))").
     where(fechafinprod: hoymasveinte).each do |d|
     envia(d.proyectofinanciero_id, 'termina producción de un producto', 
-          "en #{DIAS} días", d.fechafinprod_localizada,
+          "en #{DIAS} días", d.fechafinprod,
           [ "Tipo: #{d.tipoproductopf.nombre if d.tipoproductopf_id}",
             "Costo previsto: #{d.costoprevisto}",
             "Detalle: #{d.detalle}"
