@@ -107,7 +107,7 @@ def run
           estado NOT IN ('R', 'O'))").
     where(fechainiprod: hoymasveinte).each do |d|
     envia(d.proyectofinanciero_id, 'inicia producción de un producto', 
-          "en #{DIAS} días", d.fechainiprod_localizada,
+          "en #{DIAS} días", d.fechainiprod,
           [ "Tipo: #{d.tipoproductopf.nombre if d.tipoproductopf_id}",
             "Costo previsto: #{d.costoprevisto}",
             "Detalle: #{d.detalle}"
