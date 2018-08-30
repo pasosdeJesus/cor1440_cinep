@@ -12,11 +12,7 @@ def envia(pid, tiene, cuando, fecha, maslineas=[])
     alerta_proyectofinanciero.deliver_now
 end
 
-def run
-  if !ENV['SMTP_MAQ']
-    puts "No esta definida variable de ambiente SMTP_MAQ"
-    exit 1
-  end
+def alertas
   puts "Inicio de verificacion alertas proyectofinanciero"
 
   hoy = Date.today
@@ -128,6 +124,26 @@ def run
           ])
  
   end
+
+end
+
+def elimina_generados
+    puts "Eliminando public/heb412/generados"
+    orden = "ls -l public/heb412/generados/"
+    res = `#{orden}`
+    puts res
+    orden = "rm public/heb412/generados/*ods"
+    res = `#{orden}`
+    puts res
+end
+
+def run
+  if !ENV['SMTP_MAQ']
+    puts "No esta definida variable de ambiente SMTP_MAQ"
+    exit 1
+  end
+  alertas
+  elimina_generados
 end
 
 run
