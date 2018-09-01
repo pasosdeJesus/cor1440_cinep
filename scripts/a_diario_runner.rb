@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-DIAS=18
+DIAS=20
 def envia(pid, tiene, cuando, fecha, maslineas=[])
     puts "Enviando por #{pid}, #{tiene}, #{cuando}, #{fecha}"
     AlertaMailer.with(
@@ -12,11 +12,7 @@ def envia(pid, tiene, cuando, fecha, maslineas=[])
     alerta_proyectofinanciero.deliver_now
 end
 
-def run
-  if !ENV['SMTP_MAQ']
-    puts "No esta definida variable de ambiente SMTP_MAQ"
-    exit 1
-  end
+def alertas
   puts "Inicio de verificacion alertas proyectofinanciero"
 
   hoy = Date.today
@@ -107,7 +103,7 @@ def run
           estado NOT IN ('R', 'O'))").
     where(fechainiprod: hoymasveinte).each do |d|
     envia(d.proyectofinanciero_id, 'inicia producción de un producto', 
-          "en #{DIAS} días", d.fechainiprod_localizada,
+          "en #{DIAS} días", d.fechainiprod,
           [ "Tipo: #{d.tipoproductopf.nombre if d.tipoproductopf_id}",
             "Costo previsto: #{d.costoprevisto}",
             "Detalle: #{d.detalle}"
@@ -121,13 +117,33 @@ def run
           estado NOT IN ('R', 'O'))").
     where(fechafinprod: hoymasveinte).each do |d|
     envia(d.proyectofinanciero_id, 'termina producción de un producto', 
-          "en #{DIAS} días", d.fechafinprod_localizada,
+          "en #{DIAS} días", d.fechafinprod,
           [ "Tipo: #{d.tipoproductopf.nombre if d.tipoproductopf_id}",
             "Costo previsto: #{d.costoprevisto}",
             "Detalle: #{d.detalle}"
           ])
  
   end
+
+end
+
+def elimina_generados
+    puts "Eliminando public/heb412/generados"
+    orden = "ls -l public/heb412/generados/"
+    res = `#{orden}`
+    puts res
+    orden = "rm public/heb412/generados/*ods"
+    res = `#{orden}`
+    puts res
+end
+
+def run
+  if !ENV['SMTP_MAQ']
+    puts "No esta definida variable de ambiente SMTP_MAQ"
+    exit 1
+  end
+  alertas
+  elimina_generados
 end
 
 run
