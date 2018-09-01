@@ -370,11 +370,13 @@ module Cor1440Gen
         vl = self.grupo.select {|g| g.nombre.start_with?('Línea')}
         return '' if vl.count == 0
         lc = []
-        vl.each do |l|
-          ta = Sip::Grupo.where("cn LIKE ?", "Coordinador#{l.cn[5..-1]}").take
-          return "Falta grupo coordinador para línea #{l.nombre}" if !ta
+        vl.each do |lin|
+          ta = Sip::Grupo.where("cn LIKE ?", "Coordinador#{lin.cn[5..-1]}").
+            take
+          return "Falta grupo coordinador para línea #{lin.nombre}" if !ta
           gu = Sip::GrupoUsuario.where(sip_grupo_id: ta.id).take
-          return "Falta usuario en grupo coordinador para línea #{l.nombre}" if !gu
+          return "Falta usuario en grupo coordinador para " +
+            "la línea #{lin.nombre}" if !gu
           lc << ::Usuario.find(gu.usuario_id).presenta_nombre
         end
         lc.uniq.join('; ')

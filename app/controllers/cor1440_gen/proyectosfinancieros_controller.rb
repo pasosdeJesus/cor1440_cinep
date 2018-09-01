@@ -255,13 +255,10 @@ module Cor1440Gen
       end
 
       # Recursos económicos en ejecución
-      tasaej = 0
       if !registro.tasaej
         detalle << "Falta tasa de ejecución"
       elsif registro.tasaej <= 0
         detalle << "Tasa de ejecución ≤ 0"
-      else
-        tasaej = registro.tasaej
       end
       montoej = 0
       if !registro.montoej
@@ -409,9 +406,7 @@ module Cor1440Gen
     end
 
 
-    def self.cuadro_general_seguimiento(plant, registros, narch,
-                                        busfechainicio_ini, busfechainicio_fin,
-                                        busfechacierre_ini, busfechacierre_fin)
+    def self.cuadro_general_seguimiento(plant, registros, narch, parsimp)
       ruta = File.join(Rails.application.config.x.heb412_ruta, 
                        plant.ruta).to_s
       puts "ruta=#{ruta}"
@@ -536,17 +531,21 @@ module Cor1440Gen
       hoja = libro.worksheets(6)
       fila = 2
       reg = ::Convenio.all
-      if busfechainicio_ini
-        reg = reg.filtro_fechainicio_localizadaini(busfechainicio_ini)
+      if parsimp[:busfechainicio_ini]
+        reg = reg.filtro_fechainicio_localizadaini(
+          parsimp[:busfechainicio_ini])
       end
-      if busfechainicio_fin
-        reg = reg.filtro_fechainicio_localizadafin(busfechainicio_fin)
+      if parsimp[:busfechainicio_fin]
+        reg = reg.filtro_fechainicio_localizadafin(
+          parsimp[:busfechainicio_fin])
       end
-      if busfechacierre_ini
-        reg = reg.filtro_fechacierre_localizadaini(busfechacierre_ini)
+      if parsimp[:busfechacierre_ini]
+        reg = reg.filtro_fechacierre_localizadaini(
+          parsimp[:busfechacierre_ini])
       end
-      if busfechacierre_fin
-        reg = reg.filtro_fechacierre_localizadafin(busfechacierre_fin)
+      if parsimp[:busfechacierre_fin]
+        reg = reg.filtro_fechacierre_localizadafin(
+          parsimp[:busfechacierre_fin])
       end
 
       cons = 1
@@ -690,18 +689,14 @@ module Cor1440Gen
       super(c)
     end   
 
-    def self.vista_listado(plant, ids, modelo, narch, 
-                           busfechainicio_ini, busfechainicio_fin,
-                           busfechacierre_ini, busfechacierre_fin)
+    def self.vista_listado(plant, ids, modelo, narch, parsimp)
       registros = modelo.where(id: ids)
       case plant.vista
       when 'Cronograma de Solicitud de Informes'
         r = self.vista_solicitud_informes(registros)
       when 'Cuadro General de Seguimiento'
         r = self.cuadro_general_seguimiento(
-          plant, registros, narch, 
-          busfechainicio_ini, busfechainicio_fin,
-          busfechacierre_ini, busfechacierre_fin)
+          plant, registros, narch, parsimp)
         return nil
       else
         r = registros
