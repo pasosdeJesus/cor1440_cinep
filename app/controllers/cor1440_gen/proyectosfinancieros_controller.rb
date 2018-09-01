@@ -31,7 +31,7 @@ module Cor1440Gen
           params[:fechacierre_localizada])
         fcierre = Date.strptime(fcierre, '%Y-%m-%d')
         if fini && fcierre
-          d = dif_meses_dias(fini, fcierre)
+          d = ApplicationHelper.dif_meses_dias(fini, fcierre)
           respond_to do |format|
             format.json { 
               render json: {duracion: d.to_s}, status: :ok
@@ -53,7 +53,7 @@ module Cor1440Gen
     end
 
  
-    def cadena_muchos(r, campo, sep = ', ', camponom='nombre')
+    def self.cadena_muchos(r, campo, sep = ', ', camponom='nombre')
         if !r.send(campo)
           return ""
         end
@@ -145,8 +145,9 @@ module Cor1440Gen
     end
 
     def vistas_manejadas
-      ['Compromiso Institucional', 'Cuadro General de Seguimiento',
-      'Cronograma de Solicitud de Informes']
+      ['Compromiso Institucional', 
+       'Cuadro General de Seguimiento', 
+       'Cronograma de Solicitud de Informes']
     end
 
     def show_plantillas
@@ -300,7 +301,7 @@ module Cor1440Gen
 
     end
 
-    def vista_solicitud_informes
+    def self.vista_solicitud_informes(registros)
       cons = ""
       pre = ""
       [['informenarrativo','INFORME NARRATIVO'], 
@@ -322,8 +323,8 @@ module Cor1440Gen
         FROM productopf JOIN tipoproductopf
         ON productopf.tipoproductopf_id=tipoproductopf.id"
       
-      w = @registros.count > 0 ?  
-        "WHERE p.id in (#{@registros.pluck(:id).join(", ")})" : ""
+      w = registros.count > 0 ?  
+        "WHERE p.id in (#{registros.pluck(:id).join(", ")})" : ""
 
       Heb412Gen::Plantillahcm.connection.execute <<-SQL
       DROP VIEW IF EXISTS v_solicitud_informes ;
@@ -363,7 +364,7 @@ module Cor1440Gen
         'SELECT * FROM v_solicitud_informes')
     end
 
-    def asigna_celda_y_borde(hoja, fila, col, valor)
+    def self.asigna_celda_y_borde(hoja, fila, col, valor)
         hoja[fila, col] = valor
         hoja.cell(fila, col).format.top.style = 'solid'
         hoja.cell(fila, col).format.bottom.style = 'solid'
@@ -372,9 +373,9 @@ module Cor1440Gen
     end
 
     
-    def tramitado_anio(hoja, anio)
+    def self.tramitado_anio(registros, hoja, anio)
       hoja.name = "Tramitados #{anio}"
-      reg = @registros.where("fechaformulacion>='#{anio.to_i}-01-01' AND " +
+      reg = registros.where("fechaformulacion>='#{anio.to_i}-01-01' AND " +
                              "fechaformulacion<='#{anio.to_i}-12-31'").
         reorder('EXTRACT(MONTH FROM fechaformulacion), referenciacinep')
       fila = 2
@@ -408,16 +409,18 @@ module Cor1440Gen
     end
 
 
-    def cuadro_general_seguimiento(pl)
+    def self.cuadro_general_seguimiento(plant, registros, narch,
+                                        busfechainicio_ini, busfechainicio_fin,
+                                        busfechacierre_ini, busfechacierre_fin)
       ruta = File.join(Rails.application.config.x.heb412_ruta, 
-                       pl.ruta).to_s
+                       plant.ruta).to_s
       puts "ruta=#{ruta}"
       libro = Rspreadsheet.open(ruta)
 
       # Hoja Resumen
       hoja = libro.worksheets(1)
       fila = 2
-      reg = @registros.where("estado IN ('C', 'E', 'J', 'K', 'M')").
+      reg = registros.where("estado IN ('C', 'E', 'J', 'K', 'M')").
         reorder([:referenciacinep, :id])
       cons = 1
       reg.each do |r|
@@ -438,10 +441,11 @@ module Cor1440Gen
         fila +=1
       end
 
+      FileUtils.mv(narch + ".ods-0", narch + ".ods-15")
       # Hoja En tramite
       hoja = libro.worksheets(2)
       fila = 2
-      reg = @registros.where("estado IN ('E')").
+      reg = registros.where("estado IN ('E')").
         reorder([:referenciacinep, :id])
       cons = 1
       reg.each do |r|
@@ -463,8 +467,8 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 8, 
                              r.montopesos_localizado)
         duryf = r.fechacierre && r.fechainicio ?
-          (dif_meses_dias(r.fechainicio, r.fechacierre) + ' - ' + 
-           r.fechainicio_localizada) : ''
+          (ApplicationHelper.dif_meses_dias(r.fechainicio, r.fechacierre) + 
+           ' - ' + r.fechainicio_localizada) : ''
         asigna_celda_y_borde(hoja, fila, 9, duryf)
         asigna_celda_y_borde(hoja, fila, 10, r.observacionestramite)
         mf = r.fechaformulacion ?
@@ -475,10 +479,11 @@ module Cor1440Gen
         fila +=1
       end
 
+      FileUtils.mv(narch + ".ods-15", narch + ".ods-30")
       # Hoja Ejecucion
       hoja = libro.worksheets(3)
       fila = 2
-      reg = @registros.where("estado IN ('J')").
+      reg = registros.where("estado IN ('J')").
         reorder([:referenciacinep, :id])
       cons = 1
       reg.each do |r|
@@ -498,10 +503,11 @@ module Cor1440Gen
         fila +=1
       end
 
+      FileUtils.mv(narch + ".ods-30", narch + ".ods-45")
       # Hoja En cierre
       hoja = libro.worksheets(4)
       fila = 2
-      reg = @registros.where("estado IN ('C')").
+      reg = registros.where("estado IN ('C')").
         reorder([:referenciacinep, :id])
       cons = 1
       reg.each do |r|
@@ -520,37 +526,29 @@ module Cor1440Gen
         fila +=1
       end
 
+      FileUtils.mv(narch + ".ods-45", narch + ".ods-60")
       # Hoja Tramitados del año actual
       treste = libro.worksheets(5)
       anio = Date.today.year
-      tramitado_anio(treste, anio)
+      tramitado_anio(registros, treste, anio)
 
       # Hoja de convenios institucionales
       hoja = libro.worksheets(6)
       fila = 2
       reg = ::Convenio.all
-      if params[:filtro][:busfechainicio_localizadaini] && 
-        params[:filtro][:busfechainicio_localizadaini] != ''
-        reg = reg.filtro_fechainicio_localizadaini(
-          params[:filtro][:busfechainicio_localizadaini])
+      if busfechainicio_ini
+        reg = reg.filtro_fechainicio_localizadaini(busfechainicio_ini)
       end
-      if params[:filtro][:busfechainicio_localizadafin] &&
-        params[:filtro][:busfechainicio_localizadafin] != ''
-        reg = reg.filtro_fechainicio_localizadafin(
-          params[:filtro][:busfechainicio_localizadafin])
+      if busfechainicio_fin
+        reg = reg.filtro_fechainicio_localizadafin(busfechainicio_fin)
       end
-      if params[:filtro][:busfechacierre_localizadaini] &&
-        params[:filtro][:busfechacierre_localizadaini] != ''
-        reg = reg.filtro_fechacierre_localizadaini(
-          params[:filtro][:busfechacierre_localizadaini])
+      if busfechacierre_ini
+        reg = reg.filtro_fechacierre_localizadaini(busfechacierre_ini)
       end
-      if params[:filtro][:busfechacierre_localizadafin] &&
-        params[:filtro][:busfechacierre_localizadafin] != ''
-        reg = reg.filtro_fechacierre_localizadafin(
-          params[:filtro][:busfechacierre_localizadafin])
+      if busfechacierre_fin
+        reg = reg.filtro_fechacierre_localizadafin(busfechacierre_fin)
       end
 
-     
       cons = 1
       reg.each do |r|
         asigna_celda_y_borde(hoja, fila, 1, cons)
@@ -561,17 +559,19 @@ module Cor1440Gen
                              r.tipoconvenio.nombre : '')
         asigna_celda_y_borde(hoja, fila, 5, r.descripcion)
         asigna_celda_y_borde(hoja, fila, 6, r.fechainicio)
-        asigna_celda_y_borde(hoja, fila, 7, dif_meses_dias(
+        asigna_celda_y_borde(hoja, fila, 7, ApplicationHelper.dif_meses_dias(
           r.fechainicio, r.fechacierre))
         cons +=1
         fila +=1
       end
 
 
+      FileUtils.mv(narch + ".ods-60", narch + ".ods-75")
+
       # Hoja de publicaciones
       hoja = libro.worksheets(7)
       fila = 2
-      reg = @registros.where("estado IN ('C', 'J', 'K', 'M')")
+      reg = registros.where("estado IN ('C', 'J', 'K', 'M')")
       ppf = ::Productopf.where(proyectofinanciero_id: reg.map(&:id)).
         joins(:proyectofinanciero)
      
@@ -615,10 +615,11 @@ module Cor1440Gen
         fila +=1
       end
 
+      FileUtils.mv(narch + ".ods-75", narch + ".ods-90")
       # Hoja de divisas
       hoja = libro.worksheets(8)
       fila = 2
-      reg = @registros #.where("estado IN ('J', 'C', 'M')")
+      reg = registros #.where("estado IN ('J', 'C', 'M')")
       tf = ::Tasacambio.where(enpesos: reg.map(&:tasa).uniq).order(:fecha)
      
       cons = 1
@@ -645,8 +646,9 @@ module Cor1440Gen
         fila += 1
       end
 
+      FileUtils.mv(narch + ".ods-90", narch + ".ods-99")
       # Hojas para tramitados en años anteriores
-      anios = @registros.where("fechaformulacion<'#{anio}-01-01'").
+      anios = registros.where("fechaformulacion<'#{anio}-01-01'").
         reorder(nil).pluck('DISTINCT EXTRACT(YEAR FROM fechaformulacion)').
         map {|a| a.to_i}
       anios.sort!
@@ -654,14 +656,16 @@ module Cor1440Gen
       anios.each do |a|
         if numhoja<=11
           hoja = libro.worksheets(numhoja)
-          tramitado_anio(hoja, a)
+          tramitado_anio(registros, hoja, a)
         end
       end
 
-      n=File.join('/tmp', File.basename(pl.ruta))
-      libro.save(n)
+      FileUtils.rm(narch + ".ods-99")
+      #byebug
+      #n=File.join('/tmp', File.basename(pl.ruta))
+      libro.save(narch + '.ods')
 
-      return n
+      return nil
     end
  
     
@@ -686,26 +690,23 @@ module Cor1440Gen
       super(c)
     end   
 
-    def index_otros_formatos(format, params)
-      format.ods {
-        if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 then
-          head :no_content 
-        elsif Heb412Gen::Plantillahcm.where(
-          id: params[:idplantilla].to_i).take.nil?
-          head :no_content 
-        else
-          pl = Heb412Gen::Plantillahcm.find(
-            params[:idplantilla].to_i)
-          if pl.vista == 'Cronograma de Solicitud de Informes'
-            @vista = vista_solicitud_informes
-            n = Heb412Gen::PlantillahcmController.
-              llena_plantilla_multiple_fd(pl, @vista)
-          elsif pl.vista == 'Cuadro General de Seguimiento'
-            n = cuadro_general_seguimiento(pl)
-          end
-          send_file n, x_sendfile: true
-        end
-      }
+    def self.vista_listado(plant, ids, modelo, narch, 
+                           busfechainicio_ini, busfechainicio_fin,
+                           busfechacierre_ini, busfechacierre_fin)
+      registros = modelo.where(id: ids)
+      case plant.vista
+      when 'Cronograma de Solicitud de Informes'
+        r = self.vista_solicitud_informes(registros)
+      when 'Cuadro General de Seguimiento'
+        r = self.cuadro_general_seguimiento(
+          plant, registros, narch, 
+          busfechainicio_ini, busfechainicio_fin,
+          busfechacierre_ini, busfechacierre_fin)
+        return nil
+      else
+        r = registros
+      end
+      return r
     end
 
     def index_reordenar(registros)
@@ -786,8 +787,9 @@ module Cor1440Gen
 
         # Calculados
         if @proyectofinanciero.fechainicio && @proyectofinanciero.fechacierre
-          r.add_field(:duracion, dif_meses_dias(@proyectofinanciero.fechainicio, 
-                                                @proyectofinanciero.fechacierre))
+          r.add_field(:duracion, ApplicationHelper.dif_meses_dias(
+            @proyectofinanciero.fechainicio, 
+            @proyectofinanciero.fechacierre))
         end
         ca = [:anotacionesdb, :anotacionesrh, :anotacionesre,
               :anotacionesinf, :anotacionescontab]

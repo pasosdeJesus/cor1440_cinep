@@ -25,7 +25,7 @@ module ApplicationHelper
                        ['NIVEL INTERINSTITUCIONAL', :I]]
 
 
-  def dif_meses_dias(fechaini, fechafin) 
+  def self.dif_meses_dias(fechaini, fechafin) 
     m = 0
     d = 0
     if fechaini && fechafin && fechaini < fechafin
