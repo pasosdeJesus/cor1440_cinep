@@ -20,7 +20,7 @@ $(document).on('turbolinks:load ready page:load', function() {
 	var root;
   	root = typeof exports !== "undefined" && exports !== null ? 
 	  exports : window;
-	sip_prepara_eventos_comunes(root, '/act');
+	sip_prepara_eventos_comunes(root);
 	heb412_gen_prepara_eventos_comunes(root);
 	cor1440_gen_prepara_eventos_comunes(root, 
             {'sin_eventos_cambia_proyecto': true});
