@@ -81,11 +81,6 @@ Rails.application.routes.draw do
     get "/reportes/cuadroactividades" => "reportes#cuadroactividades", 
       as: :reportes_cuadroactividades
 
-    get "/actividades/:id/fichaimp" => "cor1440_gen/actividades#fichaimp", 
-      as: :actividad_fichaimp
-    get "/actividades/:id/fichapdf" => "cor1440_gen/actividades#fichapdf", 
-      as: :actividad_fichapdf
-    
     get "/actividades/cuenta" => "cor1440_gen/actividades#cuenta", 
       as: :actividades_cuenta
 

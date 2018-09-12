@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 5dcebf5a59bf21deb5edd106dcf4ed5b766918e4
+  revision: 17c4a42911d28c52b5255eedcd0bd7b8f8a11f1f
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -389,7 +389,7 @@ GEM
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.18)
+    uglifier (4.1.19)
       execjs (>= 0.3.0, < 3)
     unicorn (5.4.1)
       kgio (~> 2.6)
