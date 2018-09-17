@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: c5963d0119e6b14baece017f42485fa3fd3f056b
+  revision: dd94ebb25449a3b409d18c1276409ae60d49a6c5
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: f2ebc6c402587b3de0e5f2c864877d244d6a4404
+  revision: a52131befa636b796a9f9d49c16efe7343ee6fec
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: aebf4112c62564a1c914b4bcd97b7501b2fa49a8
+  revision: 7b4ab0e91177d6a75822ac413c39ba40e647398b
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 4c9e55983183e4a09e7cd7284436603f47269c74
+  revision: bbef0621fd545669001020e4372cf8bd0b97a998
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 95230e0fe55f144b385846c4ed9c5533f14b2c67
+  revision: e6cadbef1aa35e4811b96aaf096b16bb046d6be8
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 93e8d09d9650b54114b678c28bcbbefd0e42ed78
+  revision: 5ca2bc7ed557a640c703fe56d6b53943472859f8
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -140,7 +140,7 @@ GEM
       railties (>= 3.0)
     builder (3.2.3)
     camertron-eprun (1.1.1)
-    cancancan (2.2.0)
+    cancancan (2.3.0)
     capybara (2.18.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -216,7 +216,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    marcel (0.3.2)
+    marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
     mime-types (3.2.2)

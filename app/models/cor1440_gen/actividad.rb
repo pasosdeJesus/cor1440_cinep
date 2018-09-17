@@ -114,7 +114,7 @@ module Cor1440Gen
           (memo == "" ? "" : memo + "; ") + i.nombre
         }
       else
-        presenta_gen(atr)
+        presenta_actividad(atr)
       end
     end
 
