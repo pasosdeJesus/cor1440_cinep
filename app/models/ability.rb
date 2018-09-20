@@ -116,12 +116,16 @@ class Ability  < Cor1440Gen::Ability
   CAMPOS_PLANTILLAS_PROPIAS = {
     'Usuario' => {
       campos: [
+        'actualizacion', 
         'apellidos', 
         'areaestudios',
         'cajacompensacion',
         'cargo',
         'ciudadlabora',
         'ciudadresidencia',
+        'condensado_de_clave',
+        'correo',
+        'creacion',
         'created_at',
         'direccionresidencia',
         'email', 
@@ -130,7 +134,9 @@ class Ability  < Cor1440Gen::Ability
         'email',
         'empresaps',
         'failed_attempts',
+        'fechacreacion',
         'fechacreacion_localizada',
+        'fechadeshabilitacion',
         'fechadeshabilitacion_localizada',
         'fechaini_localizada',
         'fechafin_localizada',
@@ -152,6 +158,7 @@ class Ability  < Cor1440Gen::Ability
         'nusuario', 
         'oficina_id',
         'perfilprofesional',
+        'presenta_nombre',
         'procesogh',
         'profesion',
         'rol',
@@ -314,8 +321,9 @@ class Ability  < Cor1440Gen::Ability
       when Ability::ROLOPERADOR
         can :read, ::Tasacambio
         can :read, Heb412Gen::Doc
-        can :read, Heb412Gen::Plantillahcm
         can :read, Heb412Gen::Plantilladoc
+        can :read, Heb412Gen::Plantillahcm
+        can :read, Heb412Gen::Plantillahcr
         can :read, ::Usuario # Directorio institucional
         can :read, Sip::Grupo # Directorio institucional
         can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
@@ -380,8 +388,9 @@ class Ability  < Cor1440Gen::Ability
         end
         if lgrupos.include?(GRUPO_GESTIONDECALIDAD)
           can :manage, Heb412Gen::Doc
-          can :manage, Heb412Gen::Plantillahcm
           can :manage, Heb412Gen::Plantilladoc
+          can :manage, Heb412Gen::Plantillahcm
+          can :manage, Heb412Gen::Plantillahcr
         end
         if lgrupos.include?(GRUPO_ARCHIVOYCORRESPONDENCIA)
           can [:edit, :update], ::Usuario
@@ -420,8 +429,9 @@ class Ability  < Cor1440Gen::Ability
         can :manage, Cor1440Gen::Proyectofinanciero
         can :manage, Cor1440Gen::Tipoindicador
         can :manage, Heb412Gen::Doc
-        can :manage, Heb412Gen::Plantillahcm
         can :manage, Heb412Gen::Plantilladoc
+        can :manage, Heb412Gen::Plantillahcm
+        can :manage, Heb412Gen::Plantillahcr
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|
           c = Ability.tb_clase(t)

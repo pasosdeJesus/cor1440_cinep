@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: dd94ebb25449a3b409d18c1276409ae60d49a6c5
+  revision: c6cda3353bfe283b1ec8a5b89ffd98ab57dc219c
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,22 +12,14 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: d26bec4f7626b8a27d48d183bde80913dcbbc29e
+  revision: ddb7dad932c188f638642c62029ab87f94c34fe3
+  branch: hojacalculo_registro
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
       font-awesome-rails
       redcarpet
       rspreadsheet
-      sip
-
-GIT
-  remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: a52131befa636b796a9f9d49c16efe7343ee6fec
-  specs:
-    jn316_gen (1.0.a1)
-      net-ldap
-      rails
       sip
 
 GIT
@@ -56,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 5ca2bc7ed557a640c703fe56d6b53943472859f8
+  revision: b11fcf1d4fe30e5baa070d77821bbb4f7ccbd82b
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -82,6 +74,14 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
+
+PATH
+  remote: ../jn316_gen
+  specs:
+    jn316_gen (1.0.a1)
+      net-ldap
+      rails
+      sip
 
 GEM
   remote: https://rubygems.org/
@@ -338,7 +338,7 @@ GEM
       rubyzip (~> 1.1)
     ruby-progressbar (1.10.0)
     rubyzip (1.2.2)
-    sass (3.5.7)
+    sass (3.6.0)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)

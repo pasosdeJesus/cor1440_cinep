@@ -319,7 +319,7 @@ class Usuario < ActiveRecord::Base
     when 'sip_grupo_ids'
       sip_grupo.map(&:nombre).join("; ")
     else
-      presenta_gen(atr)
+      Sip::Usuario.presenta_base(self, atr)
     end
   end
 
