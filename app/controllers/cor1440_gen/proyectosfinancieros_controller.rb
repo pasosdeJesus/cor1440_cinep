@@ -298,6 +298,25 @@ module Cor1440Gen
 
     end
 
+
+    def validar_registro(registro, detalle)
+      detalleini = detalle.clone
+      if !registro.fechainicio && 
+        ApplicationHelper::ESTADOS_APROBADO.include?(registro.estado)
+        detalle << "No tiene fecha de inicio"
+      elsif registro.fechainicio && registro.fechainicio < Date.new(2000, 1, 1)
+        detalle << "Fecha de inicio anterior al 1.Ene.2000"
+      end
+      if !registro.fechacierre && 
+        ApplicationHelper::ESTADOS_APROBADO.include?(registro.estado)
+        detalle << "No tiene fecha de terminación"
+      elsif registro.fechacierre && registro.fechacierre <= registro.fechainicio
+        detalle << "Fecha de terminación posterior o igual a la de inicio"
+      end
+      validar_mas_registro(registro, detalle)
+      return detalleini == detalle
+    end
+
     def self.vista_solicitud_informes(registros)
       cons = ""
       pre = ""
