@@ -193,15 +193,6 @@ module Cor1440Gen
     end
 
 
-    def show_plantillas
-      @plantillas = [['', '']]
-      @plantillas = Heb412Gen::Plantilladoc.where(
-        "vista IN ('Actividad')").
-      select('nombremenu, id').map { 
-          |co| [co.nombremenu, "#{co.id}.odt"] 
-        }
-    end
-
     # Encabezado comun para HTML y PDF (primeras filas)
     def encabezado_comun
       atributos_presenta.map {|a| Cor1440Gen::Actividad.human_attribute_name(a)}

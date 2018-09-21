@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: ddb7dad932c188f638642c62029ab87f94c34fe3
+  revision: a6662787156b0b6da6a70e4459e86627ad6f54a5
   branch: hojacalculo_registro
   specs:
     heb412_gen (1.0.a1)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: c11ee423f6d5253f2ba971701427c3b11490990d
+  revision: b227a1b94c00471bbd21710c3b92bda3b138e165
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails

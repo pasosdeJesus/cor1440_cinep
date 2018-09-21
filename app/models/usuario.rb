@@ -315,9 +315,15 @@ class Usuario < ActiveRecord::Base
   end
 
   def presenta(atr)
-    case atr
+    case atr.to_s
+    when 'apellidos_m'
+      persona.apellidos ?  persona.apellidos.upcase : ''
+    when 'nombres_m'
+      persona.nombres ?  persona.nombres.upcase : ''
     when 'sip_grupo_ids'
       sip_grupo.map(&:nombre).join("; ")
+    when 'tdoc'
+      persona.tdocumento ?  persona.tdocumento.sigla : ''
     else
       Sip::Usuario.presenta_base(self, atr)
     end
