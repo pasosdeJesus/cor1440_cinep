@@ -360,6 +360,16 @@ class Ability  < Cor1440Gen::Ability
           can [:edit], Cor1440Gen::Indicadorpf
           can :manage, ::Publicacion
         end
+        
+        # Responsables de un proyecto también pueden editar marco lógico
+        pc = ::Cor1440Gen::Proyectofinanciero.where('id IN
+          (SELECT proyectofinanciero_id FROM proyectofinanciero_uresponsable
+            WHERE uresponsable_id=?)', usuario.id)
+        if pc.count > 0
+          can [:edit, :update], pc
+          can [:edit], Cor1440Gen::Indicadorpf
+          can :manage, ::Publicacion
+        end
 
         # Contexto es para equipo derechos humanos 
         if lgrupos.include?(GRUPO_DERECHOSHUMANOS)
