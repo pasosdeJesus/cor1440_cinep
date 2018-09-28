@@ -6,7 +6,7 @@ module Cor1440Gen
   class Proyectofinanciero < ActiveRecord::Base
 
     include Cor1440Gen::Concerns::Models::Proyectofinanciero
-    include ApplicationHelper
+    include Cor1440Gen::ApplicationHelper
 
 
     @current_usuario = nil
@@ -39,7 +39,7 @@ module Cor1440Gen
 
     def duracion
       if fechainicio && fechacierre
-        ApplicationHelper.dif_meses_dias(fechainicio, fechacierre)
+        LibMisc.dif_meses_dias(fechainicio, fechacierre)
       else
         ''
       end

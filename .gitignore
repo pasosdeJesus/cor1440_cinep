@@ -51,3 +51,10 @@ public/heb412/
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
 config/secrets.yml.enc
+bin/
+*copia
+log/
+public/heb412
+public/heb412
+public80/
+

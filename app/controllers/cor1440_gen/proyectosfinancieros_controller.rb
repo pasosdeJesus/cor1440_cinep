@@ -31,7 +31,7 @@ module Cor1440Gen
           params[:fechacierre_localizada])
         fcierre = Date.strptime(fcierre, '%Y-%m-%d')
         if fini && fcierre
-          d = ApplicationHelper.dif_meses_dias(fini, fcierre)
+          d = LibMisc.dif_meses_dias(fini, fcierre)
           respond_to do |format|
             format.json { 
               render json: {duracion: d.to_s}, status: :ok
@@ -481,7 +481,7 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 8, 
                              r.montopesos_localizado)
         duryf = r.fechacierre && r.fechainicio ?
-          (ApplicationHelper.dif_meses_dias(r.fechainicio, r.fechacierre) + 
+          (LibMisc.dif_meses_dias(r.fechainicio, r.fechacierre) + 
            ' - ' + r.fechainicio_localizada) : ''
         asigna_celda_y_borde(hoja, fila, 9, duryf)
         asigna_celda_y_borde(hoja, fila, 10, r.observacionestramite)
@@ -577,7 +577,7 @@ module Cor1440Gen
                              r.tipoconvenio.nombre : '')
         asigna_celda_y_borde(hoja, fila, 5, r.descripcion)
         asigna_celda_y_borde(hoja, fila, 6, r.fechainicio)
-        asigna_celda_y_borde(hoja, fila, 7, ApplicationHelper.dif_meses_dias(
+        asigna_celda_y_borde(hoja, fila, 7, LibMisc.dif_meses_dias(
           r.fechainicio, r.fechacierre))
         cons +=1
         fila +=1
@@ -801,7 +801,7 @@ module Cor1440Gen
 
         # Calculados
         if @proyectofinanciero.fechainicio && @proyectofinanciero.fechacierre
-          r.add_field(:duracion, ApplicationHelper.dif_meses_dias(
+          r.add_field(:duracion, LibMisc.dif_meses_dias(
             @proyectofinanciero.fechainicio, 
             @proyectofinanciero.fechacierre))
         end
