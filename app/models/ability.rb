@@ -183,6 +183,7 @@ class Ability  < Cor1440Gen::Ability
         'actor', 
         'actualizacion', 
         'campos_dinamicos', 
+        'cedula_responsable',
         'contexto', 
         'corresponsables',
         'creacion', 

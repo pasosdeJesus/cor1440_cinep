@@ -97,6 +97,8 @@ module Cor1440Gen
         self.actor.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre
         }
+      when 'cedula_responsable'
+        self.responsable.persona.numerodocumento
       when 'departamento_s'
         self.departamento_id ? self.departamento.nombre : ''
       when 'grupo'
