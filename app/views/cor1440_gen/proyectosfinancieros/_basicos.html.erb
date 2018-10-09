@@ -44,7 +44,7 @@
     <%
       f.object.duracion = ''
       if f.object.fechainicio && f.object.fechacierre then
-        f.object.duracion = ApplicationHelper.dif_meses_dias(
+        f.object.duracion = LibMisc.dif_meses_dias(
           f.object.fechainicio, f.object.fechacierre
         )
       end

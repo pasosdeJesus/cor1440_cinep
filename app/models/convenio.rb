@@ -39,7 +39,7 @@ class Convenio < ActiveRecord::Base
 
   def duracion
     if fechainicio && fechacierre
-      ApplicationHelper.dif_meses_dias(fechainicio, fechacierre)
+      LibMisc.dif_meses_dias(fechainicio, fechacierre)
     else
       ''
     end
