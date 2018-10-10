@@ -63,7 +63,49 @@ module Cor1440Gen
       end
       r.a_decimal_localizado
     end
+ 
+    attr_accessor :duraciondias_localizado
+    def duraciondias_localizado
+      r = 0
+      if duracion && mduracion
+        case mduracion
+        when 'Minutos'
+          r = duracion*10/(24*60.0)
+          r = r.round / 10.0
+        when 'Días'
+          r = duracion * 10
+          r = r.round / 10.0
+        when 'Meses'
+          r = duracion * 25
+        else # Horas
+          r = duracion * 10 / 24.0
+          r = r.round / 10.0
+        end
+      end
+      r.a_decimal_localizado
+    end
     
+    attr_accessor :fecha_terminacion_localizada
+    def fecha_terminacion_localizada
+      ft = ''
+      if fecha && duracion && mduracion
+        dias = 0
+        case mduracion
+        when 'Minutos'
+          dias = duracion/(24.0*60.0)
+        when 'Días'
+          dias = duracion
+        when 'Meses'
+          dias = duracion * 25
+        else # Horas
+          dias = duracion / 24.0
+        end
+        ftd = fecha + dias
+        ft = fecha_estandar_local ftd
+      end
+      return ft
+    end
+
     validates :desarrollo, length: { maximum: 5000 }
     validates :resultado, length: { maximum: 5000 }
     validates :papel, length: { maximum: 5000 }
@@ -99,8 +141,19 @@ module Cor1440Gen
         }
       when 'cedula_responsable'
         self.responsable.persona.numerodocumento
+      when 'centros_costo_compromisos'
+        self.proyectofinanciero.inject("") { |memo, i|
+          (memo == "" ? "" : memo + "; ") +
+            i.centrocosto
+        }
+      when 'correo_responsable'
+        self.responsable.email
       when 'departamento_s'
         self.departamento_id ? self.departamento.nombre : ''
+      when 'fecha_hoy_localizada'
+        fecha_estandar_local Date.today
+      when 'fechanac_responsable_localizada'
+        self.responsable.persona.presenta_fechanac
       when 'grupo'
         self.grupo.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre
