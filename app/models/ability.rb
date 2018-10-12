@@ -216,6 +216,7 @@ class Ability  < Cor1440Gen::Ability
         'publicacion', 
         'responsable', 
         'sexo_onr', 
+        'telefono_responsable',
       ],
       controlador: 'Cor1440Gen::ActividadesController',
       ruta: '/actividades'

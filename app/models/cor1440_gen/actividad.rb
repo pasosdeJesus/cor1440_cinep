@@ -140,7 +140,8 @@ module Cor1440Gen
           (memo == "" ? "" : memo + "; ") + i.nombre
         }
       when 'cedula_responsable'
-        self.responsable.persona.numerodocumento
+        self.responsable && self.responsable.persona ?  
+          self.responsable.persona.numerodocumento : ''
       when 'centros_costo_compromisos'
         self.proyectofinanciero.inject("") { |memo, i|
           (memo == "" ? "" : memo + "; ") +
@@ -168,6 +169,9 @@ module Cor1440Gen
         self.publicacion.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre
         }
+      when 'telefono_responsable'
+        self.responsable && self.responsable.telefonos ?  
+          self.responsable.telefonos : ''
       else
         presenta_actividad(atr)
       end
