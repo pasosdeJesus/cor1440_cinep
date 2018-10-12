@@ -1541,7 +1541,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    monto numeric(20,2) DEFAULT 0.0,
+    monto numeric DEFAULT 0.0,
     referencia character varying(1000),
     referenciacinep character varying(1000),
     fuentefinanciador character varying(1000),
@@ -1558,7 +1558,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric(20,2) DEFAULT 0.0,
+    presupuestototal numeric DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -1695,12 +1695,12 @@ ALTER SEQUENCE public.cor1440_gen_resultadopf_id_seq OWNED BY public.cor1440_gen
 CREATE TABLE public.cor1440_gen_tipoindicador (
     id bigint NOT NULL,
     nombre character varying(32),
-    medircon integer,
     espcampos character varying(1000),
     espvaloresomision character varying(1000),
     espvalidaciones character varying(1000),
     esptipometa character varying(32),
-    espfuncionmedir character varying(1000)
+    espfuncionmedir character varying(1000),
+    medircon integer
 );
 
 
@@ -3064,7 +3064,6 @@ CREATE TABLE public.sal7711_gen_articulo (
     pagina character varying(20),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    url character varying(5000),
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
@@ -3072,9 +3071,10 @@ CREATE TABLE public.sal7711_gen_articulo (
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
-    pais_id integer,
     titulo character varying(1024),
-    observaciones character varying(5000)
+    observaciones character varying(5000),
+    url character varying(5000),
+    pais_id integer
 );
 
 
@@ -3279,7 +3279,6 @@ CREATE TABLE public.sip_actorsocial (
     direccion character varying(500),
     pais_id integer,
     web character varying(500),
-    observaciones character varying(5000),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -4274,8 +4273,6 @@ CREATE TABLE public.usuario (
     updated_at timestamp without time zone,
     regionsjr_id integer,
     oficina_id integer DEFAULT 1,
-    nombres character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying NOT NULL,
-    apellidos character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying NOT NULL,
     ultimasincldap date,
     "uidNumber" integer,
     telefonos character varying(256),
@@ -4286,6 +4283,8 @@ CREATE TABLE public.usuario (
     numhijosmen12 integer DEFAULT 0,
     labdepartamento_id integer,
     labmunicipio_id integer,
+    apellidos character varying(127),
+    nombres character varying(127),
     perfilprofesional_id integer,
     cargo_id integer,
     contrato_id integer,
@@ -4372,7 +4371,7 @@ CREATE VIEW public.v_solicitud_informes AS
         END AS a_tiempo
    FROM (public.cor1440_gen_proyectofinanciero p
      JOIN public.v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[125, 134, 213, 19, 242, 229, 235, 236, 237, 248, 20, 241, 101, 273, 274, 276, 249, 426, 251, 482, 483, 476, 265, 376, 452, 458, 520, 459, 564, 234, 597, 616, 129, 130, 150, 116, 123, 122, 126, 103, 111, 102, 128, 171, 172, 109, 378, 255, 484, 258, 346, 174, 182, 132, 119, 118, 136, 145, 141, 104, 106, 152, 153, 154, 155, 156, 140, 158, 157, 159, 160, 163, 161, 162, 164, 165, 166, 168, 487, 135, 139, 18, 278, 430, 432, 433, 434, 115, 120, 170, 146, 147, 180, 187, 190, 191, 216, 193, 217, 195, 196, 218, 219, 200, 220, 203, 221, 205, 206, 207, 208, 209, 210, 211, 212, 384, 287, 138, 288, 289, 420, 358, 360, 363, 364, 365, 302, 263, 303, 489, 491, 496, 133, 524, 169, 525, 578, 422, 423, 548, 527, 549, 550, 551, 555, 529, 510, 598, 149, 522, 601, 532, 602, 603, 606, 493, 516, 537, 131, 369, 370, 560, 518, 519, 117, 563, 413, 488, 151, 188, 189, 574, 610, 611, 612]))
+  WHERE (p.id = ANY (ARRAY[125, 129, 128, 161, 162, 173, 193, 194, 196, 103, 102, 111, 127, 109, 130, 133, 134, 131, 123, 132, 136, 104, 119, 164, 20, 174, 190, 163, 195, 197, 122, 141, 142, 143, 144, 145, 147, 152, 146, 155, 137, 101, 138, 19, 140, 175, 149, 167, 166, 18, 150, 156, 120, 116, 158, 169, 176, 177, 170, 178, 179, 106, 118, 115, 171, 180, 157, 159, 172, 198, 199, 200, 201, 202, 168, 206, 117, 126]))
   ORDER BY s.fechaplaneada;
 
 
@@ -7567,6 +7566,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026130000'),
 ('20171026144919'),
 ('20171026172501'),
+('20171114185712'),
 ('20171123212504'),
 ('20171128234148'),
 ('20171130125044'),
@@ -7653,6 +7653,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180501225617'),
 ('20180502083127'),
 ('20180509111948'),
+('20180509114933'),
 ('20180509125608'),
 ('20180519102415'),
 ('20180522102059'),
@@ -7692,6 +7693,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180918200715'),
 ('20180920031351'),
 ('20180920124019'),
-('20180921120954');
+('20180921120954'),
+('20181011104537');
 
 
