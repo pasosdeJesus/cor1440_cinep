@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 7549b6d9eb8a626faefd8a140d0c7966bb97de5d
+  revision: 7af4d371af9ec561456afd78b5cf983d5a7142ca
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: ea8f85695c309b32f49c540c8e53ecd031c92474
+  revision: fdc4cbff6bcd49a4d18c5d43389597dab53e540a
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: fcdee50f37da3658b076917dbcbe9a4339ef2476
+  revision: b11019afe5aa73a750e865a1b2d16142407e8471
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 430dbdb95220e653e8b6425121d9bedbe7682c12
+  revision: 921e841e8b33100cd9c31fba0bb2c38298dbed80
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 8da9911cc6d3caf1de62ce6a73f2c9c62de05516
+  revision: 0e4117e15ab7194c0f0938576f425942ce8764b2
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: b85575dbcfc6e3786d7c372f50dc4bf89a303138
+  revision: aa0103425b3a8021f95479f65438fdf51f33f95f
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d30ff5681deafadfbeb5ddb6c26e6073a522a8d6
+  revision: 38cbe0a5e8f80ebe339c7448a8842771005cf253
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -187,7 +187,7 @@ GEM
       railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    i18n (1.1.0)
+    i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     interception (0.5)
     jbuilder (2.7.0)
@@ -214,7 +214,7 @@ GEM
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.7.0)
+    mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
@@ -405,7 +405,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
     will_paginate (3.1.6)
-    xpath (3.1.0)
+    xpath (3.2.0)
       nokogiri (~> 1.8)
 
 PLATFORMS
