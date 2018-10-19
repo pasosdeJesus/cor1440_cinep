@@ -221,7 +221,7 @@ module Cor1440Gen
         :indigenas, 
         :etnia_onr,
         :observaciones, 
-        :anexo
+        :anexos
       ]
     end
 
@@ -231,7 +231,7 @@ module Cor1440Gen
 
     def atributos_index
       [ :id, 
-        :fecha, 
+        :fecha_localizada, 
         :creadopor, 
         :nombre, 
         :departamento,
@@ -247,7 +247,7 @@ module Cor1440Gen
         :negros,
         :indigenas,
         :etnia_onr,
-        :anexo
+        :anexos
       ]
     end
 
