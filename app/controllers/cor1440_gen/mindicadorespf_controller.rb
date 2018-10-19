@@ -118,14 +118,18 @@ module Cor1440Gen
           when 'E1I2'
             base = "SELECT COUNT(actor_id) FROM efecto
                JOIN actor_efecto ON efecto.id=actor_efecto.efecto_id 
+               JOIN actor ON actor.id=actor_efecto.actor_id 
                WHERE fecha>='#{fini}' AND fecha<='#{ffin}'
+               AND actor.lineabase20182020
                AND indicadorpf_id='19'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
             base = "SELECT COUNT(*) FROM 
               (SELECT DISTINCT regiongrupo_id FROM efecto 
               JOIN actor_efecto ON efecto.id=actor_efecto.efecto_id 
               JOIN actor_regiongrupo ON actor_regiongrupo.actor_id=actor_efecto.actor_id 
+              JOIN actor ON actor.id=actor_efecto.actor_id 
               WHERE efecto.fecha>='#{fini}' AND efecto.fecha<='#{ffin}'
+              AND actor.lineabase20182020
               AND efecto.indicadorpf_id='19') AS s"
             d2 = ActiveRecord::Base.connection.execute(base)
             d2 = d2.first ? d2.first['count'] : 0
@@ -135,7 +139,9 @@ module Cor1440Gen
             base = "SELECT COUNT(*) FROM (SELECT DISTINCT actor_id
                FROM efecto 
                JOIN actor_efecto ON efecto.id=actor_efecto.efecto_id 
+               JOIN actor ON actor.id=actor_efecto.actor_id 
                WHERE efecto.fecha>='#{fini}' AND efecto.fecha<='#{ffin}'
+               AND actor.lineabase20182020
                AND efecto.indicadorpf_id='20') AS s"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
             base = "SELECT COUNT(*) FROM actor WHERE 
@@ -162,7 +168,8 @@ module Cor1440Gen
             base = "SELECT COUNT(*) FROM efecto WHERE 
                fecha>='#{fini}' AND fecha<='#{ffin}'
                AND indicadorpf_id='#{ind.id}'"
-            resind = ActiveRecord::Base.connection.execute(base).first['count'].to_f
+            d1 = ActiveRecord::Base.connection.execute(base).first['count'].to_f
+            resind = d1
 
           end
           respond_to do |format|

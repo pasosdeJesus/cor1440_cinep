@@ -63,9 +63,16 @@ class Actor < ActiveRecord::Base
     nombre
   end
 
-  
   scope :filtro_grupo_ids, lambda { |g|
     joins(:actor_grupo).where('actor_grupo.sip_grupo_id=?', g)
+  }
+
+  scope :filtro_lineabase20182020, lambda {|o|
+    if o.upcase.strip == 'SI'
+      where(lineabase20182020: true)
+    elsif o.upcase.strip == 'NO'
+      where(lineabase20182020: false)
+    end 
   }
 
   scope :filtro_nivelrelacion_id, lambda { |n|

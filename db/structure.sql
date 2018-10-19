@@ -240,7 +240,8 @@ CREATE TABLE public.actor (
     fechadeshabilitacion date,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    nivelrelacion_id integer
+    nivelrelacion_id integer,
+    lineabase20182020 boolean DEFAULT false
 );
 
 
@@ -7695,6 +7696,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180920124019'),
 ('20180921120954'),
 ('20181011104537'),
-('20181012110629');
+('20181012110629'),
+('20181019101427'),
+('20181019102523');
 
 

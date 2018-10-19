@@ -18,11 +18,28 @@ module Admin
         "id", 
         "nombre",
         "nivelrelacion_id",
-        ] +
-        [ :sectoractor_ids =>  [] ] +
-        [ :regiongrupo_ids =>  [] ] +
-        [ :grupo_ids =>  [] ] +
-        [ "personacontacto",
+      ] +
+      [ :sectoractor_ids =>  [] ] +
+      [ :regiongrupo_ids =>  [] ] +
+      [ :grupo_ids =>  [] ] +
+      [ "lineabase20182020",
+        "fechacreacion_localizada", 
+        "habilitado"
+      ]
+    end
+
+    def atributos_show
+      [
+        "id", 
+        "nombre"
+      ] +
+      [ :sectoractor_ids =>  [] ] +
+      ["pais_id"] +
+      [ :regiongrupo_ids =>  [] ] +
+      [ :grupo_ids =>  [] ] +
+      [ 
+        "lineabase20182020",
+        "personacontacto",
         "cargo",
         "correo",
         "telefono",
@@ -35,26 +52,8 @@ module Admin
       ]
     end
 
-    def atributos_show
-      [
-        "id", 
-        "nombre"
-        ] +
-        [ :sectoractor_ids =>  [] ] +
-        ["pais_id"] +
-        [ :regiongrupo_ids =>  [] ] +
-        [ :grupo_ids =>  [] ] +
-        [ "personacontacto",
-        "cargo",
-        "correo",
-        "telefono",
-        "fax",
-        "celular",
-        "direccion",
-        "observaciones", 
-        "fechacreacion_localizada", 
-        "fechadeshabilitacion_localizada"
-      ]
+    def atributos_form
+      atributos_show - ['id']
     end
 
     def self.filtra_grupos_fecha(c, grupo_ids, fecha)
