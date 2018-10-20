@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: a46bfedbf08b032106db4eec51f017b755c11e8f
+  revision: 6fb7d149a2ac43526dbdb1df1304b891bee00699
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: dc5bf3401a470aada8b35a1668d8d44b53d5995b
+  revision: 30a7bf1c6246a27467603a763fdabea174ece364
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 25e7d18b6fe2386e3969d9910d87ff6319715d61
+  revision: 79530b75a55ad5e7f7c59eb8ccb3c2c6250af728
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 1049fd2fdefda1e48da859eba5fb4ca92781a236
+  revision: 0ebfad25257229b1c14ebaeca1bfb930f016a7bb
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -468,4 +468,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.16.5
+   1.16.6

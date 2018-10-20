@@ -22,7 +22,7 @@ module Cor1440Cinep
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
 
-    config.relative_url_root = "/act"
+    config.relative_url_root = "/"
 
     config.active_record.schema_format = :sql
 
