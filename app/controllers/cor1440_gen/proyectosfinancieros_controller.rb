@@ -744,7 +744,7 @@ module Cor1440Gen
       return registros.reorder([:estado, :referenciacinep, :id])
     end
 
-    def genera_odf(plantilla_id, narchivo)
+    def genera_odt(plantilla_id, narchivo)
       plantilla = Heb412Gen::Plantilladoc.find(plantilla_id)
       if !plantilla
         return
@@ -968,7 +968,9 @@ module Cor1440Gen
         end
 
       end
-      return report
+      ngen =File.join('/tmp', File.basename(plantilla.ruta))
+      report.generate(ngen.to_s)
+      return ngen
     end
 
     private
