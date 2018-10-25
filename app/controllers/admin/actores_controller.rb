@@ -53,7 +53,11 @@ module Admin
     end
 
     def atributos_form
-      atributos_show - ['id']
+      a = atributos_show - ['id']
+      if cannot? :manage, :lineabase20182020
+        a = a - ["lineabase20182020"]
+      end
+      return a
     end
 
     def self.filtra_grupos_fecha(c, grupo_ids, fecha)
