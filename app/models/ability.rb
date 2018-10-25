@@ -434,6 +434,7 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
         end
       when Ability::ROLADMIN, Ability::ROLDIR
+        can :manage, :lineabase20182020
         can :edit, :contextoac
         can :manage, ::Convenio
         can :manage, ::Efecto
