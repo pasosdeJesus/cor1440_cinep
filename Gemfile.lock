@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 78cedc8ea634ab7b6978da176fe136347b01e04b
+  revision: 3545f22d1b2ece90e7c399fc6bb3cf14d0a7a62d
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 9c26f22932f940f3c81821c1c48b76ea63bad0aa
+  revision: 07a73fad8be08cf52409ee1e13b8e8b55c68f984
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: f89a6a69f54105bd91ae224d5876915391426ee2
+  revision: 6d97b520b911498f73bf1eafef3c8da3b29a1013
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 9d04f421a05693e5c90979864e17652738d67b3a
+  revision: f909781d02689cf10015e230b126893dae6720b4
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 81b9cb803c27a195a37f690995ab36f7966d4e03
+  revision: 031a858080d20cecbecdcba30e1fc89d444829b8
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 9f14ef7525d076e022d66a507ce66796eacde010
+  revision: 1295cf559957493682bb60f72b464c285c75ff19
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 19fab46e5cd96fb85a10a97c78aab63f14d7812c
+  revision: ea56b39c7c4a95186595693eeffaf4524f2446ef
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -211,7 +211,7 @@ GEM
       sprockets (> 2, < 4)
       tilt
     libxml-ruby (3.1.0)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -310,7 +310,7 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails-i18n (5.1.1)
+    rails-i18n (5.1.2)
       i18n (>= 0.7, < 2)
       railties (>= 5.0, < 6)
     rails_12factor (0.0.3)
@@ -468,4 +468,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.16.6
+   1.17.1
