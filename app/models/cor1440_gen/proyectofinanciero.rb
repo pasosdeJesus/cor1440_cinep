@@ -335,8 +335,14 @@ module Cor1440Gen
       where('fechaformulacion <= ?', f)
     }
 
+    def presenta_nombre
+      self.referenciacinep
+    end
+
     def presenta(atr)
       case atr.to_s
+      when 'compromiso_institucional'
+        referenciacinep
       when 'estado'
         Sip::ModeloHelper.etiqueta_coleccion(::ApplicationHelper::ESTADO, estado)
       when 'monto_localizado'
