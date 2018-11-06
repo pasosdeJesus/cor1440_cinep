@@ -1,0 +1,15 @@
+<% col = Sip::Actorsocial.joins(:grupoper).where(
+  'sip_actorsocial.id IN (SELECT DISTINCT actorsocial_id ' + 
+  '  FROM actividad_actorsocial)') %>
+<%= f.input :busactorsocial,
+  collection: col.order('sip_grupoper.nombre'),
+  include_blank: true,
+  label_method: :presenta_nombre,
+  value_method: :id,
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :busactorsocial),
+  input_html: {
+    class: 'chosen-select',
+    'data-enviarautomatico' => ''
+  }
+%>

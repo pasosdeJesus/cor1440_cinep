@@ -44,6 +44,25 @@ COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
 
 
 --
+-- Name: range(integer, integer, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.range(integer, integer, integer) RETURNS SETOF integer
+    LANGUAGE plpgsql
+    AS $_$
+declare
+i int;
+begin
+i := $1;
+while (i <= $2) loop
+return next i;
+i := i + $3;
+end loop;
+return;
+end;$_$;
+
+
+--
 -- Name: soundexesp(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -162,6 +181,16 @@ SET default_with_oids = false;
 CREATE TABLE public.actividad_actor (
     actividad_id integer NOT NULL,
     actor_id integer NOT NULL
+);
+
+
+--
+-- Name: actividad_actorsocial; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.actividad_actorsocial (
+    actividad_id bigint NOT NULL,
+    actorsocial_id bigint NOT NULL
 );
 
 
@@ -301,6 +330,36 @@ CREATE TABLE public.actor_regiongrupo (
 CREATE TABLE public.actor_sectoractor (
     actor_id integer NOT NULL,
     sectoractor_id integer NOT NULL
+);
+
+
+--
+-- Name: actorsocial_efecto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.actorsocial_efecto (
+    actorsocial_id bigint NOT NULL,
+    efecto_id bigint NOT NULL
+);
+
+
+--
+-- Name: actorsocial_grupo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.actorsocial_grupo (
+    actorsocial_id bigint NOT NULL,
+    grupo_id bigint NOT NULL
+);
+
+
+--
+-- Name: actorsocial_regiongrupo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.actorsocial_regiongrupo (
+    actorsocial_id bigint NOT NULL,
+    regiongrupo_id bigint NOT NULL
 );
 
 
@@ -1542,7 +1601,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    monto numeric DEFAULT 0.0,
+    monto numeric(20,2) DEFAULT 0.0,
     referencia character varying(1000),
     referenciacinep character varying(1000),
     fuentefinanciador character varying(1000),
@@ -1559,7 +1618,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric DEFAULT 0.0,
+    presupuestototal numeric(20,2) DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -1696,12 +1755,12 @@ ALTER SEQUENCE public.cor1440_gen_resultadopf_id_seq OWNED BY public.cor1440_gen
 CREATE TABLE public.cor1440_gen_tipoindicador (
     id bigint NOT NULL,
     nombre character varying(32),
+    medircon integer,
     espcampos character varying(1000),
     espvaloresomision character varying(1000),
     espvalidaciones character varying(1000),
     esptipometa character varying(32),
-    espfuncionmedir character varying(1000),
-    medircon integer
+    espfuncionmedir character varying(1000)
 );
 
 
@@ -3065,6 +3124,7 @@ CREATE TABLE public.sal7711_gen_articulo (
     pagina character varying(20),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
+    url character varying(5000),
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
@@ -3072,10 +3132,9 @@ CREATE TABLE public.sal7711_gen_articulo (
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
+    pais_id integer,
     titulo character varying(1024),
-    observaciones character varying(5000),
-    url character varying(5000),
-    pais_id integer
+    observaciones character varying(5000)
 );
 
 
@@ -3281,7 +3340,15 @@ CREATE TABLE public.sip_actorsocial (
     pais_id integer,
     web character varying(500),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    personacontacto character varying(100),
+    cargo character varying(100),
+    correo character varying(100),
+    celular character varying(100),
+    ciudad character varying(100),
+    nivelrelacion_id integer,
+    lineabase20182020 boolean,
+    fechadeshabilitacion date
 );
 
 
@@ -3572,7 +3639,7 @@ CREATE TABLE public.sip_grupoper (
 -- Name: TABLE sip_grupoper; Type: COMMENT; Schema: public; Owner: -
 --
 
-COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en cor1440cinep_desarrollo';
+COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en cor1440cinep_produccion';
 
 
 --
@@ -4274,6 +4341,8 @@ CREATE TABLE public.usuario (
     updated_at timestamp without time zone,
     regionsjr_id integer,
     oficina_id integer DEFAULT 1,
+    nombres character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying NOT NULL,
+    apellidos character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying NOT NULL,
     ultimasincldap date,
     "uidNumber" integer,
     telefonos character varying(256),
@@ -4284,8 +4353,6 @@ CREATE TABLE public.usuario (
     numhijosmen12 integer DEFAULT 0,
     labdepartamento_id integer,
     labmunicipio_id integer,
-    apellidos character varying(127),
-    nombres character varying(127),
     perfilprofesional_id integer,
     cargo_id integer,
     contrato_id integer,
@@ -4372,7 +4439,7 @@ CREATE VIEW public.v_solicitud_informes AS
         END AS a_tiempo
    FROM (public.cor1440_gen_proyectofinanciero p
      JOIN public.v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[125, 129, 128, 161, 162, 173, 193, 194, 196, 103, 102, 111, 127, 109, 130, 133, 134, 131, 123, 132, 136, 104, 119, 164, 20, 174, 190, 163, 195, 197, 122, 141, 142, 143, 144, 145, 147, 152, 146, 155, 137, 101, 138, 19, 140, 175, 149, 167, 166, 18, 150, 156, 120, 116, 158, 169, 176, 177, 170, 178, 179, 106, 118, 115, 171, 180, 157, 159, 172, 198, 199, 200, 201, 202, 168, 206, 117, 126]))
+  WHERE (p.id = ANY (ARRAY[290, 119, 127, 130, 145, 292, 115, 157, 200, 175, 120, 131, 348, 334, 132, 129, 128, 198, 142, 138, 134, 159, 202, 211, 203, 218, 210, 125, 215, 20, 204, 291, 156, 153, 340, 331, 117, 341, 123, 166, 18, 165, 122, 158, 162, 230, 143, 148, 151, 103, 109, 242, 217, 221, 226, 244, 152, 219, 118, 220, 174, 236, 240, 350, 264, 351, 216, 352, 248, 247, 338, 182, 161, 137, 164, 170, 201, 139, 337, 288, 19, 266, 147, 181, 231, 163, 342, 144, 140, 314, 232, 155, 197, 252, 283, 263, 241, 149, 289, 267, 141, 193, 286, 265, 160, 295, 349, 332, 116, 126, 176]))
   ORDER BY s.fechaplaneada;
 
 
@@ -6217,6 +6284,14 @@ ALTER TABLE ONLY public.cor1440_gen_mindicadorpf
 
 
 --
+-- Name: actorsocial_efecto fk_rails_109a11e304; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_efecto
+    ADD CONSTRAINT fk_rails_109a11e304 FOREIGN KEY (efecto_id) REFERENCES public.efecto(id);
+
+
+--
 -- Name: usuario fk_rails_114b393d00; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6366,6 +6441,14 @@ ALTER TABLE ONLY public.cor1440_gen_valorcampoact
 
 ALTER TABLE ONLY public.contrato
     ADD CONSTRAINT fk_rails_31397bfaea FOREIGN KEY (tipocontrato_id) REFERENCES public.tipocontrato(id);
+
+
+--
+-- Name: actorsocial_regiongrupo fk_rails_3254d1bd1e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_regiongrupo
+    ADD CONSTRAINT fk_rails_3254d1bd1e FOREIGN KEY (regiongrupo_id) REFERENCES public.regiongrupo(id);
 
 
 --
@@ -6545,6 +6628,14 @@ ALTER TABLE ONLY public.actividad_actor
 
 
 --
+-- Name: actorsocial_regiongrupo fk_rails_56d1b6e3d4; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_regiongrupo
+    ADD CONSTRAINT fk_rails_56d1b6e3d4 FOREIGN KEY (actorsocial_id) REFERENCES public.sip_actorsocial(id);
+
+
+--
 -- Name: cor1440_gen_objetivopf fk_rails_57b4fd8780; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6633,6 +6724,14 @@ ALTER TABLE ONLY public.tipomoneda
 
 
 --
+-- Name: actividad_actorsocial fk_rails_70b1848d0a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actividad_actorsocial
+    ADD CONSTRAINT fk_rails_70b1848d0a FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
+
+
+--
 -- Name: sip_grupo_usuario fk_rails_734ee21e62; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6702,6 +6801,14 @@ ALTER TABLE ONLY public.sal7711_gen_articulo_categoriaprensa
 
 ALTER TABLE ONLY public.actividad_actor
     ADD CONSTRAINT fk_rails_7ebb208867 FOREIGN KEY (actor_id) REFERENCES public.actor(id);
+
+
+--
+-- Name: actorsocial_grupo fk_rails_7f5f9e6435; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_grupo
+    ADD CONSTRAINT fk_rails_7f5f9e6435 FOREIGN KEY (actorsocial_id) REFERENCES public.sip_actorsocial(id);
 
 
 --
@@ -6953,6 +7060,14 @@ ALTER TABLE ONLY public.grupo_subgrupo
 
 
 --
+-- Name: actividad_actorsocial fk_rails_c59859a180; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actividad_actorsocial
+    ADD CONSTRAINT fk_rails_c59859a180 FOREIGN KEY (actorsocial_id) REFERENCES public.sip_actorsocial(id);
+
+
+--
 -- Name: cor1440_gen_actividadpf fk_rails_c68e2278b2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6966,6 +7081,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividadpf
 
 ALTER TABLE ONLY public.proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_c719ad1d65 FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: actorsocial_efecto fk_rails_c7b12f3be7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_efecto
+    ADD CONSTRAINT fk_rails_c7b12f3be7 FOREIGN KEY (actorsocial_id) REFERENCES public.sip_actorsocial(id);
 
 
 --
@@ -7081,6 +7204,14 @@ ALTER TABLE ONLY public.actor_grupo
 
 
 --
+-- Name: sip_actorsocial fk_rails_d857409da3; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_actorsocial
+    ADD CONSTRAINT fk_rails_d857409da3 FOREIGN KEY (nivelrelacion_id) REFERENCES public.nivelrelacion(id);
+
+
+--
 -- Name: cor1440_gen_informe fk_rails_daf0af8605; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7094,6 +7225,14 @@ ALTER TABLE ONLY public.cor1440_gen_informe
 
 ALTER TABLE ONLY public.desembolso
     ADD CONSTRAINT fk_rails_df556dc8d1 FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: actorsocial_grupo fk_rails_e0916fe46d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_grupo
+    ADD CONSTRAINT fk_rails_e0916fe46d FOREIGN KEY (grupo_id) REFERENCES public.sip_grupo(id);
 
 
 --
@@ -7567,7 +7706,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026130000'),
 ('20171026144919'),
 ('20171026172501'),
-('20171114185712'),
 ('20171123212504'),
 ('20171128234148'),
 ('20171130125044'),
@@ -7654,7 +7792,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180501225617'),
 ('20180502083127'),
 ('20180509111948'),
-('20180509114933'),
 ('20180509125608'),
 ('20180519102415'),
 ('20180522102059'),
@@ -7698,6 +7835,13 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181011104537'),
 ('20181012110629'),
 ('20181019101427'),
-('20181019102523');
+('20181019102523'),
+('20181105150700'),
+('20181105152106'),
+('20181105154520'),
+('20181105155740'),
+('20181105160739'),
+('20181105162056'),
+('20181105162654');
 
 

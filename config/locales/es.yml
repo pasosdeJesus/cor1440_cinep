@@ -226,8 +226,8 @@ es:
       "efecto":
         Efecto: 'Avance en indicador de efecto'
         Efectos: 'Avance en indicadores de efecto'
-        actor: Actor(es) social(es)
-        "{:actor_ids=>[]}": Actor(es) social(es)
+        actorsocial: Actor(es) social(es)
+        "{:actorsocial_ids=>[]}": Actor(es) social(es)
         anexo_efecto: Anexos / Medios de verificación
         fecha_localizada: Fecha
         indicadorpf: Indicador
@@ -279,6 +279,16 @@ es:
       "sectorapc":
         Sectorapc: Sector APC
         Sectoresapc: Sectores APC
+      "sip/actorsocial":
+        created_at: Registrado
+        grupo: Grupo(s)
+        lineabase20182020: Estado inicial 2018-2020
+        nivelrelacion: Nivel de relación
+        nivelrelacion_id: Nivel de relación
+        personacontacto: Persona contacto
+        regiongrupo: Región(es)
+        "{:regiongrupo_ids=>[]}": Región(es)
+        "{:grupo_ids=>[]}": Grupo(s)
       "sip/grupo":
         procesogh: Proceso interno
         procesogh_id: Proceso interno
@@ -294,30 +304,6 @@ es:
         departamento: Departamento de nacimiento
         municipio: Municipio de nacimiento
         clase: Centro poblado de nacimiento
-      "usuario":
-        anexo_usuario: Anexos
-        cargo: Cargo
-        cajacompensacion: Caja de compensación
-        empresaps: Empresa prestadora de salud
-        direccionresidencia: Dirección de residencia
-        fechaini_localizada: Fecha de inicio
-        fechafin_localizada: Fecha de terminación
-        fechanacb: Fecha de nacimiento
-        fondopensiones: Fondo de pensiones
-        gruposesp: Grupos
-        grupos: Grupos y supragrupos
-        lugardocumento: Lugar de documento
-        lugarnacimiento: Lugar de nacimiento
-        nusuario: Usuario
-        numerodocumento: Número de documento
-        numhijos: Número de hijos
-        numhijosmen12: Número de hijos menores de 12
-        perfilprofesional: Perfil profesional
-        procesogh: Proceso interno
-        salarioanterior: Salario anterior
-        sip_grupo_ids: Grupo
-        tdocumento: Tipo de documento
-        tiponomina: Tipo de nómina
       "tasacambio":
         enpesos: Tasa en pesos
         enpesos_localizado: Tasa en pesos
@@ -344,7 +330,30 @@ es:
       "tipoproductopf":
         Tipoproductopf: Tipo de producto de un compromiso institucional
         Tiposproductopf: Tipos de productos de un compromiso institucional
-
+      "usuario":
+        anexo_usuario: Anexos
+        cargo: Cargo
+        cajacompensacion: Caja de compensación
+        empresaps: Empresa prestadora de salud
+        direccionresidencia: Dirección de residencia
+        fechaini_localizada: Fecha de inicio
+        fechafin_localizada: Fecha de terminación
+        fechanacb: Fecha de nacimiento
+        fondopensiones: Fondo de pensiones
+        gruposesp: Grupos
+        grupos: Grupos y supragrupos
+        lugardocumento: Lugar de documento
+        lugarnacimiento: Lugar de nacimiento
+        nusuario: Usuario
+        numerodocumento: Número de documento
+        numhijos: Número de hijos
+        numhijosmen12: Número de hijos menores de 12
+        perfilprofesional: Perfil profesional
+        procesogh: Proceso interno
+        salarioanterior: Salario anterior
+        sip_grupo_ids: Grupo
+        tdocumento: Tipo de documento
+        tiponomina: Tipo de nómina
       "vinculacion":
         fechaini_localizada: Fecha de inicio
         fechafin_localizada: Fecha de terminación

@@ -59,10 +59,8 @@ class Ability  < Cor1440Gen::Ability
       ['Cor1440Gen', 'actorsocial'] ,
       ['Cor1440Gen', 'proyecto'] ,
       ['Cor1440Gen', 'proyectofinanciero'] ,
-      ['Cor1440Gen', 'sectoractor'],
       ['Sip', 'etiqueta'] ,
       ['Sip', 'perfilactorsocial'] ,
-      ['Sip', 'sectoractor'] ,
     ] + 
     [
         ['', 'actor'],
@@ -80,7 +78,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'publicacion'],
         ['', 'redactor'],
         ['', 'regiongrupo'],
-        ['', 'sectoractor'],
+#        ['', 'sectoractor'],
         ['', 'sectorapc'],
         ['', 'tipoanexo'],
         ['', 'tipocontrato'],
@@ -326,24 +324,28 @@ class Ability  < Cor1440Gen::Ability
       can :new, Cor1440Gen::Actividad
       case usuario.rol 
       when Ability::ROLOPERADOR
-        can :read, ::Tasacambio
-        can :read, Heb412Gen::Doc
-        can :read, Heb412Gen::Plantilladoc
-        can :read, Heb412Gen::Plantillahcm
-        can :read, Heb412Gen::Plantillahcr
-        can :read, ::Usuario # Directorio institucional
-        can :read, Sip::Grupo # Directorio institucional
         can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
-        #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
         can :manage, Cor1440Gen::Informe # limitar a oficina?
         can :read, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichaimp, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichapdf, Cor1440Gen::Proyectofinanciero # Los de su grupo
 
+        can :read, Heb412Gen::Doc
+        can :read, Heb412Gen::Plantilladoc
+        can :read, Heb412Gen::Plantillahcm
+        can :read, Heb412Gen::Plantillahcr
+
+        can [:read, :index], Sip::Actorsocial# Directorio institucional
+        can :read, Sip::Grupo # Directorio institucional
+        #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
+        
+        can :read, ::Tasacambio
+        can :read, ::Usuario # Directorio institucional
+
         lineas = lgrupos.select {|g| g.start_with?(GRUPO_LINEA)}
         # Sólo investigadores
         if lineas.length > 0
-          can [:create, :read, :update], ::Actor
+          can [:create, :read, :update], Sip::Actorsocial
           can :manage, :tablasbasicas
           can :manage, ::Efecto
           can :index, Cor1440Gen::Mindicadorpf
@@ -450,6 +452,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, Heb412Gen::Plantilladoc
         can :manage, Heb412Gen::Plantillahcm
         can :manage, Heb412Gen::Plantillahcr
+        can :manage, Sip::Actorsocial
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|
           c = Ability.tb_clase(t)
