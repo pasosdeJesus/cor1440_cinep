@@ -57,7 +57,6 @@ module Sip
         #reorder('sip_grupoper.nombre')
     end
 
-
     def self.filtra_grupos_fecha(c, grupo_ids, fecha)
       gid_dir = Sip::Grupo.where(nombre: 'Dirección').take
       gid_dir = gid_dir ? gid_dir.id : -1
@@ -75,10 +74,30 @@ module Sip
       return c
     end
 
+
+    def index(c = nil)
+      authorize! :index, Sip::Actorsocial
+      if c == nil
+        c = Sip::Actorsocial.all
+      end
+      grupo_ids = nil
+      if params[:grupo_ids] && params[:grupo_ids] != ''
+        grupo_ids = params[:grupo_ids].map {|x| x.to_i}
+      end
+      fecha = nil
+      if params[:fecha] && params[:fecha] != ''
+        fecha = Sip::FormatoFechaHelper.fecha_local_estandar params[:fecha]
+      end
+      c = Sip::ActoressocialesController::filtra_grupos_fecha(c, grupo_ids, fecha)
+      super(c)
+    end   
+
+
     def actorsocial_params
       params.require(:actorsocial).permit(
         atributos_form - [:grupoper] +
         [ :pais_id,
+          :presenta_nombre,
           :grupoper_attributes => [
             :id,
             :nombre,

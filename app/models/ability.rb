@@ -56,14 +56,12 @@ class Ability  < Cor1440Gen::Ability
   def tablasbasicas 
     super() - [ 
       ['Cor1440Gen', 'actividadarea'] ,
-      ['Cor1440Gen', 'actorsocial'] ,
       ['Cor1440Gen', 'proyecto'] ,
       ['Cor1440Gen', 'proyectofinanciero'] ,
       ['Sip', 'etiqueta'] ,
       ['Sip', 'perfilactorsocial'] ,
     ] + 
     [
-        ['', 'actor'],
         ['', 'areaestudios'],
         ['', 'cajacompensacion'],
         ['', 'cargo'],
@@ -78,7 +76,6 @@ class Ability  < Cor1440Gen::Ability
         ['', 'publicacion'],
         ['', 'redactor'],
         ['', 'regiongrupo'],
-#        ['', 'sectoractor'],
         ['', 'sectorapc'],
         ['', 'tipoanexo'],
         ['', 'tipocontrato'],
@@ -106,7 +103,7 @@ class Ability  < Cor1440Gen::Ability
   def tablasbasicas_prio 
     super() + [
       ['', 'nivelrelacion'],
-      ['', 'sectoractor'],
+      ['Sip', 'sectoractor'],
       ['', 'tiponomina']
     ]
   end
@@ -178,7 +175,7 @@ class Ability  < Cor1440Gen::Ability
       campos: [
         Cor1440Gen::Actividad.human_attribute_name(
           :actividadpf).downcase.gsub(' ', '_'), 
-        'actor', 
+        'actorsocial', 
         'actualizacion', 
         'campos_dinamicos', 
         'cedula_responsable',

@@ -175,16 +175,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: actividad_actor; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.actividad_actor (
-    actividad_id integer NOT NULL,
-    actor_id integer NOT NULL
-);
-
-
---
 -- Name: actividad_actorsocial; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -246,91 +236,6 @@ CREATE SEQUENCE public.acto_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: actor; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.actor (
-    id integer NOT NULL,
-    nombre character varying(500) NOT NULL,
-    personacontacto character varying(100),
-    cargo character varying(100),
-    correo character varying(100),
-    telefono character varying(100),
-    fax character varying(100),
-    celular character varying(100),
-    direccion character varying(200),
-    ciudad character varying(100),
-    pais_id integer,
-    observaciones character varying(5000),
-    fechacreacion date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    nivelrelacion_id integer,
-    lineabase20182020 boolean DEFAULT false
-);
-
-
---
--- Name: actor_efecto; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.actor_efecto (
-    actor_id bigint NOT NULL,
-    efecto_id bigint NOT NULL
-);
-
-
---
--- Name: actor_grupo; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.actor_grupo (
-    actor_id bigint NOT NULL,
-    sip_grupo_id bigint NOT NULL
-);
-
-
---
--- Name: actor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.actor_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: actor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.actor_id_seq OWNED BY public.actor.id;
-
-
---
--- Name: actor_regiongrupo; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.actor_regiongrupo (
-    actor_id bigint NOT NULL,
-    regiongrupo_id bigint NOT NULL
-);
-
-
---
--- Name: actor_sectoractor; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.actor_sectoractor (
-    actor_id integer NOT NULL,
-    sectoractor_id integer NOT NULL
-);
 
 
 --
@@ -3247,41 +3152,6 @@ CREATE TABLE public.schema_migrations (
 
 
 --
--- Name: sectoractor; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sectoractor (
-    id integer NOT NULL,
-    nombre character varying(500) NOT NULL,
-    observaciones character varying(5000),
-    enplantrienal boolean,
-    fechacreacion date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: sectoractor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sectoractor_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sectoractor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.sectoractor_id_seq OWNED BY public.sectoractor.id;
-
-
---
 -- Name: sectorapc; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -4500,13 +4370,6 @@ CREATE SEQUENCE public.vinculoestado_seq
 
 
 --
--- Name: actor id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor ALTER COLUMN id SET DEFAULT nextval('public.actor_id_seq'::regclass);
-
-
---
 -- Name: anexo_efecto id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -4976,13 +4839,6 @@ ALTER TABLE ONLY public.sal7711_gen_categoriaprensa ALTER COLUMN id SET DEFAULT 
 
 
 --
--- Name: sectoractor id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sectoractor ALTER COLUMN id SET DEFAULT nextval('public.sectoractor_id_seq'::regclass);
-
-
---
 -- Name: sectorapc id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5113,14 +4969,6 @@ ALTER TABLE ONLY public.tipoproductopf ALTER COLUMN id SET DEFAULT nextval('publ
 --
 
 ALTER TABLE ONLY public.vinculacion ALTER COLUMN id SET DEFAULT nextval('public.vinculacion_id_seq'::regclass);
-
-
---
--- Name: actor actor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor
-    ADD CONSTRAINT actor_pkey PRIMARY KEY (id);
 
 
 --
@@ -5668,14 +5516,6 @@ ALTER TABLE ONLY public.sal7711_gen_categoriaprensa
 
 
 --
--- Name: sectoractor sectoractor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sectoractor
-    ADD CONSTRAINT sectoractor_pkey PRIMARY KEY (id);
-
-
---
 -- Name: sectorapc sectorapc_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6019,13 +5859,6 @@ CREATE UNIQUE INDEX cor1440_gen_actividad_proyectofinanciero_idx ON public.cor14
 
 
 --
--- Name: index_actor_on_pais_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_actor_on_pais_id ON public.actor USING btree (pais_id);
-
-
---
 -- Name: index_cor1440_gen_actividad_sip_anexo_on_anexo_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -6188,22 +6021,6 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_valorcampotind
 
 
 --
--- Name: actor_sectoractor fk_rails_01abd767ad; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor_sectoractor
-    ADD CONSTRAINT fk_rails_01abd767ad FOREIGN KEY (sectoractor_id) REFERENCES public.sectoractor(id);
-
-
---
--- Name: actor_efecto fk_rails_043ee8d6b5; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor_efecto
-    ADD CONSTRAINT fk_rails_043ee8d6b5 FOREIGN KEY (actor_id) REFERENCES public.actor(id);
-
-
---
 -- Name: cor1440_gen_mindicadorpf fk_rails_06564b910d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6297,14 +6114,6 @@ ALTER TABLE ONLY public.actorsocial_efecto
 
 ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT fk_rails_114b393d00 FOREIGN KEY (perfilprofesional_id) REFERENCES public.perfilprofesional(id);
-
-
---
--- Name: actor fk_rails_1a67af6964; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor
-    ADD CONSTRAINT fk_rails_1a67af6964 FOREIGN KEY (nivelrelacion_id) REFERENCES public.nivelrelacion(id);
 
 
 --
@@ -6417,14 +6226,6 @@ ALTER TABLE ONLY public.cor1440_gen_informe
 
 ALTER TABLE ONLY public.heb412_gen_doc
     ADD CONSTRAINT fk_rails_2dd6d3dac3 FOREIGN KEY (dirpapa) REFERENCES public.heb412_gen_doc(id);
-
-
---
--- Name: actor_regiongrupo fk_rails_2e83e09369; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor_regiongrupo
-    ADD CONSTRAINT fk_rails_2e83e09369 FOREIGN KEY (regiongrupo_id) REFERENCES public.regiongrupo(id);
 
 
 --
@@ -6620,14 +6421,6 @@ ALTER TABLE ONLY public.actividad_nucleoconflicto
 
 
 --
--- Name: actividad_actor fk_rails_56bdc49b83; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actividad_actor
-    ADD CONSTRAINT fk_rails_56bdc49b83 FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
-
-
---
 -- Name: actorsocial_regiongrupo fk_rails_56d1b6e3d4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6796,14 +6589,6 @@ ALTER TABLE ONLY public.sal7711_gen_articulo_categoriaprensa
 
 
 --
--- Name: actividad_actor fk_rails_7ebb208867; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actividad_actor
-    ADD CONSTRAINT fk_rails_7ebb208867 FOREIGN KEY (actor_id) REFERENCES public.actor(id);
-
-
---
 -- Name: actorsocial_grupo fk_rails_7f5f9e6435; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6849,14 +6634,6 @@ ALTER TABLE ONLY public.tasacambio
 
 ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT fk_rails_83add769ae FOREIGN KEY (contrato_id) REFERENCES public.contrato(id);
-
-
---
--- Name: actor_sectoractor fk_rails_8718e4c155; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor_sectoractor
-    ADD CONSTRAINT fk_rails_8718e4c155 FOREIGN KEY (actor_id) REFERENCES public.actor(id);
 
 
 --
@@ -7116,14 +6893,6 @@ ALTER TABLE ONLY public.actividad_nucleoconflicto
 
 
 --
--- Name: actor_regiongrupo fk_rails_cbc36271a1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor_regiongrupo
-    ADD CONSTRAINT fk_rails_cbc36271a1 FOREIGN KEY (actor_id) REFERENCES public.actor(id);
-
-
---
 -- Name: cor1440_gen_actividad_sip_anexo fk_rails_cc9d44f9de; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7137,14 +6906,6 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_sip_anexo
 
 ALTER TABLE ONLY public.cor1440_gen_campoact
     ADD CONSTRAINT fk_rails_ceb6f1a7f0 FOREIGN KEY (actividadtipo_id) REFERENCES public.cor1440_gen_actividadtipo(id);
-
-
---
--- Name: actor fk_rails_cf09fb308c; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor
-    ADD CONSTRAINT fk_rails_cf09fb308c FOREIGN KEY (pais_id) REFERENCES public.sip_pais(id);
 
 
 --
@@ -7193,14 +6954,6 @@ ALTER TABLE ONLY public.sal7711_gen_articulo
 
 ALTER TABLE ONLY public.cor1440_gen_actividad
     ADD CONSTRAINT fk_rails_d4a4fff34a FOREIGN KEY (creadopor_id) REFERENCES public.usuario(id);
-
-
---
--- Name: actor_grupo fk_rails_d790f09b08; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor_grupo
-    ADD CONSTRAINT fk_rails_d790f09b08 FOREIGN KEY (sip_grupo_id) REFERENCES public.sip_grupo(id);
 
 
 --
@@ -7257,14 +7010,6 @@ ALTER TABLE ONLY public.grupo_proyectofinanciero
 
 ALTER TABLE ONLY public.cor1440_gen_valorcampoact
     ADD CONSTRAINT fk_rails_e36cf046d1 FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
-
-
---
--- Name: actor_grupo fk_rails_e37d7223f1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor_grupo
-    ADD CONSTRAINT fk_rails_e37d7223f1 FOREIGN KEY (actor_id) REFERENCES public.actor(id);
 
 
 --
@@ -7329,14 +7074,6 @@ ALTER TABLE ONLY public.coordinador_proyectofinanciero
 
 ALTER TABLE ONLY public.sal7711_gen_articulo_categoriaprensa
     ADD CONSTRAINT fk_rails_fcf649bab3 FOREIGN KEY (categoriaprensa_id) REFERENCES public.sal7711_gen_categoriaprensa(id);
-
-
---
--- Name: actor_efecto fk_rails_fedc30fafe; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actor_efecto
-    ADD CONSTRAINT fk_rails_fedc30fafe FOREIGN KEY (efecto_id) REFERENCES public.efecto(id);
 
 
 --
@@ -7842,6 +7579,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181105155740'),
 ('20181105160739'),
 ('20181105162056'),
-('20181105162654');
+('20181105162654'),
+('20181105163158');
 
 

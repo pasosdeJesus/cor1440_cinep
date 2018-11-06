@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 3545f22d1b2ece90e7c399fc6bb3cf14d0a7a62d
+  revision: ee9ee4c95902803c9e69d6026ba0de281573be62
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -48,21 +48,15 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 1295cf559957493682bb60f72b464c285c75ff19
+  revision: 3426aa5ad2fe6d7fd88c65dd0f1778e54ce20ca7
   specs:
     sal7711_web (1.0.a3)
       rails
       sal7711_gen
 
 GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 9d29a8abcc5b6ed9aefcad85ca54dd1364262583
-  branch: new_id_with_ajax
-  specs:
-    cocoon (1.2.11)
-
-PATH
-  remote: ../sip
+  remote: https://github.com/pasosdeJesus/sip.git
+  revision: 00cc7aa3c160ddf1071e393e577d9f463dd1642a
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -81,6 +75,13 @@ PATH
       twitter-bootstrap-rails
       twitter_cldr
       will_paginate
+
+GIT
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 9d29a8abcc5b6ed9aefcad85ca54dd1364262583
+  branch: new_id_with_ajax
+  specs:
+    cocoon (1.2.11)
 
 GEM
   remote: https://rubygems.org/
@@ -138,7 +139,6 @@ GEM
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
-    byebug (10.0.2)
     camertron-eprun (1.1.1)
     cancancan (2.3.0)
     capybara (2.18.0)
@@ -167,7 +167,7 @@ GEM
     coffee-script-source (1.12.2)
     colorize (0.8.1)
     commonjs (0.2.7)
-    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.1.1)
     connection_pool (2.2.2)
     crass (1.0.4)
     debug_inspector (0.0.3)
@@ -190,7 +190,7 @@ GEM
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     interception (0.5)
-    jbuilder (2.7.0)
+    jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
     jquery-rails (4.3.3)
@@ -218,7 +218,7 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
-    method_source (0.9.0)
+    method_source (0.9.1)
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2018.0812)
@@ -274,18 +274,18 @@ GEM
     prawnto_2 (0.3.0)
       prawn (>= 1.0.0)
       rails (>= 3.2)
-    pry (0.11.3)
+    pry (0.12.0)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     pry-rescue (1.4.5)
       interception (>= 0.5)
       pry
-    pry-stack_explorer (0.4.9.2)
+    pry-stack_explorer (0.4.9.3)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     public_suffix (3.0.3)
     puma (3.12.0)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.1)
@@ -349,7 +349,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.14.1)
+    selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
     simple_form (4.0.1)
@@ -414,7 +414,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
-  byebug
   cancancan
   chosen-rails
   cocoon!
