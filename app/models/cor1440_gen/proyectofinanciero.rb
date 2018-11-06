@@ -335,6 +335,10 @@ module Cor1440Gen
       where('fechaformulacion <= ?', f)
     }
 
+    def presenta_nombre
+      self.referenciacinep
+    end
+
     def presenta(atr)
       case atr.to_s
       when 'compromiso_institucional'

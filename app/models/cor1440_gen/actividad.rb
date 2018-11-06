@@ -165,6 +165,11 @@ module Cor1440Gen
         self.objetivopf.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.objetivo
         }
+      when 'proyectofinanciero'
+        self.proyectofinanciero.inject("") { |memo, i|
+          (memo == "" ? "" : memo + "; ") +
+            i.referenciacinep
+        }
       when 'publicacion'
         self.publicacion.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.nombre
