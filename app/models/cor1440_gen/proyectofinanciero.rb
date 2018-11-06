@@ -337,6 +337,8 @@ module Cor1440Gen
 
     def presenta(atr)
       case atr.to_s
+      when 'compromiso_institucional'
+        referenciacinep
       when 'estado'
         Sip::ModeloHelper.etiqueta_coleccion(::ApplicationHelper::ESTADO, estado)
       when 'monto_localizado'

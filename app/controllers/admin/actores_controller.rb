@@ -31,7 +31,8 @@ module Admin
     def atributos_show
       [
         "id", 
-        "nombre"
+        "nombre",
+        "nivelrelacion_id",
       ] +
       [ :sectoractor_ids =>  [] ] +
       ["pais_id"] +
