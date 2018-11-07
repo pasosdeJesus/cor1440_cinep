@@ -9,21 +9,30 @@ module Sip
     belongs_to :nivelrelacion, class_name: "::Nivelrelacion",
       foreign_key: "nivelrelacion_id", validate: true
 
+    has_many :actorsocial_departamento, dependent: :delete_all
+    has_many :departamentotrab, through: :actorsocial_departamento,
+      class_name: 'Sip::Departamento'
+
     has_many :actorsocial_efecto, dependent: :delete_all
     has_many :efecto, through: :actorsocial_efecto
 
-    has_many :actorsocial_grupo, class_name: '::ActorsocialGrupo',
-      foreign_key: "actorsocial_id", validate: true, dependent: :delete_all
+    has_many :actorsocial_grupo, validate: true, dependent: :delete_all
+      #class_name: '::ActorsocialGrupo', foreign_key: "actorsocial_id", 
     has_many :grupo, class_name: 'Sip::Grupo',
       through: :actorsocial_grupo
 
-    has_many :actorsocial_regiongrupo, class_name: '::ActorsocialRegiongrupo',
-      foreign_key: "actorsocial_id", validate: true, dependent: :delete_all
+    has_many :actorsocial_municipio, dependent: :delete_all
+    has_many :municipiotrab, through: :actorsocial_municipio,
+      class_name: 'Sip::Municipio'
+
+    has_many :actorsocial_regiongrupo, validate: true, 
+      dependent: :delete_all
+      #class_name: '::ActorsocialRegiongrupo', foreign_key: "actorsocial_id"
     has_many :regiongrupo, class_name: '::Regiongrupo',
       through: :actorsocial_regiongrupo
 
-    has_many :actividad_actorsocial, dependent: :delete_all,
-      class_name: '::ActividadActorsocial', foreign_key: 'actorsocial_id'
+    has_many :actividad_actorsocial, dependent: :delete_all#,
+      #class_name: '::ActividadActorsocial', foreign_key: 'actorsocial_id'
     has_many :actividad, through: :actividad_actorsocial,
       class_name: 'Cor1440Gen::Actividad'
 

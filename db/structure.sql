@@ -239,6 +239,16 @@ CREATE SEQUENCE public.acto_seq
 
 
 --
+-- Name: actorsocial_departamento; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.actorsocial_departamento (
+    actorsocial_id bigint NOT NULL,
+    departamento_id bigint NOT NULL
+);
+
+
+--
 -- Name: actorsocial_efecto; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -255,6 +265,16 @@ CREATE TABLE public.actorsocial_efecto (
 CREATE TABLE public.actorsocial_grupo (
     actorsocial_id bigint NOT NULL,
     grupo_id bigint NOT NULL
+);
+
+
+--
+-- Name: actorsocial_municipio; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.actorsocial_municipio (
+    actorsocial_id bigint NOT NULL,
+    municipio_id bigint NOT NULL
 );
 
 
@@ -6477,6 +6497,14 @@ ALTER TABLE ONLY public.actividad_publicacion
 
 
 --
+-- Name: actorsocial_municipio fk_rails_619ad97755; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_municipio
+    ADD CONSTRAINT fk_rails_619ad97755 FOREIGN KEY (municipio_id) REFERENCES public.sip_municipio(id);
+
+
+--
 -- Name: sal7711_gen_articulo fk_rails_65eae7449f; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6701,6 +6729,14 @@ ALTER TABLE ONLY public.sal7711_gen_articulo
 
 
 --
+-- Name: actorsocial_municipio fk_rails_9a935e84f1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_municipio
+    ADD CONSTRAINT fk_rails_9a935e84f1 FOREIGN KEY (actorsocial_id) REFERENCES public.sip_actorsocial(id);
+
+
+--
 -- Name: efecto fk_rails_9b37deb543; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6714,6 +6750,14 @@ ALTER TABLE ONLY public.efecto
 
 ALTER TABLE ONLY public.cor1440_gen_financiador
     ADD CONSTRAINT fk_rails_9daa099154 FOREIGN KEY (pais_id) REFERENCES public.sip_pais(id);
+
+
+--
+-- Name: actorsocial_departamento fk_rails_9f266aaf54; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_departamento
+    ADD CONSTRAINT fk_rails_9f266aaf54 FOREIGN KEY (actorsocial_id) REFERENCES public.sip_actorsocial(id);
 
 
 --
@@ -6738,6 +6782,14 @@ ALTER TABLE ONLY public.anexo_efecto
 
 ALTER TABLE ONLY public.proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_a4c07cb119 FOREIGN KEY (tipocontrato_id) REFERENCES public.tipocontrato(id);
+
+
+--
+-- Name: actorsocial_departamento fk_rails_a5ab97cd2f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_departamento
+    ADD CONSTRAINT fk_rails_a5ab97cd2f FOREIGN KEY (departamento_id) REFERENCES public.sip_departamento(id);
 
 
 --
@@ -7580,6 +7632,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181105160739'),
 ('20181105162056'),
 ('20181105162654'),
-('20181105163158');
+('20181105163158'),
+('20181107094815'),
+('20181107095150');
 
 

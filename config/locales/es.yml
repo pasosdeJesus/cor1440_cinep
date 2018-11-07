@@ -281,14 +281,18 @@ es:
         Sectoresapc: Sectores APC
       "sip/actorsocial":
         created_at: Registrado
+        departamentotrab: Departamentos completos donde opera
+        "{:departamentotrab_ids=>[]}": Departamentos completos donde opera
         grupo: Grupo(s)
+        "{:grupo_ids=>[]}": Grupo(s)
         lineabase20182020: Estado inicial 2018-2020
+        municipiotrab: Municipios donde opera
+        "{:municipiotrab_ids=>[]}": Municipios donde opera
         nivelrelacion: Nivel de relación
         nivelrelacion_id: Nivel de relación
         personacontacto: Persona contacto
         regiongrupo: Región(es)
         "{:regiongrupo_ids=>[]}": Región(es)
-        "{:grupo_ids=>[]}": Grupo(s)
       "sip/grupo":
         procesogh: Proceso interno
         procesogh_id: Proceso interno

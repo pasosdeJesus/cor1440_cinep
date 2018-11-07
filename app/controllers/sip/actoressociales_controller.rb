@@ -5,6 +5,9 @@ module Sip
   class ActoressocialesController < Sip::ModelosController
     include Sip::Concerns::Controllers::ActoressocialesController
 
+    Sip::Municipio.conf_presenta_nombre_con_origen = true
+    Sip::Departamento.conf_presenta_nombre_con_origen = true
+
     def atributos_index
       [ :id, 
         :grupoper_id,
@@ -27,6 +30,8 @@ module Sip
       [ :sectoractor_ids =>  [] ] +
       [:pais_id] +
       [ :regiongrupo_ids =>  [] ] +
+      [ :departamentotrab_ids =>  [] ] +
+      [ :municipiotrab_ids =>  [] ] +
       [ :grupo_ids =>  [] ] +
       [ 
         :lineabase20182020,
