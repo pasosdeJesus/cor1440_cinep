@@ -26,7 +26,7 @@ module Cor1440Gen
          "web",
          "observaciones", 
          "fechacreacion_localizada", 
-         "fechadeshabilitacion_localizada"]
+         "habilitado"]
       end
 
       # Genero del nombre (F - Femenino, M - Masculino)
