@@ -16,8 +16,9 @@ module Admin
 
     def atributos_index
       [
-        "id", "nombre", "tiponomina_id", "observaciones", "fechacreacion", 
-        "fechadeshabilitacion"
+        "id", "nombre", "tiponomina_id", "observaciones", 
+        "fechacreacion_localizada", 
+        "habilitado"
       ]
     end
 

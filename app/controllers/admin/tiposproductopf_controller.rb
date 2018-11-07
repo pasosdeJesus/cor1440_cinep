@@ -18,7 +18,7 @@ module Admin
       [
         "id", "nombre", 
         "observaciones", "fechacreacion_localizada", 
-        "fechadeshabilitacion_localizada"
+        "habilitado"
       ]
     end
 

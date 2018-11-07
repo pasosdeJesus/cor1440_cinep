@@ -20,7 +20,7 @@ module Admin
     def atributos_index
       [
         "id", "nombre", "enplantrienal", "observaciones", 
-        "fechacreacion_localizada", "fechadeshabilitacion_localizada"
+        "fechacreacion_localizada", "habilitado"
       ]
     end
 

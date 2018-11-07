@@ -23,7 +23,7 @@ module Admin
       [ :departamento_ids =>  [] ] +
       [ :municipio_ids =>  [] ] +
       [ 
-        "fechacreacion", 
+        "fechacreacion_localizada", 
         "habilitado"
       ]
     end
