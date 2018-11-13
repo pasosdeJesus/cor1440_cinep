@@ -156,14 +156,15 @@
     'id', 'nombre', cor1440_cinep_actividad_actualiza_actividadpf)
 
 
-@cor1440_cinep_actividad_actualiza_actores = (root) ->
+@cor1440_cinep_actividad_actualiza_actoressociales = (root) ->
   params = {
     fecha: $('#actividad_fecha_localizada').val(),
-    grupo_ids: $('#actividad_grupo_ids').val()
+    grupo_ids: $('#actividad_grupo_ids').val(),
+    presenta_nombre: '1'
   }
-  sip_llena_select_con_AJAX2('admin/actores', params, 
-    'actividad_actor_ids', 'con Actores', 
-    root, 'id', 'nombre', 
+  sip_llena_select_con_AJAX2('actoressociales', params, 
+    'actividad_actorsocial_ids', 'con Actores', 
+    root, 'id', 'presenta_nombre', 
     cor1440_cinep_actividad_actualiza_objetivopf)
 
 @cor1440_cinep_actividad_actualiza_pf = (root) ->
@@ -174,7 +175,7 @@
   sip_llena_select_con_AJAX2('proyectosfinancieros', params, 
     'actividad_proyectofinanciero_ids', 'con Compromisos', 
     root, 'id', 'referenciacinep', 
-    cor1440_cinep_actividad_actualiza_actores)
+    cor1440_cinep_actividad_actualiza_actoressociales)
 
 @valent_id = (id) ->
   if $('#' + id).val() == ""

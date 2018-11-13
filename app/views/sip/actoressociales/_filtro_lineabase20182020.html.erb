@@ -1,0 +1,13 @@
+<%= f.input :buslineabase20182020,
+  collection: ['Todos', 'SI', 'NO'],
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :buslineabase20182020),
+  input_html: {
+    class: 'chosen-select',
+    'data-enviarautomatico' => '',
+    value: params && params[:filtro] && 
+      params[:filtro][:lineabase20182020] ?  
+      params[:filtro][:lineabase20182020] : 'Todos'
+  },
+  include_blank: false
+%>

@@ -6,6 +6,9 @@ module Admin
       only: [:show, :edit, :update, :destroy]
     load_and_authorize_resource  class: ::Regiongrupo
 
+    Sip::Municipio.conf_presenta_nombre_con_origen = true
+    Sip::Departamento.conf_presenta_nombre_con_origen = true
+
     def clase 
       "::Regiongrupo"
     end
@@ -20,8 +23,8 @@ module Admin
       [ :departamento_ids =>  [] ] +
       [ :municipio_ids =>  [] ] +
       [ 
-        "fechacreacion", 
-        "fechadeshabilitacion"
+        "fechacreacion_localizada", 
+        "habilitado"
       ]
     end
 

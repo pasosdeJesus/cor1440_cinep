@@ -9,8 +9,8 @@ class Efecto < ActiveRecord::Base
   belongs_to :registradopor, class_name: '::Usuario',
             foreign_key: "registradopor_id", validate: true
 
-  has_many :actor_efecto, dependent: :delete_all
-  has_many :actor, through: :actor_efecto
+  has_many :actorsocial_efecto, dependent: :delete_all
+  has_many :actorsocial, through: :actorsocial_efecto
 
   campofecha_localizado :fecha
 
@@ -32,7 +32,7 @@ class Efecto < ActiveRecord::Base
     class_name: '::Cor1440Gen::Valorcampotind'
   accepts_nested_attributes_for :valorcampotind,  reject_if: :all_blank
 
-  validates :actor_efecto, presence: true
+  validates :actorsocial_efecto, presence: true
   validates :fecha, presence: true
   validates :nombre, presence: true, length: { maximum: 128} 
   validates :indicadorpf_id, presence: true
@@ -58,8 +58,8 @@ class Efecto < ActiveRecord::Base
     end
   end
 
-  scope :filtro_actor_id, lambda { |a|
-    where('actor_id = ?', a)
+  scope :filtro_actorsocial_id, lambda { |a|
+    where('actorsocial_id = ?', a)
   }
 
   scope :filtro_fechaini, lambda { |f|

@@ -1,0 +1,14 @@
+<% col = Sip::Grupo.where(
+  'id IN (SELECT DISTINCT grupo_id FROM actorsocial_grupo)') %>
+<% puts "listado actores, grupos: #{col.count}" %>
+<%= f.input :busgrupo_ids,
+  collection: col.order(:nombre),
+  include_blank: true,
+  label_method: :nombre,
+  value_method: :id,
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :busgrupo_ids),
+  input_html: {
+    'data-enviarautomatico' => ''
+  }
+%>

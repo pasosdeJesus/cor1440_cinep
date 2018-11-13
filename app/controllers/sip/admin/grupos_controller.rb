@@ -17,8 +17,8 @@ module Sip
         ] +
         [ :subgrupo_ids => [] ] +
         [ :procesogh_id, 
-          :fechacreacion, 
-          :fechadeshabilitacion 
+          :fechacreacion_localizada, 
+          :habilitado
         ]
       end
 

@@ -18,10 +18,11 @@ module Cor1440Gen
     belongs_to :creadopor, class_name: '::Usuario',
       foreign_key: 'creadopor_id'
 
-    has_many :actividad_actor, dependent: :delete_all,
-      class_name: '::ActividadActor', foreign_key: 'actividad_id'
-    has_many :actor, through: :actividad_actor,
-      class_name: '::Actor'
+    has_many :actividad_actorsocial, dependent: :delete_all,
+      class_name: '::ActividadActorsocial', foreign_key: 'actividad_id'
+    has_many :actorsocial, through: :actividad_actorsocial,
+      class_name: 'Sip::Actorsocial'
+
     has_many :actividad_grupo, dependent: :delete_all,
       class_name: '::ActividadGrupo', foreign_key: 'actividad_id'
     has_many :grupo, through: :actividad_grupo,
@@ -135,9 +136,10 @@ module Cor1440Gen
         self.actividadpf.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.titulo
         }
-      when 'actor'
-        self.actor.inject("") { |memo, i| 
-          (memo == "" ? "" : memo + "; ") + i.nombre
+      when 'actorsocial'
+        self.actorsocial.inject("") { |memo, i| 
+          (memo == "" ? "" : memo + "; ") + 
+            (i.grupoper ? i.grupoper.nombre : i.id.to_s)
         }
       when 'cedula_responsable'
         self.responsable && self.responsable.persona ?  
@@ -187,9 +189,9 @@ module Cor1440Gen
         WHERE actividadpf_id = ?)", aid)
     }
 
-    scope :filtro_actor, lambda { |aid|
-      where("id IN (SELECT actividad_id FROM actividad_actor 
-        WHERE actor_id = ?)", aid)
+    scope :filtro_actorsocial, lambda { |aid|
+      where("id IN (SELECT actividad_id FROM actividad_actorsocial
+        WHERE actorsocial_id = ?)", aid)
     }
 
     scope :filtro_creadopor, lambda { |uid|

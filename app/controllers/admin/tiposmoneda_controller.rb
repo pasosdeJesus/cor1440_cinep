@@ -18,7 +18,7 @@ module Admin
       [
         "id", "nombre", "codiso4217", "simbolo", "pais_id", 
         "observaciones", "fechacreacion_localizada", 
-        "fechadeshabilitacion_localizada"
+        "habilitado"
       ]
     end
 

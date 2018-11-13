@@ -18,8 +18,8 @@
           <% if can? :read, Cor1440Gen::Informe %>
             <%= menu_item "Informes", cor1440_gen.informes_path %>
           <% end %>
-          <% if can? :create, ::Actor %>
-            <%= menu_item "Actores Sociales", main_app.admin_actores_path %>
+          <% if can? :create, Sip::Actorsocial %>
+            <%= menu_item "Actores Sociales", sip.actoressociales_path %>
           <% end %>
           <% if can? :edit, :contextoac %>
             <%= menu_item "Reporte Trienal 2015-2017 Indicador 1.1", main_app.reportes_indicador11_path %>

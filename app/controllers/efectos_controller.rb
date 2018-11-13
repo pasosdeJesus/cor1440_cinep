@@ -14,7 +14,7 @@ class EfectosController < Sip::ModelosController
   def atributos_index
     [ "id", 
       "indicadorpf_id"] +
-    [ :actor_ids=>[]] +
+    [ :actorsocial_ids=>[]] +
     [ "fecha_localizada",
       "nombre",
       "registradopor_id",
@@ -24,7 +24,7 @@ class EfectosController < Sip::ModelosController
 
   def atributos_form
     [ "indicadorpf_id"] +
-    [ :actor_ids=>[]] +
+    [ :actorsocial_ids=>[]] +
     [ "fecha_localizada",
       "nombre",
       "efecto_valorcampotind",
@@ -88,7 +88,7 @@ class EfectosController < Sip::ModelosController
 
   def destroy(mens = "", verifica_tablas_union=true)
     @registro.anexo_efecto = []
-    @registro.actor = []
+    @registro.actorsocial = []
     @registro.valorcampotind = []
     destroy_gen(mens, verifica_tablas_union)
   end
@@ -120,7 +120,7 @@ class EfectosController < Sip::ModelosController
       :indicadorpf_id,
       :fecha_localizada,
       :nombre,
-      :actor_ids => [],
+      :actorsocial_ids => [],
       :anexo_efecto_attributes => [
         :id,
         :efecto_id,

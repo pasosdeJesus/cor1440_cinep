@@ -84,11 +84,12 @@
           <%= eonr %>
         </td>
         <td>
-          <%= consb.joins(:actividad_actor).joins('JOIN actor_sectoractor ON
-              actividad_actor.actor_id=actor_sectoractor.actor_id').
-              joins('JOIN sectoractor 
-                    ON actor_sectoractor.sectoractor_id=sectoractor.id').
-              select('sectoractor.nombre').
+          <%= consb.joins(:actividad_actorsocial).joins(
+            'JOIN sip_actorsocial_sectoractor ON
+              actividad_actorsocial.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
+              joins('JOIN sip_sectoractor 
+                    ON sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id').
+              select('sip_sectoractor.nombre').
             distinct.map(&:nombre).join('; ') %>
       </tr>
     <% end %>
@@ -140,11 +141,12 @@
            <%= eonr %>
          </td>
          <td>
-          <%= consb.joins(:actividad_actor).joins('JOIN actor_sectoractor ON
-              actividad_actor.actor_id=actor_sectoractor.actor_id').
-              joins('JOIN sectoractor 
-                    ON actor_sectoractor.sectoractor_id=sectoractor.id').
-              select('sectoractor.nombre').
+           <%= consb.joins(:actividad_actorsocial).joins(
+             'JOIN sip_actorsocial_sectoractor ON
+              actividad_actorsocial.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
+              joins('JOIN sip_sectoractor 
+                    ON sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id').
+              select('sip_sectoractor.nombre').
               distinct.map(&:nombre).join('; ') %>
        </td>
 
@@ -204,11 +206,11 @@
         <%= eonr %>
       </td>
       <td>
-        <%= consb.joins(:actividad_actor).joins('JOIN actor_sectoractor ON
-              actividad_actor.actor_id=actor_sectoractor.actor_id').
-              joins('JOIN sectoractor 
-                    ON actor_sectoractor.sectoractor_id=sectoractor.id').
-                    select('sectoractor.nombre').
+        <%= consb.joins(:actividad_sectoractor).joins('JOIN sip_sectoractor_sectoractor ON
+              actividad_sectoractor.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
+              joins('JOIN sip_sectoractor 
+                    ON sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id').
+                    select('sip_sectoractor.nombre').
                     distinct.map(&:nombre).join('; ') %>
     </td>
     </tr>
