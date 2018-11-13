@@ -223,7 +223,15 @@
   <%= render partial: 'contexto', locals: {f: f, gruposids: gruposids} %>
 
   <%= render partial: 'campo_anexos', locals: {f: f} %>
- 
+
+  <% if can?(:vistubuenocoord, @actividad) || can?(:vistubuenodir, @actividad) %> 
+    <%= f.input :vistobuenocoord, as: :boolean %>
+  <% end %>
+  <% if can?(:vistubuenodir, @actividad) %> 
+    <%= f.input :vistobuenodir, as: :boolean %>
+  <% end %>
+
+
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

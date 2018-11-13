@@ -835,7 +835,9 @@ CREATE TABLE public.cor1440_gen_actividad (
     etnia_onr_proceso integer,
     negros_nobef integer,
     indigenas_nobef integer,
-    etnia_onr_nobef integer
+    etnia_onr_nobef integer,
+    vistobuenocoord boolean,
+    vistobuenodir boolean
 );
 
 
@@ -7879,6 +7881,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181105162056'),
 ('20181105162654'),
 ('20181107094815'),
-('20181107095150');
+('20181107095150'),
+('20181113094541'),
+('20181113102940');
 
 

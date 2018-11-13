@@ -221,12 +221,23 @@ module Cor1440Gen
         :indigenas, 
         :etnia_onr,
         :observaciones, 
-        :anexos
+        :anexos,
+        :vistobuenocoord,
+        :vistobuenodir
       ]
     end
 
     def atributos_form
-      atributos_show - [:proyectosfinancieros] + [:proyectofinanciero] - [:id]
+      # NO se usa porque se hizo app/views/cor1440_gen/actividades/_form.html.erb
+      r = atributos_show - [:proyectosfinancieros] + 
+        [:proyectofinanciero] - [:id] - [:vistobuenodir, :vistobuenocoord]
+      if can?(:vistobuenocoord, @registro) || can?(:vistubuenodir, @registro)
+        r << :vistobuenocoord
+      end
+      if can?(:vistubuenodir, @registro)
+        r << :vistobuenodir
+      end
+      r
     end
 
     def atributos_index
@@ -247,7 +258,8 @@ module Cor1440Gen
         :negros,
         :indigenas,
         :etnia_onr,
-        :anexos
+        :anexos,
+        :vistobuenocoord
       ]
     end
 
@@ -332,9 +344,8 @@ module Cor1440Gen
       }
     end
 
-    # No confiar parametros a Internet, sólo permitir lista blanca
-    def actividad_params
-      params.require(:actividad).permit(
+    def lista_params
+      r = [
         :actividad, 
         :accionincidencia,
         :accioncgenero,
@@ -412,7 +423,20 @@ module Cor1440Gen
           :campoact_id,
           :valor
         ]
-      )
+      ]
+      if can?(:vistobuenocoord, Cor1440Gen::Actividad) || 
+        can?(:vistobuenodir, Cor1440Gen::Actividad)
+        r << :vistobuenocoord
+      end
+      if can?(:vistobuenodir, Cor1440Gen::Actividad)
+        r << :vistobuenodir
+      end
+      r
+    end
+
+    # No confiar parametros a Internet, sólo permitir lista blanca
+    def actividad_params
+      params.require(:actividad).permit(lista_params)
     end
   end
 end
