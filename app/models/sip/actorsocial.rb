@@ -69,7 +69,7 @@ module Sip
     end
 
     scope :filtro_grupo_ids, lambda { |g|
-      joins(:actorsocial_grupo).where('actorsocial_grupo.sip_grupo_id=?', g)
+      joins(:actorsocial_grupo).where('actorsocial_grupo.grupo_id=?', g)
     }
 
     scope :filtro_habilitado, lambda {|o|

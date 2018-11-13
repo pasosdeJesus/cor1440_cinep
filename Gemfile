@@ -140,10 +140,6 @@ group :test do
   gem 'poltergeist'
 
   # Pruebas de regresión que no requieren javascript
-  
-  # Para examinar errores, usar "rescue rspec" en lugar de "rspec"
-  gem 'pry-rescue'
-  gem 'pry-stack_explorer'
 end
 
 
