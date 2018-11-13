@@ -22,6 +22,7 @@ module Cor1440Gen
       class_name: '::ActividadActorsocial', foreign_key: 'actividad_id'
     has_many :actorsocial, through: :actividad_actorsocial,
       class_name: 'Sip::Actorsocial'
+
     has_many :actividad_grupo, dependent: :delete_all,
       class_name: '::ActividadGrupo', foreign_key: 'actividad_id'
     has_many :grupo, through: :actividad_grupo,
