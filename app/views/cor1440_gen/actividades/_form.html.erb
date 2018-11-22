@@ -224,10 +224,10 @@
 
   <%= render partial: 'campo_anexos', locals: {f: f} %>
 
-  <% if can?(:vistubuenocoord, @actividad) || can?(:vistubuenodir, @actividad) %> 
+  <% if can?(:coord, :vistobuenoactividad) || can?(:dir, :vistobuenoactividad) %>
     <%= f.input :vistobuenocoord, as: :boolean %>
   <% end %>
-  <% if can?(:vistubuenodir, @actividad) %> 
+  <% if can?(:dir, :vistobuenoactividad) %>
     <%= f.input :vistobuenodir, as: :boolean %>
   <% end %>
 

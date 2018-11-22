@@ -231,10 +231,10 @@ module Cor1440Gen
       # NO se usa porque se hizo app/views/cor1440_gen/actividades/_form.html.erb
       r = atributos_show - [:proyectosfinancieros] + 
         [:proyectofinanciero] - [:id] - [:vistobuenodir, :vistobuenocoord]
-      if can?(:vistobuenocoord, @registro) || can?(:vistubuenodir, @registro)
+      if can?(:coord, :vistobuenoactividad) || can?(:dir, :vistobuenoactividad)
         r << :vistobuenocoord
       end
-      if can?(:vistubuenodir, @registro)
+      if can?(:dir, :vistobuenoactividad)
         r << :vistobuenodir
       end
       r
@@ -424,11 +424,10 @@ module Cor1440Gen
           :valor
         ]
       ]
-      if can?(:vistobuenocoord, Cor1440Gen::Actividad) || 
-        can?(:vistobuenodir, Cor1440Gen::Actividad)
+      if can?(:coord, :vistobuenoactividad) || can?(:dir, :vistobuenoactividad)
         r << :vistobuenocoord
       end
-      if can?(:vistobuenodir, Cor1440Gen::Actividad)
+      if can?(:dir, :vistobuenoactividad)
         r << :vistobuenodir
       end
       r
