@@ -235,6 +235,7 @@ es:
         fecha_localizada: Fecha
         indicadorpf: Indicador
         indicadorpf_id: Indicador
+        porcentajeprog: Porcentaje de progreso
         registradopor: Registrado por
         registradopor_id: Registrado por
       "empresaps":

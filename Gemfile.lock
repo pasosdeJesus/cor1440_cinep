@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 1680d7c48ff3f68ddeb2e1e250d17e7999cc98be
+  revision: 9fad26d54ea9ca475b2b3350126ab1b59a9604ad
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 7a394ccafb43c69ae2bbabca36de4e4576349e61
+  revision: 93ebbb0d8ba49d79ba20c61b11df8fda2865ba50
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 8679a624b86b50fac60b8b479a32dab0e0cff911
+  revision: ad5a5f4da8276660185894fd137367b091047418
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: af829e86d192f26d2eefb195b1eb4e9f7e85a17a
+  revision: 8fdcbca337bedc56d80afe08713b066011c026c0
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0ac17e344bbdc2b090fef0c9b10983e652a9ea55
+  revision: cd297d9f744f12bb4c5f7a08054d3fdaef08e927
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -338,7 +338,7 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
-    simple_form (4.0.1)
+    simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     simplecov (0.16.1)
@@ -375,13 +375,13 @@ GEM
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.19)
+    uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
     unicorn (5.4.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
-    warden (1.2.7)
-      rack (>= 1.0)
+    warden (1.2.8)
+      rack (>= 2.0.6)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)

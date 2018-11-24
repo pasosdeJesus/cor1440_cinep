@@ -37,6 +37,11 @@ class Efecto < ActiveRecord::Base
   validates :nombre, presence: true, length: { maximum: 128} 
   validates :indicadorpf_id, presence: true
 
+  validates :porcentajeprog, numericality: { 
+    greater_than_or_equal_to: 0,
+    less_than_or_equal_to: 100
+  }
+
   validate :tiene_anexo
   def tiene_anexo
     if !anexo_efecto.present?
@@ -56,6 +61,25 @@ class Efecto < ActiveRecord::Base
     else
       ''
     end
+  end
+
+  attr_accessor :porcentajeprogop
+  def porcentajeprogop
+    if porcentajeprog &&
+        indicadorpf && indicadorpf.tipoindicador && 
+        indicadorpf.tipoindicador.pprogtind && 
+        indicadorpf.tipoindicador.pprogtind.length > 0 then
+      p = indicadorpf.tipoindicador.pprogtind.order(:porcentaje)
+      i = 0
+      while(i < p.length &&
+          (p[i].porcentaje.nil? || p[i].porcentaje <= porcentajeprog)) do
+        i += 1
+      end
+      if i >= 1 then
+        return  p[i - 1].id
+      end
+    end
+    return nil
   end
 
   scope :filtro_actorsocial_id, lambda { |a|

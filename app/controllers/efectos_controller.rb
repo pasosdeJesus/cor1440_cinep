@@ -22,12 +22,23 @@ class EfectosController < Sip::ModelosController
     ] 
   end
 
+  def atributos_show
+    r = atributos_index - ["anexo_efecto"] +
+      [
+        :porcentajeprog,
+        :anexo_efecto
+    ]
+    return r
+  end
+
+
   def atributos_form
     [ "indicadorpf_id"] +
     [ :actorsocial_ids=>[]] +
     [ "fecha_localizada",
       "nombre",
       "efecto_valorcampotind",
+      "porcentajeprog",
       "anexo_efecto"
     ] 
   end
@@ -113,34 +124,63 @@ class EfectosController < Sip::ModelosController
     )
   end
 
+  def lista_params
+    atributos_form + [:id] - [
+      "efecto_valorcampotind",
+      "anexo_efecto" ] + [
+        :anexo_efecto_attributes => [
+          :id,
+          :efecto_id,
+          :_destroy,
+          :sip_anexo_attributes => [
+            :id, :descripcion, :adjunto, :_destroy
+          ]
+        ],
+        :efecto_valorcampotind_attributes => [
+          :id,
+          :efecto_id,
+          :_destroy,
+          :valorcampotind_attributes => [
+            :id,
+            :campotind_id,
+            :valor,
+            :_destroy
+          ]
+        ]
+      ]
+  end
+
   # No confiar parametros a Internet, sólo permitir lista blanca
   def efecto_params
-    params.require(:efecto).permit(
-      :id, 
-      :indicadorpf_id,
-      :fecha_localizada,
-      :nombre,
-      :actorsocial_ids => [],
-      :anexo_efecto_attributes => [
-        :id,
-        :efecto_id,
-        :_destroy,
-        :sip_anexo_attributes => [
-          :id, :descripcion, :adjunto, :_destroy
-        ]
-      ],
-      :efecto_valorcampotind_attributes => [
-        :id,
-        :efecto_id,
-        :_destroy,
-        :valorcampotind_attributes => [
-          :id,
-          :campotind_id,
-          :valor,
-          :_destroy
-        ]
-      ],
-
-    )
+    params.require(:efecto).permit(lista_params)
   end
+
+
+#      :id, 
+#      :indicadorpf_id,
+#      :fecha_localizada,
+#      :nombre,
+#      :actorsocial_ids => [],
+#      :anexo_efecto_attributes => [
+#        :id,
+#        :efecto_id,
+#        :_destroy,
+#        :sip_anexo_attributes => [
+#          :id, :descripcion, :adjunto, :_destroy
+#        ]
+#      ],
+#      :efecto_valorcampotind_attributes => [
+#        :id,
+#        :efecto_id,
+#        :_destroy,
+#        :valorcampotind_attributes => [
+#          :id,
+#          :campotind_id,
+#          :valor,
+#          :_destroy
+#        ]
+#      ],
+#
+#    )
+#  end
 end

@@ -264,7 +264,37 @@
       '#camposdinamicos', '#camposdinamicos')
 
   )
+  $(document).on('input', '#efecto_porcentajeprog', (e) ->
+    porc = +$('#efecto_porcentajeprog').val();
+    pv = {}
+    i = 0
+    $('#efecto_porcentajeprogop option').each((o) ->
+      t = $(this).text()
+      if t != ''
+        t = +t.substr(0, t.indexOf('%'))
+      pv[i] = [$(this).val(), t]
+      i++
+    )
+    i = 0
+    for llave, valor of pv
+      if pv[llave][1] != '' && pv[llave][1] <= porc
+        i = +llave
+    if i >= 0
+      $("#efecto_porcentajeprogop").val(pv[i][0]);
+    else
+      $("#efecto_porcentajeprogop").val('');
+  )
 
+  $(document).on('change', '#efecto_porcentajeprogop', (e) ->
+    op = $(this).val()
+    t = 0
+    if op != ''
+      t = $(this).find('[value=' + op + ']').text()
+      if t != ''
+        t = +t.substr(0, t.indexOf('%'))
+    $('#efecto_porcentajeprog').val(t)
+  )
+ 
 
   # Proyecto financiero - Compromiso Institucional
   #

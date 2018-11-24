@@ -1,0 +1,32 @@
+<%= f.input :id, as: :hidden %>
+<div class="panel panel-default">
+  <div class="panel-heading">Preguntas de progreso</div>
+  <div class="panel-body">
+
+    <div class="div-pprogstind">
+      <table border=1 width="100%">
+        <thead>
+          <tr>
+            <th width="25%">Pregunta</th>
+            <th>Porcentaje de progreso</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="pprogstind">
+          <%= f.simple_fields_for :pprogtind, f.object.pprogtind.order(:id) do |o| %>
+            <%= render 'pprogtind_campos', f:  o %>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="links">
+        <%= link_to_add_association 'Agregar campo', f, :pprogtind, {
+          :"data-association-insertion-node" => "tbody#pprogstind", 
+          :"data-association-insertion-method" => "append", 
+          partial: 'pprogtind_campos',
+          class: 'btn-primary', 
+          "data-ajax" => main_app.new_pprogtind_url,
+          "data-ajaxdata" => "tipoindicador_id" } %>
+      </div> <!-- links -->
+    </div> <!-- .div-pprogstind -->
+  </div><!-- panel-body -->
+</div><!-- panel -->

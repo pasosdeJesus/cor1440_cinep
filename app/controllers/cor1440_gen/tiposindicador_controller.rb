@@ -5,6 +5,27 @@ module Cor1440Gen
   class TiposindicadorController < Sip::ModelosController
     include Cor1440Gen::Concerns::Controllers::TiposindicadorController
 
+
+    def atributos_index
+      [ "id", 
+        "nombre",
+        "medircon",
+        "esptipometa",
+        "campotind",
+        "pprogtind",
+        "espvaloresomision",
+        "espvalidaciones",
+        "espfuncionmedir" ]
+    end
+
+    def lista_params
+      lista_params_gen + [ :pprogtind_attributes => [
+        :id,
+        :pregunta,
+        :porcentaje ]
+      ]
+    end
+
     def update
       params[:tipoindicador][:campotind_attributes].each do |p| 
         if p[1]['_destroy'] == "1" && p[1][:id].to_i > 0
