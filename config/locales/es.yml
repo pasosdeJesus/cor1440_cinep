@@ -38,12 +38,12 @@ es:
       "cor1440_gen/proyecto": 
         one: "Programa/Servicio/Producto"
         other: "Programas/Servicios/Productos"
-      "tasacambio":
-        one: Tasa de cambio
-        other: Tasas de cambio
       "sal7711_gen/articulo": 
         one: "Publicación"
         other: "Publicaciones"
+      "tasacambio":
+        one: Tasa de cambio
+        other: Tasas de cambio
     attributes:
       "areaestudios":
         Areaestudios: Área de estudios
@@ -244,6 +244,8 @@ es:
       "fondopensiones":
         Fondopensiones: 'Fondo de pensiones'
         Fondospensiones: 'Fondos de pensiones'
+      "cor1440_gen/tipoindicador": 
+        pprogtind: "Fases de progreso"
       "niveleducacion":
         Niveleducacion: Nivel de educación
         Niveleseducacion: Niveles de educación

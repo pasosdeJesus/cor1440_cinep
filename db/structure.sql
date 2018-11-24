@@ -1474,7 +1474,7 @@ ALTER SEQUENCE public.cor1440_gen_pmindicadorpf_id_seq OWNED BY public.cor1440_g
 CREATE TABLE public.cor1440_gen_pprogtind (
     id bigint NOT NULL,
     tipoindicador_id integer NOT NULL,
-    pregunta character varying(1024),
+    fase character varying(1024),
     porcentaje integer
 );
 
@@ -1847,7 +1847,7 @@ CREATE TABLE public.efecto (
     fecha date,
     registradopor_id integer,
     nombre character varying(500),
-    porcentajeprog integer
+    porcentajeprog integer DEFAULT 0
 );
 
 
@@ -7694,6 +7694,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181107095150'),
 ('20181113094541'),
 ('20181113102940'),
-('20181122103550');
+('20181122103550'),
+('20181124121044'),
+('20181124122025'),
+('20181124125648'),
+('20181124130126');
 
 

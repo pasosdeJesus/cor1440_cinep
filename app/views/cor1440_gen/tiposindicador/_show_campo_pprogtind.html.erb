@@ -3,7 +3,7 @@
     r = ""
     num = 1
     @registro.pprogtind.each do |x|
-      r += "(#{num}) #{x.pregunta} (#{x.porcentaje}). "
+      r += "(#{num}) #{x.porcentaje} - #{x.fase}. "
       num += 1
     end
     r

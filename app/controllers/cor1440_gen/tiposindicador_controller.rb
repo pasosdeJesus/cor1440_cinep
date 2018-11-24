@@ -21,7 +21,7 @@ module Cor1440Gen
     def lista_params
       lista_params_gen + [ :pprogtind_attributes => [
         :id,
-        :pregunta,
+        :fase,
         :porcentaje ]
       ]
     end

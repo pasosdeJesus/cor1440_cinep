@@ -2,7 +2,7 @@
     f.object.indicadorpf.tipoindicador.pprogtind.length > 0 then %>
   <label><%= ::Efecto.human_attribute_name(:porcentajeprog) %></label>
   <div class="row">
-    <div class="col-xs-2">
+    <div class="col-md-2">
       <%= f.input :porcentajeprog, as: :range,
         html_input: {
         type: 'range',
@@ -29,7 +29,7 @@
         collection: f.object.indicadorpf.tipoindicador.pprogtind.order(
           :porcentaje),
         html_input: { readonly: true },
-        label_method: lambda {|r| "#{r.porcentaje}% - #{r.pregunta}"},
+        label_method: lambda {|r| "#{r.porcentaje}% - #{r.fase}"},
         selected: f.object.porcentajeprogop,
         value_method: :id,
         include_blank: true,

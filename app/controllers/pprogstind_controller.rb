@@ -8,7 +8,7 @@
       if params[:tipoindicador_id]
         @pprogtind = ::Cor1440Gen::Pprogtind.new
         @pprogtind.tipoindicador_id = params[:tipoindicador_id]
-        @pprogtind.pregunta = "N"
+        @pprogtind.fase = "N"
         if @pprogtind.save(validate: false)
           respond_to do |format|
             format.js { render text: @pprogtind.id.to_s }
