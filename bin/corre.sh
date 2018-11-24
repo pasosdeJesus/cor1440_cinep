@@ -44,11 +44,6 @@ if (test "$JN316_CLAVE" = "") then {
   echo "Falta JN316_CLAVE"
   exit 1;
 } fi;
-if (test "$PORT" = "") then {
-  echo "Falta PORT"
-  exit 1;
-} fi;
-
 
 if (test "$RAILS_ENV" = "development") then {
   if (test "$SININD" = "") then {

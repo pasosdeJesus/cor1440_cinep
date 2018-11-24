@@ -1,6 +1,6 @@
 <%= @registro.porcentajeprog %>%
 <% if !@registro.porcentajeprogop.nil? %>
   <% r = Cor1440Gen::Pprogtind.find(@registro.porcentajeprogop) %>
-  - <%= r.pregunta %>
+  - <%= r.fase %>
 (&gt;=  <%= r.porcentaje %>%)
 <% end %>
