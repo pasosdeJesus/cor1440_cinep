@@ -116,35 +116,37 @@ module Cor1440Gen
             resind = ActiveRecord::Base.connection.execute(base).first['count'].to_f
 
           when 'E1I2'
-            base = "SELECT COUNT(actor_id) FROM efecto
-               JOIN actor_efecto ON efecto.id=actor_efecto.efecto_id 
-               JOIN actor ON actor.id=actor_efecto.actor_id 
+            base = "SELECT COUNT(actorsocial_id) FROM efecto
+               JOIN actorsocial_efecto 
+                ON efecto.id=actorsocial_efecto.efecto_id 
+               JOIN sip_actorsocial ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
                WHERE fecha>='#{fini}' AND fecha<='#{ffin}'
-               AND actor.lineabase20182020
+               AND sip_actorsocial.lineabase20182020
                AND indicadorpf_id='19'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
             base = "SELECT COUNT(*) FROM 
               (SELECT DISTINCT regiongrupo_id FROM efecto 
-              JOIN actor_efecto ON efecto.id=actor_efecto.efecto_id 
-              JOIN actor_regiongrupo ON actor_regiongrupo.actor_id=actor_efecto.actor_id 
-              JOIN actor ON actor.id=actor_efecto.actor_id 
+              JOIN actorsocial_efecto ON efecto.id=actorsocial_efecto.efecto_id 
+              JOIN actorsocial_regiongrupo 
+                ON actorsocial_regiongrupo.actorsocial_id=actorsocial_efecto.actorsocial_id 
+              JOIN sip_actorsocial ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
               WHERE efecto.fecha>='#{fini}' AND efecto.fecha<='#{ffin}'
-              AND actor.lineabase20182020
+              AND sip_actorsocial.lineabase20182020
               AND efecto.indicadorpf_id='19') AS s"
             d2 = ActiveRecord::Base.connection.execute(base)
             d2 = d2.first ? d2.first['count'] : 0
             resind = d2.to_f
 
           when 'E2I1'
-            base = "SELECT COUNT(*) FROM (SELECT DISTINCT actor_id
+            base = "SELECT COUNT(*) FROM (SELECT DISTINCT actorsocial_id
                FROM efecto 
-               JOIN actor_efecto ON efecto.id=actor_efecto.efecto_id 
-               JOIN actor ON actor.id=actor_efecto.actor_id 
+               JOIN actorsocial_efecto ON efecto.id=actorsocial_efecto.efecto_id 
+               JOIN sip_actorsocial ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
                WHERE efecto.fecha>='#{fini}' AND efecto.fecha<='#{ffin}'
-               AND actor.lineabase20182020
+               AND sip_actorsocial.lineabase20182020
                AND efecto.indicadorpf_id='20') AS s"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
-            base = "SELECT COUNT(*) FROM actor WHERE 
+            base = "SELECT COUNT(*) FROM sip_actorsocial WHERE 
                (fechadeshabilitacion IS NULL 
                 OR fechadeshabilitacion < '#{fini}'
                 OR fechadeshabilitacion > '#{ffin}'

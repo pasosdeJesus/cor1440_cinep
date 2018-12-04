@@ -18,11 +18,11 @@ class Regiongrupo < ActiveRecord::Base
   has_many :municipio, through: :regiongrupo_municipio,
     class_name: 'Sip::Municipio'
 
-  has_many :actor_regiongrupo, dependent: :delete_all,
-    class_name: '::ActorRegiongrupo',
+  has_many :actorsocial_regiongrupo, dependent: :delete_all,
+    class_name: '::ActorsocialRegiongrupo',
     foreign_key: 'regiongrupo_id'
-  has_many :actor, through: :actor_regiongrupo,
-    class_name: '::Actor'
+  has_many :actorsocial, through: :actorsocial_regiongrupo,
+    class_name: 'Sip::Actorsocial'
 
   def self.incluye_municipio(grupo_id, departamento_id, municipio_id)
     ::Regiongrupo.where(grupo_id: grupo_id).where(

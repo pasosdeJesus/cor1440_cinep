@@ -65,7 +65,7 @@ class ReportesController < ::ApplicationController
       LEFT JOIN nucleoconflicto
         ON cor1440_gen_actividad.nucleoconflicto_id=nucleoconflicto.id
     WHERE cor1440_gen_actividad.id 
-      IN (SELECT actividad_id FROM actividad_actor)
+      IN (SELECT actividad_id FROM actividad_actorsocial)
     "
     where = " AND #{wac}"
     if (@fechaini != '') 
@@ -109,13 +109,15 @@ class ReportesController < ::ApplicationController
     end
 
     cons = "SELECT DISTINCT cor1440_gen_actividad.id, usuario.nusuario,
-    actor.nombre AS nombre_actor, sip_municipio.nombre AS municipio,
+    sip_actorsocial.nombre AS nombre_actor, sip_municipio.nombre AS municipio,
     sip_departamento.nombre AS departamento,
     ARRAY_TO_STRING(
-      ARRAY(SELECT sectoractor.nombre FROM actor_sectoractor
-      JOIN sectoractor
-      ON actor_sectoractor.sectoractor_id=sectoractor.id 
-      WHERE actor_sectoractor.actor_id=actor.id AND sectoractor.enplantrienal), 
+      ARRAY(SELECT sip_sectoractor.nombre FROM sip_actorsocial_sectoractor
+      JOIN sip_sectoractor
+      ON sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id 
+      WHERE sip_actorsocial_sectoractor.actorsocial_id=sip_actorsocial.id 
+      AND sip_sectoractor.entrienal2015
+      ), 
       '; ') as sectores,
     (CASE WHEN cor1440_gen_actividad.accionincidencia THEN 'X' ELSE '' END) AS incidencia,
     cor1440_gen_actividad.nombre AS accioncolectiva,
@@ -128,9 +130,10 @@ class ReportesController < ::ApplicationController
       ON actividad_nucleoconflicto.nucleoconflicto_id=nucleoconflicto.id 
       WHERE actividad_nucleoconflicto.actividad_id=cor1440_gen_actividad.id), 
       '; ') as otrosnucleos
-    FROM actor JOIN actividad_actor ON actor.id=actividad_actor.actor_id
+    FROM sip_actorsocial JOIN actividad_actorsocial 
+      ON sip_actorsocial.id=actividad_actorsocial.actorsocial_id
       JOIN cor1440_gen_actividad 
-        ON actividad_actor.actividad_id=cor1440_gen_actividad.id
+        ON actividad_actorsocial.actividad_id=cor1440_gen_actividad.id
       LEFT JOIN usuario ON cor1440_gen_actividad.usuario_id = usuario.id
       LEFT JOIN sip_municipio 
         ON sip_municipio.id=cor1440_gen_actividad.municipio_id
@@ -138,10 +141,12 @@ class ReportesController < ::ApplicationController
         ON sip_departamento.id=cor1440_gen_actividad.departamento_id
       LEFT JOIN nucleoconflicto 
         ON cor1440_gen_actividad.nucleoconflicto_id=nucleoconflicto.id
-    WHERE actor.id <> 102 AND actor.id <> 103
-    AND actor.id IN (SELECT DISTINCT actor_id FROM actor_sectoractor, sectoractor
-      WHERE actor_sectoractor.sectoractor_id=sectoractor.id 
-      AND sectoractor.enplantrienal)
+    WHERE sip_actorsocial.id <> 102 AND sip_actorsocial.id <> 103
+    AND sip_actorsocial.id IN (SELECT DISTINCT actorsocial_id 
+      FROM sip_actorsocial_sectoractor, sip_sectoractor
+      WHERE sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id 
+      AND sip_sectoractor.entrienal2015
+     ) 
     "
     where = " AND #{wac}"
     if (@fechaini != '') 

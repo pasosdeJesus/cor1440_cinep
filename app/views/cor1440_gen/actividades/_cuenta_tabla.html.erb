@@ -206,7 +206,7 @@
         <%= eonr %>
       </td>
       <td>
-        <%= consb.joins(:actividad_sectoractor).joins('JOIN sip_sectoractor_sectoractor ON
+        <%= consb.joins(:actividad_sectoractor).joins('JOIN sip_actorsocial_sectoractor ON
               actividad_sectoractor.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
               joins('JOIN sip_sectoractor 
                     ON sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id').
