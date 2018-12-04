@@ -355,7 +355,14 @@ class Ability  < Cor1440Gen::Ability
         # Posibilidad de editar Marco Logico para coordinadores
         if coords.length > 0
           lineas = coords.map { |gc| GRUPO_LINEA + ' ' + gc[15..-1] }
-          idlineas = lineas.map { |nl| Sip::Grupo.where(nombre: nl).take.id }
+          idlineas = lineas.map { |nl|
+            if Sip::Grupo.where(nombre: nl).count ==0
+              puts "OJO se esperaba línea con nombre #{nl}"
+              return nil
+            else
+              return Sip::Grupo.where(nombre: nl).take.id
+            end
+          }
           pc = ::Cor1440Gen::Proyectofinanciero.
             where('cor1440_gen_proyectofinanciero.id IN
               (SELECT proyectofinanciero_id FROM 
