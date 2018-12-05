@@ -242,14 +242,15 @@ module Cor1440Gen
 
     def atributos_index
       [ :id, 
+        :vistobuenocoord,
         :fecha_localizada, 
-        :creadopor, 
         :nombre, 
-        :departamento,
-        :municipio,
+        :creadopor, 
         :grupo, 
         :proyectofinanciero, 
         :actividadpf,
+        :departamento,
+        :municipio,
         :actorsocial,
         :publicacion,
         :mujeres,
@@ -258,8 +259,7 @@ module Cor1440Gen
         :negros,
         :indigenas,
         :etnia_onr,
-        :anexos,
-        :vistobuenocoord
+        :anexos
       ]
     end
 
