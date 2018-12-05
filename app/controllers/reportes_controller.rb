@@ -109,7 +109,7 @@ class ReportesController < ::ApplicationController
     end
 
     cons = "SELECT DISTINCT cor1440_gen_actividad.id, usuario.nusuario,
-    sip_actorsocial.nombre AS nombre_actor, sip_municipio.nombre AS municipio,
+    sip_grupoper.nombre AS nombre_actor, sip_municipio.nombre AS municipio,
     sip_departamento.nombre AS departamento,
     ARRAY_TO_STRING(
       ARRAY(SELECT sip_sectoractor.nombre FROM sip_actorsocial_sectoractor
@@ -130,7 +130,9 @@ class ReportesController < ::ApplicationController
       ON actividad_nucleoconflicto.nucleoconflicto_id=nucleoconflicto.id 
       WHERE actividad_nucleoconflicto.actividad_id=cor1440_gen_actividad.id), 
       '; ') as otrosnucleos
-    FROM sip_actorsocial JOIN actividad_actorsocial 
+    FROM sip_actorsocial 
+      JOIN sip_grupoper ON sip_grupoper.id=sip_actorsocial.grupoper_id
+      JOIN actividad_actorsocial 
       ON sip_actorsocial.id=actividad_actorsocial.actorsocial_id
       JOIN cor1440_gen_actividad 
         ON actividad_actorsocial.actividad_id=cor1440_gen_actividad.id
