@@ -17,6 +17,7 @@ class EfectosController < Sip::ModelosController
     [ :actorsocial_ids=>[]] +
     [ "fecha_localizada",
       "nombre",
+      "descripcion",
       "registradopor_id",
       "anexo_efecto"
     ] 
@@ -37,6 +38,7 @@ class EfectosController < Sip::ModelosController
     [ :actorsocial_ids=>[]] +
     [ "fecha_localizada",
       "nombre",
+      "descripcion",
       "efecto_valorcampotind",
       "porcentajeprog",
       "anexo_efecto"

@@ -34,7 +34,8 @@ class Efecto < ActiveRecord::Base
 
   validates :actorsocial_efecto, presence: true
   validates :fecha, presence: true
-  validates :nombre, presence: true, length: { maximum: 128} 
+  validates :nombre, presence: true, length: { maximum: 500} 
+  validates :descripcion, length: { maximum: 5000} 
   validates :indicadorpf_id, presence: true
 
   validates :porcentajeprog, numericality: { 

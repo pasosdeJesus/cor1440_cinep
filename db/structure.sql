@@ -1847,7 +1847,8 @@ CREATE TABLE public.efecto (
     fecha date,
     registradopor_id integer,
     nombre character varying(500),
-    porcentajeprog integer DEFAULT 0
+    porcentajeprog integer DEFAULT 0,
+    descripcion character varying(5000)
 );
 
 
@@ -7701,6 +7702,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181124125648'),
 ('20181124130126'),
 ('20181204113317'),
-('20181205114055');
+('20181205114055'),
+('20181205234729');
 
 
