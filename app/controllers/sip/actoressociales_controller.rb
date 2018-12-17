@@ -26,6 +26,7 @@ module Sip
       [
         :id, 
         :grupoper_id,
+        :nivelrelacion_id
       ] +
       [ :sectoractor_ids =>  [] ] +
       [:pais_id] +
