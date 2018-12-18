@@ -148,7 +148,8 @@ module Cor1440Gen
             base = "SELECT COUNT(actorsocial_id) FROM efecto
                JOIN actorsocial_efecto 
                 ON efecto.id=actorsocial_efecto.efecto_id 
-               JOIN sip_actorsocial ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
+               JOIN sip_actorsocial 
+                ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
                WHERE fecha>='#{fini}' AND fecha<='#{ffin}'
                AND sip_actorsocial.lineabase20182020
                AND indicadorpf_id='19'"
