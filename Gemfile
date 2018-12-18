@@ -15,6 +15,8 @@ gem 'puma'
 # CSS
 gem 'sass'
 
+gem 'erd'
+
 # Color en terminal
 gem 'colorize'
 
