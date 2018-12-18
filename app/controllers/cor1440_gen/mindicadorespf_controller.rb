@@ -55,10 +55,12 @@ module Cor1440Gen
           eap = ::ApplicationHelper::ESTADOS_APROBADO.map { |l| "'#{l}'" }
           eap = eap.join(', ')
           case tipoind.nombre
+          # Gerencia de proyectos
           when 'IG-FG-01'
             base = "SELECT COUNT(*) FROM cor1440_gen_proyectofinanciero " +
               "WHERE fechaformulacion>='#{fini}' AND "+
-              "fechaformulacion<='#{ffin}'"
+              "fechaformulacion<='#{ffin}' AND " +
+              "respgp_id IS NOT NULL"
             cd1 = base + " AND estado IN (#{eap})"
             d1 = ActiveRecord::Base.connection.execute(cd1).first['count']
             cd2 = base 
@@ -67,48 +69,75 @@ module Cor1440Gen
           when 'IG-FG-02'
             base = "SELECT COUNT(*) FROM cor1440_gen_proyectofinanciero " +
               "WHERE fechaformulacion>='#{fini}' AND "+
-              "fechaformulacion<='#{ffin}'"
+              "fechaformulacion<='#{ffin}' AND " +
+              "respgp_id IS NOT NULL"
             cd1 = base
             resind = ActiveRecord::Base.connection.execute(cd1).first['count']
           when 'IG-FG-03'
 
           when 'IG-SC-01'
             base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               proyectofinanciero_id IN (SELECT id 
+                FROM cor1440_gen_proyectofinanciero 
+                WHERE respgp_id IS NOT NULL) AND
                fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
                AND fechareal<=(fechaplaneada+7) "
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
             base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               proyectofinanciero_id IN (SELECT id 
+                FROM cor1440_gen_proyectofinanciero 
+                WHERE respgp_id IS NOT NULL) AND
                fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
                AND fechareal<=(fechaplaneada+7) "
             d1 += ActiveRecord::Base.connection.execute(base).first['count']
 
             base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               proyectofinanciero_id IN (SELECT id 
+                FROM cor1440_gen_proyectofinanciero 
+                WHERE respgp_id IS NOT NULL) AND
                fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
             d2 = ActiveRecord::Base.connection.execute(base).first['count']
             base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               proyectofinanciero_id IN (SELECT id 
+                FROM cor1440_gen_proyectofinanciero 
+                WHERE respgp_id IS NOT NULL) AND
                fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
             d2 += ActiveRecord::Base.connection.execute(base).first['count']
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
           when 'IG-SC-02'
             base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               proyectofinanciero_id IN (SELECT id 
+                FROM cor1440_gen_proyectofinanciero 
+                WHERE respgp_id IS NOT NULL) AND
                fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
                AND devoluciones!='t'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
             base = "SELECT COUNT(*) FROM informenarrativo WHERE 
+               proyectofinanciero_id IN (SELECT id 
+                FROM cor1440_gen_proyectofinanciero 
+                WHERE respgp_id IS NOT NULL) AND
                fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
             d2 = ActiveRecord::Base.connection.execute(base).first['count']
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
           when 'IG-SC-03'
             base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               proyectofinanciero_id IN (SELECT id 
+                FROM cor1440_gen_proyectofinanciero 
+                WHERE respgp_id IS NOT NULL) AND
                fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
                AND devoluciones!='t'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
             base = "SELECT COUNT(*) FROM informefinanciero WHERE 
+               proyectofinanciero_id IN (SELECT id 
+                FROM cor1440_gen_proyectofinanciero 
+                WHERE respgp_id IS NOT NULL) AND
                fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
             d2 = ActiveRecord::Base.connection.execute(base).first['count']
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
+
+          # Plan Trienal 2018-2020
           when 'E1I1'
             base = "SELECT COUNT(*) FROM efecto WHERE 
                fecha>='#{fini}' AND fecha<='#{ffin}'
