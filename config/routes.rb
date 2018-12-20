@@ -48,8 +48,6 @@ Rails.application.routes.draw do
     resources :tasascambio,
       path_names: { new: 'nueva', edit: 'edita' }
 
-
-
     get "/api/cor1440cinep/duracion" => 
       "cor1440_gen/proyectosfinancieros#duracion", 
       as: :duracion 
@@ -109,6 +107,7 @@ Rails.application.routes.draw do
   mount Cor1440Gen::Engine, at: "/", as: "cor1440_gen"
   mount Sal7711Ld::Engine, at: "/", as: "sal7711_ld"
   mount Jn316Gen::Engine, at: "/", as: "jn316_gen"
+  mount Mr519Gen::Engine, at: "/", as: "mr519_gen"
   mount Heb412Gen::Engine, at: "/", as: "heb412_gen"
   mount Sip::Engine, at: "/", as: "sip"
 

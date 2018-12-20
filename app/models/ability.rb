@@ -16,6 +16,7 @@ class Ability  < Cor1440Gen::Ability
     'Administrar documentos en nube y plantillas. ' +
     'Administrar tablas básicas (actores sociales, tipos de convenios, etc). ' +
     'Administrar tasas de cambio. ' +
+    'Administrar formularios y encuestas. ' +
     'Administrar usuarios. ', #ROLADMIN, 1
 
     '', #2
@@ -27,6 +28,7 @@ class Ability  < Cor1440Gen::Ability
     'Ver convenios institucionales. ' +
     'Ver documentos en nube y plantillas, así como descripciones de cada carpeta. ' +
     'Ver listado de usuarios y su información pública. ' +
+    'Responder encuestas. ' +
     'Administrar actividades e informes de su grupo. ' +
     'Áreas de investigación: Ver, editar y agregar actores sociales. ' +
     'Área Derechos Humanos: En formulario de actividades usan contexto. Ver reportes trienal 2015-2017 ' +
@@ -328,10 +330,16 @@ class Ability  < Cor1440Gen::Ability
         can :fichaimp, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichapdf, Cor1440Gen::Proyectofinanciero # Los de su grupo
 
+
         can :read, Heb412Gen::Doc
         can :read, Heb412Gen::Plantilladoc
         can :read, Heb412Gen::Plantillahcm
         can :read, Heb412Gen::Plantillahcr
+
+        can :read, Mr519Gen::Formulario
+        can :read, Mr519Gen::Encuestausuario
+        can [:edit, :update], 
+          Mr519Gen::Encuestausuario.where(usuario_id: usuario.id)
 
         can [:read, :index], Sip::Actorsocial# Directorio institucional
         can :read, Sip::Grupo # Directorio institucional
@@ -448,16 +456,22 @@ class Ability  < Cor1440Gen::Ability
         can :manage, ::Efecto
         can :manage, ::Tasacambio
         can :manage, ::Usuario
+
         can :manage, Cor1440Gen::Actividad
         can :manage, Cor1440Gen::Indicadorpf
         can :manage, Cor1440Gen::Informe
         can :manage, Cor1440Gen::Mindicadorpf
         can :manage, Cor1440Gen::Proyectofinanciero
         can :manage, Cor1440Gen::Tipoindicador
+
         can :manage, Heb412Gen::Doc
         can :manage, Heb412Gen::Plantilladoc
         can :manage, Heb412Gen::Plantillahcm
         can :manage, Heb412Gen::Plantillahcr
+
+        can :manage, Mr519Gen::Formulario
+        can :manage, Mr519Gen::Encuestausuario
+
         can :manage, Sip::Actorsocial
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|
