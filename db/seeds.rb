@@ -9,6 +9,8 @@ motor.each do |m|
     Sip::carga_semillas_sql(conexion, m, :datos)
 end
 
+
+conexion.execute('SET search_path TO "$user", public')
 # Usuario y clave cor1440, cor1440
 conexion.execute("INSERT INTO usuario 
 	(nusuario, email, encrypted_password, password, 
