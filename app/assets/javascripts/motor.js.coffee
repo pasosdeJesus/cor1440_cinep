@@ -95,6 +95,7 @@
   $('[id$=_' + hid + '_dmed3]').val(res.dmed3)
   $('[id$=_' + hid + '_urlev3]').val(res.urlev3)
   $('[id$=_' + hid + '_rind]').val(res.rind)
+  $('[id$=_' + hid + '_urlevrind]').val(res.urlevrind)
   meta = +$('[id$=_' + hid + '_meta]').val()
   if ( meta > 0)
     $('[id$=_' + hid + '_porcump]').val(res.rind*100/meta)

@@ -1477,7 +1477,8 @@ CREATE TABLE public.cor1440_gen_pmindicadorpf (
     fecha date,
     urlev1 character varying(1024),
     urlev2 character varying(1024),
-    urlev3 character varying(1024)
+    urlev3 character varying(1024),
+    urlevrind character varying(1024)
 );
 
 
@@ -8070,6 +8071,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20181227100523'),
 ('20181227114431'),
 ('20181227210510'),
-('20181228144036');
+('20181228144036'),
+('20181228182153');
 
 

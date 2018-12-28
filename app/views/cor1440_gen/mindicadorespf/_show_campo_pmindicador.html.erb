@@ -55,7 +55,14 @@
               <%= v %>
             <% end %>
         <% end %>
-        <td><%= pm.rind ? pm.rind.round(1) : '' %></td>
+        <td>
+          <% v = pm.rind ? pm.rind.round(1) : '' %>
+          <% if pm.urlevrind && pm.rind %>
+            <%= link_to v, pm.urlevrind %>
+          <% else %>
+              <%= v %>
+          <% end %>
+        </td>
         <td><%= pm.meta %></td>
         <td><%= pm.porcump ? pm.porcump.round(1) : '' %></td>
       </tr>

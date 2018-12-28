@@ -49,6 +49,7 @@ module Cor1440Gen
         hmi = params[:hmindicadorpf_id].to_i
         if fini && ffin && ind && tipoind
           resind = 0.0
+          urlevrind = ''
           d1 = 0.0
           urlev1 = ''
           d2 = 0.0
@@ -83,8 +84,14 @@ module Cor1440Gen
               "WHERE fechaformulacion>='#{fini}' AND "+
               "fechaformulacion<='#{ffin}' AND " +
               "respgp_id IS NOT NULL"
+            base = Cor1440Gen::Proyectofinanciero.
+              where('fechaformulacion >= ?', fini).
+              where('fechaformulacion <= ?', ffin).
+              where('respgp_id IS NOT NULL')
             cd1 = base
-            resind = ActiveRecord::Base.connection.execute(cd1).first['count']
+            resind = cd1.count
+            urlevrind = cor1440_gen.proyectosfinancieros_url +
+              '?filtro[busid]=' + base.pluck(:id).join(',')
           when 'IG-FG-03'
             # Porcentaje ejecutado de ingresos presupuestados 
             
@@ -232,7 +239,8 @@ module Cor1440Gen
                 urlev2: urlev2,
                 dmed3: d3, 
                 urlev3: urlev3,
-                rind: resind }, 
+                rind: resind,
+                urlevrind: urlevrind }, 
                 status: :ok
               return
             }
@@ -279,6 +287,7 @@ module Cor1440Gen
             'dmed3', 
             'urlev3', 
             'rind', 
+            'urlevrind', 
             'meta', 
             'porcump', 
             'analisis', 
