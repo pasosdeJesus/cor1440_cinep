@@ -310,7 +310,8 @@ module Cor1440Gen
       if !registro.fechacierre && 
         ::ApplicationHelper::ESTADOS_APROBADO.include?(registro.estado)
         detalle << "No tiene fecha de terminación"
-      elsif registro.fechacierre && registro.fechacierre <= registro.fechainicio
+      elsif registro.fechacierre && registro.fechainicio &&
+        registro.fechacierre <= registro.fechainicio
         detalle << "Fecha de terminación posterior o igual a la de inicio"
       end
       validar_mas_registro(registro, detalle)
