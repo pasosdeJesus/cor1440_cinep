@@ -4,18 +4,18 @@ require 'date'
 require 'cor1440_gen/concerns/controllers/proyectosfinancieros_controller'
 
 module Cor1440Gen
-  class ProyectosfinancierosController < Heb412Gen::ModelosController
+  class ProyectosfinancierosController < ::Heb412Gen::ModelosController
     helper ::ApplicationHelper
     include ::ApplicationHelper
-    include Cor1440Gen::Concerns::Controllers::ProyectosfinancierosController
+    include ::Cor1440Gen::Concerns::Controllers::ProyectosfinancierosController
     include ::Sip::ModeloHelper
 
     before_action :set_proyectofinanciero, 
       only: [:show, :edit, :update, :destroy]
-    load_and_authorize_resource class: Cor1440Gen::Proyectofinanciero,
+    load_and_authorize_resource class: ::Cor1440Gen::Proyectofinanciero,
       except: [:duracion]
 
-    include Sip::ConsultasHelper
+    include ::Sip::ConsultasHelper
 
     # API
     # calcduracion fechaini fechacierre
@@ -24,10 +24,10 @@ module Cor1440Gen
       prob = ''
       if params[:fechainicio_localizada] && 
         params[:fechacierre_localizada]
-        fini = Sip::FormatoFechaHelper.fecha_local_estandar(
+        fini = ::Sip::FormatoFechaHelper.fecha_local_estandar(
           params[:fechainicio_localizada])
         fini = Date.strptime(fini, '%Y-%m-%d')
-        fcierre = Sip::FormatoFechaHelper.fecha_local_estandar(
+        fcierre = ::Sip::FormatoFechaHelper.fecha_local_estandar(
           params[:fechacierre_localizada])
         fcierre = Date.strptime(fcierre, '%Y-%m-%d')
         if fini && fcierre
@@ -152,7 +152,7 @@ module Cor1440Gen
 
     def show_plantillas
       @plantillas = [['', '']]
-      @plantillas = Heb412Gen::Plantilladoc.where(
+      @plantillas = ::Heb412Gen::Plantilladoc.where(
         "vista IN ('Compromiso Institucional')").
       select('nombremenu, id').map { 
           |co| [co.nombremenu, "#{co.id}.odt"] 
@@ -169,7 +169,7 @@ module Cor1440Gen
       @registro.fechaformulacion = Date.today
       @registro.nombre = 'N'
       @registro.dificultad = 'M'
-      if can?(:creacomogp, Cor1440Gen::Proyectofinanciero)
+      if can?(:creacomogp, ::Cor1440Gen::Proyectofinanciero)
         @registro.respgp_id = current_usuario.id
       end
       @registro.save!
@@ -196,7 +196,7 @@ module Cor1440Gen
           detalle << "Falta línea de investigación"
         else
           registro.grupo.each do |g|
-            if !Sip::Grupo.investigacion.map(&:id).include?(g.id)
+            if !::Sip::Grupo.investigacion.map(&:id).include?(g.id)
               detalle << "Proyecto manejado por oficial de proyectos que tiene grupos diferentes a las líneas de investigación"
             end
           end
@@ -302,13 +302,13 @@ module Cor1440Gen
     def validar_registro(registro, detalle)
       detalleini = detalle.clone
       if !registro.fechainicio && 
-        ApplicationHelper::ESTADOS_APROBADO.include?(registro.estado)
+        ::ApplicationHelper::ESTADOS_APROBADO.include?(registro.estado)
         detalle << "No tiene fecha de inicio"
       elsif registro.fechainicio && registro.fechainicio < Date.new(2000, 1, 1)
         detalle << "Fecha de inicio anterior al 1.Ene.2000"
       end
       if !registro.fechacierre && 
-        ApplicationHelper::ESTADOS_APROBADO.include?(registro.estado)
+        ::ApplicationHelper::ESTADOS_APROBADO.include?(registro.estado)
         detalle << "No tiene fecha de terminación"
       elsif registro.fechacierre && registro.fechacierre <= registro.fechainicio
         detalle << "Fecha de terminación posterior o igual a la de inicio"
@@ -342,7 +342,7 @@ module Cor1440Gen
       w = registros.count > 0 ?  
         "WHERE p.id in (#{registros.pluck(:id).join(", ")})" : ""
 
-      Heb412Gen::Plantillahcm.connection.execute <<-SQL
+      ::Heb412Gen::Plantillahcm.connection.execute <<-SQL
       DROP VIEW IF EXISTS v_solicitud_informes ;
       DROP VIEW IF EXISTS v_solicitud_informes1 ;
       CREATE VIEW v_solicitud_informes1 AS (#{cons});
@@ -376,7 +376,7 @@ module Cor1440Gen
       ORDER BY s.fechaplaneada
       )
       SQL
-      return Heb412Gen::Plantillahcm.find_by_sql(
+      return ::Heb412Gen::Plantillahcm.find_by_sql(
         'SELECT * FROM v_solicitud_informes')
     end
 
@@ -408,7 +408,7 @@ module Cor1440Gen
                              ::ApplicationHelper::ESTADOS_APROBADO.
                              include?(
                                r.estado.to_sym) ? 'APROBADO' : 
-                               Sip::ModeloHelper.etiqueta_coleccion(
+                               ::Sip::ModeloHelper.etiqueta_coleccion(
                                  ::ApplicationHelper::ESTADO, r.estado))
         asigna_celda_y_borde(hoja, fila, 6, r.monto_localizado)
         asigna_celda_y_borde(hoja, fila, 7, r.tipomoneda ?
@@ -445,10 +445,10 @@ module Cor1440Gen
         asigna_celda_y_borde(hoja, fila, 4, r.respgp ?
                              r.respgp.presenta_nombre : '')
         asigna_celda_y_borde(hoja, fila, 5, 
-                             Sip::ModeloHelper.etiqueta_coleccion(
+                             ::Sip::ModeloHelper.etiqueta_coleccion(
                                ::ApplicationHelper::ESTADO, r.estado))
         asigna_celda_y_borde(hoja, fila, 6, 
-                             Sip::ModeloHelper.etiqueta_coleccion(
+                             ::Sip::ModeloHelper.etiqueta_coleccion(
                                ::ApplicationHelper::DIFICULTAD, 
                                r.dificultad))
         cons +=1
@@ -688,9 +688,9 @@ module Cor1440Gen
  
     
     def index(c = nil)
-      authorize! :index, Cor1440Gen::Proyectofinanciero
+      authorize! :index, ::Cor1440Gen::Proyectofinanciero
       if c == nil
-        c = Cor1440Gen::Proyectofinanciero.all
+        c = ::Cor1440Gen::Proyectofinanciero.all
       end
       if params[:grupo_ids] && params[:grupo_ids] != ''
         grupo_ids = params[:grupo_ids].map {|x| x.to_i}
@@ -724,13 +724,13 @@ module Cor1440Gen
     end
 
     def index_reordenar(registros)
-      @plantillas = Heb412Gen::Plantillahcm.where(
+      @plantillas = ::Heb412Gen::Plantillahcm.where(
         "vista IN ('Cronograma de Solicitud de Informes', 'Cuadro General de Seguimiento')").
       select('nombremenu, id').map { 
           |co| [co.nombremenu, co.id] 
         }
     
-      mg1 = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
+      mg1 = ::Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
       mgi = mg1.map(&:id).join(', ')
       if mgi == ''
         registros = registros.where('TRUE=FALSE')
@@ -745,7 +745,7 @@ module Cor1440Gen
     end
 
     def genera_odt(plantilla_id, narchivo)
-      plantilla = Heb412Gen::Plantilladoc.find(plantilla_id)
+      plantilla = ::Heb412Gen::Plantilladoc.find(plantilla_id)
       if !plantilla
         return
       end
@@ -829,12 +829,12 @@ module Cor1440Gen
         end
         r.add_field(:formatosespecificos, cf > 0 ? 'Si' : 'No')
 
-        fh = Sip::FormatoFechaHelper::fecha_estandar_local(Date.today.to_s)
+        fh = ::Sip::FormatoFechaHelper::fecha_estandar_local(Date.today.to_s)
         r.add_field(:fechahoy, fh)
         fhf = Date.today + 12
         r.add_field(
           :fechahoymasdiezhabiles, 
-          Sip::FormatoFechaHelper::fecha_estandar_local(fhf.to_s))
+          ::Sip::FormatoFechaHelper::fecha_estandar_local(fhf.to_s))
 
         # Referencian otra
         r.add_field(:tipomoneda, @proyectofinanciero.tipomoneda &&

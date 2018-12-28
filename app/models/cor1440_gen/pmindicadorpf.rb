@@ -9,6 +9,10 @@ module Cor1440Gen
     campofecha_localizado :finicio
     campofecha_localizado :ffin
 
+    validates :urlev1, length: {maximum: 1024}
+    validates :urlev2, length: {maximum: 1024}
+    validates :urlev3, length: {maximum: 1024}
+
     belongs_to :cor1440_gen_mindicadorpf, 
       class_name: 'Cor1440Gen::Mindicadorpf', 
       foreign_key: 'mindicadorpf_id'

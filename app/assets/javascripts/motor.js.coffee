@@ -89,8 +89,11 @@
   hid = res.hmindicadorpf_id
   $('[id$=_' + hid + '_fecha_localizada]').val(res.fechaloc)
   $('[id$=_' + hid + '_dmed1]').val(res.dmed1)
+  $('[id$=_' + hid + '_urlev1]').val(res.urlev1)
   $('[id$=_' + hid + '_dmed2]').val(res.dmed2)
+  $('[id$=_' + hid + '_urlev2]').val(res.urlev2)
   $('[id$=_' + hid + '_dmed3]').val(res.dmed3)
+  $('[id$=_' + hid + '_urlev3]').val(res.urlev3)
   $('[id$=_' + hid + '_rind]').val(res.rind)
   meta = +$('[id$=_' + hid + '_meta]').val()
   if ( meta > 0)

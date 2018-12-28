@@ -27,13 +27,33 @@
         <td><%= pm.ffin_localizada %></td>
         <td><%= pm.restiempo %></td>
         <% if @descd1 != '' %>
-          <td><%= pm.dmed1 ? pm.dmed1.round(1) : '' %></td>
+          <td>
+            <% v = pm.dmed1 ? pm.dmed1.round(1) : '' %>
+            <% if pm.urlev1 && pm.dmed1 %>
+              <%= link_to v, pm.urlev1 %>
+            <% else %>
+              <%= v %>
+            <% end %>
+          </td>
         <% end %>
         <% if @descd2 != '' %>
-          <td><%= pm.dmed2 ? pm.dmed2.round(1) : '' %></td>
+          <td>
+            <% v = pm.dmed2 ? pm.dmed2.round(1) : '' %>
+            <% if pm.urlev2 && pm.dmed2 %>
+              <%= link_to v, pm.urlev2 %>
+            <% else %>
+              <%= v %>
+            <% end %>
+          </td>
         <% end %>
         <% if @descd3 != '' %>
-          <td><%= pm.dmed3 ? pm.dmed3.round(1) : '' %></td>
+          <td>
+            <% v = pm.dmed3 ? pm.dmed3.round(1) : '' %>
+            <% if pm.urlev3 && pm.dmed3 %>
+              <%= link_to v, pm.urlev3 %>
+            <% else %>
+              <%= v %>
+            <% end %>
         <% end %>
         <td><%= pm.rind ? pm.rind.round(1) : '' %></td>
         <td><%= pm.meta %></td>

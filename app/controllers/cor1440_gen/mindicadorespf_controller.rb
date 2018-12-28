@@ -50,23 +50,35 @@ module Cor1440Gen
         if fini && ffin && ind && tipoind
           resind = 0.0
           d1 = 0.0
+          urlev1 = ''
           d2 = 0.0
+          urlev2 = ''
           d3 = 0.0
+          urlev3 = ''
           eap = ::ApplicationHelper::ESTADOS_APROBADO.map { |l| "'#{l}'" }
           eap = eap.join(', ')
           case tipoind.nombre
           # Gerencia de proyectos
           when 'IG-FG-01'
-            base = "SELECT COUNT(*) FROM cor1440_gen_proyectofinanciero " +
-              "WHERE fechaformulacion>='#{fini}' AND "+
-              "fechaformulacion<='#{ffin}' AND " +
-              "respgp_id IS NOT NULL"
-            cd1 = base + " AND estado IN (#{eap})"
-            d1 = ActiveRecord::Base.connection.execute(cd1).first['count']
-            cd2 = base 
-            d2 = ActiveRecord::Base.connection.execute(cd2).first['count']
+            # Participacion efectiva en convocatorias
+            base = Cor1440Gen::Proyectofinanciero.
+              where('fechaformulacion >= ?', fini).
+              where('fechaformulacion <= ?', ffin).
+              where('respgp_id IS NOT NULL')
+            cd1 = base.clone.where('estado IN (?)', 
+                                    ::ApplicationHelper::ESTADOS_APROBADO) 
+            d1 = cd1.count
+            evd1 = cd1.pluck('id')
+            urlev1 = cor1440_gen.proyectosfinancieros_url +
+              '?filtro[busid]='+evd1.join(',')
+            cd2 = base.clone
+            d2 = cd2.count
+            evd2 = cd2.pluck('id')
+            urlev2 = cor1440_gen.proyectosfinancieros_url +
+              '?filtro[busid]='+evd2.join(',')
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil;
           when 'IG-FG-02'
+            # En cuantas convocatorias participamos
             base = "SELECT COUNT(*) FROM cor1440_gen_proyectofinanciero " +
               "WHERE fechaformulacion>='#{fini}' AND "+
               "fechaformulacion<='#{ffin}' AND " +
@@ -74,8 +86,10 @@ module Cor1440Gen
             cd1 = base
             resind = ActiveRecord::Base.connection.execute(cd1).first['count']
           when 'IG-FG-03'
-
+            # Porcentaje ejecutado de ingresos presupuestados 
+            
           when 'IG-SC-01'
+            # Porcentaje de informes enviados a tiempo a financiadores
             base = "SELECT COUNT(*) FROM informenarrativo WHERE 
                proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
@@ -106,6 +120,7 @@ module Cor1440Gen
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
           when 'IG-SC-02'
+            # Porcentaje de informes narrativos enviados a tiempo a financiadores
             base = "SELECT COUNT(*) FROM informenarrativo WHERE 
                proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
@@ -122,6 +137,7 @@ module Cor1440Gen
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
           when 'IG-SC-03'
+            # Porcentaje de informes financieros enviados a tiempo a financiadores
             base = "SELECT COUNT(*) FROM informefinanciero WHERE 
                proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
@@ -211,8 +227,11 @@ module Cor1440Gen
                   Date.today),
                 hmindicadorpf_id: hmi, 
                 dmed1: d1, 
+                urlev1: urlev1,
                 dmed2: d2, 
+                urlev2: urlev2,
                 dmed3: d3, 
+                urlev3: urlev3,
                 rind: resind }, 
                 status: :ok
               return
@@ -249,10 +268,25 @@ module Cor1440Gen
       params.require(:mindicadorpf).permit(
         atributos_form - ["pmindicador"] + [
           'pmindicador_attributes' => [
-            'fecha_localizada', 'finicio_localizada', 'ffin_localizada', 
-            'restiempo', 'dmed1', 'dmed2', 'dmed3', 
-            'rind', 'meta', 'porcump', 'analisis', 'acciones', 'responsables', 
-            'plazo', 'id', '_destroy'
+            'fecha_localizada', 
+            'finicio_localizada', 
+            'ffin_localizada', 
+            'restiempo', 
+            'dmed1', 
+            'urlev1', 
+            'dmed2', 
+            'urlev2', 
+            'dmed3', 
+            'urlev3', 
+            'rind', 
+            'meta', 
+            'porcump', 
+            'analisis', 
+            'acciones', 
+            'responsables', 
+            'plazo', 
+            'id', 
+            '_destroy'
           ]
         ]
       ) 

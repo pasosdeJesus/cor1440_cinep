@@ -19,18 +19,24 @@
     <td>
       <%= f.input :dmed1, 
         label: false %>
+      <%= f.input :urlev1, 
+        label: false, as: :hidden %>
     </td>
   <% end %>
   <% if @descd2 != '' %> 
     <td>
       <%= f.input :dmed2,
         label: false %>
+      <%= f.input :urlev2, 
+        label: false, as: :hidden %>
     </td>
   <% end %>
   <% if @descd3 != '' %> 
     <td>
-      <%= f.input :dmed2,
+      <%= f.input :dmed3,
         label: false %>
+      <%= f.input :urlev3, 
+        label: false, as: :hidden %>
     </td>
   <% end %>
   <td>
