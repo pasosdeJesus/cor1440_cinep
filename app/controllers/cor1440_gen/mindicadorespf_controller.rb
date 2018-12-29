@@ -97,67 +97,103 @@ module Cor1440Gen
             
           when 'IG-SC-01'
             # Porcentaje de informes enviados a tiempo a financiadores
-            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
-               proyectofinanciero_id IN (SELECT id 
+            base = ::Informenarrativo.where(
+              'proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL) AND
-               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
-               AND fechareal<=(fechaplaneada+7) "
-            d1 = ActiveRecord::Base.connection.execute(base).first['count']
-            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
-               proyectofinanciero_id IN (SELECT id 
-                FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL) AND
-               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
-               AND fechareal<=(fechaplaneada+7) "
-            d1 += ActiveRecord::Base.connection.execute(base).first['count']
+                WHERE respgp_id IS NOT NULL)').
+                where('fechaplaneada>=?', fini).
+                where('fechaplaneada<=?', ffin).
+                where('fechareal<=(fechaplaneada + 7)')
+            d1 = base.count
+            idp1 = base.pluck(:proyectofinanciero_id)
 
-            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
-               proyectofinanciero_id IN (SELECT id 
+            base2 = ::Informefinanciero.where(
+              'proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL) AND
-               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
-            d2 = ActiveRecord::Base.connection.execute(base).first['count']
-            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
-               proyectofinanciero_id IN (SELECT id 
+                WHERE respgp_id IS NOT NULL)').
+                where('fechaplaneada >= ?', fini).
+                where('fechaplaneada <= ?', ffin).
+                where('fechareal <= (fechaplaneada + 7)')
+            d1 += base2.count
+            idp1.union(base2.pluck(:proyectofinanciero_id))
+            urlev1 = cor1440_gen.proyectosfinancieros_url + 
+              '?filtro[busid]='+idp1.uniq.join(',')
+
+            base3 = ::Informenarrativo.where(
+              'proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL) AND
-               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
-            d2 += ActiveRecord::Base.connection.execute(base).first['count']
+                WHERE respgp_id IS NOT NULL)').
+                where('fechaplaneada>=?', fini).
+                where('fechaplaneada<=?', ffin)
+            d2 = base3.count
+            idp2 = base3.pluck(:proyectofinanciero_id)
+
+            base4 = ::Informefinanciero.where(
+              'proyectofinanciero_id IN (SELECT id 
+                FROM cor1440_gen_proyectofinanciero 
+                WHERE respgp_id IS NOT NULL)').
+                where('fechaplaneada >= ?', fini).
+                where('fechaplaneada <= ?', ffin)
+ 
+            d2 += base4.count
+            idp2.union(base4.pluck(:proyectofinanciero_id))
+            urlev2 = cor1440_gen.proyectosfinancieros_url + 
+              '?filtro[busid]='+idp2.uniq.join(',')
+
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
           when 'IG-SC-02'
-            # Porcentaje de informes narrativos enviados a tiempo a financiadores
-            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
-               proyectofinanciero_id IN (SELECT id 
+            # Porcentaje de informes narrativos sin devoluciones
+            base1 = ::Informenarrativo.where(
+              'proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL) AND
-               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
-               AND devoluciones!='t'"
-            d1 = ActiveRecord::Base.connection.execute(base).first['count']
-            base = "SELECT COUNT(*) FROM informenarrativo WHERE 
-               proyectofinanciero_id IN (SELECT id 
+                WHERE respgp_id IS NOT NULL)').
+                where('fechareal >= ?', fini).
+                where('fechareal <= ?', ffin).
+                where("devoluciones != 't'")
+            d1 = base1.count
+            urlev1 = cor1440_gen.proyectosfinancieros_url + 
+              '?filtro[busid]=' + 
+              base1.pluck(:proyectofinanciero_id).uniq.join(',')
+
+            base2 = ::Informenarrativo.where(
+              'proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL) AND
-               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
-            d2 = ActiveRecord::Base.connection.execute(base).first['count']
+                WHERE respgp_id IS NOT NULL)').
+                where('fechareal >= ?', fini).
+                where('fechareal <= ?', ffin)
+            d2 = base2.count
+            urlev2 = cor1440_gen.proyectosfinancieros_url + 
+              '?filtro[busid]=' + 
+              base2.pluck(:proyectofinanciero_id).uniq.join(',')
+
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
           when 'IG-SC-03'
-            # Porcentaje de informes financieros enviados a tiempo a financiadores
-            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
-               proyectofinanciero_id IN (SELECT id 
+            # Porcentaje de informes financieros sin devoluciones
+            base1 = ::Informefinanciero.where(
+              'proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL) AND
-               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'
-               AND devoluciones!='t'"
-            d1 = ActiveRecord::Base.connection.execute(base).first['count']
-            base = "SELECT COUNT(*) FROM informefinanciero WHERE 
-               proyectofinanciero_id IN (SELECT id 
+                WHERE respgp_id IS NOT NULL)').
+                where('fechareal >= ?', fini).
+                where('fechareal <= ?', ffin).
+                where("devoluciones != 't'")
+            d1 = base1.count
+            urlev1 = cor1440_gen.proyectosfinancieros_url + 
+              '?filtro[busid]=' + 
+              base1.pluck(:proyectofinanciero_id).uniq.join(',')
+
+            base2 = ::Informefinanciero.where(
+              'proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL) AND
-               fechaplaneada>='#{fini}' AND fechaplaneada<='#{ffin}'"
-            d2 = ActiveRecord::Base.connection.execute(base).first['count']
+                WHERE respgp_id IS NOT NULL)').
+                where('fechareal >= ?', fini).
+                where('fechareal <= ?', ffin)
+            d2 = base2.count
+            urlev2 = cor1440_gen.proyectosfinancieros_url + 
+              '?filtro[busid]=' + 
+              base2.pluck(:proyectofinanciero_id).uniq.join(',')
+
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
           # Plan Trienal 2018-2020
