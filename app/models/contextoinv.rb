@@ -1,8 +1,8 @@
 # encoding: UTF-8
 
 class Contextoinv < ActiveRecord::Base
-	include Sip::Modelo
-	include Sip::Localizacion
+  include Sip::Modelo
+  include Sip::Localizacion
 
   # Un contexto es una descripción asociada a.
   # - una región

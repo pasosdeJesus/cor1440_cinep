@@ -6,23 +6,23 @@ class Regiongrupo < ActiveRecord::Base
   belongs_to :grupo, class_name: 'Sip::Grupo',
     foreign_key: 'grupo_id', validate: true
 
-  has_many :regiongrupo_departamento, dependent: :delete_all,
-    class_name: '::RegiongrupoSipDepartamento',
-    foreign_key: 'regiongrupo_id'
-  has_many :departamento, through: :regiongrupo_departamento,
-    class_name: 'Sip::Departamento'
+  has_and_belongs_to_many :departamento, 
+    class_name: 'Sip::Departamento',
+    foreign_key: 'regiongrupo_id',
+    association_foreign_key: 'sip_departamento_id',
+    join_table: 'regiongrupo_sip_departamento'
 
-  has_many :regiongrupo_municipio, dependent: :delete_all,
-    class_name: '::RegiongrupoSipMunicipio',
-    foreign_key: 'regiongrupo_id'
-  has_many :municipio, through: :regiongrupo_municipio,
-    class_name: 'Sip::Municipio'
+  has_and_belongs_to_many :municipio, 
+    class_name: 'Sip::Municipio',
+    foreign_key: 'regiongrupo_id',
+    association_foreign_key: 'sip_municipio_id',
+    join_table: 'regiongrupo_sip_municipio'
 
-  has_many :actorsocial_regiongrupo, dependent: :delete_all,
-    class_name: '::ActorsocialRegiongrupo',
-    foreign_key: 'regiongrupo_id'
-  has_many :actorsocial, through: :actorsocial_regiongrupo,
-    class_name: 'Sip::Actorsocial'
+  has_and_belongs_to_many :actorsocial, 
+    class_name: 'Sip::Actorsocial',
+    foreign_key: 'regiongrupo_id',
+    association_foreign_key: 'actorsocial_id',
+    join_table: 'actorsocial_regiongrupo'
 
   def self.incluye_municipio(grupo_id, departamento_id, municipio_id)
     ::Regiongrupo.where(grupo_id: grupo_id).where(

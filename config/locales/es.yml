@@ -108,6 +108,7 @@ es:
         publicacion: 'Producto CINEP/PPP'
         regionsjr: Dependencia
         sexo_onr: 'Otro/NR'
+        usuario: 'Corresponsables'
         vistobuenocoord: 'Aprobado Coordinador'
         vistobuenodir: 'Aprobado Direccion'
       "cor1440_gen/actividadarea":

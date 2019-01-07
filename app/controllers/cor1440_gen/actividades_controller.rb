@@ -202,6 +202,8 @@ module Cor1440Gen
       [ :id, 
         :fecha, 
         :creadopor, 
+        :responsable,
+        :usuario,
         :nombre, 
         :duracion_localizado, 
         :mduracion,

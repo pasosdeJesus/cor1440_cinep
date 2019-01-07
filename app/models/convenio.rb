@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 class Convenio < ActiveRecord::Base
-	include Sip::Modelo
+  include Sip::Modelo
   include Sip::Localizacion
   include ::ApplicationHelper
 

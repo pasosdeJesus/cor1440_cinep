@@ -268,11 +268,12 @@ class Usuario < ActiveRecord::Base
   validates :numhijos, :numericality => { :greater_than_or_equal_to => 0 }
   validates :numhijosmen12, :numericality => { :greater_than_or_equal_to => 0 }
 
-  has_many :actividad_usuario, dependent: :delete_all,
-    class_name: 'Cor1440Gen::ActividadUsuario',
-    foreign_key: 'usuario_id'
-  has_many :actividad, through: :actividad_usuario,
-    class_name: 'Cor1440Gen::Actividad'
+
+  has_and_belongs_to_many :actividad, 
+    class_name: 'Cor1440Gen::Actividad',
+    foreign_key: 'usuario_id',
+    association_foreign_key: 'actividad_id',
+    join_table: 'actividad_usuario'
 
   has_many :anexo_usuario, dependent: :delete_all,
     class_name: '::AnexoUsuario',
