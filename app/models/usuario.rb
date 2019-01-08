@@ -273,7 +273,7 @@ class Usuario < ActiveRecord::Base
     class_name: 'Cor1440Gen::Actividad',
     foreign_key: 'usuario_id',
     association_foreign_key: 'actividad_id',
-    join_table: 'actividad_usuario'
+    join_table: 'cor1440_gen_actividad_usuario'
 
   has_many :anexo_usuario, dependent: :delete_all,
     class_name: '::AnexoUsuario',
