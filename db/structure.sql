@@ -279,6 +279,36 @@ CREATE TABLE public.actorsocial_regiongrupo (
 
 
 --
+-- Name: anexo_convenio; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.anexo_convenio (
+    id bigint NOT NULL,
+    anexo_id integer,
+    convenio_id integer
+);
+
+
+--
+-- Name: anexo_convenio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.anexo_convenio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: anexo_convenio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.anexo_convenio_id_seq OWNED BY public.anexo_convenio.id;
+
+
+--
 -- Name: anexo_efecto; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -637,7 +667,9 @@ CREATE TABLE public.convenio (
     fechainicio date,
     fechacierre date,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    responsable_id integer,
+    observaciones character varying(5000)
 );
 
 
@@ -4670,6 +4702,13 @@ CREATE SEQUENCE public.vinculoestado_seq
 
 
 --
+-- Name: anexo_convenio id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.anexo_convenio ALTER COLUMN id SET DEFAULT nextval('public.anexo_convenio_id_seq'::regclass);
+
+
+--
 -- Name: anexo_efecto id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5325,6 +5364,14 @@ ALTER TABLE ONLY public.tipoproductopf ALTER COLUMN id SET DEFAULT nextval('publ
 --
 
 ALTER TABLE ONLY public.vinculacion ALTER COLUMN id SET DEFAULT nextval('public.vinculacion_id_seq'::regclass);
+
+
+--
+-- Name: anexo_convenio anexo_convenio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.anexo_convenio
+    ADD CONSTRAINT anexo_convenio_pkey PRIMARY KEY (id);
 
 
 --
@@ -6553,6 +6600,14 @@ ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona
 
 
 --
+-- Name: convenio fk_rails_1229b62348; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.convenio
+    ADD CONSTRAINT fk_rails_1229b62348 FOREIGN KEY (responsable_id) REFERENCES public.usuario(id);
+
+
+--
 -- Name: mr519_gen_encuestausuario fk_rails_1b24d10e82; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6862,6 +6917,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_sip_anexo
 
 ALTER TABLE ONLY public.cor1440_gen_indicadorpf
     ADD CONSTRAINT fk_rails_4a0bd96143 FOREIGN KEY (objetivopf_id) REFERENCES public.cor1440_gen_objetivopf(id);
+
+
+--
+-- Name: anexo_convenio fk_rails_4b4b8b698d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.anexo_convenio
+    ADD CONSTRAINT fk_rails_4b4b8b698d FOREIGN KEY (convenio_id) REFERENCES public.convenio(id);
 
 
 --
@@ -7553,6 +7616,14 @@ ALTER TABLE ONLY public.cor1440_gen_informe
 
 
 --
+-- Name: anexo_convenio fk_rails_de42ac915e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.anexo_convenio
+    ADD CONSTRAINT fk_rails_de42ac915e FOREIGN KEY (anexo_id) REFERENCES public.sip_anexo(id);
+
+
+--
 -- Name: desembolso fk_rails_df556dc8d1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8234,6 +8305,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190109125417'),
 ('20190110191802'),
 ('20190111092816'),
-('20190111102201');
+('20190111102201'),
+('20190115125923'),
+('20190115130408');
 
 
