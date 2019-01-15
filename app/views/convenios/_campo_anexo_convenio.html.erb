@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Anexos</div>
+  <div class="panel-body">
+    <div class="anexos-div anexosdiv">
+      <%= f.simple_fields_for :anexo_convenio do |a| %>
+        <%= render 'sip/anexos/anexo_campos_condiv', :f => a %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'Añadir Anexo', f, 
+          :anexo_convenio, 
+          class: 'btn-primary',
+          partial: 'sip/anexos/anexo_campos_condiv' %>
+      </div>
+    </div> <!-- anexos-div -->
+  </div> <!-- panel-body -->
+</div> <!-- panel -->
