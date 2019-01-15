@@ -1733,7 +1733,8 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     domiciliofinanciador character varying(511),
     webfinanciador character varying(511),
     skypefinanciador character varying(127),
-    sectorapc_id integer
+    sectorapc_id integer,
+    idtributariaextfinanciador character varying(511)
 );
 
 
@@ -8307,6 +8308,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190111092816'),
 ('20190111102201'),
 ('20190115125923'),
-('20190115130408');
+('20190115130408'),
+('20190115143706');
 
 
