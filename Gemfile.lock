@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 23a7010ddcb3e15639964bd603800fa384cc0080
+  revision: 90f41ad468fe3f81621ab834c95f57c38079aff0
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: e89a0e430e5465b69b42e2a659843da7d0eef105
+  revision: 64b72922deff3263804d4a8caf25abf95bba3817
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -24,7 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 6ceedab25c0156209ee571d606e450b58640a28a
+  revision: 5922221a31d06b456366f79747740962e71ed8bb
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 685daaf50ec369f5bcb6015ee6beb4da5ec24ca6
+  revision: a875b6cfe237e1a7b9736930976da938f0df0bb7
   specs:
     mr519_gen (0.1.0)
       rails (~> 5.2.2, >= 5.2.2)
@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 77eac4fded17e4782b5700dfe4fa320949c44112
+  revision: 66978bd5b7d0c3f922c03452fcfa9a4e0dabff49
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 5c551073afc7b7dfe50fd36deee3d914c642c85e
+  revision: a9d5f33f185c1fa0cc1c5495b0a22d8b64e348b1
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 24e10d099b4222fdd4a351c7ea9475c2c2486204
+  revision: 596ff46bdae48d37d9c494e41dc12837f661be5b
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -65,7 +65,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9c82974ddecfd5ce9f15261c84b94d1331b00f07
+  revision: 7c4b2e5961c1f3ca7bd5a63313a67e98bca778c9
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -189,7 +189,7 @@ GEM
     devise-i18n (1.7.1)
       devise (>= 4.5)
     docile (1.3.1)
-    erd (0.6.0)
+    erd (0.6.2)
       nokogiri
       rails-erd (>= 0.4.5)
     erubi (1.8.0)
@@ -199,7 +199,7 @@ GEM
       railties (>= 3.2, < 6.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.5.2)
+    i18n (1.5.3)
       concurrent-ruby (~> 1.0)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
@@ -338,9 +338,9 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redcarpet (3.4.0)
-    responders (2.4.0)
-      actionpack (>= 4.2.0, < 5.3)
-      railties (>= 4.2.0, < 5.3)
+    responders (2.4.1)
+      actionpack (>= 4.2.0, < 6.0)
+      railties (>= 4.2.0, < 6.0)
     rspreadsheet (0.4.5)
       andand (~> 1.3)
       rubyzip (~> 1.1)
