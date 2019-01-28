@@ -11,7 +11,7 @@ module ApplicationHelper
             ['EN TRAMITE', :E], 
             ['EN EJECUCIÓN', :J], 
             ['APROBADO', :K], 
-            ['TERMINADO', :M],
+            ['CERRADO O LIQUIDADO', :M], # Antes era TERMINADO cambio solicitado 13.Nov.2018
             ['DESCARTADO', :O], 
             ['RECHAZADO', :R] 
   ] 

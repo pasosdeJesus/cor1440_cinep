@@ -23,11 +23,27 @@ class AlertaMailer < ApplicationMailer
     puts "pf.referenciacinep=#{@pf.referenciacinep}"
     @respgp = @pf.respgp
     puts "respgp=#{@respgp.id}"
-    return if !@respgp || !@respgp.email
-    puts "respgp.email=#{@respgp.email}"
-    puts "enviando con tema #{@tiene}"
-    mail(to: @respgp.email, 
-         subject: "[CRECER] Proximamente un proyecto #{@tiene}")
+    if @respgp && @respgp.email
+      puts "respgp.email=#{@respgp.email}"
+      puts "enviando con tema #{@tiene}"
+      mail(to: @respgp.email, 
+           subject: "[CRECER] Proximamente un proyecto #{@tiene}")
+    end
+    @respgp2 = @pf.respgp2
+    if @respgp2 && @respgp2.email
+      puts "respgp2.email=#{@respgp2.email}"
+      puts "enviando con tema #{@tiene}"
+      mail(to: @respgp2.email, 
+           subject: "[CRECER] Proximamente un proyecto #{@tiene}")
+    end
+    if @pf.coordinador && @pf.coordinador.count > 0
+      @pf.coordinador.each do |coord|
+        puts "coord.email=#{coord.email}"
+        puts "enviando con tema #{@tiene}"
+        mail(to: coord.email, 
+             subject: "[CRECER] Proximamente un proyecto #{@tiene}")
+      end
+    end
   end
 
 end

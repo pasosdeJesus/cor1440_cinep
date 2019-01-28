@@ -401,22 +401,25 @@ class Ability  < Cor1440Gen::Ability
 
         if lgrupos.include?(GRUPO_COMPROMISOS)
           # Oficina Gerencia de Proyectos
-          can :manage, ::Convenio
           can :manage, Cor1440Gen::Actividad
+          can :manage, Cor1440Gen::Financiador
           can :manage, Cor1440Gen::Mindicadorpf
           can [:creacomogp, :read, :index, :show, :create, :validar], 
             Cor1440Gen::Proyectofinanciero
           can [:manage, :validar], Cor1440Gen::Proyectofinanciero.where(
             'respgp_id IS NOT NULL')
 
+          can [:create, :read, :update], Sip::Actorsocial
+
           can :manage, :tablasbasicas
+          can :manage, ::Convenio
           can :manage, ::Sectorapc
           can :manage, ::Tasacambio
           can :manage, ::Tipoanexo
           can :manage, ::Tipoconvenio
           can :manage, ::Tipomoneda
           can :manage, ::Tipoproductopf
-          can :manage, Cor1440Gen::Financiador
+
         end
         if lgrupos.include?(GRUPO_GESTIONDECALIDAD)
           can :manage, Heb412Gen::Doc

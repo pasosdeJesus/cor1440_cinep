@@ -13,13 +13,35 @@ class ConveniosController < Sip::ModelosController
 
   def atributos_index
     [
-      "id", "clasificacion", "tipoconvenio_id", "institucion", 
-      "descripcion", "fechainicio_localizada", "duracion"
+      :id, 
+      :clasificacion, 
+      :tipoconvenio_id, 
+      :institucion, 
+      :descripcion, 
+      :fechainicio_localizada, 
+      :duracion,
+      :anexo_convenio
+
     ]
   end
 
+  def atributos_show
+    atributos_index - [
+      :anexo_convenio
+    ] + [ 
+      :fechacierre_localizada,
+      :responsable,
+      :observaciones,
+      :anexo_convenio
+    ]
+  end
+
+
   def atributos_form
-    atributos_index - [ "id", "duracion" ] + [ "fechacierre_localizada" ]
+    atributos_show - [ 
+      :id, 
+      :duracion,
+    ]  
   end
 
   def index_reordenar(registros)
@@ -44,7 +66,24 @@ class ConveniosController < Sip::ModelosController
 
   # No confiar parametros a Internet, sólo permitir lista blanca
   def convenio_params
-    params.require(:convenio).permit(*atributos_form)
+    lp = atributos_form  - [
+      :anexo_convenio,
+      :responsable
+    ] + [
+      :responsable_id,
+      :anexo_convenio_attributes => [
+        :id,
+        :convenio_id,
+        :_destroy,
+        :sip_anexo_attributes => [
+          :adjunto, 
+          :descripcion, 
+          :id, 
+          :_destroy
+        ]
+      ]
+    ]
+    params.require(:convenio).permit(lp)
   end
 
 end

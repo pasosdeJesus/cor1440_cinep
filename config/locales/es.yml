@@ -177,6 +177,7 @@ es:
         formatosespecificos: "Formatos específicos"
         formatossolicitudpago: "Formatos de solicitud de pago"
         "{:grupo_ids=>[]}": "Grupo(s)"
+        idtributariaextfinanciador: "Identificación tributaria en el exterior"
         informesauditorias: "Informes auditorías"
         informeauditoria: "Informes auditorías"
         informeevaluacion: "Evaluaciones"

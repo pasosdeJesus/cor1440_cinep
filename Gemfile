@@ -6,7 +6,9 @@ gem "rails", '~> 5.2.1'
 gem 'bigdecimal'
 gem "rails-i18n"
 
-#gem 'bootsnap', '>=1.1.0', require: false
+gem 'bootsnap'
+
+gem 'trix-rails', require: 'trix'
 
 # Postgresql
 gem "pg"#, '~> 0.21'
@@ -128,7 +130,7 @@ end
 
 group :test, :development, :ensayo do
   #Depurar
-  gem 'byebug'
+  #gem 'byebug'
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo

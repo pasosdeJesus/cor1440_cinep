@@ -13,8 +13,26 @@ class Convenio < ActiveRecord::Base
   belongs_to :tipoconvenio, class_name: '::Tipoconvenio',
       foreign_key: 'tipoconvenio_id'
 
+  belongs_to :responsable, class_name: '::Usuario',
+      foreign_key: 'responsable_id'
+
+  has_many :anexo_convenio, 
+    dependent: :delete_all,
+    class_name: '::AnexoConvenio',
+    foreign_key: 'convenio_id', 
+    validate: true
+  accepts_nested_attributes_for :anexo_convenio, 
+    allow_destroy: true, 
+    reject_if: :all_blank
+  has_many :sip_anexo, 
+    through: :anexo_convenio, 
+    class_name: 'Sip::Anexo'
+  accepts_nested_attributes_for :sip_anexo,  
+    reject_if: :all_blank
+
   validates :institucion, length: { maximum: 1000 }
   validates :descripcion, length: { maximum: 5000 }
+  validates :observaciones, length: { maximum: 5000 }
 
   validate :clasificacion_valida
   def clasificacion_valida

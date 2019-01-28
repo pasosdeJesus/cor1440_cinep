@@ -1024,6 +1024,7 @@ module Cor1440Gen
         #:formatossolicitudpago,
         :fuentefinanciador, 
         :gestiones,
+        :idtributariaexfinanciador,
         :informesespecificos,
         :informessolicitudpago,
         :monto_localizado,

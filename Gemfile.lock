@@ -1,18 +1,19 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 5cba680d075beebe706575c7190abe7d3f968c9c
+  revision: 4a22744f0503c25047ff2ba320e209826939190f
   specs:
     cor1440_gen (1.0b2)
       devise
       heb412_gen
       jquery-rails
+      mr519_gen
       paperclip
       rails
       sip
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: c976a06614d7d9acd3255ac05de605b26758a5cf
+  revision: 32ad007739faef5299f4a081dc5efc830e188d6b
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -23,7 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 0fb72afcdb4f3df0f1ad03e723581ad731939d9d
+  revision: dbd91bea9d9e318bb25e1a63a6702698246a8e7b
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -32,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 248fde6b6a479b8dcdafd70e9b3519010432769d
+  revision: 3b537f456ef3e1fa1bb251144cc77d5091f7eb17
   specs:
     mr519_gen (0.1.0)
       rails (~> 5.2.2, >= 5.2.2)
@@ -40,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 61cde2e71fc155035ea5f2b4399794ffb5018daa
+  revision: 663c6b6a3adbdea0a7b622b10581253f442d3e0b
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -48,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: faa3e7b0b61c5e6ccec17c86efdab41c086ffafb
+  revision: 509b3ccc3d6371d1d87c3ef92b4713d37e7948a6
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: b43e00639c6301197b841f91c41e336364f17bb0
+  revision: abc68131f1e461f59361fbc16cedc6dba000d6d6
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +65,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 40a9bf5f347a1c61a62f726f5d32eba2fd064960
+  revision: c9cf7ad02ec6bf5875a9648f7b81acdff7224f2e
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -135,18 +136,19 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.2)
+    addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     andand (1.3.3)
     ansi (1.5.0)
     arel (9.0.0)
     bcrypt (3.1.12)
-    bigdecimal (1.4.2)
+    bigdecimal (1.4.3)
     bindex (0.5.0)
+    bootsnap (1.3.2)
+      msgpack (~> 1.0)
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
-    byebug (10.0.2)
     camertron-eprun (1.1.1)
     cancancan (2.3.0)
     capybara (2.18.0)
@@ -184,20 +186,20 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.7.0)
+    devise-i18n (1.7.1)
       devise (>= 4.5)
     docile (1.3.1)
-    erd (0.5.0)
+    erd (0.6.3)
       nokogiri
       rails-erd (>= 0.4.5)
     erubi (1.8.0)
     execjs (2.7.0)
-    ffi (1.9.25)
+    ffi (1.10.0)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
-    globalid (0.4.1)
+    globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.4.0)
+    i18n (1.5.3)
       concurrent-ruby (~> 1.0)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
@@ -249,15 +251,16 @@ GEM
       minitest-capybara (~> 0.8)
       minitest-metadata (~> 0.6)
       minitest-rails (~> 3.0)
-    minitest-reporters (1.3.5)
+    minitest-reporters (1.3.6)
       ansi
       builder
       minitest (>= 5.0)
       ruby-progressbar
+    msgpack (1.2.6)
     multi_json (1.13.1)
     net-ldap (0.16.1)
     nio4r (2.3.1)
-    nokogiri (1.10.0)
+    nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
     odf-report (0.5.2)
       nokogiri (>= 1.5.0)
@@ -270,7 +273,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pdf-core (0.7.0)
-    pg (1.1.3)
+    pg (1.1.4)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -335,9 +338,9 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redcarpet (3.4.0)
-    responders (2.4.0)
-      actionpack (>= 4.2.0, < 5.3)
-      railties (>= 4.2.0, < 5.3)
+    responders (2.4.1)
+      actionpack (>= 4.2.0, < 6.0)
+      railties (>= 4.2.0, < 6.0)
     rspreadsheet (0.4.5)
       andand (~> 1.3)
       rubyzip (~> 1.1)
@@ -380,6 +383,8 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
+    trix-rails (2.0.0)
+      rails (> 4.1, < 6.0)
     ttfunk (1.5.1)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
@@ -420,8 +425,8 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bigdecimal
+  bootsnap
   bootstrap-datepicker-rails
-  byebug
   cancancan
   chosen-rails
   cocoon!
@@ -466,6 +471,7 @@ DEPENDENCIES
   simplecov
   sip!
   spring
+  trix-rails
   turbolinks
   twitter-bootstrap-rails
   twitter_cldr
@@ -476,4 +482,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.17.3
+   2.0.1

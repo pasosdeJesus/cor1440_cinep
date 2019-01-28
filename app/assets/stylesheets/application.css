@@ -12,6 +12,7 @@
  *
  *= require_self
  *= require chosen
+ *= require trix
  *= require cor1440_gen/application.css
  *= require_tree .
  */
