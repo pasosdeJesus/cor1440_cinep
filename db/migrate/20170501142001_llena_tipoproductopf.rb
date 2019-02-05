@@ -1,4 +1,4 @@
-class LlenaTipoproductopf < ActiveRecord::Migration
+class LlenaTipoproductopf < ActiveRecord::Migration[5.0]
   def up
     execute <<-SQL
       INSERT INTO tipoproductopf 
