@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: f5db8dcfa388456b00229b21dd1c36d9b2847fff
+  revision: 1226c0c4ebd23f744ad07abc61f73be6d662bb7a
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 3740d0c1983c09f6e64cf9ba611f57f6fdb47afc
+  revision: 7263e7e1379afd4846f857614a6020d5f4b26bfa
   specs:
     mr519_gen (0.1.0)
       rails (~> 5.2.2, >= 5.2.2)
@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: aaf27e0f728c3f1c03b0c98037c0a57ef9bb49d9
+  revision: c957e29a5394a30e8463e87e09ac10f1161e4213
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: b611693c9f6720c8c50a3e4a6ee0d4f95d6d6aef
+  revision: c52598889505a6dbd951908191194ebae8712a56
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -180,7 +180,7 @@ GEM
     concurrent-ruby (1.1.4)
     connection_pool (2.2.2)
     crass (1.0.4)
-    devise (4.5.0)
+    devise (4.6.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
