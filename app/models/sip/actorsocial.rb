@@ -1,10 +1,10 @@
 # encoding: UTF-8
 
-require 'sip/concerns/models/actorsocial'
+require 'cor1440_gen/concerns/models/actorsocial'
 
 module Sip
   class Actorsocial < ActiveRecord::Base
-    include Sip::Concerns::Models::Actorsocial
+    include Cor1440Gen::Concerns::Models::Actorsocial
 
     belongs_to :nivelrelacion, class_name: "::Nivelrelacion",
       foreign_key: "nivelrelacion_id", validate: true
@@ -31,11 +31,6 @@ module Sip
     has_many :regiongrupo, class_name: '::Regiongrupo',
       through: :actorsocial_regiongrupo
 
-    has_many :actividad_actorsocial, dependent: :delete_all#,
-      #class_name: '::ActividadActorsocial', foreign_key: 'actorsocial_id'
-    has_many :actividad, through: :actividad_actorsocial,
-      class_name: 'Cor1440Gen::Actividad'
-
     campofecha_localizado :fechadeshabilitacion
 
     validates :personacontacto, length: { maximum: 100 }
@@ -46,7 +41,6 @@ module Sip
     validates :celular, length: { maximum: 100 }
     validates :direccion, length: { maximum: 200 }
     validates :ciudad, length: { maximum: 200 }
-
 
     scope :habilitados, -> () {
       where(fechadeshabilitacion: nil)

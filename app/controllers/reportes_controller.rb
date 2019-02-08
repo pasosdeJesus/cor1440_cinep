@@ -65,7 +65,7 @@ class ReportesController < ::ApplicationController
       LEFT JOIN nucleoconflicto
         ON cor1440_gen_actividad.nucleoconflicto_id=nucleoconflicto.id
     WHERE cor1440_gen_actividad.id 
-      IN (SELECT actividad_id FROM actividad_actorsocial)
+      IN (SELECT actividad_id FROM cor1440_gen_actividad_actorsocial)
     "
     where = " AND #{wac}"
     if (@fechaini != '') 
@@ -132,10 +132,10 @@ class ReportesController < ::ApplicationController
       '; ') as otrosnucleos
     FROM sip_actorsocial 
       JOIN sip_grupoper ON sip_grupoper.id=sip_actorsocial.grupoper_id
-      JOIN actividad_actorsocial 
-      ON sip_actorsocial.id=actividad_actorsocial.actorsocial_id
+      JOIN cor1440_gen_actividad_actorsocial 
+      ON sip_actorsocial.id=cor1440_gen_actividad_actorsocial.actorsocial_id
       JOIN cor1440_gen_actividad 
-        ON actividad_actorsocial.actividad_id=cor1440_gen_actividad.id
+        ON cor1440_gen_actividad_actorsocial.actividad_id=cor1440_gen_actividad.id
       LEFT JOIN usuario ON cor1440_gen_actividad.usuario_id = usuario.id
       LEFT JOIN sip_municipio 
         ON sip_municipio.id=cor1440_gen_actividad.municipio_id
