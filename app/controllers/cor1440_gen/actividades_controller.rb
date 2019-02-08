@@ -48,7 +48,7 @@ module Cor1440Gen
       end
       @miscompromisos = Cor1440Gen::GruposHelper.
         compromisos_grupos(Cor1440Gen::Proyectofinanciero.all,
-                           @misgrupos)
+                           @misgrupos, current_usuario)
       @pfid = params[:filtro] && params[:filtro][:proyectofinanciero_id] ? 
         params[:filtro][:proyectofinanciero_id].to_i : 18  
       @baseactividad = Cor1440Gen::Actividad.all
@@ -181,11 +181,14 @@ module Cor1440Gen
     def index_reordenar(c)
       mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).
         map(&:id).join(', ')
-      if mg == ''
-        c = c.where('TRUE=FALSE')
-      else
-        c = c.where("cor1440_gen_actividad.id in 
-        (SELECT actividad_id FROM actividad_grupo WHERE grupo_id IN (#{mg}))")
+      if current_usuario.rol != ::Ability::ROLDIR &&
+        current_usuario.rol != ::Ability::ROLADMIN
+        if mg == '' &&
+          c = c.where('TRUE=FALSE')
+        else
+          c = c.where("cor1440_gen_actividad.id in 
+          (SELECT actividad_id FROM actividad_grupo WHERE grupo_id IN (#{mg}))")
+        end
       end
       c = c.reorder('cor1440_gen_actividad.fecha DESC') 
 

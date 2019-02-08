@@ -18,11 +18,6 @@ module Cor1440Gen
     belongs_to :creadopor, class_name: '::Usuario',
       foreign_key: 'creadopor_id'
 
-    has_many :actividad_actorsocial, dependent: :delete_all,
-      class_name: '::ActividadActorsocial', foreign_key: 'actividad_id'
-    has_many :actorsocial, through: :actividad_actorsocial,
-      class_name: 'Sip::Actorsocial'
-
     has_many :actividad_grupo, dependent: :delete_all,
       class_name: '::ActividadGrupo', foreign_key: 'actividad_id'
     has_many :grupo, through: :actividad_grupo,
@@ -170,7 +165,7 @@ module Cor1440Gen
       when 'proyectofinanciero'
         self.proyectofinanciero.inject("") { |memo, i|
           (memo == "" ? "" : memo + "; ") +
-            i.referenciacinep
+            (i.referenciacinep ? i.referenciacinep : '')
         }
       when 'publicacion'
         self.publicacion.inject("") { |memo, i| 
@@ -190,7 +185,7 @@ module Cor1440Gen
     }
 
     scope :filtro_actorsocial, lambda { |aid|
-      where("id IN (SELECT actividad_id FROM actividad_actorsocial
+      where("id IN (SELECT actividad_id FROM cor1440_gen_actividad_actorsocial
         WHERE actorsocial_id = ?)", aid)
     }
 

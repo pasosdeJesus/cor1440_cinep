@@ -6,9 +6,12 @@ module Cor1440Gen
     # De una base de compromisos, filtra los de unos grupos
     # @param pf Base de compromisos
     # @param grupos grupos para filtrar
-    def self.compromisos_grupos(pf, grupos)
+    def self.compromisos_grupos(pf, grupos, usuario = nil)
       if grupos.count == 0
-        pf = pf.where('TRUE=FALSE')
+        if !usuario || (usuario.rol != Ability::ROLADMIN &&
+           usuario.rol != Ability::ROLDIR)
+          pf = pf.where('TRUE=FALSE')
+        end
       else
         pf = pf.where(
           "id IN (SELECT proyectofinanciero_id " +

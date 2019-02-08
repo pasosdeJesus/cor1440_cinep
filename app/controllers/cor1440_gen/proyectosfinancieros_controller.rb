@@ -733,7 +733,8 @@ module Cor1440Gen
     
       mg1 = ::Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
       mgi = mg1.map(&:id).join(', ')
-      if mgi == ''
+      if mgi == '' && current_usuario.rol != ::Ability::ROLDIR &&
+        current_usuario.rol != ::Ability::ROLADMIN
         registros = registros.where('TRUE=FALSE')
       elsif mg1.where(nombre: ::Ability::GRUPO_COMPROMISOS).count == 0 &&
         current_usuario.rol != ::Ability::ROLDIR &&

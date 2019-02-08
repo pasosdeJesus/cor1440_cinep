@@ -84,9 +84,10 @@
           <%= eonr %>
         </td>
         <td>
-          <%= consb.joins(:actividad_actorsocial).joins(
-            'JOIN sip_actorsocial_sectoractor ON
-              actividad_actorsocial.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
+          <%= consb.joins('JOIN cor1440_gen_actividad_actorsocial ON
+              cor1440_gen_actividad.id=cor1440_gen_actividad_actorsocial.actividad_id').
+              joins('JOIN sip_actorsocial_sectoractor ON
+              cor1440_gen_actividad_actorsocial.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
               joins('JOIN sip_sectoractor 
                     ON sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id').
               select('sip_sectoractor.nombre').
@@ -141,9 +142,10 @@
            <%= eonr %>
          </td>
          <td>
-           <%= consb.joins(:actividad_actorsocial).joins(
-             'JOIN sip_actorsocial_sectoractor ON
-              actividad_actorsocial.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
+           <%= consb.joins('JOIN cor1440_gen_actividad_actorsocial ON
+              cor1440_gen_actividad.id=cor1440_gen_actividad_actorsocial.actividad_id').
+              joins('JOIN sip_actorsocial_sectoractor ON
+              cor1440_gen_actividad_actorsocial.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
               joins('JOIN sip_sectoractor 
                     ON sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id').
               select('sip_sectoractor.nombre').
@@ -206,9 +208,11 @@
         <%= eonr %>
       </td>
       <td>
-        <%= consb.joins(:actividad_actorsocial).joins('JOIN sip_actorsocial_sectoractor ON
-              actividad_actorsocial.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
-              joins('JOIN sip_sectoractor 
+        <%= consb.joins('JOIN cor1440_gen_actividad_actorsocial ON
+            cor1440_gen_actividad.id=cor1440_gen_actividad_actorsocial.actividad_id').
+            joins('JOIN sip_actorsocial_sectoractor ON
+            cor1440_gen_actividad_actorsocial.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
+            joins('JOIN sip_sectoractor 
                     ON sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id').
                     select('sip_sectoractor.nombre').
                     distinct.map(&:nombre).join('; ') %>

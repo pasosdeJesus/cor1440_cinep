@@ -680,6 +680,7 @@ CREATE TABLE public.contextoinv (
 --
 
 CREATE SEQUENCE public.contextoinv_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -786,6 +787,7 @@ CREATE TABLE public.coordinador_proyectofinanciero (
 --
 
 CREATE SEQUENCE public.coordinador_proyectofinanciero_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -868,8 +870,8 @@ CREATE TABLE public.cor1440_gen_actividad (
 --
 
 CREATE TABLE public.cor1440_gen_actividad_actividadpf (
-    actividad_id bigint NOT NULL,
-    actividadpf_id bigint NOT NULL
+    actividad_id integer NOT NULL,
+    actividadpf_id integer NOT NULL
 );
 
 
@@ -1147,6 +1149,7 @@ CREATE TABLE public.cor1440_gen_actividadpf (
 --
 
 CREATE SEQUENCE public.cor1440_gen_actividadpf_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1793,7 +1796,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     observacionestramite character varying(5000),
     observacionesejecucion character varying(5000),
     observacionescierre character varying(5000),
-    fechaformulacion date DEFAULT ('now'::text)::date NOT NULL,
+    fechaformulacion date DEFAULT CURRENT_DATE NOT NULL,
     montopesos numeric DEFAULT 0.0,
     tasa double precision,
     tasaej double precision,
@@ -2318,6 +2321,7 @@ CREATE TABLE public.heb412_gen_campohc (
 --
 
 CREATE SEQUENCE public.heb412_gen_campohc_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2349,6 +2353,7 @@ CREATE TABLE public.heb412_gen_campoplantillahcm (
 --
 
 CREATE SEQUENCE public.heb412_gen_campoplantillahcm_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2411,7 +2416,7 @@ CREATE TABLE public.heb412_gen_doc (
     updated_at timestamp without time zone NOT NULL,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
-    adjunto_file_size integer,
+    adjunto_file_size bigint,
     adjunto_updated_at timestamp without time zone,
     nombremenu character varying(127),
     vista character varying(255),
@@ -2428,6 +2433,7 @@ CREATE TABLE public.heb412_gen_doc (
 --
 
 CREATE SEQUENCE public.heb412_gen_doc_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2495,6 +2501,7 @@ CREATE TABLE public.heb412_gen_plantillahcm (
 --
 
 CREATE SEQUENCE public.heb412_gen_plantillahcm_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3135,6 +3142,7 @@ CREATE TABLE public.productopf (
 --
 
 CREATE SEQUENCE public.productopf_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3215,6 +3223,7 @@ CREATE TABLE public.proyectofinanciero_uresponsable (
 --
 
 CREATE SEQUENCE public.proyectofinanciero_uresponsable_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3390,6 +3399,7 @@ CREATE TABLE public.regiongrupo (
 --
 
 CREATE SEQUENCE public.regiongrupo_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3441,7 +3451,7 @@ CREATE TABLE public.sal7711_gen_articulo (
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
-    adjunto_file_size integer,
+    adjunto_file_size bigint,
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
@@ -3456,8 +3466,8 @@ CREATE TABLE public.sal7711_gen_articulo (
 --
 
 CREATE TABLE public.sal7711_gen_articulo_categoriaprensa (
-    articulo_id bigint NOT NULL,
-    categoriaprensa_id bigint NOT NULL
+    articulo_id integer NOT NULL,
+    categoriaprensa_id integer NOT NULL
 );
 
 
@@ -3466,6 +3476,7 @@ CREATE TABLE public.sal7711_gen_articulo_categoriaprensa (
 --
 
 CREATE SEQUENCE public.sal7711_gen_articulo_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3501,6 +3512,7 @@ CREATE TABLE public.sal7711_gen_bitacora (
 --
 
 CREATE SEQUENCE public.sal7711_gen_bitacora_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3536,6 +3548,7 @@ CREATE TABLE public.sal7711_gen_categoriaprensa (
 --
 
 CREATE SEQUENCE public.sal7711_gen_categoriaprensa_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3913,6 +3926,7 @@ CREATE TABLE public.sip_grupo (
 --
 
 CREATE SEQUENCE public.sip_grupo_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4599,6 +4613,7 @@ CREATE TABLE public.tipoproductopf (
 --
 
 CREATE SEQUENCE public.tipoproductopf_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4678,83 +4693,6 @@ CREATE TABLE public.usuario (
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
-
-
---
--- Name: v_solicitud_informes1; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.v_solicitud_informes1 AS
- SELECT informenarrativo.proyectofinanciero_id,
-    informenarrativo.fechaplaneada,
-    informenarrativo.fechareal,
-    informenarrativo.devoluciones,
-    ('INFORME NARRATIVO: '::text || (informenarrativo.detalle)::text) AS observaciones,
-    informenarrativo.seguimiento
-   FROM public.informenarrativo
-UNION
- SELECT informefinanciero.proyectofinanciero_id,
-    informefinanciero.fechaplaneada,
-    informefinanciero.fechareal,
-    informefinanciero.devoluciones,
-    ('INFORME FINANCIERO: '::text || (informefinanciero.detalle)::text) AS observaciones,
-    informefinanciero.seguimiento
-   FROM public.informefinanciero
-UNION
- SELECT informeauditoria.proyectofinanciero_id,
-    informeauditoria.fechaplaneada,
-    informeauditoria.fechareal,
-    informeauditoria.devoluciones,
-    ('INFORME DE AUDITORÍA: '::text || (informeauditoria.detalle)::text) AS observaciones,
-    informeauditoria.seguimiento
-   FROM public.informeauditoria
-UNION
- SELECT productopf.proyectofinanciero_id,
-    productopf.fechaplaneada,
-    productopf.fechareal,
-    productopf.devoluciones,
-    (((tipoproductopf.nombre)::text || ': '::text) || (productopf.detalle)::text) AS observaciones,
-    productopf.seguimiento
-   FROM (public.productopf
-     JOIN public.tipoproductopf ON ((productopf.tipoproductopf_id = tipoproductopf.id)));
-
-
---
--- Name: v_solicitud_informes; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.v_solicitud_informes AS
- SELECT p.id AS compromiso_id,
-    p.referenciacinep AS titulo,
-    array_to_string(ARRAY( SELECT (((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text)
-           FROM ((public.sip_persona
-             JOIN public.usuario ON ((sip_persona.id = usuario.persona_id)))
-             JOIN public.coordinador_proyectofinanciero ON ((usuario.id = coordinador_proyectofinanciero.coordinador_id)))
-          WHERE (coordinador_proyectofinanciero.proyectofinanciero_id = p.id)), ', '::text) AS coordinador,
-    array_to_string(ARRAY( SELECT (((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text)
-           FROM ((public.sip_persona
-             JOIN public.usuario ON ((sip_persona.id = usuario.persona_id)))
-             JOIN public.proyectofinanciero_uresponsable ON ((usuario.id = proyectofinanciero_uresponsable.uresponsable_id)))
-          WHERE (proyectofinanciero_uresponsable.proyectofinanciero_id = p.id)), ', '::text) AS responsable,
-    s.fechaplaneada,
-    s.fechareal,
-        CASE
-            WHEN s.devoluciones THEN 'SI'::text
-            WHEN (s.devoluciones IS NULL) THEN ''::text
-            ELSE 'NO'::text
-        END AS devoluciones,
-    s.observaciones,
-    s.seguimiento,
-        CASE
-            WHEN (s.fechareal <= (s.fechaplaneada + 7)) THEN 'SI'::text
-            WHEN (s.fechareal > (s.fechaplaneada + 7)) THEN 'NO'::text
-            WHEN ((s.fechareal IS NULL) AND (CURRENT_DATE > (s.fechaplaneada + 7))) THEN 'NO'::text
-            ELSE ''::text
-        END AS a_tiempo
-   FROM (public.cor1440_gen_proyectofinanciero p
-     JOIN public.v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[125, 134, 213, 19, 242, 229, 235, 236, 237, 248, 20, 241, 101, 273, 274, 276, 249, 426, 251, 482, 483, 476, 265, 376, 452, 458, 520, 459, 564, 234, 597, 616, 129, 130, 150, 116, 123, 122, 126, 103, 111, 102, 128, 171, 172, 109, 378, 255, 484, 258, 346, 174, 182, 132, 119, 118, 136, 145, 141, 104, 106, 152, 153, 154, 155, 156, 140, 158, 157, 159, 160, 163, 161, 162, 164, 165, 166, 168, 487, 135, 139, 18, 278, 430, 432, 433, 434, 115, 120, 170, 146, 147, 180, 187, 190, 191, 216, 193, 217, 195, 196, 218, 219, 200, 220, 203, 221, 205, 206, 207, 208, 209, 210, 211, 212, 384, 287, 138, 288, 289, 420, 358, 360, 363, 364, 365, 302, 263, 303, 489, 491, 496, 133, 524, 169, 525, 578, 422, 423, 548, 527, 549, 550, 551, 555, 529, 510, 598, 149, 522, 601, 532, 602, 603, 606, 493, 516, 537, 131, 369, 370, 560, 518, 519, 117, 563, 413, 488, 151, 188, 189, 574, 610, 611, 612]))
-  ORDER BY s.fechaplaneada;
 
 
 --

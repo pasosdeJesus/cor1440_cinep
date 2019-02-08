@@ -1,6 +1,6 @@
 <% col = Sip::Actorsocial.joins(:grupoper).where(
   'sip_actorsocial.id IN (SELECT DISTINCT actorsocial_id ' + 
-  '  FROM actividad_actorsocial)') %>
+  '  FROM cor1440_gen_actividad_actorsocial)') %>
 <%= f.input :busactorsocial,
   collection: col.order('sip_grupoper.nombre'),
   include_blank: true,
