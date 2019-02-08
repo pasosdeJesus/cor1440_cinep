@@ -18,7 +18,6 @@ gem 'puma'
 # CSS
 gem 'sass'
 
-gem 'erd'
 
 # Color en terminal
 gem 'colorize'
@@ -125,6 +124,8 @@ gem 'sal7711_ld', git: "https://github.com/pasosdeJesus/sal7711_ld.git"
 group :development do
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas
   gem 'web-console'
+
+  gem 'erd'
 
 end
 
