@@ -156,10 +156,10 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: actividad_actor; Type: TABLE; Schema: public; Owner: -
+-- Name: actividad_actor_porborrar; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.actividad_actor (
+CREATE TABLE public.actividad_actor_porborrar (
     actividad_id integer NOT NULL,
     actor_id integer NOT NULL
 );
@@ -2835,7 +2835,7 @@ ALTER SEQUENCE public.mr519_gen_formulario_id_seq OWNED BY public.mr519_gen_form
 
 CREATE TABLE public.mr519_gen_respuestafor (
     id bigint NOT NULL,
-    formulario_id integer NOT NULL,
+    formulario_id integer,
     fechaini date NOT NULL,
     fechacambio date NOT NULL
 );
@@ -7157,10 +7157,10 @@ ALTER TABLE ONLY public.actividad_nucleoconflicto
 
 
 --
--- Name: actividad_actor fk_rails_56bdc49b83; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: actividad_actor_porborrar fk_rails_56bdc49b83; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.actividad_actor
+ALTER TABLE ONLY public.actividad_actor_porborrar
     ADD CONSTRAINT fk_rails_56bdc49b83 FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
 
 
@@ -7349,10 +7349,10 @@ ALTER TABLE ONLY public.sal7711_gen_articulo_categoriaprensa
 
 
 --
--- Name: actividad_actor fk_rails_7ebb208867; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: actividad_actor_porborrar fk_rails_7ebb208867; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.actividad_actor
+ALTER TABLE ONLY public.actividad_actor_porborrar
     ADD CONSTRAINT fk_rails_7ebb208867 FOREIGN KEY (actor_id) REFERENCES public.actor(id);
 
 
@@ -8552,6 +8552,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190111102201'),
 ('20190115125923'),
 ('20190115130408'),
-('20190115143706');
+('20190115143706'),
+('20190205203619'),
+('20190206005635'),
+('20190208102022'),
+('20190208103518');
 
 
