@@ -242,33 +242,47 @@ class ReportesController < ::ApplicationController
       tipos = f[1].inject("") { |memo, i| 
         (memo == "" ? "" : memo + ", ") + "'" + i.to_i.to_s + "'"
       }
-      tac = Cor1440Gen::Actividad.all.joins(
-        :actividad_actividadtipo).where(
+      tac = Cor1440Gen::Actividad.all.
+        joins('JOIN cor1440_gen_actividad_actividadtipo ON 
+          cor1440_gen_actividad.id=
+          cor1440_gen_actividad_actividadtipo.actividad_id').where(
         "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
       ).where(wheref).count()
-      tm = Cor1440Gen::Actividad.all.joins(
-        :actividad_actividadtipo).where(
-        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      tm = Cor1440Gen::Actividad.all.
+        joins('JOIN cor1440_gen_actividad_actividadtipo ON 
+          cor1440_gen_actividad.id=
+          cor1440_gen_actividad_actividadtipo.actividad_id').where(
+      "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
       ).where(wheref).sum(:mujeres)
-      th = Cor1440Gen::Actividad.all.joins(
-        :actividad_actividadtipo).where(
-        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      th = Cor1440Gen::Actividad.all.
+        joins('JOIN cor1440_gen_actividad_actividadtipo ON 
+              cor1440_gen_actividad.id=
+              cor1440_gen_actividad_actividadtipo.actividad_id').where(
+      "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
       ).where(wheref).sum(:hombres)
-      tbl = Cor1440Gen::Actividad.all.joins(
-        :actividad_actividadtipo).where(
-        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      tbl = Cor1440Gen::Actividad.all.
+        joins('JOIN cor1440_gen_actividad_actividadtipo ON 
+              cor1440_gen_actividad.id=
+              cor1440_gen_actividad_actividadtipo.actividad_id').where(
+      "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
       ).where(wheref).sum(:blancos)
-      tme = Cor1440Gen::Actividad.all.joins(
-        :actividad_actividadtipo).where(
-        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      tme = Cor1440Gen::Actividad.all.
+        joins('JOIN cor1440_gen_actividad_actividadtipo ON 
+              cor1440_gen_actividad.id=
+              cor1440_gen_actividad_actividadtipo.actividad_id').where(
+      "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
       ).where(wheref).sum(:mestizos)
-      tin = Cor1440Gen::Actividad.all.joins(
-        :actividad_actividadtipo).where(
-        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      tin = Cor1440Gen::Actividad.all.
+        joins('JOIN cor1440_gen_actividad_actividadtipo ON 
+              cor1440_gen_actividad.id=
+              cor1440_gen_actividad_actividadtipo.actividad_id').where(
+      "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
       ).where(wheref).sum(:indigenas)
-      tne = Cor1440Gen::Actividad.all.joins(
-        :actividad_actividadtipo).where(
-        "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
+      tne = Cor1440Gen::Actividad.all.
+        joins('JOIN cor1440_gen_actividad_actividadtipo ON 
+              cor1440_gen_actividad.id=
+              cor1440_gen_actividad_actividadtipo.actividad_id').where(
+      "cor1440_gen_actividad_actividadtipo.actividadtipo_id IN (#{tipos})"
       ).where(wheref).sum(:negros)
   
       @cuerpotabla << {"desc": f[0], "tac": tac, "tm": tm, "th": th, 

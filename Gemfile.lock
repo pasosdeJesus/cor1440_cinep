@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b8681b4e97c650a96e9cf92cea44e59e3d9c47a6
+  revision: a503706b2c3e904e036e3f5b129cc253114896ac
   specs:
     mr519_gen (0.1.0)
       rails (~> 5.2.2, >= 5.2.2)
@@ -65,7 +65,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9258a1a7eb3bbfe4d016221e4560939d4f409888
+  revision: 2d6244d58c43ea1cbcc56539d05822e097d714b4
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
