@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: e7acef0450281f957a21712b66433b358fcb5609
+  revision: caf8a99e0cbc2d7102a65d0baf488e60ed92d4ad
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: d15cd0e3755d4d30a899150f4b4764ad4026c787
+  revision: 987b9aade2f6765600f8f41f189743097ea16b38
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -24,7 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 31729b620c9ee2944080d48595669924b8fde576
+  revision: 0f6424e4e685cdba7750a7bd5e5d4a8e55664c06
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 4c1cdd7405f981218fc41ab4c5e98d3b45e52d7f
+  revision: 27a2748a21db6ff5e054a2ac875aa5b2fa33774f
   specs:
     mr519_gen (0.1.0)
       rails (~> 5.2.2, >= 5.2.2)
@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: ab76bbc3124110b64f1ca0c498f544223efaf23c
+  revision: d8cac038ed2f79f9224a644802be65646cc412fc
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: b23741b2af146db821bf586463da0d71993b3052
+  revision: 91cd6b71796e077372059d35cc154e24ac4eda58
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 78a159a8898d2521509804ff72948387a2a7739a
+  revision: 0f318266f7a7f53472c9756831ad198f0340e5a1
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -65,7 +65,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2d6244d58c43ea1cbcc56539d05822e097d714b4
+  revision: ee94d8706a86ce8ad3e65e84a094a4d9d8dd50fe
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -186,7 +186,7 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.7.1)
+    devise-i18n (1.7.2)
       devise (>= 4.5)
     docile (1.3.1)
     erd (0.6.3)
