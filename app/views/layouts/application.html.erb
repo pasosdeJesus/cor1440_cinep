@@ -18,7 +18,7 @@
           <% if can? :read, Cor1440Gen::Informe %>
             <%= menu_item "Informes", cor1440_gen.informes_path %>
           <% end %>
-          <% if can? :create, Sip::Actorsocial %>
+          <% if can? :index, Sip::Actorsocial %>
             <%= menu_item "Actores Sociales", sip.actoressociales_path %>
           <% end %>
           <% if can? :edit, :contextoac %>
