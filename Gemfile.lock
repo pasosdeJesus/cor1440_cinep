@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: caf8a99e0cbc2d7102a65d0baf488e60ed92d4ad
+  revision: 3acc9636e8e8814faca5c9c54930d97202804b80
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -12,19 +12,8 @@ GIT
       sip
 
 GIT
-  remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 987b9aade2f6765600f8f41f189743097ea16b38
-  specs:
-    heb412_gen (1.0.a1)
-      chosen-rails
-      font-awesome-rails
-      redcarpet
-      rspreadsheet
-      sip
-
-GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 0f6424e4e685cdba7750a7bd5e5d4a8e55664c06
+  revision: d0e4b85f9d2a8a0357fbdc3ab041905fcfbdef12
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -33,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 27a2748a21db6ff5e054a2ac875aa5b2fa33774f
+  revision: cee289a97a42d6c49c2e94bf69985ece41213ee8
   specs:
     mr519_gen (0.1.0)
       rails (~> 5.2.2, >= 5.2.2)
@@ -41,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: d8cac038ed2f79f9224a644802be65646cc412fc
+  revision: 22c47e409c35186b57bd42ec2e2d40e5df94ce4d
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -49,7 +38,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 91cd6b71796e077372059d35cc154e24ac4eda58
+  revision: dc201d39b22949ab3c164ab1a2bddfc064f3782b
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -57,7 +46,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 0f318266f7a7f53472c9756831ad198f0340e5a1
+  revision: ae6ded6e31b483b51ed3c8bb2aad3b6e0da8304e
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -65,7 +54,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: ee94d8706a86ce8ad3e65e84a094a4d9d8dd50fe
+  revision: fae7a3034414832ff16159f53dca2aed1cbcc29c
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -91,6 +80,16 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
+
+PATH
+  remote: ../heb412_gen
+  specs:
+    heb412_gen (1.0.a1)
+      chosen-rails
+      font-awesome-rails
+      redcarpet
+      rspreadsheet
+      sip
 
 GEM
   remote: https://rubygems.org/
@@ -144,7 +143,7 @@ GEM
     bcrypt (3.1.12)
     bigdecimal (1.4.3)
     bindex (0.5.0)
-    bootsnap (1.3.2)
+    bootsnap (1.4.0)
       msgpack (~> 1.0)
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
@@ -180,7 +179,7 @@ GEM
     concurrent-ruby (1.1.4)
     connection_pool (2.2.2)
     crass (1.0.4)
-    devise (4.6.0)
+    devise (4.6.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
