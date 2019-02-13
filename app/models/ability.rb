@@ -381,7 +381,7 @@ class Ability  < Cor1440Gen::Ability
           can [:edit, :update], pc
           can [:edit], Cor1440Gen::Indicadorpf
           can :manage, ::Publicacion
-          can :coord, :vistobuenoactividad
+          #can :coord, :vistobuenoactividad
         end
         
         # Responsables de un proyecto también pueden editar marco lógico

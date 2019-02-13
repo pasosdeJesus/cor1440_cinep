@@ -173,7 +173,18 @@ module Cor1440Gen
     end
 
     def update
-      params[:actividad][:oficina_id] = 1
+      if params[:actividad]
+        if current_usuario && @registro &&
+          current_usuario.id == @registro.creadopor.id
+          params[:actividad].delete(:vistobuenopar)
+          params[:actividad].delete(:observacionespar)
+        end
+        if !can?(:dir, :vistobuenoactividad)
+          params[:actividad].delete(:vistobuenodir)
+          params[:actividad].delete(:observacionesdir)
+        end
+        params[:actividad][:oficina_id] = 1
+      end
       recalcula_misgrupos(current_usuario, @registro)
       update_gen
     end
@@ -227,27 +238,32 @@ module Cor1440Gen
         :etnia_onr,
         :observaciones, 
         :anexos,
-        :vistobuenocoord,
-        :vistobuenodir
+        :vistobuenopar,
+        :observacionespar,
+        :vistobuenodir,
+        :observacionesdir
       ]
     end
 
     def atributos_form
       # NO se usa porque se hizo app/views/cor1440_gen/actividades/_form.html.erb
       r = atributos_show - [:proyectosfinancieros] + 
-        [:proyectofinanciero] - [:id] - [:vistobuenodir, :vistobuenocoord]
-      if can?(:coord, :vistobuenoactividad) || can?(:dir, :vistobuenoactividad)
-        r << :vistobuenocoord
+        [:proyectofinanciero] - [:id] - 
+        [:vistobuenodir, :vistobuenopar, :observacionesdir, :observacionespar]
+      if current_usuario.id != @actividad.creadopor.id
+        r << :vistobuenpar
+        r << :observacionespar
       end
       if can?(:dir, :vistobuenoactividad)
         r << :vistobuenodir
+        r << :observacionesdir
       end
       r
     end
 
     def atributos_index
       [ :id, 
-        :vistobuenocoord,
+        :vistobuenopar,
         :fecha_localizada, 
         :nombre, 
         :creadopor, 
@@ -387,6 +403,8 @@ module Cor1440Gen
         :oficina_id,
         :objetivo, 
         :observaciones,         
+        :observacionesdir,         
+        :observacionespar,         
         :participantes, 
         :proyecto, 
         :redactor_id,
@@ -397,6 +415,8 @@ module Cor1440Gen
         :totorg, 
         :usuario_id,
         :valora,
+        :vistobuenodir,
+        :vistobuenopar,
         :actividadarea_ids => [],
         :actividadpf_ids => [],
         :actividad_rangoedadac_attributes => [
@@ -429,12 +449,6 @@ module Cor1440Gen
           :valor
         ]
       ]
-      if can?(:coord, :vistobuenoactividad) || can?(:dir, :vistobuenoactividad)
-        r << :vistobuenocoord
-      end
-      if can?(:dir, :vistobuenoactividad)
-        r << :vistobuenodir
-      end
       r
     end
 

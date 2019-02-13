@@ -224,13 +224,27 @@
 
   <%= render partial: 'campo_anexos', locals: {f: f} %>
 
-  <% if can?(:coord, :vistobuenoactividad) || can?(:dir, :vistobuenoactividad) %>
-    <%= f.input :vistobuenocoord, as: :boolean %>
-  <% end %>
-  <% if can?(:dir, :vistobuenoactividad) %>
-    <%= f.input :vistobuenodir, as: :boolean %>
+  <% if current_usuario.id != @actividad.creadopor.id %>
+    <div class='row'>
+      <div class='col-sm-offset-0 col-sm-6'>
+        <%= f.input :vistobuenopar, as: :boolean %>
+      </div> 
+      <div class='col-sm-offset-0 col-sm-6'>
+        <%= f.input :observacionespar, as: :text %>
+      </div> 
+    </div> <!-- row -->
   <% end %>
 
+  <% if can?(:dir, :vistobuenoactividad) %>
+    <div class='row'>
+      <div class='col-sm-offset-0 col-sm-6'>
+        <%= f.input :vistobuenodir, as: :boolean %>
+      </div> 
+      <div class='col-sm-offset-0 col-sm-6'>
+        <%= f.input :observacionesdir, as: :text %>
+      </div> 
+    </div> <!-- row -->
+  <% end %>
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

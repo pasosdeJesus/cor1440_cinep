@@ -103,14 +103,16 @@ es:
         mduracion: "Unidad de duración"
         objetivopf: Objetivo de compromiso institucional
         observaciones: Compromisos/Observaciones
+        observcionesdir: 'Observaciones de Direccion'
+        observacionespar: 'Observaciones de Par'
         proyecto: "Programa/Servicio/Producto"
         proyectos: "Programas/Servicios/Productos"
         publicacion: 'Producto CINEP/PPP'
         regionsjr: Dependencia
         sexo_onr: 'Otro/NR'
         usuario: 'Corresponsables'
-        vistobuenocoord: 'Aprobado Coordinador'
         vistobuenodir: 'Aprobado Direccion'
+        vistobuenopar: 'Aprobado por Par'
       "cor1440_gen/actividadarea":
         Actividadarea: Componente plan trienal 
         Actividadareas: Componentes plan trienal 
