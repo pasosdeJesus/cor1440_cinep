@@ -41,7 +41,7 @@ class EfectosController < Sip::ModelosController
       "descripcion",
       "efecto_valorcampotind",
       "porcentajeprog",
-      "anexo_efecto"
+          "anexo_efecto"
     ] 
   end
 
@@ -127,29 +127,31 @@ class EfectosController < Sip::ModelosController
   end
 
   def lista_params
-    atributos_form + [:id] - [
-      "efecto_valorcampotind",
-      "anexo_efecto" ] + [
-        :anexo_efecto_attributes => [
+    atributos_form + [:id] - ["efecto_valorcampotind", "anexo_efecto" ] + 
+      [ 
+        :fecha20_localizada,
+        :fecha40_localizada,
+        :fecha60_localizada,
+        :fecha80_localizada,
+        :fecha100_localizada,
+        anexo_efecto_attributes: [ 
           :id,
           :efecto_id,
           :_destroy,
-          :sip_anexo_attributes => [
-            :id, :descripcion, :adjunto, :_destroy
-          ]
+          sip_anexo_attributes: [ :id, :descripcion, :adjunto, :_destroy ] 
         ],
-        :efecto_valorcampotind_attributes => [
+        efecto_valorcampotind_attributes: [
           :id,
           :efecto_id,
           :_destroy,
-          :valorcampotind_attributes => [
+          valorcampotind_attributes: [
             :id,
             :campotind_id,
             :valor,
             :_destroy
           ]
-        ]
       ]
+    ]
   end
 
   # No confiar parametros a Internet, sólo permitir lista blanca

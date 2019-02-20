@@ -1918,7 +1918,12 @@ CREATE TABLE public.cor1440_gen_tipoindicador (
     espvaloresomision character varying(1000),
     espvalidaciones character varying(1000),
     esptipometa character varying(32),
-    espfuncionmedir character varying(1000)
+    espfuncionmedir character varying(1000),
+    desc20 character varying(128),
+    desc40 character varying(128),
+    desc60 character varying(128),
+    desc80 character varying(128),
+    desc100 character varying(128)
 );
 
 
@@ -2048,7 +2053,12 @@ CREATE TABLE public.efecto (
     registradopor_id integer,
     nombre character varying(500),
     porcentajeprog integer DEFAULT 0,
-    descripcion character varying(5000)
+    descripcion character varying(5000),
+    fecha20 date,
+    fecha40 date,
+    fecha60 date,
+    fecha80 date,
+    fecha100 date
 );
 
 
@@ -8575,6 +8585,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190208102022'),
 ('20190208103518'),
 ('20190213095617'),
-('20190213103730');
+('20190213103730'),
+('20190213125833'),
+('20190213130957'),
+('20190220114719'),
+('20190220133730');
 
 

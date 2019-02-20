@@ -13,6 +13,12 @@ module Cor1440Gen
     accepts_nested_attributes_for :pprogtind,
       allow_destroy: true, reject_if: :all_blank
 
+    validates :desc20, length: {maximum: 128}
+    validates :desc40, length: {maximum: 128}
+    validates :desc60, length: {maximum: 128}
+    validates :desc80, length: {maximum: 128}
+    validates :desc100, length: {maximum: 128}
+
     def presenta(atr)
       if atr == 'medircon'
         case medircon

@@ -1,40 +1,71 @@
-<% if f.object.indicadorpf.tipoindicador.pprogtind &&  
-    f.object.indicadorpf.tipoindicador.pprogtind.length > 0 then %>
+<% if f.object.indicadorpf && f.object.indicadorpf.tipoindicador &&
+  f.object.indicadorpf.tipoindicador.desc20 &&  
+  f.object.indicadorpf.tipoindicador.desc40 &&  
+  f.object.indicadorpf.tipoindicador.desc60 &&  
+  f.object.indicadorpf.tipoindicador.desc80 &&  
+  f.object.indicadorpf.tipoindicador.desc100 %>
   <label><%= ::Efecto.human_attribute_name(:porcentajeprog) %></label>
-  <div class="row">
-    <div class="col-md-2">
-      <%= f.input :porcentajeprog, as: :range,
-        html_input: {
-        type: 'range',
-        list: 'tickmarks',
-        min: 0,
-        max: 100},
-        label: false %>
-  </div>
-  <datalist id="tickmarks">
-    <option value="0" label="0%">0%</option>
-    <option value="10">
-    <option value="20">
-    <option value="30">
-    <option value="40">
-    <option value="50" label="50%">
-    <option value="60">
-    <option value="70">
-    <option value="80">
-    <option value="90">
-    <option value="100" label="100%">
-  </datalist>
-    <div class="col-xs-10">
-      <%= f.input :porcentajeprogop,
-        collection: f.object.indicadorpf.tipoindicador.pprogtind.order(
-          :porcentaje),
-        html_input: { readonly: true },
-        label_method: lambda {|r| "#{r.porcentaje}% - #{r.fase}"},
-        selected: f.object.porcentajeprogop,
-        value_method: :id,
-        include_blank: true,
-        label: false %>
-    </div>
-  </div>
+      <table class="table table-striped" style="margin-left: auto; margin-right: auto; width: 50em">
+        <tr>
+           <th style="width: 8em">Fecha</th>
+          <th style="width: 8em">Porcentaje</th>
+          <th>Descripción</th>
+        </tr>
+        <tr>
+          <td><%= f.input :fecha20_localizada, as: :string,
+            label: false,
+            input_html: { "data-behaviour" => "datepicker",
+              :maxlength => 12,
+              :style=> 'width: 12em' } 
+            %>
+          </td>
+          <td>20%</td>
+          <td><%= f.object.indicadorpf.tipoindicador.desc20 %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :fecha40_localizada, as: :string,
+            label: false,
+            input_html: { "data-behaviour" => "datepicker",
+              :maxlength => 12,
+              :style=> 'width: 12em' } 
+            %>
+          </td>
+          <td>40%</td>
+          <td><%= f.object.indicadorpf.tipoindicador.desc40 %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :fecha60_localizada, as: :string,
+            label: false,
+            input_html: { "data-behaviour" => "datepicker",
+              :maxlength => 12,
+              :style=> 'width: 12em' } 
+            %>
+          </td>
+          <td>60%</td>
+          <td><%= f.object.indicadorpf.tipoindicador.desc60 %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :fecha80_localizada, as: :string,
+            label: false,
+            input_html: { "data-behaviour" => "datepicker",
+              :maxlength => 12,
+              :style=> 'width: 12em' } 
+            %>
+          </td>
+          <td>80%</td>
+          <td><%= f.object.indicadorpf.tipoindicador.desc80 %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :fecha100_localizada, as: :string,
+            label: false,
+            input_html: { "data-behaviour" => "datepicker",
+              :maxlength => 12,
+              :style=> 'width: 12em' } 
+            %>
+          </td>
+          <td>100%</td>
+          <td><%= f.object.indicadorpf.tipoindicador.desc100 %></td>
+        </tr>
+      </table>
 <% end %>
 

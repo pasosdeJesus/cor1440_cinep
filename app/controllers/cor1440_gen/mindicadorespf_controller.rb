@@ -209,7 +209,12 @@ module Cor1440Gen
                 ON efecto.id=actorsocial_efecto.efecto_id 
                JOIN sip_actorsocial 
                 ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
-               WHERE fecha>='#{fini}' AND fecha<='#{ffin}'
+               WHERE ((fecha>='#{fini}' AND fecha<='#{ffin}') OR
+                (fecha20>='#{fini}' AND fecha20<='#{ffin}') OR
+                (fecha40>='#{fini}' AND fecha40<='#{ffin}') OR
+                (fecha60>='#{fini}' AND fecha60<='#{ffin}') OR
+                (fecha80>='#{fini}' AND fecha80<='#{ffin}') OR
+                (fecha100>='#{fini}' AND fecha100<='#{ffin}'))
                AND sip_actorsocial.lineabase20182020
                AND indicadorpf_id='19'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
@@ -218,13 +223,40 @@ module Cor1440Gen
               JOIN actorsocial_efecto ON efecto.id=actorsocial_efecto.efecto_id 
               JOIN actorsocial_regiongrupo 
                 ON actorsocial_regiongrupo.actorsocial_id=actorsocial_efecto.actorsocial_id 
-              JOIN sip_actorsocial ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
-              WHERE efecto.fecha>='#{fini}' AND efecto.fecha<='#{ffin}'
+              JOIN sip_actorsocial 
+                ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
+              WHERE ((efecto.fecha>='#{fini}' AND efecto.fecha<='#{ffin}') OR
+                (efecto.fecha20>='#{fini}' AND efecto.fecha20<='#{ffin}') OR
+                (efecto.fecha40>='#{fini}' AND efecto.fecha40<='#{ffin}') OR
+                (efecto.fecha60>='#{fini}' AND efecto.fecha60<='#{ffin}') OR
+                (efecto.fecha80>='#{fini}' AND efecto.fecha80<='#{ffin}') OR
+                (efecto.fecha100>='#{fini}' AND efecto.fecha100<='#{ffin}'))
               AND sip_actorsocial.lineabase20182020
               AND efecto.indicadorpf_id='19') AS s"
             d2 = ActiveRecord::Base.connection.execute(base)
             d2 = d2.first ? d2.first['count'] : 0
-            resind = d2.to_f
+
+            res = "SELECT SUM(m) AS suma FROM 
+            (SELECT regiongrupo_id, MAX(p) AS m FROM 
+            (SELECT regiongrupo_id, CASE 
+                WHEN fecha100>='#{fini}' AND fecha100<='#{ffin}' THEN 1 
+                WHEN fecha80>='#{fini}' AND fecha80<='#{ffin}' THEN 0.8
+                WHEN fecha60>='#{fini}' AND fecha60<='#{ffin}' THEN 0.6
+                WHEN fecha40>='#{fini}' AND fecha40<='#{ffin}' THEN 0.4
+                WHEN fecha20>='#{fini}' AND fecha20<='#{ffin}' THEN 0.2
+                ELSE 0
+              END AS p FROM efecto
+              JOIN actorsocial_efecto 
+                ON efecto.id=actorsocial_efecto.efecto_id 
+              JOIN actorsocial_regiongrupo 
+                ON actorsocial_regiongrupo.actorsocial_id=actorsocial_efecto.actorsocial_id 
+              JOIN sip_actorsocial 
+                ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
+              WHERE efecto.indicadorpf_id='19' 
+              AND sip_actorsocial.lineabase20182020
+            ) AS subcons GROUP BY regiongrupo_id) AS submax"
+            resind = ActiveRecord::Base.connection.execute(res)
+            resind = resind.first ? resind.first['suma'] : 0
 
           when 'E2I1'
             base = "SELECT COUNT(*) FROM (SELECT DISTINCT actorsocial_id
@@ -250,11 +282,27 @@ module Cor1440Gen
             d1 = ActiveRecord::Base.connection.execute(base).first['count'].to_f
             resind = d1
           when 'E3I2'
-            base = "SELECT COUNT(*) FROM efecto WHERE 
-               fecha>='#{fini}' AND fecha<='#{ffin}'
-               AND indicadorpf_id='22'"
+            base = "SELECT COUNT(*) FROM efecto WHERE
+                (fecha100>='#{fini}' AND fecha100<='#{ffin}') OR
+                (fecha80>='#{fini}' AND fecha80<='#{ffin}') OR
+                (fecha60>='#{fini}' AND fecha60<='#{ffin}') OR
+                (fecha40>='#{fini}' AND fecha40<='#{ffin}') OR
+                (fecha20>='#{fini}' AND fecha20<='#{ffin}') OR
+                (fecha>='#{fini}' AND fecha<='#{ffin}') 
+              AND indicadorpf_id='22'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count'].to_f
-            resind = d1.to_f
+            res = "SELECT SUM(p) AS r FROM 
+            (SELECT CASE 
+                WHEN fecha100>='#{fini}' AND fecha100<='#{ffin}' THEN 1 
+                WHEN fecha80>='#{fini}' AND fecha80<='#{ffin}' THEN 0.8
+                WHEN fecha60>='#{fini}' AND fecha60<='#{ffin}' THEN 0.6
+                WHEN fecha40>='#{fini}' AND fecha40<='#{ffin}' THEN 0.4
+                WHEN fecha20>='#{fini}' AND fecha20<='#{ffin}' THEN 0.2
+                ELSE 0
+              END AS p FROM efecto
+              WHERE indicadorpf_id='22' 
+            ) AS subcons"
+            resind = ActiveRecord::Base.connection.execute(res).first['r'].to_f
           else
             base = "SELECT COUNT(*) FROM efecto WHERE 
                fecha>='#{fini}' AND fecha<='#{ffin}'

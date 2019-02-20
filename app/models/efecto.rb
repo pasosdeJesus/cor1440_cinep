@@ -13,6 +13,11 @@ class Efecto < ActiveRecord::Base
   has_many :actorsocial, through: :actorsocial_efecto
 
   campofecha_localizado :fecha
+  campofecha_localizado :fecha20
+  campofecha_localizado :fecha40
+  campofecha_localizado :fecha60
+  campofecha_localizado :fecha80
+  campofecha_localizado :fecha100
 
   has_many :anexo_efecto, dependent: :delete_all,
     class_name: '::AnexoEfecto',
@@ -50,6 +55,26 @@ class Efecto < ActiveRecord::Base
                  'Debe tener medios de verificación anexos')
     end
   end
+
+  validate :fechaporc_en_orden
+  def fechaporc_en_orden
+    fechas = [fecha20, fecha40, fecha60, fecha80, fecha100]
+    (0..4).each do |i|
+      (i+1..4).each do |j|
+        if fechas[i] && fechas[j]
+          if fechas[j] < fechas[i]
+            campo="fecha#{20*(j+1)}"
+            errors.add(campo.to_sym, 
+                       "Fecha del #{20*(j+1)}% debería ser posterior " +
+                       "a la del #{20*(i+1)}%")
+          else
+            break
+          end
+        end
+      end
+    end
+  end
+
 
   attr_accessor :linea
   def linea

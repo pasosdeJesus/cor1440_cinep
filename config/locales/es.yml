@@ -250,6 +250,11 @@ es:
         Fondospensiones: 'Fondos de pensiones'
       "cor1440_gen/tipoindicador": 
         pprogtind: "Fases de progreso"
+        desc20: 'Descripción 20% (sólo si es indicador progresivo)'
+        desc40: 'Descripción 40% (sólo si es indicador progresivo)'
+        desc60: 'Descripción 60% (sólo si es indicador progresivo)'
+        desc80: 'Descripción 80% (sólo si es indicador progresivo)'
+        desc100: 'Descripción 100% (sólo si es indicador progresivo)'
       "niveleducacion":
         Niveleducacion: Nivel de educación
         Niveleseducacion: Niveles de educación

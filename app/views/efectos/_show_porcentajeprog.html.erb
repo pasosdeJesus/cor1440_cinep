@@ -1,6 +1,48 @@
-<%= @registro.porcentajeprog %>%
 <% if !@registro.porcentajeprogop.nil? %>
   <% r = Cor1440Gen::Pprogtind.find(@registro.porcentajeprogop) %>
   - <%= r.fase %>
 (&gt;=  <%= r.porcentaje %>%)
 <% end %>
+
+<% if !@registro.indicadorpf || !@registro.indicadorpf.tipoindicador ||
+  !@registro.indicadorpf.tipoindicador.desc20 ||
+  !@registro.indicadorpf.tipoindicador.desc40 ||
+  !@registro.indicadorpf.tipoindicador.desc60 ||
+  !@registro.indicadorpf.tipoindicador.desc80 ||
+  !@registro.indicadorpf.tipoindicador.desc100 %>
+  No aplica
+<% else %>
+  <table class="table table-striped" style="margin-left: auto; margin-right: auto; width: 50em">
+    <tr>
+      <th style="width: 10em">Fecha</th>
+      <th style="width: 8em">Porcentaje</th>
+      <th>Descripción</th>
+    </tr>
+    <tr>
+      <td><%= @registro.fecha20_localizada %></td>
+      <td>20%</td>
+      <td><%= @registro.indicadorpf.tipoindicador.desc20 %></td>
+    </tr>
+    <tr>
+      <td><%= @registro.fecha40_localizada %></td>
+      <td>40%</td>
+      <td><%= @registro.indicadorpf.tipoindicador.desc40 %></td>
+    </tr>
+    <tr>
+      <td><%= @registro.fecha60_localizada %></td>
+      <td>60%</td>
+      <td><%= @registro.indicadorpf.tipoindicador.desc60 %></td>
+    </tr>
+    <tr>
+      <td><%= @registro.fecha80_localizada %></td>
+      <td>80%</td>
+      <td><%= @registro.indicadorpf.tipoindicador.desc80 %></td>
+    </tr>
+    <tr>
+      <td><%= @registro.fecha100_localizada %></td>
+      <td>100%</td>
+      <td><%= @registro.indicadorpf.tipoindicador.desc100 %></td>
+    </tr>
+  </table>
+<% end %>
+
