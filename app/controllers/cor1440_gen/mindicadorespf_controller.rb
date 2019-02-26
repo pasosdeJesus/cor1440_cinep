@@ -100,7 +100,8 @@ module Cor1440Gen
             base = ::Informenarrativo.where(
               'proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL)').
+                WHERE respgp_id IS NOT NULL
+                AND estado IN (?))', ::ApplicationHelper::ESTADOS_APROBADO).
                 where('fechaplaneada>=?', fini).
                 where('fechaplaneada<=?', ffin).
                 where('fechareal<=(fechaplaneada + 7)')
@@ -110,7 +111,8 @@ module Cor1440Gen
             base2 = ::Informefinanciero.where(
               'proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL)').
+                WHERE respgp_id IS NOT NULL
+                AND estado IN (?))', ::ApplicationHelper::ESTADOS_APROBADO).
                 where('fechaplaneada >= ?', fini).
                 where('fechaplaneada <= ?', ffin).
                 where('fechareal <= (fechaplaneada + 7)')
@@ -122,7 +124,8 @@ module Cor1440Gen
             base3 = ::Informenarrativo.where(
               'proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL)').
+                WHERE respgp_id IS NOT NULL
+                AND estado IN (?))', ::ApplicationHelper::ESTADOS_APROBADO).
                 where('fechaplaneada>=?', fini).
                 where('fechaplaneada<=?', ffin)
             d2 = base3.count
@@ -131,7 +134,8 @@ module Cor1440Gen
             base4 = ::Informefinanciero.where(
               'proyectofinanciero_id IN (SELECT id 
                 FROM cor1440_gen_proyectofinanciero 
-                WHERE respgp_id IS NOT NULL)').
+                WHERE respgp_id IS NOT NULL
+                AND estado IN (?))', ::ApplicationHelper::ESTADOS_APROBADO).
                 where('fechaplaneada >= ?', fini).
                 where('fechaplaneada <= ?', ffin)
  
