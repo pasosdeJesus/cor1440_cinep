@@ -11,10 +11,14 @@
     <%= titulo %>: <span id="numregistros"><%= @registros.count %></span>
   </div>
   <div class="col-sm-3">
-    Total formulado: <span id="totalformulado"><%= @registros.sum(:montopesos) %></span>
+    <% tf = @registros.sum(:montopesos) %>
+    <% tf = tf.round(2) %>
+    Total formulado: <span id="totalformulado">$ <%= tf.a_decimal_localizado %></span>
   </div>
   <div class="col-sm-3">
-    Total aprobado: <span id="totalformulado"><%= @registros.sum('montoej*tasaej') %></span>
+    <% ta = @registros.sum('montoej*tasaej') %>
+    <% ta = ta.round(2) %>
+    Total aprobado: <span id="totalaprobado">$ <%= ta.a_decimal_localizado  %></span>
   </div>
 
 
