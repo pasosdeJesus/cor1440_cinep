@@ -13,6 +13,6 @@ module Cor1440Gen
       less_than_or_equal_to: 100
     }, uniqueness: { scope: :tipoindicador_id }
 
-    end # included
+  end # included
 end
 

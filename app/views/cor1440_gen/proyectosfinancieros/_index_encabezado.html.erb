@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-3">
+      <% ng = (!genclase.nil? && genclase == 'F') ? 'Nueva' : 'Nuevo' %>
+      <% if @registros.size > 5 && can?(:new, clase.constantize)%>
+        <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
+          new_modelo_path(@registros), class: 'btn btn-primary' 
+        %>
+    <% end %>
+  </div>
+  <div class="col-sm-3">
+    <%= titulo %>: <span id="numregistros"><%= @registros.count %></span>
+  </div>
+  <div class="col-sm-3">
+    Total formulado: <span id="totalformulado"><%= @registros.sum(:montopesos) %></span>
+  </div>
+  <div class="col-sm-3">
+    Total aprobado: <span id="totalformulado"><%= @registros.sum('montoej*tasaej') %></span>
+  </div>
+
+
+</div> <!-- row -->
+

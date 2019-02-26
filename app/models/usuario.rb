@@ -53,7 +53,8 @@ class Usuario < ActiveRecord::Base
   end
 
   def labmundep=(v)
-    labdepartamento_id = labmunicipio_id = nil
+    self.labdepartamento_id = nil
+    self.labmunicipio_id = nil
     pmd = v.split(" / ")
     if pmd.length == 1 # solo departamento
       ldep = Sip::Departamento.all.where('nombre=?', pmd[0])
@@ -61,7 +62,7 @@ class Usuario < ActiveRecord::Base
         'id_pais=?', 170) # Colombia
       dep = ldep.take
       if dep
-        labdepartamento_id = dep.id
+        self.labdepartamento_id = dep.id
       end
     else # departamento y municipio
       ldep = Sip::Departamento.all.where('nombre=?', pmd[1])
@@ -69,11 +70,11 @@ class Usuario < ActiveRecord::Base
         'id_pais=?', 170) # Colombia
       dep = ldep.take
       if dep
-        labdepartamento_id = dep.id
+        self.labdepartamento_id = dep.id
         mun = Sip::Municipio.all.where(
           'nombre=? AND id_departamento=?', pmd[0], dep.id).take
         if mun
-          labmunicipio_id = mun.id
+          self.labmunicipio_id = mun.id
         end
       end
     end

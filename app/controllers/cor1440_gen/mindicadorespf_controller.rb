@@ -117,9 +117,11 @@ module Cor1440Gen
                 where('fechaplaneada <= ?', ffin).
                 where('fechareal <= (fechaplaneada + 7)')
             d1 += base2.count
-            idp1.union(base2.pluck(:proyectofinanciero_id))
-            urlev1 = cor1440_gen.proyectosfinancieros_url + 
-              '?filtro[busid]='+idp1.uniq.join(',')
+            idp1 = idp1 | base2.pluck(:proyectofinanciero_id)
+            if idp1.count > 0
+              urlev1 = cor1440_gen.proyectosfinancieros_url + 
+                '?filtro[busid]='+idp1.uniq.join(',')
+            end
 
             base3 = ::Informenarrativo.where(
               'proyectofinanciero_id IN (SELECT id 
@@ -140,9 +142,11 @@ module Cor1440Gen
                 where('fechaplaneada <= ?', ffin)
  
             d2 += base4.count
-            idp2.union(base4.pluck(:proyectofinanciero_id))
-            urlev2 = cor1440_gen.proyectosfinancieros_url + 
-              '?filtro[busid]='+idp2.uniq.join(',')
+            idp2 = idp2 | base4.pluck(:proyectofinanciero_id)
+            if idp2.count > 0
+              urlev2 = cor1440_gen.proyectosfinancieros_url + 
+                '?filtro[busid]='+idp2.uniq.join(',')
+            end
 
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
@@ -197,6 +201,40 @@ module Cor1440Gen
             urlev2 = cor1440_gen.proyectosfinancieros_url + 
               '?filtro[busid]=' + 
               base2.pluck(:proyectofinanciero_id).uniq.join(',')
+
+            resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
+
+          # Monitore de Gerencia de Proyectos
+          when 'IG-SC-04'
+            # Porcentaje de productos a  tiempo
+            base = ::Productopf.where(
+              'proyectofinanciero_id IN (SELECT id 
+                FROM cor1440_gen_proyectofinanciero 
+                WHERE respgp_id IS NOT NULL
+                AND estado IN (?))', ::ApplicationHelper::ESTADOS_APROBADO).
+                where('fechaplaneada>=?', fini).
+                where('fechaplaneada<=?', ffin).
+                where('fechareal<=(fechaplaneada + 7)')
+            d1 = base.count
+            idp1 = base.pluck(:proyectofinanciero_id)
+            if idp1.count > 0
+              urlev1 = cor1440_gen.proyectosfinancieros_url + 
+                '?filtro[busid]='+idp1.uniq.join(',')
+            end
+
+            base3 = ::Productopf.where(
+              'proyectofinanciero_id IN (SELECT id 
+                FROM cor1440_gen_proyectofinanciero 
+                WHERE respgp_id IS NOT NULL
+                AND estado IN (?))', ::ApplicationHelper::ESTADOS_APROBADO).
+                where('fechaplaneada>=?', fini).
+                where('fechaplaneada<=?', ffin)
+            d2 = base3.count
+            idp2 = base3.pluck(:proyectofinanciero_id)
+            if idp2.count > 0
+              urlev2 = cor1440_gen.proyectosfinancieros_url + 
+                '?filtro[busid]='+idp2.uniq.join(',')
+            end
 
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
