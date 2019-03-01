@@ -4780,7 +4780,7 @@ CREATE VIEW public.v_solicitud_informes AS
         END AS a_tiempo
    FROM (public.cor1440_gen_proyectofinanciero p
      JOIN public.v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[1, 19, 20, 18]))
+  WHERE (p.id = ANY (ARRAY[19, 20, 101, 18, 1]))
   ORDER BY s.fechaplaneada;
 
 
@@ -8590,6 +8590,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190213130957'),
 ('20190220114719'),
 ('20190220133730'),
-('20190226130025');
+('20190226130025'),
+('20190301121943');
 
 
