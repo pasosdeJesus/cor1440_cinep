@@ -426,7 +426,7 @@ module Cor1440Gen
     end
 
 
-    def self.cuadro_general_seguimiento(plant, registros, narch, parsimp)
+    def self.cuadro_general_seguimiento(plant, registros, narch, parsimp, extension)
       ruta = File.join(Rails.application.config.x.heb412_ruta, 
                        plant.ruta).to_s
       puts "ruta=#{ruta}"
@@ -456,7 +456,7 @@ module Cor1440Gen
         fila +=1
       end
 
-      FileUtils.mv(narch + ".ods-0", narch + ".ods-15")
+      FileUtils.mv(narch + "#{extension}-0", narch + "#{extension}-15")
       # Hoja En tramite
       hoja = libro.worksheets(2)
       fila = 2
@@ -494,7 +494,7 @@ module Cor1440Gen
         fila +=1
       end
 
-      FileUtils.mv(narch + ".ods-15", narch + ".ods-30")
+      FileUtils.mv(narch + "#{extension}-15", narch + "#{extension}-30")
       # Hoja Ejecucion
       hoja = libro.worksheets(3)
       fila = 2
@@ -518,7 +518,7 @@ module Cor1440Gen
         fila +=1
       end
 
-      FileUtils.mv(narch + ".ods-30", narch + ".ods-45")
+      FileUtils.mv(narch + "#{extension}-30", narch + "#{extension}-45")
       # Hoja En cierre
       hoja = libro.worksheets(4)
       fila = 2
@@ -541,7 +541,7 @@ module Cor1440Gen
         fila +=1
       end
 
-      FileUtils.mv(narch + ".ods-45", narch + ".ods-60")
+      FileUtils.mv(narch + "#{extension}-45", narch + "#{extension}-60")
       # Hoja Tramitados del año actual
       treste = libro.worksheets(5)
       anio = Date.today.year
@@ -585,7 +585,7 @@ module Cor1440Gen
       end
 
 
-      FileUtils.mv(narch + ".ods-60", narch + ".ods-75")
+      FileUtils.mv(narch + "#{extension}-60", narch + "#{extension}-75")
 
       # Hoja de publicaciones
       hoja = libro.worksheets(7)
@@ -634,7 +634,7 @@ module Cor1440Gen
         fila +=1
       end
 
-      FileUtils.mv(narch + ".ods-75", narch + ".ods-90")
+      FileUtils.mv(narch + "#{extension}-75", narch + "#{extension}-90")
       # Hoja de divisas
       hoja = libro.worksheets(8)
       fila = 2
@@ -665,7 +665,7 @@ module Cor1440Gen
         fila += 1
       end
 
-      FileUtils.mv(narch + ".ods-90", narch + ".ods-99")
+      FileUtils.mv(narch + "#{extension}-90", narch + "#{extension}-99")
       # Hojas para tramitados en años anteriores
       anios = registros.where("fechaformulacion<'#{anio}-01-01'").
         reorder(nil).pluck('DISTINCT EXTRACT(YEAR FROM fechaformulacion)').
@@ -679,10 +679,10 @@ module Cor1440Gen
         end
       end
 
-      FileUtils.rm(narch + ".ods-99")
+      FileUtils.rm(narch + "#{extension}-99")
       #byebug
       #n=File.join('/tmp', File.basename(pl.ruta))
-      libro.save(narch + '.ods')
+      libro.save(narch + extension)
 
       return nil
     end
@@ -709,14 +709,15 @@ module Cor1440Gen
       super(c)
     end   
 
-    def self.vista_listado(plant, ids, modelo, narch, parsimp)
+    def self.vista_listado(plant, ids, modelo, narch, parsimp, extension)
+      #byebug
       registros = modelo.where(id: ids)
       case plant.vista
       when 'Cronograma de Solicitud de Informes'
         r = self.vista_solicitud_informes(registros)
       when 'Cuadro General de Seguimiento'
         r = self.cuadro_general_seguimiento(
-          plant, registros, narch, parsimp)
+          plant, registros, narch, parsimp, extension)
         return nil
       else
         r = registros
