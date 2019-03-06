@@ -296,6 +296,7 @@ es:
         Sectoresapc: Sectores APC
       "sip/actorsocial":
         created_at: Registrado
+        created_at_localizada: Registrado
         departamentotrab: Departamentos completos donde opera
         "{:departamentotrab_ids=>[]}": Departamentos completos donde opera
         grupo: Grupo(s)
