@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 65e54c651ce6baf9f2f584ebe6f67b00fdf7eba6
+  revision: 1c0c28dda69d06a74a9ade798d7a0805d1eafc24
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b2773fbbc003a8eb20f17a492116db5f86a6ef9e
+  revision: 9c44d33cbdbd6459e26618af4ed7895b90a6dd02
   specs:
     mr519_gen (0.1.0)
       rails (~> 5.2.2, >= 5.2.2)
@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: fca03a2d2d1f8948b9a6dbbc8a886fa789e47973
+  revision: 71c32e6b8583400eee282de52ac99b2087343b8e
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 8701574665db99ec7db83d7bbb8c1054fb790515
+  revision: ce8834acb0cac45cb6b914c26a5980b13f882c28
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: ebcca13e78e069e885aa1fc65e18c7496b03debe
+  revision: 558d9d87c7c6bbf2cac780ad00c9801cf387c627
   specs:
     sal7711_web (1.0.a3)
       rails
