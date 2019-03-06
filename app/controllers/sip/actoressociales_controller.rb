@@ -18,7 +18,7 @@ module Sip
       [ :grupo_ids =>  [] ] +
       [ :lineabase20182020,
         :habilitado,
-        :created_at
+        :created_at_localizada
       ]
     end
 

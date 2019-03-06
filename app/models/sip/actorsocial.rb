@@ -32,6 +32,8 @@ module Sip
       through: :actorsocial_regiongrupo
 
     campofecha_localizado :fechadeshabilitacion
+    
+    campofecha_localizado :created_at
 
     validates :personacontacto, length: { maximum: 100 }
     validates :cargo, length: { maximum: 100 }
@@ -61,6 +63,14 @@ module Sip
         super(atr, options)
       end
     end
+
+    scope :filtro_created_atini, lambda { |f|
+      where('date(created_at) >= ?', f)
+    }
+
+    scope :filtro_created_atfin, lambda { |f|
+      where('date(created_at) <= ?', f)
+    }
 
     scope :filtro_grupo_ids, lambda { |g|
       joins(:actorsocial_grupo).where('actorsocial_grupo.grupo_id=?', g)
@@ -99,6 +109,16 @@ module Sip
       joins(:actorsocial_sectoractor).where(
         'sip_actorsocial_sectoractor.sectoractor_id=?', s)
     }
+
+    def presenta(atr)
+      #byebug
+      case atr.to_s
+      when 'created_at_localizada'
+        Sip::FormatoFechaHelper::fecha_estandar_local(self.created_at.utc.to_date)
+      else
+        presenta_gen(atr)
+      end
+    end
 
   end
 end
