@@ -55,14 +55,14 @@ class UnifcaCalidadGp < ActiveRecord::Migration[5.2]
       INSERT INTO public.cor1440_gen_resultadopf (id, proyectofinanciero_id, objetivopf_id, numero, resultado) VALUES (39, 19, 31, 'P10', 'Recursos Documentales'); --163
       INSERT INTO public.cor1440_gen_resultadopf (id, proyectofinanciero_id, objetivopf_id, numero, resultado) VALUES (40, 19, 30, 'P11', 'Recursos Físicos y Tecnológicos (Tambień OC5)'); --164
 
-      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (126, 19, 'RE-GH-09', 'CONTROL DE ASISTENCIA A CAPACITACIONES', '', 37, NULL);
-      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (127, 19, 'RE-GH-19', 'ACTA DE REUNIÓN', '', 37, NULL);
-      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (128, 19, 'RE-RF-02', 'SOLICITUD DE ANTICIPO', '', 38, NULL);
-      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (129, 19, 'RE-RF-03', 'SOLICITUD DE TIQUETES', '', 38, NULL);
-      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (130, 19, 'RE-RF-06', 'LEGALIZACIÓN DE ANTICIPOS', '', 38, NULL);
-      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (131, 19, 'RE-RF-08', 'RELACIÓN DE TRANSPORTES URBANOS', '', 38, NULL);
-      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (125, 19, 'RE-AE-03', 'CONTROL VIÁTICOS ASISTENCIA A CAPACITACIONES', '', 33, NULL);
-      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (132, 19, 'RE-AE-02', 'EVALUACIÓN A PROCESO FORMATIVO', '', 33, NULL);  
+      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (91, 19, 'RE-GH-09', 'CONTROL DE ASISTENCIA A CAPACITACIONES', '', 37, NULL);
+      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (92, 19, 'RE-GH-19', 'ACTA DE REUNIÓN', '', 37, NULL);
+      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (93, 19, 'RE-RF-02', 'SOLICITUD DE ANTICIPO', '', 38, NULL);
+      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (94, 19, 'RE-RF-03', 'SOLICITUD DE TIQUETES', '', 38, NULL);
+      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (95, 19, 'RE-RF-06', 'LEGALIZACIÓN DE ANTICIPOS', '', 38, NULL);
+      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (96, 19, 'RE-RF-08', 'RELACIÓN DE TRANSPORTES URBANOS', '', 38, NULL);
+      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (97, 19, 'RE-AE-03', 'CONTROL VIÁTICOS ASISTENCIA A CAPACITACIONES', '', 33, NULL);
+      INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id) VALUES (98, 19, 'RE-AE-02', 'EVALUACIÓN A PROCESO FORMATIVO', '', 33, NULL);  
     SQL
   end
   def down
