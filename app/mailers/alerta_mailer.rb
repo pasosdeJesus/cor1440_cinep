@@ -21,29 +21,32 @@ class AlertaMailer < ApplicationMailer
     return if !@pf
     puts "pf.id=#{@pf.id}"
     puts "pf.referenciacinep=#{@pf.referenciacinep}"
+    @para = []
     @respgp = @pf.respgp
-    puts "respgp=#{@respgp.id}"
+    puts "respgp=#{@respgp}"
     if @respgp && @respgp.email
-      puts "respgp.email=#{@respgp.email}"
-      puts "enviando con tema #{@tiene}"
-      mail(to: @respgp.email, 
-           subject: "[CRECER] Proximamente un proyecto #{@tiene}")
+      @para << @respgp.email
+      puts "para respgp.email=#{@respgp.email}"
     end
     @respgp2 = @pf.respgp2
     if @respgp2 && @respgp2.email
-      puts "respgp2.email=#{@respgp2.email}"
-      puts "enviando con tema #{@tiene}"
-      mail(to: @respgp2.email, 
-           subject: "[CRECER] Proximamente un proyecto #{@tiene}")
+      @para << @respgp2.email
+      puts "para respgp2.email=#{@respgp2.email}"
     end
     if @pf.coordinador && @pf.coordinador.count > 0
       @pf.coordinador.each do |coord|
-        puts "coord.email=#{coord.email}"
-        puts "enviando con tema #{@tiene}"
-        mail(to: coord.email, 
-             subject: "[CRECER] Proximamente un proyecto #{@tiene}")
+        @para << coord.email
+        puts "para coord.email=#{coord.email}"
       end
     end
+    puts "enviando con tema #{@tiene} a #{@para.count} receptores"
+    #@para = ['vtamara@cinep.org.co'] # quitar
+    if @para == []
+      @para = ['vtamara@cinep.org.co']
+    end
+    mail(to: @para, 
+         bcc: ['vtamara@cinep.org.co'],
+         subject: "[CRECER] Proximamente un proyecto #{@tiene}")
   end
 
 end

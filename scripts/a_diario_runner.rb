@@ -135,6 +135,12 @@ def elimina_generados
     orden = "rm public/heb412/generados/*ods"
     res = `#{orden}`
     puts res
+    orden = "rm public/heb412/generados/*xlsx"
+    res = `#{orden}`
+    puts res
+    orden = "rm public/heb412/generados/*pdf"
+    res = `#{orden}`
+    puts res
 end
 
 def run
