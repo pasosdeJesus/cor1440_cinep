@@ -1,6 +1,19 @@
 GIT
+  remote: https://github.com/pasosdeJesus/cor1440_gen.git
+  revision: 1eea2f530be1e6805c0f42748f40ac2babb77ebc
+  specs:
+    cor1440_gen (1.0b2)
+      devise
+      heb412_gen
+      jquery-rails
+      mr519_gen
+      paperclip
+      rails
+      sip
+
+GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 3cad685dee0ef8d2c2695cb212ef7c69f016ffda
+  revision: c866b4bd03d91bba6f58cbeff4049489deddcd6c
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -10,8 +23,25 @@ GIT
       sip
 
 GIT
+  remote: https://github.com/pasosdeJesus/jn316_gen.git
+  revision: 7617d949b80e47bd36db652af576f382e80f4599
+  specs:
+    jn316_gen (1.0.a1)
+      net-ldap
+      rails
+      sip
+
+GIT
+  remote: https://github.com/pasosdeJesus/mr519_gen.git
+  revision: bc936efaadb1fb67d5a6d1ab7c32dbb68e738f5d
+  specs:
+    mr519_gen (0.1.0)
+      rails (~> 5.2.2, >= 5.2.2)
+      sip
+
+GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 44064513582da4bf7f9905f4685f049b27430c76
+  revision: 86bb19c74086f2e2229aadc74eba00a8a190c550
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -19,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 0ab6744c96d83e2b509a332507e2c071cf6f48c2
+  revision: 30b7a27a97e1a09960d08866569e9521f25d2e3e
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -27,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 7637ff0670e8472fbf77afbf68e2d312b7e4a0e1
+  revision: 1b37510fdf33f6595b5d739880920a3d72acf73d
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -35,7 +65,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: ecae2a3632bb2451a72ccd809e1b45ea372612fa
+  revision: b724d044f46e43b2dbb9be05599920817bf3e827
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -61,33 +91,6 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
-
-PATH
-  remote: ../cor1440_gen
-  specs:
-    cor1440_gen (1.0b2)
-      devise
-      heb412_gen
-      jquery-rails
-      mr519_gen
-      paperclip
-      rails
-      sip
-
-PATH
-  remote: ../jn316_gen
-  specs:
-    jn316_gen (1.0.a1)
-      net-ldap
-      rails
-      sip
-
-PATH
-  remote: ../mr519_gen
-  specs:
-    mr519_gen (0.1.0)
-      rails (~> 5.2.2, >= 5.2.2)
-      sip
 
 GEM
   remote: https://rubygems.org/
@@ -146,7 +149,6 @@ GEM
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
-    byebug (11.0.1)
     camertron-eprun (1.1.1)
     cancancan (2.3.0)
     capybara (2.18.0)
@@ -285,7 +287,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (3.0.3)
-    puma (3.12.0)
+    puma (3.12.1)
     rack (2.0.6)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -413,7 +415,7 @@ GEM
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    will_paginate (3.1.6)
+    will_paginate (3.1.7)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -425,7 +427,6 @@ DEPENDENCIES
   bigdecimal
   bootsnap
   bootstrap-datepicker-rails
-  byebug
   cancancan
   chosen-rails
   cocoon!
