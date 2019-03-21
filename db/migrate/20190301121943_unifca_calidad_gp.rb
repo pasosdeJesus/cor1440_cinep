@@ -11,9 +11,8 @@ class UnifcaCalidadGp < ActiveRecord::Migration[5.2]
           montopesos=0
         WHERE id='19';
 
-        INSERT INTO grupo_proyectofinanciero (grupo_id, proyectofinanciero_id)
+      INSERT INTO grupo_proyectofinanciero (grupo_id, proyectofinanciero_id)
           (SELECT id, '19' FROM sip_grupo WHERE nombre LIKE 'Línea%');
-
 
       INSERT INTO public.cor1440_gen_objetivopf (id, proyectofinanciero_id, numero, objetivo) VALUES (25, 19, 'MISIÓN', 'Apostamos por la vida. Trabajamos por una sociedad justa, sostenible y en paz.');
       INSERT INTO public.cor1440_gen_objetivopf (id, proyectofinanciero_id, numero, objetivo) VALUES (26, 19, 'VISIÓN', 'En el año 2020 somos un centro social orientado por la Compañía de Jesús que ha desarrollado propuestas para la construcción de región y de nación, encaminadas a la protección y promoción de la vida, los derechos humanos, el desarrollo sostenible y la paz.');
