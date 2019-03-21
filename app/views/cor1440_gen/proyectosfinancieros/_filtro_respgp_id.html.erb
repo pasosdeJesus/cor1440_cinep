@@ -1,6 +1,7 @@
 <%= f.input :busrespgp_id,
   collection: ::Usuario.joins(:sip_grupo).
-    where('sip_grupo.nombre=?', Ability::GRUPO_COMPROMISOS),
+  where('sip_grupo.nombre in (?)', 
+        [Ability::GRUPO_COMPROMISOS, Ability::GRUPO_COORDINADORGP]),
   include_blank: true,
   label_method: :presenta_nombre,
   value_method: :id,

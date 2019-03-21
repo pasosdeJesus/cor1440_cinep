@@ -55,6 +55,7 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_DERECHOSHUMANOS = "Línea Derechos Humanos y Derecho Internacional Humanitario"
   GRUPO_LINEA = "Línea"
   GRUPO_COORDINADOR = "Coordinador(a)"
+  GRUPO_COORDINADORGP = GRUPO_COORDINADOR + " " + GRUPO_COMPROMISOS 
   def tablasbasicas 
     super() - [ 
       ['Cor1440Gen', 'actividadarea'] ,

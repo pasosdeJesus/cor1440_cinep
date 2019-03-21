@@ -196,7 +196,6 @@ class UsuariosController < Heb412Gen::ModelosController
           when 'sexonac'
             f[a] = r.persona ? r.persona.sexo : 'S'
           when 'fechaini_localizada'
-            byebug
             f[a] = r.contrato ? r.contrato.fechaini_localizada.to_s : ''
           when 'fechafin_localizada'
             f[a] = r.contrato ? r.contrato.fechafin_localizada.to_s : ''

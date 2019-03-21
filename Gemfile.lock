@@ -1,17 +1,4 @@
 GIT
-  remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 1ffd044d711401761f4542352ca98f2913d63e01
-  specs:
-    cor1440_gen (1.0b2)
-      devise
-      heb412_gen
-      jquery-rails
-      mr519_gen
-      paperclip
-      rails
-      sip
-
-GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
   revision: 3cad685dee0ef8d2c2695cb212ef7c69f016ffda
   specs:
@@ -20,23 +7,6 @@ GIT
       font-awesome-rails
       redcarpet
       rspreadsheet
-      sip
-
-GIT
-  remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 03c4000e2861565994fd2941e1fa2b8ed6f0ee3c
-  specs:
-    jn316_gen (1.0.a1)
-      net-ldap
-      rails
-      sip
-
-GIT
-  remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 90af167b1c295b0d7599c088e35961e400a27d6a
-  specs:
-    mr519_gen (0.1.0)
-      rails (~> 5.2.2, >= 5.2.2)
       sip
 
 GIT
@@ -91,6 +61,33 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
+
+PATH
+  remote: ../cor1440_gen
+  specs:
+    cor1440_gen (1.0b2)
+      devise
+      heb412_gen
+      jquery-rails
+      mr519_gen
+      paperclip
+      rails
+      sip
+
+PATH
+  remote: ../jn316_gen
+  specs:
+    jn316_gen (1.0.a1)
+      net-ldap
+      rails
+      sip
+
+PATH
+  remote: ../mr519_gen
+  specs:
+    mr519_gen (0.1.0)
+      rails (~> 5.2.2, >= 5.2.2)
+      sip
 
 GEM
   remote: https://rubygems.org/
@@ -149,6 +146,7 @@ GEM
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
+    byebug (11.0.1)
     camertron-eprun (1.1.1)
     cancancan (2.3.0)
     capybara (2.18.0)
@@ -427,6 +425,7 @@ DEPENDENCIES
   bigdecimal
   bootsnap
   bootstrap-datepicker-rails
+  byebug
   cancancan
   chosen-rails
   cocoon!
