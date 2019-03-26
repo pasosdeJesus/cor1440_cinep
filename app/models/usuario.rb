@@ -309,6 +309,10 @@ class Usuario < ActiveRecord::Base
 
   before_destroy :usuario_sin_proyectofinanciero
 
+  def rol_ususario
+    # Sobrecarga la de cor1440_gen
+  end
+
   def presenta_nombre
     if self.nombres
       r = self.nombres + ' ' + self.apellidos
