@@ -1,10 +1,10 @@
 # encoding: UTF-8
 
-require 'cor1440_gen/concerns/models/usuario'
+require 'mr519_gen/concerns/models/usuario'
 require 'jn316_gen/concerns/models/usuario'
 
 class Usuario < ActiveRecord::Base
-  include Cor1440Gen::Concerns::Models::Usuario
+  include Mr519Gen::Concerns::Models::Usuario
   include Jn316Gen::Concerns::Models::Usuario
 
   devise :database_authenticatable, :rememberable, 
