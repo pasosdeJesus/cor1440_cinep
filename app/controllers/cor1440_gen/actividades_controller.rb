@@ -309,62 +309,62 @@ module Cor1440Gen
       ]
     end
 
-    def fila_comun(actividad)
-      return [actividad.id,
-        actividad.fecha_localizada, 
-        actividad.creadopor ? actividad.creadopor.nusuario : "",
-        actividad.duracion ? actividad.duracion : "",
-        actividad.mduracion ? actividad.mduracion : "",
-        actividad.nombre ? actividad.nombre : "",
-        actividad.departamento ? actividad.departamento.nombre : "",
-        actividad.municipio ? actividad.municipio.nombre : "",
-        actividad.presenta('grupo'),
-        actividad.proyectofinanciero.inject("") { |memo, i| 
-          (memo == "" ? "" : memo + "; ") + i.referenciacinep
-        },
-        actividad.presenta('actividadpf'),
-        actividad.objetivopf.inject("") { |memo, i| 
-          (memo == "" ? "" : memo + "; ") + i.numero
-        },
-        actividad.presenta('actorsocial'),
-        actividad.presenta('publicacion'),
-        actividad.mujeres,
-        actividad.hombres,
-        actividad.sexo_onr,
-        actividad.negros,
-        actividad.indigenas,
-        actividad.etnia_onr
-      ]
-    end
-
-    def vector_a_registro(a, ac)
-      {
-        id: a[0],
-        fecha: a[1],
-        creadopor: a[2],
-        duracion: a[3],
-        mduracion: a[4],
-        nombre: a[5],
-        departamento: a[6],
-        municipio: a[7],
-        grupo: a[8],
-        convenios_financieros: a[9],
-        actividad_de_convenio: a[10],
-        objetivo_de_convenio: a[11],
-        actorsocial: a[12],
-        publicacion: a[13],
-        mujeres: a[14],
-        hombres: a[15],
-        sexo_onr: a[16],
-        negros: a[17],
-        indigenas: a[18],
-        etnia_onr: a[19],
-        observaciones: ac.observaciones,
-        creacion: ac.created_at,
-        actualizacion: ac.updated_at
-      }
-    end
-
+#    def fila_comun(actividad)
+#      return [actividad.id,
+#        actividad.fecha_localizada, 
+#        actividad.creadopor ? actividad.creadopor.nusuario : "",
+#        actividad.duracion ? actividad.duracion : "",
+#        actividad.mduracion ? actividad.mduracion : "",
+#        actividad.nombre ? actividad.nombre : "",
+#        actividad.departamento ? actividad.departamento.nombre : "",
+#        actividad.municipio ? actividad.municipio.nombre : "",
+#        actividad.presenta('grupo'),
+#        actividad.proyectofinanciero.inject("") { |memo, i| 
+#          (memo == "" ? "" : memo + "; ") + i.referenciacinep
+#        },
+#        actividad.presenta('actividadpf'),
+#        actividad.objetivopf.inject("") { |memo, i| 
+#          (memo == "" ? "" : memo + "; ") + i.numero
+#        },
+#        actividad.presenta('actorsocial'),
+#        actividad.presenta('publicacion'),
+#        actividad.mujeres,
+#        actividad.hombres,
+#        actividad.sexo_onr,
+#        actividad.negros,
+#        actividad.indigenas,
+#        actividad.etnia_onr
+#      ]
+#    end
+#
+#    def vector_a_registro(a, ac)
+#      {
+#        id: a[0],
+#        fecha: a[1],
+#        creadopor: a[2],
+#        duracion: a[3],
+#        mduracion: a[4],
+#        nombre: a[5],
+#        departamento: a[6],
+#        municipio: a[7],
+#        grupo: a[8],
+#        convenios_financieros: a[9],
+#        actividad_de_convenio: a[10],
+#        objetivo_de_convenio: a[11],
+#        actorsocial: a[12],
+#        publicacion: a[13],
+#        mujeres: a[14],
+#        hombres: a[15],
+#        sexo_onr: a[16],
+#        negros: a[17],
+#        indigenas: a[18],
+#        etnia_onr: a[19],
+#        observaciones: ac.observaciones,
+#        creacion: ac.created_at,
+#        actualizacion: ac.updated_at
+#      }
+#    end
+#
     def lista_params
       r = [
         :actividad, 

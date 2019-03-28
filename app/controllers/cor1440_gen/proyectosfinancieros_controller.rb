@@ -680,11 +680,10 @@ module Cor1440Gen
       end
 
       FileUtils.rm(narch + "#{extension}-99")
-      #byebug
-      #n=File.join('/tmp', File.basename(pl.ruta))
-      libro.save(narch + extension)
+      n=File.join('/tmp', File.basename(narch + ".ods"))
+      libro.save(n)
 
-      return nil
+      return n
     end
  
     
@@ -718,7 +717,7 @@ module Cor1440Gen
       when 'Cuadro General de Seguimiento'
         r = self.cuadro_general_seguimiento(
           plant, registros, narch, parsimp, extension)
-        return nil
+        return r
       else
         r = registros
       end
