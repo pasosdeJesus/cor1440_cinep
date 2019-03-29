@@ -165,6 +165,9 @@ es:
         domiciliofinanciador: 'Domicilio'
         emailrespagencia: "Correo del responsable agencia"
         empresaauditoria: "Empresa de auditorías y relacionados"
+        fechaaprobacion: "Fecha de aprobación"
+        fechaaprobacion_localizada: "Fecha de aprobación"
+        fechaliquidacion: "Fecha de liquidación"
         fechacierre: "Termina"
         fechacierre_localizada: "Termina"
         fechaformulacion: "Fecha de formulación"

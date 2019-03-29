@@ -1801,7 +1801,8 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     webfinanciador character varying(511),
     skypefinanciador character varying(127),
     sectorapc_id integer,
-    idtributariaextfinanciador character varying(511)
+    idtributariaextfinanciador character varying(511),
+    fechaaprobacion date
 );
 
 
@@ -4798,7 +4799,7 @@ CREATE VIEW public.v_solicitud_informes AS
         END AS a_tiempo
    FROM (public.cor1440_gen_proyectofinanciero p
      JOIN public.v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[19, 20, 101, 18, 1]))
+  WHERE (p.id = ANY (ARRAY[20, 101, 18, 1, 19]))
   ORDER BY s.fechaplaneada;
 
 
@@ -8634,6 +8635,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190226130025'),
 ('20190301121943'),
 ('20190322102311'),
-('20190326150948');
+('20190326150948'),
+('20190328180407');
 
 

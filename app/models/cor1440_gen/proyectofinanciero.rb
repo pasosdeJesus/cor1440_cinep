@@ -205,8 +205,9 @@ module Cor1440Gen
     accepts_nested_attributes_for :cambiosproyectofinanciero, 
       allow_destroy: true, reject_if: :all_blank
 
-    campofecha_localizado :fechaliquidacion
+    campofecha_localizado :fechaaprobacion
     campofecha_localizado :fechaformulacion
+    campofecha_localizado :fechaliquidacion
 
     flotante_localizado :aotrosfin
     flotante_localizado :aportecinep

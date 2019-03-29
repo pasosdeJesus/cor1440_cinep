@@ -95,6 +95,7 @@ module Cor1440Gen
         "anioformulacion",
         "mesformulacion",
         "fechaliquidacion_localizada",
+        "fechaaprobacion_localizada",
         "anotacionesdb",
         "estado",
         "dificultad",
@@ -800,6 +801,8 @@ module Cor1440Gen
                     @proyectofinanciero.fechacierre_localizada)
         r.add_field(:fechaliquidacion, 
                     @proyectofinanciero.fechaliquidacion_localizada)
+        r.add_field(:fechaaprobacion,
+                    @proyectofinanciero.fechaaprobacion_localizada)
 
         # Calculados
         if @proyectofinanciero.fechainicio && @proyectofinanciero.fechacierre
@@ -1020,6 +1023,7 @@ module Cor1440Gen
         :fechaformulacion_mes,
         :fechainicio_localizada,
         :fechaliquidacion_localizada,
+        :fechaaprobacion_localizada,
         :financiador,
         #:formatosespecificos,
         #:formatossolicitudpago,
