@@ -9,12 +9,12 @@ motor.each do |m|
     Sip::carga_semillas_sql(conexion, m, :datos)
 end
 
-# Extrañamente borrar el search_path y falla el siguiente o
-# las migraciones
-conexion.execute('SET search_path TO "$user", public')
+# Ya no se hace:
+# conexion.execute('SET search_path TO "$user", public')
+# pues no es seguro, mejor usamos public y pg_catalog explicitamente
 
-# Usuario y clave cor1440, cor1440
-conexion.execute("INSERT INTO usuario 
+# suario y clave cor1440, cor1440
+conexion.execute("INSERT INTO public.usuario 
 	(nusuario, email, encrypted_password, password, 
   fechacreacion, created_at, updated_at, rol) 
 	VALUES ('cor1440', 'bd@localhost', 
