@@ -6,7 +6,8 @@ module Sip
   module Admin
     class GruposController < Sip::Admin::BasicasController
       include Jn316Gen::Concerns::Controllers::GruposController
-      load_and_authorize_resource  class: Sip::Grupo, except: :arbol
+      load_and_authorize_resource  class: Sip::Grupo, 
+        except: [:arbol, :supragrupos, :coordinadores, :procesosgh]
 
       def atributos_index
         [ :id, 
@@ -90,6 +91,7 @@ module Sip
     
       # API
       def coordinadores
+        authorize! :read, Sip::Grupo
         if params && params[:filtro] && params[:filtro][:ids] && 
           params[:filtro][:ids] != ''
           ids = params[:filtro][:ids]
@@ -116,6 +118,7 @@ module Sip
 
       # API
       def procesosgh
+        authorize! :read, Sip::Grupo
         if !params || !params[:ids] || params[:ids] == ''
           render json: 'Sin parametro id', status: :unprocessable_entity
           return false
@@ -135,6 +138,7 @@ module Sip
 
       # API
       def supragrupos
+        authorize! :read, Sip::Grupo
         if !params || !params[:ids] || params[:ids] == ''
           render json: 'Sin parametro id', status: :unprocessable_entity
           return false
