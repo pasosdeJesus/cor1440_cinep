@@ -33,12 +33,12 @@ class AlertaMailer < ApplicationMailer
       @para << @respgp2.email
       puts "para respgp2.email=#{@respgp2.email}"
     end
-    if @pf.coordinador && @pf.coordinador.count > 0
-      @pf.coordinador.each do |coord|
-        @para << coord.email
-        puts "para coord.email=#{coord.email}"
-      end
-    end
+    #if @pf.coordinador && @pf.coordinador.count > 0
+    #  @pf.coordinador.each do |coord|
+    #    @para << coord.email
+    #    puts "para coord.email=#{coord.email}"
+    #  end
+    #end
     puts "enviando con tema #{@tiene} a #{@para.count} receptores"
     #@para = ['vtamara@cinep.org.co'] # quitar
     if @para == []
