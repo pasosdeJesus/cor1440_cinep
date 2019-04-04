@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 44ee0e5d692dfef860302894481a7dcf7631792c
+  revision: dcbd00c88a42466f6d5e1ed421ed2deeff878484
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: af9434b91e0564424205c643cbe9cecf32c873f2
+  revision: a05f7b145cf4f609ba7c77f917eb7a2f8936537e
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -24,7 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: bbdea3fd9a9cfd599ae94a78f96ca035755a287e
+  revision: d23315d61c7b806e376bf09fc3c1b36964e4d461
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 5a3b3ebaff5d8fafe4d22300bf6614daee31cc95
+  revision: 6f934cb0d15c5761a53077955b50b764680c2de9
   specs:
     mr519_gen (0.1.0)
       rails (~> 5.2.2, >= 5.2.2)
@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 8a0f48b6a461e8c6eca9a78b121677a0fa0746ad
+  revision: ca600f7f3f5a377f23a7a3c0068ad5415735a8c8
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: fcd58fed4e4b7a94b5144a860dd3f911d18b14ae
+  revision: 847e7c931808d8e0466193a345e373e87eb88c69
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: fe00a9a639b444509fa704fb9982d252e0aca481
+  revision: 6bc5d68eb8796f7d75febbf886e9029745db2c70
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -65,7 +65,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 8e4af452d54e787a24bd5468d7f6c69b22077678
+  revision: c62a32e6143f134a7cb829677559ef097948b1fa
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -150,7 +150,7 @@ GEM
       railties (>= 3.0)
     builder (3.2.3)
     camertron-eprun (1.1.1)
-    cancancan (2.3.0)
+    cancancan (3.0.0)
     capybara (2.18.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -347,7 +347,7 @@ GEM
     ruby-graphviz (1.2.4)
     ruby-progressbar (1.10.0)
     rubyzip (1.2.2)
-    sass (3.7.3)
+    sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
