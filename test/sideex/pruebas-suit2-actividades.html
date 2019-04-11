@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>pruebas-suit2-actividades</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-fecha</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>/</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Actividades<datalist><option>link=Actividades</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Actividades')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>46,17</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nueva Actividad<datalist><option>link=Nueva Actividad</option><option>//a[contains(text(),'Nueva Actividad')]</option><option>//a[contains(@href, '/actividades/nueva')]</option><option>//li/ul/li[2]/a</option></datalist></td><td>58,18</td>
+</tr>
+<tr><td>clickAt</td><td>id=actividad_fecha_localizada<datalist><option>id=actividad_fecha_localizada</option><option>name=actividad[fecha_localizada]</option><option>css=#actividad_fecha_localizada</option><option>//input[@id='actividad_fecha_localizada']</option><option>//form[@id='edit_actividad_542']/div/div[2]/div[2]/div/div/div/input</option><option>//div/input</option></datalist></td><td>114,14</td>
+</tr>
+<tr><td>clickAt</td><td>css=td.today.day<datalist><option>css=td.today.day</option><option>//td[5]</option></datalist></td><td>13,10</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-duracion</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=actividad_duracion_localizado<datalist><option>id=actividad_duracion_localizado</option><option>name=actividad[duracion_localizado]</option><option>css=#actividad_duracion_localizado</option><option>//input[@id='actividad_duracion_localizado']</option><option>//form[@id='edit_actividad_1334']/div/div[2]/div[2]/div/div[2]/div/input</option><option>//div[2]/div/input</option></datalist></td><td>63,23</td>
+</tr>
+<tr><td>type</td><td>id=actividad_duracion_localizado<datalist><option>id=actividad_duracion_localizado</option><option>name=actividad[duracion_localizado]</option><option>css=#actividad_duracion_localizado</option><option>//input[@id='actividad_duracion_localizado']</option><option>//form[@id='edit_actividad_1334']/div/div[2]/div[2]/div/div[2]/div/input</option><option>//div[2]/div/input</option></datalist></td><td>3</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-unidad-de-duracion </td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>select</td><td>id=actividad_mduracion<datalist><option>id=actividad_mduracion</option><option>name=actividad[mduracion]</option><option>css=#actividad_mduracion</option><option>//select[@id='actividad_mduracion']</option><option>//form[@id='edit_actividad_2522']/div/div[2]/div[2]/div/div[3]/div/select</option><option>//select</option></datalist></td><td>label=Días</td>
+</tr>
+<tr><td>clickAt</td><td>id=actividad_mduracion<datalist><option>id=actividad_mduracion</option><option>name=actividad[mduracion]</option><option>css=#actividad_mduracion</option><option>//select[@id='actividad_mduracion']</option><option>//form[@id='edit_actividad_2522']/div/div[2]/div[2]/div/div[3]/div/select</option><option>//select</option></datalist></td><td>-850,-147</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-nombre</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=actividad_nombre<datalist><option>id=actividad_nombre</option><option>name=actividad[nombre]</option><option>css=#actividad_nombre</option><option>//input[@id='actividad_nombre']</option><option>//form[@id='edit_actividad_591']/div/div[2]/div[2]/div[2]/div/div/input</option><option>//div[2]/div/div/input</option></datalist></td><td>95,12</td>
+</tr>
+<tr><td>type</td><td>id=actividad_nombre<datalist><option>id=actividad_nombre</option><option>name=actividad[nombre]</option><option>css=#actividad_nombre</option><option>//input[@id='actividad_nombre']</option><option>//form[@id='edit_actividad_591']/div/div[2]/div[2]/div[2]/div/div/input</option><option>//div[2]/div/div/input</option></datalist></td><td>aaa</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-departamento</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=actividad_departamento_id<datalist><option>id=actividad_departamento_id</option><option>name=actividad[departamento_id]</option><option>css=#actividad_departamento_id</option><option>//select[@id='actividad_departamento_id']</option><option>//form[@id='edit_actividad_2525']/div/div[2]/div[2]/div[3]/div/div/select</option><option>//div[3]/div/div/select</option></datalist></td><td>label=ARAUCA</td>
+</tr>
+<tr><td>clickAt</td><td>id=actividad_departamento_id<datalist><option>id=actividad_departamento_id</option><option>name=actividad[departamento_id]</option><option>css=#actividad_departamento_id</option><option>//select[@id='actividad_departamento_id']</option><option>//form[@id='edit_actividad_2525']/div/div[2]/div[2]/div[3]/div/div/select</option><option>//div[3]/div/div/select</option></datalist></td><td>-91,-326</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-municipio</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=actividad_municipio_id<datalist><option>id=actividad_municipio_id</option><option>name=actividad[municipio_id]</option><option>css=#actividad_municipio_id</option><option>//select[@id='actividad_municipio_id']</option><option>//form[@id='edit_actividad_2525']/div/div[2]/div[2]/div[3]/div[2]/div/select</option><option>//div[2]/div/select</option></datalist></td><td>label=PUERTO RONDÓN</td>
+</tr>
+<tr><td>clickAt</td><td>id=actividad_municipio_id<datalist><option>id=actividad_municipio_id</option><option>name=actividad[municipio_id]</option><option>css=#actividad_municipio_id</option><option>//select[@id='actividad_municipio_id']</option><option>//form[@id='edit_actividad_2525']/div/div[2]/div[2]/div[3]/div[2]/div/select</option><option>//div[2]/div/select</option></datalist></td><td>-660,-326</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-grupo</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="103"]<datalist><option>css=option[value="103"]</option><option>//option[@value='103']</option><option>//select[@id='actividad_grupo_ids']/option[6]</option><option>//div[4]/div/div/select/option[6]</option></datalist></td><td>215,-84</td>
+</tr>
+<tr><td>removeSelection</td><td>id=actividad_grupo_ids<datalist><option>id=actividad_grupo_ids</option><option>css=#actividad_grupo_ids</option><option>//select[@id='actividad_grupo_ids']</option><option>//form[@id='edit_actividad_2522']/div/div[2]/div[2]/div[4]/div/div/select</option><option>//div[4]/div/div/select</option></datalist></td><td>label=defensoria</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-compromiso-institucional</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>removeSelection</td><td>id=actividad_proyectofinanciero_ids<datalist><option>id=actividad_proyectofinanciero_ids</option><option>css=#actividad_proyectofinanciero_ids</option><option>//select[@id='actividad_proyectofinanciero_ids']</option><option>//form[@id='edit_actividad_2525']/div/div[2]/div[2]/div[4]/div[2]/div/select</option><option>//div[4]/div[2]/div/select</option></datalist></td><td>label=PLAN ESTRATÉGICO TRIENAL 2018-2020</td>
+</tr>
+<tr><td>addSelection</td><td>id=actividad_proyectofinanciero_ids<datalist><option>id=actividad_proyectofinanciero_ids</option><option>css=#actividad_proyectofinanciero_ids</option><option>//select[@id='actividad_proyectofinanciero_ids']</option><option>//form[@id='edit_actividad_2525']/div/div[2]/div[2]/div[4]/div[2]/div/select</option><option>//div[4]/div[2]/div/select</option></datalist></td><td>label=Proyecto loco</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="1281"]<datalist><option>css=option[value="1281"]</option><option>//option[@value='1281']</option><option>//select[@id='actividad_proyectofinanciero_ids']/option[2]</option><option>//div[4]/div[2]/div/select/option[2]</option></datalist></td><td>52,8</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-objetivo-de-compromiso-institucional</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>css=#actividad_objetivopf_ids_chosen &gt; ul.chosen-choices &gt; li.search-choice &gt; a.search-choice-close<datalist><option>css=#actividad_objetivopf_ids_chosen &gt; ul.chosen-choices &gt; li.search-choice &gt; a.search-choice-close</option><option>//div[@id='actividad_objetivopf_ids_chosen']/ul/li/a</option><option>//div[5]/div/div/div/ul/li/a</option></datalist></td><td>3,6</td>
+</tr>
+<tr><td>addSelection</td><td>id=actividad_objetivopf_ids<datalist><option>id=actividad_objetivopf_ids</option><option>css=#actividad_objetivopf_ids</option><option>//select[@id='actividad_objetivopf_ids']</option><option>//form[@id='edit_actividad_2525']/div/div[2]/div[2]/div[5]/div/div/select</option><option>//div[5]/div/div/select</option></datalist></td><td>label=E1: Las comunidades y organizaciones sociales acompañadas por Cinep/PPP son reconocidas como interlocutoras claves por la institucionalidad pública y otros actores de la sociedad de las regiones y localidades donde actúan, y junto con ellos avanzan en la generación de condiciones para la reconciliación.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-actividad-de-compromiso-institucional</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>css=#actividad_actividadpf_ids &gt; option[value="24"]<datalist><option>css=#actividad_actividadpf_ids &gt; option[value="24"]</option><option>xpath=(//option[@value='24'])[2]</option><option>//select[@id='actividad_actividadpf_ids']/option</option><option>//div[5]/div[2]/div/select/option</option></datalist></td><td>110,5</td>
+</tr>
+<tr><td>clickAt</td><td>css=#actividad_actividadpf_ids_chosen &gt; ul.chosen-choices &gt; li.search-field &gt; input.chosen-search-input.default<datalist><option>css=#actividad_actividadpf_ids_chosen &gt; ul.chosen-choices &gt; li.search-field &gt; input.chosen-search-input.default</option><option>xpath=(//input[@value='Selecciones algunas opciones'])[4]</option><option>//div[@id='actividad_actividadpf_ids_chosen']/ul/li/input</option><option>//div[5]/div[2]/div/div/ul/li/input</option></datalist></td><td>91,14</td>
+</tr>
+<tr><td>clickAt</td><td>css=li.result-selected<datalist><option>css=li.result-selected</option><option>//div[@id='actividad_actividadpf_ids_chosen']/div/ul/li</option><option>//div[2]/div/div/div/ul/li</option></datalist></td><td>81,19</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-resposable</td></tr>
+</thead>
+<tbody>
+<tr><td>select</td><td>id=actividad_usuario_id<datalist><option>id=actividad_usuario_id</option><option>name=actividad[usuario_id]</option><option>css=#actividad_usuario_id</option><option>//select[@id='actividad_usuario_id']</option><option>//form[@id='edit_actividad_2525']/div/div[2]/div[2]/div[6]/div/div/select</option><option>//div[6]/div/div/select</option></datalist></td><td>label=Sergio Paez</td>
+</tr>
+<tr><td>clickAt</td><td>id=actividad_usuario_id<datalist><option>id=actividad_usuario_id</option><option>name=actividad[usuario_id]</option><option>css=#actividad_usuario_id</option><option>//select[@id='actividad_usuario_id']</option><option>//form[@id='edit_actividad_2525']/div/div[2]/div[2]/div[6]/div/div/select</option><option>//div[6]/div/div/select</option></datalist></td><td>-91,-399</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-corresponsable</td></tr>
+</thead>
+<tbody>
+<tr><td>addSelection</td><td>id=actividad_usuario_ids<datalist><option>id=actividad_usuario_ids</option><option>css=#actividad_usuario_ids</option><option>//select[@id='actividad_usuario_ids']</option><option>//form[@id='edit_actividad_2524']/div/div[2]/div[2]/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>label=a2 a2</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="1109"]<datalist><option>css=option[value="1109"]</option><option>//option[@value='1109']</option><option>//select[@id='actividad_usuario_ids']/option[9]</option><option>//div[2]/div/select/option[9]</option></datalist></td><td>67,-105</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-actores-sociales</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>css=#actividad_actorsocial_ids_chosen &gt; ul.chosen-choices &gt; li.search-field &gt; input.chosen-search-input.default<datalist><option>css=#actividad_actorsocial_ids_chosen &gt; ul.chosen-choices &gt; li.search-field &gt; input.chosen-search-input.default</option><option>xpath=(//input[@value='Selecciones algunas opciones'])[6]</option><option>//div[@id='actividad_actorsocial_ids_chosen']/ul/li/input</option><option>//div[2]/div/div/div/ul/li/input</option></datalist></td><td>160,8</td>
+</tr>
+<tr><td>clickAt</td><td>css=li.result-selected<datalist><option>css=li.result-selected</option><option>//div[@id='actividad_actorsocial_ids_chosen']/div/ul/li[4]</option><option>//div/ul/li[4]</option></datalist></td><td>69,8</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-productos-CINEP/PPP-usados</td></tr>
+</thead>
+<tbody>
+<tr><td>addSelection</td><td>id=actividad_publicacion_ids<datalist><option>id=actividad_publicacion_ids</option><option>css=#actividad_publicacion_ids</option><option>//select[@id='actividad_publicacion_ids']</option><option>//form[@id='edit_actividad_2524']/div/div[3]/div[2]/div[2]/div[2]/div/select</option><option>//div[2]/div[2]/div/select</option></datalist></td><td>label=CASO TIPO FALSOS POSITIVOS</td>
+</tr>
+<tr><td>clickAt</td><td>css=#actividad_publicacion_ids &gt; option[value="103"]<datalist><option>css=#actividad_publicacion_ids &gt; option[value="103"]</option><option>xpath=(//option[@value='103'])[2]</option><option>//select[@id='actividad_publicacion_ids']/option[2]</option><option>//div[2]/div[2]/div/select/option[2]</option></datalist></td><td>132,7</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-mujeres</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=actividad_mujeres<datalist><option>id=actividad_mujeres</option><option>name=actividad[mujeres]</option><option>css=#actividad_mujeres</option><option>//input[@id='actividad_mujeres']</option><option>//form[@id='edit_actividad_2519']/div/div[3]/div[2]/table/tbody/tr/td/div/input</option><option>//td/div/input</option></datalist></td><td>63,18</td>
+</tr>
+<tr><td>type</td><td>id=actividad_mujeres<datalist><option>id=actividad_mujeres</option><option>name=actividad[mujeres]</option><option>css=#actividad_mujeres</option><option>//input[@id='actividad_mujeres']</option><option>//form[@id='edit_actividad_2519']/div/div[3]/div[2]/table/tbody/tr/td/div/input</option><option>//td/div/input</option></datalist></td><td>8</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-hombres</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=actividad_hombres<datalist><option>id=actividad_hombres</option><option>name=actividad[hombres]</option><option>css=#actividad_hombres</option><option>//input[@id='actividad_hombres']</option><option>//form[@id='edit_actividad_2519']/div/div[3]/div[2]/table/tbody/tr/td[2]/div/input</option><option>//td[2]/div/input</option></datalist></td><td>103,13</td>
+</tr>
+<tr><td>type</td><td>id=actividad_hombres<datalist><option>id=actividad_hombres</option><option>name=actividad[hombres]</option><option>css=#actividad_hombres</option><option>//input[@id='actividad_hombres']</option><option>//form[@id='edit_actividad_2519']/div/div[3]/div[2]/table/tbody/tr/td[2]/div/input</option><option>//td[2]/div/input</option></datalist></td><td>6</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-otros</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=actividad_sexo_onr<datalist><option>id=actividad_sexo_onr</option><option>name=actividad[sexo_onr]</option><option>css=#actividad_sexo_onr</option><option>//input[@id='actividad_sexo_onr']</option><option>//form[@id='edit_actividad_2519']/div/div[3]/div[2]/table/tbody/tr/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td>139,23</td>
+</tr>
+<tr><td>type</td><td>id=actividad_sexo_onr<datalist><option>id=actividad_sexo_onr</option><option>name=actividad[sexo_onr]</option><option>css=#actividad_sexo_onr</option><option>//input[@id='actividad_sexo_onr']</option><option>//form[@id='edit_actividad_2519']/div/div[3]/div[2]/table/tbody/tr/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td>8</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-afros</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=actividad_negros<datalist><option>id=actividad_negros</option><option>name=actividad[negros]</option><option>css=#actividad_negros</option><option>//input[@id='actividad_negros']</option><option>//form[@id='edit_actividad_2519']/div/div[3]/div[2]/table[2]/tbody/tr/td/div/input</option><option>//table[2]/tbody/tr/td/div/input</option></datalist></td><td>217,15</td>
+</tr>
+<tr><td>type</td><td>id=actividad_negros<datalist><option>id=actividad_negros</option><option>name=actividad[negros]</option><option>css=#actividad_negros</option><option>//input[@id='actividad_negros']</option><option>//form[@id='edit_actividad_2519']/div/div[3]/div[2]/table[2]/tbody/tr/td/div/input</option><option>//table[2]/tbody/tr/td/div/input</option></datalist></td><td>8</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-indigenas</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=actividad_indigenas<datalist><option>id=actividad_indigenas</option><option>name=actividad[indigenas]</option><option>css=#actividad_indigenas</option><option>//input[@id='actividad_indigenas']</option><option>//form[@id='edit_actividad_2519']/div/div[3]/div[2]/table[2]/tbody/tr/td[2]/div/input</option><option>//table[2]/tbody/tr/td[2]/div/input</option></datalist></td><td>120,15</td>
+</tr>
+<tr><td>type</td><td>id=actividad_indigenas<datalist><option>id=actividad_indigenas</option><option>name=actividad[indigenas]</option><option>css=#actividad_indigenas</option><option>//input[@id='actividad_indigenas']</option><option>//form[@id='edit_actividad_2519']/div/div[3]/div[2]/table[2]/tbody/tr/td[2]/div/input</option><option>//table[2]/tbody/tr/td[2]/div/input</option></datalist></td><td>5</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-otros</td></tr>
+</thead>
+<tbody>
+<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=actividad_etnia_onr<datalist><option>id=actividad_etnia_onr</option><option>name=actividad[etnia_onr]</option><option>css=#actividad_etnia_onr</option><option>//input[@id='actividad_etnia_onr']</option><option>//form[@id='edit_actividad_1709']/div/div[3]/div[2]/table[2]/tbody/tr/td[3]/div/input</option><option>//table[2]/tbody/tr/td[3]/div/input</option></datalist></td><td>9</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-compromisos-observaciones</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=actividad_observaciones<datalist><option>id=actividad_observaciones</option><option>name=actividad[observaciones]</option><option>css=#actividad_observaciones</option><option>//textarea[@id='actividad_observaciones']</option><option>//form[@id='edit_actividad_695']/div/div[3]/div[2]/div[5]/textarea</option><option>//textarea</option></datalist></td><td>98,21</td>
+</tr>
+<tr><td>type</td><td>id=actividad_observaciones<datalist><option>id=actividad_observaciones</option><option>name=actividad[observaciones]</option><option>css=#actividad_observaciones</option><option>//textarea[@id='actividad_observaciones']</option><option>//form[@id='edit_actividad_695']/div/div[3]/div[2]/div[5]/textarea</option><option>//textarea</option></datalist></td><td>ddd</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-aprobado-coordinador</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=actividad_vistobuenocoord<datalist><option>id=actividad_vistobuenocoord</option><option>css=#actividad_vistobuenocoord</option><option>//input[@id='actividad_vistobuenocoord']</option><option>//form[@id='edit_actividad_2517']/div/div[5]/label/input</option><option>//label/input</option></datalist></td><td>563,8</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">actividad-aprobado-direccion</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=actividad_vistobuenodir<datalist><option>id=actividad_vistobuenodir</option><option>css=#actividad_vistobuenodir</option><option>//input[@id='actividad_vistobuenodir']</option><option>//form[@id='edit_actividad_2517']/div/div[6]/label/input</option><option>//div[6]/label/input</option></datalist></td><td>568,8</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_actividad_2527']/div/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>73,25</td>
+</tr>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/actividades/2533/edita')]</option><option>//a[2]</option></datalist></td><td>22,17</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='actividad_grupo_ids_chosen']/ul/li/a</option><option>//div/div/div/ul/li/a</option></datalist></td><td>7,11</td>
+</tr>
+<tr><td>clickAt</td><td>css=#actividad_publicacion_ids_chosen &gt; ul.chosen-choices &gt; li.search-choice &gt; a.search-choice-close<datalist><option>css=#actividad_publicacion_ids_chosen &gt; ul.chosen-choices &gt; li.search-choice &gt; a.search-choice-close</option><option>//div[@id='actividad_publicacion_ids_chosen']/ul/li/a</option><option>//div[2]/div[2]/div/div/ul/li/a</option></datalist></td><td>5,12</td>
+</tr>
+<tr><td>clickAt</td><td>css=#actividad_usuario_ids_chosen &gt; ul.chosen-choices &gt; li.search-choice &gt; a.search-choice-close<datalist><option>css=#actividad_usuario_ids_chosen &gt; ul.chosen-choices &gt; li.search-choice &gt; a.search-choice-close</option><option>//div[@id='actividad_usuario_ids_chosen']/ul/li/a</option><option>//div[6]/div[2]/div/div/ul/li/a</option></datalist></td><td>4,11</td>
+</tr>
+<tr><td>clickAt</td><td>css=#actividad_proyectofinanciero_ids_chosen &gt; ul.chosen-choices &gt; li.search-choice &gt; a.search-choice-close<datalist><option>css=#actividad_proyectofinanciero_ids_chosen &gt; ul.chosen-choices &gt; li.search-choice &gt; a.search-choice-close</option><option>//div[@id='actividad_proyectofinanciero_ids_chosen']/ul/li/a</option><option>//div[2]/div/div/ul/li/a</option></datalist></td><td>2,5</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_actividad_2527']/div/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>73,25</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/mindicadorespf/1581')])[2]</option><option>//div[4]/a</option></datalist></td><td>21,11</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Actividades</td>
+</tr>
+</tbody></table>
+</body>
+</html>

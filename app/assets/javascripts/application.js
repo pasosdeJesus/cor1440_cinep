@@ -13,6 +13,7 @@
 //= require sip/motor
 //= require heb412_gen/motor
 //= require cor1440_gen/motor
+//= require mr519_gen/motor
 //= require chosen-jquery
 //= require trix
 //= require_tree .
@@ -23,6 +24,7 @@ $(document).on('turbolinks:load ready page:load', function() {
 	  exports : window;
 	sip_prepara_eventos_comunes(root);
 	heb412_gen_prepara_eventos_comunes(root);
+	mr519_gen_prepara_eventos_comunes(root);
 	cor1440_gen_prepara_eventos_comunes(root, 
             {'sin_eventos_cambia_proyecto': true});
 	cor1440_cinep_prepara_eventos_unicos(root);
