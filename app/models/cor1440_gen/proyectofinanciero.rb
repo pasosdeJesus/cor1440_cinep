@@ -303,7 +303,7 @@ module Cor1440Gen
     end
 
     scope :filtro_referenciacinep, lambda { |rc|
-      where("unaccent(referenciacinep) ILIKE '%' || unaccent(?) || '%'",
+      where("unaccent(cor1440_gen_proyectofinanciero.referenciacinep) ILIKE '%' || unaccent(?) || '%'",
             rc)
     }
 
@@ -319,21 +319,21 @@ module Cor1440Gen
     }
 
     scope :filtro_respgp_id, lambda { |r|
-      where('respgp_id=?', r)
+      where('cor1440_gen_proyectofinanciero.respgp_id=?', r)
     }
 
 
     scope :filtro_estado, lambda { |e|
-      where(estado: e)
+      where('cor1440_gen_proyectofinanciero.estado=?', e)
     }
 
     
     scope :filtro_fechaformulacionini, lambda { |f|
-      where('fechaformulacion >= ?', f)
+      where('cor1440_gen_proyectofinanciero.fechaformulacion >= ?', f)
     }
 
     scope :filtro_fechaformulacionfin, lambda { |f|
-      where('fechaformulacion <= ?', f)
+      where('cor1440_gen_proyectofinanciero.fechaformulacion <= ?', f)
     }
 
     def presenta_nombre
