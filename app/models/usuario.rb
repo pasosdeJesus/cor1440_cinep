@@ -342,7 +342,7 @@ class Usuario < ActiveRecord::Base
   }
 
   scope :filtro_sip_grupo_ids, lambda {|g|
-    joins(:sip_grupo_usuario).where('sip_grupo_usuario.sip_grupo_id = ?', g)
+    joins(:sip_grupo).where('sip_grupo.id = ?', g)
   }
 
   scope :filtro_habilitado, lambda {|o|

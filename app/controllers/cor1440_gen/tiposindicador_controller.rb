@@ -30,7 +30,6 @@ module Cor1440Gen
     end
 
     def update
-      byebug
       if params[:tipoindicador] && params[:tipoindicador][:campotind_attributes]
         params[:tipoindicador][:campotind_attributes].each do |p| 
           if p[1]['_destroy'] == "1" && p[1][:id].to_i > 0

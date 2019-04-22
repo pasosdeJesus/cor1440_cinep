@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 6f05e30fd54e353141faa583f0fe88ec7f9d910d
+  revision: 64a1d4ab8c6c5a29b36ad13f6b1fb33afc374ccc
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 9ef3b3d43ea3bb118eca8495d04facac1931c6b3
+  revision: 3bae7d056566b9a9a273abbdcace3c745bf43350
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -24,7 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 255a416e7128492db0d283ea32e89cf1d5d7ee93
+  revision: 66f1991e77503217907f6757c51827a9af7b4790
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 4771ea248315de69a2ea3d67c9b6fca2d70bab4c
+  revision: 6ab0a3dde64e2b90bf58d21b4e228b261c294f94
   specs:
     mr519_gen (0.1.0)
       rails (~> 5.2.2, >= 5.2.2)
@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: e54fba79b757d9ed440ff560c57fbff2be870868
+  revision: bd3f0367f68a31c46c248346da1fa22ab860a878
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: ae7408ebc6a9bf94061ed73d608e503b355a19a0
+  revision: 2a50877b77f09e26d5ec11b79daafcd136c0f2eb
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 203f62a66e9fae24a08942cc9e7a4281c13a9cd1
+  revision: 9881d21552a4a11f24f67052166afbc488fe5517
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -65,7 +65,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: c1c964aa049593667de8c3fa0424413d05df6aea
+  revision: c82f8ef17a5eea79dca3570147f1698519c94382
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -143,14 +143,14 @@ GEM
     arel (9.0.0)
     bcrypt (3.1.12)
     bigdecimal (1.4.3)
-    bindex (0.5.0)
-    bootsnap (1.4.2)
+    bindex (0.7.0)
+    bootsnap (1.4.3)
       msgpack (~> 1.0)
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
     camertron-eprun (1.1.1)
-    cancancan (2.3.0)
+    cancancan (3.0.1)
     capybara (2.18.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -158,8 +158,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
-    childprocess (0.9.0)
-      ffi (~> 1.0, >= 1.0.11)
+    childprocess (1.0.1)
+      rake (< 13.0)
     choice (0.2.0)
     chosen-rails (1.8.7)
       coffee-rails (>= 3.2)
@@ -195,8 +195,8 @@ GEM
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.10.0)
-    font-awesome-rails (4.7.0.4)
-      railties (>= 3.2, < 6.0)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.6.0)
@@ -232,7 +232,7 @@ GEM
     method_source (0.9.2)
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2018.0812)
+    mime-types-data (3.2019.0331)
     mimemagic (0.3.3)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
@@ -256,7 +256,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    msgpack (1.2.9)
+    msgpack (1.2.10)
     multi_json (1.13.1)
     net-ldap (0.16.1)
     nio4r (2.3.1)
@@ -288,7 +288,7 @@ GEM
       rails (>= 3.2)
     public_suffix (3.0.3)
     puma (3.12.1)
-    rack (2.0.6)
+    rack (2.0.7)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -347,7 +347,7 @@ GEM
     ruby-graphviz (1.2.4)
     ruby-progressbar (1.10.0)
     rubyzip (1.2.2)
-    sass (3.7.3)
+    sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -358,8 +358,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.141.0)
-      childprocess (~> 0.5)
+    selenium-webdriver (3.141.5926)
+      childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
     simple_form (4.1.0)
       actionpack (>= 5.0)
@@ -394,7 +394,7 @@ GEM
       execjs (~> 2.7)
       less-rails (~> 2.8, >= 2.8.0)
       railties (~> 5.0, >= 5.0.1)
-    twitter_cldr (4.4.3)
+    twitter_cldr (4.4.4)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo

@@ -42,7 +42,7 @@ if (test "$SININS" != "1") then {
 
 PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY bundle exec rake db:migrate sip:indices db:structure:dump
 
-PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY RAILS_ENV=test bundle exec rake db:drop db:setup db:migrate sip:indices
+PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY RAILS_ENV=test bundle exec rake db:drop db:setup;  PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY RAILS_ENV=test bin/rails db:migrate sip:indices
 if (test "$?" != "0") then {
 	echo "No puede preparse base de prueba";
 	exit 1;
