@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: b36cbd7336faf8c450b1094e5a513703e1bfbafa
+  revision: 53e36952b7b239ba437899a373ad61a59a077b39
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -24,7 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 6bcbf6f23a28f76e18ad9ddf67dccb67cd27a9c7
+  revision: ec8f2c51b0804b1c694fbd82601235927bb52443
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b351fff8c758b3dfe5d46a2131d406e60517fd9e
+  revision: adfc319534fb16afd6e5ef1cedde083e0f815c57
   specs:
     mr519_gen (0.1.0)
       rails (~> 5.2.2, >= 5.2.2)
@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 6f3dcbbdfb73297f1f56337cee21a26e2f277b6f
+  revision: 55139464057ec2f7147714480aad757acc331a19
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: dcd8e06330e320e42b4f0bfcf00e03af06050bd9
+  revision: 6b10780944c1a9316e8643789f7fec371f83c7dd
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 7b0666576504e91767125dc02b940c6e206d17a2
+  revision: 3ec6ed7c42352c509c6c1654e7d37a6fc877779c
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -65,7 +65,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: cb287d1afd2aa195cd3f80a8d587dea6f7a30d4e
+  revision: 58fa999a85c643912b7d6f9ab8aa38b5ee5d348d
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -168,9 +168,9 @@ GEM
     cldr-plurals-runtime-rb (1.0.1)
     climate_control (0.2.0)
     cliver (0.3.2)
-    coffee-rails (4.2.2)
+    coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
+      railties (>= 5.2.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -358,7 +358,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.141.5926)
+    selenium-webdriver (3.142.0)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
     simple_form (4.1.0)
