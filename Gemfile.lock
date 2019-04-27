@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 53e36952b7b239ba437899a373ad61a59a077b39
+  revision: fd6a1c6429751112b4607efebd2d429fd101a3f1
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 33191649dab9ff035743c9e9444e39cde089b349
+  revision: 82c6a7af9f920a2be9324aa9a57e31b25b59c925
   specs:
     heb412_gen (1.0.a1)
       chosen-rails
@@ -24,7 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: ec8f2c51b0804b1c694fbd82601235927bb52443
+  revision: c11e41c838d79bd5dae2295bcdfb2981abb8529c
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: adfc319534fb16afd6e5ef1cedde083e0f815c57
+  revision: 4ab28450d835954f66c810f4bc8d689fe0a214ff
   specs:
     mr519_gen (0.1.0)
       rails (~> 5.2.2, >= 5.2.2)
@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 55139464057ec2f7147714480aad757acc331a19
+  revision: caaf49c5832be4aa6a12e8f4ddfd372928c49ef1
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 6b10780944c1a9316e8643789f7fec371f83c7dd
+  revision: 8d90b24b5470deccac493fc94e2df69791f3b50e
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 3ec6ed7c42352c509c6c1654e7d37a6fc877779c
+  revision: e0b41231402fd60008541c653711440ba4bb4ae7
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -65,7 +65,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 58fa999a85c643912b7d6f9ab8aa38b5ee5d348d
+  revision: b0c18e494e0b7030167cbca8c53ef109288d7724
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -144,7 +144,7 @@ GEM
     bcrypt (3.1.12)
     bigdecimal (1.4.3)
     bindex (0.7.0)
-    bootsnap (1.4.3)
+    bootsnap (1.4.4)
       msgpack (~> 1.0)
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
