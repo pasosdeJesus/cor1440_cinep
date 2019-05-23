@@ -18,7 +18,7 @@ gem 'puma'
 # CSS
 gem 'sass'
 
-#gem 'webpacker'
+gem 'webpacker'
 
 # Color en terminal
 gem 'colorize'
