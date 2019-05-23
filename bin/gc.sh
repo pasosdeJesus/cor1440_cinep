@@ -49,6 +49,7 @@ if (test "$?" != "0") then {
 } fi;
 
 PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY bundle exec bin/rails test
+CONFIG_HOSTS=127.0.0.1 PGSSLCERT=$PGSSLCERT PGSSLKEY=$PGSSLKEY bundle exec bin/rails test:system
 if (test "$?" != "0") then {
 	echo "No pasaron pruebas";
 	exit 1;
