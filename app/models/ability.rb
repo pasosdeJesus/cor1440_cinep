@@ -400,11 +400,13 @@ class Ability  < Cor1440Gen::Ability
           can :edit, :contextoac
         end
 
-        if lgrupos.include?(GRUPO_COMPROMISOS)
+        if lgrupos.include?(GRUPO_COMPROMISOS) || 
+          lgrupos.include?(GRUPO_COORDINADORGP)
           # Oficina Gerencia de Proyectos
           can :manage, Cor1440Gen::Actividad
           can :manage, Cor1440Gen::Financiador
           can :manage, Cor1440Gen::Mindicadorpf
+          can [:index, :read], ::Efecto
           can [:creacomogp, :read, :index, :show, :create, :validar], 
             Cor1440Gen::Proyectofinanciero
           can [:manage, :validar], Cor1440Gen::Proyectofinanciero.where(
