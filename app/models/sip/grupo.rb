@@ -7,7 +7,7 @@ module Sip
     include Jn316Gen::Concerns::Models::Grupo
 
     belongs_to :procesogh, class_name: '::Procesogh',
-      foreign_key: "procesogh_id", validate: true
+      foreign_key: "procesogh_id", validate: true, optional: true
 
     scope :investigacion, -> () {
       where("cn LIKE 'Linea%'").order(:nombre)

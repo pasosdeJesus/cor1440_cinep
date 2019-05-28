@@ -15,7 +15,7 @@ class Usuario < ActiveRecord::Base
   belongs_to :cargo, validate: true, optional: true
 
   belongs_to :contrato, validate: true
-  accepts_nested_attributes_for :contrato, reject_if: :all_blank, optional: true
+  accepts_nested_attributes_for :contrato, reject_if: :all_blank
 
   belongs_to :empresaps, validate: true, optional: true
 

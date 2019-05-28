@@ -27,15 +27,15 @@ module Cor1440Gen
     serialize :cambios
 
     belongs_to :sectorapc, class_name: '::Sectorapc',
-      foreign_key: 'sectorapc_id'
+      foreign_key: 'sectorapc_id', optional: true
     belongs_to :respgp, class_name: '::Usuario',
-      foreign_key: 'respgp_id'
+      foreign_key: 'respgp_id', optional: true
     belongs_to :respgp2, class_name: '::Usuario',
-      foreign_key: 'respgp2_id'
+      foreign_key: 'respgp2_id', optional: true
     belongs_to :tasaformulacion, class_name: '::Tasacambio',
-      foreign_key: 'tasaformulacion_id'
+      foreign_key: 'tasaformulacion_id', optional: true
     belongs_to :tipomoneda, class_name: '::Tipomoneda',
-      foreign_key: 'tipomoneda_id'
+      foreign_key: 'tipomoneda_id', optional: true
 
     def duracion
       if fechainicio && fechacierre

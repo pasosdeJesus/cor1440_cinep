@@ -6,7 +6,8 @@ module Cor1440Gen
   class Financiador < ActiveRecord::Base
     include Cor1440Gen::Concerns::Models::Financiador
 
-    belongs_to :pais, class_name: 'Sip::Pais', foreign_key: 'pais_id'
+    belongs_to :pais, class_name: 'Sip::Pais', foreign_key: 'pais_id', 
+      optional: true
 
     validates :domicilio, allow_blank: true, length: { maximum: 511}
     validates :nit, allow_blank: true, length: { maximum: 31}

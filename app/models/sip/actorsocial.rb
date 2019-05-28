@@ -7,7 +7,7 @@ module Sip
     include Cor1440Gen::Concerns::Models::Actorsocial
 
     belongs_to :nivelrelacion, class_name: "::Nivelrelacion",
-      foreign_key: "nivelrelacion_id", validate: true
+      foreign_key: "nivelrelacion_id", validate: true, optional: true
 
     has_many :actorsocial_departamento, dependent: :delete_all
     has_many :departamentotrab, through: :actorsocial_departamento,
