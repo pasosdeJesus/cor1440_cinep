@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 # Rails (internacionalización)
 gem "rails", '~> 6.0.0.rc1'
 
-gem 'bigdecimal'
 gem "rails-i18n"
 
 gem 'bootsnap'
@@ -60,7 +59,7 @@ gem "font-awesome-rails"
 gem "bootstrap-datepicker-rails"
 
 # Formularios simples 
-gem "simple_form", path: '../simple_form'
+gem "simple_form"
 
 # Formularios anidados (algunos con ajax)
 gem "cocoon", git: "https://github.com/vtamara/cocoon.git", 
@@ -69,7 +68,6 @@ gem "cocoon", git: "https://github.com/vtamara/cocoon.git",
 
 # Autenticación y roles
 gem "devise"
-gem 'responders', path: '../responders'
 
 gem "devise-i18n"
 gem "cancancan"
