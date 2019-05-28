@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: e3cc3ca3ecf4f3480e02c18ea8fde8c3e07cb698
+  revision: fb324c0392f4ef2e57416a62785ca452a57236d8
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 283c8cca15b0a4b1d24ef6f3649a90ce23d2e5a4
+  revision: f8451279c204ad0b0a2b361ea2cb902fa55de5f4
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -170,6 +170,7 @@ GEM
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
+    byebug (11.0.1)
     camertron-eprun (1.1.1)
     cancancan (3.0.1)
     capybara (3.21.0)
@@ -430,6 +431,7 @@ DEPENDENCIES
   bcrypt
   bootsnap
   bootstrap-datepicker-rails
+  byebug
   cancancan
   chosen-rails!
   cocoon!
