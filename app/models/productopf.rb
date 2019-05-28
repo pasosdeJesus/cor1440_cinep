@@ -8,7 +8,7 @@ class Productopf < ActiveRecord::Base
     foreign_key: 'proyectofinanciero_id'
 
   belongs_to :tipoproductopf, class_name: '::Tipoproductopf',
-    foreign_key: 'tipoproductopf_id'
+    foreign_key: 'tipoproductopf_id', optional: true
 
   validates :detalle, length: { maximum: 5000}
   validates :seguimiento, length: { maximum: 5000}

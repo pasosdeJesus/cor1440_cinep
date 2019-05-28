@@ -7,7 +7,7 @@ class Efecto < ActiveRecord::Base
   belongs_to :indicadorpf, class_name: 'Cor1440Gen::Indicadorpf',
             foreign_key: "indicadorpf_id", validate: true
   belongs_to :registradopor, class_name: '::Usuario',
-            foreign_key: "registradopor_id", validate: true
+            foreign_key: "registradopor_id", validate: true, optional: true
 
   has_many :actorsocial_efecto, dependent: :delete_all
   has_many :actorsocial, through: :actorsocial_efecto

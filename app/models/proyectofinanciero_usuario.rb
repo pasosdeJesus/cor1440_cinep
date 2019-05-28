@@ -7,11 +7,11 @@ class ProyectofinancieroUsuario < ActiveRecord::Base
   belongs_to :usuario, class_name: '::Usuario',
     foreign_key: 'usuario_id'
   belongs_to :cargo, class_name: '::Cargo',
-    foreign_key: 'cargo_id'
+    foreign_key: 'cargo_id', optional: true
   belongs_to :perfilprofesional, class_name: '::Perfilprofesional',
-    foreign_key: 'perfilprofesional_id'
+    foreign_key: 'perfilprofesional_id', optional: true
   belongs_to :tipocontrato, class_name: '::Tipocontrato',
-    foreign_key: 'tipocontrato_id'
+    foreign_key: 'tipocontrato_id', optional: true
 
   validates :cargo, presence: true
 

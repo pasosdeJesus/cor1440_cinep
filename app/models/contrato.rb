@@ -5,7 +5,7 @@ class Contrato < ActiveRecord::Base
   include Sip::Localizacion
 
   belongs_to :tipocontrato, class_name: "::Tipocontrato",
-    foreign_key: "tipocontrato_id", validate: true
+    foreign_key: "tipocontrato_id", validate: true, optional: true
 
   has_one :usuario, inverse_of: :contrato
 

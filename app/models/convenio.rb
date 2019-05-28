@@ -11,10 +11,10 @@ class Convenio < ActiveRecord::Base
   campofecha_localizado :fechacierre
 
   belongs_to :tipoconvenio, class_name: '::Tipoconvenio',
-      foreign_key: 'tipoconvenio_id'
+      foreign_key: 'tipoconvenio_id', optional: true
 
   belongs_to :responsable, class_name: '::Usuario',
-      foreign_key: 'responsable_id'
+      foreign_key: 'responsable_id', optional: true
 
   has_many :anexo_convenio, 
     dependent: :delete_all,

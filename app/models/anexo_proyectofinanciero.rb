@@ -4,7 +4,7 @@ class AnexoProyectofinanciero < ActiveRecord::Base
   belongs_to :proyectofinanciero, class_name: 'Cor1440Gen::Proyectofinanciero',
     foreign_key: 'proyectofinanciero_id'
   belongs_to :tipoanexo, class_name: '::Tipoanexo',
-    foreign_key: 'tipoanexo_id'
+    foreign_key: 'tipoanexo_id', optional: true
   belongs_to :sip_anexo, class_name: 'Sip::Anexo', 
     foreign_key: 'anexo_id', validate: true
 
