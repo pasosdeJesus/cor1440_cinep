@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: a6fa31bd61831dc8f4be02f1f4783c595a7563f6
-  branch: rails6
+  revision: 5019711344f1a1b8e049d455c5bdcf5f2620f4a1
   specs:
     cor1440_gen (1.0b2)
       devise
@@ -14,10 +13,9 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 037985948c3cba4539e7df98e5fdf93313fdc10d
-  branch: rails6
+  revision: 90078a77ccf48aea25e107fd5494297f975150fb
   specs:
-    heb412_gen (1.0.a1)
+    heb412_gen (1.0.b6)
       chosen-rails
       font-awesome-rails
       redcarpet
@@ -26,8 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: e6963acf638589876047eec1c6461341ebe977b0
-  branch: rails6
+  revision: a2c9b2e532f4e6cbf02f7bd883e64872b07ec34e
   specs:
     jn316_gen (1.0.a1)
       net-ldap
@@ -36,17 +33,15 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 88449284303404078a106c8ed13f5547b36bd378
-  branch: rails6
+  revision: e3cc3ca3ecf4f3480e02c18ea8fde8c3e07cb698
   specs:
-    mr519_gen (0.1.0)
+    mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
       sip
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: be604b99a9e34721a6cfa48f462d0e92f547b993
-  branch: rails6
+  revision: 89631aafce75391f11754c645b5e5e2ff9373d39
   specs:
     sal7711_gen (1.0.b1)
       rails
@@ -54,8 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 4d76a37dcabb483a64b506910b47f2444420fbbd
-  branch: rails6
+  revision: 283c8cca15b0a4b1d24ef6f3649a90ce23d2e5a4
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -63,8 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 4b26423a00fe2e9a0a71787446ac35d10601dd42
-  branch: rails6
+  revision: 37c2a7b226871cb228f49f6498f0c710cae66da9
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -72,10 +65,9 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 4cc04f789f0a19939b812210e33b8e5ed6363cb2
-  branch: rails6
+  revision: c42f4b6128c4e2f7889ea7c7c8767210d4d8b76d
   specs:
-    sip (2.0.b5)
+    sip (2.0.b6)
       bootstrap-datepicker-rails
       cancancan
       chosen-rails
@@ -195,13 +187,13 @@ GEM
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (3.0.1)
-    capybara (3.20.2)
+    capybara (3.21.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
-      regexp_parser (~> 1.2)
+      regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (1.0.1)
       rake (< 13.0)
@@ -304,7 +296,7 @@ GEM
     prawnto_2 (0.3.0)
       prawn (>= 1.0.0)
       rails (>= 3.2)
-    public_suffix (3.0.3)
+    public_suffix (3.1.0)
     puma (3.12.1)
     rack (2.0.7)
     rack-proxy (0.6.5)
@@ -360,12 +352,12 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redcarpet (3.4.0)
-    regexp_parser (1.5.0)
-    rspreadsheet (0.4.5)
+    regexp_parser (1.5.1)
+    rspreadsheet (0.4.8)
       andand (~> 1.3)
       rubyzip (~> 1.1)
     ruby-graphviz (1.2.4)
-    rubyzip (1.2.2)
+    rubyzip (1.2.3)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
