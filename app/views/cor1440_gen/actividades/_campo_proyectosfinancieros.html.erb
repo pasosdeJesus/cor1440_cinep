@@ -1,6 +1,6 @@
 <% pf = Cor1440Gen::Proyectofinanciero.all %>
 <% pf = pf.where('fechainicio <= ?', f.object.fecha) if f.object && f.object.fecha %>
-<% pf = pf.where('fechacierre >= ?', f.object.fecha) if f.object && f.object.fecha %>
+<% pf = pf.where('(fechacierra IS NULL OR fechacierre >= ?)', f.object.fecha) if f.object && f.object.fecha %>
 <% if f.object && f.object.grupo && f.object.grupo.count > 0 %>
   <% pf = Cor1440Gen::GruposHelper.compromisos_grupos(pf, f.object.grupo) %>
 <% else %>
