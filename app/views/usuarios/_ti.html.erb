@@ -1,6 +1,20 @@
 
-<%= f.input :encrypted_password %>
-
+<div class="row">
+  <div class="col-sm-6">
+    <%= f.input :encrypted_password %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :rol,
+      collection: Ability::ROLES.select { |v| v.last != 0 },
+      label: "Rol",
+      input_html: {
+        title: 'En general debe ser operador.  Atención: Administradores y directivos pueden editar todo',
+        'data-toggle' => 'tooltip', },
+      include_blank: false
+    %>
+  </div>
+</div>
+                               
 <div class="row">
   <div class="col-sm-6">
     <%= f.input :uidNumber,
