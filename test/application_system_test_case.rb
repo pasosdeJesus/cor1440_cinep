@@ -9,7 +9,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   driven_by :poltergeist, screen_size: [1400, 1400], options: { 
     js_errors: true,
-    logger: NilLogger.new#,
+    logger: NilLogger.new,
+    timeout: 2.minutes,
 #    phantomjs_logger: STDOUT,
 #    phantomjs_options: ['--debug=true'],
 #    debug: true 

@@ -129,6 +129,8 @@ group :development do
 
   gem 'erd'
 
+  gem 'pry'
+
 end
 
 group :test, :development, :ensayo do
