@@ -111,11 +111,14 @@
       </div> <!-- row -->
 
       <div class='row'>
-        <div class='col-sm-offset-0 col-sm-6'>
+        <div class='col-sm-offset-0 col-sm-4'>
           <%= render partial: 'campo_responsable', locals: {f: f} %>
         </div>
-        <div class='col-sm-offset-0 col-sm-6'>
+        <div class='col-sm-offset-0 col-sm-4'>
           <%= render partial: 'campo_corresponsables', locals: {f: f} %>
+        </div>
+        <div class='col-sm-offset-0 col-sm-4'>
+          <%= f.input :precedidapor %>
         </div>
       </div> <!-- row -->
 

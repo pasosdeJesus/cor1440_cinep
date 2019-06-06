@@ -866,7 +866,8 @@ CREATE TABLE public.cor1440_gen_actividad (
     vistobuenopar boolean,
     vistobuenodir boolean,
     observacionespar character varying(5000),
-    observacionesdir character varying(5000)
+    observacionesdir character varying(5000),
+    precedidapor integer
 );
 
 
@@ -6909,6 +6910,14 @@ ALTER TABLE ONLY public.heb412_gen_campohc
 
 
 --
+-- Name: cor1440_gen_actividad fk_rails_1f29b04750; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividad
+    ADD CONSTRAINT fk_rails_1f29b04750 FOREIGN KEY (precedidapor) REFERENCES public.cor1440_gen_actividad(id);
+
+
+--
 -- Name: informefinanciero fk_rails_1f7068d549; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8711,6 +8720,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190603234145'),
 ('20190605143420'),
 ('20190605144951'),
-('20190606102503');
+('20190606102503'),
+('20190606151757');
 
 

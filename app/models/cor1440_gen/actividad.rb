@@ -10,13 +10,16 @@ module Cor1440Gen
     belongs_to :contextoinv, class_name: '::Contextoinv', optional: true
     accepts_nested_attributes_for :contextoinv
 
-    belongs_to :departamento, class_name: 'Sip::Departamento', optional: true
-    belongs_to :municipio, class_name: 'Sip::Municipio', optional: true
-    belongs_to :redactor, class_name: '::Redactor', optional: true
-    belongs_to :nucleoconflicto, class_name: '::Nucleoconflicto', optional: true
-    
     belongs_to :creadopor, class_name: '::Usuario',
       foreign_key: 'creadopor_id'
+
+    belongs_to :departamento, class_name: 'Sip::Departamento', optional: true
+    belongs_to :municipio, class_name: 'Sip::Municipio', optional: true
+    belongs_to :nucleoconflicto, class_name: '::Nucleoconflicto', optional: true
+    belongs_to :precedida, foreign_key: 'precedidapor',
+      class_name: 'Cor1440Gen::Actividad', optional: true
+    belongs_to :redactor, class_name: '::Redactor', optional: true
+    
 
     has_many :actividad_grupo, dependent: :delete_all,
       class_name: '::ActividadGrupo', foreign_key: 'actividad_id'
@@ -111,6 +114,16 @@ module Cor1440Gen
       greater_than: 0,
       allow_nil: true 
     }
+
+    validate :existe_precedidapor
+    def existe_precedidapor
+      if Cor1440Gen::Actividad.find_by_id(self.precedidapor).nil?
+        errors.add(:precedidapor, 
+                   'Debe corresponder al número de la actividad que precede')
+        return false
+      end
+    end
+
     validate :tot_participantes
     def tot_participantes
       if hombres && mujeres && sexo_onr && negros && indigenas && etnia_onr &&

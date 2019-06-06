@@ -105,6 +105,7 @@ es:
         observaciones: Compromisos/Observaciones
         observacionesdir: 'Observaciones de Direccion'
         observacionespar: 'Observaciones de Par'
+        precedidapor: 'Si es proceso, número de actividad que la precede:'
         proyecto: "Programa/Servicio/Producto"
         proyectos: "Programas/Servicios/Productos"
         publicacion: 'Producto CINEP/PPP'
