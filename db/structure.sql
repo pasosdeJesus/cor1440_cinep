@@ -30,6 +30,25 @@ COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
 
 
 --
+-- Name: range(integer, integer, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.range(integer, integer, integer) RETURNS SETOF integer
+    LANGUAGE plpgsql
+    AS $_$
+declare
+i int;
+begin
+i := $1;
+while (i <= $2) loop
+return next i;
+i := i + $3;
+end loop;
+return;
+end;$_$;
+
+
+--
 -- Name: soundexesp(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -666,7 +685,6 @@ CREATE TABLE public.contextoinv (
 --
 
 CREATE SEQUENCE public.contextoinv_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -773,7 +791,6 @@ CREATE TABLE public.coordinador_proyectofinanciero (
 --
 
 CREATE SEQUENCE public.coordinador_proyectofinanciero_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -858,8 +875,8 @@ CREATE TABLE public.cor1440_gen_actividad (
 --
 
 CREATE TABLE public.cor1440_gen_actividad_actividadpf (
-    actividad_id integer NOT NULL,
-    actividadpf_id integer NOT NULL
+    actividad_id bigint NOT NULL,
+    actividadpf_id bigint NOT NULL
 );
 
 
@@ -986,6 +1003,16 @@ CREATE SEQUENCE public.cor1440_gen_actividad_rangoedadac_id_seq
 --
 
 ALTER SEQUENCE public.cor1440_gen_actividad_rangoedadac_id_seq OWNED BY public.cor1440_gen_actividad_rangoedadac.id;
+
+
+--
+-- Name: cor1440_gen_actividad_respuestafor; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_actividad_respuestafor (
+    actividad_id integer NOT NULL,
+    respuestafor_id integer NOT NULL
+);
 
 
 --
@@ -1137,7 +1164,6 @@ CREATE TABLE public.cor1440_gen_actividadpf (
 --
 
 CREATE SEQUENCE public.cor1440_gen_actividadpf_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1165,6 +1191,16 @@ CREATE TABLE public.cor1440_gen_actividadtipo (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     listadoasistencia boolean
+);
+
+
+--
+-- Name: cor1440_gen_actividadtipo_formulario; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_actividadtipo_formulario (
+    actividadtipo_id integer NOT NULL,
+    formulario_id integer NOT NULL
 );
 
 
@@ -1607,29 +1643,9 @@ ALTER SEQUENCE public.cor1440_gen_objetivopf_id_seq OWNED BY public.cor1440_gen_
 --
 
 CREATE TABLE public.cor1440_gen_plantillahcm_proyectofinanciero (
-    id bigint NOT NULL,
     plantillahcm_id integer,
     proyectofinanciero_id integer
 );
-
-
---
--- Name: cor1440_gen_plantillahcm_proyectofinanciero_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.cor1440_gen_plantillahcm_proyectofinanciero_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: cor1440_gen_plantillahcm_proyectofinanciero_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.cor1440_gen_plantillahcm_proyectofinanciero_id_seq OWNED BY public.cor1440_gen_plantillahcm_proyectofinanciero.id;
 
 
 --
@@ -1813,7 +1829,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     observacionestramite character varying(5000),
     observacionesejecucion character varying(5000),
     observacionescierre character varying(5000),
-    fechaformulacion date DEFAULT CURRENT_DATE NOT NULL,
+    fechaformulacion date DEFAULT ('now'::text)::date NOT NULL,
     montopesos numeric DEFAULT 0.0,
     tasa double precision,
     tasaej double precision,
@@ -2349,7 +2365,6 @@ CREATE TABLE public.heb412_gen_campohc (
 --
 
 CREATE SEQUENCE public.heb412_gen_campohc_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2381,7 +2396,6 @@ CREATE TABLE public.heb412_gen_campoplantillahcm (
 --
 
 CREATE SEQUENCE public.heb412_gen_campoplantillahcm_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2444,7 +2458,7 @@ CREATE TABLE public.heb412_gen_doc (
     updated_at timestamp without time zone NOT NULL,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
-    adjunto_file_size bigint,
+    adjunto_file_size integer,
     adjunto_updated_at timestamp without time zone,
     nombremenu character varying(127),
     vista character varying(255),
@@ -2461,7 +2475,6 @@ CREATE TABLE public.heb412_gen_doc (
 --
 
 CREATE SEQUENCE public.heb412_gen_doc_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2529,7 +2542,6 @@ CREATE TABLE public.heb412_gen_plantillahcm (
 --
 
 CREATE SEQUENCE public.heb412_gen_plantillahcm_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2774,7 +2786,7 @@ CREATE SEQUENCE public.maternidad_seq
 
 CREATE TABLE public.mr519_gen_campo (
     id bigint NOT NULL,
-    nombre character varying(128) NOT NULL,
+    nombre character varying(512) NOT NULL,
     ayudauso character varying(1024),
     tipo integer DEFAULT 1 NOT NULL,
     obligatorio boolean,
@@ -3204,7 +3216,6 @@ CREATE TABLE public.productopf (
 --
 
 CREATE SEQUENCE public.productopf_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3285,7 +3296,6 @@ CREATE TABLE public.proyectofinanciero_uresponsable (
 --
 
 CREATE SEQUENCE public.proyectofinanciero_uresponsable_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3461,7 +3471,6 @@ CREATE TABLE public.regiongrupo (
 --
 
 CREATE SEQUENCE public.regiongrupo_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3513,7 +3522,7 @@ CREATE TABLE public.sal7711_gen_articulo (
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
-    adjunto_file_size bigint,
+    adjunto_file_size integer,
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
@@ -3528,8 +3537,8 @@ CREATE TABLE public.sal7711_gen_articulo (
 --
 
 CREATE TABLE public.sal7711_gen_articulo_categoriaprensa (
-    articulo_id integer NOT NULL,
-    categoriaprensa_id integer NOT NULL
+    articulo_id bigint NOT NULL,
+    categoriaprensa_id bigint NOT NULL
 );
 
 
@@ -3538,7 +3547,6 @@ CREATE TABLE public.sal7711_gen_articulo_categoriaprensa (
 --
 
 CREATE SEQUENCE public.sal7711_gen_articulo_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3574,7 +3582,6 @@ CREATE TABLE public.sal7711_gen_bitacora (
 --
 
 CREATE SEQUENCE public.sal7711_gen_bitacora_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3610,7 +3617,6 @@ CREATE TABLE public.sal7711_gen_categoriaprensa (
 --
 
 CREATE SEQUENCE public.sal7711_gen_categoriaprensa_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3988,7 +3994,6 @@ CREATE TABLE public.sip_grupo (
 --
 
 CREATE SEQUENCE public.sip_grupo_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4028,7 +4033,7 @@ CREATE TABLE public.sip_grupoper (
 -- Name: TABLE sip_grupoper; Type: COMMENT; Schema: public; Owner: -
 --
 
-COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en cor1440cinep_desarrollo';
+COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en cor1440cinep_produccion';
 
 
 --
@@ -4675,7 +4680,6 @@ CREATE TABLE public.tipoproductopf (
 --
 
 CREATE SEQUENCE public.tipoproductopf_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4830,7 +4834,7 @@ CREATE VIEW public.v_solicitud_informes AS
         END AS a_tiempo
    FROM (public.cor1440_gen_proyectofinanciero p
      JOIN public.v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[20, 101, 18, 1, 19]))
+  WHERE (p.id = ANY (ARRAY[18, 19, 20, 103, 109, 115, 116, 117, 118, 119, 120, 122, 123, 125, 126, 127, 128, 129, 130, 131, 132, 134, 137, 138, 139, 140, 141, 142, 143, 144, 145, 147, 148, 149, 151, 152, 153, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 170, 174, 175, 176, 181, 182, 193, 197, 198, 200, 201, 202, 203, 204, 210, 215, 216, 217, 218, 219, 220, 221, 226, 230, 231, 232, 236, 240, 241, 242, 244, 247, 248, 252, 263, 264, 265, 266, 267, 283, 286, 288, 289, 290, 291, 295, 331, 332, 334, 337, 338, 340, 341, 342, 349, 350, 353, 354, 355, 356, 357, 358, 359, 360, 362, 363, 364, 365, 366, 367, 368, 369, 372, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387]))
   ORDER BY s.fechaplaneada;
 
 
@@ -5105,13 +5109,6 @@ ALTER TABLE ONLY public.cor1440_gen_mindicadorpf ALTER COLUMN id SET DEFAULT nex
 --
 
 ALTER TABLE ONLY public.cor1440_gen_objetivopf ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_objetivopf_id_seq'::regclass);
-
-
---
--- Name: cor1440_gen_plantillahcm_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.cor1440_gen_plantillahcm_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_plantillahcm_proyectofinanciero_id_seq'::regclass);
 
 
 --
@@ -5821,14 +5818,6 @@ ALTER TABLE ONLY public.cor1440_gen_mindicadorpf
 
 ALTER TABLE ONLY public.cor1440_gen_objetivopf
     ADD CONSTRAINT cor1440_gen_objetivopf_pkey PRIMARY KEY (id);
-
-
---
--- Name: cor1440_gen_plantillahcm_proyectofinanciero cor1440_gen_plantillahcm_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.cor1440_gen_plantillahcm_proyectofinanciero
-    ADD CONSTRAINT cor1440_gen_plantillahcm_proyectofinanciero_pkey PRIMARY KEY (id);
 
 
 --
@@ -6808,6 +6797,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividadpf
 
 
 --
+-- Name: cor1440_gen_actividad_respuestafor fk_rails_0b4fb6fceb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividad_respuestafor
+    ADD CONSTRAINT fk_rails_0b4fb6fceb FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
+
+
+--
 -- Name: cor1440_gen_financiador_proyectofinanciero fk_rails_0cd09d688c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7264,14 +7261,6 @@ ALTER TABLE ONLY public.actividad_nucleoconflicto
 
 
 --
--- Name: actividad_actor_porborrar fk_rails_56bdc49b83; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actividad_actor_porborrar
-    ADD CONSTRAINT fk_rails_56bdc49b83 FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
-
-
---
 -- Name: actorsocial_regiongrupo fk_rails_56d1b6e3d4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7712,6 +7701,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_proyectofinanciero
 
 
 --
+-- Name: cor1440_gen_actividad_respuestafor fk_rails_abc0cafc05; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividad_respuestafor
+    ADD CONSTRAINT fk_rails_abc0cafc05 FOREIGN KEY (respuestafor_id) REFERENCES public.mr519_gen_respuestafor(id);
+
+
+--
 -- Name: cor1440_gen_beneficiariopf fk_rails_ac70e973ee; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8064,6 +8061,14 @@ ALTER TABLE ONLY public.sip_actorsocial_sectoractor
 
 
 --
+-- Name: cor1440_gen_actividadtipo_formulario fk_rails_f17af6bf9c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividadtipo_formulario
+    ADD CONSTRAINT fk_rails_f17af6bf9c FOREIGN KEY (actividadtipo_id) REFERENCES public.cor1440_gen_actividadtipo(id);
+
+
+--
 -- Name: efecto fk_rails_f1989d21d0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8101,6 +8106,14 @@ ALTER TABLE ONLY public.usuario
 
 ALTER TABLE ONLY public.coordinador_proyectofinanciero
     ADD CONSTRAINT fk_rails_fab0c162ed FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: cor1440_gen_actividadtipo_formulario fk_rails_faf663ab7f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividadtipo_formulario
+    ADD CONSTRAINT fk_rails_faf663ab7f FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
 
 
 --
@@ -8692,6 +8705,12 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190418014012'),
 ('20190418123920'),
 ('20190418142712'),
-('20190426125052');
+('20190426125052'),
+('20190426131119'),
+('20190603213842'),
+('20190603234145'),
+('20190605143420'),
+('20190605144951'),
+('20190606102503');
 
 

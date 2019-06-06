@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 92bd4ff0ffbb9d26df05968f901a99a6ea111b43
+  revision: 0883a922c9c36f4dcbf580f2976c8d61bf5144a0
+  branch: act-respfor
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -33,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 1d4c931c2766351ec9a58222bbed58e70f693635
+  revision: 8e24cf5003643dae1cf872aaf8c14752135f4956
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)

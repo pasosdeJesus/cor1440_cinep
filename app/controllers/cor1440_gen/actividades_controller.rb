@@ -442,12 +442,19 @@ module Cor1440Gen
         :proyecto_ids => [],
         :proyectofinanciero_ids => [],
         :publicacion_ids => [],
-        :usuario_ids => [],
-        :valorcampoact_attributes => [
+
+        :respuestafor_attributes => [
           :id,
-          :campoact_id,
-          :valor
-        ]
+          "valorcampo_attributes" => [
+            :valor,
+            :campo_id,
+            :id 
+          ] + 
+          [:valor_ids => []]
+        ],
+
+        :usuario_ids => [],
+
       ]
       r
     end
