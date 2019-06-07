@@ -117,7 +117,8 @@ module Cor1440Gen
 
     validate :existe_precedidapor
     def existe_precedidapor
-      if Cor1440Gen::Actividad.find_by_id(self.precedidapor).nil?
+      if self.precedidapor &&
+        Cor1440Gen::Actividad.find_by_id(self.precedidapor).nil?
         errors.add(:precedidapor, 
                    'Debe corresponder al número de la actividad que precede')
         return false
