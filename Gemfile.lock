@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 574eec98eb4a037609fe6b1a5f90b6464a1198f3
-  branch: act-respfor
+  revision: ccde4f214ab6b5aad1988182971b951cd278c63f
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -50,7 +49,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: aca1aab0de01e6aa3f0ed0b94fdd4139e59bb4cb
+  revision: 143e4d5f8b951b712e579799ba7fd61df51bd3ed
   specs:
     sal7711_ld (1.0.a3)
       rails
