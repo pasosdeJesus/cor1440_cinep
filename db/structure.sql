@@ -1488,6 +1488,16 @@ CREATE TABLE public.cor1440_gen_financiador_proyectofinanciero (
 
 
 --
+-- Name: cor1440_gen_formulario_tipoindicador; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_formulario_tipoindicador (
+    tipoindicador_id integer NOT NULL,
+    formulario_id integer NOT NULL
+);
+
+
+--
 -- Name: cor1440_gen_indicadorpf; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1956,7 +1966,12 @@ CREATE TABLE public.cor1440_gen_tipoindicador (
     desc40 character varying(128),
     desc60 character varying(128),
     desc80 character varying(128),
-    desc100 character varying(128)
+    desc100 character varying(128),
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at date,
+    updated_at date
 );
 
 
@@ -7550,6 +7565,14 @@ ALTER TABLE ONLY public.actor_sectoractor
 
 
 --
+-- Name: cor1440_gen_formulario_tipoindicador fk_rails_8978582d8a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_formulario_tipoindicador
+    ADD CONSTRAINT fk_rails_8978582d8a FOREIGN KEY (tipoindicador_id) REFERENCES public.cor1440_gen_tipoindicador(id);
+
+
+--
 -- Name: mr519_gen_valorcampo fk_rails_8bb7650018; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8142,6 +8165,14 @@ ALTER TABLE ONLY public.sal7711_gen_articulo_categoriaprensa
 
 
 --
+-- Name: cor1440_gen_formulario_tipoindicador fk_rails_fd2fbcd1b8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_formulario_tipoindicador
+    ADD CONSTRAINT fk_rails_fd2fbcd1b8 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
+
+
+--
 -- Name: cor1440_gen_anexo_proyectofinanciero fk_rails_fd94296801; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8721,6 +8752,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190605143420'),
 ('20190605144951'),
 ('20190606102503'),
-('20190606151757');
+('20190606151757'),
+('20190612101211'),
+('20190612111043'),
+('20190612113734'),
+('20190612133753');
 
 

@@ -81,9 +81,6 @@
         <% if can? :manage, :tablasbasicas %>
           <%= menu_item "Tablas Básicas", sip.tablasbasicas_path %>
         <% end %>
-        <% if can? :manage, Cor1440Gen::Tipoindicador %>
-          <%= menu_item "Tipos de indicador", cor1440_gen.tiposindicador_path %>
-        <% end %>
         <% if can? :manage, Mr519Gen::Formulario %>
           <%= menu_item "Formularios", mr519_gen.formularios_path %>
         <% end %>
