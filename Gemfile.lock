@@ -64,8 +64,24 @@ GIT
       sal7711_gen
 
 GIT
-  remote: https://github.com/pasosdeJesus/sip.git
-  revision: 4d5d3824fdc87cc6d0b2594d4b543dfda3dae8e1
+  remote: https://github.com/vtamara/chosen-rails.git
+  revision: 48c457fc9ef1c4c573b4dcdb9dc07034b46ed6b4
+  branch: several-fixes
+  specs:
+    chosen-rails (1.8.7)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
+
+GIT
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 088c8d9dcce7f51cf3a968398047eaac7a37718b
+  branch: new_id_with_ajax
+  specs:
+    cocoon (1.2.11)
+
+PATH
+  remote: ../sip
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -84,23 +100,6 @@ GIT
       twitter-bootstrap-rails
       twitter_cldr
       will_paginate
-
-GIT
-  remote: https://github.com/vtamara/chosen-rails.git
-  revision: 48c457fc9ef1c4c573b4dcdb9dc07034b46ed6b4
-  branch: several-fixes
-  specs:
-    chosen-rails (1.8.7)
-      coffee-rails (>= 3.2)
-      railties (>= 3.0)
-      sass-rails (>= 3.2)
-
-GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 088c8d9dcce7f51cf3a968398047eaac7a37718b
-  branch: new_id_with_ajax
-  specs:
-    cocoon (1.2.11)
 
 GEM
   remote: https://rubygems.org/
@@ -170,6 +169,7 @@ GEM
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
+    byebug (11.0.1)
     camertron-eprun (1.1.1)
     cancancan (3.0.1)
     capybara (3.23.0)
@@ -434,6 +434,7 @@ DEPENDENCIES
   bcrypt
   bootsnap
   bootstrap-datepicker-rails
+  byebug
   cancancan
   chosen-rails!
   cocoon!

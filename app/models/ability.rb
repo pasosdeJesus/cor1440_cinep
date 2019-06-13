@@ -354,7 +354,7 @@ class Ability  < Cor1440Gen::Ability
         if lineas.length > 0
           can [:create, :read, :update], Sip::Actorsocial
           can :manage, :tablasbasicas
-          can :manage, ::Efecto
+          can :manage, Cor1440Gen::Efecto
           can :index, Cor1440Gen::Mindicadorpf
           can :objetivospf, Cor1440Gen::Proyectofinanciero
           can :actividadespf, Cor1440Gen::Proyectofinanciero
@@ -404,9 +404,9 @@ class Ability  < Cor1440Gen::Ability
           lgrupos.include?(GRUPO_COORDINADORGP)
           # Oficina Gerencia de Proyectos
           can :manage, Cor1440Gen::Actividad
+          can [:index, :read], Cor1440Gen::Efecto
           can :manage, Cor1440Gen::Financiador
           can :manage, Cor1440Gen::Mindicadorpf
-          can [:index, :read], ::Efecto
           can [:creacomogp, :read, :index, :show, :create, :validar], 
             Cor1440Gen::Proyectofinanciero
           can [:manage, :validar], Cor1440Gen::Proyectofinanciero.where(
@@ -459,11 +459,11 @@ class Ability  < Cor1440Gen::Ability
         can :manage, :lineabase20182020
         can :edit, :contextoac
         can :manage, ::Convenio
-        can :manage, ::Efecto
         can :manage, ::Tasacambio
         can :manage, ::Usuario
 
         can :manage, Cor1440Gen::Actividad
+        can :manage, Cor1440Gen::Efecto
         can :manage, Cor1440Gen::Indicadorpf
         can :manage, Cor1440Gen::Informe
         can :manage, Cor1440Gen::Mindicadorpf

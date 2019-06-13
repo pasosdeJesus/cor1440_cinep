@@ -320,16 +320,6 @@ CREATE TABLE public.actorsocial_departamento (
 
 
 --
--- Name: actorsocial_efecto; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.actorsocial_efecto (
-    actorsocial_id bigint NOT NULL,
-    efecto_id bigint NOT NULL
-);
-
-
---
 -- Name: actorsocial_grupo; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -387,36 +377,6 @@ CREATE SEQUENCE public.anexo_convenio_id_seq
 --
 
 ALTER SEQUENCE public.anexo_convenio_id_seq OWNED BY public.anexo_convenio.id;
-
-
---
--- Name: anexo_efecto; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.anexo_efecto (
-    id bigint NOT NULL,
-    anexo_id integer,
-    efecto_id integer
-);
-
-
---
--- Name: anexo_efecto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.anexo_efecto_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: anexo_efecto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.anexo_efecto_id_seq OWNED BY public.anexo_efecto.id;
 
 
 --
@@ -1225,6 +1185,46 @@ ALTER SEQUENCE public.cor1440_gen_actividadtipo_id_seq OWNED BY public.cor1440_g
 
 
 --
+-- Name: cor1440_gen_actorsocial_efecto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_actorsocial_efecto (
+    actorsocial_id bigint NOT NULL,
+    efecto_id bigint NOT NULL
+);
+
+
+--
+-- Name: cor1440_gen_anexo_efecto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_anexo_efecto (
+    id bigint NOT NULL,
+    anexo_id integer,
+    efecto_id integer
+);
+
+
+--
+-- Name: cor1440_gen_anexo_efecto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.cor1440_gen_anexo_efecto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_anexo_efecto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.cor1440_gen_anexo_efecto_id_seq OWNED BY public.cor1440_gen_anexo_efecto.id;
+
+
+--
 -- Name: cor1440_gen_anexo_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1435,6 +1435,46 @@ CREATE TABLE public.cor1440_gen_caracterizacionpf (
     formulario_id integer,
     proyectofinanciero_id integer
 );
+
+
+--
+-- Name: cor1440_gen_efecto; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_efecto (
+    id bigint NOT NULL,
+    indicadorpf_id integer,
+    actor_id_porborrar integer,
+    fecha date,
+    registradopor_id integer,
+    nombre character varying(500),
+    porcentajeprog integer DEFAULT 0,
+    descripcion character varying(5000),
+    fecha20 date,
+    fecha40 date,
+    fecha60 date,
+    fecha80 date,
+    fecha100 date
+);
+
+
+--
+-- Name: cor1440_gen_efecto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.cor1440_gen_efecto_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_efecto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.cor1440_gen_efecto_id_seq OWNED BY public.cor1440_gen_efecto.id;
 
 
 --
@@ -2087,46 +2127,6 @@ CREATE SEQUENCE public.desembolso_id_seq
 --
 
 ALTER SEQUENCE public.desembolso_id_seq OWNED BY public.desembolso.id;
-
-
---
--- Name: efecto; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.efecto (
-    id bigint NOT NULL,
-    indicadorpf_id integer,
-    actor_id_porborrar integer,
-    fecha date,
-    registradopor_id integer,
-    nombre character varying(500),
-    porcentajeprog integer DEFAULT 0,
-    descripcion character varying(5000),
-    fecha20 date,
-    fecha40 date,
-    fecha60 date,
-    fecha80 date,
-    fecha100 date
-);
-
-
---
--- Name: efecto_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.efecto_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: efecto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.efecto_id_seq OWNED BY public.efecto.id;
 
 
 --
@@ -4925,13 +4925,6 @@ ALTER TABLE ONLY public.anexo_convenio ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- Name: anexo_efecto id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.anexo_efecto ALTER COLUMN id SET DEFAULT nextval('public.anexo_efecto_id_seq'::regclass);
-
-
---
 -- Name: anexo_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5051,6 +5044,13 @@ ALTER TABLE ONLY public.cor1440_gen_actividadtipo ALTER COLUMN id SET DEFAULT ne
 
 
 --
+-- Name: cor1440_gen_anexo_efecto id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_anexo_efecto ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_anexo_efecto_id_seq'::regclass);
+
+
+--
 -- Name: cor1440_gen_anexo_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5090,6 +5090,13 @@ ALTER TABLE ONLY public.cor1440_gen_campotind ALTER COLUMN id SET DEFAULT nextva
 --
 
 ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_caracterizacionpersona_id_seq'::regclass);
+
+
+--
+-- Name: cor1440_gen_efecto id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_efecto ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_efecto_id_seq'::regclass);
 
 
 --
@@ -5195,13 +5202,6 @@ ALTER TABLE ONLY public.cor1440_gen_valorcampotind ALTER COLUMN id SET DEFAULT n
 --
 
 ALTER TABLE ONLY public.desembolso ALTER COLUMN id SET DEFAULT nextval('public.desembolso_id_seq'::regclass);
-
-
---
--- Name: efecto id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.efecto ALTER COLUMN id SET DEFAULT nextval('public.efecto_id_seq'::regclass);
 
 
 --
@@ -5613,14 +5613,6 @@ ALTER TABLE ONLY public.anexo_convenio
 
 
 --
--- Name: anexo_efecto anexo_efecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.anexo_efecto
-    ADD CONSTRAINT anexo_efecto_pkey PRIMARY KEY (id);
-
-
---
 -- Name: anexo_proyectofinanciero anexo_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5749,6 +5741,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividadtipo
 
 
 --
+-- Name: cor1440_gen_anexo_efecto cor1440_gen_anexo_efecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_anexo_efecto
+    ADD CONSTRAINT cor1440_gen_anexo_efecto_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: cor1440_gen_anexo_proyectofinanciero cor1440_gen_anexo_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5794,6 +5794,14 @@ ALTER TABLE ONLY public.cor1440_gen_campotind
 
 ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona
     ADD CONSTRAINT cor1440_gen_caracterizacionpersona_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cor1440_gen_efecto cor1440_gen_efecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_efecto
+    ADD CONSTRAINT cor1440_gen_efecto_pkey PRIMARY KEY (id);
 
 
 --
@@ -5906,14 +5914,6 @@ ALTER TABLE ONLY public.cor1440_gen_valorcampotind
 
 ALTER TABLE ONLY public.desembolso
     ADD CONSTRAINT desembolso_pkey PRIMARY KEY (id);
-
-
---
--- Name: efecto efecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.efecto
-    ADD CONSTRAINT efecto_pkey PRIMARY KEY (id);
 
 
 --
@@ -6861,11 +6861,11 @@ ALTER TABLE ONLY public.cor1440_gen_mindicadorpf
 
 
 --
--- Name: actorsocial_efecto fk_rails_109a11e304; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actorsocial_efecto fk_rails_109a11e304; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.actorsocial_efecto
-    ADD CONSTRAINT fk_rails_109a11e304 FOREIGN KEY (efecto_id) REFERENCES public.efecto(id);
+ALTER TABLE ONLY public.cor1440_gen_actorsocial_efecto
+    ADD CONSTRAINT fk_rails_109a11e304 FOREIGN KEY (efecto_id) REFERENCES public.cor1440_gen_efecto(id);
 
 
 --
@@ -7161,7 +7161,7 @@ ALTER TABLE ONLY public.cor1440_gen_informe
 --
 
 ALTER TABLE ONLY public.efecto_valorcampotind
-    ADD CONSTRAINT fk_rails_43198ca4c9 FOREIGN KEY (efecto_id) REFERENCES public.efecto(id);
+    ADD CONSTRAINT fk_rails_43198ca4c9 FOREIGN KEY (efecto_id) REFERENCES public.cor1440_gen_efecto(id);
 
 
 --
@@ -7301,11 +7301,11 @@ ALTER TABLE ONLY public.cor1440_gen_objetivopf
 
 
 --
--- Name: anexo_efecto fk_rails_5a3da48239; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_anexo_efecto fk_rails_5a3da48239; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.anexo_efecto
-    ADD CONSTRAINT fk_rails_5a3da48239 FOREIGN KEY (efecto_id) REFERENCES public.efecto(id);
+ALTER TABLE ONLY public.cor1440_gen_anexo_efecto
+    ADD CONSTRAINT fk_rails_5a3da48239 FOREIGN KEY (efecto_id) REFERENCES public.cor1440_gen_efecto(id);
 
 
 --
@@ -7661,10 +7661,10 @@ ALTER TABLE ONLY public.actorsocial_municipio
 
 
 --
--- Name: efecto fk_rails_9b37deb543; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_efecto fk_rails_9b37deb543; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.efecto
+ALTER TABLE ONLY public.cor1440_gen_efecto
     ADD CONSTRAINT fk_rails_9b37deb543 FOREIGN KEY (indicadorpf_id) REFERENCES public.cor1440_gen_indicadorpf(id);
 
 
@@ -7701,10 +7701,10 @@ ALTER TABLE ONLY public.mr519_gen_campo
 
 
 --
--- Name: anexo_efecto fk_rails_a3fa2e726c; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_anexo_efecto fk_rails_a3fa2e726c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.anexo_efecto
+ALTER TABLE ONLY public.cor1440_gen_anexo_efecto
     ADD CONSTRAINT fk_rails_a3fa2e726c FOREIGN KEY (anexo_id) REFERENCES public.sip_anexo(id);
 
 
@@ -7861,10 +7861,10 @@ ALTER TABLE ONLY public.proyectofinanciero_usuario
 
 
 --
--- Name: actorsocial_efecto fk_rails_c7b12f3be7; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_actorsocial_efecto fk_rails_c7b12f3be7; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.actorsocial_efecto
+ALTER TABLE ONLY public.cor1440_gen_actorsocial_efecto
     ADD CONSTRAINT fk_rails_c7b12f3be7 FOREIGN KEY (actorsocial_id) REFERENCES public.sip_actorsocial(id);
 
 
@@ -8101,10 +8101,10 @@ ALTER TABLE ONLY public.cor1440_gen_actividadtipo_formulario
 
 
 --
--- Name: efecto fk_rails_f1989d21d0; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_efecto fk_rails_f1989d21d0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.efecto
+ALTER TABLE ONLY public.cor1440_gen_efecto
     ADD CONSTRAINT fk_rails_f1989d21d0 FOREIGN KEY (registradopor_id) REFERENCES public.usuario(id);
 
 
@@ -8185,7 +8185,7 @@ ALTER TABLE ONLY public.cor1440_gen_anexo_proyectofinanciero
 --
 
 ALTER TABLE ONLY public.actor_efecto
-    ADD CONSTRAINT fk_rails_fedc30fafe FOREIGN KEY (efecto_id) REFERENCES public.efecto(id);
+    ADD CONSTRAINT fk_rails_fedc30fafe FOREIGN KEY (efecto_id) REFERENCES public.cor1440_gen_efecto(id);
 
 
 --
@@ -8756,6 +8756,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190612101211'),
 ('20190612111043'),
 ('20190612113734'),
-('20190612133753');
+('20190612133753'),
+('20190612192746');
 
 

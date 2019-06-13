@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       path_names: { new: 'nueva', edit: 'edita' }
  
     resources :efectos, 
+      controller: 'cor1440_gen/efectos',
       path_names: { new: 'nuevo', edit: 'edita' }
 
     resources :mindicadorespf,
