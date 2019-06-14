@@ -90,8 +90,8 @@ gem 'redcarpet'
 
 
 # Motor generico
-#gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
-gem 'sip', path: '../sip'
+gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
+#gem 'sip', path: '../sip'
 
 # Motor de nube y llenado de plantillas
 gem 'heb412_gen', git: "https://github.com/pasosdeJesus/heb412_gen.git"
@@ -135,7 +135,7 @@ end
 
 group :test, :development, :ensayo do
   #Depurar
-  gem 'byebug'
+  #gem 'byebug'
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo

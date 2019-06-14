@@ -234,18 +234,8 @@ es:
         uresponsable: "Responsable(s)"
         "{:uresponsable_ids=>[]}": "Responsable(s)"
         webfinanciador: 'Página web'
-      "efecto":
-        Efecto: 'Avance en indicador de efecto'
-        Efectos: 'Avance en indicadores de efecto'
-        actorsocial: Actor(es) social(es)
-        "{:actorsocial_ids=>[]}": Actor(es) social(es)
-        anexo_efecto: Anexos / Medios de verificación
-        fecha_localizada: Fecha
-        indicadorpf: Indicador
-        indicadorpf_id: Indicador
+      "cor1440_gen/efecto":
         porcentajeprog: Porcentaje de progreso
-        registradopor: Registrado por
-        registradopor_id: Registrado por
       "empresaps":
         Empresaps: 'Empresa prestradora de salud'
         Empresasps: 'Empresas prestadoras de salud'

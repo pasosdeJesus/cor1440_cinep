@@ -13,9 +13,6 @@ module Sip
     has_many :departamentotrab, through: :actorsocial_departamento,
       class_name: 'Sip::Departamento'
 
-    has_many :actorsocial_efecto, dependent: :delete_all
-    has_many :efecto, through: :actorsocial_efecto
-
     has_many :actorsocial_grupo, validate: true, dependent: :delete_all
       #class_name: '::ActorsocialGrupo', foreign_key: "actorsocial_id", 
     has_many :grupo, class_name: 'Sip::Grupo',
@@ -64,24 +61,8 @@ module Sip
       end
     end
 
-    scope :filtro_created_atini, lambda { |f|
-      where('date(created_at) >= ?', f)
-    }
-
-    scope :filtro_created_atfin, lambda { |f|
-      where('date(created_at) <= ?', f)
-    }
-
     scope :filtro_grupo_ids, lambda { |g|
       joins(:actorsocial_grupo).where('actorsocial_grupo.grupo_id=?', g)
-    }
-
-    scope :filtro_habilitado, lambda {|o|
-      if o.upcase.strip == 'SI'
-        where(fechadeshabilitacion: nil)
-      elsif o.upcase.strip == 'NO'
-        where.not(fechadeshabilitacion: nil)
-      end 
     }
 
     scope :filtro_lineabase20182020, lambda {|o|
@@ -103,11 +84,6 @@ module Sip
     scope :filtro_regiongrupo_ids, lambda { |r|
       joins(:actorsocial_regiongrupo).where(
         'actorsocial_regiongrupo.regiongrupo_id=?', r)
-    }
-
-    scope :filtro_sectoractor_ids, lambda { |s|
-      joins(:actorsocial_sectoractor).where(
-        'sip_actorsocial_sectoractor.sectoractor_id=?', s)
     }
 
     def presenta(atr)

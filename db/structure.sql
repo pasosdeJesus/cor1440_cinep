@@ -1478,6 +1478,16 @@ ALTER SEQUENCE public.cor1440_gen_efecto_id_seq OWNED BY public.cor1440_gen_efec
 
 
 --
+-- Name: cor1440_gen_efecto_respuestafor; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_efecto_respuestafor (
+    efecto_id integer,
+    respuestafor_id integer
+);
+
+
+--
 -- Name: cor1440_gen_financiador; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -6821,6 +6831,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_respuestafor
 
 
 --
+-- Name: cor1440_gen_efecto_respuestafor fk_rails_0ba7ab4660; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_efecto_respuestafor
+    ADD CONSTRAINT fk_rails_0ba7ab4660 FOREIGN KEY (efecto_id) REFERENCES public.cor1440_gen_efecto(id);
+
+
+--
 -- Name: cor1440_gen_financiador_proyectofinanciero fk_rails_0cd09d688c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7634,6 +7652,14 @@ ALTER TABLE ONLY public.sip_departamento
 
 ALTER TABLE ONLY public.cor1440_gen_resultadopf
     ADD CONSTRAINT fk_rails_95485cfc7a FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: cor1440_gen_efecto_respuestafor fk_rails_95a3aff09f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_efecto_respuestafor
+    ADD CONSTRAINT fk_rails_95a3aff09f FOREIGN KEY (respuestafor_id) REFERENCES public.mr519_gen_respuestafor(id);
 
 
 --
@@ -8757,6 +8783,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190612111043'),
 ('20190612113734'),
 ('20190612133753'),
-('20190612192746');
+('20190612192746'),
+('20190612200000'),
+('20190612210000');
 
 
