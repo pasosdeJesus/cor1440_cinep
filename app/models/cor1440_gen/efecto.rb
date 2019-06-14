@@ -25,7 +25,8 @@ module Cor1440Gen
 
     validates :porcentajeprog, numericality: { 
       greater_than_or_equal_to: 0,
-      less_than_or_equal_to: 100
+      less_than_or_equal_to: 100,
+      allow_blank: true
     }
 
     validate :fechaporc_en_orden

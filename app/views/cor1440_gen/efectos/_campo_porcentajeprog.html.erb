@@ -1,0 +1,71 @@
+<% if f.object.indicadorpf && f.object.indicadorpf.tipoindicador &&
+  f.object.indicadorpf.tipoindicador.desc20 &&  
+  f.object.indicadorpf.tipoindicador.desc40 &&  
+  f.object.indicadorpf.tipoindicador.desc60 &&  
+  f.object.indicadorpf.tipoindicador.desc80 &&  
+  f.object.indicadorpf.tipoindicador.desc100 %>
+  <label><%= Cor1440Gen::Efecto.human_attribute_name(:porcentajeprog) %></label>
+      <table class="table table-striped" style="margin-left: auto; margin-right: auto; width: 50em">
+        <tr>
+           <th style="width: 8em">Fecha</th>
+          <th style="width: 8em">Porcentaje</th>
+          <th>Descripción</th>
+        </tr>
+        <tr>
+          <td><%= f.input :fecha20_localizada, as: :string,
+            label: false,
+            input_html: { "data-behaviour" => "datepicker",
+              :maxlength => 12,
+              :style=> 'width: 12em' } 
+            %>
+          </td>
+          <td>20%</td>
+          <td><%= f.object.indicadorpf.tipoindicador.desc20 %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :fecha40_localizada, as: :string,
+            label: false,
+            input_html: { "data-behaviour" => "datepicker",
+              :maxlength => 12,
+              :style=> 'width: 12em' } 
+            %>
+          </td>
+          <td>40%</td>
+          <td><%= f.object.indicadorpf.tipoindicador.desc40 %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :fecha60_localizada, as: :string,
+            label: false,
+            input_html: { "data-behaviour" => "datepicker",
+              :maxlength => 12,
+              :style=> 'width: 12em' } 
+            %>
+          </td>
+          <td>60%</td>
+          <td><%= f.object.indicadorpf.tipoindicador.desc60 %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :fecha80_localizada, as: :string,
+            label: false,
+            input_html: { "data-behaviour" => "datepicker",
+              :maxlength => 12,
+              :style=> 'width: 12em' } 
+            %>
+          </td>
+          <td>80%</td>
+          <td><%= f.object.indicadorpf.tipoindicador.desc80 %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :fecha100_localizada, as: :string,
+            label: false,
+            input_html: { "data-behaviour" => "datepicker",
+              :maxlength => 12,
+              :style=> 'width: 12em' } 
+            %>
+          </td>
+          <td>100%</td>
+          <td><%= f.object.indicadorpf.tipoindicador.desc100 %></td>
+        </tr>
+      </table>
+<% end %>
+

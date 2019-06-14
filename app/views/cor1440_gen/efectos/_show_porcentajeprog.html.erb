@@ -1,10 +1,3 @@
-<%= @registro.porcentajeprog %>%
-<% if !@registro.porcentajeprogop.nil? %>
-  <% r = Cor1440Gen::Pprogtind.find(@registro.porcentajeprogop) %>
-  - <%= r.fase %>
-(&gt;=  <%= r.porcentaje %>%)
-<% end %>
-
 <% if !@registro.indicadorpf || !@registro.indicadorpf.tipoindicador ||
   !@registro.indicadorpf.tipoindicador.desc20 ||
   !@registro.indicadorpf.tipoindicador.desc40 ||
