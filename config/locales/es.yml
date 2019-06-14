@@ -235,6 +235,8 @@ es:
         "{:uresponsable_ids=>[]}": "Responsable(s)"
         webfinanciador: 'Página web'
       "cor1440_gen/efecto":
+        aprobadodir: Aprobado por dirección
+        observacionesdir: Observaciones de dirección
         porcentajeprog: Porcentaje de progreso
       "empresaps":
         Empresaps: 'Empresa prestradora de salud'

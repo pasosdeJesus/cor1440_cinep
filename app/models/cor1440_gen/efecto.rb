@@ -23,6 +23,7 @@ module Cor1440Gen
     campofecha_localizado :fecha80
     campofecha_localizado :fecha100
 
+    validates :observacionesdir, length: { maximum: 1000 } 
     validates :porcentajeprog, numericality: { 
       greater_than_or_equal_to: 0,
       less_than_or_equal_to: 100,

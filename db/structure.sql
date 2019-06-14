@@ -1454,7 +1454,9 @@ CREATE TABLE public.cor1440_gen_efecto (
     fecha40 date,
     fecha60 date,
     fecha80 date,
-    fecha100 date
+    fecha100 date,
+    aprobadodir boolean,
+    observacionesdir character varying(1000)
 );
 
 
@@ -8784,7 +8786,11 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190612113734'),
 ('20190612133753'),
 ('20190612192746'),
+('20190612198000'),
 ('20190612200000'),
-('20190612210000');
+('20190612210000'),
+('20190613155738'),
+('20190613155843'),
+('20190614110908');
 
 

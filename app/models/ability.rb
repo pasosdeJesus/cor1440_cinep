@@ -456,6 +456,7 @@ class Ability  < Cor1440Gen::Ability
         end
       when Ability::ROLADMIN, Ability::ROLDIR
         can :dir, :vistobuenoactividad
+        can :dir, :aprobadoefecto
         can :manage, :lineabase20182020
         can :edit, :contextoac
         can :manage, ::Convenio
