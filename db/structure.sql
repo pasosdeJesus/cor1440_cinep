@@ -2518,6 +2518,36 @@ ALTER SEQUENCE public.heb412_gen_doc_id_seq OWNED BY public.heb412_gen_doc.id;
 
 
 --
+-- Name: heb412_gen_formulario_plantillahcr; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.heb412_gen_formulario_plantillahcr (
+    id bigint NOT NULL,
+    plantillahcr_id integer,
+    formulario_id integer
+);
+
+
+--
+-- Name: heb412_gen_formulario_plantillahcr_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.heb412_gen_formulario_plantillahcr_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: heb412_gen_formulario_plantillahcr_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.heb412_gen_formulario_plantillahcr_id_seq OWNED BY public.heb412_gen_formulario_plantillahcr.id;
+
+
+--
 -- Name: heb412_gen_plantilladoc; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3803,7 +3833,9 @@ CREATE TABLE public.sip_actorsocial_persona (
     actorsocial_id integer,
     perfilactorsocial_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    correo character varying(254),
+    cargo character varying(254)
 );
 
 
@@ -5273,6 +5305,13 @@ ALTER TABLE ONLY public.heb412_gen_doc ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
+-- Name: heb412_gen_formulario_plantillahcr id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcr ALTER COLUMN id SET DEFAULT nextval('public.heb412_gen_formulario_plantillahcr_id_seq'::regclass);
+
+
+--
 -- Name: heb412_gen_plantilladoc id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5998,6 +6037,14 @@ ALTER TABLE ONLY public.heb412_gen_campoplantillahcr
 
 ALTER TABLE ONLY public.heb412_gen_doc
     ADD CONSTRAINT heb412_gen_doc_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: heb412_gen_formulario_plantillahcr heb412_gen_formulario_plantillahcr_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcr
+    ADD CONSTRAINT heb412_gen_formulario_plantillahcr_pkey PRIMARY KEY (id);
 
 
 --
@@ -6929,6 +6976,14 @@ ALTER TABLE ONLY public.mr519_gen_encuestausuario
 
 
 --
+-- Name: heb412_gen_formulario_plantillahcr fk_rails_1bdf79898c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcr
+    ADD CONSTRAINT fk_rails_1bdf79898c FOREIGN KEY (plantillahcr_id) REFERENCES public.heb412_gen_plantillahcr(id);
+
+
+--
 -- Name: cor1440_gen_caracterizacionpf fk_rails_1d1caee38f; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7398,6 +7453,14 @@ ALTER TABLE ONLY public.sal7711_gen_articulo
 
 ALTER TABLE ONLY public.informeauditoria
     ADD CONSTRAINT fk_rails_67f52ffcf6 FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: heb412_gen_formulario_plantillahcr fk_rails_696d27d6f5; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcr
+    ADD CONSTRAINT fk_rails_696d27d6f5 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
 
 
 --
@@ -8792,6 +8855,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190613155738'),
 ('20190613155843'),
 ('20190614110908'),
-('20190614144234');
+('20190614144234'),
+('20190625112649'),
+('20190625140232'),
+('20190625173502');
 
 

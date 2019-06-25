@@ -28,6 +28,11 @@ module Sip
     has_many :regiongrupo, class_name: '::Regiongrupo',
       through: :actorsocial_regiongrupo
 
+
+    accepts_nested_attributes_for :actorsocial_persona,
+      allow_destroy: true, reject_if: :all_blank
+    accepts_nested_attributes_for :persona, reject_if: :all_blank
+
     campofecha_localizado :fechadeshabilitacion
     
     campofecha_localizado :created_at
@@ -87,10 +92,20 @@ module Sip
     }
 
     def presenta(atr)
-      #byebug
       case atr.to_s
       when 'created_at_localizada'
         Sip::FormatoFechaHelper::fecha_estandar_local(self.created_at.utc.to_date)
+      when '{:actorsocial_persona=>[]}', 'actorsocial_persona'
+        self.actorsocial_persona.inject('') do |memo, ap|
+          n = ap.persona.nombres ? ap.persona.nombres : 'N'
+          a = ap.persona.apellidos ? ap.persona.apellidos : 'N'
+          c = ap.cargo ? ap.cargo + '. ' : ''
+          e = ap.correo ? ap.correo : ''
+          if c || e
+            com = ' (' + c + e + ')'
+          end
+          (memo == '' ? '' : memo + '; ') + n + ' ' + a + com
+        end
       else
         presenta_gen(atr)
       end
