@@ -16,6 +16,7 @@ module Sip
       [ :sectoractor_ids =>  [] ] +
       [ :regiongrupo_ids =>  [] ] +
       [ :grupo_ids =>  [] ] +
+      [ :actorsocial_persona =>  [] ] +
       [ :lineabase20182020,
         :habilitado,
         :created_at_localizada
@@ -34,6 +35,7 @@ module Sip
       [ :departamentotrab_ids =>  [] ] +
       [ :municipiotrab_ids =>  [] ] +
       [ :grupo_ids =>  [] ] +
+      [ :actorsocial_persona =>  [] ] +
       [ 
         :lineabase20182020,
         :personacontacto,
@@ -80,6 +82,15 @@ module Sip
       return c
     end
 
+    def validaciones(registro)
+      if registro.actorsocial_persona
+        registro.actorsocial_persona.each do |ap|
+          if ap.persona && ap.persona.sexo.nil?
+            ap.persona.sexo = 'S'
+          end
+        end
+      end
+    end
 
     def index(c = nil)
       authorize! :index, Sip::Actorsocial
@@ -107,7 +118,18 @@ module Sip
           :grupoper_attributes => [
             :id,
             :nombre,
-            :anotaciones ]
+            :anotaciones ],
+          :actorsocial_persona_attributes => [
+            :id,
+            :cargo,
+            :correo,
+            :perfilactorsocial_id,
+            :persona_attributes => [
+              :id,
+              :nombres,
+              :apellidos
+            ]
+         ]
       ]) 
     end
 

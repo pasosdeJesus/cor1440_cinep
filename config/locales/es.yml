@@ -291,6 +291,7 @@ es:
         Sectorapc: Sector APC
         Sectoresapc: Sectores APC
       "sip/actorsocial":
+        "{:actorsocial_persona=>[]}": Contacto
         created_at: Registrado
         created_at_localizada: Registrado
         departamentotrab: Departamentos completos donde opera

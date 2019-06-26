@@ -1,0 +1,6 @@
+- Con contacto con correo: <%= @registros.where('sip_actorsocial.id IN 
+  (SELECT actorsocial_id 
+    FROM sip_actorsocial_persona AS sap 
+    WHERE sap.correo IS NOT NULL
+    AND TRIM(sap.correo) != \'\') ').count %>
+
