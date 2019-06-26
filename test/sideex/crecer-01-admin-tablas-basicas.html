@@ -1160,6 +1160,58 @@
 <tr><td rowspan="1" colspan="3">tabla-tipos-de-indicador</td></tr>
 </thead>
 <tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/tablasbasicas</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>48,72</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>css=li.active &gt; a</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>105,74</td>
+</tr>
+<tr><td>clickAt</td><td>//li[29]<datalist><option>//li[29]</option></datalist></td><td>38,14</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tipos de indicador<datalist><option>link=Tipos de indicador</option><option>//a[contains(text(),'Tipos de indicador')]</option><option>//a[contains(@href, 'admin/tiposindicador')]</option><option>//li[29]/a</option></datalist></td><td>40,6</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nuevo')]</option><option>//a[contains(@href, '/admin/tiposindicador/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>42,18</td>
+</tr>
+<tr><td>clickAt</td><td>id=tipoindicador_nombre<datalist><option>id=tipoindicador_nombre</option><option>name=tipoindicador[nombre]</option><option>css=#tipoindicador_nombre</option><option>//input[@id='tipoindicador_nombre']</option><option>//form[@id='edit_tipoindicador_103']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>43,22</td>
+</tr>
+<tr><td>type</td><td>id=tipoindicador_nombre<datalist><option>id=tipoindicador_nombre</option><option>name=tipoindicador[nombre]</option><option>css=#tipoindicador_nombre</option><option>//input[@id='tipoindicador_nombre']</option><option>//form[@id='edit_tipoindicador_103']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>select</td><td>id=tipoindicador_medircon<datalist><option>id=tipoindicador_medircon</option><option>name=tipoindicador[medircon]</option><option>css=#tipoindicador_medircon</option><option>//select[@id='tipoindicador_medircon']</option><option>//form[@id='edit_tipoindicador_103']/div[3]/select</option><option>//select</option></datalist></td><td>label=Efectos</td>
+</tr>
+<tr><td>clickAt</td><td>id=tipoindicador_medircon<datalist><option>id=tipoindicador_medircon</option><option>name=tipoindicador[medircon]</option><option>css=#tipoindicador_medircon</option><option>//select[@id='tipoindicador_medircon']</option><option>//form[@id='edit_tipoindicador_103']/div[3]/select</option><option>//select</option></datalist></td><td>-83,-208</td>
+</tr>
+<tr><td>clickAt</td><td>id=tipoindicador_esptipometa<datalist><option>id=tipoindicador_esptipometa</option><option>name=tipoindicador[esptipometa]</option><option>css=#tipoindicador_esptipometa</option><option>//input[@id='tipoindicador_esptipometa']</option><option>//form[@id='edit_tipoindicador_103']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>66,12</td>
+</tr>
+<tr><td>type</td><td>id=tipoindicador_esptipometa<datalist><option>id=tipoindicador_esptipometa</option><option>name=tipoindicador[esptipometa]</option><option>css=#tipoindicador_esptipometa</option><option>//input[@id='tipoindicador_esptipometa']</option><option>//form[@id='edit_tipoindicador_103']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>ddd</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>addSelection</td><td>id=tipoindicador_formulario_ids<datalist><option>id=tipoindicador_formulario_ids</option><option>css=#tipoindicador_formulario_ids</option><option>//select[@id='tipoindicador_formulario_ids']</option><option>//form[@id='edit_tipoindicador_105']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>label=Formulario aprobacion</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="103"]<datalist><option>css=option[value="103"]</option><option>//option[@value='103']</option><option>//select[@id='tipoindicador_formulario_ids']/option</option><option>//div[5]/select/option</option></datalist></td><td>96,5</td>
+</tr>
+<tr><td>clickAt</td><td>id=tipoindicador_espvaloresomision<datalist><option>id=tipoindicador_espvaloresomision</option><option>name=tipoindicador[espvaloresomision]</option><option>css=#tipoindicador_espvaloresomision</option><option>//input[@id='tipoindicador_espvaloresomision']</option><option>//form[@id='edit_tipoindicador_103']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>91,16</td>
+</tr>
+<tr><td>type</td><td>id=tipoindicador_espvaloresomision<datalist><option>id=tipoindicador_espvaloresomision</option><option>name=tipoindicador[espvaloresomision]</option><option>css=#tipoindicador_espvaloresomision</option><option>//input[@id='tipoindicador_espvaloresomision']</option><option>//form[@id='edit_tipoindicador_103']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>vvv</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.input.string.optional.tipoindicador_espvalidaciones<datalist><option>css=div.input.string.optional.tipoindicador_espvalidaciones</option><option>//form[@id='edit_tipoindicador_103']/div[7]</option><option>//div[7]</option></datalist></td><td>72,25</td>
+</tr>
+<tr><td>clickAt</td><td>id=tipoindicador_espvalidaciones<datalist><option>id=tipoindicador_espvalidaciones</option><option>name=tipoindicador[espvalidaciones]</option><option>css=#tipoindicador_espvalidaciones</option><option>//input[@id='tipoindicador_espvalidaciones']</option><option>//form[@id='edit_tipoindicador_103']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>73,20</td>
+</tr>
+<tr><td>type</td><td>id=tipoindicador_espvalidaciones<datalist><option>id=tipoindicador_espvalidaciones</option><option>name=tipoindicador[espvalidaciones]</option><option>css=#tipoindicador_espvalidaciones</option><option>//input[@id='tipoindicador_espvalidaciones']</option><option>//form[@id='edit_tipoindicador_103']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>id=tipoindicador_espfuncionmedir<datalist><option>id=tipoindicador_espfuncionmedir</option><option>name=tipoindicador[espfuncionmedir]</option><option>css=#tipoindicador_espfuncionmedir</option><option>//input[@id='tipoindicador_espfuncionmedir']</option><option>//form[@id='edit_tipoindicador_103']/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>106,8</td>
+</tr>
+<tr><td>type</td><td>id=tipoindicador_espfuncionmedir<datalist><option>id=tipoindicador_espfuncionmedir</option><option>name=tipoindicador[espfuncionmedir]</option><option>css=#tipoindicador_espfuncionmedir</option><option>//input[@id='tipoindicador_espfuncionmedir']</option><option>//form[@id='edit_tipoindicador_103']/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>ggg</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_tipoindicador_103']/div[9]/input</option><option>//div[9]/input</option></datalist></td><td>41,20</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/tiposindicador/103')])[2]</option><option>//div[4]/a</option></datalist></td><td>47,18</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tipos de indicador</td>
+</tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
