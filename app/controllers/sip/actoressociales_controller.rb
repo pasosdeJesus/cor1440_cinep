@@ -121,6 +121,7 @@ module Sip
             :cargo,
             :correo,
             :perfilactorsocial_id,
+            :_destroy,
             :persona_attributes => [
               :id,
               :nombres,

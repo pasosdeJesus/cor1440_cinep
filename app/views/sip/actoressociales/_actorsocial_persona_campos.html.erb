@@ -35,5 +35,11 @@
     <td>
       <%= f.input :correo %>
     </td>
+    <td>
+      <%= f.input :id, as: :hidden %>
+      <%= link_to_remove_association "Eliminar", f, 
+        :class => 'btn-danger', "data-existing" => true %>
+      <div><%= f.error_notification %></div>
+    </td>
   <% end %>
 </tr>
