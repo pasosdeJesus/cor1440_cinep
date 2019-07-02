@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>crecer-admin-crea-compromisos-institucionales.html </title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromisos-institucionales-datos-basicos </td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>108,23</td>
+</tr>
+<tr><td>clickAt</td><td>link=Listado de Compromisos Institucionales<datalist><option>link=Listado de Compromisos Institucionales</option><option>css=li.dropdown.open &gt; ul.dropdown-menu &gt; li &gt; a</option><option>//a[contains(text(),'Listado de Compromisos Institucionales')]</option><option>//a[contains(@href, '/proyectosfinancieros')]</option><option>//li[3]/ul/li/a</option></datalist></td><td>104,11</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nuevo')]</option><option>//a[contains(@href, '/proyectosfinancieros/nuevo')]</option><option>//div[2]/div/a</option></datalist></td><td>48,12</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_nombre<datalist><option>id=proyectofinanciero_nombre</option><option>name=proyectofinanciero[nombre]</option><option>css=#proyectofinanciero_nombre</option><option>//input[@id='proyectofinanciero_nombre']</option><option>//div[@id='basicos']/div/input</option><option>//div/input</option></datalist></td><td>77,27</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_nombre<datalist><option>id=proyectofinanciero_nombre</option><option>name=proyectofinanciero[nombre]</option><option>css=#proyectofinanciero_nombre</option><option>//input[@id='proyectofinanciero_nombre']</option><option>//div[@id='basicos']/div/input</option><option>//div/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_referencia<datalist><option>id=proyectofinanciero_referencia</option><option>name=proyectofinanciero[referencia]</option><option>css=#proyectofinanciero_referencia</option><option>//input[@id='proyectofinanciero_referencia']</option><option>//div[@id='basicos']/div[2]/input</option><option>//div/div[2]/input</option></datalist></td><td>81,14</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_referencia<datalist><option>id=proyectofinanciero_referencia</option><option>name=proyectofinanciero[referencia]</option><option>css=#proyectofinanciero_referencia</option><option>//input[@id='proyectofinanciero_referencia']</option><option>//div[@id='basicos']/div[2]/input</option><option>//div/div[2]/input</option></datalist></td><td>ref</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_referenciacinep<datalist><option>id=proyectofinanciero_referenciacinep</option><option>name=proyectofinanciero[referenciacinep]</option><option>css=#proyectofinanciero_referenciacinep</option><option>//input[@id='proyectofinanciero_referenciacinep']</option><option>//div[@id='basicos']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>64,7</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_referenciacinep<datalist><option>id=proyectofinanciero_referenciacinep</option><option>name=proyectofinanciero[referenciacinep]</option><option>css=#proyectofinanciero_referenciacinep</option><option>//input[@id='proyectofinanciero_referenciacinep']</option><option>//div[@id='basicos']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>cinep</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>addSelection</td><td>id=proyectofinanciero_financiador_ids<datalist><option>id=proyectofinanciero_financiador_ids</option><option>css=#proyectofinanciero_financiador_ids</option><option>//select[@id='proyectofinanciero_financiador_ids']</option><option>//div[@id='basicos']/div[4]/div/div/select</option><option>//select</option></datalist></td><td>label=ADVENIAT</td>
+</tr>
+<tr><td>clickAt</td><td>css=option[value="110"]<datalist><option>css=option[value="110"]</option><option>//option[@value='110']</option><option>//select[@id='proyectofinanciero_financiador_ids']/option</option><option>//option</option></datalist></td><td>50,9</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_fechainicio_localizada<datalist><option>id=proyectofinanciero_fechainicio_localizada</option><option>name=proyectofinanciero[fechainicio_localizada]</option><option>css=#proyectofinanciero_fechainicio_localizada</option><option>//input[@id='proyectofinanciero_fechainicio_localizada']</option><option>//div[@id='basicos']/div[5]/div/div/input</option><option>//div[5]/div/div/input</option></datalist></td><td>107,21</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.prev<datalist><option>css=th.prev</option><option>//div[2]/div/table/thead/tr[2]/th</option></datalist></td><td>10,14</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.prev<datalist><option>css=th.prev</option><option>//div[2]/div/table/thead/tr[2]/th</option></datalist></td><td>10,14</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[2]/td<datalist><option>//tr[2]/td</option></datalist></td><td>25,19</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_fechacierre_localizada<datalist><option>id=proyectofinanciero_fechacierre_localizada</option><option>name=proyectofinanciero[fechacierre_localizada]</option><option>css=#proyectofinanciero_fechacierre_localizada</option><option>//input[@id='proyectofinanciero_fechacierre_localizada']</option><option>//div[@id='basicos']/div[5]/div[2]/div/input</option><option>//div[5]/div[2]/div/input</option></datalist></td><td>70,12</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.next<datalist><option>css=th.next</option><option>//div[2]/div/table/thead/tr[2]/th[3]</option></datalist></td><td>21,15</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.next<datalist><option>css=th.next</option><option>//div[2]/div/table/thead/tr[2]/th[3]</option></datalist></td><td>21,15</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.next<datalist><option>css=th.next</option><option>//div[2]/div/table/thead/tr[2]/th[3]</option></datalist></td><td>21,15</td>
+</tr>
+<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[6]/td<datalist><option>//div[2]/div/table/tbody/tr[6]/td</option></datalist></td><td>12,15</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_fuentefinanciador<datalist><option>id=proyectofinanciero_fuentefinanciador</option><option>name=proyectofinanciero[fuentefinanciador]</option><option>css=#proyectofinanciero_fuentefinanciador</option><option>//input[@id='proyectofinanciero_fuentefinanciador']</option><option>//div[@id='basicos']/div[4]/div[2]/div/input</option><option>//div[4]/div[2]/div/input</option></datalist></td><td>66,21</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_fuentefinanciador<datalist><option>id=proyectofinanciero_fuentefinanciador</option><option>name=proyectofinanciero[fuentefinanciador]</option><option>css=#proyectofinanciero_fuentefinanciador</option><option>//input[@id='proyectofinanciero_fuentefinanciador']</option><option>//div[@id='basicos']/div[4]/div[2]/div/input</option><option>//div[4]/div[2]/div/input</option></datalist></td><td>fff</td>
+</tr>
+<tr><td>select</td><td>id=proyectofinanciero_sectorapc_id<datalist><option>id=proyectofinanciero_sectorapc_id</option><option>name=proyectofinanciero[sectorapc_id]</option><option>css=#proyectofinanciero_sectorapc_id</option><option>//select[@id='proyectofinanciero_sectorapc_id']</option><option>//div[@id='basicos']/div[4]/div[3]/div/select</option><option>//div[3]/div/select</option></datalist></td><td>label=PROTECCIÓN SOCIAL</td>
+</tr>
+<tr><td>mouseDownAt</td><td>id=proyectofinanciero_sectorapc_id<datalist><option>id=proyectofinanciero_sectorapc_id</option><option>name=proyectofinanciero[sectorapc_id]</option><option>css=#proyectofinanciero_sectorapc_id</option><option>//select[@id='proyectofinanciero_sectorapc_id']</option><option>//div[@id='basicos']/div[4]/div[3]/div/select</option><option>//div[3]/div/select</option></datalist></td><td>-855,-290</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>id=proyectofinanciero_sectorapc_id<datalist><option>id=proyectofinanciero_sectorapc_id</option><option>name=proyectofinanciero[sectorapc_id]</option><option>css=#proyectofinanciero_sectorapc_id</option><option>//select[@id='proyectofinanciero_sectorapc_id']</option><option>//div[@id='basicos']/div[4]/div[3]/div/select</option><option>//div[3]/div/select</option></datalist></td><td>-855,-290</td>
+</tr>
+<tr><td>mouseUpAt</td><td>id=proyectofinanciero_sectorapc_id<datalist><option>id=proyectofinanciero_sectorapc_id</option><option>name=proyectofinanciero[sectorapc_id]</option><option>css=#proyectofinanciero_sectorapc_id</option><option>//select[@id='proyectofinanciero_sectorapc_id']</option><option>//div[@id='basicos']/div[4]/div[3]/div/select</option><option>//div[3]/div/select</option></datalist></td><td>-855,-290</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_sectorapc_id<datalist><option>id=proyectofinanciero_sectorapc_id</option><option>name=proyectofinanciero[sectorapc_id]</option><option>css=#proyectofinanciero_sectorapc_id</option><option>//select[@id='proyectofinanciero_sectorapc_id']</option><option>//div[@id='basicos']/div[4]/div[3]/div/select</option><option>//div[3]/div/select</option></datalist></td><td>-855,-290</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_fechaaprobacion_localizada<datalist><option>id=proyectofinanciero_fechaaprobacion_localizada</option><option>name=proyectofinanciero[fechaaprobacion_localizada]</option><option>css=#proyectofinanciero_fechaaprobacion_localizada</option><option>//input[@id='proyectofinanciero_fechaaprobacion_localizada']</option><option>//div[@id='basicos']/div[7]/div/div/input</option><option>//div[7]/div/div/input</option></datalist></td><td>243,12</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[5]/td[7]<datalist><option>//tr[5]/td[7]</option></datalist></td><td>15,20</td>
+</tr>
+<tr><td>clickAt</td><td>css=body<datalist><option>css=body</option><option>//body</option></datalist></td><td>761,654</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_anotacionesdb<datalist><option>id=proyectofinanciero_anotacionesdb</option><option>name=proyectofinanciero[anotacionesdb]</option><option>css=#proyectofinanciero_anotacionesdb</option><option>//textarea[@id='proyectofinanciero_anotacionesdb']</option><option>//div[@id='basicos']/div[8]/textarea</option><option>//textarea</option></datalist></td><td>148,32</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_anotacionesdb<datalist><option>id=proyectofinanciero_anotacionesdb</option><option>name=proyectofinanciero[anotacionesdb]</option><option>css=#proyectofinanciero_anotacionesdb</option><option>//textarea[@id='proyectofinanciero_anotacionesdb']</option><option>//div[@id='basicos']/div[8]/textarea</option><option>//textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>select</td><td>id=proyectofinanciero_estado<datalist><option>id=proyectofinanciero_estado</option><option>name=proyectofinanciero[estado]</option><option>css=#proyectofinanciero_estado</option><option>//select[@id='proyectofinanciero_estado']</option><option>//div[@id='basicos']/div[9]/div/div/select</option><option>//div[9]/div/div/select</option></datalist></td><td>label=EN EJECUCIÓN</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_estado<datalist><option>id=proyectofinanciero_estado</option><option>name=proyectofinanciero[estado]</option><option>css=#proyectofinanciero_estado</option><option>//select[@id='proyectofinanciero_estado']</option><option>//div[@id='basicos']/div[9]/div/div/select</option><option>//div[9]/div/div/select</option></datalist></td><td>-75,-422</td>
+</tr>
+<tr><td>select</td><td>id=proyectofinanciero_dificultad<datalist><option>id=proyectofinanciero_dificultad</option><option>name=proyectofinanciero[dificultad]</option><option>css=#proyectofinanciero_dificultad</option><option>//select[@id='proyectofinanciero_dificultad']</option><option>//div[@id='basicos']/div[9]/div[2]/div/select</option><option>//div[9]/div[2]/div/select</option></datalist></td><td>label=BAJA</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_dificultad<datalist><option>id=proyectofinanciero_dificultad</option><option>name=proyectofinanciero[dificultad]</option><option>css=#proyectofinanciero_dificultad</option><option>//select[@id='proyectofinanciero_dificultad']</option><option>//div[@id='basicos']/div[9]/div[2]/div/select</option><option>//div[9]/div[2]/div/select</option></datalist></td><td>-660,-422</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_observacionestramite<datalist><option>id=proyectofinanciero_observacionestramite</option><option>name=proyectofinanciero[observacionestramite]</option><option>css=#proyectofinanciero_observacionestramite</option><option>//textarea[@id='proyectofinanciero_observacionestramite']</option><option>//div[@id='basicos']/div[10]/div/div/textarea</option><option>//div[10]/div/div/textarea</option></datalist></td><td>155,27</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_observacionestramite<datalist><option>id=proyectofinanciero_observacionestramite</option><option>name=proyectofinanciero[observacionestramite]</option><option>css=#proyectofinanciero_observacionestramite</option><option>//textarea[@id='proyectofinanciero_observacionestramite']</option><option>//div[@id='basicos']/div[10]/div/div/textarea</option><option>//div[10]/div/div/textarea</option></datalist></td><td>ddd</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_observacionesejecucion<datalist><option>id=proyectofinanciero_observacionesejecucion</option><option>name=proyectofinanciero[observacionesejecucion]</option><option>css=#proyectofinanciero_observacionesejecucion</option><option>//textarea[@id='proyectofinanciero_observacionesejecucion']</option><option>//div[@id='basicos']/div[10]/div[2]/div/textarea</option><option>//div[10]/div[2]/div/textarea</option></datalist></td><td>64,22</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_observacionesejecucion<datalist><option>id=proyectofinanciero_observacionesejecucion</option><option>name=proyectofinanciero[observacionesejecucion]</option><option>css=#proyectofinanciero_observacionesejecucion</option><option>//textarea[@id='proyectofinanciero_observacionesejecucion']</option><option>//div[@id='basicos']/div[10]/div[2]/div/textarea</option><option>//div[10]/div[2]/div/textarea</option></datalist></td><td>hhh</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_observacionescierre<datalist><option>id=proyectofinanciero_observacionescierre</option><option>name=proyectofinanciero[observacionescierre]</option><option>css=#proyectofinanciero_observacionescierre</option><option>//textarea[@id='proyectofinanciero_observacionescierre']</option><option>//div[@id='basicos']/div[10]/div[3]/div/textarea</option><option>//div[10]/div[3]/div/textarea</option></datalist></td><td>44,11</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_observacionescierre<datalist><option>id=proyectofinanciero_observacionescierre</option><option>name=proyectofinanciero[observacionescierre]</option><option>css=#proyectofinanciero_observacionescierre</option><option>//textarea[@id='proyectofinanciero_observacionescierre']</option><option>//div[@id='basicos']/div[10]/div[3]/div/textarea</option><option>//div[10]/div[3]/div/textarea</option></datalist></td><td>kkk</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_2083']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>23,16</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromisos-institucionales-datos-del-financiador</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/proyectosfinancieros/2098/edita')]</option><option>//a[2]</option></datalist></td><td>19,23</td>
+</tr>
+<tr><td>clickAt</td><td>link=Datos del financiador<datalist><option>link=Datos del financiador</option><option>//a[contains(text(),'Datos del financiador')]</option><option>//form[@id='edit_proyectofinanciero_2098']/div/div[2]/ul/li[6]/a</option><option>//a[contains(@href, '#datosfinanciador')]</option><option>//div[2]/ul/li[6]/a</option></datalist></td><td>66,23</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_respagencia<datalist><option>id=proyectofinanciero_respagencia</option><option>name=proyectofinanciero[respagencia]</option><option>css=#proyectofinanciero_respagencia</option><option>//input[@id='proyectofinanciero_respagencia']</option><option>//div[@id='datosfinanciador']/div/input</option><option>//div[6]/div/input</option></datalist></td><td>198,17</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_respagencia<datalist><option>id=proyectofinanciero_respagencia</option><option>name=proyectofinanciero[respagencia]</option><option>css=#proyectofinanciero_respagencia</option><option>//input[@id='proyectofinanciero_respagencia']</option><option>//div[@id='datosfinanciador']/div/input</option><option>//div[6]/div/input</option></datalist></td><td>85,16</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_respagencia<datalist><option>id=proyectofinanciero_respagencia</option><option>name=proyectofinanciero[respagencia]</option><option>css=#proyectofinanciero_respagencia</option><option>//input[@id='proyectofinanciero_respagencia']</option><option>//div[@id='datosfinanciador']/div/input</option><option>//div[6]/div/input</option></datalist></td><td>Ricardo</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_emailrespagencia<datalist><option>id=proyectofinanciero_emailrespagencia</option><option>name=proyectofinanciero[emailrespagencia]</option><option>css=#proyectofinanciero_emailrespagencia</option><option>//input[@id='proyectofinanciero_emailrespagencia']</option><option>//div[@id='datosfinanciador']/div[2]/div/div/input</option><option>//div[6]/div[2]/div/div/input</option></datalist></td><td>24,5</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_emailrespagencia<datalist><option>id=proyectofinanciero_emailrespagencia</option><option>name=proyectofinanciero[emailrespagencia]</option><option>css=#proyectofinanciero_emailrespagencia</option><option>//input[@id='proyectofinanciero_emailrespagencia']</option><option>//div[@id='datosfinanciador']/div[2]/div/div/input</option><option>//div[6]/div[2]/div/div/input</option></datalist></td><td>ricardo@ricardo.org</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_telrespagencia<datalist><option>id=proyectofinanciero_telrespagencia</option><option>name=proyectofinanciero[telrespagencia]</option><option>css=#proyectofinanciero_telrespagencia</option><option>//input[@id='proyectofinanciero_telrespagencia']</option><option>//div[@id='datosfinanciador']/div[2]/div[2]/div/input</option><option>//div[2]/div[2]/div/input</option></datalist></td><td>59,14</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_telrespagencia<datalist><option>id=proyectofinanciero_telrespagencia</option><option>name=proyectofinanciero[telrespagencia]</option><option>css=#proyectofinanciero_telrespagencia</option><option>//input[@id='proyectofinanciero_telrespagencia']</option><option>//div[@id='datosfinanciador']/div[2]/div[2]/div/input</option><option>//div[2]/div[2]/div/input</option></datalist></td><td>32168342123</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_razonsocialfinanciador<datalist><option>id=proyectofinanciero_razonsocialfinanciador</option><option>name=proyectofinanciero[razonsocialfinanciador]</option><option>css=#proyectofinanciero_razonsocialfinanciador</option><option>//input[@id='proyectofinanciero_razonsocialfinanciador']</option><option>//div[@id='datosfinanciador']/div[3]/input</option><option>//div[6]/div[3]/input</option></datalist></td><td>104,20</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_razonsocialfinanciador<datalist><option>id=proyectofinanciero_razonsocialfinanciador</option><option>name=proyectofinanciero[razonsocialfinanciador]</option><option>css=#proyectofinanciero_razonsocialfinanciador</option><option>//input[@id='proyectofinanciero_razonsocialfinanciador']</option><option>//div[@id='datosfinanciador']/div[3]/input</option><option>//div[6]/div[3]/input</option></datalist></td><td>Todo bien</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_nitfinanciador<datalist><option>id=proyectofinanciero_nitfinanciador</option><option>name=proyectofinanciero[nitfinanciador]</option><option>css=#proyectofinanciero_nitfinanciador</option><option>//input[@id='proyectofinanciero_nitfinanciador']</option><option>//div[@id='datosfinanciador']/div[4]/div/div/input</option><option>//div[6]/div[4]/div/div/input</option></datalist></td><td>91,17</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_nitfinanciador<datalist><option>id=proyectofinanciero_nitfinanciador</option><option>name=proyectofinanciero[nitfinanciador]</option><option>css=#proyectofinanciero_nitfinanciador</option><option>//input[@id='proyectofinanciero_nitfinanciador']</option><option>//div[@id='datosfinanciador']/div[4]/div/div/input</option><option>//div[6]/div[4]/div/div/input</option></datalist></td><td>45683215-76</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_idtributariaextfinanciador<datalist><option>id=proyectofinanciero_idtributariaextfinanciador</option><option>name=proyectofinanciero[idtributariaextfinanciador]</option><option>css=#proyectofinanciero_idtributariaextfinanciador</option><option>//input[@id='proyectofinanciero_idtributariaextfinanciador']</option><option>//div[@id='datosfinanciador']/div[4]/div[2]/div/input</option><option>//div[6]/div[4]/div[2]/div/input</option></datalist></td><td>114,17</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_idtributariaextfinanciador<datalist><option>id=proyectofinanciero_idtributariaextfinanciador</option><option>name=proyectofinanciero[idtributariaextfinanciador]</option><option>css=#proyectofinanciero_idtributariaextfinanciador</option><option>//input[@id='proyectofinanciero_idtributariaextfinanciador']</option><option>//div[@id='datosfinanciador']/div[4]/div[2]/div/input</option><option>//div[6]/div[4]/div[2]/div/input</option></datalist></td><td>5454545456</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_replegalfinanciador<datalist><option>id=proyectofinanciero_replegalfinanciador</option><option>name=proyectofinanciero[replegalfinanciador]</option><option>css=#proyectofinanciero_replegalfinanciador</option><option>//input[@id='proyectofinanciero_replegalfinanciador']</option><option>//div[@id='datosfinanciador']/div[5]/div/div/input</option><option>//div[6]/div[5]/div/div/input</option></datalist></td><td>124,20</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_replegalfinanciador<datalist><option>id=proyectofinanciero_replegalfinanciador</option><option>name=proyectofinanciero[replegalfinanciador]</option><option>css=#proyectofinanciero_replegalfinanciador</option><option>//input[@id='proyectofinanciero_replegalfinanciador']</option><option>//div[@id='datosfinanciador']/div[5]/div/div/input</option><option>//div[6]/div[5]/div/div/input</option></datalist></td><td>Santiago</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_domiciliofinanciador<datalist><option>id=proyectofinanciero_domiciliofinanciador</option><option>name=proyectofinanciero[domiciliofinanciador]</option><option>css=#proyectofinanciero_domiciliofinanciador</option><option>//input[@id='proyectofinanciero_domiciliofinanciador']</option><option>//div[@id='datosfinanciador']/div[5]/div[2]/div/input</option><option>//div[6]/div[5]/div[2]/div/input</option></datalist></td><td>48,11</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_domiciliofinanciador<datalist><option>id=proyectofinanciero_domiciliofinanciador</option><option>name=proyectofinanciero[domiciliofinanciador]</option><option>css=#proyectofinanciero_domiciliofinanciador</option><option>//input[@id='proyectofinanciero_domiciliofinanciador']</option><option>//div[@id='datosfinanciador']/div[5]/div[2]/div/input</option><option>//div[6]/div[5]/div[2]/div/input</option></datalist></td><td>Barcelona España</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_skypefinanciador<datalist><option>id=proyectofinanciero_skypefinanciador</option><option>name=proyectofinanciero[skypefinanciador]</option><option>css=#proyectofinanciero_skypefinanciador</option><option>//input[@id='proyectofinanciero_skypefinanciador']</option><option>//div[@id='datosfinanciador']/div[6]/div/div/input</option><option>//div[6]/div[6]/div/div/input</option></datalist></td><td>116,12</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_skypefinanciador<datalist><option>id=proyectofinanciero_skypefinanciador</option><option>name=proyectofinanciero[skypefinanciador]</option><option>css=#proyectofinanciero_skypefinanciador</option><option>//input[@id='proyectofinanciero_skypefinanciador']</option><option>//div[@id='datosfinanciador']/div[6]/div/div/input</option><option>//div[6]/div[6]/div/div/input</option></datalist></td><td>santi234</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_webfinanciador<datalist><option>id=proyectofinanciero_webfinanciador</option><option>name=proyectofinanciero[webfinanciador]</option><option>css=#proyectofinanciero_webfinanciador</option><option>//input[@id='proyectofinanciero_webfinanciador']</option><option>//div[@id='datosfinanciador']/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>79,14</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_webfinanciador<datalist><option>id=proyectofinanciero_webfinanciador</option><option>name=proyectofinanciero[webfinanciador]</option><option>css=#proyectofinanciero_webfinanciador</option><option>//input[@id='proyectofinanciero_webfinanciador']</option><option>//div[@id='datosfinanciador']/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>www</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_observaciones<datalist><option>id=proyectofinanciero_observaciones</option><option>name=proyectofinanciero[observaciones]</option><option>css=#proyectofinanciero_observaciones</option><option>//textarea[@id='proyectofinanciero_observaciones']</option><option>//div[@id='datosfinanciador']/div[7]/textarea</option><option>//div[6]/div[7]/textarea</option></datalist></td><td>85,18</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_observaciones<datalist><option>id=proyectofinanciero_observaciones</option><option>name=proyectofinanciero[observaciones]</option><option>css=#proyectofinanciero_observaciones</option><option>//textarea[@id='proyectofinanciero_observaciones']</option><option>//div[@id='datosfinanciador']/div[7]/textarea</option><option>//div[6]/div[7]/textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_2098']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>71,14</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Compromiso institucional</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">compromisos-institucionales-recursos-economico-y-desmbolso</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/proyectosfinancieros/2083/edita')]</option><option>//a[2]</option></datalist></td><td>42,13</td>
+</tr>
+<tr><td>clickAt</td><td>link=Recursos económicos y desembolsos<datalist><option>link=Recursos económicos y desembolsos</option><option>//a[contains(text(),'Recursos económicos y desembolsos')]</option><option>//form[@id='edit_proyectofinanciero_2083']/div/div[2]/ul/li[3]/a</option><option>//a[contains(@href, '#recursoseconomicos')]</option><option>//form/div/div[2]/ul/li[3]/a</option></datalist></td><td>26,21</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_monto_localizado<datalist><option>id=proyectofinanciero_monto_localizado</option><option>name=proyectofinanciero[monto_localizado]</option><option>css=#proyectofinanciero_monto_localizado</option><option>//input[@id='proyectofinanciero_monto_localizado']</option><option>//div[@id='recursoseconomicos']/div[2]/table/tbody/tr[3]/td/div/input</option><option>//tr[3]/td/div/input</option></datalist></td><td>68,16</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_montoej_localizado<datalist><option>id=proyectofinanciero_montoej_localizado</option><option>name=proyectofinanciero[montoej_localizado]</option><option>css=#proyectofinanciero_montoej_localizado</option><option>//input[@id='proyectofinanciero_montoej_localizado']</option><option>//div[@id='recursoseconomicos']/div[2]/table/tbody/tr[3]/td[3]/div/input</option><option>//tr[3]/td[3]/div/input</option></datalist></td><td>94,12</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_montoej_localizado<datalist><option>id=proyectofinanciero_montoej_localizado</option><option>name=proyectofinanciero[montoej_localizado]</option><option>css=#proyectofinanciero_montoej_localizado</option><option>//input[@id='proyectofinanciero_montoej_localizado']</option><option>//div[@id='recursoseconomicos']/div[2]/table/tbody/tr[3]/td[3]/div/input</option><option>//tr[3]/td[3]/div/input</option></datalist></td><td>10000000</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_aportecinepej_localizado<datalist><option>id=proyectofinanciero_aportecinepej_localizado</option><option>name=proyectofinanciero[aportecinepej_localizado]</option><option>css=#proyectofinanciero_aportecinepej_localizado</option><option>//input[@id='proyectofinanciero_aportecinepej_localizado']</option><option>//div[@id='recursoseconomicos']/div[2]/table/tbody/tr[4]/td[3]/div/input</option><option>//tr[4]/td[3]/div/input</option></datalist></td><td>89,15</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_aportecinepej_localizado<datalist><option>id=proyectofinanciero_aportecinepej_localizado</option><option>name=proyectofinanciero[aportecinepej_localizado]</option><option>css=#proyectofinanciero_aportecinepej_localizado</option><option>//input[@id='proyectofinanciero_aportecinepej_localizado']</option><option>//div[@id='recursoseconomicos']/div[2]/table/tbody/tr[4]/td[3]/div/input</option><option>//tr[4]/td[3]/div/input</option></datalist></td><td>5000000</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_aporteotrosej_localizado<datalist><option>id=proyectofinanciero_aporteotrosej_localizado</option><option>name=proyectofinanciero[aporteotrosej_localizado]</option><option>css=#proyectofinanciero_aporteotrosej_localizado</option><option>//input[@id='proyectofinanciero_aporteotrosej_localizado']</option><option>//div[@id='recursoseconomicos']/div[2]/table/tbody/tr[5]/td[3]/div/input</option><option>//tr[5]/td[3]/div/input</option></datalist></td><td>101,5</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_aporteotrosej_localizado<datalist><option>id=proyectofinanciero_aporteotrosej_localizado</option><option>name=proyectofinanciero[aporteotrosej_localizado]</option><option>css=#proyectofinanciero_aporteotrosej_localizado</option><option>//input[@id='proyectofinanciero_aporteotrosej_localizado']</option><option>//div[@id='recursoseconomicos']/div[2]/table/tbody/tr[5]/td[3]/div/input</option><option>//tr[5]/td[3]/div/input</option></datalist></td><td>4000000</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_saldoej_localizado<datalist><option>id=proyectofinanciero_saldoej_localizado</option><option>name=proyectofinanciero[saldoej_localizado]</option><option>css=#proyectofinanciero_saldoej_localizado</option><option>//input[@id='proyectofinanciero_saldoej_localizado']</option><option>//div[@id='recursoseconomicos']/div[2]/table/tbody/tr[6]/td[3]/div/input</option><option>//tr[6]/td[3]/div/input</option></datalist></td><td>34,24</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_saldoej_localizado<datalist><option>id=proyectofinanciero_saldoej_localizado</option><option>name=proyectofinanciero[saldoej_localizado]</option><option>css=#proyectofinanciero_saldoej_localizado</option><option>//input[@id='proyectofinanciero_saldoej_localizado']</option><option>//div[@id='recursoseconomicos']/div[2]/table/tbody/tr[6]/td[3]/div/input</option><option>//tr[6]/td[3]/div/input</option></datalist></td><td>129,17</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_saldoej_localizado<datalist><option>id=proyectofinanciero_saldoej_localizado</option><option>name=proyectofinanciero[saldoej_localizado]</option><option>css=#proyectofinanciero_saldoej_localizado</option><option>//input[@id='proyectofinanciero_saldoej_localizado']</option><option>//div[@id='recursoseconomicos']/div[2]/table/tbody/tr[6]/td[3]/div/input</option><option>//tr[6]/td[3]/div/input</option></datalist></td><td>5000000</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_acuse<datalist><option>id=proyectofinanciero_acuse</option><option>css=#proyectofinanciero_acuse</option><option>//input[@id='proyectofinanciero_acuse']</option><option>//div[@id='recursoseconomicos']/div[4]/div/div/label/input</option><option>//label/input</option></datalist></td><td>272,5</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_reportarrendimientosfinancieros<datalist><option>id=proyectofinanciero_reportarrendimientosfinancieros</option><option>css=#proyectofinanciero_reportarrendimientosfinancieros</option><option>//input[@id='proyectofinanciero_reportarrendimientosfinancieros']</option><option>//div[@id='recursoseconomicos']/div[4]/div[2]/div/label/input</option><option>//div[2]/div/label/input</option></datalist></td><td>277,8</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_reinvertirrendimientosfinancieros<datalist><option>id=proyectofinanciero_reinvertirrendimientosfinancieros</option><option>css=#proyectofinanciero_reinvertirrendimientosfinancieros</option><option>//input[@id='proyectofinanciero_reinvertirrendimientosfinancieros']</option><option>//div[@id='recursoseconomicos']/div[5]/div/div/label/input</option><option>//div[5]/div/div/label/input</option></datalist></td><td>271,6</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_autenticarcompulsar<datalist><option>id=proyectofinanciero_autenticarcompulsar</option><option>css=#proyectofinanciero_autenticarcompulsar</option><option>//input[@id='proyectofinanciero_autenticarcompulsar']</option><option>//div[@id='recursoseconomicos']/div[5]/div[2]/div/label/input</option><option>//div[5]/div[2]/div/label/input</option></datalist></td><td>283,5</td>
+</tr>
+<tr><td>clickAt</td><td>id=proyectofinanciero_anotacionesre<datalist><option>id=proyectofinanciero_anotacionesre</option><option>name=proyectofinanciero[anotacionesre]</option><option>css=#proyectofinanciero_anotacionesre</option><option>//textarea[@id='proyectofinanciero_anotacionesre']</option><option>//div[@id='recursoseconomicos']/div[7]/textarea</option><option>//div[7]/textarea</option></datalist></td><td>265,23</td>
+</tr>
+<tr><td>type</td><td>id=proyectofinanciero_anotacionesre<datalist><option>id=proyectofinanciero_anotacionesre</option><option>name=proyectofinanciero[anotacionesre]</option><option>css=#proyectofinanciero_anotacionesre</option><option>//textarea[@id='proyectofinanciero_anotacionesre']</option><option>//div[@id='recursoseconomicos']/div[7]/textarea</option><option>//div[7]/textarea</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>link=Añadir Desembolso<datalist><option>link=Añadir Desembolso</option><option>css=#recursoseconomicos &gt; div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Desembolso')]</option><option>//div[@id='recursoseconomicos']/div[6]/a</option><option>xpath=(//a[contains(@href, '#')])[20]</option><option>//div[6]/a</option></datalist></td><td>60,7</td>
+</tr>
+<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_proyectofinanciero_2083']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>46,18</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Compromiso institucional</td>
+</tr>
+</tbody></table>
+</body>
+</html>

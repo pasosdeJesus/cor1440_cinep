@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>crecer-admin-crea-formularios</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">formulario-nombre </td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>68,22</td>
+</tr>
+<tr><td>clickAt</td><td>link=Formularios<datalist><option>link=Formularios</option><option>//a[contains(text(),'Formularios')]</option><option>//a[contains(@href, '/formularios')]</option><option>//li[2]/ul/li[8]/a</option></datalist></td><td>78,12</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nuevo')]</option><option>//a[contains(@href, '/formularios/nuevo')]</option><option>//div[2]/div/a</option></datalist></td><td>50,24</td>
+</tr>
+<tr><td>clickAt</td><td>id=formulario_nombre<datalist><option>id=formulario_nombre</option><option>name=formulario[nombre]</option><option>css=#formulario_nombre</option><option>//input[@id='formulario_nombre']</option><option>//form[@id='edit_formulario_156']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>94,13</td>
+</tr>
+<tr><td>type</td><td>id=formulario_nombre<datalist><option>id=formulario_nombre</option><option>name=formulario[nombre]</option><option>css=#formulario_nombre</option><option>//input[@id='formulario_nombre']</option><option>//form[@id='edit_formulario_156']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>Formulario aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=formulario_nombreinterno<datalist><option>id=formulario_nombreinterno</option><option>name=formulario[nombreinterno]</option><option>css=#formulario_nombreinterno</option><option>//input[@id='formulario_nombreinterno']</option><option>//form[@id='edit_formulario_156']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>130,12</td>
+</tr>
+<tr><td>clickAt</td><td>id=formulario_nombreinterno<datalist><option>id=formulario_nombreinterno</option><option>name=formulario[nombreinterno]</option><option>css=#formulario_nombreinterno</option><option>//input[@id='formulario_nombreinterno']</option><option>//form[@id='edit_formulario_158']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>182,30</td>
+</tr>
+<tr><td>type</td><td>id=formulario_nombreinterno<datalist><option>id=formulario_nombreinterno</option><option>name=formulario[nombreinterno]</option><option>css=#formulario_nombreinterno</option><option>//input[@id='formulario_nombreinterno']</option><option>//form[@id='edit_formulario_158']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>formulario_aaa</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_formulario_158']/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>36,15</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Formulario</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">formulario-agregar-campo-pregunta</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/formularios/159/edita')]</option><option>//a[2]</option></datalist></td><td>28,22</td>
+</tr>
+<tr><td>clickAt</td><td>link=Agregar campo<datalist><option>link=Agregar campo</option><option>css=div.links &gt; a.btn-primary.add_fields</option><option>//a[contains(text(),'Agregar campo')]</option><option>//form[@id='edit_formulario_161']/div[5]/div[2]/div/div/a</option><option>xpath=(//a[contains(@href, '#')])[7]</option><option>//div[2]/div/div/a</option></datalist></td><td>46,9</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.input.string.required.formulario_campo_nombre<datalist><option>css=div.input.string.required.formulario_campo_nombre</option><option>//tbody[@id='campos']/tr/td/div</option><option>//td/div</option></datalist></td><td>151,1</td>
+</tr>
+<tr><td>clickAt</td><td>//td/div/input<datalist><option>id=formulario_campo_attributes_0_nombre</option><option>name=formulario[campo_attributes][0][nombre]</option><option>css=#formulario_campo_attributes_0_nombre</option><option>//input[@id='formulario_campo_attributes_0_nombre']</option><option>//tbody[@id='campos']/tr/td/div/input</option><option>//td/div/input</option></datalist></td><td>94,18</td>
+</tr>
+<tr><td>type</td><td>//td/div/input<datalist><option>id=formulario_campo_attributes_0_nombre</option><option>name=formulario[campo_attributes][0][nombre]</option><option>css=#formulario_campo_attributes_0_nombre</option><option>//input[@id='formulario_campo_attributes_0_nombre']</option><option>//tbody[@id='campos']/tr/td/div/input</option><option>//td/div/input</option></datalist></td><td>nnn</td>
+</tr>
+<tr><td>clickAt</td><td>//td/div[2]/input<datalist><option>id=formulario_campo_attributes_0_nombreinterno</option><option>name=formulario[campo_attributes][0][nombreinterno]</option><option>css=#formulario_campo_attributes_0_nombreinterno</option><option>//input[@id='formulario_campo_attributes_0_nombreinterno']</option><option>//tbody[@id='campos']/tr/td/div[2]/input</option><option>//td/div[2]/input</option></datalist></td><td>43,13</td>
+</tr>
+<tr><td>clickAt</td><td>//td/div[2]/input<datalist><option>id=formulario_campo_attributes_0_nombreinterno</option><option>name=formulario[campo_attributes][0][nombreinterno]</option><option>css=#formulario_campo_attributes_0_nombreinterno</option><option>//input[@id='formulario_campo_attributes_0_nombreinterno']</option><option>//tbody[@id='campos']/tr/td/div[2]/input</option><option>//td/div[2]/input</option></datalist></td><td>43,13</td>
+</tr>
+<tr><td>type</td><td>//td/div[2]/input<datalist><option>id=formulario_campo_attributes_0_nombreinterno</option><option>name=formulario[campo_attributes][0][nombreinterno]</option><option>css=#formulario_campo_attributes_0_nombreinterno</option><option>//input[@id='formulario_campo_attributes_0_nombreinterno']</option><option>//tbody[@id='campos']/tr/td/div[2]/input</option><option>//td/div[2]/input</option></datalist></td><td>nnnn</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_formulario_161']/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>81,24</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Formulario</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">formulario-agregar-campo-tipo</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/formularios/159/edita')]</option><option>//a[2]</option></datalist></td><td>33,15</td>
+</tr>
+<tr><td>select</td><td>//tbody[@id='campos']/tr/td[2]/div/select<datalist><option>id=formulario_campo_attributes_0_tipo</option><option>name=formulario[campo_attributes][0][tipo]</option><option>css=#formulario_campo_attributes_0_tipo</option><option>//select[@id='formulario_campo_attributes_0_tipo']</option><option>//tbody[@id='campos']/tr/td[2]/div/select</option><option>//select</option></datalist></td><td>label=Selección Simple</td>
+</tr>
+<tr><td>clickAt</td><td>//tbody[@id='campos']/tr/td[2]/div/select<datalist><option>id=formulario_campo_attributes_0_tipo</option><option>name=formulario[campo_attributes][0][tipo]</option><option>css=#formulario_campo_attributes_0_tipo</option><option>//select[@id='formulario_campo_attributes_0_tipo']</option><option>//tbody[@id='campos']/tr/td[2]/div/select</option><option>//select</option></datalist></td><td>-380,-347</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_formulario_159']/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>40,22</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Formulario</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">formulario-agregar-campo-obliatorio</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/formularios/159/edita')]</option><option>//a[2]</option></datalist></td><td>33,22</td>
+</tr>
+<tr><td>clickAt</td><td>id=formulario_campo_attributes_0_obligatorio<datalist><option>id=formulario_campo_attributes_0_obligatorio</option><option>css=#formulario_campo_attributes_0_obligatorio</option><option>//input[@id='formulario_campo_attributes_0_obligatorio']</option><option>//tbody[@id='campos']/tr/td[4]/div/label/input</option><option>//label/input</option></datalist></td><td>54,8</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_formulario_159']/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>44,17</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Formulario</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">formulario-caracterizacion-en-convenios-financiados</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/formularios/159/edita')]</option><option>//a[2]</option></datalist></td><td>41,10</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>mouseDownAt</td><td>css=input.chosen-search-input<datalist><option>css=input.chosen-search-input</option><option>//input[@value='Selecciones algunas opciones']</option><option>//div[@id='formulario_caracterizacion_ids_chosen']/ul/li[2]/input</option><option>//li[2]/input</option></datalist></td><td>19.703125,12</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>css=input.chosen-search-input<datalist><option>css=input.chosen-search-input</option><option>//input[@value='Selecciones algunas opciones']</option><option>//div[@id='formulario_caracterizacion_ids_chosen']/ul/li[2]/input</option><option>//li[2]/input</option></datalist></td><td>19.703125,12</td>
+</tr>
+<tr><td>mouseUpAt</td><td>css=input.chosen-search-input<datalist><option>css=input.chosen-search-input</option><option>//input[@value='Selecciones algunas opciones']</option><option>//div[@id='formulario_caracterizacion_ids_chosen']/ul/li[2]/input</option><option>//li[2]/input</option></datalist></td><td>19.703125,12</td>
+</tr>
+<tr><td>clickAt</td><td>css=input.chosen-search-input<datalist><option>css=input.chosen-search-input</option><option>//input[@value='Selecciones algunas opciones']</option><option>//div[@id='formulario_caracterizacion_ids_chosen']/ul/li[2]/input</option><option>//li[2]/input</option></datalist></td><td>21,13</td>
+</tr>
+<tr><td>mouseDownAt</td><td>css=li.active-result.highlighted<datalist><option>css=li.active-result.highlighted</option><option>//div[@id='formulario_caracterizacion_ids_chosen']/div/ul/li</option><option>//div[6]/div/div/ul/li</option></datalist></td><td>215,9</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>css=li.active-result.highlighted<datalist><option>css=li.active-result.highlighted</option><option>//div[@id='formulario_caracterizacion_ids_chosen']/div/ul/li</option><option>//div[6]/div/div/ul/li</option></datalist></td><td>215,9</td>
+</tr>
+<tr><td>mouseUpAt</td><td>css=li.active-result.highlighted<datalist><option>css=li.active-result.highlighted</option><option>//div[@id='formulario_caracterizacion_ids_chosen']/div/ul/li</option><option>//div[6]/div/div/ul/li</option></datalist></td><td>215,9</td>
+</tr>
+<tr><td>clickAt</td><td>css=li.result-selected<datalist><option>css=li.result-selected</option><option>//div[@id='formulario_caracterizacion_ids_chosen']/div/ul/li</option><option>//div[6]/div/div/ul/li</option></datalist></td><td>216,9</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_formulario_162']/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>65,10</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Formulario</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">formulario-tipo-de-actividad-de-proyecto-financiero</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/formularios/159/edita')]</option><option>//a[2]</option></datalist></td><td>38,21</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>css=div.container.master-container<datalist><option>css=div.container.master-container</option><option>//body/div</option></datalist></td><td>10,546</td>
+</tr>
+<tr><td>mouseDownAt</td><td>css=input.chosen-search-input.default<datalist><option>css=input.chosen-search-input.default</option><option>xpath=(//input[@value='Selecciones algunas opciones'])[2]</option><option>//div[@id='formulario_actividadtipo_ids_chosen']/ul/li/input</option><option>//div[7]/div/ul/li/input</option></datalist></td><td>46,9</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>css=input.chosen-search-input.default<datalist><option>css=input.chosen-search-input.default</option><option>xpath=(//input[@value='Selecciones algunas opciones'])[2]</option><option>//div[@id='formulario_actividadtipo_ids_chosen']/ul/li/input</option><option>//div[7]/div/ul/li/input</option></datalist></td><td>46,9</td>
+</tr>
+<tr><td>mouseUpAt</td><td>css=input.chosen-search-input.default<datalist><option>css=input.chosen-search-input.default</option><option>xpath=(//input[@value='Selecciones algunas opciones'])[2]</option><option>//div[@id='formulario_actividadtipo_ids_chosen']/ul/li/input</option><option>//div[7]/div/ul/li/input</option></datalist></td><td>46,9</td>
+</tr>
+<tr><td>clickAt</td><td>css=input.chosen-search-input.default<datalist><option>css=input.chosen-search-input.default</option><option>xpath=(//input[@value='Selecciones algunas opciones'])[2]</option><option>//div[@id='formulario_actividadtipo_ids_chosen']/ul/li/input</option><option>//div[7]/div/ul/li/input</option></datalist></td><td>47,10</td>
+</tr>
+<tr><td>mouseDownAt</td><td>css=li.active-result.highlighted<datalist><option>css=li.active-result.highlighted</option><option>//div[@id='formulario_actividadtipo_ids_chosen']/div/ul/li</option><option>//div[7]/div/div/ul/li</option></datalist></td><td>106,11</td>
+</tr>
+<tr><td>mouseMoveAt</td><td>css=li.active-result.highlighted<datalist><option>css=li.active-result.highlighted</option><option>//div[@id='formulario_actividadtipo_ids_chosen']/div/ul/li</option><option>//div[7]/div/div/ul/li</option></datalist></td><td>106,11</td>
+</tr>
+<tr><td>mouseUpAt</td><td>css=li.active-result.highlighted<datalist><option>css=li.active-result.highlighted</option><option>//div[@id='formulario_actividadtipo_ids_chosen']/div/ul/li</option><option>//div[7]/div/div/ul/li</option></datalist></td><td>106,11</td>
+</tr>
+<tr><td>clickAt</td><td>css=li.result-selected<datalist><option>css=li.result-selected</option><option>//div[@id='formulario_actividadtipo_ids_chosen']/div/ul/li</option><option>//div[7]/div/div/ul/li</option></datalist></td><td>107,11</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_formulario_162']/div[8]/input</option><option>//div[8]/input</option></datalist></td><td>58,15</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Formulario</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">formulario-agregar-campo-eliminar</td></tr>
+</thead>
+<tbody>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
+</tbody></table>
+</body>
+</html>

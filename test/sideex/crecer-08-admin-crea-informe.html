@@ -8,14 +8,18 @@
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">informe-fecha-inicial-final</td></tr>
+<tr><td rowspan="1" colspan="3">informe-titulo-fecha-inicial-final</td></tr>
 </thead>
 <tbody>
 <tr><td>open</td><td>/<datalist><option>/</option><option>http://crecer.cinep.org.co:4000/</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>link=Actividades<datalist><option>link=Actividades</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Actividades')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>52,16</td>
 </tr>
-<tr><td>clickAt</td><td>link=Informes<datalist><option>link=Informes</option><option>//a[contains(text(),'Informes')]</option><option>//a[contains(@href, '/informes')]</option><option>//li[4]/a</option></datalist></td><td>60,14</td>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
+</tr>
+<tr><td>clickAt</td><td>link=Informes<datalist><option>link=Informes</option><option>//a[contains(text(),'Informes')]</option><option>//a[contains(@href, '/informes')]</option><option>//li[4]/a</option></datalist></td><td>57,19</td>
+</tr>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>1000</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nueva')])[2]</option><option>//a[contains(@href, '/informes/nuevo')]</option><option>//td/a</option></datalist></td><td>31,25</td>
 </tr>

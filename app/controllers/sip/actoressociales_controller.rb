@@ -38,9 +38,6 @@ module Sip
       [ :actorsocial_persona =>  [] ] +
       [ 
         :lineabase20182020,
-        :personacontacto,
-        :cargo,
-        :correo,
         :telefono,
         :fax,
         :celular,
