@@ -8,7 +8,7 @@ module Sip
 
     accepts_nested_attributes_for :persona, reject_if: :all_blank
 
-    validates :correo, length: {maximum: 254}, 
+    validates :correo, length: {maximum: 254}, allow_blank: true,
       format: { with: URI::MailTo::EMAIL_REGEXP, 
         message: 'Formato de correo incorrecto'}
     validates :cargo, length: {maximum: 254}
