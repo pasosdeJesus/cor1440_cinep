@@ -17,6 +17,8 @@
 </tr>
 <tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nuevo')]</option><option>//a[contains(@href, '/actoressociales/nuevo')]</option><option>//div[2]/div/a</option></datalist></td><td>45,4</td>
 </tr>
+<tr><td>assertText</td><td>css=label.string.required.control-label<datalist><option>css=label.string.required.control-label</option><option>//form[@id='edit_actorsocial_322']/div[3]/div[2]/label</option><option>//label</option></datalist></td><td>* Nombre</td>
+</tr>
 <tr><td>clickAt</td><td>id=actorsocial_grupoper_attributes_nombre<datalist><option>id=actorsocial_grupoper_attributes_nombre</option><option>name=actorsocial[grupoper_attributes][nombre]</option><option>css=#actorsocial_grupoper_attributes_nombre</option><option>//input[@id='actorsocial_grupoper_attributes_nombre']</option><option>//form[@id='new_actorsocial']/div[3]/div[2]/input</option><option>//div[3]/div[2]/input</option></datalist></td><td>62,15</td>
 </tr>
 <tr><td>type</td><td>id=actorsocial_grupoper_attributes_nombre<datalist><option>id=actorsocial_grupoper_attributes_nombre</option><option>name=actorsocial[grupoper_attributes][nombre]</option><option>css=#actorsocial_grupoper_attributes_nombre</option><option>//input[@id='actorsocial_grupoper_attributes_nombre']</option><option>//form[@id='new_actorsocial']/div[3]/div[2]/input</option><option>//div[3]/div[2]/input</option></datalist></td><td>eee</td>
@@ -79,9 +81,17 @@
 <tbody>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/actoressociales/307/edita')]</option><option>//a[2]</option></datalist></td><td>30,20</td>
 </tr>
-<tr><td>clickAt</td><td>id=actorsocial_personacontacto<datalist><option>id=actorsocial_personacontacto</option><option>name=actorsocial[personacontacto]</option><option>css=#actorsocial_personacontacto</option><option>//input[@id='actorsocial_personacontacto']</option><option>//form[@id='edit_actorsocial_307']/div[12]/input</option><option>//div[12]/input</option></datalist></td><td>86,22</td>
+<tr><td>assertText</td><td>css=label.string.required.control-label<datalist><option>css=label.string.required.control-label</option><option>//form[@id='edit_actorsocial_322']/div[3]/div[2]/label</option><option>//label</option></datalist></td><td>* Nombre</td>
 </tr>
-<tr><td>type</td><td>id=actorsocial_personacontacto<datalist><option>id=actorsocial_personacontacto</option><option>name=actorsocial[personacontacto]</option><option>css=#actorsocial_personacontacto</option><option>//input[@id='actorsocial_personacontacto']</option><option>//form[@id='edit_actorsocial_307']/div[12]/input</option><option>//div[12]/input</option></datalist></td><td>Alirio Contreras</td>
+<tr><td>clickAt</td><td>link=Añadir Contacto<datalist><option>link=Añadir Contacto</option><option>css=a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Contacto')]</option><option>//div[@id='actorsocial_persona_325']/div/a</option><option>xpath=(//a[contains(@href, '#')])[5]</option><option>//div[11]/div/a</option></datalist></td><td>53,3</td>
+</tr>
+<tr><td>clickAt</td><td>//tbody[@id='actorsocial_persona']/tr/td/div[2]/input<datalist><option>id=actorsocial_actorsocial_persona_attributes_1562106224605_persona_attributes_nombres</option><option>name=actorsocial[actorsocial_persona_attributes][1562106224605][persona_attributes][nombres]</option><option>css=#actorsocial_actorsocial_persona_attributes_1562106224605_persona_attributes_nombres</option><option>//input[@id='actorsocial_actorsocial_persona_attributes_1562106224605_persona_attributes_nombres']</option><option>//tbody[@id='actorsocial_persona']/tr/td/div[2]/input</option><option>//td/div[2]/input</option></datalist></td><td>42,14</td>
+</tr>
+<tr><td>clickAt</td><td>//div[12]/input<datalist><option>id=actorsocial_personacontacto</option><option>name=actorsocial[personacontacto]</option><option>css=#actorsocial_personacontacto</option><option>//input[@id='actorsocial_personacontacto']</option><option>//form[@id='edit_actorsocial_307']/div[12]/input</option><option>//div[12]/input</option></datalist></td><td>86,22</td>
+</tr>
+<tr><td>type</td><td>//td/div[2]/input<datalist><option>id=actorsocial_actorsocial_persona_attributes_1562106224605_persona_attributes_nombres</option><option>name=actorsocial[actorsocial_persona_attributes][1562106224605][persona_attributes][nombres]</option><option>css=#actorsocial_actorsocial_persona_attributes_1562106224605_persona_attributes_nombres</option><option>//input[@id='actorsocial_actorsocial_persona_attributes_1562106224605_persona_attributes_nombres']</option><option>//tbody[@id='actorsocial_persona']/tr/td/div[2]/input</option><option>//td/div[2]/input</option></datalist></td><td>juan</td>
+</tr>
+<tr><td>type</td><td>//td[2]/div/input<datalist><option>id=actorsocial_actorsocial_persona_attributes_1562106224605_persona_attributes_apellidos</option><option>name=actorsocial[actorsocial_persona_attributes][1562106224605][persona_attributes][apellidos]</option><option>css=#actorsocial_actorsocial_persona_attributes_1562106224605_persona_attributes_apellidos</option><option>//input[@id='actorsocial_actorsocial_persona_attributes_1562106224605_persona_attributes_apellidos']</option><option>//tbody[@id='actorsocial_persona']/tr/td[2]/div/input</option><option>//td[2]/div/input</option></datalist></td><td>perez</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_actorsocial_307']/div[20]/input</option><option>//div[20]/input</option></datalist></td><td>69,25</td>
 </tr>
@@ -95,9 +105,9 @@
 <tbody>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/actoressociales/307/edita')]</option><option>//a[2]</option></datalist></td><td>30,20</td>
 </tr>
-<tr><td>clickAt</td><td>id=actorsocial_cargo<datalist><option>id=actorsocial_cargo</option><option>name=actorsocial[cargo]</option><option>css=#actorsocial_cargo</option><option>//input[@id='actorsocial_cargo']</option><option>//form[@id='edit_actorsocial_309']/div[13]/input</option><option>//div[13]/input</option></datalist></td><td>73,14</td>
+<tr><td>clickAt</td><td>//tbody[@id='actorsocial_persona']/tr/td[4]/div/input<datalist><option>id=actorsocial_actorsocial_persona_attributes_0_cargo</option><option>name=actorsocial[actorsocial_persona_attributes][0][cargo]</option><option>css=#actorsocial_actorsocial_persona_attributes_0_cargo</option><option>//input[@id='actorsocial_actorsocial_persona_attributes_0_cargo']</option><option>//tbody[@id='actorsocial_persona']/tr/td[4]/div/input</option><option>//td[4]/div/input</option></datalist></td><td>73,14</td>
 </tr>
-<tr><td>type</td><td>id=actorsocial_cargo<datalist><option>id=actorsocial_cargo</option><option>name=actorsocial[cargo]</option><option>css=#actorsocial_cargo</option><option>//input[@id='actorsocial_cargo']</option><option>//form[@id='edit_actorsocial_309']/div[13]/input</option><option>//div[13]/input</option></datalist></td><td>supervisor</td>
+<tr><td>type</td><td>//tbody[@id='actorsocial_persona']/tr/td[4]/div/input<datalist><option>id=actorsocial_cargo</option><option>name=actorsocial[cargo]</option><option>css=#actorsocial_cargo</option><option>//input[@id='actorsocial_cargo']</option><option>//form[@id='edit_actorsocial_309']/div[13]/input</option><option>//div[13]/input</option><option>//tbody[@id='actorsocial_persona']/tr/td[4]/div/input</option></datalist></td><td>supervisor</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_actorsocial_309']/div[20]/input</option><option>//div[20]/input</option></datalist></td><td>45,14</td>
 </tr>
@@ -111,9 +121,9 @@
 <tbody>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/actoressociales/307/edita')]</option><option>//a[2]</option></datalist></td><td>34,18</td>
 </tr>
-<tr><td>clickAt</td><td>id=actorsocial_correo<datalist><option>id=actorsocial_correo</option><option>name=actorsocial[correo]</option><option>css=#actorsocial_correo</option><option>//input[@id='actorsocial_correo']</option><option>//form[@id='edit_actorsocial_307']/div[14]/input</option><option>//div[14]/input</option></datalist></td><td>189,20</td>
+<tr><td>clickAt</td><td>//tbody[@id='actorsocial_persona']/tr/td[5]/div/input<datalist><option>id=actorsocial_actorsocial_persona_attributes_0_correo</option><option>name=actorsocial[actorsocial_persona_attributes][0][correo]</option><option>css=#actorsocial_actorsocial_persona_attributes_0_correo</option><option>//input[@id='actorsocial_actorsocial_persona_attributes_0_correo']</option><option>//tbody[@id='actorsocial_persona']/tr/td[5]/div/input</option><option>//td[5]/div/input</option></datalist></td><td>189,20</td>
 </tr>
-<tr><td>type</td><td>id=actorsocial_correo<datalist><option>id=actorsocial_correo</option><option>name=actorsocial[correo]</option><option>css=#actorsocial_correo</option><option>//input[@id='actorsocial_correo']</option><option>//form[@id='edit_actorsocial_307']/div[14]/input</option><option>//div[14]/input</option></datalist></td><td>alirio@gmail.com</td>
+<tr><td>type</td><td>//tbody[@id='actorsocial_persona']/tr/td[5]/div/input<datalist><option>id=actorsocial_correo</option><option>name=actorsocial[correo]</option><option>css=#actorsocial_correo</option><option>//input[@id='actorsocial_correo']</option><option>//form[@id='edit_actorsocial_307']/div[14]/input</option><option>//div[14]/input</option><option>//tbody[@id='actorsocial_persona']/tr/td[5]/div/input</option></datalist></td><td>alirio@gmail.com</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_actorsocial_307']/div[20]/input</option><option>//div[20]/input</option></datalist></td><td>68,14</td>
 </tr>
@@ -159,8 +169,6 @@
 <tr><td rowspan="1" colspan="3">actor-social-celular</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>http://crecer.cinep.org.co:4000/actoressociales/307<datalist><option>http://crecer.cinep.org.co:4000/actoressociales/307</option></datalist></td><td></td>
-</tr>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/actoressociales/307/edita')]</option><option>//a[2]</option></datalist></td><td>30,21</td>
 </tr>
 <tr><td>clickAt</td><td>id=actorsocial_celular<datalist><option>id=actorsocial_celular</option><option>name=actorsocial[celular]</option><option>css=#actorsocial_celular</option><option>//input[@id='actorsocial_celular']</option><option>//form[@id='edit_actorsocial_307']/div[17]/input</option><option>//div[17]/input</option></datalist></td><td>102,16</td>
