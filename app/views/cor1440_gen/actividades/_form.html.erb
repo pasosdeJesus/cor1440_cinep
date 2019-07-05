@@ -227,7 +227,8 @@
 
   <%= render partial: 'campo_anexos', locals: {f: f} %>
 
-  <% if current_usuario.id != @actividad.creadopor.id %>
+  <% if current_usuario && @actividad && @actividad.creadopor &&
+       current_usuario.id != @actividad.creadopor.id %>
     <div class='row'>
       <div class='col-sm-offset-0 col-sm-6'>
         <%= f.input :vistobuenopar, as: :boolean %>
