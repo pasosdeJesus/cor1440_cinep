@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: ca4aa9ed58335b87cd3c456a8627314e0a4fddea
+  revision: 5e426a62b1f499ecb0d4c8ef40291608146ac2be
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 805eb05ec4dd939abacea975d84bbc0bcfaca002
+  revision: b94e8d4df8b725dbb96d468df12c36b885a54ebb
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 3e170e728a629453c71d8c355ad65414e1719c99
+  revision: 5c4deb8561e497ac1c717ad581e2a732a36304c9
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: a0b8b01401bf6039895b5c59dd7fd82348936e8a
+  revision: 156022970394d3fa3cca9281228e09b8486ef3dd
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 7a525a6d73e039f87b1e3f3a9a5c96898987ace0
+  revision: 2dabdaec620305d1ea1f61618ce72bee8c4c2635
   specs:
     sal7711_gen (1.0.b2)
       rails
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: a572ec5a8f458c00a6f4fd11f6e5bdd7f00d7bbc
+  revision: f14c9411ba655669ecf04b81747007a053187b20
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 37c2a7b226871cb228f49f6498f0c710cae66da9
+  revision: 4ccdc3867d4cb5f9f6069c1ffa1b629d117fc83e
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 8c29d7314517b1ce79cb0ca1dd23699ca2922df3
+  revision: d4f9c932c91990455535d06609782bd182cbb76c
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -165,7 +165,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     andand (1.3.3)
     bcrypt (3.1.13)
-    bindex (0.7.0)
+    bindex (0.8.1)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
     bootstrap-datepicker-rails (1.8.0.1)
@@ -173,7 +173,7 @@ GEM
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (3.0.1)
-    capybara (3.25.0)
+    capybara (3.26.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -251,12 +251,12 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
     mimemagic (0.3.3)
-    mini_mime (1.0.1)
+    mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     msgpack (1.3.0)
     net-ldap (0.16.1)
-    nio4r (2.3.1)
+    nio4r (2.4.0)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     odf-report (0.6.0)
@@ -271,6 +271,10 @@ GEM
       terrapin (~> 0.6.0)
     pdf-core (0.7.0)
     pg (1.1.4)
+    pick-a-color-rails (0.0.1)
+      jquery-rails
+      railties (>= 3.0)
+      tiny-color-rails
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -287,7 +291,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.1.1)
-    puma (4.0.0)
+    puma (4.0.1)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-proxy (0.6.5)
@@ -343,11 +347,11 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redcarpet (3.4.0)
-    regexp_parser (1.5.1)
+    regexp_parser (1.6.0)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rspreadsheet (0.5.0)
+    rspreadsheet (0.5.1)
       andand (~> 1.3)
       rubyzip (~> 1.1)
     ruby-graphviz (1.2.4)
@@ -387,6 +391,8 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
+    tiny-color-rails (0.0.2)
+      railties (>= 3.0)
     trix-rails (2.0.0)
       rails (> 4.1, < 6.0)
     ttfunk (1.5.1)
@@ -426,7 +432,7 @@ GEM
     will_paginate (3.1.7)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.1.8)
+    zeitwerk (2.1.9)
 
 PLATFORMS
   ruby
@@ -456,6 +462,7 @@ DEPENDENCIES
   odf-report
   paperclip
   pg
+  pick-a-color-rails
   poltergeist
   prawn
   prawn-table
@@ -477,6 +484,7 @@ DEPENDENCIES
   simplecov
   sip!
   spring
+  tiny-color-rails
   trix-rails
   turbolinks
   twitter-bootstrap-rails
