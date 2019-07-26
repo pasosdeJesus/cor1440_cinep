@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: e4c946db5b877b4a201dc70bc6ddffbccf868705
+  revision: 0af54e33516012859f0576275c7328131655e758
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
