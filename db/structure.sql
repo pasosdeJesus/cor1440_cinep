@@ -31,25 +31,6 @@ COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
 
 
 --
--- Name: range(integer, integer, integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.range(integer, integer, integer) RETURNS SETOF integer
-    LANGUAGE plpgsql
-    AS $_$
-declare
-i int;
-begin
-i := $1;
-while (i <= $2) loop
-return next i;
-i := i + $3;
-end loop;
-return;
-end;$_$;
-
-
---
 -- Name: soundexesp(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -1853,7 +1834,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    monto numeric(20,2) DEFAULT 0.0,
+    monto numeric DEFAULT 0.0,
     referencia character varying(1000),
     referenciacinep character varying(1000),
     fuentefinanciador character varying(1000),
@@ -1870,7 +1851,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric(20,2) DEFAULT 0.0,
+    presupuestototal numeric DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -2009,12 +1990,12 @@ ALTER SEQUENCE public.cor1440_gen_resultadopf_id_seq OWNED BY public.cor1440_gen
 CREATE TABLE public.cor1440_gen_tipoindicador (
     id bigint NOT NULL,
     nombre character varying(32),
-    medircon integer,
     espcampos character varying(1000),
     espvaloresomision character varying(1000),
     espvalidaciones character varying(1000),
     esptipometa character varying(32),
     espfuncionmedir character varying(1000),
+    medircon integer,
     desc20 character varying(128),
     desc40 character varying(128),
     desc60 character varying(128),
@@ -3580,7 +3561,6 @@ CREATE TABLE public.sal7711_gen_articulo (
     pagina character varying(20),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    url character varying(5000),
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
@@ -3588,9 +3568,10 @@ CREATE TABLE public.sal7711_gen_articulo (
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
-    pais_id integer,
     titulo character varying(1024),
-    observaciones character varying(5000)
+    observaciones character varying(5000),
+    url character varying(5000),
+    pais_id integer
 );
 
 
@@ -4097,7 +4078,7 @@ CREATE TABLE public.sip_grupoper (
 -- Name: TABLE sip_grupoper; Type: COMMENT; Schema: public; Owner: -
 --
 
-COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en cor1440cinep_produccion';
+COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en cor1440cinep_desarrollo';
 
 
 --
@@ -4838,8 +4819,6 @@ CREATE TABLE public.usuario (
     updated_at timestamp without time zone,
     regionsjr_id integer,
     oficina_id integer DEFAULT 1,
-    nombres character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying NOT NULL,
-    apellidos character varying(50) COLLATE public.es_co_utf_8 DEFAULT 'N'::character varying NOT NULL,
     ultimasincldap date,
     "uidNumber" integer,
     telefonos character varying(256),
@@ -4850,6 +4829,8 @@ CREATE TABLE public.usuario (
     numhijosmen12 integer DEFAULT 0,
     labdepartamento_id integer,
     labmunicipio_id integer,
+    apellidos character varying(127),
+    nombres character varying(127),
     perfilprofesional_id integer,
     cargo_id integer,
     contrato_id integer,
@@ -4937,7 +4918,7 @@ CREATE VIEW public.v_solicitud_informes AS
         END AS a_tiempo
    FROM (public.cor1440_gen_proyectofinanciero p
      JOIN public.v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[18, 19, 20, 103, 109, 115, 116, 117, 118, 119, 120, 122, 123, 125, 126, 127, 128, 129, 130, 131, 132, 134, 137, 138, 139, 140, 141, 142, 143, 144, 145, 147, 148, 149, 151, 152, 153, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 170, 174, 175, 176, 181, 182, 193, 197, 198, 200, 201, 202, 203, 204, 210, 215, 216, 217, 218, 219, 220, 221, 226, 230, 231, 232, 236, 240, 241, 242, 244, 247, 248, 252, 263, 264, 265, 266, 267, 283, 286, 288, 289, 290, 291, 295, 331, 332, 334, 337, 338, 340, 341, 342, 349, 350, 353, 354, 355, 356, 357, 358, 359, 360, 362, 363, 364, 365, 366, 367, 368, 369, 372, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387]))
+  WHERE (p.id = ANY (ARRAY[125, 129, 128, 161, 162, 173, 193, 194, 196, 103, 102, 111, 127, 109, 130, 133, 134, 131, 123, 132, 136, 104, 119, 164, 20, 174, 190, 163, 195, 197, 122, 141, 142, 143, 144, 145, 147, 152, 146, 155, 137, 101, 138, 19, 140, 175, 149, 167, 166, 18, 150, 156, 120, 116, 158, 169, 176, 177, 170, 178, 179, 106, 118, 115, 171, 180, 157, 159, 172, 198, 199, 200, 201, 202, 168, 206, 117, 126]))
   ORDER BY s.fechaplaneada;
 
 
@@ -7418,6 +7399,14 @@ ALTER TABLE ONLY public.actividad_nucleoconflicto
 
 
 --
+-- Name: actividad_actor_porborrar fk_rails_56bdc49b83; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actividad_actor_porborrar
+    ADD CONSTRAINT fk_rails_56bdc49b83 FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
+
+
+--
 -- Name: actorsocial_regiongrupo fk_rails_56d1b6e3d4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8704,6 +8693,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026130000'),
 ('20171026144919'),
 ('20171026172501'),
+('20171114185712'),
 ('20171123212504'),
 ('20171128234148'),
 ('20171130125044'),
@@ -8790,6 +8780,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180501225617'),
 ('20180502083127'),
 ('20180509111948'),
+('20180509114933'),
 ('20180509125608'),
 ('20180519102415'),
 ('20180522102059'),
