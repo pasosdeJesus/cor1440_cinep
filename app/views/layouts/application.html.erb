@@ -21,6 +21,9 @@
           <% if can? :index, Sip::Actorsocial %>
             <%= menu_item "Actores Sociales", sip.actoressociales_path %>
           <% end %>
+          <% if can? :manage, Sip::Persona %>
+            <%= menu_item "Personas", sip.personas_path %>
+          <% end %>
           <% if can? :edit, :contextoac %>
             <%= menu_item "Reporte Trienal 2015-2017 Indicador 1.1", main_app.reportes_indicador11_path %>
             <%= menu_item "Reporte Trienal 2015-2017 Objetivo Especifico 2", main_app.reportes_objetivoe2_path %>

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 5d1a9a673ccced63dbc0266cdbd7c83e592fbb1b
+  revision: 75c5487f5d18a0ef52b667db88766e9b9b9d27a5
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: b2eb4b6f1a6a182e2c44cab2e7cef7e3e876e969
+  revision: c353848ed62d9fab122e6ec4d66cda2a2940a9ab
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 627efab10e619c068368fafef909726825b7d188
+  revision: 06c64c713f5482574cb8af90948c1fb025f0fcd7
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 0af54e33516012859f0576275c7328131655e758
+  revision: 4f7288ad0a95267fe11b3abad06ef053f054c452
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 2dabdaec620305d1ea1f61618ce72bee8c4c2635
+  revision: 7722375f1e0d9081a023fd52cd03ccee76daeb70
   specs:
     sal7711_gen (1.0.b2)
       rails
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: f14c9411ba655669ecf04b81747007a053187b20
+  revision: 39014c2056ff707fe83a76294b521b72a9017d74
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 8b9dc79b64ba6a426aa0193b652732489903659b
+  revision: f608809555a495ae77bd30719aa2db445225ca85
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 774a7862619d928c74ae58cf6b26316382fd9d1c
+  revision: 0c581406a721807cc57267967509dfe031135f88
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -497,4 +497,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.0.1
+   2.0.2

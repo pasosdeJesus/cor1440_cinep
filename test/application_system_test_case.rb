@@ -7,9 +7,10 @@ end
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
-  driven_by :poltergeist, screen_size: [1400, 1400], options: { 
-    js_errors: true,
-    logger: NilLogger.new,
+  driven_by :selenium, using: :headless_chrome, 
+    screen_size: [1400, 1400], options: { 
+    #js_errors: true,
+    #logger: NilLogger.new,
     timeout: 3.minutes,
 #    phantomjs_logger: STDOUT,
 #    phantomjs_options: ['--debug=true'],
