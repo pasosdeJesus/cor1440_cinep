@@ -152,8 +152,9 @@ group :test do
 
   gem 'simplecov'
 
+  gem 'capybara'
+
   gem 'selenium-webdriver'
-  gem 'poltergeist'
 
   # Pruebas de regresión que no requieren javascript
 end
