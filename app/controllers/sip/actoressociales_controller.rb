@@ -1,9 +1,9 @@
 # encoding: UTF-8
-require_dependency "sip/concerns/controllers/actoressociales_controller"
+require_dependency "heb412_gen/concerns/controllers/actoressociales_controller"
 
 module Sip
-  class ActoressocialesController < Sip::ModelosController
-    include Sip::Concerns::Controllers::ActoressocialesController
+  class ActoressocialesController < Heb412Gen::ModelosController
+    include Heb412Gen::Concerns::Controllers::ActoressocialesController
 
     Sip::Municipio.conf_presenta_nombre_con_origen = true
     Sip::Departamento.conf_presenta_nombre_con_origen = true

@@ -220,6 +220,35 @@ class Ability  < Cor1440Gen::Ability
       controlador: 'Cor1440Gen::ActividadesController',
       ruta: '/actividades'
     },
+
+    'Actorsocial' => { 
+      campos: [
+          'actorsocial_persona',
+          'actualizado_en',
+          'anotaciones',
+          'celular',
+          'ciudad',
+          'creado_en',
+          'contactos_nombres',
+          'contactos_correos',
+          'contactos_cargos',
+          'correo',
+          'direccion',
+          'fax',
+          'grupos',
+          'id', 
+          'lineabase20182020',
+          'nivelrelacion',
+          'nombre',
+          'pais',
+          'sectores',
+          'telefono', 
+          'web'
+      ],
+      controlador: 'Sip::Actorsocial',
+      ruta: '/actoressociales'
+    },
+ 
     'Cuadro General de Seguimiento' => { 
       campos: [
         'compromiso_id',  'referenciacinep', 

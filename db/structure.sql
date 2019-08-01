@@ -2858,6 +2858,41 @@ ALTER SEQUENCE public.mr519_gen_campo_id_seq OWNED BY public.mr519_gen_campo.id;
 
 
 --
+-- Name: mr519_gen_encuestapersona; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mr519_gen_encuestapersona (
+    id bigint NOT NULL,
+    persona_id integer,
+    formulario_id integer,
+    fecha date,
+    fechainicio date NOT NULL,
+    fechafin date,
+    adurl character varying(32),
+    respuestafor_id integer
+);
+
+
+--
+-- Name: mr519_gen_encuestapersona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.mr519_gen_encuestapersona_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: mr519_gen_encuestapersona_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.mr519_gen_encuestapersona_id_seq OWNED BY public.mr519_gen_encuestapersona.id;
+
+
+--
 -- Name: mr519_gen_encuestausuario; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -5392,6 +5427,13 @@ ALTER TABLE ONLY public.mr519_gen_campo ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
+-- Name: mr519_gen_encuestapersona id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestapersona ALTER COLUMN id SET DEFAULT nextval('public.mr519_gen_encuestapersona_id_seq'::regclass);
+
+
+--
 -- Name: mr519_gen_encuestausuario id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -6143,6 +6185,14 @@ ALTER TABLE ONLY public.mr519_gen_campo
 
 
 --
+-- Name: mr519_gen_encuestapersona mr519_gen_encuestapersona_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestapersona
+    ADD CONSTRAINT mr519_gen_encuestapersona_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: mr519_gen_encuestausuario mr519_gen_encuestausuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6696,6 +6746,13 @@ CREATE INDEX index_cor1440_gen_actividad_sip_anexo_on_anexo_id ON public.cor1440
 --
 
 CREATE INDEX index_heb412_gen_doc_on_tdoc_type_and_tdoc_id ON public.heb412_gen_doc USING btree (tdoc_type, tdoc_id);
+
+
+--
+-- Name: index_mr519_gen_encuestapersona_on_adurl; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_mr519_gen_encuestapersona_on_adurl ON public.mr519_gen_encuestapersona USING btree (adurl);
 
 
 --
@@ -7391,6 +7448,14 @@ ALTER TABLE ONLY public.sal7711_gen_bitacora
 
 
 --
+-- Name: mr519_gen_encuestapersona fk_rails_54b3e0ed5c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestapersona
+    ADD CONSTRAINT fk_rails_54b3e0ed5c FOREIGN KEY (persona_id) REFERENCES public.sip_persona(id);
+
+
+--
 -- Name: actividad_nucleoconflicto fk_rails_55868fbce2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7679,6 +7744,14 @@ ALTER TABLE ONLY public.tasacambio
 
 
 --
+-- Name: mr519_gen_encuestapersona fk_rails_83755e20b9; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestapersona
+    ADD CONSTRAINT fk_rails_83755e20b9 FOREIGN KEY (respuestafor_id) REFERENCES public.mr519_gen_respuestafor(id);
+
+
+--
 -- Name: usuario fk_rails_83add769ae; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7692,6 +7765,14 @@ ALTER TABLE ONLY public.usuario
 
 ALTER TABLE ONLY public.actor_sectoractor
     ADD CONSTRAINT fk_rails_8718e4c155 FOREIGN KEY (actor_id) REFERENCES public.actor(id);
+
+
+--
+-- Name: mr519_gen_encuestapersona fk_rails_88eeb03074; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestapersona
+    ADD CONSTRAINT fk_rails_88eeb03074 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
 
 
 --
@@ -8919,6 +9000,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190625173502'),
 ('20190703044126'),
 ('20190715083916'),
-('20190715182611');
+('20190715182611'),
+('20190726203302');
 
 
