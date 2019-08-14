@@ -251,6 +251,14 @@ es:
         desc60: 'Descripción 60% (sólo si es indicador progresivo)'
         desc80: 'Descripción 80% (sólo si es indicador progresivo)'
         desc100: 'Descripción 100% (sólo si es indicador progresivo)'
+      "mr519_gen/encuestapersona":
+        fechaini_localizada: Fecha de primera aplicación
+        fechacambio_localizada: Fecha de último cambio
+        fechainicio_localizada: Fecha de inicio
+        fechafin_localizada: Fecha de cierre
+        Encuestapersona: Encuesta a contacto de actor social
+        Encuestaspersona: Encuestas a contactos de actores sociales
+        valorcampo: Respuestas
       "niveleducacion":
         Niveleducacion: Nivel de educación
         Niveleseducacion: Niveles de educación

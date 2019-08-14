@@ -367,7 +367,7 @@ class Ability  < Cor1440Gen::Ability
         can :read, Heb412Gen::Plantillahcr
 
         can :read, Mr519Gen::Formulario
-        can :read, Mr519Gen::Encuestausuario
+        can :read, [Mr519Gen::Encuestausuario, Mr519Gen::Encuestapersona]
         can [:edit, :update], 
           Mr519Gen::Encuestausuario.where(usuario_id: usuario.id)
 
@@ -507,6 +507,7 @@ class Ability  < Cor1440Gen::Ability
 
         can :manage, Mr519Gen::Formulario
         can :manage, Mr519Gen::Encuestausuario
+        can :manage, Mr519Gen::Encuestapersona
 
         can :manage, Sip::Actorsocial
         can :manage, :tablasbasicas
