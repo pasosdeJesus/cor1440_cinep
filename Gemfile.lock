@@ -33,6 +33,14 @@ GIT
       sip
 
 GIT
+  remote: https://github.com/pasosdeJesus/mr519_gen.git
+  revision: 4408c4cbabf981b83370e45c23103324e45f0ae8
+  specs:
+    mr519_gen (0.2.0)
+      rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
+      sip
+
+GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
   revision: 7e920ee9b5d96de1904f0f19583809671ce88b8e
   specs:
@@ -94,13 +102,6 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
-
-PATH
-  remote: ../mr519_gen
-  specs:
-    mr519_gen (0.2.0)
-      rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
-      sip
 
 GEM
   remote: https://rubygems.org/
@@ -170,7 +171,6 @@ GEM
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
-    byebug (11.0.1)
     camertron-eprun (1.1.1)
     cancancan (3.0.1)
     capybara (3.28.0)
@@ -436,7 +436,6 @@ DEPENDENCIES
   bcrypt
   bootsnap
   bootstrap-datepicker-rails
-  byebug
   cancancan
   capybara
   chosen-rails!
