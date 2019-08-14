@@ -27,7 +27,7 @@ gem "prawn"
 gem "prawnto_2",  :require => "prawnto"
 gem "prawn-table"
 # Plantilla ODT
-gem "odf-report"
+gem "odf-report", ">= 0.6.0"
 
 
 gem 'rspreadsheet'
@@ -47,7 +47,7 @@ gem "uglifier"
 gem "coffee-rails"
 
 # jquery como librería JavaScript
-gem "jquery-rails"
+gem "jquery-rails", ">= 4.3.5"
 gem "jquery-ui-rails"
 
 # Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
@@ -59,7 +59,7 @@ gem "font-awesome-rails"
 gem "bootstrap-datepicker-rails"
 
 # Facilita elegir colores en tema
-gem 'pick-a-color-rails'
+gem 'pick-a-color-rails', '>= 0.0.1'
 gem 'tiny-color-rails'
 
 # Formularios simples 
@@ -131,7 +131,7 @@ group :development do
   # Consola irb en páginas con excepciones o usando <%= console %> en vistas
   gem 'web-console'
 
-  gem 'erd'
+  gem 'erd', '>= 0.6.3'
 
   gem 'pry'
 
@@ -152,7 +152,7 @@ group :test do
 
   gem 'simplecov'
 
-  gem 'capybara'
+  gem 'capybara', '>= 3.28.0'
 
   gem 'selenium-webdriver'
 
