@@ -190,15 +190,25 @@ module Cor1440Gen
     end
 
     def index_reordenar(c)
-      mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).
-        map(&:id).join(', ')
       if current_usuario.rol != ::Ability::ROLDIR &&
         current_usuario.rol != ::Ability::ROLADMIN
-        if mg == '' &&
+        mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).
+          map(&:id)
+        gc = Sip::Grupo.where(nombre: ::Ability::GRUPO_COMPROMISOS).take
+        cmisg = "cor1440_gen_actividad.id in 
+          (SELECT actividad_id FROM actividad_grupo WHERE 
+            grupo_id IN (#{mg.join(', ')}))"
+        if mg == [] 
           c = c.where('TRUE=FALSE')
-        else
+        elsif mg.include?(gc.id)
           c = c.where("cor1440_gen_actividad.id in 
-          (SELECT actividad_id FROM actividad_grupo WHERE grupo_id IN (#{mg}))")
+          (SELECT actividad_id FROM cor1440_gen_actividad_proyectofinanciero 
+                      WHERE proyectofinanciero_id IN (SELECT id FROM 
+                      cor1440_gen_proyectofinanciero WHERE respgp_id=? OR
+                      respgp2_id=?
+                     )) OR #{cmisg}", current_usuario.id, current_usuario.id)
+        else
+          c = c.where(cmisg)
         end
       end
       c = c.reorder('cor1440_gen_actividad.fecha DESC') 
