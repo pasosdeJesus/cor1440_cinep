@@ -43,7 +43,8 @@ class UsuariosController < Heb412Gen::ModelosController
     end
     if can?(:create, ::Usuario)
       r += [
-        "email"
+        "email",
+        "tema"
       ]
     end
     if can?(:create, ::Usuario)
