@@ -33,6 +33,7 @@ class Convenio < ActiveRecord::Base
   validates :institucion, length: { maximum: 1000 }
   validates :descripcion, length: { maximum: 5000 }
   validates :observaciones, length: { maximum: 5000 }
+  has_rich_text :observaciones
 
   validate :clasificacion_valida
   def clasificacion_valida
