@@ -56,6 +56,12 @@ class ConveniosController < Sip::ModelosController
     return 'M'
   end
 
+  def new
+    @registro = @convenio = Convenio.new
+    @registro.save!(validate: false)
+    redirect_to edit_convenio_path(@registro)
+  end
+
   private
 
   def set_convenio
