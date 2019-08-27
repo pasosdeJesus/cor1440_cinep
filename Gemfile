@@ -1,23 +1,24 @@
 source 'https://rubygems.org'
 
 # Rails (internacionalización)
-gem "rails", '~> 6.0.0.rc1'
+gem "rails", '~> 6.0.0'
 
 gem "rails-i18n"
 
 gem 'bootsnap'
 
-gem 'trix-rails', require: 'trix'
+#gem 'trix-rails', require: 'trix'
 
 # Postgresql
-gem "pg"#, '~> 0.21'
+gem "pg"
 
 gem 'puma'
 
 # CSS
 gem 'sass'
+gem 'sass-rails'
 
-gem 'webpacker'
+gem 'webpacker', '~> 4.0'
 
 # Color en terminal
 gem 'colorize'
@@ -51,7 +52,7 @@ gem "jquery-rails"
 gem "jquery-ui-rails"
 
 # Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
-gem "turbolinks"
+gem "turbolinks", '~> 5'
 
 # Ambiente de CSS
 gem "twitter-bootstrap-rails"
@@ -132,9 +133,6 @@ group :development do
   gem 'web-console'
 
   gem 'erd'
-
-  gem 'pry'
-
 end
 
 group :test, :development, :ensayo do
@@ -144,28 +142,23 @@ end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo
 group :test do
-  gem 'spring'
+  gem 'capybara'
 
   gem 'rails-controller-testing'
 
-  gem 'launchy'
-
   gem 'simplecov'
 
-  gem 'capybara'
+  gem 'spring'
 
   gem 'selenium-webdriver'
-
-  # Pruebas de regresión que no requieren javascript
+  
+  gem 'webdrivers'
 end
 
 
 group :production do
   # Para despliegue
   gem 'unicorn'
-
-  # Requerido por heroku para usar stdout como bitacora
-  gem "rails_12factor"
 end
 
 

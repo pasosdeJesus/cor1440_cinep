@@ -56,6 +56,8 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_LINEA = "Línea"
   GRUPO_COORDINADOR = "Coordinador(a)"
   GRUPO_COORDINADORGP = GRUPO_COORDINADOR + " " + GRUPO_COMPROMISOS 
+
+
   def tablasbasicas 
     super() - [ 
       ['Cor1440Gen', 'actividadarea'] ,
@@ -74,6 +76,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'niveleducacion'],
 #        ['', 'nucleoconflicto'],
         ['', 'perfilprofesional'],
+        ['', 'plantillacorreo'],
         ['', 'procesogh'],
         ['', 'profesion'],
         ['', 'publicacion'],
