@@ -57,3 +57,7 @@ h1 {
 	pointer-events: none;
 	cursor: default;
 }
+
+.breadcrumb {
+  background-color: #ffffff;
+}

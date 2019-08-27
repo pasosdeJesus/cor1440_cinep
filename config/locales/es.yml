@@ -15,7 +15,9 @@ es:
     departamento: Departamento
     direccion: Dirección
     fechacreacion: Creación
+    fechacreacion_localizada: Creación
     fechadeshabilitacion: Deshabilitación 
+    fechadeshabilitacion_localizada: Deshabilitación 
     niveleducacion: Nivel de educacion
     nivelrelacion: Nivel de relacion
     oficina: Oficina
@@ -268,6 +270,9 @@ es:
       "nucleoconflicto":
         Nucleoconflict: Núcleo de conflicto
         Nucleosconflicto: Núcleos de conflicto
+      "plantillacorreo":  
+        Plantillacorreo: Plantilla para correo
+        Plantillascorreo: Plantillas para correo
       "perfilprofesional":  
         Perfilprofesional: Perfil profesional
         Perfilesprofesionales: Perfiles profesionales
