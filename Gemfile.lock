@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: c88c111da047f8b1c22f5fccbe8da67d1f16e463
+  revision: 0a4d9ba6939d2316f31a78b8222d5814e5b4d611
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: d4d6c732fc48d4e45d7daadbb4769ca50c6205f0
+  revision: 66b5234d73e3c472df87fffceb9d42cdcbd4c36b
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 15354bfd97d253a507d35008b57006c7d3f9144c
+  revision: 759dc459471b21ad89215b7866dc151482b9bac8
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: ca38d3e2a647d1b367503758dd28d5d9162bd03e
+  revision: fbff7fdc2d2ae1d1fd5c843b0f7df701c2a7a463
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 4997cc86c27e8c9b8f6f9221db64727bd7be85f7
+  revision: c13177ab4dbd8d7c004302f9564f45c4cf666e95
   specs:
     sal7711_gen (1.0.b2)
       rails
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 4d9fe6dc7ec20ff5f90807d0f39709d05a42a906
+  revision: c11d506d0bcc269c49fe9c8141759508a0891713
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 150364139a5ec48469d27a3da09d92f91ec923bb
+  revision: 7dc7c5fff8c6bc16e0e601953a1910b5502edb8d
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b1fb0bda53d6cc591066a8cfd4215c50caec93e0
+  revision: 8c6dd2d3981c392c0c6a21e43fb60bff5dbce1a1
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -347,7 +347,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.1.0)
+    sassc (2.2.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
