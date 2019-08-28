@@ -151,8 +151,6 @@ group :test do
   gem 'spring'
 
   gem 'selenium-webdriver'
-  
-  gem 'webdrivers'
 end
 
 
