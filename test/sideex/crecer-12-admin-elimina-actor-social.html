@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>crecer-11-admin-elimina-actor-social.html</title>
+	<title>crecer-12-admin-elimina-actor-social</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -13,15 +13,19 @@
 <tbody>
 <tr><td>open</td><td>/actoressociales?utf8=%E2%9C%93&amp;filtro%5Bbusid%5D=&amp;filtro%5Bbusgrupoper_id%5D=&amp;filtro%5Bbusnivelrelacion_id%5D=&amp;filtro%5Bbussectoractor_ids%5D=&amp;filtro%5Bbusregiongrupo_ids%5D=&amp;filtro%5Bbusgrupo_ids%5D=112&amp;filtro%5Bbuslineabase20182020%5D=Todos&amp;filtro%5Bbushabilitado%5D=Todos&amp;filtro%5Bbuscreated_atini%5D=&amp;filtro%5Bbuscreated_atfin%5D=&amp;filtrar=Filtrar<datalist><option>/actoressociales?utf8=%E2%9C%93&amp;filtro%5Bbusid%5D=&amp;filtro%5Bbusgrupoper_id%5D=&amp;filtro%5Bbusnivelrelacion_id%5D=&amp;filtro%5Bbussectoractor_ids%5D=&amp;filtro%5Bbusregiongrupo_ids%5D=&amp;filtro%5Bbusgrupo_ids%5D=112&amp;filtro%5Bbuslineabase20182020%5D=Todos&amp;filtro%5Bbushabilitado%5D=Todos&amp;filtro%5Bbuscreated_atini%5D=&amp;filtro%5Bbuscreated_atfin%5D=&amp;filtrar=Filtrar</option></datalist></td><td></td>
 </tr>
-<tr><td>clickAt</td><td>css=a.chosen-single.chosen-default &gt; span<datalist><option>css=a.chosen-single.chosen-default &gt; span</option><option>//div[@id='filtro_busgrupoper_id_chosen']/a/span</option><option>//a/span</option></datalist></td><td>6,9</td>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>type</td><td>css=input.chosen-search-input<datalist><option>css=input.chosen-search-input</option><option>xpath=(//input[@type='text'])[2]</option><option>//div[@id='filtro_busgrupoper_id_chosen']/div/div/input</option><option>//div/div/input</option></datalist></td><td>aaa</td>
+<tr><td>pause</td><td><datalist><option></option></datalist></td><td>500</td>
 </tr>
-<tr><td>clickAt</td><td>css=li.active-result.result-selected<datalist><option>css=li.active-result.result-selected</option><option>//div[@id='filtro_busgrupoper_id_chosen']/div/ul/li</option><option>//div/div/div/ul/li</option></datalist></td><td>50,9</td>
+<tr><td>select</td><td>id=filtro_busgrupoper_id<datalist><option>id=filtro_busgrupoper_id</option><option>name=filtro[busgrupoper_id]</option><option>css=#filtro_busgrupoper_id</option><option>//select[@id='filtro_busgrupoper_id']</option><option>//select</option></datalist></td><td>label=eee</td>
 </tr>
-<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>css=a.btn.btn-xs</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/actoressociales/302/edita')]</option><option>//td[11]/a</option></datalist></td><td>22,10</td>
 </tr>
-<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-xs.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/actoressociales/303')])[3]</option><option>//a[2]</option></datalist></td><td>25,16</td>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn-danger.remove_fields.existing</option><option>//a[contains(text(),'Eliminar')]</option><option>//tbody[@id='actorsocial_persona']/tr/td[6]/a</option><option>xpath=(//a[contains(@href, '#')])[5]</option><option>//td[6]/a</option></datalist></td><td>16,11</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_actorsocial_302']/div[18]/input</option><option>//div[18]/input</option></datalist></td><td>21,19</td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/actoressociales/302')])[2]</option><option>//div[4]/a</option></datalist></td><td>64,14</td>
 </tr>
 <tr><td>assertConfirmation</td><td>¿Está seguro(a)?<datalist><option>¿Está seguro(a)?</option></datalist></td><td></td>
 </tr>
