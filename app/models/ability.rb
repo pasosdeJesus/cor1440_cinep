@@ -11,7 +11,7 @@ class Ability  < Cor1440Gen::Ability
 
   # Se usa desde 1
   ROLES_CA = [
-    'Administrar actividades e informes de todos los grupos (con contexto). ' +
+    'Administrar actividades de todos los grupos (con contexto). ' +
     'Administrar convenios institucionales. ' +
     'Administrar documentos en nube y plantillas. ' +
     'Administrar tablas básicas (actores sociales, tipos de convenios, etc). ' +
@@ -25,11 +25,12 @@ class Ability  < Cor1440Gen::Ability
 
     '', #4
 
+    'Si sólo está en grupo Usuarios sólo puede gestionar su clave. ' +
     'Ver convenios institucionales. ' +
     'Ver documentos en nube y plantillas, así como descripciones de cada carpeta. ' +
     'Ver listado de usuarios y su información pública. ' +
     'Responder encuestas. ' +
-    'Administrar actividades e informes de su grupo. ' +
+    'Administrar actividades de su grupo. ' +
     'Áreas de investigación: Ver, editar y agregar actores sociales. ' +
     'Área Derechos Humanos: En formulario de actividades usan contexto. Ver reportes trienal 2015-2017 ' +
     'Grupo Gerencia de Proyectos: Administrar actividades de todos los grupos. ' +
@@ -351,14 +352,18 @@ class Ability  < Cor1440Gen::Ability
       return
     end
     lgrupos = ApplicationHelper.supergrupos_usuario(usuario) #nombres
-    can :descarga_anexo, Sip::Anexo
-    if !usuario.nil? && !usuario.rol.nil? then
+    if !usuario.nil? && !usuario.rol.nil? 
+      if usuario.rol == Ability::ROLOPERADOR &&
+        (lgrupos.count == 0 || lgrupos == ['Usuarios'])
+        return
+      end
+      can :descarga_anexo, Sip::Anexo
       can :nuevo, Cor1440Gen::Actividad
       can :new, Cor1440Gen::Actividad
       case usuario.rol 
       when Ability::ROLOPERADOR
         can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
-        can :manage, Cor1440Gen::Informe # limitar a oficina?
+        #can :manage, Cor1440Gen::Informe # limitar a oficina?
         can :read, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichaimp, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichapdf, Cor1440Gen::Proyectofinanciero # Los de su grupo
@@ -500,7 +505,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, Cor1440Gen::Actividad
         can :manage, Cor1440Gen::Efecto
         can :manage, Cor1440Gen::Indicadorpf
-        can :manage, Cor1440Gen::Informe
+        #can :manage, Cor1440Gen::Informe
         can :manage, Cor1440Gen::Mindicadorpf
         can :manage, Cor1440Gen::Proyectofinanciero
         can :manage, Cor1440Gen::Tipoindicador
