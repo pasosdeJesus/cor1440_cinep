@@ -25,6 +25,7 @@ class Ability  < Cor1440Gen::Ability
 
     '', #4
 
+    'Si sólo está en grupo Usuarios sólo puede gestionar su clave. ' +
     'Ver convenios institucionales. ' +
     'Ver documentos en nube y plantillas, así como descripciones de cada carpeta. ' +
     'Ver listado de usuarios y su información pública. ' +
