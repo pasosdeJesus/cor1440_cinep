@@ -148,28 +148,28 @@
 	<td>link=Administrar<datalist><option>link=Administrar</option></datalist></td>
 	<td></td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option><option>id=actor_nivelrelacion_id</option><option>name=actor[nivelrelacion_id]</option><option>css=#actor_nivelrelacion_id</option><option>//select[@id='actor_nivelrelacion_id']</option><option>//form[@id='new_actor']/div[3]/select</option><option>//select</option></datalist></td><td>1000</td>
+<tr><td>assertText</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>Tablas Básicas</td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option></datalist></td>
 	<td></td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option><option>id=actor_nivelrelacion_id</option><option>name=actor[nivelrelacion_id]</option><option>css=#actor_nivelrelacion_id</option><option>//select[@id='actor_nivelrelacion_id']</option><option>//form[@id='new_actor']/div[3]/select</option><option>//select</option></datalist></td><td>2000</td>
+<tr><td>assertText</td><td>link=Centros poblados<datalist><option>link=Centros poblados</option><option>//a[contains(text(),'Centros poblados')]</option><option>//a[contains(@href, 'admin/clases')]</option><option>//article/ul/li[4]/a</option></datalist></td><td>Centros poblados</td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>link=Centros poblados<datalist><option>link=Centros Poblados</option><option>link=Centros poblados</option></datalist></td>
 	<td></td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option><option>id=actor_nivelrelacion_id</option><option>name=actor[nivelrelacion_id]</option><option>css=#actor_nivelrelacion_id</option><option>//select[@id='actor_nivelrelacion_id']</option><option>//form[@id='new_actor']/div[3]/select</option><option>//select</option></datalist></td><td>2000</td>
+<tr><td>assertText</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nuevo')]</option><option>//a[contains(@href, '/admin/clases/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>Nuevo</td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>link=Nuevo<datalist><option>link=Nuevo</option></datalist></td>
 	<td></td>
 </tr>
-<tr><td>pause</td><td><datalist><option></option><option>id=actor_nivelrelacion_id</option><option>name=actor[nivelrelacion_id]</option><option>css=#actor_nivelrelacion_id</option><option>//select[@id='actor_nivelrelacion_id']</option><option>//form[@id='new_actor']/div[3]/select</option><option>//select</option></datalist></td><td>5000</td>
+<tr><td>assertText</td><td>css=label.string.required.control-label<datalist><option>css=label.string.required.control-label</option><option>//form[@id='new_clase']/div[2]/label</option><option>//label</option></datalist></td><td>* Nombre</td>
 </tr>
 <tr><td>clickAt</td><td>id=clase_nombre<datalist><option>id=clase_nombre</option><option>name=clase[nombre]</option><option>css=#clase_nombre</option><option>//input[@id='clase_nombre']</option><option>//form[@id='new_clase']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>108,17</td>
 </tr>
@@ -392,7 +392,7 @@
 </tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>addSelection</td><td>id=grupo_usuario_ids<datalist><option>id=grupo_usuario_ids</option><option>css=#grupo_usuario_ids</option><option>//select[@id='grupo_usuario_ids']</option><option>//form[@id='new_grupo']/div[6]/select</option><option>//select</option></datalist></td><td>label=lutas lutas</td>
+<tr><td>addSelection</td><td>id=grupo_usuario_ids<datalist><option>id=grupo_usuario_ids</option><option>css=#grupo_usuario_ids</option><option>//select[@id='grupo_usuario_ids']</option><option>//form[@id='new_grupo']/div[6]/select</option><option>//select</option></datalist></td><td>label=cor1440 cor1440</td>
 </tr>
 <tr><td>clickAt</td><td>css=option[value="3"]<datalist><option>css=option[value="3"]</option><option>//option[@value='3']</option><option>//select[@id='grupo_usuario_ids']/option[2]</option><option>//option[2]</option></datalist></td><td>39,1</td>
 </tr>
@@ -860,7 +860,7 @@
 </tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>select</td><td>id=regiongrupo_grupo_id<datalist><option>id=regiongrupo_grupo_id</option><option>name=regiongrupo[grupo_id]</option><option>css=#regiongrupo_grupo_id</option><option>//select[@id='regiongrupo_grupo_id']</option><option>//form[@id='new_regiongrupo']/div[4]/select</option><option>//select</option></datalist></td><td>label=defensoria</td>
+<tr><td>select</td><td>id=regiongrupo_grupo_id<datalist><option>id=regiongrupo_grupo_id</option><option>name=regiongrupo[grupo_id]</option><option>css=#regiongrupo_grupo_id</option><option>//select[@id='regiongrupo_grupo_id']</option><option>//form[@id='new_regiongrupo']/div[4]/select</option><option>//select</option></datalist></td><td>label=Línea Conflicto y Estado</td>
 </tr>
 <tr><td>clickAt</td><td>id=regiongrupo_grupo_id<datalist><option>id=regiongrupo_grupo_id</option><option>name=regiongrupo[grupo_id]</option><option>css=#regiongrupo_grupo_id</option><option>//select[@id='regiongrupo_grupo_id']</option><option>//form[@id='new_regiongrupo']/div[4]/select</option><option>//select</option></datalist></td><td>-75,-327</td>
 </tr>
@@ -976,9 +976,7 @@
 </tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>addSelection</td><td>id=actividadtipo_formulario_ids<datalist><option>id=actividadtipo_formulario_ids</option><option>css=#actividadtipo_formulario_ids</option><option>//select[@id='actividadtipo_formulario_ids']</option><option>//form[@id='edit_actividadtipo_182']/div[4]/select</option><option>//select</option></datalist></td><td>label=Formulario aprobacion</td>
-</tr>
-<tr><td>clickAt</td><td>css=option[value="103"]<datalist><option>css=option[value="101"]</option><option>//option[@value='101']</option><option>//select[@id='actividadtipo_formulario_ids']/option[2]</option><option>//option[2]</option><option>css=option[value="103"]</option></datalist></td><td>82,12</td>
+<tr><td>addSelection</td><td>id=actividadtipo_formulario_ids<datalist><option>id=actividadtipo_formulario_ids</option><option>css=#actividadtipo_formulario_ids</option><option>//select[@id='actividadtipo_formulario_ids']</option><option>//form[@id='edit_actividadtipo_182']/div[4]/select</option><option>//select</option></datalist></td><td>label=CAMPOS BANCO DE DATOS</td>
 </tr>
 <tr><td>clickAt</td><td>id=actividadtipo_listadoasistencia<datalist><option>id=actividadtipo_listadoasistencia</option><option>css=#actividadtipo_listadoasistencia</option><option>//input[@id='actividadtipo_listadoasistencia']</option><option>//form[@id='edit_actividadtipo_180']/div[7]/label/input</option><option>//label/input</option></datalist></td><td>566,11</td>
 </tr>
@@ -1174,9 +1172,7 @@
 </tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>addSelection</td><td>id=tipoindicador_formulario_ids<datalist><option>id=tipoindicador_formulario_ids</option><option>css=#tipoindicador_formulario_ids</option><option>//select[@id='tipoindicador_formulario_ids']</option><option>//form[@id='edit_tipoindicador_105']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>label=Formulario aprobacion</td>
-</tr>
-<tr><td>clickAt</td><td>css=option[value="103"]<datalist><option>css=option[value="103"]</option><option>//option[@value='103']</option><option>//select[@id='tipoindicador_formulario_ids']/option</option><option>//div[5]/select/option</option></datalist></td><td>96,5</td>
+<tr><td>addSelection</td><td>id=tipoindicador_formulario_ids<datalist><option>id=tipoindicador_formulario_ids</option><option>css=#tipoindicador_formulario_ids</option><option>//select[@id='tipoindicador_formulario_ids']</option><option>//form[@id='edit_tipoindicador_105']/div[5]/select</option><option>//div[5]/select</option></datalist></td><td>label=CAMPOS BANCO DE DATOS</td>
 </tr>
 <tr><td>clickAt</td><td>id=tipoindicador_espvaloresomision<datalist><option>id=tipoindicador_espvaloresomision</option><option>name=tipoindicador[espvaloresomision]</option><option>css=#tipoindicador_espvaloresomision</option><option>//input[@id='tipoindicador_espvaloresomision']</option><option>//form[@id='edit_tipoindicador_103']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>91,16</td>
 </tr>
