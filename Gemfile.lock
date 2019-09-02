@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 0dc1862bb21e9227815fec50ffd0a8a950832af7
+  revision: 4b24ff1b4a6800b622155329837914e53045ccb8
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 2c51e5e8e523c683046ca66b5ddd6f41a41fd946
+  revision: abc60e685a2d73c9ecd4e4d6d641249b6781400e
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 95dfa96e330d4dd5fe93b657e831f72ec5cd48c5
+  revision: c750e1a148b43d9ca4bb2d8962b06935300ceb0b
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: cf977c7e0ec78b1340cffb8964bb829575113784
+  revision: 2a1a61883a60510c71da80f5cd5d2eab10f1ac51
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 2b7e1ecb79fb41ac3b33cbdaeb6be17e2e1971b5
+  revision: 78748a20fe0251cd4a9313c0640b073e1d1b250f
   specs:
     sal7711_gen (1.0.b2)
       rails
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: aeadb7a41f448efb186e4a99ed4143132d5398c5
+  revision: 06379eefac7ff3a445db01ba263704bf7da5f01f
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 4d9a2afe3454a65c2929cffe2f6c48cb2b621795
+  revision: 01c4c1860f05c012b70badff23e9837579f380e2
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: efea6d020f5f673d36b3e14489bd2c2e5e3fa323
+  revision: 6e6b15fb45a92c214d644d9229ee22affca700b5
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -161,8 +161,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.1, >= 2.1.8)
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     andand (1.3.3)
     bcrypt (3.1.13)
     bindex (0.8.1)
@@ -181,7 +181,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    childprocess (1.0.1)
+    childprocess (2.0.0)
       rake (< 13.0)
     choice (0.2.0)
     cldr-plurals-runtime-rb (1.0.1)
@@ -279,7 +279,7 @@ GEM
     prawnto_2 (0.3.0)
       prawn (>= 1.0.0)
       rails (>= 3.2)
-    public_suffix (3.1.1)
+    public_suffix (4.0.1)
     puma (4.1.0)
       nio4r (~> 2.0)
     rack (2.0.7)
@@ -355,8 +355,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (3.142.3)
-      childprocess (>= 0.5, < 2.0)
+    selenium-webdriver (3.142.4)
+      childprocess (>= 0.5, < 3.0)
       rubyzip (~> 1.2, >= 1.2.2)
     simple_form (4.1.0)
       actionpack (>= 5.0)

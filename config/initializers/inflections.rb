@@ -11,6 +11,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'nivelrelacion', 'nivelesrelacion'
   inflect.irregular 'nucleoconflicto', 'nucleosconflicto'
   inflect.irregular 'perfilprofesional', 'perfilesprofesionales'
+  inflect.irregular 'planencuesta', 'planesencuesta'
   inflect.irregular 'plantillacorreo', 'plantillascorreo'
   inflect.irregular 'pprogtind', 'pprogstind'
   inflect.irregular 'procesogh', 'procesosgh'
