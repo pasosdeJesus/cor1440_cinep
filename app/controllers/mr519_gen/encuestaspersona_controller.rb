@@ -41,7 +41,6 @@ module Mr519Gen
       # Depurando
       cor = ['vtamara@nocheyniebla.org', 'mfvargas@cinep.org.co']
       u = encuestaexterna_url(ep.adurl)
-      byebug
       @resenvio = PlantillacorreoMailer.with(
         tema: 'Invitación a responder encuesta del CINEP/PPP',
         para: cor,
