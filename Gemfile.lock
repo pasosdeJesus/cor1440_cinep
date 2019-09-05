@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 0d02d39f2a46f6cd632d5574140ef9ae35c84494
+  revision: c7f71b31e0bd0a8eb5702ba4f432d3c6ab833b43
   specs:
     jn316_gen (1.0.a2)
       net-ldap
