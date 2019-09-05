@@ -39,7 +39,7 @@ module Mr519Gen
         persona_id: ep.persona_id).take
       cor = [ap.correo]
       # Depurando
-      cor = ['vtamara@nocheyniebla.org']
+      cor = ['vtamara@nocheyniebla.org', 'mfvargas@cinep.org.co']
       u = encuestaexterna_url(ep.adurl)
       byebug
       @resenvio = PlantillacorreoMailer.with(
