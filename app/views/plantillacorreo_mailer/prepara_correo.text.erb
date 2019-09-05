@@ -1,0 +1,7 @@
+<% html = ::Plantillacorreo.find(@idplantilla).contenido.body %>
+<% html = html.to_s.gsub('&lt;%', '<%').gsub('%&gt;', '%'+'>') %>
+<% plantilla = ERB.new(html) %>
+<% chtml = plantilla.result(controller.get_binding).html_safe %>
+<% dnok = Nokogiri::HTML(chtml) %>
+<% dnok.css('script, link').each { |nodo| nodo.remove } %>
+<%= dnok.css('body').text.squeeze(" \n") %>
