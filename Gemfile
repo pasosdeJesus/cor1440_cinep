@@ -72,9 +72,9 @@ gem "cocoon", git: "https://github.com/vtamara/cocoon.git",
 
 
 # Autenticación y roles
-gem "devise"
+gem "devise", ">= 4.7.1"
 
-gem "devise-i18n"
+gem "devise-i18n", ">= 1.8.1"
 gem "cancancan"
 gem "bcrypt"
 
