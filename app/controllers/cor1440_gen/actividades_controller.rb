@@ -37,39 +37,39 @@ module Cor1440Gen
       create_gen
     end
 
-    def filtracuenta_control_acceso
-      @cuenta_misgrupos = Cor1440Gen::GruposHelper.
+    def filtra_contar_control_acceso
+      @contar_misgrupos = Cor1440Gen::GruposHelper.
           mis_grupos_sinus(current_usuario) 
       # Investigadores ven sólo su linea
-      @cuenta_mg = @cuenta_misgrupos.where("nombre LIKE '#{::Ability::GRUPO_LINEA}%'").
+      @contar_mg = @contar_misgrupos.where("nombre LIKE '#{::Ability::GRUPO_LINEA}%'").
           order(:nombre)
-      if @cuenta_mg.count > 0 && @cuenta_mg.count < 3
-        @cuenta_misgrupos = @cuenta_mg
+      if @contar_mg.count > 0 && @contar_mg.count < 3
+        @contar_misgrupos = @contar_mg
       end
-      @cuenta_pf = Cor1440Gen::GruposHelper.
+      @contar_pf = Cor1440Gen::GruposHelper.
         compromisos_grupos(Cor1440Gen::Proyectofinanciero.all,
-                           @cuenta_misgrupos, current_usuario)
-      @cuenta_pfid = 18
+                           @contar_misgrupos, current_usuario)
+      @contar_pfid = 18
     end
 
-    def filtracuenta_por_parametros
+    def filtra_contar_por_parametros
       grupo = nil
 
       if params[:filtro] && params[:filtro][:grupo_id] && 
         params[:filtro][:grupo_id] != ""
         grupo = Sip::Grupo.find(params[:filtro][:grupo_id].to_i)
       else 
-        if @cuenta_mg.count == 1
-          grupo = @cuenta_mg.first
+        if @contar_mg.count == 1
+          grupo = @contar_mg.first
         end
       end
       if grupo
-        @cuenta_grupoid = grupo.id
-        @cuenta_actividad = @cuenta_actividad.where(
+        @contar_grupoid = grupo.id
+        @contar_actividad = @contar_actividad.where(
           'cor1440_gen_actividad.id IN (SELECT actividad_id 
-             FROM actividad_grupo WHERE grupo_id = ?)', @cuenta_grupoid)
+             FROM actividad_grupo WHERE grupo_id = ?)', @contar_grupoid)
       end
-      @cuenta_pfid = params[:filtro] && 
+      @contar_pfid = params[:filtro] && 
         params[:filtro][:proyectofinanciero_id] ? 
         params[:filtro][:proyectofinanciero_id].to_i : 18
     end

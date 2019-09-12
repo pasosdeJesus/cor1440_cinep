@@ -47,9 +47,6 @@ Rails.application.routes.draw do
     resources :tasascambio,
       path_names: { new: 'nueva', edit: 'edita' }
 
-    get "/actividades/cuenta" => "cor1440_gen/actividades#cuenta", 
-      as: :actividades_cuenta
-
     get "/admin/grupos/:id/creardirac" => "sip/admin/grupos#crear_dirac", as: :crear_dirac
 
     get "/admin/grupos/arbol" => "sip/admin/grupos#arbol", as: :grupos_arbol
