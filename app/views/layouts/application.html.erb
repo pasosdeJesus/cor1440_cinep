@@ -14,7 +14,7 @@
         <%= drop_down "Actividades" do %>
           <%= menu_item "Listado", cor1440_gen.actividades_path %>
           <%= menu_item "Nueva Actividad", cor1440_gen.new_actividad_path %>
-          <%= menu_item "Conteo de Actividades", main_app.actividades_cuenta_path %>
+          <%= menu_item "Conteo de Actividades", cor1440_gen.contar_actividades_path %>
           <% if can? :index, Sip::Actorsocial %>
             <%= menu_item "Actores Sociales", sip.actoressociales_path %>
           <% end %>

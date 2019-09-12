@@ -25,7 +25,7 @@
   </thead>
   <tbody>
     <% a = Cor1440Gen::Actividadpf.where(
-      proyectofinanciero_id: @cuenta_pfid).order(:nombrecorto) %>
+      proyectofinanciero_id: @contar_pfid).order(:nombrecorto) %>
     <% ttot = 0 %>
     <% tmuj = 0 %>
     <% thom = 0 %>
@@ -36,7 +36,7 @@
     <% a.each do |a| %>
       <tr>
         <% # Aqui sólo contamos actividades con una sola una actividad de convenio %>
-        <% consb = @cuenta_actividad.where('cor1440_gen_actividad.id IN 
+        <% consb = @contar_actividad.where('cor1440_gen_actividad.id IN 
           (SELECT actividad_id FROM cor1440_gen_actividad_actividadpf
            WHERE actividadpf_id=?)',a.id).
            where('cor1440_gen_actividad.id NOT IN 
@@ -45,7 +45,7 @@
             cor1440_gen_actividad_actividadpf.actividadpf_id=
             cor1440_gen_actividadpf.id
            WHERE cor1440_gen_actividadpf.proyectofinanciero_id=?
-           AND actividadpf_id<>?)', @cuenta_pfid, a.id)
+           AND actividadpf_id<>?)', @contar_pfid, a.id)
          %>
         <td><%= a.nombrecorto %> <%= a.titulo%></td>
         <td>
@@ -95,7 +95,7 @@
       </tr>
     <% end %>
     <tr>
-      <% consb = @cuenta_actividad.where('cor1440_gen_actividad.id IN 
+      <% consb = @contar_actividad.where('cor1440_gen_actividad.id IN 
           (SELECT actividad_id FROM (SELECT actividad_id, 
             COUNT(actividadpf_id) FROM cor1440_gen_actividad_actividadpf
            JOIN cor1440_gen_actividadpf ON 
@@ -104,7 +104,7 @@
            WHERE cor1440_gen_actividadpf.proyectofinanciero_id = ?
            AND cor1440_gen_actividad_actividadpf.actividad_id =
              cor1440_gen_actividad.id GROUP BY 1) AS s WHERE count>1)',
-             @cuenta_pfid)
+             @contar_pfid)
          %>
        <td><em>Con más de una Actividad de compromiso institucional</em></td>
          <td>
@@ -156,16 +156,16 @@
     </tr>
 
     <tr>
-      <% consb = @cuenta_actividad.where('cor1440_gen_actividad.id NOT IN 
+      <% consb = @contar_actividad.where('cor1440_gen_actividad.id NOT IN 
           (SELECT actividad_id FROM cor1440_gen_actividad_actividadpf
            JOIN cor1440_gen_actividadpf ON 
             cor1440_gen_actividad_actividadpf.actividadpf_id=
             cor1440_gen_actividadpf.id
            WHERE cor1440_gen_actividadpf.proyectofinanciero_id=?)',
-           @cuenta_pfid).
+           @contar_pfid).
            where('cor1440_gen_actividad.id IN (SELECT actividad_id FROM 
                  cor1440_gen_actividad_proyectofinanciero WHERE 
-                proyectofinanciero_id=?)', @cuenta_pfid)
+                proyectofinanciero_id=?)', @contar_pfid)
          %>
        <td><em>Sin Actividad de compromiso institucional</em><br>
         <% sep = '' %>
