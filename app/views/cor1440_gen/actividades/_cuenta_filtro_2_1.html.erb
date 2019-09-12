@@ -1,0 +1,11 @@
+<%= f.input :grupo_id,
+  collection: @misgrupos,
+  label_method: :nombre,
+  value_method: :id,
+  label: false,
+  include_blank: '-- Grupo',
+  selected: @grupoid,
+  input_html: { 
+    'data-contarautomatico' => "",
+    class: 'chosen-select' 
+  } %>

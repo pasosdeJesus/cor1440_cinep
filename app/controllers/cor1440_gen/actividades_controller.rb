@@ -37,63 +37,41 @@ module Cor1440Gen
       create_gen
     end
 
-    def cuenta
-      @misgrupos = Cor1440Gen::GruposHelper.
+    def filtracuenta_control_acceso
+      @cuenta_misgrupos = Cor1440Gen::GruposHelper.
           mis_grupos_sinus(current_usuario) 
       # Investigadores ven sólo su linea
-      mg = @misgrupos.where("nombre LIKE '#{::Ability::GRUPO_LINEA}%'").
+      @cuenta_mg = @cuenta_misgrupos.where("nombre LIKE '#{::Ability::GRUPO_LINEA}%'").
           order(:nombre)
-      if mg.count > 0 && mg.count < 3
-        @misgrupos = mg
+      if @cuenta_mg.count > 0 && @cuenta_mg.count < 3
+        @cuenta_misgrupos = @cuenta_mg
       end
-      @miscompromisos = Cor1440Gen::GruposHelper.
+      @cuenta_pf = Cor1440Gen::GruposHelper.
         compromisos_grupos(Cor1440Gen::Proyectofinanciero.all,
-                           @misgrupos, current_usuario)
-      @pfid = params[:filtro] && params[:filtro][:proyectofinanciero_id] ? 
-        params[:filtro][:proyectofinanciero_id].to_i : 18  
-      @baseactividad = Cor1440Gen::Actividad.all
+                           @cuenta_misgrupos, current_usuario)
+      @cuenta_pfid = 18
+    end
+
+    def filtracuenta_por_parametros
       grupo = nil
+
       if params[:filtro] && params[:filtro][:grupo_id] && 
         params[:filtro][:grupo_id] != ""
         grupo = Sip::Grupo.find(params[:filtro][:grupo_id].to_i)
       else 
-        if mg.count == 1
-          grupo = mg.first
+        if @cuenta_mg.count == 1
+          grupo = @cuenta_mg.first
         end
       end
       if grupo
-        @grupoid = grupo.id
-        @baseactividad = @baseactividad.where(
+        @cuenta_grupoid = grupo.id
+        @cuenta_actividad = @cuenta_actividad.where(
           'cor1440_gen_actividad.id IN (SELECT actividad_id 
-             FROM actividad_grupo WHERE grupo_id = ?)', @grupoid)
+             FROM actividad_grupo WHERE grupo_id = ?)', @cuenta_grupoid)
       end
-
-      if !params[:filtro] || !params[:filtro]['fechaini'] || 
-        params[:filtro]['fechaini'] != ""
-        if !params[:filtro] || !params[:filtro]['fechaini']
-          @fechaini = inicio_semestre_ant
-        else
-          @fechaini = fecha_local_estandar(params[:filtro]['fechaini'])
-        end
-        @baseactividad = @baseactividad.where(
-          'cor1440_gen_actividad.fecha >= ?', @fechaini)
-      end
-      if !params[:filtro] || !params[:filtro]['fechafin'] || 
-        params[:filtro]['fechafin'] != ""
-        if !params[:filtro] || !params[:filtro]['fechafin']
-          @fechafin = fin_semestre_ant
-        else
-          @fechafin = fecha_local_estandar(params[:filtro]['fechafin'])
-        end
-        @baseactividad = @baseactividad.where(
-          'cor1440_gen_actividad.fecha <= ?', @fechafin)
-      end
-
-      respond_to do |format|
-        format.html { render layout: 'application' }
-        format.json { head :no_content }
-        format.js { render }
-      end
+      @cuenta_pfid = params[:filtro] && 
+        params[:filtro][:proyectofinanciero_id] ? 
+        params[:filtro][:proyectofinanciero_id].to_i : 18
     end
 
     def asegura_contexto(actividad)
