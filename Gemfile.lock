@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: a5fc6f08980d56eb6dd9eb9043a00e2d49968d23
+  revision: 91266fe1421c39cec50417b4e4d8d2a574b5957e
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: a27360d41a43d937e33ef3925d4821f321398afd
+  revision: 09f4bb8d02056f1f92173cc63a8d734bef51dfc4
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
