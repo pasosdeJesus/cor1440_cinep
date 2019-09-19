@@ -29,6 +29,6 @@ class Planencuesta < ActiveRecord::Base
   end
 
   def presenta_nombre
-    "#{id}"
+    self.formulario_id ?  self.formulario.nombre + " (#{id})" : "#{id}"
   end
 end
