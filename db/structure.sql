@@ -2967,12 +2967,11 @@ ALTER SEQUENCE public.mr519_gen_campo_id_seq OWNED BY public.mr519_gen_campo.id;
 CREATE TABLE public.mr519_gen_encuestapersona (
     id bigint NOT NULL,
     persona_id integer,
-    formulario_id integer,
     fecha date,
-    fechainicio date NOT NULL,
-    fechafin date,
     adurl character varying(32),
-    respuestafor_id integer
+    respuestafor_id integer,
+    fechainv date,
+    planencuesta_id integer
 );
 
 
@@ -3323,6 +3322,40 @@ CREATE SEQUENCE public.personadesea_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+
+--
+-- Name: planencuesta; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.planencuesta (
+    id bigint NOT NULL,
+    fechaini date,
+    fechafin date,
+    formulario_id integer,
+    plantillacorreoinv_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: planencuesta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.planencuesta_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: planencuesta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.planencuesta_id_seq OWNED BY public.planencuesta.id;
 
 
 --
@@ -5690,6 +5723,13 @@ ALTER TABLE ONLY public.perfilprofesional ALTER COLUMN id SET DEFAULT nextval('p
 
 
 --
+-- Name: planencuesta id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.planencuesta ALTER COLUMN id SET DEFAULT nextval('public.planencuesta_id_seq'::regclass);
+
+
+--
 -- Name: plantillacorreo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -6501,6 +6541,14 @@ ALTER TABLE ONLY public.perfilprofesional
 
 ALTER TABLE ONLY public.sip_persona
     ADD CONSTRAINT persona_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: planencuesta planencuesta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.planencuesta
+    ADD CONSTRAINT planencuesta_pkey PRIMARY KEY (id);
 
 
 --
@@ -7331,6 +7379,14 @@ ALTER TABLE ONLY public.convenio
 
 
 --
+-- Name: mr519_gen_encuestapersona fk_rails_13f8d66312; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestapersona
+    ADD CONSTRAINT fk_rails_13f8d66312 FOREIGN KEY (planencuesta_id) REFERENCES public.planencuesta(id);
+
+
+--
 -- Name: actor fk_rails_1a67af6964; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8043,14 +8099,6 @@ ALTER TABLE ONLY public.actor_sectoractor
 
 
 --
--- Name: mr519_gen_encuestapersona fk_rails_88eeb03074; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.mr519_gen_encuestapersona
-    ADD CONSTRAINT fk_rails_88eeb03074 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
-
-
---
 -- Name: cor1440_gen_formulario_tipoindicador fk_rails_8978582d8a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8264,6 +8312,14 @@ ALTER TABLE ONLY public.anexo_usuario
 
 ALTER TABLE ONLY public.actividad_publicacion
     ADD CONSTRAINT fk_rails_afe68ea314 FOREIGN KEY (publicacion_id) REFERENCES public.publicacion(id);
+
+
+--
+-- Name: planencuesta fk_rails_b3c9e4973a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.planencuesta
+    ADD CONSTRAINT fk_rails_b3c9e4973a FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
 
 
 --
@@ -8488,6 +8544,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad
 
 ALTER TABLE ONLY public.cor1440_gen_plantillahcm_proyectofinanciero
     ADD CONSTRAINT fk_rails_d56d245f70 FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: planencuesta fk_rails_d678e61758; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.planencuesta
+    ADD CONSTRAINT fk_rails_d678e61758 FOREIGN KEY (plantillacorreoinv_id) REFERENCES public.plantillacorreo(id);
 
 
 --
@@ -9290,6 +9354,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190826003810'),
 ('20190826092827'),
 ('20190826092828'),
-('20190826101038');
+('20190826101038'),
+('20190830120819'),
+('20190830170656'),
+('20190830172824');
 
 

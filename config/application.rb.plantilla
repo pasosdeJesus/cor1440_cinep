@@ -35,10 +35,10 @@ module Cor1440Cinep
     config.x.jn316_admin = "cn=admin,dc=cinep,dc=org,dc=co"
     config.x.jn316_servidor = "apbd2.cinep.org.co"
     config.x.jn316_gidgenerico = 500
-    config.x.jn316_puerto = 389
+    config.x.jn316_puerto = 636
 #    config.x.jn316_opcon = {
 #      encryption: {
-#        method: :start_tls,
+#        method: :simple_tls,
 #        tls_options: OpenSSL::SSL::SSLContext::DEFAULT_PARAMS
 #      }
 #    }
