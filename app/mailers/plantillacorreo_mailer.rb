@@ -22,7 +22,7 @@ class PlantillacorreoMailer < ApplicationMailer
       @para = ['vtamara@cinep.org.co']
     end
     mail(to: @para, 
-         bcc: ['vtamara@cinep.org.co'],
+         bcc: ['vtamara@cinep.org.co, blanca@pasosdeJesus.org'],
          subject: @tema)
   end
 
