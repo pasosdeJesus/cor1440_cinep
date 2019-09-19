@@ -275,7 +275,7 @@ es:
         Planesencuesta: Planes de encuestas a actores sociales
         fechaini_localizada: Fecha de inicio de encuesta
         fechafin_localizada: Fecha límite para presentarla
-        plntaillacorreoinv: Plantilla para el correo de invitación
+        plantillacorreoinv: Plantilla para el correo de invitación
         encuestapersona: Encuestas a personas que hacen parte de este plan
       "plantillacorreo":  
         Plantillacorreo: Plantilla para correo
