@@ -271,8 +271,12 @@ es:
         Nucleoconflict: Núcleo de conflicto
         Nucleosconflicto: Núcleos de conflicto
       "planencuesta":  
-        Planencuesta: Planeación de una encuesta
-        Planesencuesta: Planeaciones de encuestas
+        Planencuesta: Plan de una encuesta a actores sociales
+        Planesencuesta: Planes de encuestas a actores sociales
+        fechaini_localizada: Fecha de inicio de encuesta
+        fechafin_localizada: Fecha límite para presentarla
+        plntaillacorreoinv: Plantilla para el correo de invitación
+        encuestapersona: Encuestas a personas que hacen parte de este plan
       "plantillacorreo":  
         Plantillacorreo: Plantilla para correo
         Plantillascorreo: Plantillas para correo
