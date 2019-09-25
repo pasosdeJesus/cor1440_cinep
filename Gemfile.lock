@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: a33a6e42b3b870cf50eb74130a92cf0fc8d8099e
+  revision: b0a29d1474dc1678c2fe02e4caade0c7baa647e1
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: c1a2dae3389b5083890603b1c389b46be1d7ff45
+  revision: e9e3d1f70409f55ea72e02d2ff26c9703c1dc354
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: b855499c58ec4cc89178fd2308f15837272e4b6d
+  revision: 41ed1be554be74f4fd271230cd0dcf13481c0505
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 65bac2bb5e7c46c59534ca33aea423eb81bcdf34
+  revision: fbddf75067fcbdabb92ae5ec834c821bd5dda37e
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: fbea854eaf0cdcef7d1e9960602da7e682c43819
+  revision: 85f4d95690e299398aef2cb8f8d1e33e6647c423
   specs:
     sal7711_gen (1.0.b2)
       rails
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 4912711cb3857759eddd7dd5ac25d05bde56651c
+  revision: 23e98b854787fed1883e470be83b667c0689da25
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 0b0121fe1f003a4cd471e86e440c21c40b42350d
+  revision: 35c8df19f1b9ba8e0c3f258d3fa4b67354aaf486
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0f2ff51b03eb3a9fc4cb0bfe07ffef355bae5f5c
+  revision: b13d46332450b91e48725a6ee85fcb296f33f20e
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -252,7 +252,7 @@ GEM
     minitest (5.12.0)
     msgpack (1.3.1)
     net-ldap (0.16.1)
-    nio4r (2.5.1)
+    nio4r (2.5.2)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     odf-report (0.6.0)
