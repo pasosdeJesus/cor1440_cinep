@@ -5158,7 +5158,7 @@ CREATE VIEW public.v_solicitud_informes AS
         END AS a_tiempo
    FROM (public.cor1440_gen_proyectofinanciero p
      JOIN public.v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[125, 129, 128, 161, 162, 173, 193, 194, 196, 103, 102, 111, 127, 109, 130, 133, 134, 131, 123, 132, 136, 104, 119, 164, 20, 174, 190, 163, 195, 197, 122, 141, 142, 143, 144, 145, 147, 152, 146, 155, 137, 101, 138, 19, 140, 175, 149, 167, 166, 18, 150, 156, 120, 116, 158, 169, 176, 177, 170, 178, 179, 106, 118, 115, 171, 180, 157, 159, 172, 198, 199, 200, 201, 202, 168, 206, 117, 126]))
+  WHERE (p.id = ANY (ARRAY[125, 129, 128, 161, 173, 193, 194, 196, 103, 102, 111, 127, 109, 130, 133, 134, 131, 123, 132, 136, 104, 293, 237, 238, 239, 240, 119, 164, 20, 174, 190, 163, 195, 197, 122, 141, 142, 143, 144, 145, 147, 152, 146, 155, 137, 101, 138, 175, 149, 167, 166, 18, 150, 156, 120, 236, 116, 158, 176, 177, 170, 178, 179, 106, 118, 115, 171, 180, 157, 159, 172, 198, 199, 200, 201, 202, 168, 206, 117, 126, 233, 234, 235, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 254, 255, 256, 257, 295, 260, 267, 272, 286, 276, 309, 278, 280, 288, 19, 162, 140]))
   ORDER BY s.fechaplaneada;
 
 
@@ -7093,6 +7093,34 @@ CREATE INDEX index_sip_actorsocial_on_pais_id ON public.sip_actorsocial USING bt
 
 
 --
+-- Name: index_sip_ubicacion_on_id_clase; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_ubicacion_on_id_clase ON public.sip_ubicacion USING btree (id_clase);
+
+
+--
+-- Name: index_sip_ubicacion_on_id_departamento; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_ubicacion_on_id_departamento ON public.sip_ubicacion USING btree (id_departamento);
+
+
+--
+-- Name: index_sip_ubicacion_on_id_municipio; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_ubicacion_on_id_municipio ON public.sip_ubicacion USING btree (id_municipio);
+
+
+--
+-- Name: index_sip_ubicacion_on_id_pais; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_ubicacion_on_id_pais ON public.sip_ubicacion USING btree (id_pais);
+
+
+--
 -- Name: index_sivel2_gen_actividad_on_rangoedadac_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -7739,6 +7767,14 @@ ALTER TABLE ONLY public.anexo_convenio
 
 
 --
+-- Name: sip_ubicacion fk_rails_4dd7a7f238; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacion
+    ADD CONSTRAINT fk_rails_4dd7a7f238 FOREIGN KEY (id_departamento) REFERENCES public.sip_departamento(id);
+
+
+--
 -- Name: cor1440_gen_valorcampotind fk_rails_4f2fc96457; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7920,6 +7956,14 @@ ALTER TABLE ONLY public.vinculacion
 
 ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona
     ADD CONSTRAINT fk_rails_6a82dffb63 FOREIGN KEY (respuestafor_id) REFERENCES public.mr519_gen_respuestafor(id);
+
+
+--
+-- Name: sip_ubicacion fk_rails_6ed05ed576; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacion
+    ADD CONSTRAINT fk_rails_6ed05ed576 FOREIGN KEY (id_pais) REFERENCES public.sip_pais(id);
 
 
 --
@@ -8243,6 +8287,14 @@ ALTER TABLE ONLY public.mr519_gen_campo
 
 
 --
+-- Name: sip_ubicacion fk_rails_a1d509c79a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacion
+    ADD CONSTRAINT fk_rails_a1d509c79a FOREIGN KEY (id_clase) REFERENCES public.sip_clase(id);
+
+
+--
 -- Name: cor1440_gen_anexo_efecto fk_rails_a3fa2e726c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8328,6 +8380,14 @@ ALTER TABLE ONLY public.planencuesta
 
 ALTER TABLE ONLY public.cor1440_gen_indicadorpf
     ADD CONSTRAINT fk_rails_b5b70fb7f7 FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: sip_ubicacion fk_rails_b82283d945; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacion
+    ADD CONSTRAINT fk_rails_b82283d945 FOREIGN KEY (id_municipio) REFERENCES public.sip_municipio(id);
 
 
 --
@@ -9357,6 +9417,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190826101038'),
 ('20190830120819'),
 ('20190830170656'),
-('20190830172824');
+('20190830172824'),
+('20190926104116');
 
 

@@ -709,7 +709,8 @@ module Cor1440Gen
       super(c)
     end   
 
-    def self.vista_listado(plant, ids, modelo, narch, parsimp, extension)
+    def self.vista_listado(plant, ids, modelo, narch, parsimp, extension,
+                          campoid = :id)
       #byebug
       registros = modelo.where(id: ids)
       case plant.vista

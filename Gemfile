@@ -27,16 +27,18 @@ gem 'colorize'
 gem "prawn"
 gem "prawnto_2",  :require => "prawnto"
 gem "prawn-table"
-# Plantilla ODT
-gem "odf-report"
 
+gem 'rubyzip', '>= 2.0'
 
-gem 'rspreadsheet'
+# Genera ODT
+gem 'odf-report', git: 'https://github.com/vtamara/odf-report.git', branch: 'rubyzip-1.3'
+
+# Genera ODS
 gem 'libxml-ruby'
+gem 'rspreadsheet', git: 'https://github.com/vtamara/rspreadsheet.git', branch: 'rubyzip-1.3'
 
 # Cuadros de selección potenciados
 gem 'chosen-rails', git: "https://github.com/vtamara/chosen-rails.git", branch: 'several-fixes'
-
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
@@ -150,7 +152,7 @@ group :test do
 
   gem 'spring'
 
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '>=3.0', git: "https://github.com/vtamara/selenium.git", branch: 'patch-2'
 end
 
 
