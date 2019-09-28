@@ -367,7 +367,8 @@ class Ability  < Cor1440Gen::Ability
         can :read, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichaimp, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichapdf, Cor1440Gen::Proyectofinanciero # Los de su grupo
-
+        can :objetivospf, Cor1440Gen::Proyectofinanciero
+        can :actividadespf, Cor1440Gen::Proyectofinanciero
 
         can :read, Heb412Gen::Doc
         can :read, Heb412Gen::Plantilladoc
@@ -395,8 +396,6 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Efecto
           can :index, Cor1440Gen::Mindicadorpf
-          can :objetivospf, Cor1440Gen::Proyectofinanciero
-          can :actividadespf, Cor1440Gen::Proyectofinanciero
         end
 
         coords = lgrupos.select {|g| g.start_with?(GRUPO_COORDINADOR)}
