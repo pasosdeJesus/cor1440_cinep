@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: c65828edd2284635e2cb0abd52a56f7a05f7a5ff
+  revision: d981a1ca490900f6c5c280d7a2e16c241e19e2b2
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 60afc4dfc13134236c91387ae847e749ff7d995f
+  revision: 321c6c1c1feec9bc22011fe35879f62aef619266
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: b8f9aa8f715c6420308320a1935bbf7ea34f05f0
+  revision: 52df4c6f645525f248f92d44e3efbfa25a4dbe2e
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 57d6b3839f68dd48e84b1e37f9359ed684754b3b
+  revision: 29bc076be5cc7ec4493be9c8287fa27ea1e5583d
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 9d04acc777bd240e63ce69c2ab8ded069b53f57b
+  revision: d13f958d6c27046748e63ec21cd0e42581ceea78
   specs:
     sal7711_gen (1.0.b2)
       rails
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: c2acb1fd7bc0748320916f718b6ada056ba574f5
+  revision: 7165951009a6bd9a7245844a4c934d9092de73c3
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 2ba5e8d6bba82cc31e46a56b76f0183458d7fe5f
+  revision: 5cb4d6b378d97f319dadbdea08ec6c43c6efd80a
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: fff621177cc34589f0b6eba352c3c5a42b8a70c5
+  revision: 9e1c56e1e1937372bb39346e0c3403339b9a56db
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -263,7 +263,7 @@ GEM
       less (~> 2.6.0)
       sprockets (>= 2)
     libxml-ruby (3.1.0)
-    loofah (2.2.3)
+    loofah (2.3.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -277,7 +277,7 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.12.1)
+    minitest (5.12.2)
     msgpack (1.3.1)
     net-ldap (0.16.1)
     nio4r (2.5.2)
