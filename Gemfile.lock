@@ -113,16 +113,6 @@ GIT
       rubyzip (>= 1.3.0)
 
 GIT
-  remote: https://github.com/vtamara/rspreadsheet.git
-  revision: 48db333d356a051dabb5baf7a05b61137312461f
-  branch: rubyzip-1.3
-  specs:
-    rspreadsheet (0.5.3)
-      andand (>= 1.3)
-      libxml-ruby (>= 3.0)
-      rubyzip (>= 1.3)
-
-GIT
   remote: https://github.com/vtamara/selenium.git
   revision: c354b329b5c6b194101e857eb8a273ccb3ed2f0a
   branch: patch-2
@@ -360,6 +350,9 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rspreadsheet (0.5.3)
+      andand (>= 1.3)
+      rubyzip (>= 1.3)
     ruby-graphviz (1.2.4)
     rubyzip (2.0.0)
     sass (3.7.4)
@@ -476,7 +469,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-i18n
   redcarpet
-  rspreadsheet!
+  rspreadsheet
   rubyzip (>= 2.0)
   sal7711_gen!
   sal7711_ld!
