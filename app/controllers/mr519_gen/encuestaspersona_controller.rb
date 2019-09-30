@@ -5,6 +5,7 @@ module Mr519Gen
   class EncuestaspersonaController < Sip::ModelosController
     include Mr519Gen::Concerns::Controllers::EncuestaspersonaController
 
+    
     def atributos_index
       r = [ :id ]
       if can?(:manage, Mr519Gen::Encuestapersona)
@@ -20,6 +21,7 @@ module Mr519Gen
 
     # GET /encuestaspersona/new
     def new
+      authorize! :manage, Mr519Gen::Encuestapersona
       @registro = @encuestapersona = Encuestapersona.new
       @registro.respuestafor = Respuestafor.new
       @registro.respuestafor.fechaini = Date.today
@@ -32,6 +34,7 @@ module Mr519Gen
     end
 
     def correoinv
+      authorize! :manage, Mr519Gen::Encuestapersona
       puts "Enviado correo para encuesta aplicada #{params[:id]}"
       ep = Mr519Gen::Encuestapersona.find(params[:id].to_i)
       ap = Sip::ActorsocialPersona.where(
