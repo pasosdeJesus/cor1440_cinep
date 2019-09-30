@@ -68,6 +68,10 @@ es:
       "cajacompensacion":
         Cajacompensacion: 'Caja de compensación'
         Cajascompensacion: 'Cajas de compensación'
+      "comunicado":
+        Comunicado: 'Comunicado'
+        Comunicados: 'Comunicados'
+        nombre: 'Identificación en URL'
       "contrato":
         ciudadresidencia: Ciudad de residencia
         ciudadlabora: Ciudad donde labora

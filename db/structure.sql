@@ -699,6 +699,41 @@ CREATE SEQUENCE public.caso_seq
 
 
 --
+-- Name: comunicado; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.comunicado (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    contenido character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: comunicado_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.comunicado_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: comunicado_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.comunicado_id_seq OWNED BY public.comunicado.id;
+
+
+--
 -- Name: contexto_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -5289,6 +5324,13 @@ ALTER TABLE ONLY public.cargo ALTER COLUMN id SET DEFAULT nextval('public.cargo_
 
 
 --
+-- Name: comunicado id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.comunicado ALTER COLUMN id SET DEFAULT nextval('public.comunicado_id_seq'::regclass);
+
+
+--
 -- Name: contextoinv id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -6053,6 +6095,14 @@ ALTER TABLE ONLY public.cajacompensacion
 
 ALTER TABLE ONLY public.cargo
     ADD CONSTRAINT cargo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comunicado comunicado_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.comunicado
+    ADD CONSTRAINT comunicado_pkey PRIMARY KEY (id);
 
 
 --
@@ -7055,6 +7105,13 @@ CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_b
 --
 
 CREATE INDEX index_actor_on_pais_id ON public.actor USING btree (pais_id);
+
+
+--
+-- Name: index_comunicado_on_nombre; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_comunicado_on_nombre ON public.comunicado USING btree (nombre);
 
 
 --
@@ -9418,6 +9475,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190830120819'),
 ('20190830170656'),
 ('20190830172824'),
-('20190926104116');
+('20190926104116'),
+('20190930022748'),
+('20190930102643');
 
 

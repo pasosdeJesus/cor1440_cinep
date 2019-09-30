@@ -71,6 +71,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'areaestudios'],
         ['', 'cajacompensacion'],
         ['', 'cargo'],
+        ['', 'comunicado'],
         ['', 'empresaps'],
         ['', 'fondopensiones'],
         ['', 'nivelrelacion'],

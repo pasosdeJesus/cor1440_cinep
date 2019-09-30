@@ -2,6 +2,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'actor', 'actores'
   inflect.irregular 'areaestudios', 'areasestudios'
   inflect.irregular 'cajacompensacion', 'cajascompensacion'
+  inflect.irregular 'comunicado', 'comunicados'
   inflect.irregular 'convenio', 'convenios'
   inflect.irregular 'empresaps', 'empresasps'
   inflect.irregular 'fondopensiones', 'fondospensiones'
