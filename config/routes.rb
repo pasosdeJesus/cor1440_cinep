@@ -69,6 +69,9 @@ Rails.application.routes.draw do
     get "/encuestapersona/:id/correoinv" => "mr519_gen/encuestaspersona#correoinv", 
       as: :correoinv_encuestapersona
 
+    get '/comunicados/presenta/:nombre' => 'admin/comunicados#presenta',
+      as: :comunicado_presenta
+
     get "/api/cor1440cinep/duracion" => 
       "cor1440_gen/proyectosfinancieros#duracion", 
       as: :duracion 

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: d4c4540d61f7c9f244fd7750dfbddf99eb176040
+  revision: 86f1a47060b59ca6bb6879534eb5235e581e9336
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 9933ef900c5c96683098bae9f76f24eebc02c184
+  revision: 96464689628551b6669d882953fa149865f2f5e4
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: a001be57b837491bdd1481b1c07ee5d4d1b5aede
+  revision: 52df4c6f645525f248f92d44e3efbfa25a4dbe2e
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: ebbd39f9ac04c7682a1315c93c587568b2b0f39e
+  revision: 9c881ee9eaab3a2e9fe2f4b0845efff195e4f4d7
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: c7003b4c19b6a3ef9fee48574cc8e67b57f7128d
+  revision: d13f958d6c27046748e63ec21cd0e42581ceea78
   specs:
     sal7711_gen (1.0.b2)
       rails
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: e6620f0456ef6aa8be2d81c8a9f37a459fb11582
+  revision: 7165951009a6bd9a7245844a4c934d9092de73c3
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: c00855ae96a74ff7c013bc4e25b0b4cfde1dc734
+  revision: 5cb4d6b378d97f319dadbdea08ec6c43c6efd80a
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0f2ff51b03eb3a9fc4cb0bfe07ffef355bae5f5c
+  revision: 9e1c56e1e1937372bb39346e0c3403339b9a56db
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -102,6 +102,24 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
+
+GIT
+  remote: https://github.com/vtamara/odf-report.git
+  revision: d656a1d6e4aa85615bb7db12af950c2414acafba
+  branch: rubyzip-1.3
+  specs:
+    odf-report (0.6.1)
+      nokogiri (>= 1.5.0)
+      rubyzip (>= 1.3.0)
+
+GIT
+  remote: https://github.com/vtamara/selenium.git
+  revision: c354b329b5c6b194101e857eb8a273ccb3ed2f0a
+  branch: patch-2
+  specs:
+    selenium-webdriver (3.142.4)
+      childprocess (>= 0.5, < 3.0)
+      rubyzip (>= 1.2.2)
 
 GEM
   remote: https://rubygems.org/
@@ -209,7 +227,7 @@ GEM
     erd (0.6.3)
       nokogiri
       rails-erd (>= 0.4.5)
-    erubi (1.8.0)
+    erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.11.1)
     font-awesome-rails (4.7.0.5)
@@ -235,7 +253,7 @@ GEM
       less (~> 2.6.0)
       sprockets (>= 2)
     libxml-ruby (3.1.0)
-    loofah (2.2.3)
+    loofah (2.3.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -249,15 +267,12 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.12.0)
+    minitest (5.12.2)
     msgpack (1.3.1)
     net-ldap (0.16.1)
-    nio4r (2.5.1)
+    nio4r (2.5.2)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
-    odf-report (0.6.0)
-      nokogiri (>= 1.5.0)
-      rubyzip (~> 1.2.0)
     orm_adapter (0.5.0)
     paperclip (6.1.0)
       activemodel (>= 4.2.0)
@@ -335,11 +350,11 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rspreadsheet (0.5.1)
-      andand (~> 1.3)
-      rubyzip (~> 1.1)
+    rspreadsheet (0.5.3)
+      andand (>= 1.3)
+      rubyzip (>= 1.3)
     ruby-graphviz (1.2.4)
-    rubyzip (1.2.4)
+    rubyzip (2.0.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -355,10 +370,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (3.142.4)
-      childprocess (>= 0.5, < 3.0)
-      rubyzip (~> 1.2, >= 1.2.2)
-    simple_form (4.1.0)
+    simple_form (5.0.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     simplecov (0.17.1)
@@ -396,7 +408,7 @@ GEM
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.20)
+    uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicorn (5.5.1)
       kgio (~> 2.6)
@@ -445,7 +457,7 @@ DEPENDENCIES
   jquery-ui-rails
   libxml-ruby
   mr519_gen!
-  odf-report
+  odf-report!
   paperclip
   pg
   pick-a-color-rails
@@ -458,12 +470,13 @@ DEPENDENCIES
   rails-i18n
   redcarpet
   rspreadsheet
+  rubyzip (>= 2.0)
   sal7711_gen!
   sal7711_ld!
   sal7711_web!
   sass
   sass-rails
-  selenium-webdriver
+  selenium-webdriver (>= 3.0)!
   simple_form
   simplecov
   sip!
