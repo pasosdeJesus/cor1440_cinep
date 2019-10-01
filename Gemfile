@@ -35,7 +35,7 @@ gem 'odf-report', git: 'https://github.com/vtamara/odf-report.git', branch: 'rub
 
 # Genera ODS
 gem 'libxml-ruby'
-gem 'rspreadsheet', git: 'https://github.com/vtamara/rspreadsheet.git', branch: 'rubyzip-1.3'
+gem 'rspreadsheet'
 
 # Cuadros de selección potenciados
 gem 'chosen-rails', git: "https://github.com/vtamara/chosen-rails.git", branch: 'several-fixes'
