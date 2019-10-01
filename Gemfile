@@ -73,6 +73,8 @@ gem "rails-i18n"
 
 gem 'redcarpet' # Reconoce y transforma Markdown
 
+gem 'rspreadsheet'
+
 gem 'rubyzip', '>= 2.0'
 
 gem 'sass' # CSS
