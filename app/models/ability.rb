@@ -55,6 +55,7 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_COMUNICACIONES = "Comunicaciones"
   GRUPO_DERECHOSHUMANOS = "Línea Derechos Humanos y Derecho Internacional Humanitario"
   GRUPO_LINEA = "Línea"
+  GRUPO_OFICINATI = "Oficina TI"
   GRUPO_COORDINADOR = "Coordinador(a)"
   GRUPO_COORDINADORGP = GRUPO_COORDINADOR + " " + GRUPO_COMPROMISOS 
 
@@ -437,6 +438,10 @@ class Ability  < Cor1440Gen::Ability
         # Contexto es para equipo derechos humanos 
         if lgrupos.include?(GRUPO_DERECHOSHUMANOS)
           can :edit, :contextoac
+        end
+
+        if lgrupos.include?(GRUPO_OFICINATI)
+          can :manage, Mr519Gen::Formulario
         end
 
         if lgrupos.include?(GRUPO_COMPROMISOS) || 
