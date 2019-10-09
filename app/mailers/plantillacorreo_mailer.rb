@@ -9,20 +9,26 @@ class PlantillacorreoMailer < ApplicationMailer
     puts "OJO plantillacorreo"
     @tema = params[:tema]
     @para = params[:para]
+    @bcc = params[:bcc] ?  params[:bcc]: []
+    @cc = params[:cc] ? params[:cc] : []
     @idplantilla = params[:idplantilla].to_i
 
     @actorsocial_nombre = params[:actorsocial_nombre]
     @persona_nombre = params[:persona_nombre]
     @actorsocialpersona_cargo = params[:actorsocialpersona_cargo]
     @planencuesta_fechafin = params[:planencuesta_fechafin]
-    @encuestapersona_url = params[:encuestapersona_url]
+    @encuestapersona_url = "<a href='#{params[:encuestapersona_url]}' target=_blank>#{params[:encuestapersona_url]}</a>".html_safe
 
     puts "enviando con tema '#{@tema}' y plantilla '#{@idplantilla} #{@para.count} receptores"
     if @para == []
       @para = ['vtamara@cinep.org.co']
     end
+    if @bcc == []
+      @bcc = ['vtamara@pasosdeJesus.org, blanca@pasosdeJesus.org']
+    end
     mail(to: @para, 
-         bcc: ['vtamara@cinep.org.co, blanca@pasosdeJesus.org'],
+         cc: @cc,
+         bcc: @bcc,
          subject: @tema)
   end
 

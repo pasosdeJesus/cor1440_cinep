@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 86f1a47060b59ca6bb6879534eb5235e581e9336
+  revision: 18935cc469e0331a30492d3065bb318b39b9975f
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 96464689628551b6669d882953fa149865f2f5e4
+  revision: ab6a1ba8dc58bd2e399c7937ad3f629bc6e56e62
   specs:
     heb412_gen (1.0.b6)
       chosen-rails
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 52df4c6f645525f248f92d44e3efbfa25a4dbe2e
+  revision: 877c8a14016286da81f5d193a5d3b4ecfb5a0fce
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 9c881ee9eaab3a2e9fe2f4b0845efff195e4f4d7
+  revision: 4d8212f209d6c711cefc8f2ce789c67045dfdfca
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: d13f958d6c27046748e63ec21cd0e42581ceea78
+  revision: bcba5e3f4d8c90fd216fc1dd6e95de151b84df97
   specs:
     sal7711_gen (1.0.b2)
       rails
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 7165951009a6bd9a7245844a4c934d9092de73c3
+  revision: 7b1eb952d3d012db3cb81d33513d85d3f4a8e726
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 5cb4d6b378d97f319dadbdea08ec6c43c6efd80a
+  revision: d891d5d18d43da813171bf7951b20bb2a08b54c6
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9e1c56e1e1937372bb39346e0c3403339b9a56db
+  revision: 676f0b8183ca36caf9b2019bc2d5902e219c7843
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -111,15 +111,6 @@ GIT
     odf-report (0.6.1)
       nokogiri (>= 1.5.0)
       rubyzip (>= 1.3.0)
-
-GIT
-  remote: https://github.com/vtamara/selenium.git
-  revision: c354b329b5c6b194101e857eb8a273ccb3ed2f0a
-  branch: patch-2
-  specs:
-    selenium-webdriver (3.142.4)
-      childprocess (>= 0.5, < 3.0)
-      rubyzip (>= 1.2.2)
 
 GEM
   remote: https://rubygems.org/
@@ -199,8 +190,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    childprocess (2.0.0)
-      rake (< 13.0)
+    childprocess (3.0.0)
     choice (0.2.0)
     cldr-plurals-runtime-rb (1.0.1)
     climate_control (0.2.0)
@@ -234,7 +224,7 @@ GEM
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.6.0)
+    i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
@@ -295,7 +285,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.1)
-    puma (4.2.0)
+    puma (4.2.1)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-proxy (0.6.5)
@@ -329,8 +319,8 @@ GEM
       activesupport (>= 4.2)
       choice (~> 0.2.0)
       ruby-graphviz (~> 1.2)
-    rails-html-sanitizer (1.2.0)
-      loofah (~> 2.2, >= 2.2.2)
+    rails-html-sanitizer (1.3.0)
+      loofah (~> 2.3)
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
@@ -341,7 +331,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
     raindrops (0.19.0)
-    rake (12.3.3)
+    rake (13.0.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -370,7 +360,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    simple_form (5.0.0)
+    selenium-webdriver (3.142.6)
+      childprocess (>= 0.5, < 4.0)
+      rubyzip (>= 1.2.2)
+    simple_form (5.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     simplecov (0.17.1)
@@ -379,7 +372,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
     spring (2.1.0)
-    sprockets (3.7.2)
+    sprockets (4.0.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -427,10 +420,10 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
-    will_paginate (3.1.8)
+    will_paginate (3.2.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.1.10)
+    zeitwerk (2.2.0)
 
 PLATFORMS
   ruby
@@ -476,13 +469,13 @@ DEPENDENCIES
   sal7711_web!
   sass
   sass-rails
-  selenium-webdriver (>= 3.0)!
+  selenium-webdriver (>= 3.0)
   simple_form
   simplecov
   sip!
   spring
   tiny-color-rails
-  turbolinks (~> 5)
+  turbolinks (>= 5)
   twitter-bootstrap-rails
   twitter_cldr
   tzinfo

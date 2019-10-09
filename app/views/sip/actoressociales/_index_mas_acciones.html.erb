@@ -1,16 +1,21 @@
-<% if can?(:manage, Mr519Gen::Encuestapersona) && 
-     registro.persona %>
-   <% r = Mr519Gen::Encuestapersona.
-     where(persona_id: registro.persona.map(&:id)).where(fechainv: nil).
-     joins(:planencuesta).where('planencuesta.fechafin >= ?', Date.today) %>
-   <% r.each do |e| %>
-     <!--%= link_to "Correo encuesta #{e.formulario_id}",
-       sivel2_sjr.correoinv_personaencuesta_path({id: e.id}),
-       :class => 'btn btn-xs' %
-     -->
-       <%= link_to "Correo inv. encuesta #{e.planencuesta.formulario_id}",
-         main_app.correoinv_encuestapersona_path(e.id, 
-                                                 {actorsocial_id: registro.id}),
-         :class => 'btn btn-xs' %>
-     <% end %>
+<% if registro.persona %>
+  <% r = Mr519Gen::Encuestapersona.
+    where(persona_id: registro.persona.map(&:id)).
+    joins(:planencuesta).where('planencuesta.fechafin >= ?', Date.today) %>
+  <% r.each do |e| %>
+    <!--%= link_to "Correo encuesta #{e.formulario_id}",
+      sivel2_sjr.correoinv_personaencuesta_path({id: e.id}),
+      :class => 'btn btn-xs' %
+    -->
+    <% if can?(:manage, Mr519Gen::Encuestapersona) && !e.fechainv %>
+      <%= link_to "Correo inv. encuesta ##{e.planencuesta.formulario_id}",
+        main_app.correoinv_encuestapersona_path(
+          e.id, 
+          {actorsocial_id: registro.id}), :class => 'btn btn-xs', target: '_blank' 
+        %>
+    <% elsif can?(:edit, registro) %>
+      <%= link_to "Encuesta ##{e.planencuesta.formulario_id} en curso",
+        mr519_gen.encuestaexterna_url(e.adurl), :class => 'btn btn-xs', target: '_blank' %>
+    <% end %>
+  <% end %>
 <% end %>
