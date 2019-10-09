@@ -3006,7 +3006,9 @@ CREATE TABLE public.mr519_gen_encuestapersona (
     adurl character varying(32),
     respuestafor_id integer,
     fechainv date,
-    planencuesta_id integer
+    planencuesta_id integer,
+    destcorreoinv character varying(2048),
+    evidenciacorreoinv character varying(256)
 );
 
 
@@ -9477,6 +9479,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190830172824'),
 ('20190926104116'),
 ('20190930022748'),
-('20190930102643');
+('20190930102643'),
+('20191009103744');
 
 

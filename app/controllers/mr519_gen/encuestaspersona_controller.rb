@@ -40,13 +40,39 @@ module Mr519Gen
       ap = Sip::ActorsocialPersona.where(
         actorsocial_id: params[:actorsocial_id].to_i,
         persona_id: ep.persona_id).take
-      cor = [ap.correo]
-      # Depurando
-      cor = ['vtamara@nocheyniebla.org', 'mfvargas@cinep.org.co']
+
+      para = [ap.correo]
+
+      # Copia a coordinadores de grupos relacionados con actor social
+      cc = []
+      ag = ::ActorsocialGrupo.where(
+        actorsocial_id: params[:actorsocial_id].to_i)
+      ag.each do |agi|
+        ng = ::Ability::GRUPO_COORDINADOR + ' ' + agi.grupo.nombre
+        gc = Sip::Grupo.where(nombre: ng)
+        if gc.count == 1
+          cc += gc.take.usuario.map(&:email)
+        end
+      end
+
+      # Seguimiento
+      cc << 'mfvargas@cinep.org.co'
+      bcc = ['vtamara@nocheyniebla.org']
+
+
+      # Depuración
+      puts "para=" + para.to_s
+      puts "cc=" + cc.to_s
+      puts "bcc=" + bcc.to_s
+      para = ['vtamara@cinep.org.co']
+      cc = []
+      bcc = []
       u = encuestaexterna_url(ep.adurl)
       @resenvio = PlantillacorreoMailer.with(
         tema: 'Invitación a responder encuesta del CINEP/PPP',
-        para: cor,
+        para: para,
+        cc: cc,
+        bcc: bcc,
         idplantilla: ep.planencuesta.plantillacorreoinv_id,
         
         actorsocial_nombre: ap.actorsocial.presenta_nombre,
@@ -56,6 +82,10 @@ module Mr519Gen
         encuestapersona_url: u
       ).
       prepara_correo.deliver_now
+      ep.evidenciacorreoinv = @resenvio.message_id
+      ep.fechainv = Date.today
+      ep.destcorreoinv = "#{para.to_s} CC: #{cc.to_s} BCC: #{bcc.to_s}"
+      ep.save
       respond_to do |format|
         format.html { 
           render layout: 'application' 
