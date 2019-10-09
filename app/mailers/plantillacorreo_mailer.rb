@@ -1,6 +1,6 @@
 
 class PlantillacorreoMailer < ApplicationMailer
-  
+
   def prepara_correo
     if !ENV['SMTP_MAQ']
       puts "No esta definida variable de ambiente SMTP_MAQ"
