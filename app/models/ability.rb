@@ -422,7 +422,7 @@ class Ability  < Cor1440Gen::Ability
           can [:edit, :update], pc
           can [:edit], Cor1440Gen::Indicadorpf
           can :manage, ::Publicacion
-          can [:edit, :update], Mr519Gen::Encuestapersona
+          can [:read, :edit, :update], Mr519Gen::Encuestapersona
           #can :coord, :vistobuenoactividad
         end
         

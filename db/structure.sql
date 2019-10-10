@@ -3008,7 +3008,8 @@ CREATE TABLE public.mr519_gen_encuestapersona (
     fechainv date,
     planencuesta_id integer,
     destcorreoinv character varying(2048),
-    evidenciacorreoinv character varying(256)
+    evidenciacorreoinv character varying(256),
+    anexo_id integer
 );
 
 
@@ -7826,6 +7827,14 @@ ALTER TABLE ONLY public.anexo_convenio
 
 
 --
+-- Name: mr519_gen_encuestapersona fk_rails_4d1a033a1f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestapersona
+    ADD CONSTRAINT fk_rails_4d1a033a1f FOREIGN KEY (anexo_id) REFERENCES public.sip_anexo(id);
+
+
+--
 -- Name: sip_ubicacion fk_rails_4dd7a7f238; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9480,6 +9489,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190926104116'),
 ('20190930022748'),
 ('20190930102643'),
-('20191009103744');
+('20191009103744'),
+('20191010135124');
 
 

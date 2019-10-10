@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+  <div class="panel-heading">MEDIO DE VERIFICACIÓN</div>
+  <div class="panel-body">
+    <%  f.object.sip_anexo = Sip::Anexo.new if !f.object.sip_anexo %>
+
+    <%= f.simple_fields_for :sip_anexo do |a| %>
+      <%= render 'sip/anexos/anexo_campos', a: a %>
+    <% end %>
+  </div>
+</div>
+
