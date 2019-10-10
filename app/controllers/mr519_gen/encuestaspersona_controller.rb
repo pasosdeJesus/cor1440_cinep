@@ -14,8 +14,10 @@ module Mr519Gen
         r << :adurl
       end
       r += [
-        :respuestafor
+        :respuestafor,
       ]
+      r << :anexo
+      return r
     end
 
     # GET /encuestaspersona/new
@@ -109,6 +111,17 @@ module Mr519Gen
           render layout: 'application' 
         }
       end
+    end
+
+    def lista_params
+      l = lista_params_mr519_gen 
+      l += [ sip_anexo_attributes: [
+        :adjunto, 
+        :descripcion, 
+        :id, 
+        :_destroy
+      ]]
+      return l
     end
 
   end
