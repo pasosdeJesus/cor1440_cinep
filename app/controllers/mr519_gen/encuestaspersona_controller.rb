@@ -32,20 +32,25 @@ module Mr519Gen
       redirect_to mr519_gen.edit_encuestapersona_path(@registro)
     end
 
-    def edit
+    def antes_editar
+      edit_mr519_gen
       if !@registro.adurl
         @registro.regenerate_adurl
         @registro.save
         puts "OJO regenerate_adurl #{@registro.adurl}"
       end
-      edit_mr519_gen
+    end
+
+    def edit
+      antes_editar
       render layout: 'application'
     end
 
     def correoinv
       authorize! :manage, Mr519Gen::Encuestapersona
       puts "Enviado correo para encuesta aplicada #{params[:id]}"
-      ep = Mr519Gen::Encuestapersona.find(params[:id].to_i)
+      @registro = ep = Mr519Gen::Encuestapersona.find(params[:id].to_i)
+      antes_editar
       ap = Sip::ActorsocialPersona.where(
         actorsocial_id: params[:actorsocial_id].to_i,
         persona_id: ep.persona_id).take
