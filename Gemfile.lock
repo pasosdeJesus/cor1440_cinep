@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 5d316427d4c207ea1ad46ea93dc252ad6a298b4a
+  revision: e8b4e0e1c0dfc261503858b0eedc60d1561df1aa
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 461061b2fe4ded59b2d0a5bb1c9df29354f4a995
+  revision: 14c4d5b11d6fe20a227eb889a30504c23c3e99a0
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -429,6 +429,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actiontext
   bcrypt
   bootsnap
   bootstrap-datepicker-rails

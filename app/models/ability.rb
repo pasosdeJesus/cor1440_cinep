@@ -422,8 +422,15 @@ class Ability  < Cor1440Gen::Ability
           can [:edit, :update], pc
           can [:edit], Cor1440Gen::Indicadorpf
           can :manage, ::Publicacion
-          can [:read, :edit, :update], Mr519Gen::Encuestapersona
-          #can :coord, :vistobuenoactividad
+          can [:read], Mr519Gen::Encuestapersona
+          encper = Mr519Gen::Encuestapersona.joins(:persona).
+            joins('JOIN sip_actorsocial_persona ON 
+            sip_persona.id = sip_actorsocial_persona.persona_id').
+            joins( 'JOIN actorsocial_grupo ON actorsocial_grupo.actorsocial_id
+            =sip_actorsocial_persona.actorsocial_id').
+            where('grupo_id IN (?)', idlineas)
+          puts "encper.ids=#{encper.map(&:id)}"
+          can [:edit, :update], encper
         end
         
         # Responsables de un proyecto también pueden editar marco lógico

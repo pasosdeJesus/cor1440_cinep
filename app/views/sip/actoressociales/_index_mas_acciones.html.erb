@@ -1,4 +1,4 @@
-<% if registro.persona %>
+<% if registro.persona && registro.grupo_ids %>
   <% r = Mr519Gen::Encuestapersona.
     where(persona_id: registro.persona.map(&:id)).
     joins(:planencuesta).where('planencuesta.fechafin >= ?', Date.today) %>
@@ -15,7 +15,7 @@
             e.id, 
             {actorsocial_id: registro.id}), :class => 'btn btn-xs', target: '_blank' 
           %>
-      <% elsif can?(:edit, registro) %>
+      <% elsif can?(:edit, e) %>
         <% if acper.correo && acper.correo != '' && e.fechainv %>
           <%= link_to "Encuesta externa ##{e.planencuesta.formulario_id} en curso",
             mr519_gen.encuestaexterna_url(e.adurl), :class => 'btn btn-xs', 
