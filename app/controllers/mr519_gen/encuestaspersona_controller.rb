@@ -5,7 +5,6 @@ module Mr519Gen
   class EncuestaspersonaController < Sip::ModelosController
     include Mr519Gen::Concerns::Controllers::EncuestaspersonaController
 
-    
     def atributos_index
       r = [ :id ]
       if can?(:manage, Mr519Gen::Encuestapersona)
@@ -31,6 +30,16 @@ module Mr519Gen
       @registro.fecha = Date.today
       @registro.save!(validate: false)
       redirect_to mr519_gen.edit_encuestapersona_path(@registro)
+    end
+
+    def edit
+      if !@registro.adurl
+        @registro.regenerate_adurl
+        @registro.save
+        puts "OJO regenerate_adurl #{@registro.adurl}"
+      end
+      edit_mr519_gen
+      render layout: 'application'
     end
 
     def correoinv
