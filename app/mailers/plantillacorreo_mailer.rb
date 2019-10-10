@@ -21,10 +21,11 @@ class PlantillacorreoMailer < ApplicationMailer
 
     puts "enviando con tema '#{@tema}' y plantilla '#{@idplantilla} #{@para.count} receptores"
     if @para == []
-      @para = ['vtamara@cinep.org.co']
+      @para = @cc
+      @cc =[]
     end
-    if @bcc == []
-      @bcc = ['vtamara@pasosdeJesus.org, blanca@pasosdeJesus.org']
+    if @para == []
+      @para = 'crecer@cinep.org.co'
     end
     mail(to: @para, 
          cc: @cc,

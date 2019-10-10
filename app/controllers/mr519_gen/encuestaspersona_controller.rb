@@ -34,10 +34,9 @@ module Mr519Gen
 
     def antes_editar
       edit_mr519_gen
-      if !@registro.adurl
+      if @registro.adurl.nil? || @registro.adurl == ''
         @registro.regenerate_adurl
         @registro.save
-        puts "OJO regenerate_adurl #{@registro.adurl}"
       end
     end
 
@@ -53,7 +52,7 @@ module Mr519Gen
       antes_editar
       ap = Sip::ActorsocialPersona.where(
         actorsocial_id: params[:actorsocial_id].to_i,
-        persona_id: ep.persona_id).take
+        persona_id: @registro.persona_id).take
 
       para = [ap.correo]
 
@@ -62,44 +61,49 @@ module Mr519Gen
       ag = ::ActorsocialGrupo.where(
         actorsocial_id: params[:actorsocial_id].to_i)
       ag.each do |agi|
-        ng = ::Ability::GRUPO_COORDINADOR + ' ' + agi.grupo.nombre
-        gc = Sip::Grupo.where(nombre: ng)
+
+        ng = ::Ability::GRUPO_COORDINADOR + ' ' + 
+          agi.grupo.nombre.sub(::Ability::GRUPO_LINEA + ' ', '')
+        puts "Buscando ng=#{ng}"
+        gc = Sip::Grupo.habilitados.where(nombre: ng)
         if gc.count == 1
-          cc += gc.take.usuario.map(&:email)
+          ncu = gc.take.usuario.where(fechadeshabilitacion: nil).map(&:email)
+          cc += ncu
+          puts "Encontrado agregando #{ncu} a cc"
         end
       end
 
       # Seguimiento
       cc << 'mfvargas@cinep.org.co'
-      bcc = ['vtamara@nocheyniebla.org']
+      bcc = ['vtamara@cinep.org.co', 'vtamara@nocheyniebla.org']
 
 
       # Depuración
       puts "para=" + para.to_s
       puts "cc=" + cc.to_s
       puts "bcc=" + bcc.to_s
-      para = ['vtamara@cinep.org.co']
-      cc = []
-      bcc = []
-      u = encuestaexterna_url(ep.adurl)
+      #para = ['vtamara@cinep.org.co']
+      #cc = []
+      #bcc = []
+      u = encuestaexterna_url(@registro.adurl)
       @resenvio = PlantillacorreoMailer.with(
         tema: 'Invitación a responder encuesta del CINEP/PPP',
         para: para,
         cc: cc,
         bcc: bcc,
-        idplantilla: ep.planencuesta.plantillacorreoinv_id,
+        idplantilla: @registro.planencuesta.plantillacorreoinv_id,
         
         actorsocial_nombre: ap.actorsocial.presenta_nombre,
         persona_nombre: ap.persona.presenta_nombre,
         actorsocialpersona_cargo: ap.cargo,
-        planencuesta_fechafin: ep.planencuesta.fechafin,
+        planencuesta_fechafin: @registro.planencuesta.fechafin,
         encuestapersona_url: u
       ).
       prepara_correo.deliver_now
-      ep.evidenciacorreoinv = @resenvio.message_id
-      ep.fechainv = Date.today
-      ep.destcorreoinv = "#{para.to_s} CC: #{cc.to_s} BCC: #{bcc.to_s}"
-      ep.save
+      @registro.evidenciacorreoinv = @resenvio.message_id
+      @registro.fechainv = Date.today
+      @registro.destcorreoinv = "#{para.to_s} CC: #{cc.to_s} BCC: #{bcc.to_s}"
+      @registro.save
       respond_to do |format|
         format.html { 
           render layout: 'application' 

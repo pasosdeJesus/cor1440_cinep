@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'vtamara@cinep.org.co'
+  default from: 'crecer@cinep.org.co'
   layout 'mailer'
 end
 
