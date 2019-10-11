@@ -91,6 +91,15 @@ module Sip
         'actorsocial_regiongrupo.regiongrupo_id=?', r)
     }
 
+    scope :filtro_actorsocial_persona, lambda { |c|
+      joins(:actorsocial_persona).joins(:persona).
+        where("(sip_persona.nombres || ' ' || sip_persona.apellidos 
+               || ' ' || COALESCE(sip_actorsocial_persona.cargo, '')
+               || ' ' || COALESCE(sip_actorsocial_persona.correo, '')
+              ) ILIKE ?", "%#{c}%")
+    }
+
+
     def presenta(atr)
       case atr.to_s
       when '{:actorsocial_persona=>[]}', 'actorsocial_persona'
