@@ -53,6 +53,18 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.action_mailer.logger = ActiveSupport::Logger.new(STDOUT)
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV['SMTP_MAQ'],
+    port:                 ENV['SMTP_PUERTO'],
+    domain:               ENV['SMTP_DOMINIO'],
+    user_name:            ENV['SMTP_USUARIO'],
+    password:             ENV['SMTP_CLAVE'],
+    authentication:       'login',
+    enable_starttls_auto: true
+  }
+
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 

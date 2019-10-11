@@ -85,10 +85,10 @@ module Mr519Gen
       puts "cc=" + cc.to_s
       puts "bcc=" + bcc.to_s
       #para = ['vtamara@cinep.org.co']
-      #cc = []
+      cc = []
       #bcc = []
       u = encuestaexterna_url(@registro.adurl)
-      @resenvio = PlantillacorreoMailer.with(
+      prep = PlantillacorreoMailer.with(
         tema: 'Invitación a responder encuesta del CINEP/PPP',
         para: para,
         cc: cc,
@@ -100,8 +100,8 @@ module Mr519Gen
         actorsocialpersona_cargo: ap.cargo,
         planencuesta_fechafin: @registro.planencuesta.fechafin,
         encuestapersona_url: u
-      ).
-      prepara_correo.deliver_now
+      ).prepara_correo
+      @resenvio = prep.deliver_now
       @registro.evidenciacorreoinv = @resenvio.message_id
       @registro.fechainv = Date.today
       @registro.destcorreoinv = "#{para.to_s} CC: #{cc.to_s} BCC: #{bcc.to_s}"
