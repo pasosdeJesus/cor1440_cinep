@@ -17,11 +17,11 @@
           %>
       <% elsif can?(:edit, e) %>
         <% if acper.correo && acper.correo != '' && e.fechainv %>
-          <%= link_to "Encuesta externa ##{e.planencuesta.formulario_id} en curso",
+          <%= link_to "Encuesta externa ##{e.planencuesta.formulario_id}",
             mr519_gen.encuestaexterna_url(e.adurl), :class => 'btn btn-xs', 
             target: '_blank' %>
         <% else %>
-          <%= link_to "Edita encuesta ##{e.planencuesta.formulario_id} en curso",
+          <%= link_to "Edita encuesta ##{e.planencuesta.formulario_id}",
             mr519_gen.edit_encuestapersona_path(e), :class => 'btn btn-xs', 
             target: '_blank' %>
         <% end %>
