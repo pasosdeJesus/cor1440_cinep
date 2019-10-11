@@ -85,7 +85,7 @@ module Mr519Gen
       puts "cc=" + cc.to_s
       puts "bcc=" + bcc.to_s
       #para = ['vtamara@cinep.org.co']
-      cc = []
+      #cc = []
       #bcc = []
       u = encuestaexterna_url(@registro.adurl)
       prep = PlantillacorreoMailer.with(
