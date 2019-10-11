@@ -92,7 +92,7 @@ module Sip
     }
 
     scope :filtro_actorsocial_persona, lambda { |c|
-      joins(:actorsocial_persona).joins(:persona).
+      joins(:persona).
         where("(sip_persona.nombres || ' ' || sip_persona.apellidos 
                || ' ' || COALESCE(sip_actorsocial_persona.cargo, '')
                || ' ' || COALESCE(sip_actorsocial_persona.correo, '')
