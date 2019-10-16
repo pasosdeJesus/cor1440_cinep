@@ -25,7 +25,7 @@ gem 'colorize' # Color en terminal
 gem 'cor1440_gen',  # Motor de proyectos con marco lógico y actividades 
   git: 'https://github.com/pasosdeJesus/cor1440_gen.git'
 #gem 'cor1440_gen', path: '../cor1440_gen'
-#
+
 gem 'devise' # Autenticación 
 
 gem 'devise-i18n'
@@ -52,8 +52,7 @@ gem 'mr519_gen', # Motor de gestion de formularios y encuestas
   git: 'https://github.com/pasosdeJesus/mr519_gen.git'
 #gem 'mr519_gen', path: '../mr519_gen'
 
-gem 'odf-report',  # Genera ODT
-  git: 'https://github.com/vtamara/odf-report.git', branch: 'rubyzip-1.3'
+gem 'odf-report'  # Genera ODT
 
 gem 'paperclip' # Maneja adjuntos
 
