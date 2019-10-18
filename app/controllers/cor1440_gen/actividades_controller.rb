@@ -5,6 +5,11 @@ module Cor1440Gen
   class ActividadesController < Heb412Gen::ModelosController
     include Cor1440Gen::Concerns::Controllers::ActividadesController
 
+    before_action :set_actividad, 
+      only: [:show, :edit, :update, :destroy],
+      exclude: [:contar]
+    load_and_authorize_resource class: Cor1440Gen::Actividad
+
     helper Cor1440Gen::GruposHelper
 
     include Sip::ConsultasHelper
