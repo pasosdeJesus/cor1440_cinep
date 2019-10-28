@@ -35,6 +35,9 @@ Rails.application.routes.draw do
       controller: 'cor1440_gen/mindicadorespf', 
       path_names: { new: 'nuevo', edit: 'edita' }
 
+    resources :planesencuesta,
+      path_names: { new: 'nuevo', edit: 'edita' }
+
     resources :pprogstind, path_names: { new: 'nuevo', edit: 'edita' }
 
 #    resources :proyectosfinancieros, 
@@ -43,13 +46,6 @@ Rails.application.routes.draw do
 
     resources :tasascambio,
       path_names: { new: 'nueva', edit: 'edita' }
-
-    get "/api/cor1440cinep/duracion" => 
-      "cor1440_gen/proyectosfinancieros#duracion", 
-      as: :duracion 
-    get "/api/cor1440cinep/mideindicador" => 
-      "cor1440_gen/mindicadorespf#mideindicador", 
-      as: :mideindicador
 
     get "/admin/grupos/:id/creardirac" => "sip/admin/grupos#crear_dirac", as: :crear_dirac
 
@@ -70,6 +66,23 @@ Rails.application.routes.draw do
     get "/admin/tiposcontratos/:id/tiponomina" => "admin/tiposcontratos#tiponomina", 
       as: :tiposcontratos_areaestudios
 
+    get "/encuestapersona/:id/correoinv" => "mr519_gen/encuestaspersona#correoinv", 
+      as: :correoinv_encuestapersona
+
+    get '/comunicados/presenta/:nombre' => 'admin/comunicados#presenta',
+      as: :comunicado_presenta
+
+    get "/api/cor1440cinep/duracion" => 
+      "cor1440_gen/proyectosfinancieros#duracion", 
+      as: :duracion 
+    get "/api/cor1440cinep/mideindicador" => 
+      "cor1440_gen/mindicadorespf#mideindicador", 
+      as: :mideindicador
+
+
+    get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :pf_fichaimp
+    get "/proyectosfinancieros/:id/fichapdf" => "cor1440_gen/proyectosfinancieros#fichapdf", as: :pf_fichapdf
+
     get "/reportes/indicador11" => "reportes#indicador11", 
       as: :reportes_indicador11
     get "/reportes/objetivoe2" => "reportes#objetivoe2", 
@@ -77,11 +90,6 @@ Rails.application.routes.draw do
     get "/reportes/cuadroactividades" => "reportes#cuadroactividades", 
       as: :reportes_cuadroactividades
 
-    get "/actividades/cuenta" => "cor1440_gen/actividades#cuenta", 
-      as: :actividades_cuenta
-
-    get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :pf_fichaimp
-    get "/proyectosfinancieros/:id/fichapdf" => "cor1440_gen/proyectosfinancieros#fichapdf", as: :pf_fichapdf
 
     namespace :admin do
       ab = ::Ability.new

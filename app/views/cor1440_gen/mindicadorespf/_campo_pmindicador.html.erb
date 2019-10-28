@@ -25,7 +25,8 @@
     </tr>
   </thead>
   <tbody id="pmindicador">
-    <%= f.simple_fields_for :pmindicador do |pmi| %>
+    <%= f.simple_fields_for :pmindicador,
+      f.object.pmindicador.order(:finicio, :ffin) do |pmi| %>
       <%= render 'pmindicador_campos', :f => pmi %>
     <% end %>
   </tbody>

@@ -1,0 +1,31 @@
+<% if registro.persona && registro.grupo_ids %>
+  <% r = Mr519Gen::Encuestapersona.
+    where(persona_id: registro.persona.map(&:id)).
+    joins(:planencuesta).where('planencuesta.fechafin >= ?', Date.today) %>
+  <% r.each do |e| %>
+    <% acper = Sip::ActorsocialPersona.where(
+      actorsocial_id: registro.id, persona_id: e.persona_id) %>
+    <% if acper.count == 1 %>
+      <% acper = acper.take %>
+      <% puts "OJO registro.id=#{registro.id}, acper.correo='#{acper.correo}'" %>
+      <% if can?(:manage, Mr519Gen::Encuestapersona) && !e.fechainv && 
+          acper.correo && acper.correo != '' %>
+        <%= link_to "Correo inv. encuesta ##{e.planencuesta.formulario_id}",
+          main_app.correoinv_encuestapersona_path(
+            e.id, 
+            {actorsocial_id: registro.id}), :class => 'btn btn-xs', target: '_blank' 
+          %>
+      <% elsif can?(:edit, e) %>
+        <% if acper.correo && acper.correo != '' && e.fechainv %>
+          <%= link_to "Encuesta externa ##{e.planencuesta.formulario_id}",
+            mr519_gen.encuestaexterna_url(e.adurl), :class => 'btn btn-xs', 
+            target: '_blank' %>
+        <% else %>
+          <%= link_to "Edita encuesta ##{e.planencuesta.formulario_id}",
+            mr519_gen.edit_encuestapersona_path(e), :class => 'btn btn-xs', 
+            target: '_blank' %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

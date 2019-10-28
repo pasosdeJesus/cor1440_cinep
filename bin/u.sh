@@ -29,5 +29,5 @@ if (test "$DOAS" = "") then {
 	DOAS=sudo
 } fi;
 dfap=`basename ${DIRAP}`
-$DOAS su ${USUARIO_AP} -c "cd ${DIRAP};  bundle exec rake assets:precompile RAILS_RELATIVE_URL_ROOT=${RAILS_RELATIVE_URL_ROOT}; echo \"Iniciando unicorn...\" ; PGSSLCERT=${PGSSLCERT} PGSSLKEY=${PGSSLKEY} bundle exec rails RAILS_ENV=production sip:indices ; PGSSLCERT=${PGSSLCERT} PGSSLKEY=${PGSSLKEY} SECRET_KEY_BASE=${SECRET_KEY_BASE} bundle exec unicorn_rails -c ../$dfap/config/unicorn.conf.minimal.rb  -E ${RAILS_ENV} -D "
+$DOAS su - ${USUARIO_AP} -c "cd ${DIRAP};  echo 'Precompilando recursos'; PGSSLCERT=${PGSSLCERT} PGSSLKEY=${PGSSLKEY} RAILS_ENV=${RAILS_ENV} bin/rails assets:precompile RAILS_RELATIVE_URL_ROOT=${RAILS_RELATIVE_URL_ROOT}; echo 'Actualizando indices' ; PGSSLCERT=${PGSSLCERT} PGSSLKEY=${PGSSLKEY} bin/rails RAILS_ENV=${RAILS_ENV} sip:indices ; echo 'Iniciando unicorn'; SMTP_MAQ=${SMTP_MAQ} SMTP_DOMINIO=${SMTP_DOMINIO} SMTP_PUERTO=${SMTP_PUERTO} SMTP_CLAVE=${SMTP_CLAVE} SMTP_USUARIO=${SMTP_USUARIO} JN316_CLAVE=${JN316_CLAVE} PGSSLCERT=${PGSSLCERT} PGSSLKEY=${PGSSLKEY} SECRET_KEY_BASE=${SECRET_KEY_BASE} bundle exec unicorn_rails -c ../$dfap/config/unicorn.conf.minimal.rb  -E ${RAILS_ENV} -D "
 

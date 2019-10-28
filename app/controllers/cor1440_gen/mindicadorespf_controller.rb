@@ -240,17 +240,25 @@ module Cor1440Gen
 
           # Plan Trienal 2018-2020
           when 'E1I1'
-            base = "SELECT COUNT(*) FROM efecto WHERE 
-               fecha>='#{fini}' AND fecha<='#{ffin}'
-               AND indicadorpf_id='18'"
-            resind = ActiveRecord::Base.connection.execute(base).first['count'].to_f
+            base = Cor1440Gen::Actividad.where('fecha>=?', fini).
+              where('fecha<=?', ffin).
+              where('id IN (SELECT actividad_id 
+                FROM cor1440_gen_actividad_actividadpf
+                WHERE actividadpf_id=\'90\') AND vistobuenodir 
+                AND precedidapor IS NULL')
+            resind = base.count.to_f
+            idr = base.pluck(:id)
+            if idr.count > 0
+              urlevrind = cor1440_gen.actividades_url + 
+                '?filtros[busid]='+idr.uniq.join(',')
+            end
 
           when 'E1I2'
-            base = "SELECT COUNT(actorsocial_id) FROM efecto
-               JOIN actorsocial_efecto 
-                ON efecto.id=actorsocial_efecto.efecto_id 
+            base = "SELECT COUNT(actorsocial_id) FROM cor1440_gen_efecto
+               JOIN cor1440_gen_actorsocial_efecto 
+                ON cor1440_gen_efecto.id=cor1440_gen_actorsocial_efecto.efecto_id 
                JOIN sip_actorsocial 
-                ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
+                ON sip_actorsocial.id=cor1440_gen_actorsocial_efecto.actorsocial_id 
                WHERE ((fecha>='#{fini}' AND fecha<='#{ffin}') OR
                 (fecha20>='#{fini}' AND fecha20<='#{ffin}') OR
                 (fecha40>='#{fini}' AND fecha40<='#{ffin}') OR
@@ -261,20 +269,20 @@ module Cor1440Gen
                AND indicadorpf_id='19'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
             base = "SELECT COUNT(*) FROM 
-              (SELECT DISTINCT regiongrupo_id FROM efecto 
-              JOIN actorsocial_efecto ON efecto.id=actorsocial_efecto.efecto_id 
+              (SELECT DISTINCT regiongrupo_id FROM cor1440_gen_efecto 
+              JOIN cor1440_gen_actorsocial_efecto ON cor1440_gen_efecto.id=cor1440_gen_actorsocial_efecto.efecto_id 
               JOIN actorsocial_regiongrupo 
-                ON actorsocial_regiongrupo.actorsocial_id=actorsocial_efecto.actorsocial_id 
+                ON actorsocial_regiongrupo.actorsocial_id=cor1440_gen_actorsocial_efecto.actorsocial_id 
               JOIN sip_actorsocial 
-                ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
-              WHERE ((efecto.fecha>='#{fini}' AND efecto.fecha<='#{ffin}') OR
-                (efecto.fecha20>='#{fini}' AND efecto.fecha20<='#{ffin}') OR
-                (efecto.fecha40>='#{fini}' AND efecto.fecha40<='#{ffin}') OR
-                (efecto.fecha60>='#{fini}' AND efecto.fecha60<='#{ffin}') OR
-                (efecto.fecha80>='#{fini}' AND efecto.fecha80<='#{ffin}') OR
-                (efecto.fecha100>='#{fini}' AND efecto.fecha100<='#{ffin}'))
+                ON sip_actorsocial.id=cor1440_gen_actorsocial_efecto.actorsocial_id 
+              WHERE ((cor1440_gen_efecto.fecha>='#{fini}' AND cor1440_gen_efecto.fecha<='#{ffin}') OR
+                (cor1440_gen_efecto.fecha20>='#{fini}' AND cor1440_gen_efecto.fecha20<='#{ffin}') OR
+                (cor1440_gen_efecto.fecha40>='#{fini}' AND cor1440_gen_efecto.fecha40<='#{ffin}') OR
+                (cor1440_gen_efecto.fecha60>='#{fini}' AND cor1440_gen_efecto.fecha60<='#{ffin}') OR
+                (cor1440_gen_efecto.fecha80>='#{fini}' AND cor1440_gen_efecto.fecha80<='#{ffin}') OR
+                (cor1440_gen_efecto.fecha100>='#{fini}' AND cor1440_gen_efecto.fecha100<='#{ffin}'))
               AND sip_actorsocial.lineabase20182020
-              AND efecto.indicadorpf_id='19') AS s"
+              AND cor1440_gen_efecto.indicadorpf_id='19') AS s"
             d2 = ActiveRecord::Base.connection.execute(base)
             d2 = d2.first ? d2.first['count'] : 0
 
@@ -287,14 +295,14 @@ module Cor1440Gen
                 WHEN fecha40>='#{fini}' AND fecha40<='#{ffin}' THEN 0.4
                 WHEN fecha20>='#{fini}' AND fecha20<='#{ffin}' THEN 0.2
                 ELSE 0
-              END AS p FROM efecto
-              JOIN actorsocial_efecto 
-                ON efecto.id=actorsocial_efecto.efecto_id 
+              END AS p FROM cor1440_gen_efecto
+              JOIN cor1440_gen_actorsocial_efecto 
+                ON cor1440_gen_efecto.id=cor1440_gen_actorsocial_efecto.efecto_id 
               JOIN actorsocial_regiongrupo 
-                ON actorsocial_regiongrupo.actorsocial_id=actorsocial_efecto.actorsocial_id 
+                ON actorsocial_regiongrupo.actorsocial_id=cor1440_gen_actorsocial_efecto.actorsocial_id 
               JOIN sip_actorsocial 
-                ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
-              WHERE efecto.indicadorpf_id='19' 
+                ON sip_actorsocial.id=cor1440_gen_actorsocial_efecto.actorsocial_id 
+              WHERE cor1440_gen_efecto.indicadorpf_id='19' 
               AND sip_actorsocial.lineabase20182020
             ) AS subcons GROUP BY regiongrupo_id) AS submax"
             resind = ActiveRecord::Base.connection.execute(res)
@@ -302,12 +310,12 @@ module Cor1440Gen
 
           when 'E2I1'
             base = "SELECT COUNT(*) FROM (SELECT DISTINCT actorsocial_id
-               FROM efecto 
-               JOIN actorsocial_efecto ON efecto.id=actorsocial_efecto.efecto_id 
-               JOIN sip_actorsocial ON sip_actorsocial.id=actorsocial_efecto.actorsocial_id 
-               WHERE efecto.fecha>='#{fini}' AND efecto.fecha<='#{ffin}'
+               FROM cor1440_gen_efecto 
+               JOIN cor1440_gen_actorsocial_efecto ON cor1440_gen_efecto.id=cor1440_gen_actorsocial_efecto.efecto_id 
+               JOIN sip_actorsocial ON sip_actorsocial.id=cor1440_gen_actorsocial_efecto.actorsocial_id 
+               WHERE cor1440_gen_efecto.fecha>='#{fini}' AND cor1440_gen_efecto.fecha<='#{ffin}'
                AND sip_actorsocial.lineabase20182020
-               AND efecto.indicadorpf_id='20') AS s"
+               AND cor1440_gen_efecto.indicadorpf_id='20') AS s"
             d1 = ActiveRecord::Base.connection.execute(base).first['count']
             base = "SELECT COUNT(*) FROM sip_actorsocial WHERE 
                (fechadeshabilitacion IS NULL 
@@ -318,13 +326,13 @@ module Cor1440Gen
             resind = d2.to_f > 0 ? 100*d1.to_f/d2.to_f : nil
 
           when 'E3I1'
-            base = "SELECT COUNT(*) FROM efecto WHERE 
+            base = "SELECT COUNT(*) FROM cor1440_gen_efecto WHERE 
                fecha>='#{fini}' AND fecha<='#{ffin}'
                AND indicadorpf_id='21'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count'].to_f
             resind = d1
           when 'E3I2'
-            base = "SELECT COUNT(*) FROM efecto WHERE
+            base = "SELECT COUNT(*) FROM cor1440_gen_efecto WHERE
                 (fecha100>='#{fini}' AND fecha100<='#{ffin}') OR
                 (fecha80>='#{fini}' AND fecha80<='#{ffin}') OR
                 (fecha60>='#{fini}' AND fecha60<='#{ffin}') OR
@@ -341,12 +349,12 @@ module Cor1440Gen
                 WHEN fecha40>='#{fini}' AND fecha40<='#{ffin}' THEN 0.4
                 WHEN fecha20>='#{fini}' AND fecha20<='#{ffin}' THEN 0.2
                 ELSE 0
-              END AS p FROM efecto
+              END AS p FROM cor1440_gen_efecto
               WHERE indicadorpf_id='22' 
             ) AS subcons"
             resind = ActiveRecord::Base.connection.execute(res).first['r'].to_f
           else
-            base = "SELECT COUNT(*) FROM efecto WHERE 
+            base = "SELECT COUNT(*) FROM cor1440_gen_efecto WHERE 
                fecha>='#{fini}' AND fecha<='#{ffin}'
                AND indicadorpf_id='#{ind.id}'"
             d1 = ActiveRecord::Base.connection.execute(base).first['count'].to_f

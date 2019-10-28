@@ -15,7 +15,9 @@ es:
     departamento: Departamento
     direccion: Dirección
     fechacreacion: Creación
+    fechacreacion_localizada: Creación
     fechadeshabilitacion: Deshabilitación 
+    fechadeshabilitacion_localizada: Deshabilitación 
     niveleducacion: Nivel de educacion
     nivelrelacion: Nivel de relacion
     oficina: Oficina
@@ -66,6 +68,10 @@ es:
       "cajacompensacion":
         Cajacompensacion: 'Caja de compensación'
         Cajascompensacion: 'Cajas de compensación'
+      "comunicado":
+        Comunicado: 'Comunicado'
+        Comunicados: 'Comunicados'
+        nombre: 'Identificación en URL'
       "contrato":
         ciudadresidencia: Ciudad de residencia
         ciudadlabora: Ciudad donde labora
@@ -251,6 +257,15 @@ es:
         desc60: 'Descripción 60% (sólo si es indicador progresivo)'
         desc80: 'Descripción 80% (sólo si es indicador progresivo)'
         desc100: 'Descripción 100% (sólo si es indicador progresivo)'
+      "mr519_gen/encuestapersona":
+        Encuestapersona: Encuesta a contacto de actor social
+        Encuestaspersona: Encuestas a contactos de actores sociales
+        fechaini_localizada: Fecha de primera aplicación
+        fechacambio_localizada: Fecha de último cambio
+        fechainicio_localizada: Fecha de inicio
+        fechafin_localizada: Fecha de cierre
+        planencuesta: Plan de la encuesta para actores sociales
+        valorcampo: Respuestas
       "niveleducacion":
         Niveleducacion: Nivel de educación
         Niveleseducacion: Niveles de educación
@@ -260,6 +275,16 @@ es:
       "nucleoconflicto":
         Nucleoconflict: Núcleo de conflicto
         Nucleosconflicto: Núcleos de conflicto
+      "planencuesta":  
+        Planencuesta: Plan de una encuesta a actores sociales
+        Planesencuesta: Planes de encuestas a actores sociales
+        fechaini_localizada: Fecha de inicio de encuesta
+        fechafin_localizada: Fecha límite para presentarla
+        plantillacorreoinv: Plantilla para el correo de invitación
+        encuestapersona: Encuestas a personas que hacen parte de este plan
+      "plantillacorreo":  
+        Plantillacorreo: Plantilla para correo
+        Plantillascorreo: Plantillas para correo
       "perfilprofesional":  
         Perfilprofesional: Perfil profesional
         Perfilesprofesionales: Perfiles profesionales

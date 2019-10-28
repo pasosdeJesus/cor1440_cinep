@@ -11,7 +11,7 @@ class Ability  < Cor1440Gen::Ability
 
   # Se usa desde 1
   ROLES_CA = [
-    'Administrar actividades e informes de todos los grupos (con contexto). ' +
+    'Administrar actividades de todos los grupos (con contexto). ' +
     'Administrar convenios institucionales. ' +
     'Administrar documentos en nube y plantillas. ' +
     'Administrar tablas básicas (actores sociales, tipos de convenios, etc). ' +
@@ -25,11 +25,12 @@ class Ability  < Cor1440Gen::Ability
 
     '', #4
 
+    'Si sólo está en grupo Usuarios sólo puede gestionar su clave. ' +
     'Ver convenios institucionales. ' +
     'Ver documentos en nube y plantillas, así como descripciones de cada carpeta. ' +
     'Ver listado de usuarios y su información pública. ' +
     'Responder encuestas. ' +
-    'Administrar actividades e informes de su grupo. ' +
+    'Administrar actividades de su grupo. ' +
     'Áreas de investigación: Ver, editar y agregar actores sociales. ' +
     'Área Derechos Humanos: En formulario de actividades usan contexto. Ver reportes trienal 2015-2017 ' +
     'Grupo Gerencia de Proyectos: Administrar actividades de todos los grupos. ' +
@@ -54,8 +55,11 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_COMUNICACIONES = "Comunicaciones"
   GRUPO_DERECHOSHUMANOS = "Línea Derechos Humanos y Derecho Internacional Humanitario"
   GRUPO_LINEA = "Línea"
+  GRUPO_OFICINATI = "Oficina TI"
   GRUPO_COORDINADOR = "Coordinador(a)"
   GRUPO_COORDINADORGP = GRUPO_COORDINADOR + " " + GRUPO_COMPROMISOS 
+
+
   def tablasbasicas 
     super() - [ 
       ['Cor1440Gen', 'actividadarea'] ,
@@ -68,12 +72,14 @@ class Ability  < Cor1440Gen::Ability
         ['', 'areaestudios'],
         ['', 'cajacompensacion'],
         ['', 'cargo'],
+        ['', 'comunicado'],
         ['', 'empresaps'],
         ['', 'fondopensiones'],
         ['', 'nivelrelacion'],
         ['', 'niveleducacion'],
 #        ['', 'nucleoconflicto'],
         ['', 'perfilprofesional'],
+        ['', 'plantillacorreo'],
         ['', 'procesogh'],
         ['', 'profesion'],
         ['', 'publicacion'],
@@ -220,6 +226,35 @@ class Ability  < Cor1440Gen::Ability
       controlador: 'Cor1440Gen::ActividadesController',
       ruta: '/actividades'
     },
+
+    'Actorsocial' => { 
+      campos: [
+          'actorsocial_persona',
+          'actualizado_en',
+          'anotaciones',
+          'celular',
+          'ciudad',
+          'creado_en',
+          'contactos_nombres',
+          'contactos_correos',
+          'contactos_cargos',
+          'correo',
+          'direccion',
+          'fax',
+          'grupos',
+          'id', 
+          'lineabase20182020',
+          'nivelrelacion',
+          'nombre',
+          'pais',
+          'sectores',
+          'telefono', 
+          'web'
+      ],
+      controlador: 'Sip::Actorsocial',
+      ruta: '/actoressociales'
+    },
+ 
     'Cuadro General de Seguimiento' => { 
       campos: [
         'compromiso_id',  'referenciacinep', 
@@ -319,18 +354,23 @@ class Ability  < Cor1440Gen::Ability
       return
     end
     lgrupos = ApplicationHelper.supergrupos_usuario(usuario) #nombres
-    can :descarga_anexo, Sip::Anexo
-    if !usuario.nil? && !usuario.rol.nil? then
+    if !usuario.nil? && !usuario.rol.nil? 
+      if usuario.rol == Ability::ROLOPERADOR &&
+        (lgrupos.count == 0 || lgrupos == ['Usuarios'])
+        return
+      end
+      can :descarga_anexo, Sip::Anexo
       can :nuevo, Cor1440Gen::Actividad
       can :new, Cor1440Gen::Actividad
       case usuario.rol 
       when Ability::ROLOPERADOR
         can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
-        can :manage, Cor1440Gen::Informe # limitar a oficina?
+        #can :manage, Cor1440Gen::Informe # limitar a oficina?
         can :read, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichaimp, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichapdf, Cor1440Gen::Proyectofinanciero # Los de su grupo
-
+        can :objetivospf, Cor1440Gen::Proyectofinanciero
+        can :actividadespf, Cor1440Gen::Proyectofinanciero
 
         can :read, Heb412Gen::Doc
         can :read, Heb412Gen::Plantilladoc
@@ -338,7 +378,9 @@ class Ability  < Cor1440Gen::Ability
         can :read, Heb412Gen::Plantillahcr
 
         can :read, Mr519Gen::Formulario
-        can :read, Mr519Gen::Encuestausuario
+        can :read, [Mr519Gen::Encuestausuario, 
+                    Mr519Gen::Encuestapersona,
+                    ::Planencuesta ]
         can [:edit, :update], 
           Mr519Gen::Encuestausuario.where(usuario_id: usuario.id)
 
@@ -356,8 +398,6 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Efecto
           can :index, Cor1440Gen::Mindicadorpf
-          can :objetivospf, Cor1440Gen::Proyectofinanciero
-          can :actividadespf, Cor1440Gen::Proyectofinanciero
         end
 
         coords = lgrupos.select {|g| g.start_with?(GRUPO_COORDINADOR)}
@@ -382,7 +422,15 @@ class Ability  < Cor1440Gen::Ability
           can [:edit, :update], pc
           can [:edit], Cor1440Gen::Indicadorpf
           can :manage, ::Publicacion
-          #can :coord, :vistobuenoactividad
+          can [:read], Mr519Gen::Encuestapersona
+          encper = Mr519Gen::Encuestapersona.joins(:persona).
+            joins('JOIN sip_actorsocial_persona ON 
+            sip_persona.id = sip_actorsocial_persona.persona_id').
+            joins( 'JOIN actorsocial_grupo ON actorsocial_grupo.actorsocial_id
+            =sip_actorsocial_persona.actorsocial_id').
+            where('grupo_id IN (?)', idlineas)
+          puts "encper.ids=#{encper.map(&:id)}"
+          can [:edit, :update], encper
         end
         
         # Responsables de un proyecto también pueden editar marco lógico
@@ -400,9 +448,15 @@ class Ability  < Cor1440Gen::Ability
           can :edit, :contextoac
         end
 
+        if lgrupos.include?(GRUPO_OFICINATI)
+          can :manage, Mr519Gen::Formulario
+        end
+
         if lgrupos.include?(GRUPO_COMPROMISOS) || 
           lgrupos.include?(GRUPO_COORDINADORGP)
           # Oficina Gerencia de Proyectos
+          can :objetivospf, Cor1440Gen::Proyectofinanciero
+          can :actividadespf, Cor1440Gen::Proyectofinanciero
           can :manage, Cor1440Gen::Actividad
           can [:index, :read], Cor1440Gen::Efecto
           can :manage, Cor1440Gen::Financiador
@@ -466,7 +520,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, Cor1440Gen::Actividad
         can :manage, Cor1440Gen::Efecto
         can :manage, Cor1440Gen::Indicadorpf
-        can :manage, Cor1440Gen::Informe
+        #can :manage, Cor1440Gen::Informe
         can :manage, Cor1440Gen::Mindicadorpf
         can :manage, Cor1440Gen::Proyectofinanciero
         can :manage, Cor1440Gen::Tipoindicador
@@ -478,6 +532,8 @@ class Ability  < Cor1440Gen::Ability
 
         can :manage, Mr519Gen::Formulario
         can :manage, Mr519Gen::Encuestausuario
+        can :manage, Mr519Gen::Encuestapersona
+        can :manage, ::Planencuesta
 
         can :manage, Sip::Actorsocial
         can :manage, :tablasbasicas

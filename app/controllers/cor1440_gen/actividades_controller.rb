@@ -5,6 +5,11 @@ module Cor1440Gen
   class ActividadesController < Heb412Gen::ModelosController
     include Cor1440Gen::Concerns::Controllers::ActividadesController
 
+    before_action :set_actividad, 
+      only: [:show, :edit, :update, :destroy],
+      exclude: [:contar]
+    load_and_authorize_resource class: Cor1440Gen::Actividad
+
     helper Cor1440Gen::GruposHelper
 
     include Sip::ConsultasHelper
@@ -37,63 +42,41 @@ module Cor1440Gen
       create_gen
     end
 
-    def cuenta
-      @misgrupos = Cor1440Gen::GruposHelper.
+    def filtra_contar_control_acceso
+      @contar_misgrupos = Cor1440Gen::GruposHelper.
           mis_grupos_sinus(current_usuario) 
       # Investigadores ven sólo su linea
-      mg = @misgrupos.where("nombre LIKE '#{::Ability::GRUPO_LINEA}%'").
+      @contar_mg = @contar_misgrupos.where("nombre LIKE '#{::Ability::GRUPO_LINEA}%'").
           order(:nombre)
-      if mg.count > 0 && mg.count < 3
-        @misgrupos = mg
+      if @contar_mg.count > 0 && @contar_mg.count < 3
+        @contar_misgrupos = @contar_mg
       end
-      @miscompromisos = Cor1440Gen::GruposHelper.
+      @contar_pf = Cor1440Gen::GruposHelper.
         compromisos_grupos(Cor1440Gen::Proyectofinanciero.all,
-                           @misgrupos, current_usuario)
-      @pfid = params[:filtro] && params[:filtro][:proyectofinanciero_id] ? 
-        params[:filtro][:proyectofinanciero_id].to_i : 18  
-      @baseactividad = Cor1440Gen::Actividad.all
+                           @contar_misgrupos, current_usuario)
+      @contar_pfid = 18
+    end
+
+    def filtra_contar_por_parametros
       grupo = nil
+
       if params[:filtro] && params[:filtro][:grupo_id] && 
         params[:filtro][:grupo_id] != ""
         grupo = Sip::Grupo.find(params[:filtro][:grupo_id].to_i)
       else 
-        if mg.count == 1
-          grupo = mg.first
+        if @contar_mg.count == 1
+          grupo = @contar_mg.first
         end
       end
       if grupo
-        @grupoid = grupo.id
-        @baseactividad = @baseactividad.where(
+        @contar_grupoid = grupo.id
+        @contar_actividad = @contar_actividad.where(
           'cor1440_gen_actividad.id IN (SELECT actividad_id 
-             FROM actividad_grupo WHERE grupo_id = ?)', @grupoid)
+             FROM actividad_grupo WHERE grupo_id = ?)', @contar_grupoid)
       end
-
-      if !params[:filtro] || !params[:filtro]['fechaini'] || 
-        params[:filtro]['fechaini'] != ""
-        if !params[:filtro] || !params[:filtro]['fechaini']
-          @fechaini = inicio_semestre_ant
-        else
-          @fechaini = fecha_local_estandar(params[:filtro]['fechaini'])
-        end
-        @baseactividad = @baseactividad.where(
-          'cor1440_gen_actividad.fecha >= ?', @fechaini)
-      end
-      if !params[:filtro] || !params[:filtro]['fechafin'] || 
-        params[:filtro]['fechafin'] != ""
-        if !params[:filtro] || !params[:filtro]['fechafin']
-          @fechafin = fin_semestre_ant
-        else
-          @fechafin = fecha_local_estandar(params[:filtro]['fechafin'])
-        end
-        @baseactividad = @baseactividad.where(
-          'cor1440_gen_actividad.fecha <= ?', @fechafin)
-      end
-
-      respond_to do |format|
-        format.html { render layout: 'application' }
-        format.json { head :no_content }
-        format.js { render }
-      end
+      @contar_pfid = params[:filtro] && 
+        params[:filtro][:proyectofinanciero_id] ? 
+        params[:filtro][:proyectofinanciero_id].to_i : 18
     end
 
     def asegura_contexto(actividad)
@@ -190,15 +173,25 @@ module Cor1440Gen
     end
 
     def index_reordenar(c)
-      mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).
-        map(&:id).join(', ')
       if current_usuario.rol != ::Ability::ROLDIR &&
         current_usuario.rol != ::Ability::ROLADMIN
-        if mg == '' &&
+        mg = Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario).
+          map(&:id)
+        gc = Sip::Grupo.where(nombre: ::Ability::GRUPO_COMPROMISOS).take
+        cmisg = "cor1440_gen_actividad.id in 
+          (SELECT actividad_id FROM actividad_grupo WHERE 
+            grupo_id IN (#{mg.join(', ')}))"
+        if mg == [] 
           c = c.where('TRUE=FALSE')
-        else
+        elsif mg.include?(gc.id)
           c = c.where("cor1440_gen_actividad.id in 
-          (SELECT actividad_id FROM actividad_grupo WHERE grupo_id IN (#{mg}))")
+          (SELECT actividad_id FROM cor1440_gen_actividad_proyectofinanciero 
+                      WHERE proyectofinanciero_id IN (SELECT id FROM 
+                      cor1440_gen_proyectofinanciero WHERE respgp_id=? OR
+                      respgp2_id=?
+                     )) OR #{cmisg}", current_usuario.id, current_usuario.id)
+        else
+          c = c.where(cmisg)
         end
       end
       c = c.reorder('cor1440_gen_actividad.fecha DESC') 

@@ -91,10 +91,17 @@ module Sip
         'actorsocial_regiongrupo.regiongrupo_id=?', r)
     }
 
+    scope :filtro_actorsocial_persona, lambda { |c|
+      joins(:persona).
+        where("(sip_persona.nombres || ' ' || sip_persona.apellidos 
+               || ' ' || COALESCE(sip_actorsocial_persona.cargo, '')
+               || ' ' || COALESCE(sip_actorsocial_persona.correo, '')
+              ) ILIKE ?", "%#{c}%")
+    }
+
+
     def presenta(atr)
       case atr.to_s
-      when 'created_at_localizada'
-        Sip::FormatoFechaHelper::fecha_estandar_local(self.created_at.utc.to_date)
       when '{:actorsocial_persona=>[]}', 'actorsocial_persona'
         self.actorsocial_persona.inject('') do |memo, ap|
           n = ap.persona.nombres ? ap.persona.nombres : 'N'
@@ -106,8 +113,31 @@ module Sip
           end
           (memo == '' ? '' : memo + '; ') + n + ' ' + a + com
         end
+      when 'contactos_nombres'
+        self.actorsocial_persona.inject('') do |memo, ap|
+          n = ap.persona.nombres ? ap.persona.nombres : 'N'
+          a = ap.persona.apellidos ? ap.persona.apellidos : 'N'
+          (memo == '' ? '' : memo + ', ') + n + ' ' + a
+        end
+      when 'contactos_correos'
+        self.actorsocial_persona.inject('') do |memo, ap|
+          c = ap.correo ? ap.correo : ''
+          (memo == '' ? '' : memo + ', ') + c 
+        end
+      when 'contactos_cargos'
+        self.actorsocial_persona.inject('') do |memo, ap|
+          c = ap.cargo ? ap.cargo : ''
+          (memo == '' ? '' : memo + ', ') + c 
+        end
+      when 'created_at_localizada'
+        Sip::FormatoFechaHelper::fecha_estandar_local(self.created_at.utc.to_date)
+      when 'grupos'
+         self.actorsocial_grupo.inject('') do |memo, ag|
+          (memo == '' ? '' : memo + '; ') + ag.grupo.nombre 
+        end
+
       else
-        presenta_gen(atr)
+        presenta_sip(atr)
       end
     end
 

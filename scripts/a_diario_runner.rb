@@ -1,4 +1,5 @@
 # encoding: utf-8
+# Ejecutar con bin/cron_diario
 
 DIAS=20
 def envia(pid, tiene, cuando, fecha, maslineas=[])

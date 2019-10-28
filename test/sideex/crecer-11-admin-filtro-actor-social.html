@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>crecer-11-admin-filtro-actor-social.html </title>
+	<title>crecer-11-admin-filtro-actor-social</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -11,7 +11,11 @@
 <tr><td rowspan="1" colspan="3">filtro-actor-social-id</td></tr>
 </thead>
 <tbody>
-<tr><td>clickAt</td><td>link=Regresar<datalist><option>link=Regresar</option><option>css=a.btn</option><option>//a[contains(text(),'Regresar')]</option><option>xpath=(//a[contains(@href, '/actoressociales')])[2]</option><option>//form/div/div/a</option></datalist></td><td>23,14</td>
+<tr><td>clickAt</td><td>link=Actividades<datalist><option>link=Actividades</option><option>css=a.dropdown-toggle</option><option>//a[contains(text(),'Actividades')]</option><option>//a[contains(@href, '#')]</option><option>//li/a</option></datalist></td><td>66,20</td>
+</tr>
+<tr><td>clickAt</td><td>link=Actores Sociales<datalist><option>link=Actores Sociales</option><option>css=li.active &gt; a</option><option>//a[contains(text(),'Actores Sociales')]</option><option>//a[contains(@href, '/actoressociales')]</option><option>//li[4]/a</option></datalist></td><td>54,13</td>
+</tr>
+<tr><td>assertText</td><td>//th[3]<datalist><option>//th[3]</option></datalist></td><td>Nivel de relación</td>
 </tr>
 <tr><td>clickAt</td><td>id=filtro_busid<datalist><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div/input</option></datalist></td><td>30,14</td>
 </tr>
@@ -33,15 +37,9 @@
 <tr><td rowspan="1" colspan="3">filtro-actor-social-grupos</td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>http://crecer.cinep.org.co:4000/actoressociales?utf8=%E2%9C%93&amp;filtro%5Bbusid%5D=&amp;filtro%5Bbusgrupoper_id%5D=&amp;filtro%5Bbusnivelrelacion_id%5D=&amp;filtro%5Bbussectoractor_ids%5D=&amp;filtro%5Bbusregiongrupo_ids%5D=&amp;filtro%5Bbusgrupo_ids%5D=&amp;filtro%5Bbuslineabase20182020%5D=Todos&amp;filtro%5Bbushabilitado%5D=Todos&amp;filtro%5Bbuscreated_atini%5D=&amp;filtro%5Bbuscreated_atfin%5D=&amp;filtrar=Filtrar<datalist><option>http://crecer.cinep.org.co:4000/actoressociales?utf8=%E2%9C%93&amp;filtro%5Bbusid%5D=&amp;filtro%5Bbusgrupoper_id%5D=&amp;filtro%5Bbusnivelrelacion_id%5D=&amp;filtro%5Bbussectoractor_ids%5D=&amp;filtro%5Bbusregiongrupo_ids%5D=&amp;filtro%5Bbusgrupo_ids%5D=&amp;filtro%5Bbuslineabase20182020%5D=Todos&amp;filtro%5Bbushabilitado%5D=Todos&amp;filtro%5Bbuscreated_atini%5D=&amp;filtro%5Bbuscreated_atfin%5D=&amp;filtrar=Filtrar</option></datalist></td><td></td>
+<tr><td>open</td><td>/actoressociales?utf8=%E2%9C%93&amp;filtro%5Bbusid%5D=&amp;filtro%5Bbusgrupoper_id%5D=&amp;filtro%5Bbusnivelrelacion_id%5D=&amp;filtro%5Bbussectoractor_ids%5D=&amp;filtro%5Bbusregiongrupo_ids%5D=&amp;filtro%5Bbusgrupo_ids%5D=&amp;filtro%5Bbuslineabase20182020%5D=Todos&amp;filtro%5Bbushabilitado%5D=Todos&amp;filtro%5Bbuscreated_atini%5D=&amp;filtro%5Bbuscreated_atfin%5D=&amp;filtrar=Filtrar<datalist><option>/actoressociales?utf8=%E2%9C%93&amp;filtro%5Bbusid%5D=&amp;filtro%5Bbusgrupoper_id%5D=&amp;filtro%5Bbusnivelrelacion_id%5D=&amp;filtro%5Bbussectoractor_ids%5D=&amp;filtro%5Bbusregiongrupo_ids%5D=&amp;filtro%5Bbusgrupo_ids%5D=&amp;filtro%5Bbuslineabase20182020%5D=Todos&amp;filtro%5Bbushabilitado%5D=Todos&amp;filtro%5Bbuscreated_atini%5D=&amp;filtro%5Bbuscreated_atfin%5D=&amp;filtrar=Filtrar</option></datalist></td><td></td>
 </tr>
-<tr><td>select</td><td>id=filtro_busgrupo_ids<datalist><option>id=filtro_busgrupo_ids</option><option>name=filtro[busgrupo_ids]</option><option>css=#filtro_busgrupo_ids</option><option>//select[@id='filtro_busgrupo_ids']</option><option>//td[6]/div/select</option></datalist></td><td>label=Archivo y Correspondencia</td>
-</tr>
-<tr><td>mouseDownAt</td><td>id=filtro_busgrupo_ids<datalist><option>id=filtro_busgrupo_ids</option><option>name=filtro[busgrupo_ids]</option><option>css=#filtro_busgrupo_ids</option><option>//select[@id='filtro_busgrupo_ids']</option><option>//td[6]/div/select</option></datalist></td><td>-991,-184</td>
-</tr>
-<tr><td>mouseMoveAt</td><td>id=filtro_busgrupo_ids<datalist><option>id=filtro_busgrupo_ids</option><option>name=filtro[busgrupo_ids]</option><option>css=#filtro_busgrupo_ids</option><option>//select[@id='filtro_busgrupo_ids']</option><option>//td[6]/div/select</option></datalist></td><td>-991,-184</td>
-</tr>
-<tr><td>mouseUpAt</td><td>id=filtro_busgrupo_ids<datalist><option>id=filtro_busgrupo_ids</option><option>name=filtro[busgrupo_ids]</option><option>css=#filtro_busgrupo_ids</option><option>//select[@id='filtro_busgrupo_ids']</option><option>//td[6]/div/select</option></datalist></td><td>-991,-184</td>
+<tr><td>select</td><td>id=filtro_busgrupo_ids<datalist><option>id=filtro_busgrupo_ids</option><option>name=filtro[busgrupo_ids]</option><option>css=#filtro_busgrupo_ids</option><option>//select[@id='filtro_busgrupo_ids']</option><option>//td[6]/div/select</option></datalist></td><td>label=Comunicaciones</td>
 </tr>
 <tr><td>clickAt</td><td>id=filtro_busgrupo_ids<datalist><option>id=filtro_busgrupo_ids</option><option>name=filtro[busgrupo_ids]</option><option>css=#filtro_busgrupo_ids</option><option>//select[@id='filtro_busgrupo_ids']</option><option>//td[6]/div/select</option></datalist></td><td>-991,-183</td>
 </tr>

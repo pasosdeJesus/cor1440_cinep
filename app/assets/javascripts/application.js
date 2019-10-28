@@ -15,7 +15,6 @@
 //= require cor1440_gen/motor
 //= require mr519_gen/motor
 //= require chosen-jquery
-//= require trix
 //= require_tree .
 
 $(document).on('turbolinks:load ready page:load', function() {

@@ -30,10 +30,16 @@
       %>
     </td>
     <td>
-      <%= f.input :cargo %>
+      <%= f.input :cargo, label: false %>
     </td>
     <td>
-      <%= f.input :correo %>
+      <%= f.input :correo, label: false %>
+    </td>
+    <td>
+      <%= f.input :id, as: :hidden %>
+      <%= link_to_remove_association "Eliminar", f, 
+        :class => 'btn-danger', "data-existing" => true %>
+      <div><%= f.error_notification %></div>
     </td>
   <% end %>
 </tr>
