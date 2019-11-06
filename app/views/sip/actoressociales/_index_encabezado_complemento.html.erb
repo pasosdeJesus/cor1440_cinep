@@ -3,4 +3,16 @@
     FROM sip_actorsocial_persona AS sap 
     WHERE sap.correo IS NOT NULL
     AND TRIM(sap.correo) != \'\') ').count %>
+  <% perid = @registros.joins(
+    'JOIN sip_actorsocial_persona ON sip_actorsocial_persona.actorsocial_id = ' +
+    'sip_actorsocial.id').pluck('sip_actorsocial_persona.persona_id') %>
+  <% numenc = Mr519Gen::Encuestapersona.where(persona_id: perid).
+    joins(:planencuesta).where('planencuesta.fechafin >= ?', Date.today) %>
+  <% byebug %>
+  <% numres = numenc.joins(:respuestafor).joins(:valorcampo).
+    where('mr519_gen_valorcampo.valor IS NOT NULL').
+    where('mr519_gen_valorcampo.valor <> \'\'').pluck('mr519_gen_encuestapersona.id').uniq %>
+
+  - Encuestas vigentes respondidas <%= numres.count %> / <%= numenc.count %>
+
 
