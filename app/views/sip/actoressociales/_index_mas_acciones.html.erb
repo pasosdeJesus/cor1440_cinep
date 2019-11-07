@@ -17,15 +17,24 @@
           %>
       <% elsif can?(:edit, e) %>
         <% if acper.correo && acper.correo != '' && e.fechainv %>
-          <%= link_to "Encuesta externa ##{e.planencuesta.formulario_id}",
-            mr519_gen.encuestaexterna_url(e.adurl), :class => 'btn btn-xs', 
-            target: '_blank' %>
+          <% texto = "Encuesta externa ##{e.planencuesta.formulario_id}" %>
+          <% url = mr519_gen.encuestaexterna_url(e.adurl) %>
         <% else %>
-          <%= link_to "Edita encuesta ##{e.planencuesta.formulario_id}",
-            mr519_gen.edit_encuestapersona_path(e), :class => 'btn btn-xs', 
-            target: '_blank' %>
+          <% texto = "Edita encuesta ##{e.planencuesta.formulario_id}" %>
+          <% url = mr519_gen.edit_encuestapersona_path(e) %>
         <% end %>
-      <% end %>
+        <% if e.respuestafor.valorcampo.where(
+            'valor IS NOT NULL').where("valor<>''").count > 0 ? ' %>
+          <% enlace = link_to(url, class: 'btn btn-xs', target: '_blank') do %>
+            <% icono_fa('flag', text: texto) %>
+          <% end %>
+        <% else %>
+          <% enlace = link_to texto, url, class: 'btn btn-xs', target: '_blank' %>
+        <% end %>
+
+        <%= enlace %>
+        <% end %>
+     <% end %>
     <% end %>
   <% end %>
 <% end %>
