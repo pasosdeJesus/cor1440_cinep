@@ -24,16 +24,15 @@
           <% url = mr519_gen.edit_encuestapersona_path(e) %>
         <% end %>
         <% if e.respuestafor.valorcampo.where(
-            'valor IS NOT NULL').where("valor<>''").count > 0 ? ' %>
+            'valor IS NOT NULL').where("valor<>''").count > 0  %>
           <% enlace = link_to(url, class: 'btn btn-xs', target: '_blank') do %>
-            <% icono_fa('flag', text: texto) %>
+            <%= icono_fa('flag', text: texto) %>
           <% end %>
         <% else %>
           <% enlace = link_to texto, url, class: 'btn btn-xs', target: '_blank' %>
         <% end %>
 
         <%= enlace %>
-        <% end %>
      <% end %>
     <% end %>
   <% end %>
