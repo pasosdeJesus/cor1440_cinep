@@ -6,7 +6,7 @@ class PuedeVerHogarTest < ApplicationSystemTestCase
 
   test "hogar con contenido" do 
     visit Rails.configuration.relative_url_root
-    assert page.has_content?("Crecer")
+    assert page.has_content?("Acerca de")
   end
 
 end

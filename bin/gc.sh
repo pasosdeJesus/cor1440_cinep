@@ -5,7 +5,7 @@ if (test -f ".env") then {
 	. ./.env
 } fi;
 
-grep "^[^#].*path" -B 1 -A 1 Gemfile
+grep "^[^#]*path" -B 1 -A 1 Gemfile
 if (test "$?" = "0") then {
   echo "Hay una gema cableada en el sistema de archivos"
   exit 1;

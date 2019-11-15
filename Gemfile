@@ -66,8 +66,8 @@ gem 'will_paginate' # Listados en páginas
 # bien vistas
 
 gem 'sip', # Motor generico
-  #git: 'https://github.com/pasosdeJesus/sip.git', branch: :bs4 
-  path: '../sip'
+  git: 'https://github.com/pasosdeJesus/sip.git', branch: :bs4 
+  #path: '../sip'
 
 gem 'jn316_gen', # LDAP
   git: 'https://github.com/pasosdeJesus/jn316_gen.git', branch: :bs4 

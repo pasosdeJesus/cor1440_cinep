@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 672df72833be34ff2c3be27357839bd8f8684c9d
+  revision: 65b421d665d0a0f31dda4578a884334c7ba0082b
   branch: bs4
   specs:
     sal7711_web (1.0.a3)
@@ -70,14 +70,9 @@ GIT
       sal7711_gen
 
 GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 088c8d9dcce7f51cf3a968398047eaac7a37718b
-  branch: new_id_with_ajax
-  specs:
-    cocoon (1.2.11)
-
-PATH
-  remote: ../sip
+  remote: https://github.com/pasosdeJesus/sip.git
+  revision: 144bd65942507711d337d47a11984b24849e6b1a
+  branch: bs4
   specs:
     sip (2.0.b7)
       cancancan
@@ -92,6 +87,13 @@ PATH
       simple_form
       twitter_cldr
       will_paginate
+
+GIT
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 088c8d9dcce7f51cf3a968398047eaac7a37718b
+  branch: new_id_with_ajax
+  specs:
+    cocoon (1.2.11)
 
 GEM
   remote: https://rubygems.org/
