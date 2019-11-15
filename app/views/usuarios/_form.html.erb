@@ -13,29 +13,29 @@
 
       <div role="tabpanel">       
         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#contacto" 
-            class="fichacambia" aria-controls="contacto" role="tab" 
+          <li role="presentation" class="nav-item"><a href="#contacto" 
+            class="fichacambia nav-link active" aria-selected="true" aria-controls="contacto" role="tab" 
             data-toggle="tab">Datos de contacto</a></li>
 
           <% if can? :create, ::Usuario %>
-            <li role="presentation"><a href="#personales" class="fichacambia" 
+            <li role="presentation" class="nav-item"><a href="#personales" class="fichacambia nav-link" 
               aria-controls="personales" role="tab" 
               data-toggle="tab">Datos personales</a></li>
   
-            <li role="presentation"><a href="#contactual" class="fichacambia" 
+            <li role="presentation" class="nav-item"><a href="#contactual" class="fichacambia nav-link" 
               aria-controls="contactual" role="tab" 
               data-toggle="tab">Contratación actual</a></li>
 
-            <li role="presentation"><a href="#vinculaciones" class="fichacambia" 
+            <li role="presentation" class="nav-item"><a href="#vinculaciones" class="fichacambia nav-link" 
               aria-controls="vinculaciones" role="tab" 
               data-toggle="tab">Vinculaciones anteriores</a></li>
   
-            <li role="presentation"><a href="#anexos" class="fichacambia" 
+            <li role="presentation" class="nav-item"><a href="#anexos" class="fichacambia nav-link" 
               aria-controls="anexos" role="tab" 
               data-toggle="tab">Anexos</a></li>
           <% end %>
           <% if can? :manage, ::Usuario %>
-            <li role="presentation"><a href="#ti" class="fichacambia" 
+            <li role="presentation" class="nav-item"><a href="#ti" class="fichacambia nav-link" 
               aria-controls="ti" role="tab" 
               data-toggle="tab">Recursos TI</a></li>
           <% end %>
@@ -43,30 +43,30 @@
         <div class="tab-content">
           <%= f.simple_fields_for :persona do |p| %>
             <%= f.simple_fields_for :contrato do |c| %>
-              <div role="tabpanel" class="tab-pane active" id="contacto" > 
+              <div role="tabpanel" class="tab-pane fade active show" id="contacto" > 
                 <%= render 'contacto', :f => f, :p => p, :c => c %>
               </div> 
   
               <% if can? :edit, ::Usuario %>
-                <div role="tabpanel" class="tab-pane" id="personales" > 
+                <div role="tabpanel" class="tab-pane fade" id="personales" > 
                   <%= render 'personales', :f => f, :p => p, :c => c %>
                 </div>
     
-                <div role="tabpanel" class="tab-pane" id="vinculaciones" > 
+                <div role="tabpanel" class="tab-pane fade" id="vinculaciones" > 
                   <%= render 'vinculaciones', :f => f, :p => p, :c => c %>
                 </div>
     
-                <div role="tabpanel" class="tab-pane" id="contactual" > 
+                <div role="tabpanel" class="tab-pane fade" id="contactual" > 
                   <%= render 'contactual', :f => f, :p => p, :c => c %>
                 </div>
   
-                <div role="tabpanel" class="tab-pane" id="anexos" > 
+                <div role="tabpanel" class="tab-pane fade" id="anexos" > 
                   <%= render 'anexos', :f => f  %>
                 </div>
               <% end %>
   
               <% if can? :manage, ::Usuario %>
-                <div role="tabpanel" class="tab-pane" id="ti" > 
+                <div role="tabpanel" class="tab-pane fade" id="ti" > 
                   <%= render 'ti', :f => f, :p => p %>
                 </div>
               <% end %>

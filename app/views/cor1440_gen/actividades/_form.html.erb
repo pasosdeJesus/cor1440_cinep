@@ -23,7 +23,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">Planeación</div><div class="panel-body">
       <div class='row'>
-        <div class='col-sm-offset-0 col-sm-4'>
+        <div class='offset-sm-0 col-sm-4'>
           <%= f.input :fecha_localizada, 
             :input_html => { "data-behaviour" => "datepicker"}, 
             :as => :string %>
@@ -42,13 +42,13 @@
         </div>
       </div> <!-- row -->
       <div class='row'>
-        <div class='col-sm-offset-0 col-sm-12'>
+        <div class='offset-sm-0 col-sm-12'>
           <%= f.input :nombre,
             label: 'Nombre' %>
        </div>
       </div> <!-- row -->
       <div class='row'>
-       <div class='col-sm-offset-0 col-sm-6'>
+       <div class='offset-sm-0 col-sm-6'>
          <%= f.association :departamento,
            collection: (Sip::Departamento.where(
              id_pais: 170,
@@ -80,7 +80,7 @@
         (gp ? [gp.id] : []) %>
       <% gruposids = mgui + gd %>
       <div class='row'>
-       <div class='col-sm-offset-0 col-sm-6'>
+       <div class='offset-sm-0 col-sm-6'>
          <%= f.association :grupo,
            collection: @colgrupos,
            label: 'Grupo',
@@ -97,7 +97,7 @@
       </div> <!-- row -->
 
       <div class='row'>
-        <div class='col-sm-offset-0 col-sm-6'>
+        <div class='offset-sm-0 col-sm-6'>
           <%= f.association :objetivopf, 
             collection: ::Cor1440Gen::Objetivopf.where(
               proyectofinanciero_id: f.object.proyectofinanciero.map(&:id)),
@@ -105,19 +105,19 @@
             value_method: :id,
             input_html: { class: 'chosen-select' } %>
         </div>
-        <div class='col-sm-offset-0 col-sm-6'>
+        <div class='offset-sm-0 col-sm-6'>
           <%= render partial: 'campo_actividadpf', locals: {f: f} %>
         </div>
       </div> <!-- row -->
 
       <div class='row'>
-        <div class='col-sm-offset-0 col-sm-4'>
+        <div class='offset-sm-0 col-sm-4'>
           <%= render partial: 'campo_responsable', locals: {f: f} %>
         </div>
-        <div class='col-sm-offset-0 col-sm-4'>
+        <div class='offset-sm-0 col-sm-4'>
           <%= render partial: 'campo_corresponsables', locals: {f: f} %>
         </div>
-        <div class='col-sm-offset-0 col-sm-4'>
+        <div class='offset-sm-0 col-sm-4'>
           <%= f.input :precedidapor %>
         </div>
       </div> <!-- row -->
@@ -133,16 +133,16 @@
       <%= render partial: 'campo_respuestafor', locals: {f: f} %>
 
       <div class='row'>
-        <div class='col-sm-offset-0 col-sm-6'>
+        <div class='offset-sm-0 col-sm-6'>
           <%= render partial: 'campo_actorsocial', locals: {f: f} %>
         </div> 
-        <div class='col-sm-offset-0 col-sm-6'>
+        <div class='offset-sm-0 col-sm-6'>
           <%= render partial: 'campo_publicacion', locals: {f: f} %>
         </div> 
       </div> <!-- row -->
 
       <!--div class='row'>
-        <div class='col-sm-offset-0 col-sm-12'>
+        <div class='offset-sm-0 col-sm-12'>
           <%= f.input :participantes,
             label: 'Personas acompañadas o que participan',
             as: :text
@@ -230,10 +230,10 @@
   <% if current_usuario && @actividad && @actividad.creadopor &&
        current_usuario.id != @actividad.creadopor.id %>
     <div class='row'>
-      <div class='col-sm-offset-0 col-sm-6'>
+      <div class='offset-sm-0 col-sm-6'>
         <%= f.input :vistobuenopar, as: :boolean %>
       </div> 
-      <div class='col-sm-offset-0 col-sm-6'>
+      <div class='offset-sm-0 col-sm-6'>
         <%= f.input :observacionespar, as: :text %>
       </div> 
     </div> <!-- row -->
@@ -241,10 +241,10 @@
 
   <% if can?(:dir, :vistobuenoactividad) %>
     <div class='row'>
-      <div class='col-sm-offset-0 col-sm-6'>
+      <div class='offset-sm-0 col-sm-6'>
         <%= f.input :vistobuenodir, as: :boolean %>
       </div> 
-      <div class='col-sm-offset-0 col-sm-6'>
+      <div class='offset-sm-0 col-sm-6'>
         <%= f.input :observacionesdir, as: :text %>
       </div> 
     </div> <!-- row -->

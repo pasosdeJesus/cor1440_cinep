@@ -11,7 +11,6 @@
  * file per style scope.
  *
  *= require_self
- *= require chosen
  *= require cor1440_gen/application.css
  *= require mr519_gen/application.css
  *= require_tree .

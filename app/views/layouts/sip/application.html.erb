@@ -44,23 +44,18 @@
     <meta name="msapplication-config" content="/assets/browserconfig.xml">
 
 
-    <%= javascript_include_tag "application", media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag "application", 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application", media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= nav_bar :fixed => :top, 
-      :brand => content_for?(:titulo) ? yield(:titulo) : Sip.titulo,
-      brand_link: sip.root_url, 
+    <%= barra_navegacion :fixed => :top, 
       :responsive => true do 
     %>
       <%= yield :menu %>
     <% end %>
 
     <div class="container master-container">
-	    <ul class="breadcrumb">
-        <%= yield :breadcrumb %>
-	    </ul>
-	    <%= bootstrap_flash %>
+	    <%= anuncios_bootstrap %>
 	    <%= yield %>
     </div>
 
