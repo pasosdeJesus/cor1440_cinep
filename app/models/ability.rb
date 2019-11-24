@@ -423,6 +423,11 @@ class Ability  < Cor1440Gen::Ability
           can [:edit], Cor1440Gen::Indicadorpf
           can :manage, ::Publicacion
           can [:read], Mr519Gen::Encuestapersona
+        else
+          # Investigador
+          lineasb = lineas.select { |nl| Sip::Grupo.where(nombre: nl).count > 0 }
+          idlineas = lineasb.map { |nl| Sip::Grupo.where(nombre: nl).take.id }
+
           encper = Mr519Gen::Encuestapersona.joins(:persona).
             joins('JOIN sip_actorsocial_persona ON 
             sip_persona.id = sip_actorsocial_persona.persona_id').
@@ -431,8 +436,9 @@ class Ability  < Cor1440Gen::Ability
             where('grupo_id IN (?)', idlineas)
           puts "encper.ids=#{encper.map(&:id)}"
           can [:edit, :update], encper
+         
         end
-        
+ 
         # Responsables de un proyecto también pueden editar marco lógico
         pc = ::Cor1440Gen::Proyectofinanciero.where('id IN
           (SELECT proyectofinanciero_id FROM proyectofinanciero_uresponsable

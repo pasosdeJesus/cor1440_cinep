@@ -200,6 +200,44 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
+<tr><td rowspan="1" colspan="3">tabla-comunicado</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/tablasbasicas</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>41,24</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>css=li.active &gt; a</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>88,11</td>
+</tr>
+<tr><td>clickAt</td><td>link=Comunicados<datalist><option>link=Comunicados</option><option>//a[contains(text(),'Comunicados')]</option><option>//a[contains(@href, 'admin/comunicados')]</option><option>//article/ul/li[5]/a</option></datalist></td><td>48,10</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nuevo')]</option><option>//a[contains(@href, '/admin/comunicados/nueva')]</option><option>//div[2]/a</option></datalist></td><td>25,17</td>
+</tr>
+<tr><td>clickAt</td><td>id=comunicado_nombre<datalist><option>id=comunicado_nombre</option><option>name=comunicado[nombre]</option><option>css=#comunicado_nombre</option><option>//input[@id='comunicado_nombre']</option><option>//form[@id='new_comunicado']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>170,10</td>
+</tr>
+<tr><td>clickAt</td><td>id=comunicado_observaciones<datalist><option>id=comunicado_observaciones</option><option>name=comunicado[observaciones]</option><option>css=#comunicado_observaciones</option><option>//input[@id='comunicado_observaciones']</option><option>//form[@id='new_comunicado']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>190,15</td>
+</tr>
+<tr><td>type</td><td>id=comunicado_observaciones<datalist><option>id=comunicado_observaciones</option><option>name=comunicado[observaciones]</option><option>css=#comunicado_observaciones</option><option>//input[@id='comunicado_observaciones']</option><option>//form[@id='new_comunicado']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>id=comunicado_contenido<datalist><option>id=comunicado_contenido</option><option>css=#comunicado_contenido</option><option>//trix-editor[@id='comunicado_contenido']</option><option>//form[@id='new_comunicado']/div[3]/trix-editor</option><option>//trix-editor</option></datalist></td><td>139,11</td>
+</tr>
+<tr><td>editContent</td><td>id=comunicado_contenido<datalist><option>id=comunicado_contenido</option><option>css=#comunicado_contenido</option><option>//trix-editor[@id='comunicado_contenido']</option><option>//form[@id='new_comunicado']/div[3]/trix-editor</option><option>//trix-editor</option></datalist></td><td>&lt;div&gt;&lt;!--block--&gt;Este es un comunicado de prueba&lt;/div&gt;</td>
+</tr>
+<tr><td>clickAt</td><td>id=comunicado_nombre<datalist><option>id=comunicado_nombre</option><option>name=comunicado[nombre]</option><option>css=#comunicado_nombre</option><option>//input[@id='comunicado_nombre']</option><option>//form[@id='new_comunicado']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>87,14</td>
+</tr>
+<tr><td>type</td><td>id=comunicado_nombre<datalist><option>id=comunicado_nombre</option><option>name=comunicado[nombre]</option><option>css=#comunicado_nombre</option><option>//input[@id='comunicado_nombre']</option><option>//form[@id='new_comunicado']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>url</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_comunicado']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>27,18</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/comunicados/101')])[2]</option><option>//div[4]/a</option></datalist></td><td>40,17</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Comunicados</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
 <tr><td rowspan="1" colspan="3">tabla-departamento</td></tr>
 </thead>
 <tbody>
@@ -661,6 +699,40 @@
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
+<tr><td rowspan="1" colspan="3">tabla-plantilla-para-correo</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/admin/plantillascorreo/102</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>65,20</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>98,19</td>
+</tr>
+<tr><td>clickAt</td><td>link=Plantillas para correo<datalist><option>link=Plantillas para correo</option><option>//a[contains(text(),'Plantillas para correo')]</option><option>//a[contains(@href, 'admin/plantillascorreo')]</option><option>//li[16]/a</option></datalist></td><td>111,14</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nuevo')]</option><option>//a[contains(@href, '/admin/plantillascorreo/nueva')]</option><option>//div[2]/a</option></datalist></td><td>39,5</td>
+</tr>
+<tr><td>clickAt</td><td>id=plantillacorreo_nombre<datalist><option>id=plantillacorreo_nombre</option><option>name=plantillacorreo[nombre]</option><option>css=#plantillacorreo_nombre</option><option>//input[@id='plantillacorreo_nombre']</option><option>//form[@id='new_plantillacorreo']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>75,29</td>
+</tr>
+<tr><td>type</td><td>id=plantillacorreo_nombre<datalist><option>id=plantillacorreo_nombre</option><option>name=plantillacorreo[nombre]</option><option>css=#plantillacorreo_nombre</option><option>//input[@id='plantillacorreo_nombre']</option><option>//form[@id='new_plantillacorreo']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>aaa</td>
+</tr>
+<tr><td>clickAt</td><td>id=plantillacorreo_contenido<datalist><option>id=plantillacorreo_contenido</option><option>css=#plantillacorreo_contenido</option><option>//trix-editor[@id='plantillacorreo_contenido']</option><option>//form[@id='new_plantillacorreo']/div[3]/trix-editor</option><option>//trix-editor</option></datalist></td><td>54,22</td>
+</tr>
+<tr><td>editContent</td><td>id=plantillacorreo_contenido<datalist><option>id=plantillacorreo_contenido</option><option>css=#plantillacorreo_contenido</option><option>//trix-editor[@id='plantillacorreo_contenido']</option><option>//form[@id='new_plantillacorreo']/div[3]/trix-editor</option><option>//trix-editor</option></datalist></td><td>&lt;div&gt;&lt;!--block--&gt;abcefghijkl&lt;/div&gt;</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_plantillacorreo']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>49,17</td>
+</tr>
+<tr><td>clickAt</td><td>//dd[2]<datalist><option>//dd[2]</option></datalist></td><td>126,0</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/plantillascorreo/103')])[2]</option><option>//div[4]/a</option></datalist></td><td>28,18</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Plantillas para correo</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
 <tr><td rowspan="1" colspan="3">tabla-procesos-internos</td></tr>
 </thead>
 <tbody>
@@ -943,6 +1015,76 @@
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/sectoresactores/118')])[2]</option><option>//div[4]/a</option></datalist></td><td>29,13</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Sectores de actores sociales</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tabla-temas</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>/<datalist><option>http://crecer.cinep.org.co:4000/admin/plantillascorreo</option><option>/</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>73,25</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tablas Básicas<datalist><option>link=Tablas Básicas</option><option>//a[contains(text(),'Tablas Básicas')]</option><option>//a[contains(@href, '/tablasbasicas')]</option><option>//li[2]/ul/li[7]/a</option></datalist></td><td>86,18</td>
+</tr>
+<tr><td>clickAt</td><td>link=Temas<datalist><option>link=Temas</option><option>//a[contains(text(),'Temas')]</option><option>//a[contains(@href, 'admin/temas')]</option><option>//li[25]/a</option></datalist></td><td>21,12</td>
+</tr>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nuevo')]</option><option>//a[contains(@href, '/admin/temas/nueva')]</option><option>//div[2]/a</option></datalist></td><td>30,19</td>
+</tr>
+<tr><td>clickAt</td><td>id=tema_nombre<datalist><option>id=tema_nombre</option><option>name=tema[nombre]</option><option>css=#tema_nombre</option><option>//input[@id='tema_nombre']</option><option>//form[@id='new_tema']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>37,10</td>
+</tr>
+<tr><td>type</td><td>id=tema_nombre<datalist><option>id=tema_nombre</option><option>name=tema[nombre]</option><option>css=#tema_nombre</option><option>//input[@id='tema_nombre']</option><option>//form[@id='new_tema']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>VERDE</td>
+</tr>
+<tr><td>clickAt</td><td>css=span.color-preview.current-color<datalist><option>css=span.color-preview.current-color</option><option>//div[@id='tema[nav_ini]']/div/button/span</option><option>//div/div/div/button/span</option></datalist></td><td>15,12</td>
+</tr>
+<tr><td>clickAt</td><td>css=span.color-box.spectrum-green &gt; span.highlight-band<datalist><option>css=span.color-box.spectrum-green &gt; span.highlight-band</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[5]/a/span[2]/span</option><option>//span[2]/span</option></datalist></td><td>9,14</td>
+</tr>
+<tr><td>clickAt</td><td>css=span.color-preview.green<datalist><option>css=span.color-preview.green</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[5]/a/span</option><option>//li[5]/a/span</option></datalist></td><td>11,11</td>
+</tr>
+<tr><td>clickAt</td><td>css=span.color-preview.current-color<datalist><option>css=span.color-preview.current-color</option><option>//div[@id='tema[nav_ini]']/div/button/span</option><option>//div/div/div/button/span</option></datalist></td><td>20,10</td>
+</tr>
+<tr><td>clickAt</td><td>css=button.color-select.btn.btn-mini<datalist><option>css=button.color-select.btn.btn-mini</option><option>xpath=(//button[@type='button'])[3]</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[5]/a/button</option><option>//a/button</option></datalist></td><td>18,10</td>
+</tr>
+<tr><td>clickAt</td><td>id=tema_observaciones<datalist><option>id=tema_observaciones</option><option>name=tema[observaciones]</option><option>css=#tema_observaciones</option><option>//input[@id='tema_observaciones']</option><option>//form[@id='new_tema']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>36,14</td>
+</tr>
+<tr><td>type</td><td>id=tema_observaciones<datalist><option>id=tema_observaciones</option><option>name=tema[observaciones]</option><option>css=#tema_observaciones</option><option>//input[@id='tema_observaciones']</option><option>//form[@id='new_tema']/div[7]/input</option><option>//div[7]/input</option></datalist></td><td>bbb</td>
+</tr>
+<tr><td>clickAt</td><td>css=span.color-preview.current-color<datalist><option>css=span.color-preview.current-color</option><option>//div[@id='tema[nav_ini]']/div/button/span</option><option>//div/div/div/button/span</option></datalist></td><td>9,12</td>
+</tr>
+<tr><td>clickAt</td><td>css=span.highlight-band<datalist><option>css=span.highlight-band</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li/a/span[2]/span</option><option>//span[2]/span</option></datalist></td><td>9,13</td>
+</tr>
+<tr><td>clickAt</td><td>css=span.color-box.spectrum-green<datalist><option>css=span.color-box.spectrum-green</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[5]/a/span[2]</option><option>//li[5]/a/span[2]</option></datalist></td><td>11,13</td>
+</tr>
+<tr><td>clickAt</td><td>css=span.color-box.spectrum-green &gt; span.highlight-band<datalist><option>css=span.color-box.spectrum-green &gt; span.highlight-band</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[5]/a/span[2]/span</option><option>//li[5]/a/span[2]/span</option></datalist></td><td>9,13</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.green.color-link &gt; button.color-select.btn.btn-mini<datalist><option>css=a.green.color-link &gt; button.color-select.btn.btn-mini</option><option>xpath=(//button[@type='button'])[4]</option><option>//div[@id='tema[nav_ini]']/div/div/div[2]/ul/li[5]/a/button</option><option>//li[5]/a/button</option></datalist></td><td>14,10</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='tema[nav_fin]']/div/button/span<datalist><option>//div[@id='tema[nav_fin]']/div/button/span</option><option>//div[4]/div/div/div/div/button/span</option></datalist></td><td>14,11</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.input-group-btn.open &gt; div.color-menu.dropdown-menu &gt; div.basicColors-content.active-content &gt; ul.basic-colors-list &gt; li.color-item &gt; a.green.color-link &gt; span.color-box.spectrum-green &gt; span.highlight-band<datalist><option>css=div.input-group-btn.open &gt; div.color-menu.dropdown-menu &gt; div.basicColors-content.active-content &gt; ul.basic-colors-list &gt; li.color-item &gt; a.green.color-link &gt; span.color-box.spectrum-green &gt; span.highlight-band</option><option>//div[@id='tema[nav_fin]']/div/div/div[2]/ul/li[5]/a/span[2]/span</option><option>//div[4]/div/div/div/div/div/div[2]/ul/li[5]/a/span[2]/span</option></datalist></td><td>9,22</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.input-group-btn.open &gt; div.color-menu.dropdown-menu &gt; div.basicColors-content.active-content &gt; ul.basic-colors-list &gt; li.color-item &gt; a.green.color-link &gt; button.color-select.btn.btn-mini<datalist><option>css=div.input-group-btn.open &gt; div.color-menu.dropdown-menu &gt; div.basicColors-content.active-content &gt; ul.basic-colors-list &gt; li.color-item &gt; a.green.color-link &gt; button.color-select.btn.btn-mini</option><option>xpath=(//button[@type='button'])[7]</option><option>//div[@id='tema[nav_fin]']/div/div/div[2]/ul/li[5]/a/button</option><option>//div[4]/div/div/div/div/div/div[2]/ul/li[5]/a/button</option></datalist></td><td>25,12</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='tema[nav_fuente]']/div/button/span<datalist><option>//div[@id='tema[nav_fuente]']/div/button/span</option><option>//div[5]/div/div/div/div/button/span</option></datalist></td><td>7,4</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.input-group-btn.open &gt; div.color-menu.dropdown-menu &gt; div.basicColors-content.active-content &gt; ul.basic-colors-list &gt; li.color-item &gt; a.yellow.color-link &gt; span.color-box.spectrum-yellow &gt; span.highlight-band<datalist><option>css=div.input-group-btn.open &gt; div.color-menu.dropdown-menu &gt; div.basicColors-content.active-content &gt; ul.basic-colors-list &gt; li.color-item &gt; a.yellow.color-link &gt; span.color-box.spectrum-yellow &gt; span.highlight-band</option><option>//div[@id='tema[nav_fuente]']/div/div/div[2]/ul/li[4]/a/span[2]/span</option><option>//li[4]/a/span[2]/span</option></datalist></td><td>9,9</td>
+</tr>
+<tr><td>clickAt</td><td>css=a.yellow.color-link &gt; button.color-select.btn.btn-mini<datalist><option>css=a.yellow.color-link &gt; button.color-select.btn.btn-mini</option><option>xpath=(//button[@type='button'])[10]</option><option>//div[@id='tema[nav_fuente]']/div/div/div[2]/ul/li[4]/a/button</option><option>//li[4]/a/button</option></datalist></td><td>40,10</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='tema[fondo_lista]']/div/button/span[2]<datalist><option>//div[@id='tema[fondo_lista]']/div/button/span[2]</option><option>//div[6]/div/div/div/div/button/span[2]</option></datalist></td><td>8,3</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.input-group-btn.open &gt; div.color-menu.dropdown-menu &gt; div.basicColors-content.active-content &gt; ul.basic-colors-list &gt; li.color-item &gt; a.yellow.color-link &gt; span.color-box.spectrum-yellow &gt; span.highlight-band<datalist><option>css=div.input-group-btn.open &gt; div.color-menu.dropdown-menu &gt; div.basicColors-content.active-content &gt; ul.basic-colors-list &gt; li.color-item &gt; a.yellow.color-link &gt; span.color-box.spectrum-yellow &gt; span.highlight-band</option><option>//div[@id='tema[fondo_lista]']/div/div/div[2]/ul/li[4]/a/span[2]/span</option><option>//div[6]/div/div/div/div/div/div[2]/ul/li[4]/a/span[2]/span</option></datalist></td><td>9,9</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.input-group-btn.open &gt; div.color-menu.dropdown-menu &gt; div.basicColors-content.active-content &gt; ul.basic-colors-list &gt; li.color-item &gt; a.yellow.color-link &gt; button.color-select.btn.btn-mini<datalist><option>css=div.input-group-btn.open &gt; div.color-menu.dropdown-menu &gt; div.basicColors-content.active-content &gt; ul.basic-colors-list &gt; li.color-item &gt; a.yellow.color-link &gt; button.color-select.btn.btn-mini</option><option>xpath=(//button[@type='button'])[13]</option><option>//div[@id='tema[fondo_lista]']/div/div/div[2]/ul/li[4]/a/button</option><option>//div[6]/div/div/div/div/div/div[2]/ul/li[4]/a/button</option></datalist></td><td>32,17</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_tema']/div[10]/input</option><option>//div[10]/input</option></datalist></td><td>32,15</td>
+</tr>
+<tr><td>chooseOkOnNextConfirmation</td><td><datalist><option></option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/admin/temas/101')])[2]</option><option>//div[4]/a</option></datalist></td><td>39,16</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Temas</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
