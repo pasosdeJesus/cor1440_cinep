@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: a7db76f059dd91a4e8f865ad89005af2d29bea41
+  revision: 560ac4f7b30b8a16adb70dc055cc03d803d7a8a3
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 4313c219a90ea15976d406968fd67c88d6cadcc5
+  revision: 19fa19460fe0c1fd9ff05006dd7504b518fddec2
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 759015c755c05cf9956ffefcd360420c18a8177a
+  revision: d2c8e9aacf852acabbaf48eadedf5482681da6b5
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 440ccd721562c63d21294383767d1e40028eeaa3
+  revision: 88239750e4de0d39e2699c5f0102510094acc9b4
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 238197d67ceb85d2320dc03450e041a51f981898
+  revision: 206b81d672d6c286e1164b3f36c17bc4a03f342e
   specs:
     sip (2.0.b7)
       cancancan
@@ -229,7 +229,7 @@ GEM
     msgpack (1.3.1)
     net-ldap (0.16.2)
     nio4r (2.5.2)
-    nokogiri (1.10.5)
+    nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     odf-report (0.6.1)
       nokogiri (>= 1.5.0)
@@ -342,7 +342,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     ttfunk (1.5.1)
-    twitter_cldr (5.1.0)
+    twitter_cldr (5.2.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
@@ -368,7 +368,7 @@ GEM
     will_paginate (3.2.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.2.1)
+    zeitwerk (2.2.2)
 
 PLATFORMS
   ruby
