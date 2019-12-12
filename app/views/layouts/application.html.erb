@@ -80,7 +80,7 @@
     <% end %>
     <% if !current_usuario.nil? %>
       <%= despliega_abajo 'Administrar' do %>
-        <%= opcion_menu 'Clave', main_app.editar_registro_usuario_path,
+        <%= opcion_menu 'Clave y tema', main_app.editar_registro_usuario_path,
               desplegable: true %>
         <% if can? :manage, ::Heb412Gen::Plantillahcm %>
           <%= opcion_menu 'Plantillas para listados en hojas de calculo',
