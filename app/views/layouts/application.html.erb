@@ -41,10 +41,8 @@
       <% end %>
       <% if can? :index, Cor1440Gen::Mindicadorpf %>
         <%= despliega_abajo 'Indicadores' do %>
-          <!--%= opcion_menu 'Avance en indicadores de Efecto', 
-            main_app.efectos_path %-->
           <!--% if can? :edit, Cor1440Gen::Proyectofinanciero %-->
-            <%= opcion_menu 'Medición', main_app.mindicadorespf_path,
+            <%= opcion_menu 'Medición', cor1440_gen.mindicadorespf_path,
               desplegable: true %>
           <!--% end %-->
         <% end %>
