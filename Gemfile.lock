@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: e4d860f38699dcd8fa399609dfccb84c10068b04
+  revision: 87d4d7dc05710753d5d985f054f4edfc04f2eff8
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 0fde5ef5aa257b637b8f9453f69e25451afd96f4
+  revision: 8128438726ab3c69e3207c5a457eb38d45030b59
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 6cfd78f31ee098dcf4ae56d07a6f77bd5af24c84
+  revision: 44fd2b68be3c6be4428cf09ee3732bd435094717
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2e77b23729249b732657d9eb0b219cae7f9396ac
+  revision: a1c32d6d2d8d88b45e72adc112e9a2558fd579ab
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: c1aaf0e3552eba92d7b326212a363be9dba471d5
+  revision: 11a74ed098e58bce73980286e897f7127777db88
   specs:
     sal7711_gen (1.0.b2)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: c8ff645888172d51f5fb8c4c9012d5429c312274
+  revision: aeecf5e569e567d6b2d0984af9d0791466aa5661
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 7d59b844977a12e65e8b89f7d8f94da1685414a5
+  revision: 1724a3f6992478d523ab96b5ea965a887109204d
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 6e2a1da1cadb3a172e9191f25bc40dcebe9111ce
+  revision: 6e56581d02b9dc3ba5e629ad1bc1368e8e54e46f
   specs:
     sip (2.0.b10)
       cancancan
@@ -334,7 +334,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    ttfunk (1.6.2)
+    ttfunk (1.6.2.1)
     twitter_cldr (5.3.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
