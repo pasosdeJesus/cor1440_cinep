@@ -157,7 +157,7 @@ module Cor1440Gen
 
     def update
       if params[:actividad]
-        if current_usuario && @registro &&
+        if current_usuario && @registro && @registro.creadopor &&
           current_usuario.id == @registro.creadopor.id
           params[:actividad].delete(:vistobuenopar)
           params[:actividad].delete(:observacionespar)

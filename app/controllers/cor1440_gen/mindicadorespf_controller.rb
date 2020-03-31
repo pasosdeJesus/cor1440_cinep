@@ -240,6 +240,7 @@ module Cor1440Gen
 
           # Plan Trienal 2018-2020
           when 'E1I1'
+            byebug
             base = Cor1440Gen::Actividad.where('fecha>=?', fini).
               where('fecha<=?', ffin).
               where('id IN (SELECT actividad_id 
