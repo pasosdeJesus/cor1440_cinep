@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 04ecab4b2d5cc77e6aafbd0210c40a8cd5a8357f
+  revision: ef5cb353841f25bbaf7fd91ecd49f824d636240a
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5222187aa9d47a0ed36872325c7b70e35a26a389
+  revision: 5b700a1bfe01034834a7e01a55515d1afbbd4081
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: d2fbc8bc9e460d4b6c6e20d81d1ad56d1b006906
+  revision: 4f477439429ed2ec3ed5a6b580876f23e21b03b1
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: fbd24f3eefc7676a48a8988c94c0255c3a9bb797
+  revision: 5a9649196416854672145aabcc554de93ddeccfb
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 7c63f769bcaca20eba77130fe9b69d28384d31c4
+  revision: 8a2fe5b96088b8e635575254937381e45225b6de
   specs:
     sal7711_gen (1.0.b2)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 0aa047e8f8eb7393223e79e09934cb20d45720c0
+  revision: 71c3cb24e6f0ae4a0caa9e13ead15a886b463ad2
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: ac101701a24ab8d9c1000b78487b55fb9e38e3f8
+  revision: ed5a2486e688bbe0204ea5735af3abcd600e3fc9
   specs:
     sal7711_web (1.0.a3)
       rails
