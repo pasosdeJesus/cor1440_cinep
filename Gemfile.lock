@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 1db3b19a7498f7d915b55afd5062098bbdfb8043
+  revision: d00038416d3e4055807c2bb001fca8ff4852f562
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 30bc99f2a67e6588ca6609a855dcd3401937f4ef
+  revision: bc63c3744cd64343a5265ecdc8a49d6ba171a3c8
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: a2bc0f82959264c3a7a09f53e6b17c700be98733
+  revision: bd35f9774f7fa05d4fbf0aa253f98dba55f9e57d
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 37cd3885ea5afa170b859f8b8f1cb66101fc7e22
+  revision: 4a6daa4f8d0affbb4699794f56bd212001665123
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 8bddaeeec51cfc02c6556f9972234bafdbaf619c
+  revision: 8855038d587c31be71f954775907697d5077a92d
   specs:
     sal7711_gen (1.0.b2)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 85c5395aff089246c408e7215dfab50b2fd7f726
+  revision: 48316f1d6852bdd57c47b82e48de6f74bffdcbcc
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 53c2d9c8fae888421e141951f361f26d96a125e4
+  revision: ad515bce86f1a6d4e295adddbbde85678a0456fe
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 46cbb1b6adcca1a21091378d226d1798429fe72a
+  revision: 89280a2f26c18ef2385fad5e6cf9944a0b0187bf
   specs:
     sip (2.0.b10)
       cancancan
@@ -305,7 +305,7 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     rubyzip (2.3.0)
-    sassc (2.2.1)
+    sassc (2.3.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
