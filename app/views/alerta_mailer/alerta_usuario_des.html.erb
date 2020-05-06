@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      .resaltaci {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Deshabilitación de usuario en CRECER</h1>
+    <p>
+    El usuario <span class='resaltaci'><%= @nombres %> <%= @apellidos %> 
+    (<%= @nusuario%>)</span> con fecha de terminación de contrato
+    <%= @fechafin %>
+    </p>
+    <% @complemento.each do |l| %>
+      <p>
+        <%= l %>
+      </p>
+    <% end %>
+  </body>
+</html>
