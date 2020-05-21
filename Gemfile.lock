@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 068df29e2e8939ae6c8bd51ebf0a70fefcc9ca8c
+  revision: 16836796b041a28353625dcc5f9b14458ace922f
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: c484f3ec107fe5be6b88ec17545bfb0647ac0523
+  revision: 71442052a4f6d1cc1e2450fe1c9ac5b0f97900ee
   specs:
     jn316_gen (1.0.a2)
       net-ldap
