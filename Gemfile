@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-gem 'actiontext'
+gem 'actiontext', '>= 6.0.3.1'
 
 gem 'bcrypt'
 
@@ -13,11 +13,11 @@ gem 'cocoon', # Formularios anidados (algunos con ajax)
   git: 'https://github.com/vtamara/cocoon.git', 
   branch: 'new_id_with_ajax'
 
-gem 'coffee-rails' # CoffeeScript para recuersos .js.coffee y vistas
+gem 'coffee-rails' , '>= 5.0.0' # CoffeeScript para recuersos .js.coffee y vistas
 
-gem 'devise' # Autenticación 
+gem 'devise' , '>= 4.7.2' # Autenticación 
 
-gem 'devise-i18n'
+gem 'devise-i18n', '>= 1.9.1'
 
 gem 'jbuilder' # API JSON facil. Ver: https://github.com/rails/jbuilder
 
@@ -31,15 +31,15 @@ gem 'pg' # Postgresql
 
 gem 'prawn' # Generación de PDF
 
-gem 'prawnto_2',  :require => 'prawnto'
+gem 'prawnto_2', '>= 0.3.0', :require => 'prawnto'
 
 gem 'prawn-table'
 
 gem 'puma', '>= 4.3.2'
 
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 
-gem 'rails-i18n'
+gem 'rails-i18n', '>= 6.0.0'
 
 gem 'redcarpet' # Reconoce y transforma Markdown
 
@@ -47,15 +47,15 @@ gem 'rspreadsheet'
 
 gem 'rubyzip', '>= 2.0'
 
-gem 'sassc-rails'
+gem 'sassc-rails', '>= 2.1.2'
 
-gem 'simple_form' # Formularios simples 
+gem 'simple_form' , '>= 5.0.2' # Formularios simples 
 
 gem 'twitter_cldr' # ICU con CLDR
 
 gem 'tzinfo' # Zonas horarias
 
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 4.2', '>= 4.2.2'
 
 gem 'will_paginate' # Listados en páginas
 
@@ -101,7 +101,7 @@ group :development do
 
   gem 'erd'
 
-  gem 'web-console'
+  gem 'web-console', '>= 4.0.2'
 
 end
 
@@ -117,9 +117,9 @@ end
 
 group :test do
 
-  gem 'capybara'
+  gem 'capybara', '>= 3.32.2'
 
-  gem 'rails-controller-testing'
+  gem 'rails-controller-testing', '>= 1.0.4'
 
   gem 'selenium-webdriver', '>=3.0'#, git: 'https://github.com/vtamara/selenium.git', branch: 'patch-2'
 
