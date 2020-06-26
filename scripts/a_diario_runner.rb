@@ -3,7 +3,11 @@
 
 #require 'byebug'
 
-DIAS=20
+if !ENV['CRECER_DIAS'] 
+  DIAS=20
+else
+  DIAS=ENV['CRECER_DIAS'].to_i
+end
 def envia_alertapf(pid, tiene, cuando, fecha, maslineas=[])
     puts "Enviando alerta pf por #{pid}, #{tiene}, #{cuando}, #{fecha}"
     AlertaMailer.with(
@@ -183,15 +187,48 @@ def deshabilita_usuarios
 end
 
 
+def elimina_actividades_en_blanco
+  ::Usuario.connection.execute <<-SQL
+  delete from cor1440_gen_actividad_proyectofinanciero where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+
+  delete from cor1440_gen_actividad_actividadpf where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+
+  update cor1440_gen_actividad set precedidapor=null where 
+    precedidapor in (select id from cor1440_gen_actividad where fecha is null);
+
+  delete from actividad_grupo where 
+    actividad_id in (select id from cor1440_gen_actividad where 
+      fecha is null);
+
+  delete from cor1440_gen_actividad_actorsocial where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+
+  delete from cor1440_gen_actividad_objetivopf where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+
+  delete from cor1440_gen_actividad where fecha is null;
+
+  SQL
+  
+end
+
 def run
   if !ENV['SMTP_MAQ']
     puts "No esta definida variable de ambiente SMTP_MAQ"
     exit 1
   end
-  deshabilita_usuarios
-  exit 1
-  alertas
-  elimina_generados
+  if !ENV['CRECERSINDES']
+    deshabilita_usuarios
+  end
+  if !ENV['CRECERSINALERTAS'] 
+    alertas
+  end
+  if !ENV['CRECERSINELIMGEN'] 
+    elimina_generados
+  end
+  elimina_actividades_en_blanco
 end
 
 run
