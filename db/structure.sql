@@ -853,38 +853,6 @@ ALTER SEQUENCE public.convenio_id_seq OWNED BY public.convenio.id;
 
 
 --
--- Name: coordinador_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.coordinador_proyectofinanciero (
-    id integer NOT NULL,
-    proyectofinanciero_id integer,
-    coordinador_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: coordinador_proyectofinanciero_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.coordinador_proyectofinanciero_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: coordinador_proyectofinanciero_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.coordinador_proyectofinanciero_id_seq OWNED BY public.coordinador_proyectofinanciero.id;
-
-
---
 -- Name: cor1440_gen_actividad; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1578,6 +1546,38 @@ CREATE TABLE public.cor1440_gen_caracterizacionpf (
     formulario_id integer,
     proyectofinanciero_id integer
 );
+
+
+--
+-- Name: cor1440_gen_coordinador_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_coordinador_proyectofinanciero (
+    id integer NOT NULL,
+    proyectofinanciero_id integer,
+    coordinador_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: cor1440_gen_coordinador_proyectofinanciero_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.cor1440_gen_coordinador_proyectofinanciero_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_coordinador_proyectofinanciero_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.cor1440_gen_coordinador_proyectofinanciero_id_seq OWNED BY public.cor1440_gen_coordinador_proyectofinanciero.id;
 
 
 --
@@ -5328,8 +5328,8 @@ CREATE VIEW public.v_solicitud_informes AS
     array_to_string(ARRAY( SELECT (((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text)
            FROM ((public.sip_persona
              JOIN public.usuario ON ((sip_persona.id = usuario.persona_id)))
-             JOIN public.coordinador_proyectofinanciero ON ((usuario.id = coordinador_proyectofinanciero.coordinador_id)))
-          WHERE (coordinador_proyectofinanciero.proyectofinanciero_id = p.id)), ', '::text) AS coordinador,
+             JOIN public.cor1440_gen_coordinador_proyectofinanciero ON ((usuario.id = cor1440_gen_coordinador_proyectofinanciero.coordinador_id)))
+          WHERE (cor1440_gen_coordinador_proyectofinanciero.proyectofinanciero_id = p.id)), ', '::text) AS coordinador,
     array_to_string(ARRAY( SELECT (((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text)
            FROM ((public.sip_persona
              JOIN public.usuario ON ((sip_persona.id = usuario.persona_id)))
@@ -5511,13 +5511,6 @@ ALTER TABLE ONLY public.convenio ALTER COLUMN id SET DEFAULT nextval('public.con
 
 
 --
--- Name: coordinador_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.coordinador_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('public.coordinador_proyectofinanciero_id_seq'::regclass);
-
-
---
 -- Name: cor1440_gen_actividad id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5620,6 +5613,13 @@ ALTER TABLE ONLY public.cor1440_gen_campotind ALTER COLUMN id SET DEFAULT nextva
 --
 
 ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_caracterizacionpersona_id_seq'::regclass);
+
+
+--
+-- Name: cor1440_gen_coordinador_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_coordinador_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_coordinador_proyectofinanciero_id_seq'::regclass);
 
 
 --
@@ -6310,14 +6310,6 @@ ALTER TABLE ONLY public.convenio
 
 
 --
--- Name: coordinador_proyectofinanciero coordinador_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.coordinador_proyectofinanciero
-    ADD CONSTRAINT coordinador_proyectofinanciero_pkey PRIMARY KEY (id);
-
-
---
 -- Name: cor1440_gen_actividad_proyecto cor1440_gen_actividad_proyecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6435,6 +6427,14 @@ ALTER TABLE ONLY public.cor1440_gen_campotind
 
 ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona
     ADD CONSTRAINT cor1440_gen_caracterizacionpersona_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cor1440_gen_coordinador_proyectofinanciero cor1440_gen_coordinador_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_coordinador_proyectofinanciero
+    ADD CONSTRAINT cor1440_gen_coordinador_proyectofinanciero_pkey PRIMARY KEY (id);
 
 
 --
@@ -8206,10 +8206,10 @@ ALTER TABLE ONLY public.cor1440_gen_anexo_efecto
 
 
 --
--- Name: coordinador_proyectofinanciero fk_rails_5a7dd1dd10; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_coordinador_proyectofinanciero fk_rails_5a7dd1dd10; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.coordinador_proyectofinanciero
+ALTER TABLE ONLY public.cor1440_gen_coordinador_proyectofinanciero
     ADD CONSTRAINT fk_rails_5a7dd1dd10 FOREIGN KEY (coordinador_id) REFERENCES public.usuario(id);
 
 
@@ -9150,10 +9150,10 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- Name: coordinador_proyectofinanciero fk_rails_fab0c162ed; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_coordinador_proyectofinanciero fk_rails_fab0c162ed; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.coordinador_proyectofinanciero
+ALTER TABLE ONLY public.cor1440_gen_coordinador_proyectofinanciero
     ADD CONSTRAINT fk_rails_fab0c162ed FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
 
 
@@ -9833,6 +9833,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200411094012'),
 ('20200411095105'),
 ('20200415021859'),
-('20200415102103');
+('20200415102103'),
+('20200628024130');
 
 
