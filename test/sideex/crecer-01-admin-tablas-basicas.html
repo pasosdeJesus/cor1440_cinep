@@ -428,18 +428,6 @@
 </tr>
 <tr><td>type</td><td>id=grupo_cn<datalist><option>id=grupo_cn</option><option>name=grupo[cn]</option><option>css=#grupo_cn</option><option>//input[@id='grupo_cn']</option><option>//form[@id='new_grupo']/div[3]/input</option><option>//div[3]/input</option></datalist></td><td>ccc</td>
 </tr>
-<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
-</tr>
-<tr><td>addSelection</td><td>id=grupo_usuario_ids<datalist><option>id=grupo_usuario_ids</option><option>css=#grupo_usuario_ids</option><option>//select[@id='grupo_usuario_ids']</option><option>//form[@id='new_grupo']/div[6]/select</option><option>//select</option></datalist></td><td>label=cor1440 cor1440</td>
-</tr>
-<tr><td>clickAt</td><td>css=option[value="3"]<datalist><option>css=option[value="3"]</option><option>//option[@value='3']</option><option>//select[@id='grupo_usuario_ids']/option[2]</option><option>//option[2]</option></datalist></td><td>39,1</td>
-</tr>
-<tr><td>addSelection</td><td>id=grupo_usuario_ids<datalist><option>id=grupo_usuario_ids</option><option>css=#grupo_usuario_ids</option><option>//select[@id='grupo_usuario_ids']</option><option>//form[@id='new_grupo']/div[6]/select</option><option>//select</option></datalist></td><td>label=Alejandro Burgos</td>
-</tr>
-<tr><td>addSelection</td><td>id=grupo_subgrupo_ids<datalist><option>id=grupo_subgrupo_ids</option><option>css=#grupo_subgrupo_ids</option><option>//select[@id='grupo_subgrupo_ids']</option><option>//form[@id='new_grupo']/div[7]/select</option><option>//div[7]/select</option></datalist></td><td>label=Archivo y Correspondencia</td>
-</tr>
-<tr><td>clickAt</td><td>css=option[value="112"]<datalist><option>css=option[value="112"]</option><option>//option[@value='112']</option><option>//select[@id='grupo_subgrupo_ids']/option</option><option>//div[7]/select/option</option></datalist></td><td>64,2</td>
-</tr>
 <tr><td>clickAt</td><td>id=grupo_procesogh_id<datalist><option>id=grupo_procesogh_id</option><option>name=grupo[procesogh_id]</option><option>css=#grupo_procesogh_id</option><option>//select[@id='grupo_procesogh_id']</option><option>//form[@id='new_grupo']/div[8]/select</option><option>//div[8]/select</option></datalist></td><td>-75,-390</td>
 </tr>
 <tr><td>select</td><td>id=grupo_procesogh_id<datalist><option>id=grupo_procesogh_id</option><option>name=grupo[procesogh_id]</option><option>css=#grupo_procesogh_id</option><option>//select[@id='grupo_procesogh_id']</option><option>//form[@id='new_grupo']/div[8]/select</option><option>//div[8]/select</option></datalist></td><td>label=OPERATIVO</td>
@@ -456,11 +444,25 @@
 </tr>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>css=a.btn.btn-xs</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/admin/grupos/170/edita')]</option><option>//td[10]/a</option></datalist></td><td>25,14</td>
 </tr>
-<tr><td>clickAt</td><td>css=#grupo_subgrupo_ids_chosen &gt; ul.chosen-choices &gt; li.search-choice &gt; a.search-choice-close<datalist><option>css=#grupo_subgrupo_ids_chosen &gt; ul.chosen-choices &gt; li.search-choice &gt; a.search-choice-close</option><option>//div[@id='grupo_subgrupo_ids_chosen']/ul/li/a</option><option>//div[7]/div/ul/li/a</option></datalist></td><td>9,4</td>
+<tr><td>assertText</td><td>css=label.string.required.control-label<datalist><option>css=label.string.required.control-label</option><option>//form[@id='edit_grupo_161']/div[2]/label</option><option>//label</option></datalist></td><td>* Nombre</td>
 </tr>
-<tr><td>clickAt</td><td>//div[@id='grupo_usuario_ids_chosen']/ul/li[2]/a<datalist><option>//div[@id='grupo_usuario_ids_chosen']/ul/li[2]/a</option><option>//div[6]/div/ul/li[2]/a</option></datalist></td><td>10,6</td>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='grupo_usuario_ids_chosen']/ul/li/a</option><option>//div[6]/div/ul/li/a</option></datalist></td><td>12,7</td>
+<tr><td>addSelection</td><td>id=grupo_usuario_ids<datalist><option>id=grupo_usuario_ids</option><option>css=#grupo_usuario_ids</option><option>//select[@id='grupo_usuario_ids']</option><option>//form[@id='edit_grupo_159']/div[6]/select</option><option>//select</option></datalist></td><td>label=cor1440 cor1440</td>
+</tr>
+<tr><td>addSelection</td><td>id=grupo_subgrupo_ids<datalist><option>id=grupo_subgrupo_ids</option><option>css=#grupo_subgrupo_ids</option><option>//select[@id='grupo_subgrupo_ids']</option><option>//form[@id='edit_grupo_159']/div[7]/select</option><option>//div[7]/select</option></datalist></td><td>label=Archivo y Correspondencia</td>
+</tr>
+<tr><td>clickAt</td><td>id=grupo_no_modificar_ldap<datalist><option>id=grupo_no_modificar_ldap</option><option>css=#grupo_no_modificar_ldap</option><option>//input[@id='grupo_no_modificar_ldap']</option><option>//form[@id='edit_grupo_159']/div[10]/label/input</option><option>//label/input</option></datalist></td><td>548,5</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_grupo_170']/div[13]/input</option><option>//div[13]/input</option></datalist></td><td>44,13</td>
+</tr>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>css=a.btn.btn-xs</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/admin/grupos/170/edita')]</option><option>//td[10]/a</option></datalist></td><td>25,14</td>
+</tr>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
+<tr><td>removeSelection</td><td>id=grupo_usuario_ids<datalist><option>id=grupo_usuario_ids</option><option>css=#grupo_usuario_ids</option><option>//select[@id='grupo_usuario_ids']</option><option>//form[@id='edit_grupo_159']/div[6]/select</option><option>//select</option></datalist></td><td>label=cor1440 cor1440</td>
+</tr>
+<tr><td>removeSelection</td><td>id=grupo_subgrupo_ids<datalist><option>id=grupo_subgrupo_ids</option><option>css=#grupo_subgrupo_ids</option><option>//select[@id='grupo_subgrupo_ids']</option><option>//form[@id='edit_grupo_159']/div[7]/select</option><option>//div[7]/select</option></datalist></td><td>label=Archivo y Correspondencia</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='edit_grupo_170']/div[13]/input</option><option>//div[13]/input</option></datalist></td><td>44,13</td>
 </tr>
