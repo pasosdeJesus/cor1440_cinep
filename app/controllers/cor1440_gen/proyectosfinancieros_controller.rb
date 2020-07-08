@@ -773,6 +773,7 @@ module Cor1440Gen
               :anotacionescontab, :gestiones]
               #:formatosespecificos, :formatossolicitudpago ]
         cn.each do |s|
+          puts s
           r.add_field(s, @proyectofinanciero[s] ? @proyectofinanciero[s] : '')
         end
         [:sectorapc, :tutorarea, :coordinadorlinea, :nitfinanciador, 

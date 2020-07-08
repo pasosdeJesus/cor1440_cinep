@@ -26,6 +26,8 @@ module Cor1440Gen
       @registro.current_usuario = current_usuario
       @registro.oficina_id = 1
       @registro.creadopor_id = current_usuario.id
+      @registro.usuario_id = current_usuario.id
+      @registro.fecha = Date.today
       @registro.save!(validate: false)
       @apf = ActividadProyectofinanciero.new
       @apf.proyectofinanciero_id = 18  # Plan trienal 2018-2020

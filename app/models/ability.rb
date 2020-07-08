@@ -99,7 +99,6 @@ class Ability  < Cor1440Gen::Ability
 
   # Tablas no básicas pero que tienen índice
   NOBASICAS_INDSEQID =  [
-    ['', 'proyectofinanciero_usuario'], 
   ]
 
   # Tablas no básicas pero que tienen índice con secuencia id_seq

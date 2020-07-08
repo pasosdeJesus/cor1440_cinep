@@ -853,6 +853,38 @@ ALTER SEQUENCE public.convenio_id_seq OWNED BY public.convenio.id;
 
 
 --
+-- Name: coordinador_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.coordinador_proyectofinanciero (
+    id integer NOT NULL,
+    proyectofinanciero_id integer,
+    coordinador_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: coordinador_proyectofinanciero_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.coordinador_proyectofinanciero_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: coordinador_proyectofinanciero_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.coordinador_proyectofinanciero_id_seq OWNED BY public.coordinador_proyectofinanciero.id;
+
+
+--
 -- Name: cor1440_gen_actividad; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1549,38 +1581,6 @@ CREATE TABLE public.cor1440_gen_caracterizacionpf (
 
 
 --
--- Name: cor1440_gen_coordinador_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.cor1440_gen_coordinador_proyectofinanciero (
-    id integer NOT NULL,
-    proyectofinanciero_id integer,
-    coordinador_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: cor1440_gen_coordinador_proyectofinanciero_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.cor1440_gen_coordinador_proyectofinanciero_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: cor1440_gen_coordinador_proyectofinanciero_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.cor1440_gen_coordinador_proyectofinanciero_id_seq OWNED BY public.cor1440_gen_coordinador_proyectofinanciero.id;
-
-
---
 -- Name: cor1440_gen_datointermedioti; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2136,6 +2136,42 @@ CREATE SEQUENCE public.cor1440_gen_proyectofinanciero_id_seq
 --
 
 ALTER SEQUENCE public.cor1440_gen_proyectofinanciero_id_seq OWNED BY public.cor1440_gen_proyectofinanciero.id;
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero_usuario; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_proyectofinanciero_usuario (
+    id integer NOT NULL,
+    proyectofinanciero_id integer NOT NULL,
+    usuario_id integer,
+    cargo_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    porcentaje integer,
+    perfilprofesional_id integer,
+    tipocontrato_id integer DEFAULT 1
+);
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero_usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.cor1440_gen_proyectofinanciero_usuario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero_usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.cor1440_gen_proyectofinanciero_usuario_id_seq OWNED BY public.cor1440_gen_proyectofinanciero_usuario.id;
 
 
 --
@@ -3695,42 +3731,6 @@ CREATE SEQUENCE public.proyectofinanciero_uresponsable_id_seq
 --
 
 ALTER SEQUENCE public.proyectofinanciero_uresponsable_id_seq OWNED BY public.proyectofinanciero_uresponsable.id;
-
-
---
--- Name: proyectofinanciero_usuario; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.proyectofinanciero_usuario (
-    id integer NOT NULL,
-    proyectofinanciero_id integer NOT NULL,
-    usuario_id integer,
-    cargo_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    porcentaje integer,
-    perfilprofesional_id integer,
-    tipocontrato_id integer DEFAULT 1
-);
-
-
---
--- Name: proyectofinanciero_usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.proyectofinanciero_usuario_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: proyectofinanciero_usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.proyectofinanciero_usuario_id_seq OWNED BY public.proyectofinanciero_usuario.id;
 
 
 --
@@ -5328,8 +5328,8 @@ CREATE VIEW public.v_solicitud_informes AS
     array_to_string(ARRAY( SELECT (((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text)
            FROM ((public.sip_persona
              JOIN public.usuario ON ((sip_persona.id = usuario.persona_id)))
-             JOIN public.cor1440_gen_coordinador_proyectofinanciero ON ((usuario.id = cor1440_gen_coordinador_proyectofinanciero.coordinador_id)))
-          WHERE (cor1440_gen_coordinador_proyectofinanciero.proyectofinanciero_id = p.id)), ', '::text) AS coordinador,
+             JOIN public.coordinador_proyectofinanciero ON ((usuario.id = coordinador_proyectofinanciero.coordinador_id)))
+          WHERE (coordinador_proyectofinanciero.proyectofinanciero_id = p.id)), ', '::text) AS coordinador,
     array_to_string(ARRAY( SELECT (((sip_persona.nombres)::text || ' '::text) || (sip_persona.apellidos)::text)
            FROM ((public.sip_persona
              JOIN public.usuario ON ((sip_persona.id = usuario.persona_id)))
@@ -5511,6 +5511,13 @@ ALTER TABLE ONLY public.convenio ALTER COLUMN id SET DEFAULT nextval('public.con
 
 
 --
+-- Name: coordinador_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.coordinador_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('public.coordinador_proyectofinanciero_id_seq'::regclass);
+
+
+--
 -- Name: cor1440_gen_actividad id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5616,13 +5623,6 @@ ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona ALTER COLUMN id SET D
 
 
 --
--- Name: cor1440_gen_coordinador_proyectofinanciero id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.cor1440_gen_coordinador_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_coordinador_proyectofinanciero_id_seq'::regclass);
-
-
---
 -- Name: cor1440_gen_datointermedioti id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5704,6 +5704,13 @@ ALTER TABLE ONLY public.cor1440_gen_proyecto ALTER COLUMN id SET DEFAULT nextval
 --
 
 ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_proyectofinanciero_id_seq'::regclass);
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero_usuario id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_proyectofinanciero_usuario_id_seq'::regclass);
 
 
 --
@@ -5977,13 +5984,6 @@ ALTER TABLE ONLY public.profesion ALTER COLUMN id SET DEFAULT nextval('public.pr
 --
 
 ALTER TABLE ONLY public.proyectofinanciero_uresponsable ALTER COLUMN id SET DEFAULT nextval('public.proyectofinanciero_uresponsable_id_seq'::regclass);
-
-
---
--- Name: proyectofinanciero_usuario id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.proyectofinanciero_usuario ALTER COLUMN id SET DEFAULT nextval('public.proyectofinanciero_usuario_id_seq'::regclass);
 
 
 --
@@ -6310,6 +6310,14 @@ ALTER TABLE ONLY public.convenio
 
 
 --
+-- Name: coordinador_proyectofinanciero coordinador_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.coordinador_proyectofinanciero
+    ADD CONSTRAINT coordinador_proyectofinanciero_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: cor1440_gen_actividad_proyecto cor1440_gen_actividad_proyecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6430,14 +6438,6 @@ ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona
 
 
 --
--- Name: cor1440_gen_coordinador_proyectofinanciero cor1440_gen_coordinador_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.cor1440_gen_coordinador_proyectofinanciero
-    ADD CONSTRAINT cor1440_gen_coordinador_proyectofinanciero_pkey PRIMARY KEY (id);
-
-
---
 -- Name: cor1440_gen_datointermedioti cor1440_gen_datointermedioti_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6531,6 +6531,14 @@ ALTER TABLE ONLY public.cor1440_gen_proyecto
 
 ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero
     ADD CONSTRAINT cor1440_gen_proyectofinanciero_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero_usuario cor1440_gen_proyectofinanciero_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
+    ADD CONSTRAINT cor1440_gen_proyectofinanciero_usuario_pkey PRIMARY KEY (id);
 
 
 --
@@ -6851,14 +6859,6 @@ ALTER TABLE ONLY public.profesion
 
 ALTER TABLE ONLY public.proyectofinanciero_uresponsable
     ADD CONSTRAINT proyectofinanciero_uresponsable_pkey PRIMARY KEY (id);
-
-
---
--- Name: proyectofinanciero_usuario proyectofinanciero_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.proyectofinanciero_usuario
-    ADD CONSTRAINT proyectofinanciero_usuario_pkey PRIMARY KEY (id);
 
 
 --
@@ -7606,10 +7606,10 @@ ALTER TABLE ONLY public.cor1440_gen_resultadopf
 
 
 --
--- Name: proyectofinanciero_usuario fk_rails_06be7b769b; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero_usuario fk_rails_06be7b769b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.proyectofinanciero_usuario
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_06be7b769b FOREIGN KEY (perfilprofesional_id) REFERENCES public.perfilprofesional(id);
 
 
@@ -7862,10 +7862,10 @@ ALTER TABLE ONLY public.cor1440_gen_campotind
 
 
 --
--- Name: proyectofinanciero_usuario fk_rails_28225d4dc2; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero_usuario fk_rails_28225d4dc2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.proyectofinanciero_usuario
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_28225d4dc2 FOREIGN KEY (usuario_id) REFERENCES public.usuario(id);
 
 
@@ -8006,10 +8006,10 @@ ALTER TABLE ONLY public.actividad_grupo
 
 
 --
--- Name: proyectofinanciero_usuario fk_rails_3f5055fb42; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero_usuario fk_rails_3f5055fb42; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.proyectofinanciero_usuario
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_3f5055fb42 FOREIGN KEY (cargo_id) REFERENCES public.cargo(id);
 
 
@@ -8206,10 +8206,10 @@ ALTER TABLE ONLY public.cor1440_gen_anexo_efecto
 
 
 --
--- Name: cor1440_gen_coordinador_proyectofinanciero fk_rails_5a7dd1dd10; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: coordinador_proyectofinanciero fk_rails_5a7dd1dd10; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.cor1440_gen_coordinador_proyectofinanciero
+ALTER TABLE ONLY public.coordinador_proyectofinanciero
     ADD CONSTRAINT fk_rails_5a7dd1dd10 FOREIGN KEY (coordinador_id) REFERENCES public.usuario(id);
 
 
@@ -8662,10 +8662,10 @@ ALTER TABLE ONLY public.cor1440_gen_anexo_efecto
 
 
 --
--- Name: proyectofinanciero_usuario fk_rails_a4c07cb119; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero_usuario fk_rails_a4c07cb119; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.proyectofinanciero_usuario
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_a4c07cb119 FOREIGN KEY (tipocontrato_id) REFERENCES public.tipocontrato(id);
 
 
@@ -8838,10 +8838,10 @@ ALTER TABLE ONLY public.cor1440_gen_actividadpf
 
 
 --
--- Name: proyectofinanciero_usuario fk_rails_c719ad1d65; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero_usuario fk_rails_c719ad1d65; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.proyectofinanciero_usuario
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_c719ad1d65 FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
 
 
@@ -9150,10 +9150,10 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- Name: cor1440_gen_coordinador_proyectofinanciero fk_rails_fab0c162ed; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: coordinador_proyectofinanciero fk_rails_fab0c162ed; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.cor1440_gen_coordinador_proyectofinanciero
+ALTER TABLE ONLY public.coordinador_proyectofinanciero
     ADD CONSTRAINT fk_rails_fab0c162ed FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
 
 
@@ -9834,6 +9834,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200411095105'),
 ('20200415021859'),
 ('20200415102103'),
-('20200628024130');
+('20200706113547');
 
 
