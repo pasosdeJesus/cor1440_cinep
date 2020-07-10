@@ -54,6 +54,10 @@ class Ability  < Cor1440Gen::Ability
   GRUPOS_GENERICOS = [GRUPO_EXTERNOS, GRUPO_USUARIOS, GRUPO_DESACTIVADOS]
   GRUPO_COMUNICACIONES = "Comunicaciones"
   GRUPO_DERECHOSHUMANOS = "Línea Derechos Humanos y Derecho Internacional Humanitario"
+  GRUPO_MEDIACION = "Línea Mediación y Reconciliación"
+  GRUPO_INICIATIVASPAZ = "Línea Iniciativas de Paz"
+  GRUPO_MOVIMIENTOSSOCIALES = "Línea Movimientos Sociales"
+  GRUPO_CONFLICTOYESTADO = "Línea Conflicto y Estado"
   GRUPO_LINEA = "Línea"
   GRUPO_OFICINATI = "Oficina TI"
   GRUPO_COORDINADOR = "Coordinador(a)"
@@ -397,6 +401,8 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Efecto
           can :index, Cor1440Gen::Mindicadorpf
+          can :index, :busquedaunificada
+          can :index, :exploradordatosrel
         end
 
         coords = lgrupos.select {|g| g.start_with?(GRUPO_COORDINADOR)}
@@ -451,6 +457,22 @@ class Ability  < Cor1440Gen::Ability
         # Contexto es para equipo derechos humanos 
         if lgrupos.include?(GRUPO_DERECHOSHUMANOS)
           can :edit, :contextoac
+        end
+
+        if lgrupos.include?(GRUPO_MEDIACION)
+          can :index, :conflictividades
+        end
+
+        if lgrupos.include?(GRUPO_MOVIMIENTOSSOCIALES)
+          can :index, :movilizacion
+        end
+
+        if lgrupos.include?(GRUPO_INICIATIVASPAZ)
+          can :index, :datapaz
+        end
+
+        if lgrupos.include?(GRUPO_CONFLICTOYESTADO)
+          can :index, :dinamicas
         end
 
         if lgrupos.include?(GRUPO_OFICINATI)
@@ -514,10 +536,17 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
         end
       when Ability::ROLADMIN, Ability::ROLDIR
-        can :dir, :vistobuenoactividad
         can :dir, :aprobadoefecto
-        can :manage, :lineabase20182020
+        can :index, :busquedaunificada
+        can :index, :exploradordatosrel
+        can :index, :conflictividades
         can :edit, :contextoac
+        can :index, :datapaz
+        can :index, :dinamicas
+        can :manage, :lineabase20182020
+        can :index, :movilizacion
+        can :dir, :vistobuenoactividad
+
         can :manage, ::Convenio
         can :manage, ::Tasacambio
         can :manage, ::Usuario
