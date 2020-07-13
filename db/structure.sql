@@ -143,6 +143,40 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: acpcataccion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpcataccion (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpcataccion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpcataccion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpcataccion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpcataccion_id_seq OWNED BY public.acpcataccion.id;
+
+
+--
 -- Name: action_text_rich_texts; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -5413,6 +5447,13 @@ CREATE SEQUENCE public.vinculoestado_seq
 
 
 --
+-- Name: acpcataccion id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcataccion ALTER COLUMN id SET DEFAULT nextval('public.acpcataccion_id_seq'::regclass);
+
+
+--
 -- Name: action_text_rich_texts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -6187,6 +6228,14 @@ ALTER TABLE ONLY public.tipoproductopf ALTER COLUMN id SET DEFAULT nextval('publ
 --
 
 ALTER TABLE ONLY public.vinculacion ALTER COLUMN id SET DEFAULT nextval('public.vinculacion_id_seq'::regclass);
+
+
+--
+-- Name: acpcataccion acpcataccion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcataccion
+    ADD CONSTRAINT acpcataccion_pkey PRIMARY KEY (id);
 
 
 --
@@ -9834,6 +9883,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200411095105'),
 ('20200415021859'),
 ('20200415102103'),
-('20200706113547');
+('20200706113547'),
+('20200713162202'),
+('20200713164024');
 
 

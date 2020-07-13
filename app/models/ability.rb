@@ -73,6 +73,7 @@ class Ability  < Cor1440Gen::Ability
       ['Sip', 'perfilactorsocial'] ,
     ] + 
     [
+        ['', 'acpcataccion'],
         ['', 'areaestudios'],
         ['', 'cajacompensacion'],
         ['', 'cargo'],
