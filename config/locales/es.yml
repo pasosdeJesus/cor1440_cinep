@@ -48,8 +48,11 @@ es:
         other: Tasas de cambio
     attributes:
       "acpcataccion":
-        Acpcataccion: Categoria de acción colectiva por la paz (ACP)
-        Acpcatsaccion: Categorias de acción colectiva por la paz (ACP)
+        Acpcataccion: Categoria de acciones colectivas por la paz (ACP)
+        Acpcatsaccion: Categorias de acciones colectivas por la paz (ACP)
+      "acpestrategia":
+        Acpestrategia: Estrategia (ACP)
+        Acpestrategias: Estrategias (ACP)
       "areaestudios":
         Areaestudios: Área de estudios
         Areasestudios: Áreas de estudios
