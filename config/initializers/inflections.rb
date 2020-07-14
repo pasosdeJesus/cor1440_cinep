@@ -1,6 +1,8 @@
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'acpcataccion', 'acpcatsaccion'
+  inflect.irregular 'acpcobertura', 'acpcoberturas'
   inflect.irregular 'acpestrategia', 'acpestrategias'
+  inflect.irregular 'acpmotivo', 'acpmotivos'
   inflect.irregular 'actor', 'actores'
   inflect.irregular 'areaestudios', 'areasestudios'
   inflect.irregular 'cajacompensacion', 'cajascompensacion'

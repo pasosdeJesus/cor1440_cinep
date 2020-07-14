@@ -39,6 +39,7 @@ class DatosiniAcpcataccion < ActiveRecord::Migration[6.0]
         VALUES (18,'Premios y homenajes', '', '2020-07-13', '2020-07-13', '2020-07-13');
       INSERT INTO acpcataccion (id, nombre, observaciones, fechacreacion, created_at, updated_at)    
         VALUES (19,'Tomas y bloqueos', 'Las tomas se refieren a “la ocupación transitoria de entidades e instituciones públicas, no necesariamente estatales”. Y los bloqueos “son ocupaciones de calles y carreteras para obstaculizar el tránsito de personas y mercancías”. En ambos casos, son protestas en las que se implica el uso de la fuerza (en la mayoría de los casos sin recurso a la violencia) como medio para hacer sentir la presión.', '2020-07-13', '2020-07-13', '2020-07-13');
+        SELECT setval('acpcataccion_id_seq', 100);
     SQL
   end
 

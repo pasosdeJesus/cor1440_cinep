@@ -177,6 +177,40 @@ ALTER SEQUENCE public.acpcataccion_id_seq OWNED BY public.acpcataccion.id;
 
 
 --
+-- Name: acpcobertura; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpcobertura (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpcobertura_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpcobertura_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpcobertura_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpcobertura_id_seq OWNED BY public.acpcobertura.id;
+
+
+--
 -- Name: acpestrategia; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -208,6 +242,40 @@ CREATE SEQUENCE public.acpestrategia_id_seq
 --
 
 ALTER SEQUENCE public.acpestrategia_id_seq OWNED BY public.acpestrategia.id;
+
+
+--
+-- Name: acpmotivo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpmotivo (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpmotivo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpmotivo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpmotivo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpmotivo_id_seq OWNED BY public.acpmotivo.id;
 
 
 --
@@ -5488,10 +5556,24 @@ ALTER TABLE ONLY public.acpcataccion ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
+-- Name: acpcobertura id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcobertura ALTER COLUMN id SET DEFAULT nextval('public.acpcobertura_id_seq'::regclass);
+
+
+--
 -- Name: acpestrategia id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.acpestrategia ALTER COLUMN id SET DEFAULT nextval('public.acpestrategia_id_seq'::regclass);
+
+
+--
+-- Name: acpmotivo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpmotivo ALTER COLUMN id SET DEFAULT nextval('public.acpmotivo_id_seq'::regclass);
 
 
 --
@@ -6280,11 +6362,27 @@ ALTER TABLE ONLY public.acpcataccion
 
 
 --
+-- Name: acpcobertura acpcobertura_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcobertura
+    ADD CONSTRAINT acpcobertura_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: acpestrategia acpestrategia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.acpestrategia
     ADD CONSTRAINT acpestrategia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpmotivo acpmotivo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpmotivo
+    ADD CONSTRAINT acpmotivo_pkey PRIMARY KEY (id);
 
 
 --
@@ -9936,6 +10034,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200713162202'),
 ('20200713164024'),
 ('20200714155040'),
-('20200714155410');
+('20200714155410'),
+('20200714182949'),
+('20200714183340'),
+('20200714193113'),
+('20200714193216');
 
 

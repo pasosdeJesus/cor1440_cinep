@@ -15,6 +15,8 @@ class DatosiniAcpestrategia < ActiveRecord::Migration[6.0]
         VALUES (6,'E5: Resistir', '', '2020-07-14', '2020-07-14', '2020-07-14');
       INSERT INTO acpestrategia (id, nombre, observaciones, fechacreacion, created_at, updated_at)    
         VALUES (7,'No aplica', '', '2020-07-14', '2020-07-14', '2020-07-14');
+      SELECT setval('acpestrategia_id_seq', 100);
+
     SQL
   end
 

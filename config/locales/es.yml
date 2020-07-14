@@ -50,9 +50,15 @@ es:
       "acpcataccion":
         Acpcataccion: Categoria de acciones colectivas por la paz (ACP)
         Acpcatsaccion: Categorias de acciones colectivas por la paz (ACP)
+      "acpcobertura":
+        Acpcobertura: Cobertura (ACP)
+        Acpcoberturas: Coberturas (ACP)
       "acpestrategia":
         Acpestrategia: Estrategia (ACP)
         Acpestrategias: Estrategias (ACP)
+      "acpmotivo":
+        Acpmotivo: Motivo (ACP)
+        Acpmotivos: Motivos (ACP)
       "areaestudios":
         Areaestudios: Área de estudios
         Areasestudios: Áreas de estudios

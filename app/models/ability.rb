@@ -74,7 +74,9 @@ class Ability  < Cor1440Gen::Ability
     ] + 
     [
         ['', 'acpcataccion'],
+        ['', 'acpcobertura'],
         ['', 'acpestrategia'],
+        ['', 'acpmotivo'],
         ['', 'areaestudios'],
         ['', 'cajacompensacion'],
         ['', 'cargo'],
