@@ -50,9 +50,7 @@ class DatosiniAcpmotivo < ActiveRecord::Migration[6.0]
       INSERT INTO acpmotivo (id, nombre, observaciones, fechacreacion, created_at, updated_at)    
         VALUES (24, 'Represión y violación de DDHH', 'Cuando el motivo de la acción colectiva es denunciar acciones represivas y/o violaciones de los derechos humanos por parte de la fuerza pública. Una violación de derechos humanos debe entenderse como “toda conducta positiva o negativa mediante la cual un agente directo o indirecto del Estado vulnera, en cualquier persona y en cualquier tiempo, uno de los derechos enunciados y reconocidos por los instrumentos que conforman el Derecho Internacional de los Derechos Humanos”.', '2020-07-13', '2020-07-13', '2020-07-13');
       INSERT INTO acpmotivo (id, nombre, observaciones, fechacreacion, created_at, updated_at)    
-        VALUES (25, 'SIN INFORMACIÓN', '', '2020-07-13', '2020-07-13', '2020-07-13');
-      INSERT INTO acpmotivo (id, nombre, observaciones, fechacreacion, created_at, updated_at)    
-        VALUES (26, 'Secuestros y retenciones', 'a) Cuando el motivo de la acción colectiva es rechazar el que una de las organizaciones armadas ilegales retenga una persona con fines económicos o políticos (se incluyen los soldados o policías retenidos en enfrentamientos con la guerrilla). (García-Durán, 2006: 341) 
+        VALUES (25, 'Secuestros y retenciones', 'a) Cuando el motivo de la acción colectiva es rechazar el que una de las organizaciones armadas ilegales retenga una persona con fines económicos o políticos (se incluyen los soldados o policías retenidos en enfrentamientos con la guerrilla). (García-Durán, 2006: 341) 
 b) Es la privación de la libertad de una persona civil por parte de una organización insurgente, ya con el fin de obligarla a entregar una suma de dinero destinada a la financiación de dicha organización o de sus acciones bélicas, ya con el fin de enviar un mensaje, de producir un impacto en la opinión pública o impedir una determinada actividad de la víctima.', '2020-07-13', '2020-07-13', '2020-07-13');
       SELECT setval('acpmotivo_id_seq', 100);
     SQL
