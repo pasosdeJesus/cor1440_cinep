@@ -177,6 +177,40 @@ ALTER SEQUENCE public.acpcataccion_id_seq OWNED BY public.acpcataccion.id;
 
 
 --
+-- Name: acpcatmotivo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpcatmotivo (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpcatmotivo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpcatmotivo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpcatmotivo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpcatmotivo_id_seq OWNED BY public.acpcatmotivo.id;
+
+
+--
 -- Name: acpcobertura; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -5556,6 +5590,13 @@ ALTER TABLE ONLY public.acpcataccion ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
+-- Name: acpcatmotivo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcatmotivo ALTER COLUMN id SET DEFAULT nextval('public.acpcatmotivo_id_seq'::regclass);
+
+
+--
 -- Name: acpcobertura id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -6359,6 +6400,14 @@ ALTER TABLE ONLY public.vinculacion ALTER COLUMN id SET DEFAULT nextval('public.
 
 ALTER TABLE ONLY public.acpcataccion
     ADD CONSTRAINT acpcataccion_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpcatmotivo acpcatmotivo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcatmotivo
+    ADD CONSTRAINT acpcatmotivo_pkey PRIMARY KEY (id);
 
 
 --
@@ -10038,6 +10087,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200714182949'),
 ('20200714183340'),
 ('20200714193113'),
-('20200714193216');
+('20200714193216'),
+('20200715103001'),
+('20200715105931');
 
 
