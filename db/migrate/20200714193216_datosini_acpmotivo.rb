@@ -14,7 +14,7 @@ class DatosiniAcpmotivo < ActiveRecord::Migration[6.0]
       INSERT INTO acpmotivo (id, nombre, observaciones, fechacreacion, created_at, updated_at)    
         VALUES (6,'Celebración de un motivo público', 'Cuando el motivo de la acción colectiva es realizar un acto público para celebrar una fecha que tiene especial significación regional, departamental, o nacional (Ej. Independencia Nacional, etc.).', '2020-07-13', '2020-07-13', '2020-07-13');
       INSERT INTO acpmotivo (id, nombre, observaciones, fechacreacion, created_at, updated_at)    
-        VALUES (7,'Combates y disputa del territorio', '', '2020-07-13', '2020-07-13', '2020-07-13');
+        VALUES (7,'Combates y disputa del territorio', 'Cuando el motivo de la acción colectiva es la reacción ante la situación crítica que se genera y afecta a la población civil en razón de enfrentamientos y acciones armadas entre la fuerza pública y un grupo ilegal.', '2020-07-13', '2020-07-13', '2020-07-13');
       INSERT INTO acpmotivo (id, nombre, observaciones, fechacreacion, created_at, updated_at)    
         VALUES (8,'Concertación y organizaciones para la paz (en apoyo a procesos de paz)', 'Cuando el motivo de la acción colectiva es buscar la confluencia y organización de sectores sociales a favor de la paz en función de dar respaldo a procesos de paz, ya sean eventuales o en curso', '2020-07-13', '2020-07-13', '2020-07-13');
       INSERT INTO acpmotivo (id, nombre, observaciones, fechacreacion, created_at, updated_at)    
