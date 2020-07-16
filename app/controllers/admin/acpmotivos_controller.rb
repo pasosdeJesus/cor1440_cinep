@@ -18,6 +18,7 @@ module Admin
       [
         :id, 
         :nombre, 
+        :catmotivo,
         :observaciones, 
         :fechacreacion_localizada, 
         :habilitado

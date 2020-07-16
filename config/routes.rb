@@ -28,6 +28,9 @@ Rails.application.routes.draw do
       controller: 'usuarios',
       path_names: { new: 'nuevo', edit: 'edita' }
 
+    resources :acps,
+      path_names: { new: 'nueva', edit: 'edita' }
+
     resources :convenios,
       path_names: { new: 'nueva', edit: 'edita' }
  

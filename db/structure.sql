@@ -143,6 +143,41 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: acp; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acp (
+    id bigint NOT NULL,
+    cataccion_id integer DEFAULT 1 NOT NULL,
+    fini date NOT NULL,
+    ffin date,
+    confr integer,
+    cobertura_id integer DEFAULT 1 NOT NULL,
+    motivo_id integer DEFAULT 1 NOT NULL,
+    descripcion character varying(5000) NOT NULL
+);
+
+
+--
+-- Name: acp_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acp_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acp_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acp_id_seq OWNED BY public.acp.id;
+
+
+--
 -- Name: acpcataccion; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -153,7 +188,8 @@ CREATE TABLE public.acpcataccion (
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    estrategia_id integer
 );
 
 
@@ -289,7 +325,8 @@ CREATE TABLE public.acpmotivo (
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    catmotivo_id integer
 );
 
 
@@ -5583,6 +5620,13 @@ CREATE SEQUENCE public.vinculoestado_seq
 
 
 --
+-- Name: acp id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acp ALTER COLUMN id SET DEFAULT nextval('public.acp_id_seq'::regclass);
+
+
+--
 -- Name: acpcataccion id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -6392,6 +6436,14 @@ ALTER TABLE ONLY public.tipoproductopf ALTER COLUMN id SET DEFAULT nextval('publ
 --
 
 ALTER TABLE ONLY public.vinculacion ALTER COLUMN id SET DEFAULT nextval('public.vinculacion_id_seq'::regclass);
+
+
+--
+-- Name: acp acp_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acp
+    ADD CONSTRAINT acp_pkey PRIMARY KEY (id);
 
 
 --
@@ -7963,6 +8015,14 @@ ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona
 
 
 --
+-- Name: acpmotivo fk_rails_11e39ce112; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpmotivo
+    ADD CONSTRAINT fk_rails_11e39ce112 FOREIGN KEY (catmotivo_id) REFERENCES public.acpcatmotivo(id);
+
+
+--
 -- Name: convenio fk_rails_1229b62348; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8163,6 +8223,14 @@ ALTER TABLE ONLY public.heb412_gen_doc
 
 
 --
+-- Name: acp fk_rails_2e6c3a85cb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acp
+    ADD CONSTRAINT fk_rails_2e6c3a85cb FOREIGN KEY (motivo_id) REFERENCES public.acpmotivo(id);
+
+
+--
 -- Name: actor_regiongrupo fk_rails_2e83e09369; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8280,6 +8348,14 @@ ALTER TABLE ONLY public.efecto_valorcampotind
 
 ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero
     ADD CONSTRAINT fk_rails_4473f9ee28 FOREIGN KEY (respgp_id) REFERENCES public.usuario(id);
+
+
+--
+-- Name: acp fk_rails_45203542af; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acp
+    ADD CONSTRAINT fk_rails_45203542af FOREIGN KEY (cobertura_id) REFERENCES public.acpcobertura(id);
 
 
 --
@@ -8683,6 +8759,14 @@ ALTER TABLE ONLY public.mr519_gen_respuestafor
 
 
 --
+-- Name: acp fk_rails_81908b6b6d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acp
+    ADD CONSTRAINT fk_rails_81908b6b6d FOREIGN KEY (cataccion_id) REFERENCES public.acpcataccion(id);
+
+
+--
 -- Name: cor1440_gen_actividad fk_rails_8196c53609; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8920,6 +9004,14 @@ ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
 
 ALTER TABLE ONLY public.actorsocial_departamento
     ADD CONSTRAINT fk_rails_a5ab97cd2f FOREIGN KEY (departamento_id) REFERENCES public.sip_departamento(id);
+
+
+--
+-- Name: acpcataccion fk_rails_a6ccdfe730; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcataccion
+    ADD CONSTRAINT fk_rails_a6ccdfe730 FOREIGN KEY (estrategia_id) REFERENCES public.acpestrategia(id);
 
 
 --
@@ -10089,6 +10181,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200714193113'),
 ('20200714193216'),
 ('20200715103001'),
-('20200715105931');
+('20200715105931'),
+('20200715120011'),
+('20200715205544'),
+('20200716002601'),
+('20200716094513');
 
 

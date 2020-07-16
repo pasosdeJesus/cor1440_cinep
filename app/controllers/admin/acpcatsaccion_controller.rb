@@ -18,6 +18,7 @@ module Admin
       [
         :id, 
         :nombre, 
+        :estrategia,
         :observaciones, 
         :fechacreacion_localizada, 
         :habilitado

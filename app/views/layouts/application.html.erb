@@ -88,9 +88,9 @@
              cor1440_gen.mindicadorespf_path,
              desplegable: true %>
         <% end %>
-        <% if can? :index, :datapaz%>
-           <%= opcion_menu 'Datapaz', 
-             cor1440_gen.mindicadorespf_path,
+        <% if can? :index, ::Acp %>
+           <%= opcion_menu 'Acciones colectivas por la paz', 
+             main_app.acps_path,
              desplegable: true %>
         <% end %>
         <% if can? :index, :dinamicas %>

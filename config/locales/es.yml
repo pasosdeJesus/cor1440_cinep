@@ -47,6 +47,18 @@ es:
         one: Tasa de cambio
         other: Tasas de cambio
     attributes:
+      "acp":
+        Acp: Acción colectiva por la paz
+        Acps: Acciones colectivas por la paz
+        cataccion: Categoria ACP
+        cataccion_id: Categoria ACP
+        estrategia: Estrategia ACP
+        fini_localizada: Fecha de inicio
+        ffin_localizada: Fecha de terminación
+        confr: Nivel de confrontación
+        cobertura: Cobertura geográfica
+        motivo: Motivo ACP
+        descripcion: Descripción
       "acpcataccion":
         Acpcataccion: Categoria de acciones colectivas por la paz (ACP)
         Acpcatsaccion: Categorias de acciones colectivas por la paz (ACP)

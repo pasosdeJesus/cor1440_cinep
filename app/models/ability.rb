@@ -189,6 +189,27 @@ class Ability  < Cor1440Gen::Ability
         controlador: '::UsuariosController',
         ruta: '/usuarios'
     },
+
+    'Acp' => { 
+      campos: [
+        'id', 
+        'cataccion', 
+        'estrategia', 
+        'fini', 
+        'fini_localizada', 
+        'ffin', 
+        'ffin_localizada', 
+        'confr', 
+        'cobertura',
+        'motivo',
+        'descripcion', 
+      ],
+      controlador: '::Acp',
+      ruta: '/acps'
+    },
+
+
+
     'Actividad' => { 
       campos: [
         Cor1440Gen::Actividad.human_attribute_name(
@@ -473,7 +494,7 @@ class Ability  < Cor1440Gen::Ability
         end
 
         if lgrupos.include?(GRUPO_INICIATIVASPAZ)
-          can :index, :datapaz
+          can :manage, ::Acp
         end
 
         if lgrupos.include?(GRUPO_CONFLICTOYESTADO)
@@ -546,7 +567,7 @@ class Ability  < Cor1440Gen::Ability
         can :index, :exploradordatosrel
         can :index, :conflictividades
         can :edit, :contextoac
-        can :index, :datapaz
+        can :manage, ::Acp
         can :index, :dinamicas
         can :manage, :lineabase20182020
         can :index, :movilizacion
