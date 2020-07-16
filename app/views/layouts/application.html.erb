@@ -109,13 +109,19 @@
     <% end %>
   <% end %>
   <%= grupo_menus :pull => :right do %>
-    <% if can? :manage, ::Heb412Gen::Plantillahcm %>
+    <% if can? :read, ::Heb412Gen::Doc %>
       <%= despliega_abajo 'Documentos y Plantillas' do %>
         <%= opcion_menu 'Nube', heb412_gen.sisini_path,
           desplegable: true %>
-        <%= opcion_menu 'Plantillas para listados en hojas de calculo',
-          heb412_gen.plantillashcm_path,
-          desplegable: true %>
+        <% if can? :manage, ::Heb412Gen::Plantillahcm %>
+          <%= opcion_menu 'Plantillas para listados en hojas de calculo',
+            heb412_gen.plantillashcm_path,
+            desplegable: true %>
+          <% if can? :manage, ::Acp %>
+            <%= opcion_menu 'Importar datos de listado en hoja de cálculo',
+              heb412_gen.plantillashcm_importadatos_path, desplegable: true %>
+          <% end %>
+        <% end %>
         <% if can? :manage, ::Heb412Gen::Plantillahcr %>
           <%= opcion_menu 'Plantillas para un registro en hoja de calculo',
             heb412_gen.plantillashcr_path,

@@ -204,7 +204,7 @@ class Ability  < Cor1440Gen::Ability
         'motivo',
         'descripcion', 
       ],
-      controlador: '::Acp',
+      controlador: '::AcpsController',
       ruta: '/acps'
     },
 
@@ -495,6 +495,11 @@ class Ability  < Cor1440Gen::Ability
 
         if lgrupos.include?(GRUPO_INICIATIVASPAZ)
           can :manage, ::Acp
+          can :manage, ::Acpcataccion
+          can :manage, ::Acpestrategia
+          can :manage, ::Acpcobertura
+          can :manage, ::Acpmotivo
+          can :manage, ::Acpcatmotivo
         end
 
         if lgrupos.include?(GRUPO_CONFLICTOYESTADO)
