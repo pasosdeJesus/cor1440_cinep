@@ -78,8 +78,8 @@ es:
         Areaestudios: Área de estudios
         Areasestudios: Áreas de estudios
       "actor":
-        Actor: Actor social
-        Actores: Actores sociales
+        Actor: Organización social
+        Actores: Organizaciones sociales
         grupo: Grupo(s)
         lineabase20182020: Estado inicial 2018-2020
         nivelrelacion: Nivel de relación
@@ -125,7 +125,7 @@ es:
       "cor1440_gen/actividad":
         actividadpf: Actividad de compromiso institucional
         actividadtipo: Tipo
-        actorsocial: Actor social
+        actorsocial: Organización social
         creadopor: "Creado por"
         duracion: "Duración"
         duracion_localizado: "Duración"
