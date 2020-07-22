@@ -12,8 +12,12 @@ module Cor1440Gen
 
     before_action :set_proyectofinanciero, 
       only: [:show, :edit, :update, :destroy]
-    load_and_authorize_resource class: ::Cor1440Gen::Proyectofinanciero,
-      except: [:duracion]
+
+    load_and_authorize_resource  class: Cor1440Gen::Proyectofinanciero,
+      only: [:new, :create, :destroy, :edit, :update, :index, :show,
+             :objetivospf]
+    #load_and_authorize_resource class: ::Cor1440Gen::Proyectofinanciero,
+    #  except: [:duracion]
 
     include ::Sip::ConsultasHelper
 
@@ -769,6 +773,7 @@ module Cor1440Gen
               :anotacionescontab, :gestiones]
               #:formatosespecificos, :formatossolicitudpago ]
         cn.each do |s|
+          puts s
           r.add_field(s, @proyectofinanciero[s] ? @proyectofinanciero[s] : '')
         end
         [:sectorapc, :tutorarea, :coordinadorlinea, :nitfinanciador, 

@@ -15,6 +15,7 @@ env:
                 - CC_TEST_REPORTER_ID=07b6cc6f7f3c0d4cc4f4017bbdd62709d785ce88504d3622f1f356d8b1842bfd
 
 before_install: 
+        - nvm install node
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         - chmod +x ./cc-test-reporter
         - ./cc-test-reporter before-build
@@ -26,11 +27,12 @@ before_install:
         - gem update --system
         - bundle update --bundler
         - bundle install
+        - yarn install
         - cp config/database.travis.yml config/database.yml
         - cp config/initializers/sip.rb.plantilla config/initializers/sip.rb
         - cp config/application.rb.plantilla config/application.rb
         - cp db/structure.sql db/structure.sql.copia # travis no soporta PostreSQL 10
-        - sed -e 's/provider = libc,//g;s/^ *AS integer$//g' db/structure.sql.copia > db/structure.sql 
+        - sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g' db/structure.sql.copia > db/structure.sql 
         - bundle exec rake db:setup
         - bundle exec rake sip:indices
 

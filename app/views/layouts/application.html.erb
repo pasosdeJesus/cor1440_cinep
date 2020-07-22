@@ -8,107 +8,186 @@
 
 
 <% content_for :menu do %>
-  <%= menu_group do %>
+  <%= grupo_menus do %>
     <% if !current_usuario.nil? %>
       <% if can? :read, Cor1440Gen::Actividad %>
-        <%= drop_down "Actividades" do %>
-          <%= menu_item "Listado", cor1440_gen.actividades_path %>
-          <%= menu_item "Nueva Actividad", cor1440_gen.new_actividad_path %>
-          <%= menu_item "Conteo de Actividades", cor1440_gen.contar_actividades_path %>
+        <%= despliega_abajo 'Actividades' do %>
+          <%= opcion_menu 'Listado', cor1440_gen.actividades_path,
+            desplegable: true %>
+          <%= opcion_menu 'Nueva Actividad', cor1440_gen.new_actividad_path,
+            desplegable: true %>
+          <%= opcion_menu 'Conteo de Actividades', 
+            cor1440_gen.contar_actividades_path, desplegable: true %>
           <% if can? :index, Sip::Actorsocial %>
-            <%= menu_item "Actores Sociales", sip.actoressociales_path %>
+            <%= opcion_menu 'Actores Sociales', sip.actoressociales_path,
+              desplegable: true %>
           <% end %>
           <% if can? :manage, Sip::Persona %>
-            <%= menu_item "Personas", sip.personas_path %>
+            <%= opcion_menu 'Personas', sip.personas_path,
+              desplegable: true %>
           <% end %>
           <% if can? :edit, :contextoac %>
-            <%= menu_item "Reporte Trienal 2015-2017 Indicador 1.1", main_app.reportes_indicador11_path %>
-            <%= menu_item "Reporte Trienal 2015-2017 Objetivo Especifico 2", main_app.reportes_objetivoe2_path %>
-            <%= menu_item "Reporte Trienal 2015-2017 Cuadro Actividades", main_app.reportes_cuadroactividades_path %>
+            <%= opcion_menu 'Reporte Trienal 2015-2017 Indicador 1.1', 
+              main_app.reportes_indicador11_path,
+              desplegable: true %>
+            <%= opcion_menu 'Reporte Trienal 2015-2017 Objetivo Especifico 2', 
+              main_app.reportes_objetivoe2_path,
+              desplegable: true %>
+            <%= opcion_menu 'Reporte Trienal 2015-2017 Cuadro Actividades', 
+              main_app.reportes_cuadroactividades_path,
+              desplegable: true %>
           <% end %>
-        <% end %>
-      <% end %>
-      <% if can? :index, Cor1440Gen::Mindicadorpf %>
-        <%= drop_down "Indicadores" do %>
-          <!--%= menu_item "Avance en indicadores de Efecto", 
-            main_app.efectos_path %-->
-          <!--% if can? :edit, Cor1440Gen::Proyectofinanciero %-->
-            <%= menu_item "Medición", 
-              main_app.mindicadorespf_path %>
-          <!--% end %-->
         <% end %>
       <% end %>
 
       <% if can? :read, Cor1440Gen::Proyectofinanciero %>
-        <%= drop_down "Compromisos y Convenios" do %>
-          <%= menu_item "Listado de Compromisos Institucionales", 
-            cor1440_gen.proyectosfinancieros_path %>
+        <%= despliega_abajo 'Compromisos y Convenios' do %>
+          <%= opcion_menu 'Listado de Compromisos Institucionales', 
+            cor1440_gen.proyectosfinancieros_path,
+            desplegable: true %>
           <% if can? :new, Cor1440Gen::Proyectofinanciero %>
-            <%= menu_item "Validar Compromisos Institucionales", 
-              cor1440_gen.validar_proyectosfinancieros_path %>
+            <%= opcion_menu 'Validar Compromisos Institucionales', 
+              cor1440_gen.validar_proyectosfinancieros_path,
+              desplegable: true %>
+          <% end %>
+          <% if can? :index, Cor1440Gen::Mindicadorpf %>
+            <%= opcion_menu 'Medición de Indicadores', 
+              cor1440_gen.mindicadorespf_path,
+              desplegable: true %>
           <% end %>
           <% if can? :edit, ::Convenio %>
-            <%= menu_item "Listado Convenios Interinstitucionales Marco", 
-              main_app.convenios_path %>
+            <%= opcion_menu 'Listado Convenios Interinstitucionales Marco', 
+              main_app.convenios_path,
+              desplegable: true %>
           <% end %>
           <% if can? :edit, ::Tasacambio%>
-            <%= menu_item "Tasas de cambio", main_app.tasascambio_path %>
+            <%= opcion_menu 'Tasas de cambio', main_app.tasascambio_path,
+              desplegable: true %>
           <% end %>
         <% end %>
       <% end %>
- 
+
+      <%= despliega_abajo 'Datos' do %>
+        <% if can? :index, :busquedaunificada %>
+          <%= opcion_menu 'Búsqueda unificada', 
+            cor1440_gen.mindicadorespf_path,
+            desplegable: true %>
+        <% end %>
+        <% if can? :index, :exploradordatosrel %>
+          <%= opcion_menu 'Explorador visual de datos relacionados', 
+            cor1440_gen.mindicadorespf_path,
+            desplegable: true %>
+        <% end %>
+        <% if can? :index, :conflictividades%>
+          <%= opcion_menu 'Conflictividades y su transformación', 
+            cor1440_gen.mindicadorespf_path,
+            desplegable: true %>
+        <% end %>
+        <% if can? :index, :movilizacion %>
+           <%= opcion_menu 'Movilización Social', 
+             cor1440_gen.mindicadorespf_path,
+             desplegable: true %>
+        <% end %>
+        <% if can? :index, ::Acp %>
+           <%= opcion_menu 'Acciones colectivas por la paz', 
+             main_app.acps_path,
+             desplegable: true %>
+        <% end %>
+        <% if can? :index, :dinamicas %>
+           <%= opcion_menu 'Dinámicas del Conflicto', 
+             cor1440_gen.mindicadorespf_path,
+             desplegable: true %>
+        <% end %>
+        <%= opcion_menu 'Violencia Político Social', 
+          'https://base.nocheyniebla.org/casos',
+          desplegable: true %>
+        <%= opcion_menu 'Archivo de Prensa', 
+          'https://archivoprensa.cinep.org.co/buscar',
+          desplegable: true %>
+      <% end %>
+
     <% end %>
   <% end %>
-  <%= menu_group :pull => :right do %>
-    <% if can? :read, Heb412Gen::Doc%>
-      <%= menu_item "Documentos y Plantillas", heb412_gen.sisini_path %>
-    <% end %>
-    <% if !current_usuario.nil? %>
-      <%= drop_down "Administrar" do %>
-        <%= menu_item "Clave", main_app.editar_registro_usuario_path %>
+  <%= grupo_menus :pull => :right do %>
+    <% if can? :read, ::Heb412Gen::Doc %>
+      <%= despliega_abajo 'Documentos y Plantillas' do %>
+        <%= opcion_menu 'Nube', heb412_gen.sisini_path,
+          desplegable: true %>
         <% if can? :manage, ::Heb412Gen::Plantillahcm %>
-          <%= menu_item "Plantillas para listados en hojas de calculo",
-            heb412_gen.plantillashcm_path %>
+          <%= opcion_menu 'Plantillas para listados en hojas de calculo',
+            heb412_gen.plantillashcm_path,
+            desplegable: true %>
+          <% if can? :manage, ::Acp %>
+            <%= opcion_menu 'Importar datos de listado en hoja de cálculo',
+              heb412_gen.plantillashcm_importadatos_path, desplegable: true %>
+          <% end %>
         <% end %>
         <% if can? :manage, ::Heb412Gen::Plantillahcr %>
-          <%= menu_item "Plantillas para un registro en hoja de calculo",
-            heb412_gen.plantillashcr_path %>
+          <%= opcion_menu 'Plantillas para un registro en hoja de calculo',
+            heb412_gen.plantillashcr_path,
+            desplegable: true %>
         <% end %>
         <% if can? :manage, ::Heb412Gen::Plantilladoc %>
-          <%= menu_item "Plantillas para un registro en documento",
-            heb412_gen.plantillasdoc_path %>
+          <%= opcion_menu 'Plantillas para un registro en documento',
+            heb412_gen.plantillasdoc_path,
+            desplegable: true %>
         <% end %>
+      <% end %>
+    <% else %>
+      <%= opcion_menu 'Documentos y Plantillas', heb412_gen.sisini_path %>
+    <% end %>
+    <% if !current_usuario.nil? %>
+      <%= despliega_abajo 'Administrar' do %>
+        <%= opcion_menu 'Clave y tema', main_app.editar_registro_usuario_path,
+          desplegable: true %>
+        <%= opcion_menu 'Hacer solicitud TI', 
+          'https://ti.cinep.org.co:12443/ti',
+          desplegable: true %>
         <% if can? :read, ::Usuario %>
-          <%= menu_item "Directorio/Organigrama", main_app.grupos_arbol_path %>
-          <%= menu_item "Usuarios", main_app.usuarios_path %>
+          <%= opcion_menu 'Directorio/Organigrama', 
+            main_app.grupos_arbol_path,
+            desplegable: true %>
+          <%= opcion_menu 'Usuarios', main_app.usuarios_path,
+            desplegable: true %>
         <% end %>
         <% if can? :manage, :tablasbasicas %>
-          <%= menu_item "Tablas Básicas", sip.tablasbasicas_path %>
+          <%= opcion_menu 'Tablas Básicas', sip.tablasbasicas_path,
+            desplegable: true %>
         <% end %>
         <% if can? :manage, Mr519Gen::Formulario %>
-          <%= menu_item "Formularios", mr519_gen.formularios_path %>
+          <%= opcion_menu 'Formularios', mr519_gen.formularios_path,
+            desplegable: true %>
         <% end %>
         <% if can? :read, Mr519Gen::Encuestausuario %>
-          <%= menu_item "Encuestas a usuarios CRECER", mr519_gen.encuestasusuario_path %>
+          <%= opcion_menu 'Encuestas a usuarios CRECER', 
+            mr519_gen.encuestasusuario_path,
+            desplegable: true %>
         <% end %>
-        <% if can? :read, Mr519Gen::Encuestausuario %>
-          <%= menu_item "Planes de encuestas a Actores Sociales", main_app.planesencuesta_path %>
-          <%= menu_item "Encuestas a contactos de Actores Sociales", mr519_gen.encuestaspersona_path %>
+        <% if can? :read, Mr519Gen::Encuestapersona %>
+          <%= opcion_menu 'Planes de encuestas a Actores Sociales', 
+            main_app.planesencuesta_path,
+            desplegable: true %>
+          <%= opcion_menu 'Encuestas a contactos de Actores Sociales', 
+            mr519_gen.encuestaspersona_path,
+            desplegable: true %>
         <% end %>
-        <%= menu_item "Ver Control de Acceso", sip.ayuda_controldeacceso_path %>
+        <%= opcion_menu 'Ver Control de Acceso', 
+          sip.ayuda_controldeacceso_path,
+          desplegable: true %>
       <% end %>
-      <%= menu_item "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
+      <%= opcion_menu "Salir #{current_usuario.nusuario}", 
+        main_app.sign_out_path %>
     <% else %>
-      <%= menu_item "Acerca de", sip.acercade_path %>
-      <%= menu_item "Iniciar Sesión", main_app.new_usuario_session_path %> 
+      <%= opcion_menu 'Acerca de', sip.acercade_path %>
+      <%= opcion_menu 'Iniciar Sesión', main_app.new_usuario_session_path %> 
     <% end %>
   <% end %>
 <% end %>
 
 <% content_for :footer do %>
   <p><span class='derechos'>Dominio Público de acuerdo a Legislación Colombiana<br/>
-    Personalización desarrollado para el <a href="http://www.nocheyniebla.org">Banco de Datos del CINEP/PPP</a> por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2015. 
+    Personalización desarrollado para el <a href='http://www.nocheyniebla.org'>Banco de Datos del CINEP/PPP</a> por <a href='http://www.pasosdeJesus.org' target='_blank'>Pasos de Jesús</a>. 2015. 
   </span></p>
 <% end %>
 
-<%= render template: "layouts/sip/application" %>
+<%= render template: 'layouts/sip/application' %>

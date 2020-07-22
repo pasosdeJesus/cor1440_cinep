@@ -28,6 +28,9 @@ Rails.application.routes.draw do
       controller: 'usuarios',
       path_names: { new: 'nuevo', edit: 'edita' }
 
+    resources :acps,
+      path_names: { new: 'nueva', edit: 'edita' }
+
     resources :convenios,
       path_names: { new: 'nueva', edit: 'edita' }
  
@@ -106,7 +109,7 @@ Rails.application.routes.draw do
     # en lugar de /act/actividades
 
     # Se define root aqui para que tras ingresos y salidas llegue a root
-    root 'cor1440_gen/hogar#index'
+    root 'sip/hogar#index'
   end
   mount Cor1440Gen::Engine, at: "/", as: "cor1440_gen"
   mount Sal7711Ld::Engine, at: "/", as: "sal7711_ld"

@@ -2,7 +2,6 @@
 
 module ApplicationHelper
   include Sip::ConsultasHelper
-  include FontAwesome::Rails::IconHelper 
 
   # Las letras escogidas para cada estado están en orden para facilitar presentar
   # en ese orden

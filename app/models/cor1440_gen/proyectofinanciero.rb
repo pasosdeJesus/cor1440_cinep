@@ -143,15 +143,6 @@ module Cor1440Gen
     has_many :uresponsable, through: :proyectofinanciero_uresponsable,
       class_name: '::Usuario'
  
-    # Equipo de trabajo 
-    has_many :proyectofinanciero_usuario, dependent: :delete_all,
-      class_name: '::ProyectofinancieroUsuario',
-      foreign_key: 'proyectofinanciero_id', validate: true
-    accepts_nested_attributes_for :proyectofinanciero_usuario, 
-      allow_destroy: true, reject_if: :all_blank
-    has_many :usuario, through: :proyectofinanciero_usuario,
-      class_name: '::Usuario'
-
  
     has_many :anexo_proyectofinanciero, dependent: :delete_all,
       class_name: '::AnexoProyectofinanciero',

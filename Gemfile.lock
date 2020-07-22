@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: d63ff5ca21517dad5d720554f7a4ea83ebb7c2a2
+  revision: 5722c66e60dafe05aa225753c75acdcbd741b452
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,11 +13,9 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 97bd21f50b5a1f767868ab2dc06d9f6da8763647
+  revision: 2725afa932b770fae26ff68dd7338f0ce2d99abb
   specs:
     heb412_gen (1.0.b6)
-      chosen-rails
-      font-awesome-rails
       mr519_gen
       redcarpet
       rspreadsheet
@@ -25,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 40151044eff09a3d005333d9334652539e91734f
+  revision: 8c49d869bc88afdffc2ec422b5e5ac46e17036d2
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -34,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 8ac2f61bb455bb02e9fbc8d4a70e12b20fc9c199
+  revision: 0e0d9019864362ac928ead4815732dc50737d6b7
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -42,15 +40,15 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: b065ee542e9bc6ba0d158a9956aeeefdec5c9a70
+  revision: 33c8e5bdcf51c513f97529b5caf90a3ef600cf15
   specs:
-    sal7711_gen (1.0.b2)
+    sal7711_gen (1.0.b3)
       rails
       sip
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: ecb6947da60b43a17515fbcea6e74c4107e5dcb7
+  revision: d0f71346aa7229ba0d87635583271f4d44eefb40
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -58,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 8c00934a285fa6f707d0364cc22e1afa10f536e0
+  revision: ea8274d1c51c71c017c77ce382b6594c78c3de3c
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -66,35 +64,21 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 40caf79497e130e010e855519e3190df6619207d
+  revision: fe647549e4754cfde4fe2513225dc5e7361b0709
   specs:
-    sip (2.0.b6)
-      bootstrap-datepicker-rails
+    sip (2.0.b10)
       cancancan
       chosen-rails
-      colorize
       devise
       devise-i18n
-      jquery-rails
       jquery-ui-rails
       minitest
       paperclip
       rails
       rails-i18n
       simple_form
-      twitter-bootstrap-rails
       twitter_cldr
       will_paginate
-
-GIT
-  remote: https://github.com/vtamara/chosen-rails.git
-  revision: 48c457fc9ef1c4c573b4dcdb9dc07034b46ed6b4
-  branch: several-fixes
-  specs:
-    chosen-rails (1.8.7)
-      coffee-rails (>= 3.2)
-      railties (>= 3.0)
-      sass-rails (>= 3.2)
 
 GIT
   remote: https://github.com/vtamara/cocoon.git
@@ -106,74 +90,72 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (6.0.0)
-      actionpack (= 6.0.0)
+    actioncable (6.0.3.2)
+      actionpack (= 6.0.3.2)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailbox (6.0.0)
-      actionpack (= 6.0.0)
-      activejob (= 6.0.0)
-      activerecord (= 6.0.0)
-      activestorage (= 6.0.0)
-      activesupport (= 6.0.0)
+    actionmailbox (6.0.3.2)
+      actionpack (= 6.0.3.2)
+      activejob (= 6.0.3.2)
+      activerecord (= 6.0.3.2)
+      activestorage (= 6.0.3.2)
+      activesupport (= 6.0.3.2)
       mail (>= 2.7.1)
-    actionmailer (6.0.0)
-      actionpack (= 6.0.0)
-      actionview (= 6.0.0)
-      activejob (= 6.0.0)
+    actionmailer (6.0.3.2)
+      actionpack (= 6.0.3.2)
+      actionview (= 6.0.3.2)
+      activejob (= 6.0.3.2)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (6.0.0)
-      actionview (= 6.0.0)
-      activesupport (= 6.0.0)
-      rack (~> 2.0)
+    actionpack (6.0.3.2)
+      actionview (= 6.0.3.2)
+      activesupport (= 6.0.3.2)
+      rack (~> 2.0, >= 2.0.8)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actiontext (6.0.0)
-      actionpack (= 6.0.0)
-      activerecord (= 6.0.0)
-      activestorage (= 6.0.0)
-      activesupport (= 6.0.0)
+    actiontext (6.0.3.2)
+      actionpack (= 6.0.3.2)
+      activerecord (= 6.0.3.2)
+      activestorage (= 6.0.3.2)
+      activesupport (= 6.0.3.2)
       nokogiri (>= 1.8.5)
-    actionview (6.0.0)
-      activesupport (= 6.0.0)
+    actionview (6.0.3.2)
+      activesupport (= 6.0.3.2)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activejob (6.0.0)
-      activesupport (= 6.0.0)
+    activejob (6.0.3.2)
+      activesupport (= 6.0.3.2)
       globalid (>= 0.3.6)
-    activemodel (6.0.0)
-      activesupport (= 6.0.0)
-    activerecord (6.0.0)
-      activemodel (= 6.0.0)
-      activesupport (= 6.0.0)
-    activestorage (6.0.0)
-      actionpack (= 6.0.0)
-      activejob (= 6.0.0)
-      activerecord (= 6.0.0)
+    activemodel (6.0.3.2)
+      activesupport (= 6.0.3.2)
+    activerecord (6.0.3.2)
+      activemodel (= 6.0.3.2)
+      activesupport (= 6.0.3.2)
+    activestorage (6.0.3.2)
+      actionpack (= 6.0.3.2)
+      activejob (= 6.0.3.2)
+      activerecord (= 6.0.3.2)
       marcel (~> 0.3.1)
-    activesupport (6.0.0)
+    activesupport (6.0.3.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-      zeitwerk (~> 2.1, >= 2.1.8)
+      zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     andand (1.3.3)
-    bcrypt (3.1.13)
+    bcrypt (3.1.15)
     bindex (0.8.1)
-    bootsnap (1.4.5)
+    bootsnap (1.4.6)
       msgpack (~> 1.0)
-    bootstrap-datepicker-rails (1.8.0.1)
-      railties (>= 3.0)
-    builder (3.2.3)
+    builder (3.2.4)
     camertron-eprun (1.1.1)
-    cancancan (3.0.1)
-    capybara (3.29.0)
+    cancancan (3.1.0)
+    capybara (3.33.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -182,7 +164,10 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
-    choice (0.2.0)
+    chosen-rails (1.9.0)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sassc-rails (>= 2.1.2)
     cldr-plurals-runtime-rb (1.0.1)
     climate_control (0.2.0)
     coffee-rails (5.0.0)
@@ -193,69 +178,60 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    commonjs (0.2.7)
-    concurrent-ruby (1.1.5)
-    crass (1.0.5)
-    devise (4.7.1)
+    concurrent-ruby (1.1.6)
+    crass (1.0.6)
+    devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.8.2)
-      devise (>= 4.6)
+    devise-i18n (1.9.1)
+      devise (>= 4.7.1)
     docile (1.3.2)
-    erd (0.6.3)
+    erd (0.6.4)
       nokogiri
-      rails-erd (>= 0.4.5)
+      ruby-graphviz
     erubi (1.9.0)
     execjs (2.7.0)
-    ffi (1.11.1)
-    font-awesome-rails (4.7.0.5)
-      railties (>= 3.2, < 6.1)
+    ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.7.0)
+    i18n (1.8.4)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.9.1)
-      activesupport (>= 4.2.0)
-    jquery-rails (4.3.5)
+    jbuilder (2.10.0)
+      activesupport (>= 5.0.0)
+    jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.2.0)
-    kgio (2.11.2)
-    less (2.6.0)
-      commonjs (~> 0.2.7)
-    less-rails (4.0.0)
-      actionpack (>= 4)
-      less (~> 2.6.0)
-      sprockets (>= 2)
-    libxml-ruby (3.1.0)
-    loofah (2.3.0)
+    kgio (2.11.3)
+    libxml-ruby (3.2.0)
+    loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
-    method_source (0.9.2)
-    mime-types (3.3)
+    method_source (1.0.0)
+    mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2019.1009)
-    mimemagic (0.3.3)
+    mime-types-data (3.2020.0512)
+    mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.12.2)
-    msgpack (1.3.1)
-    net-ldap (0.16.1)
+    minitest (5.14.1)
+    msgpack (1.3.3)
+    net-ldap (0.16.2)
     nio4r (2.5.2)
-    nokogiri (1.10.4)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
-    odf-report (0.6.1)
-      nokogiri (>= 1.5.0)
+    odf-report (0.7.2)
+      mime-types
+      nokogiri (>= 1.10.0)
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
     paperclip (6.1.0)
@@ -265,11 +241,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pdf-core (0.7.0)
-    pg (1.1.4)
-    pick-a-color-rails (0.0.1)
-      jquery-rails
-      railties (>= 3.0)
-      tiny-color-rails
+    pg (1.2.3)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
@@ -278,75 +250,62 @@ GEM
     prawnto_2 (0.3.0)
       prawn (>= 1.0.0)
       rails (>= 3.2)
-    public_suffix (4.0.1)
-    puma (4.2.1)
+    public_suffix (4.0.5)
+    puma (4.3.5)
       nio4r (~> 2.0)
-    rack (2.0.7)
+    rack (2.2.3)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails (6.0.0)
-      actioncable (= 6.0.0)
-      actionmailbox (= 6.0.0)
-      actionmailer (= 6.0.0)
-      actionpack (= 6.0.0)
-      actiontext (= 6.0.0)
-      actionview (= 6.0.0)
-      activejob (= 6.0.0)
-      activemodel (= 6.0.0)
-      activerecord (= 6.0.0)
-      activestorage (= 6.0.0)
-      activesupport (= 6.0.0)
+    rails (6.0.3.2)
+      actioncable (= 6.0.3.2)
+      actionmailbox (= 6.0.3.2)
+      actionmailer (= 6.0.3.2)
+      actionpack (= 6.0.3.2)
+      actiontext (= 6.0.3.2)
+      actionview (= 6.0.3.2)
+      activejob (= 6.0.3.2)
+      activemodel (= 6.0.3.2)
+      activerecord (= 6.0.3.2)
+      activestorage (= 6.0.3.2)
+      activesupport (= 6.0.3.2)
       bundler (>= 1.3.0)
-      railties (= 6.0.0)
+      railties (= 6.0.3.2)
       sprockets-rails (>= 2.0.0)
-    rails-controller-testing (1.0.4)
-      actionpack (>= 5.0.1.x)
-      actionview (>= 5.0.1.x)
-      activesupport (>= 5.0.1.x)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-erd (1.6.0)
-      activerecord (>= 4.2)
-      activesupport (>= 4.2)
-      choice (~> 0.2.0)
-      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    railties (6.0.0)
-      actionpack (= 6.0.0)
-      activesupport (= 6.0.0)
+    railties (6.0.3.2)
+      actionpack (= 6.0.3.2)
+      activesupport (= 6.0.3.2)
       method_source
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
-    raindrops (0.19.0)
-    rake (13.0.0)
-    rb-fsevent (0.10.3)
-    rb-inotify (0.10.0)
-      ffi (~> 1.0)
+    raindrops (0.19.1)
+    rake (13.0.1)
     redcarpet (3.5.0)
-    regexp_parser (1.6.0)
-    responders (3.0.0)
+    regexp_parser (1.7.1)
+    responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rexml (3.2.4)
     rspreadsheet (0.5.3)
       andand (>= 1.3)
       rubyzip (>= 1.3)
-    ruby-graphviz (1.2.4)
-    rubyzip (2.0.0)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.2.1)
+    ruby-graphviz (1.2.5)
+      rexml
+    rubyzip (2.3.0)
+    sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -354,19 +313,18 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (3.142.6)
+    selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    simple_form (5.0.1)
+    simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
-    simplecov (0.17.1)
+    simplecov (0.18.5)
       docile (~> 1.1)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.2)
+      simplecov-html (~> 0.11)
+    simplecov-html (0.12.2)
     spring (2.1.0)
-    sprockets (4.0.0)
+    sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -375,49 +333,37 @@ GEM
       sprockets (>= 3.0.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    thor (0.20.3)
+    thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tiny-color-rails (0.0.2)
-      railties (>= 3.0)
-    ttfunk (1.5.1)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
-    twitter-bootstrap-rails (3.2.2)
-      actionpack (>= 3.1)
-      execjs (>= 2.2.2, >= 2.2)
-      less-rails (>= 2.5.0)
-      railties (>= 3.1)
-    twitter_cldr (5.0.0)
+    ttfunk (1.6.2.1)
+    twitter_cldr (6.0.1)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
-    tzinfo (1.2.5)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
-    unicorn (5.5.1)
+    unicorn (5.5.5)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.8)
       rack (>= 2.0.6)
-    web-console (4.0.1)
+    web-console (4.0.4)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (4.0.7)
+    webpacker (4.2.2)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
-    websocket-driver (0.7.1)
+    websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
-    will_paginate (3.2.1)
+    websocket-extensions (0.1.5)
+    will_paginate (3.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.2.0)
+    zeitwerk (2.4.0)
 
 PLATFORMS
   ruby
@@ -426,10 +372,8 @@ DEPENDENCIES
   actiontext
   bcrypt
   bootsnap
-  bootstrap-datepicker-rails
   cancancan
   capybara
-  chosen-rails!
   cocoon!
   coffee-rails
   colorize
@@ -437,22 +381,18 @@ DEPENDENCIES
   devise
   devise-i18n
   erd
-  font-awesome-rails
   heb412_gen!
   jbuilder
   jn316_gen!
-  jquery-rails
-  jquery-ui-rails
   libxml-ruby
   mr519_gen!
   odf-report
   paperclip
   pg
-  pick-a-color-rails
   prawn
   prawn-table
   prawnto_2
-  puma
+  puma (>= 4.3.2)
   rails (~> 6.0.0)
   rails-controller-testing
   rails-i18n
@@ -462,23 +402,18 @@ DEPENDENCIES
   sal7711_gen!
   sal7711_ld!
   sal7711_web!
-  sass
-  sass-rails
+  sassc-rails
   selenium-webdriver (>= 3.0)
   simple_form
   simplecov
   sip!
   spring
-  tiny-color-rails
-  turbolinks (>= 5)
-  twitter-bootstrap-rails
   twitter_cldr
   tzinfo
-  uglifier
   unicorn
   web-console
   webpacker (~> 4.0)
   will_paginate
 
 BUNDLED WITH
-   2.0.2
+   2.1.4

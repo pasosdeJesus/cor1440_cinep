@@ -11,7 +11,7 @@ module Cor1440Gen
     accepts_nested_attributes_for :contextoinv
 
     belongs_to :creadopor, class_name: '::Usuario',
-      foreign_key: 'creadopor_id'
+      foreign_key: 'creadopor_id', optional: true
 
     belongs_to :departamento, class_name: 'Sip::Departamento', optional: true
     belongs_to :municipio, class_name: 'Sip::Municipio', optional: true

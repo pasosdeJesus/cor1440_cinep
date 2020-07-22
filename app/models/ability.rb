@@ -54,6 +54,10 @@ class Ability  < Cor1440Gen::Ability
   GRUPOS_GENERICOS = [GRUPO_EXTERNOS, GRUPO_USUARIOS, GRUPO_DESACTIVADOS]
   GRUPO_COMUNICACIONES = "Comunicaciones"
   GRUPO_DERECHOSHUMANOS = "Línea Derechos Humanos y Derecho Internacional Humanitario"
+  GRUPO_MEDIACION = "Línea Mediación y Reconciliación"
+  GRUPO_INICIATIVASPAZ = "Línea Iniciativas de Paz"
+  GRUPO_MOVIMIENTOSSOCIALES = "Línea Movimientos Sociales"
+  GRUPO_CONFLICTOYESTADO = "Línea Conflicto y Estado"
   GRUPO_LINEA = "Línea"
   GRUPO_OFICINATI = "Oficina TI"
   GRUPO_COORDINADOR = "Coordinador(a)"
@@ -69,6 +73,11 @@ class Ability  < Cor1440Gen::Ability
       ['Sip', 'perfilactorsocial'] ,
     ] + 
     [
+        ['', 'acpcataccion'],
+        ['', 'acpcatmotivo'],
+        ['', 'acpcobertura'],
+        ['', 'acpestrategia'],
+        ['', 'acpmotivo'],
         ['', 'areaestudios'],
         ['', 'cajacompensacion'],
         ['', 'cargo'],
@@ -99,7 +108,6 @@ class Ability  < Cor1440Gen::Ability
 
   # Tablas no básicas pero que tienen índice
   NOBASICAS_INDSEQID =  [
-    ['', 'proyectofinanciero_usuario'], 
   ]
 
   # Tablas no básicas pero que tienen índice con secuencia id_seq
@@ -181,6 +189,27 @@ class Ability  < Cor1440Gen::Ability
         controlador: '::UsuariosController',
         ruta: '/usuarios'
     },
+
+    'Acp' => { 
+      campos: [
+        'id', 
+        'cataccion', 
+        'estrategia', 
+        'fini', 
+        'fini_localizada', 
+        'ffin', 
+        'ffin_localizada', 
+        'confr', 
+        'cobertura',
+        'motivo',
+        'descripcion', 
+      ],
+      controlador: '::AcpsController',
+      ruta: '/acps'
+    },
+
+
+
     'Actividad' => { 
       campos: [
         Cor1440Gen::Actividad.human_attribute_name(
@@ -398,6 +427,8 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Efecto
           can :index, Cor1440Gen::Mindicadorpf
+          can :index, :busquedaunificada
+          can :index, :exploradordatosrel
         end
 
         coords = lgrupos.select {|g| g.start_with?(GRUPO_COORDINADOR)}
@@ -423,6 +454,11 @@ class Ability  < Cor1440Gen::Ability
           can [:edit], Cor1440Gen::Indicadorpf
           can :manage, ::Publicacion
           can [:read], Mr519Gen::Encuestapersona
+        else
+          # Investigador
+          lineasb = lineas.select { |nl| Sip::Grupo.where(nombre: nl).count > 0 }
+          idlineas = lineasb.map { |nl| Sip::Grupo.where(nombre: nl).take.id }
+
           encper = Mr519Gen::Encuestapersona.joins(:persona).
             joins('JOIN sip_actorsocial_persona ON 
             sip_persona.id = sip_actorsocial_persona.persona_id').
@@ -431,8 +467,9 @@ class Ability  < Cor1440Gen::Ability
             where('grupo_id IN (?)', idlineas)
           puts "encper.ids=#{encper.map(&:id)}"
           can [:edit, :update], encper
+         
         end
-        
+ 
         # Responsables de un proyecto también pueden editar marco lógico
         pc = ::Cor1440Gen::Proyectofinanciero.where('id IN
           (SELECT proyectofinanciero_id FROM proyectofinanciero_uresponsable
@@ -446,6 +483,27 @@ class Ability  < Cor1440Gen::Ability
         # Contexto es para equipo derechos humanos 
         if lgrupos.include?(GRUPO_DERECHOSHUMANOS)
           can :edit, :contextoac
+        end
+
+        if lgrupos.include?(GRUPO_MEDIACION)
+          can :index, :conflictividades
+        end
+
+        if lgrupos.include?(GRUPO_MOVIMIENTOSSOCIALES)
+          can :index, :movilizacion
+        end
+
+        if lgrupos.include?(GRUPO_INICIATIVASPAZ)
+          can :manage, ::Acp
+          can :manage, ::Acpcataccion
+          can :manage, ::Acpestrategia
+          can :manage, ::Acpcobertura
+          can :manage, ::Acpmotivo
+          can :manage, ::Acpcatmotivo
+        end
+
+        if lgrupos.include?(GRUPO_CONFLICTOYESTADO)
+          can :index, :dinamicas
         end
 
         if lgrupos.include?(GRUPO_OFICINATI)
@@ -509,10 +567,17 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
         end
       when Ability::ROLADMIN, Ability::ROLDIR
-        can :dir, :vistobuenoactividad
         can :dir, :aprobadoefecto
-        can :manage, :lineabase20182020
+        can :index, :busquedaunificada
+        can :index, :exploradordatosrel
+        can :index, :conflictividades
         can :edit, :contextoac
+        can :manage, ::Acp
+        can :index, :dinamicas
+        can :manage, :lineabase20182020
+        can :index, :movilizacion
+        can :dir, :vistobuenoactividad
+
         can :manage, ::Convenio
         can :manage, ::Tasacambio
         can :manage, ::Usuario

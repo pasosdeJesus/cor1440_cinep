@@ -3,7 +3,7 @@
 <%= f.input :referenciacinep %>
 
 <div class='row'>
-  <div class="col-sm-offset-0 col-sm-4">
+  <div class="offset-sm-0 col-sm-4">
     <%= f.association :financiador,
       collection: Cor1440Gen::Financiador.habilitados,
       label_method: :nombre,
@@ -27,7 +27,7 @@
 
 
 <div class='row'>
-  <div class="col-sm-offset-0 col-sm-4">
+  <div class="offset-sm-0 col-sm-4">
     <%= f.input :fechainicio_localizada, :input_html => { 
       "data-behaviour" => "datepicker" },
       :as => :string
@@ -56,15 +56,15 @@
 </div>
 
 <div class='row'>
-  <div class="col-sm-offset-0 col-sm-4">
+  <div class="offset-sm-0 col-sm-4">
     <%= f.input :fechaformulacion_anio, as: :integer %>
   </div>
-  <div class="col-sm-offset-0 col-sm-4">
+  <div class="offset-sm-0 col-sm-4">
     <%= f.input :fechaformulacion_mes,
       collection: Sip::ModeloHelper::MESES
     %>
   </div>
-  <div class="col-sm-offset-0 col-sm-4">
+  <div class="offset-sm-0 col-sm-4">
     <%= f.input :semestreformulacion, 
       :input_html => { 'readonly' => 'readonly' } %>
   </div>
@@ -88,7 +88,7 @@
 <%= f.input :anotacionesdb, as: :text, input_html: { rows: 5 } %>
 
 <div class='row'>
-  <div class="col-sm-offset-0 col-sm-6">
+  <div class="offset-sm-0 col-sm-6">
     <%= f.input :estado, 
       collection: ::ApplicationHelper::ESTADO,
       include_blank: false,
@@ -114,7 +114,7 @@
   <div class="col-sm-4">
     <%= f.input :observacionestramite, as: :text, input_html: { rows: 5 } %>
   </div>
-  <div class="col-sm-offset-0 col-sm-4">
+  <div class="offset-sm-0 col-sm-4">
     <%= f.input :observacionesejecucion, as: :text, input_html: { rows: 5 } %>
   </div>
   <div class="col-sm-4">

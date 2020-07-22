@@ -29,10 +29,6 @@ module Sip
       through: :actorsocial_regiongrupo
 
 
-    accepts_nested_attributes_for :actorsocial_persona,
-      allow_destroy: true, reject_if: :all_blank
-    accepts_nested_attributes_for :persona, reject_if: :all_blank
-
     campofecha_localizado :fechadeshabilitacion
     
     campofecha_localizado :created_at

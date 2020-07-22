@@ -47,12 +47,39 @@ es:
         one: Tasa de cambio
         other: Tasas de cambio
     attributes:
+      "acp":
+        Acp: Acción colectiva por la paz
+        Acps: Acciones colectivas por la paz
+        cataccion: Categoria ACP
+        cataccion_id: Categoria ACP
+        estrategia: Estrategia ACP
+        fini_localizada: Fecha de inicio
+        ffin_localizada: Fecha de terminación
+        confr: Nivel de confrontación
+        cobertura: Cobertura geográfica
+        motivo: Motivo ACP
+        descripcion: Descripción
+      "acpcataccion":
+        Acpcataccion: Categoria de acciones colectivas por la paz (ACP)
+        Acpcatsaccion: Categorias de acciones colectivas por la paz (ACP)
+      "acpcatmotivo":
+        Acpcatmotivo: Categoria de motivos (ACP)
+        Acpcatsmotivo: Categorias de motivos (ACP)
+      "acpcobertura":
+        Acpcobertura: Cobertura (ACP)
+        Acpcoberturas: Coberturas (ACP)
+      "acpestrategia":
+        Acpestrategia: Estrategia (ACP)
+        Acpestrategias: Estrategias (ACP)
+      "acpmotivo":
+        Acpmotivo: Motivo (ACP)
+        Acpmotivos: Motivos (ACP)
       "areaestudios":
         Areaestudios: Área de estudios
         Areasestudios: Áreas de estudios
       "actor":
-        Actor: Actor social
-        Actores: Actores sociales
+        Actor: Organización social
+        Actores: Organizaciones sociales
         grupo: Grupo(s)
         lineabase20182020: Estado inicial 2018-2020
         nivelrelacion: Nivel de relación
@@ -98,7 +125,7 @@ es:
       "cor1440_gen/actividad":
         actividadpf: Actividad de compromiso institucional
         actividadtipo: Tipo
-        actorsocial: Actor social
+        actorsocial: Organización social
         creadopor: "Creado por"
         duracion: "Duración"
         duracion_localizado: "Duración"

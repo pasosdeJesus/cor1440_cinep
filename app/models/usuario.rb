@@ -2,10 +2,12 @@
 
 require 'mr519_gen/concerns/models/usuario'
 require 'jn316_gen/concerns/models/usuario'
+require 'cor1440_gen/concerns/models/usuario'
 
 class Usuario < ActiveRecord::Base
   include Mr519Gen::Concerns::Models::Usuario
   include Jn316Gen::Concerns::Models::Usuario
+  include Cor1440Gen::Concerns::Models::Usuario
 
   devise :database_authenticatable, :rememberable, 
     :trackable, :lockable
@@ -294,12 +296,6 @@ class Usuario < ActiveRecord::Base
   has_many :proyectofinanciero_uresponsable, #dependent: :destroy,
     class_name: '::ProyectofinancieroUresponsable',
     foreign_key: 'uresponsable_id'
-
-  has_many :proyectofinanciero_usuario, #dependent: :destroy,
-    class_name: '::ProyectofinancieroUsuario',
-    foreign_key: 'usuario_id'
-  has_many :proyectofinanciero, through: :proyectofinanciero_usuario,
-    class_name: 'Cor1440Gen::Proyectofinanciero'
 
   has_many :vinculacion, dependent: :delete_all,
     class_name: '::Vinculacion',

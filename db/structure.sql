@@ -140,7 +140,215 @@ $$;
 
 SET default_tablespace = '';
 
-SET default_with_oids = false;
+SET default_table_access_method = heap;
+
+--
+-- Name: acp; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acp (
+    id bigint NOT NULL,
+    cataccion_id integer DEFAULT 1 NOT NULL,
+    fini date NOT NULL,
+    ffin date,
+    confr integer,
+    cobertura_id integer DEFAULT 1 NOT NULL,
+    motivo_id integer DEFAULT 1 NOT NULL,
+    descripcion character varying(5000) NOT NULL,
+    mesini_inexacto boolean DEFAULT false
+);
+
+
+--
+-- Name: acp_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acp_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acp_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acp_id_seq OWNED BY public.acp.id;
+
+
+--
+-- Name: acpcataccion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpcataccion (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    estrategia_id integer
+);
+
+
+--
+-- Name: acpcataccion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpcataccion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpcataccion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpcataccion_id_seq OWNED BY public.acpcataccion.id;
+
+
+--
+-- Name: acpcatmotivo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpcatmotivo (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpcatmotivo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpcatmotivo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpcatmotivo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpcatmotivo_id_seq OWNED BY public.acpcatmotivo.id;
+
+
+--
+-- Name: acpcobertura; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpcobertura (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpcobertura_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpcobertura_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpcobertura_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpcobertura_id_seq OWNED BY public.acpcobertura.id;
+
+
+--
+-- Name: acpestrategia; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpestrategia (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpestrategia_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpestrategia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpestrategia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpestrategia_id_seq OWNED BY public.acpestrategia.id;
+
+
+--
+-- Name: acpmotivo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpmotivo (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    catmotivo_id integer
+);
+
+
+--
+-- Name: acpmotivo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpmotivo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpmotivo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpmotivo_id_seq OWNED BY public.acpmotivo.id;
+
 
 --
 -- Name: action_text_rich_texts; Type: TABLE; Schema: public; Owner: -
@@ -894,7 +1102,7 @@ CREATE TABLE public.cor1440_gen_actividad (
     nombre character varying(500),
     objetivo character varying(5000),
     resultado character varying(5000),
-    fecha date,
+    fecha date NOT NULL,
     observaciones character varying(5000),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -914,7 +1122,7 @@ CREATE TABLE public.cor1440_gen_actividad (
     convocante character varying(500),
     lugar character varying(500),
     valora integer,
-    usuario_id integer,
+    usuario_id integer NOT NULL,
     departamento_id integer,
     municipio_id integer,
     contexto character varying(5000),
@@ -1040,12 +1248,25 @@ ALTER SEQUENCE public.cor1440_gen_actividad_proyecto_id_seq OWNED BY public.cor1
 
 
 --
+-- Name: cor1440_gen_actividad_proyectofinanciero_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.cor1440_gen_actividad_proyectofinanciero_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
 -- Name: cor1440_gen_actividad_proyectofinanciero; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.cor1440_gen_actividad_proyectofinanciero (
     actividad_id integer NOT NULL,
-    proyectofinanciero_id integer NOT NULL
+    proyectofinanciero_id integer NOT NULL,
+    id integer DEFAULT nextval('public.cor1440_gen_actividad_proyectofinanciero_id_seq'::regclass) NOT NULL
 );
 
 
@@ -1062,7 +1283,8 @@ CREATE TABLE public.cor1440_gen_actividad_rangoedadac (
     fl integer,
     fr integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    s integer
 );
 
 
@@ -1256,6 +1478,16 @@ CREATE SEQUENCE public.cor1440_gen_actividadpf_id_seq
 --
 
 ALTER SEQUENCE public.cor1440_gen_actividadpf_id_seq OWNED BY public.cor1440_gen_actividadpf.id;
+
+
+--
+-- Name: cor1440_gen_actividadpf_mindicadorpf; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_actividadpf_mindicadorpf (
+    actividadpf_id integer,
+    mindicadorpf_id integer
+);
 
 
 --
@@ -1557,6 +1789,68 @@ CREATE TABLE public.cor1440_gen_caracterizacionpf (
 
 
 --
+-- Name: cor1440_gen_datointermedioti; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_datointermedioti (
+    id bigint NOT NULL,
+    nombre character varying(1024) NOT NULL,
+    tipoindicador_id integer NOT NULL
+);
+
+
+--
+-- Name: cor1440_gen_datointermedioti_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.cor1440_gen_datointermedioti_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_datointermedioti_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.cor1440_gen_datointermedioti_id_seq OWNED BY public.cor1440_gen_datointermedioti.id;
+
+
+--
+-- Name: cor1440_gen_datointermedioti_pmindicadorpf; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_datointermedioti_pmindicadorpf (
+    id bigint NOT NULL,
+    datointermedioti_id integer NOT NULL,
+    pmindicadorpf_id integer NOT NULL,
+    valor double precision,
+    rutaevidencia character varying(5000)
+);
+
+
+--
+-- Name: cor1440_gen_datointermedioti_pmindicadorpf_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.cor1440_gen_datointermedioti_pmindicadorpf_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_datointermedioti_pmindicadorpf_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.cor1440_gen_datointermedioti_pmindicadorpf_id_seq OWNED BY public.cor1440_gen_datointermedioti_pmindicadorpf.id;
+
+
+--
 -- Name: cor1440_gen_efecto; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1844,7 +2138,7 @@ CREATE TABLE public.cor1440_gen_pmindicadorpf (
     dmed2 double precision,
     dmed3 double precision,
     datosmedicion json,
-    rind double precision,
+    resind double precision,
     meta double precision,
     resindicador json,
     porcump double precision,
@@ -1856,7 +2150,7 @@ CREATE TABLE public.cor1440_gen_pmindicadorpf (
     urlev1 character varying(1024),
     urlev2 character varying(1024),
     urlev3 character varying(1024),
-    urlevrind character varying(1024)
+    rutaevidencia character varying(1024)
 );
 
 
@@ -2053,6 +2347,42 @@ ALTER SEQUENCE public.cor1440_gen_proyectofinanciero_id_seq OWNED BY public.cor1
 
 
 --
+-- Name: cor1440_gen_proyectofinanciero_usuario; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_proyectofinanciero_usuario (
+    id integer NOT NULL,
+    proyectofinanciero_id integer NOT NULL,
+    usuario_id integer,
+    cargo_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    porcentaje integer,
+    perfilprofesional_id integer,
+    tipocontrato_id integer DEFAULT 1
+);
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero_usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.cor1440_gen_proyectofinanciero_usuario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero_usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.cor1440_gen_proyectofinanciero_usuario_id_seq OWNED BY public.cor1440_gen_proyectofinanciero_usuario.id;
+
+
+--
 -- Name: cor1440_gen_rangoedadac; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2142,7 +2472,11 @@ CREATE TABLE public.cor1440_gen_tipoindicador (
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
     created_at date,
-    updated_at date
+    updated_at date,
+    descd1 character varying(32),
+    descd2 character varying(32),
+    descd3 character varying(32),
+    descd4 character varying(32)
 );
 
 
@@ -2634,6 +2968,16 @@ CREATE SEQUENCE public.heb412_gen_doc_id_seq
 --
 
 ALTER SEQUENCE public.heb412_gen_doc_id_seq OWNED BY public.heb412_gen_doc.id;
+
+
+--
+-- Name: heb412_gen_formulario_plantillahcm; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.heb412_gen_formulario_plantillahcm (
+    formulario_id integer,
+    plantillahcm_id integer
+);
 
 
 --
@@ -3598,42 +3942,6 @@ ALTER SEQUENCE public.proyectofinanciero_uresponsable_id_seq OWNED BY public.pro
 
 
 --
--- Name: proyectofinanciero_usuario; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.proyectofinanciero_usuario (
-    id integer NOT NULL,
-    proyectofinanciero_id integer NOT NULL,
-    usuario_id integer,
-    cargo_id integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    porcentaje integer,
-    perfilprofesional_id integer,
-    tipocontrato_id integer DEFAULT 1
-);
-
-
---
--- Name: proyectofinanciero_usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.proyectofinanciero_usuario_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: proyectofinanciero_usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.proyectofinanciero_usuario_id_seq OWNED BY public.proyectofinanciero_usuario.id;
-
-
---
 -- Name: publicacion; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -4133,6 +4441,45 @@ ALTER SEQUENCE public.sip_anexo_id_seq OWNED BY public.sip_anexo.id;
 
 
 --
+-- Name: sip_bitacora; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_bitacora (
+    id bigint NOT NULL,
+    fecha timestamp without time zone NOT NULL,
+    ip character varying(100),
+    usuario_id integer,
+    url character varying(1023),
+    params character varying(5000),
+    modelo character varying(511),
+    modelo_id integer,
+    operacion character varying(63),
+    detalle json,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sip_bitacora_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_bitacora_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_bitacora_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sip_bitacora_id_seq OWNED BY public.sip_bitacora.id;
+
+
+--
 -- Name: sip_clase_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -4150,7 +4497,7 @@ CREATE SEQUENCE public.sip_clase_id_seq
 
 CREATE TABLE public.sip_clase (
     id_clalocal integer,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     id_tclase character varying(10) DEFAULT 'CP'::character varying NOT NULL,
     latitud double precision,
     longitud double precision,
@@ -4183,7 +4530,7 @@ CREATE SEQUENCE public.sip_departamento_id_seq
 
 CREATE TABLE public.sip_departamento (
     id_deplocal integer,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     latitud double precision,
     longitud double precision,
     fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
@@ -4215,7 +4562,7 @@ CREATE SEQUENCE public.sip_etiqueta_id_seq
 
 CREATE TABLE public.sip_etiqueta (
     id integer DEFAULT nextval('public.sip_etiqueta_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
     fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
     fechadeshabilitacion date,
@@ -4265,7 +4612,7 @@ ALTER SEQUENCE public.sip_fuenteprensa_id_seq OWNED BY public.sip_fuenteprensa.i
 
 CREATE TABLE public.sip_grupo (
     id integer NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -4313,7 +4660,7 @@ CREATE TABLE public.sip_grupo_usuario (
 
 CREATE TABLE public.sip_grupoper (
     id bigint NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     anotaciones character varying(1000)
 );
 
@@ -4362,7 +4709,7 @@ CREATE SEQUENCE public.sip_municipio_id_seq
 
 CREATE TABLE public.sip_municipio (
     id_munlocal integer,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     latitud double precision,
     longitud double precision,
     fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
@@ -4424,7 +4771,7 @@ CREATE SEQUENCE public.sip_oficina_id_seq
 
 CREATE TABLE public.sip_oficina (
     id integer DEFAULT nextval('public.sip_oficina_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
@@ -4529,8 +4876,8 @@ CREATE SEQUENCE public.sip_persona_id_seq
 
 CREATE TABLE public.sip_persona (
     id integer DEFAULT nextval('public.sip_persona_id_seq'::regclass) NOT NULL,
-    nombres character varying(100) COLLATE public.es_co_utf_8 NOT NULL,
-    apellidos character varying(100) COLLATE public.es_co_utf_8 NOT NULL,
+    nombres character varying(100) NOT NULL COLLATE public.es_co_utf_8,
+    apellidos character varying(100) NOT NULL COLLATE public.es_co_utf_8,
     anionac integer,
     mesnac integer,
     dianac integer,
@@ -4619,7 +4966,7 @@ ALTER SEQUENCE public.sip_sectoractor_id_seq OWNED BY public.sip_sectoractor.id;
 
 CREATE TABLE public.sip_tclase (
     id character varying(10) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
@@ -4635,7 +4982,7 @@ CREATE TABLE public.sip_tclase (
 
 CREATE TABLE public.sip_tdocumento (
     id integer NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     sigla character varying(100),
     formatoregex character varying(500),
     fechacreacion date NOT NULL,
@@ -4680,7 +5027,24 @@ CREATE TABLE public.sip_tema (
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    btn_primario_fondo_ini character varying(127),
+    btn_primario_fondo_fin character varying(127),
+    btn_primario_fuente character varying(127),
+    btn_peligro_fondo_ini character varying(127),
+    btn_peligro_fondo_fin character varying(127),
+    btn_peligro_fuente character varying(127),
+    btn_accion_fondo_ini character varying(127),
+    btn_accion_fondo_fin character varying(127),
+    btn_accion_fuente character varying(127),
+    alerta_exito_fondo character varying(127),
+    alerta_exito_fuente character varying(127),
+    alerta_problema_fondo character varying(127),
+    alerta_problema_fuente character varying(127),
+    fondo character varying(127),
+    color_fuente character varying(127),
+    color_flota_subitem_fuente character varying,
+    color_flota_subitem_fondo character varying
 );
 
 
@@ -4709,7 +5073,7 @@ ALTER SEQUENCE public.sip_tema_id_seq OWNED BY public.sip_tema.id;
 
 CREATE TABLE public.sip_trelacion (
     id character(2) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -4772,7 +5136,7 @@ CREATE SEQUENCE public.sip_tsitio_id_seq
 
 CREATE TABLE public.sip_tsitio (
     id integer DEFAULT nextval('public.sip_tsitio_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
@@ -5257,6 +5621,48 @@ CREATE SEQUENCE public.vinculoestado_seq
 
 
 --
+-- Name: acp id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acp ALTER COLUMN id SET DEFAULT nextval('public.acp_id_seq'::regclass);
+
+
+--
+-- Name: acpcataccion id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcataccion ALTER COLUMN id SET DEFAULT nextval('public.acpcataccion_id_seq'::regclass);
+
+
+--
+-- Name: acpcatmotivo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcatmotivo ALTER COLUMN id SET DEFAULT nextval('public.acpcatmotivo_id_seq'::regclass);
+
+
+--
+-- Name: acpcobertura id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcobertura ALTER COLUMN id SET DEFAULT nextval('public.acpcobertura_id_seq'::regclass);
+
+
+--
+-- Name: acpestrategia id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpestrategia ALTER COLUMN id SET DEFAULT nextval('public.acpestrategia_id_seq'::regclass);
+
+
+--
+-- Name: acpmotivo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpmotivo ALTER COLUMN id SET DEFAULT nextval('public.acpmotivo_id_seq'::regclass);
+
+
+--
 -- Name: action_text_rich_texts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5467,6 +5873,20 @@ ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona ALTER COLUMN id SET D
 
 
 --
+-- Name: cor1440_gen_datointermedioti id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_datointermedioti ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_datointermedioti_id_seq'::regclass);
+
+
+--
+-- Name: cor1440_gen_datointermedioti_pmindicadorpf id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_datointermedioti_pmindicadorpf ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_datointermedioti_pmindicadorpf_id_seq'::regclass);
+
+
+--
 -- Name: cor1440_gen_efecto id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5534,6 +5954,13 @@ ALTER TABLE ONLY public.cor1440_gen_proyecto ALTER COLUMN id SET DEFAULT nextval
 --
 
 ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_proyectofinanciero_id_seq'::regclass);
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero_usuario id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_proyectofinanciero_usuario_id_seq'::regclass);
 
 
 --
@@ -5810,13 +6237,6 @@ ALTER TABLE ONLY public.proyectofinanciero_uresponsable ALTER COLUMN id SET DEFA
 
 
 --
--- Name: proyectofinanciero_usuario id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.proyectofinanciero_usuario ALTER COLUMN id SET DEFAULT nextval('public.proyectofinanciero_usuario_id_seq'::regclass);
-
-
---
 -- Name: publicacion id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5891,6 +6311,13 @@ ALTER TABLE ONLY public.sip_actorsocial_persona ALTER COLUMN id SET DEFAULT next
 --
 
 ALTER TABLE ONLY public.sip_anexo ALTER COLUMN id SET DEFAULT nextval('public.sip_anexo_id_seq'::regclass);
+
+
+--
+-- Name: sip_bitacora id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_bitacora ALTER COLUMN id SET DEFAULT nextval('public.sip_bitacora_id_seq'::regclass);
 
 
 --
@@ -6010,6 +6437,54 @@ ALTER TABLE ONLY public.tipoproductopf ALTER COLUMN id SET DEFAULT nextval('publ
 --
 
 ALTER TABLE ONLY public.vinculacion ALTER COLUMN id SET DEFAULT nextval('public.vinculacion_id_seq'::regclass);
+
+
+--
+-- Name: acp acp_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acp
+    ADD CONSTRAINT acp_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpcataccion acpcataccion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcataccion
+    ADD CONSTRAINT acpcataccion_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpcatmotivo acpcatmotivo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcatmotivo
+    ADD CONSTRAINT acpcatmotivo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpcobertura acpcobertura_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcobertura
+    ADD CONSTRAINT acpcobertura_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpestrategia acpestrategia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpestrategia
+    ADD CONSTRAINT acpestrategia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpmotivo acpmotivo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpmotivo
+    ADD CONSTRAINT acpmotivo_pkey PRIMARY KEY (id);
 
 
 --
@@ -6149,6 +6624,22 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_proyecto
 
 
 --
+-- Name: cor1440_gen_actividad_proyectofinanciero cor1440_gen_actividad_proyectofinanciero_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividad_proyectofinanciero
+    ADD CONSTRAINT cor1440_gen_actividad_proyectofinanciero_id_key UNIQUE (id);
+
+
+--
+-- Name: cor1440_gen_actividad_proyectofinanciero cor1440_gen_actividad_proyectofinanciero_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividad_proyectofinanciero
+    ADD CONSTRAINT cor1440_gen_actividad_proyectofinanciero_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: cor1440_gen_actividad_sip_anexo cor1440_gen_actividad_sip_anexo_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6245,6 +6736,22 @@ ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona
 
 
 --
+-- Name: cor1440_gen_datointermedioti cor1440_gen_datointermedioti_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_datointermedioti
+    ADD CONSTRAINT cor1440_gen_datointermedioti_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cor1440_gen_datointermedioti_pmindicadorpf cor1440_gen_datointermedioti_pmindicadorpf_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_datointermedioti_pmindicadorpf
+    ADD CONSTRAINT cor1440_gen_datointermedioti_pmindicadorpf_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: cor1440_gen_efecto cor1440_gen_efecto_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6322,6 +6829,14 @@ ALTER TABLE ONLY public.cor1440_gen_proyecto
 
 ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero
     ADD CONSTRAINT cor1440_gen_proyectofinanciero_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cor1440_gen_proyectofinanciero_usuario cor1440_gen_proyectofinanciero_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
+    ADD CONSTRAINT cor1440_gen_proyectofinanciero_usuario_pkey PRIMARY KEY (id);
 
 
 --
@@ -6645,14 +7160,6 @@ ALTER TABLE ONLY public.proyectofinanciero_uresponsable
 
 
 --
--- Name: proyectofinanciero_usuario proyectofinanciero_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.proyectofinanciero_usuario
-    ADD CONSTRAINT proyectofinanciero_usuario_pkey PRIMARY KEY (id);
-
-
---
 -- Name: publicacion publicacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6738,6 +7245,14 @@ ALTER TABLE ONLY public.sip_actorsocial_persona
 
 ALTER TABLE ONLY public.sip_actorsocial
     ADD CONSTRAINT sip_actorsocial_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sip_bitacora sip_bitacora_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_bitacora
+    ADD CONSTRAINT sip_bitacora_pkey PRIMARY KEY (id);
 
 
 --
@@ -7069,10 +7584,38 @@ ALTER TABLE ONLY public.vinculacion
 
 
 --
+-- Name: cor1440_gen_actividad_oficina_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX cor1440_gen_actividad_oficina_id_idx ON public.cor1440_gen_actividad USING btree (oficina_id);
+
+
+--
+-- Name: cor1440_gen_actividad_proyectofinanci_proyectofinanciero_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX cor1440_gen_actividad_proyectofinanci_proyectofinanciero_id_idx ON public.cor1440_gen_actividad_proyectofinanciero USING btree (proyectofinanciero_id);
+
+
+--
+-- Name: cor1440_gen_actividad_proyectofinanciero_actividad_id_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX cor1440_gen_actividad_proyectofinanciero_actividad_id_idx ON public.cor1440_gen_actividad_proyectofinanciero USING btree (actividad_id);
+
+
+--
 -- Name: cor1440_gen_actividad_proyectofinanciero_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX cor1440_gen_actividad_proyectofinanciero_idx ON public.cor1440_gen_actividad_proyectofinanciero USING btree (actividad_id, proyectofinanciero_id);
+
+
+--
+-- Name: cor1440_gen_datointermedioti_pmindicadorpf_llaves_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX cor1440_gen_datointermedioti_pmindicadorpf_llaves_idx ON public.cor1440_gen_datointermedioti_pmindicadorpf USING btree (datointermedioti_id, pmindicadorpf_id);
 
 
 --
@@ -7122,6 +7665,20 @@ CREATE UNIQUE INDEX index_comunicado_on_nombre ON public.comunicado USING btree 
 --
 
 CREATE INDEX index_cor1440_gen_actividad_sip_anexo_on_anexo_id ON public.cor1440_gen_actividad_sip_anexo USING btree (anexo_id);
+
+
+--
+-- Name: index_cor1440_gen_actividadpf_mindicadorpf_on_actividadpf_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_cor1440_gen_actividadpf_mindicadorpf_on_actividadpf_id ON public.cor1440_gen_actividadpf_mindicadorpf USING btree (actividadpf_id);
+
+
+--
+-- Name: index_cor1440_gen_actividadpf_mindicadorpf_on_mindicadorpf_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_cor1440_gen_actividadpf_mindicadorpf_on_mindicadorpf_id ON public.cor1440_gen_actividadpf_mindicadorpf USING btree (mindicadorpf_id);
 
 
 --
@@ -7347,10 +7904,10 @@ ALTER TABLE ONLY public.cor1440_gen_resultadopf
 
 
 --
--- Name: proyectofinanciero_usuario fk_rails_06be7b769b; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero_usuario fk_rails_06be7b769b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.proyectofinanciero_usuario
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_06be7b769b FOREIGN KEY (perfilprofesional_id) REFERENCES public.perfilprofesional(id);
 
 
@@ -7456,6 +8013,14 @@ ALTER TABLE ONLY public.usuario
 
 ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona
     ADD CONSTRAINT fk_rails_119f5dffb4 FOREIGN KEY (ulteditor_id) REFERENCES public.usuario(id);
+
+
+--
+-- Name: acpmotivo fk_rails_11e39ce112; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpmotivo
+    ADD CONSTRAINT fk_rails_11e39ce112 FOREIGN KEY (catmotivo_id) REFERENCES public.acpcatmotivo(id);
 
 
 --
@@ -7603,10 +8168,10 @@ ALTER TABLE ONLY public.cor1440_gen_campotind
 
 
 --
--- Name: proyectofinanciero_usuario fk_rails_28225d4dc2; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero_usuario fk_rails_28225d4dc2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.proyectofinanciero_usuario
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_28225d4dc2 FOREIGN KEY (usuario_id) REFERENCES public.usuario(id);
 
 
@@ -7643,11 +8208,27 @@ ALTER TABLE ONLY public.mr519_gen_encuestausuario
 
 
 --
+-- Name: sip_bitacora fk_rails_2db961766c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_bitacora
+    ADD CONSTRAINT fk_rails_2db961766c FOREIGN KEY (usuario_id) REFERENCES public.usuario(id);
+
+
+--
 -- Name: heb412_gen_doc fk_rails_2dd6d3dac3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.heb412_gen_doc
     ADD CONSTRAINT fk_rails_2dd6d3dac3 FOREIGN KEY (dirpapa) REFERENCES public.heb412_gen_doc(id);
+
+
+--
+-- Name: acp fk_rails_2e6c3a85cb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acp
+    ADD CONSTRAINT fk_rails_2e6c3a85cb FOREIGN KEY (motivo_id) REFERENCES public.acpmotivo(id);
 
 
 --
@@ -7699,6 +8280,14 @@ ALTER TABLE ONLY public.efecto_valorcampotind
 
 
 --
+-- Name: cor1440_gen_datointermedioti_pmindicadorpf fk_rails_390cd96f7c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_datointermedioti_pmindicadorpf
+    ADD CONSTRAINT fk_rails_390cd96f7c FOREIGN KEY (pmindicadorpf_id) REFERENCES public.cor1440_gen_pmindicadorpf(id);
+
+
+--
 -- Name: cor1440_gen_actividad_proyecto fk_rails_395faa0882; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7731,10 +8320,10 @@ ALTER TABLE ONLY public.actividad_grupo
 
 
 --
--- Name: proyectofinanciero_usuario fk_rails_3f5055fb42; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero_usuario fk_rails_3f5055fb42; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.proyectofinanciero_usuario
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_3f5055fb42 FOREIGN KEY (cargo_id) REFERENCES public.cargo(id);
 
 
@@ -7760,6 +8349,14 @@ ALTER TABLE ONLY public.efecto_valorcampotind
 
 ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero
     ADD CONSTRAINT fk_rails_4473f9ee28 FOREIGN KEY (respgp_id) REFERENCES public.usuario(id);
+
+
+--
+-- Name: acp fk_rails_45203542af; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acp
+    ADD CONSTRAINT fk_rails_45203542af FOREIGN KEY (cobertura_id) REFERENCES public.acpcobertura(id);
 
 
 --
@@ -8027,6 +8624,22 @@ ALTER TABLE ONLY public.cor1440_gen_caracterizacionpersona
 
 
 --
+-- Name: heb412_gen_formulario_plantillahcm fk_rails_6e214a7168; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcm
+    ADD CONSTRAINT fk_rails_6e214a7168 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
+
+
+--
+-- Name: cor1440_gen_actividadpf_mindicadorpf fk_rails_6e9cbecf02; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividadpf_mindicadorpf
+    ADD CONSTRAINT fk_rails_6e9cbecf02 FOREIGN KEY (mindicadorpf_id) REFERENCES public.cor1440_gen_mindicadorpf(id);
+
+
+--
 -- Name: sip_ubicacion fk_rails_6ed05ed576; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8144,6 +8757,14 @@ ALTER TABLE ONLY public.actorsocial_grupo
 
 ALTER TABLE ONLY public.mr519_gen_respuestafor
     ADD CONSTRAINT fk_rails_805efe6935 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
+
+
+--
+-- Name: acp fk_rails_81908b6b6d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acp
+    ADD CONSTRAINT fk_rails_81908b6b6d FOREIGN KEY (cataccion_id) REFERENCES public.acpcataccion(id);
 
 
 --
@@ -8371,10 +8992,10 @@ ALTER TABLE ONLY public.cor1440_gen_anexo_efecto
 
 
 --
--- Name: proyectofinanciero_usuario fk_rails_a4c07cb119; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero_usuario fk_rails_a4c07cb119; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.proyectofinanciero_usuario
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_a4c07cb119 FOREIGN KEY (tipocontrato_id) REFERENCES public.tipocontrato(id);
 
 
@@ -8384,6 +9005,14 @@ ALTER TABLE ONLY public.proyectofinanciero_usuario
 
 ALTER TABLE ONLY public.actorsocial_departamento
     ADD CONSTRAINT fk_rails_a5ab97cd2f FOREIGN KEY (departamento_id) REFERENCES public.sip_departamento(id);
+
+
+--
+-- Name: acpcataccion fk_rails_a6ccdfe730; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpcataccion
+    ADD CONSTRAINT fk_rails_a6ccdfe730 FOREIGN KEY (estrategia_id) REFERENCES public.acpestrategia(id);
 
 
 --
@@ -8531,6 +9160,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_actorsocial
 
 
 --
+-- Name: cor1440_gen_datointermedioti_pmindicadorpf fk_rails_c5ec912cc3; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_datointermedioti_pmindicadorpf
+    ADD CONSTRAINT fk_rails_c5ec912cc3 FOREIGN KEY (datointermedioti_id) REFERENCES public.cor1440_gen_datointermedioti(id);
+
+
+--
 -- Name: cor1440_gen_actividadpf fk_rails_c68e2278b2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8539,10 +9176,10 @@ ALTER TABLE ONLY public.cor1440_gen_actividadpf
 
 
 --
--- Name: proyectofinanciero_usuario fk_rails_c719ad1d65; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: cor1440_gen_proyectofinanciero_usuario fk_rails_c719ad1d65; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.proyectofinanciero_usuario
+ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_c719ad1d65 FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
 
 
@@ -8632,6 +9269,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_proyecto
 
 ALTER TABLE ONLY public.cor1440_gen_indicadorpf
     ADD CONSTRAINT fk_rails_cf888d1b56 FOREIGN KEY (tipoindicador_id) REFERENCES public.cor1440_gen_tipoindicador(id);
+
+
+--
+-- Name: cor1440_gen_actividadpf_mindicadorpf fk_rails_cfff77ad98; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividadpf_mindicadorpf
+    ADD CONSTRAINT fk_rails_cfff77ad98 FOREIGN KEY (actividadpf_id) REFERENCES public.cor1440_gen_actividadpf(id);
 
 
 --
@@ -8819,6 +9464,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad
 
 
 --
+-- Name: cor1440_gen_datointermedioti fk_rails_f2e0ba2f26; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_datointermedioti
+    ADD CONSTRAINT fk_rails_f2e0ba2f26 FOREIGN KEY (tipoindicador_id) REFERENCES public.cor1440_gen_tipoindicador(id);
+
+
+--
 -- Name: cor1440_gen_actividadpf fk_rails_f941b0c512; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8856,6 +9509,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividadtipo_formulario
 
 ALTER TABLE ONLY public.sip_clase
     ADD CONSTRAINT fk_rails_fb09f016e4 FOREIGN KEY (id_municipio) REFERENCES public.sip_municipio(id);
+
+
+--
+-- Name: heb412_gen_formulario_plantillahcm fk_rails_fc3149fc44; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcm
+    ADD CONSTRAINT fk_rails_fc3149fc44 FOREIGN KEY (plantillahcm_id) REFERENCES public.heb412_gen_plantillahcm(id);
 
 
 --
@@ -9490,6 +10151,42 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190930022748'),
 ('20190930102643'),
 ('20191009103744'),
-('20191010135124');
+('20191010135124'),
+('20191205200007'),
+('20191205202150'),
+('20191205204511'),
+('20191219011910'),
+('20191231102721'),
+('20200116003807'),
+('20200211112230'),
+('20200212103617'),
+('20200228235200'),
+('20200229005951'),
+('20200302194744'),
+('20200314033958'),
+('20200319183515'),
+('20200326212919'),
+('20200327004702'),
+('20200330174434'),
+('20200411094012'),
+('20200411095105'),
+('20200415021859'),
+('20200415102103'),
+('20200706113547'),
+('20200713162202'),
+('20200713164024'),
+('20200714155040'),
+('20200714155410'),
+('20200714182949'),
+('20200714183340'),
+('20200714193113'),
+('20200714193216'),
+('20200715103001'),
+('20200715105931'),
+('20200715120011'),
+('20200715205544'),
+('20200716002601'),
+('20200716094513'),
+('20200717104312');
 
 

@@ -3,4 +3,18 @@
     FROM sip_actorsocial_persona AS sap 
     WHERE sap.correo IS NOT NULL
     AND TRIM(sap.correo) != \'\') ').count %>
+  <% acone = @registros.joins(
+    'JOIN sip_actorsocial_persona AS ap ON ap.actorsocial_id=sip_actorsocial.id').joins(
+    'JOIN mr519_gen_encuestapersona AS ep ON ep.persona_id=ap.persona_id').joins(
+    'JOIN planencuesta AS pe ON pe.id=ep.planencuesta_id').where(
+      'pe.fechafin >= ?', Date.today); puts "acone=#{acone.to_sql}" %>
+  <% aconer = acone.where(
+    'ep.respuestafor_id IN (SELECT rf.id FROM mr519_gen_respuestafor AS rf ' +
+    'JOIN mr519_gen_valorcampo AS vc ON vc.respuestafor_id=rf.id ' +
+    'WHERE vc.valor IS NOT NULL AND vc.valor<>\'\')'); puts "aconer=#{aconer.to_sql}" %>
+
+  - Con encuestas vigentes respondidas:
+  <%= aconer.count('DISTINCT sip_actorsocial.id') %> / 
+  <%= acone.count('DISTINCT sip_actorsocial.id') %>
+
 

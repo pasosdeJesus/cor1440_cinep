@@ -14,10 +14,9 @@
 //= require heb412_gen/motor
 //= require cor1440_gen/motor
 //= require mr519_gen/motor
-//= require chosen-jquery
 //= require_tree .
 
-$(document).on('turbolinks:load ready page:load', function() {
+document.addEventListener('turbolinks:load', function() {
 	var root;
   	root = typeof exports !== "undefined" && exports !== null ? 
 	  exports : window;
@@ -29,7 +28,7 @@ $(document).on('turbolinks:load ready page:load', function() {
 	cor1440_cinep_prepara_eventos_unicos(root);
 
 	formato_fecha = 'dd/M/yyyy'
-	if ($('meta[name=formato_fecha]').size() != 0) {
+	if ($('meta[name=formato_fecha]').length != 0) {
 		formato_fecha = $('meta[name=formato_fecha]').attr('content')
 	}
 	$('[data-behaviour~=datepicker]').datepicker({

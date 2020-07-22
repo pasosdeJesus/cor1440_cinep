@@ -40,19 +40,22 @@ module Sip
       end
 
       def atributos_form
-        [ :nombre, 
+        r = [ :nombre, 
           :cn, 
           :gidNumber, 
           :ultimasincldap_localizada 
-        ] +
-        [ :usuario_ids => [] ] +
-        [ :subgrupo_ids => [] ] +
-        [ :procesogh_id, 
+        ]
+        if @registro && @registro.id
+          r += [ :usuario_ids => [] ] 
+          r += [ :subgrupo_ids => [] ] 
+        end
+        r += [ :procesogh_id, 
           :observaciones,
           "no_modificar_ldap",
           :fechacreacion_localizada, 
           :fechadeshabilitacion_localizada 
         ]
+        return r
       end
 
       def crear_dirac

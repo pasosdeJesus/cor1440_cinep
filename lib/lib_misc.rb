@@ -1,6 +1,5 @@
 module LibMisc
   include Sip::ConsultasHelper
-  include FontAwesome::Rails::IconHelper 
 
   def self.dif_meses_dias(fechaini, fechafin) 
     m = 0
