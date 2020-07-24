@@ -31,6 +31,22 @@ COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
 
 
 --
+-- Name: completa_obs(character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.completa_obs(obs character varying, nuevaobs character varying) RETURNS character varying
+    LANGUAGE plpgsql
+    AS $$
+      BEGIN
+        RETURN CASE WHEN obs IS NULL THEN nuevaobs
+          WHEN obs='' THEN nuevaobs
+          WHEN RIGHT(obs, 1)='.' THEN obs || ' ' || nuevaobs
+          ELSE obs || '. ' || nuevaobs
+        END;
+      END; $$;
+
+
+--
 -- Name: soundexesp(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -3290,6 +3306,41 @@ CREATE SEQUENCE public.intervalo_seq
 
 
 --
+-- Name: lscobertura; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.lscobertura (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    codigo character varying(3) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: lscobertura_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.lscobertura_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: lscobertura_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.lscobertura_id_seq OWNED BY public.lscobertura.id;
+
+
+--
 -- Name: maternidad_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -6118,6 +6169,13 @@ ALTER TABLE ONLY public.informenarrativo ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Name: lscobertura id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lscobertura ALTER COLUMN id SET DEFAULT nextval('public.lscobertura_id_seq'::regclass);
+
+
+--
 -- Name: mr519_gen_campo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -7013,6 +7071,14 @@ ALTER TABLE ONLY public.informefinanciero
 
 ALTER TABLE ONLY public.informenarrativo
     ADD CONSTRAINT informenarrativo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: lscobertura lscobertura_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lscobertura
+    ADD CONSTRAINT lscobertura_pkey PRIMARY KEY (id);
 
 
 --
@@ -10187,6 +10253,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200715205544'),
 ('20200716002601'),
 ('20200716094513'),
-('20200717104312');
+('20200717104312'),
+('20200722100536'),
+('20200722210144'),
+('20200723133542');
 
 

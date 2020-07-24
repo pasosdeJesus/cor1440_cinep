@@ -150,6 +150,10 @@ es:
       "cor1440_gen/actividadarea":
         Actividadarea: Componente plan trienal 
         Actividadareas: Componentes plan trienal 
+      "cor1440_gen/efecto":
+        aprobadodir: Aprobado por dirección
+        observacionesdir: Observaciones de dirección
+        porcentajeprog: Porcentaje de progreso
       "cor1440_gen/financiador":
         domicilio: Domicilio
         razonsocial: Razón social
@@ -267,16 +271,6 @@ es:
         uresponsable: "Responsable(s)"
         "{:uresponsable_ids=>[]}": "Responsable(s)"
         webfinanciador: 'Página web'
-      "cor1440_gen/efecto":
-        aprobadodir: Aprobado por dirección
-        observacionesdir: Observaciones de dirección
-        porcentajeprog: Porcentaje de progreso
-      "empresaps":
-        Empresaps: 'Empresa prestradora de salud'
-        Empresasps: 'Empresas prestadoras de salud'
-      "fondopensiones":
-        Fondopensiones: 'Fondo de pensiones'
-        Fondospensiones: 'Fondos de pensiones'
       "cor1440_gen/tipoindicador": 
         pprogtind: "Fases de progreso"
         desc20: 'Descripción 20% (sólo si es indicador progresivo)'
@@ -284,6 +278,15 @@ es:
         desc60: 'Descripción 60% (sólo si es indicador progresivo)'
         desc80: 'Descripción 80% (sólo si es indicador progresivo)'
         desc100: 'Descripción 100% (sólo si es indicador progresivo)'
+      "empresaps":
+        Empresaps: 'Empresa prestradora de salud'
+        Empresasps: 'Empresas prestadoras de salud'
+      "fondopensiones":
+        Fondopensiones: 'Fondo de pensiones'
+        Fondospensiones: 'Fondos de pensiones'
+      "lscobertura":
+        Lscobertura: Cobertura - Ámbito (LS)
+        Lscoberturas: Coberturas - Ámbitos (LS)
       "mr519_gen/encuestapersona":
         Encuestapersona: Encuesta a contacto de actor social
         Encuestaspersona: Encuestas a contactos de actores sociales

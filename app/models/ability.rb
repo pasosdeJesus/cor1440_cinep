@@ -84,6 +84,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'comunicado'],
         ['', 'empresaps'],
         ['', 'fondopensiones'],
+        ['', 'lscobertura'],
         ['', 'nivelrelacion'],
         ['', 'niveleducacion'],
 #        ['', 'nucleoconflicto'],
@@ -491,6 +492,7 @@ class Ability  < Cor1440Gen::Ability
 
         if lgrupos.include?(GRUPO_MOVIMIENTOSSOCIALES)
           can :index, :movilizacion
+          can :manage, ::Lscobertura
         end
 
         if lgrupos.include?(GRUPO_INICIATIVASPAZ)
