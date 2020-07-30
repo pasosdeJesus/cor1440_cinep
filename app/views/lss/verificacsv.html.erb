@@ -1,0 +1,18 @@
+<div class="page-header">
+  <h1>Verifica un CSV de Luchas Sociales</h1>
+</div>
+
+<%= simple_form_for :filtro, { 
+  url: main_app.lss_verificacsv_path,
+  multipart: true } do |f| %>
+  <%= f.input :archivo, 
+    as: :file, 
+    label: 'Archivo CSV en codificación UTF-8',
+    accept: 'text/csv' %>
+
+  <%= f.input :importar, as: :boolean,
+    boolean_style: :nested,
+    inline_label: 'Importar' %>
+
+  <%= f.button :submit, 'Verificar', class: 'btn btn-default' %>
+<% end %>

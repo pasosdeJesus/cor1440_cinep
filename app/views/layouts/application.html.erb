@@ -19,7 +19,7 @@
           <%= opcion_menu 'Conteo de Actividades', 
             cor1440_gen.contar_actividades_path, desplegable: true %>
           <% if can? :index, Sip::Actorsocial %>
-            <%= opcion_menu 'Actores Sociales', sip.actoressociales_path,
+            <%= opcion_menu 'Organizaciones Sociales', sip.actoressociales_path,
               desplegable: true %>
           <% end %>
           <% if can? :manage, Sip::Persona %>

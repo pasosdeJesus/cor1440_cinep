@@ -36,11 +36,11 @@ class Acp < ActiveRecord::Base
   }
 
   scope :filtro_fini, lambda { |f|
-      where('fecha >= ?', f)
+      where('fini >= ?', f)
   }
 
   scope :filtro_ffin, lambda { |f|
-      where('fecha <= ?', f)
+      where('ffin <= ?', f)
   }
 
   scope :filtro_confrini, lambda {|p|

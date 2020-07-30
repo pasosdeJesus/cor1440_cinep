@@ -26,7 +26,7 @@ es:
     proyectosfinancieros: Compromisos institucionales
     proyectofinanciero: Compromiso institucional
     regionsjr: Dependencia
-    sectoractor: Sector del actor social
+    sectoractor: Sector de la organización social
     tipocontrato: Tipo de contrato
     telefono: Teléfono
   activerecord:
@@ -55,7 +55,7 @@ es:
         estrategia: Estrategia ACP
         fini_localizada: Fecha de inicio
         ffin_localizada: Fecha de terminación
-        confr: Nivel de confrontación
+        confr: Nivel de confrontabilidad
         cobertura: Cobertura geográfica
         motivo: Motivo ACP
         descripcion: Descripción
@@ -87,7 +87,7 @@ es:
         personacontacto: Persona contacto
         pais_id: País
         regiongrupo: Región(es)
-        sectoractor_id: Sector del actor
+        sectoractor_id: Sector de la organización
         "{:regiongrupo_ids=>[]}": Región(es)
         "{:grupo_ids=>[]}": Grupo(s)
       "anexo_proyectofinanciero":
@@ -291,13 +291,13 @@ es:
         Lscobertura: Cobertura - Ámbito (LS)
         Lscoberturas: Coberturas - Ámbitos (LS)
       "mr519_gen/encuestapersona":
-        Encuestapersona: Encuesta a contacto de actor social
-        Encuestaspersona: Encuestas a contactos de actores sociales
+        Encuestapersona: Encuesta a contacto de organización social
+        Encuestaspersona: Encuestas a contactos de organización social
         fechaini_localizada: Fecha de primera aplicación
         fechacambio_localizada: Fecha de último cambio
         fechainicio_localizada: Fecha de inicio
         fechafin_localizada: Fecha de cierre
-        planencuesta: Plan de la encuesta para actores sociales
+        planencuesta: Plan de la encuesta para organizaciones sociales
         valorcampo: Respuestas
       "niveleducacion":
         Niveleducacion: Nivel de educación
@@ -309,8 +309,8 @@ es:
         Nucleoconflict: Núcleo de conflicto
         Nucleosconflicto: Núcleos de conflicto
       "planencuesta":  
-        Planencuesta: Plan de una encuesta a actores sociales
-        Planesencuesta: Planes de encuestas a actores sociales
+        Planencuesta: Plan de una encuesta a organizaciones sociales
+        Planesencuesta: Planes de encuestas a organizaciones sociales
         fechaini_localizada: Fecha de inicio de encuesta
         fechafin_localizada: Fecha límite para presentarla
         plantillacorreoinv: Plantilla para el correo de invitación
@@ -331,8 +331,8 @@ es:
         Publicacion: Producto CINEP/PPP
         Publicaciones: Productos CINEP/PPP
       "redactor":
-        Redactor: Red de actores
-        Redesactor: Redes de actores
+        Redactor: Red de organizaciones
+        Redesactor: Redes de organizaciones
       "regiongrupo":
         Regionesgrupo: Región para un grupo
         Regiongrupo: Regiones para un grupo
@@ -342,8 +342,8 @@ es:
         Articulo: Publicación 
         Articulos: Publicaciones
       "sectoractor":
-        Sectoractor: Sector de un actor social
-        Sectoresactores: Sectores de actores
+        Sectoractor: Sector de una organización social
+        Sectoresactores: Sectores de organizaciones sociales
         enplantrienal: En Glosario del plan trienal
       "sectorapc":
         Sectorapc: Sector APC
