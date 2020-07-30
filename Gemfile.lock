@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: ce3633ff7bf2dc459d00b61b4f625a3bcf1036af
+  revision: 2b38e199b755c183926703966b589ba4f85f8582
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 0763b01f3329f343f6cb98170f18cf202202ccdf
+  revision: 5b3fa62999481cb96956af96dd648e4901a67e05
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 7829153ce240da49dedc78b4a5c06a8a682a1c60
+  revision: 190270906c819e77e608ba7a54a23dd281ae69e2
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: e3d60407016e33aa82d19b8d1df49dfc161d6da0
+  revision: 4224752940f549b894b1bb992feb7dbf7ca48018
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: a8a44cea062c879337b53ae8f54ed24773e8af2e
+  revision: a9d0d1617577874899e07fddf0eabbb392d7ea87
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: df0a67f31e92e932fe733df38105c78b1840af38
+  revision: 3fc10e36adfdecf649d1f158d80c3ef40189d5bb
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1501f4828cc04773ad9df52297534369675ef53b
+  revision: 3e7090aaaa51bf9c6ca355c624df5c67cdab90c2
   specs:
     sip (2.0.b10)
       cancancan
@@ -180,6 +180,8 @@ GEM
     colorize (0.8.1)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    csv (3.1.6)
+      stringio (>= 0.1.3)
     devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -331,19 +333,20 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stringio (0.1.3)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
     ttfunk (1.6.2.1)
-    twitter_cldr (6.0.1)
+    twitter_cldr (6.0.2)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    unicorn (5.5.5)
+    unicorn (5.6.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.8)
@@ -378,6 +381,7 @@ DEPENDENCIES
   coffee-rails
   colorize
   cor1440_gen!
+  csv
   devise
   devise-i18n
   erd

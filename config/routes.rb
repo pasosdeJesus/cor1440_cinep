@@ -34,6 +34,14 @@ Rails.application.routes.draw do
     resources :convenios,
       path_names: { new: 'nueva', edit: 'edita' }
  
+    get '/lss/verificacsv' => 'lss#verificacsv',
+      as: :lss_verificacsv
+    post '/lss/verificacsv' => 'lss#verificacsv', 
+      as: :lss_envia_verificacsv
+
+    resources :lss,
+      path_names: { new: 'nueva', edit: 'edita' }
+
     resources :mindicadorespf,
       controller: 'cor1440_gen/mindicadorespf', 
       path_names: { new: 'nuevo', edit: 'edita' }

@@ -491,7 +491,7 @@ class Ability  < Cor1440Gen::Ability
         end
 
         if lgrupos.include?(GRUPO_MOVIMIENTOSSOCIALES)
-          can :index, :movilizacion
+          can :manage, ::Ls
           can :manage, ::Lscobertura
         end
 
@@ -575,9 +575,9 @@ class Ability  < Cor1440Gen::Ability
         can :index, :conflictividades
         can :edit, :contextoac
         can :manage, ::Acp
+        can :manage, ::Ls
         can :index, :dinamicas
         can :manage, :lineabase20182020
-        can :index, :movilizacion
         can :dir, :vistobuenoactividad
 
         can :manage, ::Convenio

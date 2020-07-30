@@ -3306,6 +3306,62 @@ CREATE SEQUENCE public.intervalo_seq
 
 
 --
+-- Name: ls; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.ls (
+    id bigint NOT NULL,
+    fecha date NOT NULL,
+    mes_inexacto boolean,
+    cobertura_id integer,
+    convocante_id integer,
+    orgconvocante character varying(512),
+    dirig1 character varying(512),
+    dirig2 character varying(512),
+    dirig3 character varying(512),
+    actor integer,
+    partici1 character varying(512),
+    partici2 character varying(512),
+    partici3 character varying(512),
+    tipo_lucha character varying(3),
+    accion integer,
+    motivopl integer,
+    motivopp character varying(512),
+    motivo2 character varying(512),
+    motivo3 character varying(512),
+    motivo4 character varying(512),
+    motivo5 character varying(512),
+    adversario integer,
+    entidad1 character varying(512),
+    entidad2 character varying(512),
+    entidad3 character varying(512),
+    fuente character varying(512),
+    ffuente date,
+    ffuen_1 date,
+    descripcion character varying(5000)
+);
+
+
+--
+-- Name: ls_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.ls_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: ls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.ls_id_seq OWNED BY public.ls.id;
+
+
+--
 -- Name: lscobertura; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3338,6 +3394,72 @@ CREATE SEQUENCE public.lscobertura_id_seq
 --
 
 ALTER SEQUENCE public.lscobertura_id_seq OWNED BY public.lscobertura.id;
+
+
+--
+-- Name: lsdep; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.lsdep (
+    id bigint NOT NULL,
+    ls_id integer NOT NULL,
+    departamento_id integer NOT NULL,
+    orden integer NOT NULL,
+    fuente character varying(512),
+    ffuente date,
+    ffuen_1 date,
+    descripcion character varying(5000)
+);
+
+
+--
+-- Name: lsdep_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.lsdep_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: lsdep_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.lsdep_id_seq OWNED BY public.lsdep.id;
+
+
+--
+-- Name: lsmun; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.lsmun (
+    id bigint NOT NULL,
+    lsdep_id integer NOT NULL,
+    orden integer NOT NULL,
+    municipio_id integer NOT NULL
+);
+
+
+--
+-- Name: lsmun_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.lsmun_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: lsmun_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.lsmun_id_seq OWNED BY public.lsmun.id;
 
 
 --
@@ -3434,7 +3556,6 @@ ALTER SEQUENCE public.mr519_gen_encuestapersona_id_seq OWNED BY public.mr519_gen
 CREATE TABLE public.mr519_gen_encuestausuario (
     id bigint NOT NULL,
     usuario_id integer NOT NULL,
-    formulario_id integer,
     fecha date,
     fechainicio date NOT NULL,
     fechafin date,
@@ -6169,10 +6290,31 @@ ALTER TABLE ONLY public.informenarrativo ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Name: ls id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ls ALTER COLUMN id SET DEFAULT nextval('public.ls_id_seq'::regclass);
+
+
+--
 -- Name: lscobertura id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.lscobertura ALTER COLUMN id SET DEFAULT nextval('public.lscobertura_id_seq'::regclass);
+
+
+--
+-- Name: lsdep id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lsdep ALTER COLUMN id SET DEFAULT nextval('public.lsdep_id_seq'::regclass);
+
+
+--
+-- Name: lsmun id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lsmun ALTER COLUMN id SET DEFAULT nextval('public.lsmun_id_seq'::regclass);
 
 
 --
@@ -7074,11 +7216,35 @@ ALTER TABLE ONLY public.informenarrativo
 
 
 --
+-- Name: ls ls_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ls
+    ADD CONSTRAINT ls_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: lscobertura lscobertura_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.lscobertura
     ADD CONSTRAINT lscobertura_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: lsdep lsdep_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lsdep
+    ADD CONSTRAINT lsdep_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: lsmun lsmun_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lsmun
+    ADD CONSTRAINT lsmun_pkey PRIMARY KEY (id);
 
 
 --
@@ -7954,6 +8120,14 @@ ALTER TABLE ONLY public.actor_efecto
 
 
 --
+-- Name: lsmun fk_rails_04da7fa415; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lsmun
+    ADD CONSTRAINT fk_rails_04da7fa415 FOREIGN KEY (municipio_id) REFERENCES public.sip_municipio(id);
+
+
+--
 -- Name: cor1440_gen_mindicadorpf fk_rails_06564b910d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8319,6 +8493,14 @@ ALTER TABLE ONLY public.cor1440_gen_valorcampoact
 
 ALTER TABLE ONLY public.contrato
     ADD CONSTRAINT fk_rails_31397bfaea FOREIGN KEY (tipocontrato_id) REFERENCES public.tipocontrato(id);
+
+
+--
+-- Name: lsmun fk_rails_323a171760; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lsmun
+    ADD CONSTRAINT fk_rails_323a171760 FOREIGN KEY (lsdep_id) REFERENCES public.lsdep(id);
 
 
 --
@@ -9034,6 +9216,14 @@ ALTER TABLE ONLY public.sip_actorsocial_sectoractor
 
 
 --
+-- Name: lsdep fk_rails_a11d7137de; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lsdep
+    ADD CONSTRAINT fk_rails_a11d7137de FOREIGN KEY (departamento_id) REFERENCES public.sip_departamento(id);
+
+
+--
 -- Name: mr519_gen_campo fk_rails_a186e1a8a0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9482,19 +9672,19 @@ ALTER TABLE ONLY public.cor1440_gen_beneficiariopf
 
 
 --
+-- Name: lsdep fk_rails_e7a555f573; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lsdep
+    ADD CONSTRAINT fk_rails_e7a555f573 FOREIGN KEY (ls_id) REFERENCES public.ls(id);
+
+
+--
 -- Name: cor1440_gen_actividad_valorcampotind fk_rails_e8cd697f5d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.cor1440_gen_actividad_valorcampotind
     ADD CONSTRAINT fk_rails_e8cd697f5d FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
-
-
---
--- Name: mr519_gen_encuestausuario fk_rails_eccb6f9972; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.mr519_gen_encuestausuario
-    ADD CONSTRAINT fk_rails_eccb6f9972 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
 
 
 --
@@ -10256,6 +10446,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200717104312'),
 ('20200722100536'),
 ('20200722210144'),
-('20200723133542');
+('20200723133542'),
+('20200727021707'),
+('20200727224008'),
+('20200728090902'),
+('20200728091746');
 
 

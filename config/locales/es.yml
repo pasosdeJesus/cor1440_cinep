@@ -284,6 +284,9 @@ es:
       "fondopensiones":
         Fondopensiones: 'Fondo de pensiones'
         Fondospensiones: 'Fondos de pensiones'
+      "ls":
+        Ls: Lucha social
+        Lss: Luchas sociales
       "lscobertura":
         Lscobertura: Cobertura - Ámbito (LS)
         Lscoberturas: Coberturas - Ámbitos (LS)

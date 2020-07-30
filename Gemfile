@@ -15,6 +15,8 @@ gem 'cocoon', # Formularios anidados (algunos con ajax)
 
 gem 'coffee-rails' # CoffeeScript para recuersos .js.coffee y vistas
 
+gem 'csv'
+
 gem 'devise' # Autenticación 
 
 gem 'devise-i18n'

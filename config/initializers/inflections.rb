@@ -13,6 +13,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'empresaps', 'empresasps'
   inflect.irregular 'fondopensiones', 'fondospensiones'
   inflect.irregular 'informeauditoria', 'informeauditorias'
+  inflect.irregular 'ls', 'lss'
   inflect.irregular 'lscobertura', 'lscoberturas'
   inflect.irregular 'mindicadorpf', 'mindicadorespf'
   inflect.irregular 'niveleducacion', 'niveleseducacion'
