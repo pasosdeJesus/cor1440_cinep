@@ -8,42 +8,62 @@
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">filtro-tasas-de-cambio-id </td></tr>
+<tr><td rowspan="1" colspan="3">filtro-tasas-de-cambio-observaciones</td></tr>
 </thead>
 <tbody>
-<tr><td>clickAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>51,19</td>
+<tr><td>clickAt</td><td>//tr[3]/td[5]<datalist><option>//tr[3]/td[5]</option></datalist></td><td>225,39</td>
 </tr>
-<tr><td>clickAt</td><td>link=Tasas de cambio<datalist><option>link=Tasas de cambio</option><option>//a[contains(text(),'Tasas de cambio')]</option><option>//a[contains(@href, '/tasascambio')]</option><option>//li[3]/ul/li[4]/a</option></datalist></td><td>64,9</td>
+<tr><td>clickAt</td><td>id=filtro_busobservaciones<datalist><option>id=filtro_busobservaciones</option><option>name=filtro[busobservaciones]</option><option>css=#filtro_busobservaciones</option><option>//textarea[@id='filtro_busobservaciones']</option><option>//textarea</option></datalist></td><td>97,20</td>
 </tr>
-<tr><td>clickAt</td><td>id=filtro_busid<datalist><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div/input</option></datalist></td><td>8,13</td>
+<tr><td>type</td><td>id=filtro_busobservaciones<datalist><option>id=filtro_busobservaciones</option><option>name=filtro[busobservaciones]</option><option>css=#filtro_busobservaciones</option><option>//textarea[@id='filtro_busobservaciones']</option><option>//textarea</option></datalist></td><td>http://www.xe.com/currencytables/?from=COP&amp;date=2017-08-01</td>
 </tr>
-<tr><td>type</td><td>id=filtro_busid<datalist><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div/input</option></datalist></td><td>22</td>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>38,25</td>
 </tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>30,15</td>
+<tr><td>clickAt</td><td>id=filtro_busobservaciones<datalist><option>id=filtro_busobservaciones</option><option>name=filtro[busobservaciones]</option><option>css=#filtro_busobservaciones</option><option>//textarea[@id='filtro_busobservaciones']</option><option>//textarea</option></datalist></td><td>276,42</td>
 </tr>
-<tr><td>clickAt</td><td>css=div.input.integer.required.filtro_busid<datalist><option>css=div.input.integer.required.filtro_busid</option><option>//td/div</option></datalist></td><td>62,23</td>
+<tr><td>type</td><td>id=filtro_busobservaciones<datalist><option>id=filtro_busobservaciones</option><option>name=filtro[busobservaciones]</option><option>css=#filtro_busobservaciones</option><option>//textarea[@id='filtro_busobservaciones']</option><option>//textarea</option></datalist></td><td></td>
 </tr>
-<tr><td>type</td><td>id=filtro_busid<datalist><option>id=filtro_busid</option><option>name=filtro[busid]</option><option>css=#filtro_busid</option><option>//input[@id='filtro_busid']</option><option>//div/input</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>30,15</td>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>27,17</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">filtro-tasas-de-cambio-fecha</td></tr>
+<tr><td rowspan="1" colspan="3">filtro-tasas-de-cambio-tipo-de-moneda</td></tr>
 </thead>
 <tbody>
-<tr><td>clickAt</td><td>id=filtro_busfechaini<datalist><option>id=filtro_busfechaini</option><option>name=filtro[busfechaini]</option><option>css=#filtro_busfechaini</option><option>//input[@id='filtro_busfechaini']</option><option>//td[2]/div/input</option></datalist></td><td>171,17</td>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>type</td><td>id=filtro_busfechaini<datalist><option>id=filtro_busfechaini</option><option>name=filtro[busfechaini]</option><option>css=#filtro_busfechaini</option><option>//input[@id='filtro_busfechaini']</option><option>//td[2]/div/input</option></datalist></td><td>2019-06-01</td>
+<tr><td>select</td><td>id=filtro_bustipomoneda_id<datalist><option>id=filtro_bustipomoneda_id</option><option>name=filtro[bustipomoneda_id]</option><option>css=#filtro_bustipomoneda_id</option><option>//select[@id='filtro_bustipomoneda_id']</option><option>//select</option></datalist></td><td>label=DÓLAR</td>
 </tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>33,22</td>
+<tr><td>clickAt</td><td>id=filtro_bustipomoneda_id<datalist><option>id=filtro_bustipomoneda_id</option><option>name=filtro[bustipomoneda_id]</option><option>css=#filtro_bustipomoneda_id</option><option>//select[@id='filtro_bustipomoneda_id']</option><option>//select</option></datalist></td><td>-375,-235</td>
 </tr>
-<tr><td>clickAt</td><td>id=filtro_busfechaini<datalist><option>id=filtro_busfechaini</option><option>name=filtro[busfechaini]</option><option>css=#filtro_busfechaini</option><option>//input[@id='filtro_busfechaini']</option><option>//td[2]/div/input</option></datalist></td><td>171,22</td>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>34,19</td>
 </tr>
-<tr><td>type</td><td>id=filtro_busfechaini<datalist><option>id=filtro_busfechaini</option><option>name=filtro[busfechaini]</option><option>css=#filtro_busfechaini</option><option>//input[@id='filtro_busfechaini']</option><option>//td[2]/div/input</option></datalist></td><td></td>
+<tr><td>mouseDownAt</td><td>css=abbr.search-choice-close<datalist><option>css=abbr.search-choice-close</option><option>//div[@id='filtro_busoficina_id_chosen']/a/abbr</option><option>//abbr</option></datalist></td><td>4.5,5</td>
 </tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>37,21</td>
+<tr><td>mouseMoveAt</td><td>css=abbr.search-choice-close<datalist><option>css=abbr.search-choice-close</option><option>//div[@id='filtro_busoficina_id_chosen']/a/abbr</option><option>//abbr</option></datalist></td><td>4.5,5</td>
+</tr>
+<tr><td>mouseUpAt</td><td>css=abbr.search-choice-close<datalist><option>css=abbr.search-choice-close</option><option>//div[@id='filtro_busoficina_id_chosen']/a/abbr</option><option>//abbr</option></datalist></td><td>4.5,5</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>34,19</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">filtro-tasas-de-cambio-tasa-en pesos</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>id=filtro_busenpesos_localizadoini<datalist><option>id=filtro_busenpesos_localizadoini</option><option>name=filtro[busenpesos_localizadoini]</option><option>css=#filtro_busenpesos_localizadoini</option><option>//input[@id='filtro_busenpesos_localizadoini']</option><option>//td[4]/div/input</option></datalist></td><td>43,17</td>
+</tr>
+<tr><td>type</td><td>id=filtro_busenpesos_localizadoini<datalist><option>id=filtro_busenpesos_localizadoini</option><option>name=filtro[busenpesos_localizadoini]</option><option>css=#filtro_busenpesos_localizadoini</option><option>//input[@id='filtro_busenpesos_localizadoini']</option><option>//td[4]/div/input</option></datalist></td><td>3350</td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>36,25</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[2]<datalist><option>//tr[2]</option></datalist></td><td>494,26</td>
+</tr>
+<tr><td>type</td><td>id=filtro_busenpesos_localizadoini<datalist><option>id=filtro_busenpesos_localizadoini</option><option>name=filtro[busenpesos_localizadoini]</option><option>css=#filtro_busenpesos_localizadoini</option><option>//input[@id='filtro_busenpesos_localizadoini']</option><option>//td[4]/div/input</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>29,21</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -74,80 +94,6 @@
 <tr><td>type</td><td>id=filtro_busfechafin<datalist><option>id=filtro_busfechafin</option><option>name=filtro[busfechafin]</option><option>css=#filtro_busfechafin</option><option>//input[@id='filtro_busfechafin']</option><option>//div[2]/input</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>24,20</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">filtro-tasas-de-cambio-tipo-de-moneda</td></tr>
-</thead>
-<tbody>
-<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
-</tr>
-<tr><td>select</td><td>id=filtro_bustipomoneda_id<datalist><option>id=filtro_bustipomoneda_id</option><option>name=filtro[bustipomoneda_id]</option><option>css=#filtro_bustipomoneda_id</option><option>//select[@id='filtro_bustipomoneda_id']</option><option>//select</option></datalist></td><td>label=DÓLAR</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_bustipomoneda_id<datalist><option>id=filtro_bustipomoneda_id</option><option>name=filtro[bustipomoneda_id]</option><option>css=#filtro_bustipomoneda_id</option><option>//select[@id='filtro_bustipomoneda_id']</option><option>//select</option></datalist></td><td>-375,-235</td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>34,19</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">filtro-tasas-de-cambio-tasa-en pesos</td></tr>
-</thead>
-<tbody>
-<tr><td>clickAt</td><td>id=filtro_busenpesos_localizadoini<datalist><option>id=filtro_busenpesos_localizadoini</option><option>name=filtro[busenpesos_localizadoini]</option><option>css=#filtro_busenpesos_localizadoini</option><option>//input[@id='filtro_busenpesos_localizadoini']</option><option>//td[4]/div/input</option></datalist></td><td>43,17</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busenpesos_localizadoini<datalist><option>id=filtro_busenpesos_localizadoini</option><option>name=filtro[busenpesos_localizadoini]</option><option>css=#filtro_busenpesos_localizadoini</option><option>//input[@id='filtro_busenpesos_localizadoini']</option><option>//td[4]/div/input</option></datalist></td><td>3350</td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>36,25</td>
-</tr>
-<tr><td>clickAt</td><td>//tr[2]<datalist><option>//tr[2]</option></datalist></td><td>494,26</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busenpesos_localizadoini<datalist><option>id=filtro_busenpesos_localizadoini</option><option>name=filtro[busenpesos_localizadoini]</option><option>css=#filtro_busenpesos_localizadoini</option><option>//input[@id='filtro_busenpesos_localizadoini']</option><option>//td[4]/div/input</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>29,21</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">filtro-tasas-de-cambio-tasa-en-pesos-tasa-en-pesos2</td></tr>
-</thead>
-<tbody>
-<tr><td>clickAt</td><td>id=filtro_busenpesos_localizadofin<datalist><option>id=filtro_busenpesos_localizadofin</option><option>name=filtro[busenpesos_localizadofin]</option><option>css=#filtro_busenpesos_localizadofin</option><option>//input[@id='filtro_busenpesos_localizadofin']</option><option>//td[4]/div[2]/input</option></datalist></td><td>32,17</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busenpesos_localizadofin<datalist><option>id=filtro_busenpesos_localizadofin</option><option>name=filtro[busenpesos_localizadofin]</option><option>css=#filtro_busenpesos_localizadofin</option><option>//input[@id='filtro_busenpesos_localizadofin']</option><option>//td[4]/div[2]/input</option></datalist></td><td>2500</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_busenpesos_localizadofin<datalist><option>id=filtro_busenpesos_localizadofin</option><option>name=filtro[busenpesos_localizadofin]</option><option>css=#filtro_busenpesos_localizadofin</option><option>//input[@id='filtro_busenpesos_localizadofin']</option><option>//td[4]/div[2]/input</option></datalist></td><td>72,20</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busenpesos_localizadofin<datalist><option>id=filtro_busenpesos_localizadofin</option><option>name=filtro[busenpesos_localizadofin]</option><option>css=#filtro_busenpesos_localizadofin</option><option>//input[@id='filtro_busenpesos_localizadofin']</option><option>//td[4]/div[2]/input</option></datalist></td><td>2500</td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>34,16</td>
-</tr>
-<tr><td>clickAt</td><td>//tr[2]<datalist><option>//tr[2]</option></datalist></td><td>492,84</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busenpesos_localizadofin<datalist><option>id=filtro_busenpesos_localizadofin</option><option>name=filtro[busenpesos_localizadofin]</option><option>css=#filtro_busenpesos_localizadofin</option><option>//input[@id='filtro_busenpesos_localizadofin']</option><option>//td[4]/div[2]/input</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>40,25</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">filtro-tasas-de-cambio-observaciones</td></tr>
-</thead>
-<tbody>
-<tr><td>clickAt</td><td>//tr[3]/td[5]<datalist><option>//tr[3]/td[5]</option></datalist></td><td>225,39</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_busobservaciones<datalist><option>id=filtro_busobservaciones</option><option>name=filtro[busobservaciones]</option><option>css=#filtro_busobservaciones</option><option>//textarea[@id='filtro_busobservaciones']</option><option>//textarea</option></datalist></td><td>97,20</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busobservaciones<datalist><option>id=filtro_busobservaciones</option><option>name=filtro[busobservaciones]</option><option>css=#filtro_busobservaciones</option><option>//textarea[@id='filtro_busobservaciones']</option><option>//textarea</option></datalist></td><td>http://www.xe.com/currencytables/?from=COP&amp;date=2017-08-01</td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>38,25</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_busobservaciones<datalist><option>id=filtro_busobservaciones</option><option>name=filtro[busobservaciones]</option><option>css=#filtro_busobservaciones</option><option>//textarea[@id='filtro_busobservaciones']</option><option>//textarea</option></datalist></td><td>276,42</td>
-</tr>
-<tr><td>type</td><td>id=filtro_busobservaciones<datalist><option>id=filtro_busobservaciones</option><option>name=filtro[busobservaciones]</option><option>css=#filtro_busobservaciones</option><option>//textarea[@id='filtro_busobservaciones']</option><option>//textarea</option></datalist></td><td></td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>27,17</td>
 </tr>
 </tbody></table>
 </body>
