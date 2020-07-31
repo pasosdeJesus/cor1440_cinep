@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>crecer-admin-crea-tasas-de-cambio</title>
+	<title>crecer-16-admin-crea-tasas-de-cambio</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -11,21 +11,15 @@
 <tr><td rowspan="1" colspan="3">tasas-de-cambio-fecha </td></tr>
 </thead>
 <tbody>
-<tr><td>open</td><td>/<datalist><option>/</option><option>/</option></datalist></td><td></td>
-</tr>
 <tr><td>clickAt</td><td>link=Compromisos y Convenios<datalist><option>link=Compromisos y Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>xpath=(//a[contains(@href, '#')])[3]</option><option>//li[3]/a</option></datalist></td><td>128,25</td>
 </tr>
 <tr><td>clickAt</td><td>link=Tasas de cambio<datalist><option>link=Tasas de cambio</option><option>//a[contains(text(),'Tasas de cambio')]</option><option>//a[contains(@href, '/tasascambio')]</option><option>//li[3]/ul/li[4]/a</option></datalist></td><td>93,18</td>
 </tr>
 <tr><td>clickAt</td><td>link=Nueva<datalist><option>link=Nueva</option><option>css=a.btn.btn-primary</option><option>xpath=(//a[contains(text(),'Nueva')])[2]</option><option>//a[contains(@href, '/tasascambio/nueva')]</option><option>//div[2]/div/a</option></datalist></td><td>36,20</td>
 </tr>
-<tr><td>clickAt</td><td>css=body<datalist><option>css=body</option><option>//body</option></datalist></td><td>190,198</td>
+<tr><td>clickAt</td><td>id=tasacambio_fecha_localizada<datalist><option>id=tasacambio_fecha_localizada</option><option>name=tasacambio[fecha_localizada]</option><option>css=#tasacambio_fecha_localizada</option><option>//input[@id='tasacambio_fecha_localizada']</option><option>//form[@id='new_tasacambio']/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>55,6</td>
 </tr>
-<tr><td>clickAt</td><td>css=th.prev<datalist><option>css=th.prev</option><option>//tr[2]/th</option></datalist></td><td>21,13</td>
-</tr>
-<tr><td>clickAt</td><td>//tr[4]/td[3]<datalist><option>//tr[4]/td[3]</option></datalist></td><td>17,13</td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>50,17</td>
+<tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[4]/td<datalist><option>//div[2]/div/table/tbody/tr[4]/td</option></datalist></td><td>6,6</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -37,35 +31,7 @@
 </tr>
 <tr><td>select</td><td>id=tasacambio_tipomoneda_id<datalist><option>id=tasacambio_tipomoneda_id</option><option>name=tasacambio[tipomoneda_id]</option><option>css=#tasacambio_tipomoneda_id</option><option>//select[@id='tasacambio_tipomoneda_id']</option><option>//form[@id='new_tasacambio']/div[3]/select</option><option>//select</option></datalist></td><td>label=EURO</td>
 </tr>
-<tr><td>mouseDownAt</td><td>id=tasacambio_tipomoneda_id<datalist><option>id=tasacambio_tipomoneda_id</option><option>name=tasacambio[tipomoneda_id]</option><option>css=#tasacambio_tipomoneda_id</option><option>//select[@id='tasacambio_tipomoneda_id']</option><option>//form[@id='new_tasacambio']/div[3]/select</option><option>//select</option></datalist></td><td>-82.5,-244</td>
-</tr>
-<tr><td>mouseMoveAt</td><td>id=tasacambio_tipomoneda_id<datalist><option>id=tasacambio_tipomoneda_id</option><option>name=tasacambio[tipomoneda_id]</option><option>css=#tasacambio_tipomoneda_id</option><option>//select[@id='tasacambio_tipomoneda_id']</option><option>//form[@id='new_tasacambio']/div[3]/select</option><option>//select</option></datalist></td><td>-82.5,-244</td>
-</tr>
-<tr><td>mouseUpAt</td><td>id=tasacambio_tipomoneda_id<datalist><option>id=tasacambio_tipomoneda_id</option><option>name=tasacambio[tipomoneda_id]</option><option>css=#tasacambio_tipomoneda_id</option><option>//select[@id='tasacambio_tipomoneda_id']</option><option>//form[@id='new_tasacambio']/div[3]/select</option><option>//select</option></datalist></td><td>-82.5,-244</td>
-</tr>
 <tr><td>clickAt</td><td>id=tasacambio_tipomoneda_id<datalist><option>id=tasacambio_tipomoneda_id</option><option>name=tasacambio[tipomoneda_id]</option><option>css=#tasacambio_tipomoneda_id</option><option>//select[@id='tasacambio_tipomoneda_id']</option><option>//form[@id='new_tasacambio']/div[3]/select</option><option>//select</option></datalist></td><td>-83,-244</td>
-</tr>
-</tbody></table>
-<table cellpadding="1" cellspacing="1" border="1">
-<thead>
-<tr><td rowspan="1" colspan="3">filtro-tasas-de-cambio-tipo-de-moneda</td></tr>
-</thead>
-<tbody>
-<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
-</tr>
-<tr><td>select</td><td>id=filtro_bustipomoneda_id<datalist><option>id=filtro_bustipomoneda_id</option><option>name=filtro[bustipomoneda_id]</option><option>css=#filtro_bustipomoneda_id</option><option>//select[@id='filtro_bustipomoneda_id']</option><option>//select</option></datalist></td><td>label=DÓLAR</td>
-</tr>
-<tr><td>clickAt</td><td>id=filtro_bustipomoneda_id<datalist><option>id=filtro_bustipomoneda_id</option><option>name=filtro[bustipomoneda_id]</option><option>css=#filtro_bustipomoneda_id</option><option>//select[@id='filtro_bustipomoneda_id']</option><option>//select</option></datalist></td><td>-375,-235</td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>16,19</td>
-</tr>
-<tr><td>mouseDownAt</td><td>css=abbr.search-choice-close<datalist><option>css=abbr.search-choice-close</option><option>//div[@id='filtro_bustipomoneda_id_chosen']/a/abbr</option><option>//abbr</option></datalist></td><td>8,7</td>
-</tr>
-<tr><td>mouseMoveAt</td><td>css=abbr.search-choice-close<datalist><option>css=abbr.search-choice-close</option><option>//div[@id='filtro_bustipomoneda_id_chosen']/a/abbr</option><option>//abbr</option></datalist></td><td>8,7</td>
-</tr>
-<tr><td>mouseUpAt</td><td>css=abbr.search-choice-close<datalist><option>css=abbr.search-choice-close</option><option>//div[@id='filtro_bustipomoneda_id_chosen']/a/abbr</option><option>//abbr</option></datalist></td><td>8,7</td>
-</tr>
-<tr><td>clickAt</td><td>name=filtrar<datalist><option>name=filtrar</option><option>css=input[name="filtrar"]</option><option>//input[@name='filtrar']</option><option>//td[6]/input</option></datalist></td><td>50,17</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -73,19 +39,9 @@
 <tr><td rowspan="1" colspan="3">tasas-de-cambio-tasa-en-pesos</td></tr>
 </thead>
 <tbody>
-<tr><td>clickAt</td><td>id=tasacambio_enpesos_localizado<datalist><option>id=tasacambio_enpesos_localizado</option><option>name=tasacambio[enpesos_localizado]</option><option>css=#tasacambio_enpesos_localizado</option><option>//input[@id='tasacambio_enpesos_localizado']</option><option>//form[@id='new_tasacambio']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>88,12</td>
-</tr>
-<tr><td>clickAt</td><td>//tr[3]/td[2]<datalist><option>//tr[3]/td[2]</option></datalist></td><td>21,11</td>
-</tr>
 <tr><td>clickAt</td><td>id=tasacambio_enpesos_localizado<datalist><option>id=tasacambio_enpesos_localizado</option><option>name=tasacambio[enpesos_localizado]</option><option>css=#tasacambio_enpesos_localizado</option><option>//input[@id='tasacambio_enpesos_localizado']</option><option>//form[@id='new_tasacambio']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>49,15</td>
 </tr>
 <tr><td>type</td><td>id=tasacambio_enpesos_localizado<datalist><option>id=tasacambio_enpesos_localizado</option><option>name=tasacambio[enpesos_localizado]</option><option>css=#tasacambio_enpesos_localizado</option><option>//input[@id='tasacambio_enpesos_localizado']</option><option>//form[@id='new_tasacambio']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>3625.1440061048356</td>
-</tr>
-<tr><td>clickAt</td><td>css=div.row<datalist><option>css=div.row</option><option>//body/div/div[2]</option></datalist></td><td>778,256</td>
-</tr>
-<tr><td>clickAt</td><td>css=div.col-sm-8<datalist><option>css=div.col-sm-8</option><option>//div[2]/div</option></datalist></td><td>772,260</td>
-</tr>
-<tr><td>clickAt</td><td>css=div.col-sm-4.alert<datalist><option>css=div.col-sm-4.alert</option><option>//div[2]/div[2]</option></datalist></td><td>8,254</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
