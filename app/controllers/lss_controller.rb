@@ -248,51 +248,53 @@ class LssController < Heb412Gen::ModelosController
         return false
       end
       ls.save!
-      depls.each do |infd|
-        if infd[:cod_depto].nil?
-          # Nacional ?
-          did = nil
-        else
-          sipdep = Sip::Departamento.where(id_pais: 170).
-           where(id_deplocal: infd[:cod_depto]).take
-          did = sipdep.id
-        end
-        depbd = ::Lsdep.new(
-          ls_id: ls.id,
-          departamento_id: did,
-          orden: infd[:registro],
-          fuente: infd[:fuente],
-          ffuente: infd[:ffuente],
-          ffuen_1: infd[:ffuen_1],
-          descripcion: infd[:memo])
-        if !depbd.valid?
-          ls.destroy
-          probact[filasact.keys.first] = depbd.errors.messages.values.join('. ')
-          salva_prob(probact, filasact, csverr, narchentbase)
-          return false
-        end
-        depbd.save!
-        if did
-          orden = 1
-          infd[:mun].each do |cod_municipio|
-            # Descartar departamento DIVIPOLA
-            munlocal = cod_municipio % 1000 
-            sipmun = Sip::Municipio.where(id_departamento: sipdep.id).
-              where(id_munlocal: munlocal).take
-            munbd = ::Lsmun.new(lsdep_id: depbd.id,
-                                   orden: orden,
-                                   municipio_id: sipmun.id)
-            if !munbd.valid?
-              ls.destroy
-              probact[filasact.keys.first] = munbd.errors.messages.values.join('. ')
-              salva_prob(probact, filasact, csverr, narchentbase)
-              return false
+      if depls.count > 0 && !depls[0][:cod_depto].nil?
+        depls.each do |infd|
+          if infd[:cod_depto].nil?
+            # Nacional ?
+            did = nil
+          else
+            sipdep = Sip::Departamento.where(id_pais: 170).
+              where(id_deplocal: infd[:cod_depto]).take
+            did = sipdep.id
+          end
+          depbd = ::Lsdep.new(
+            ls_id: ls.id,
+            departamento_id: did,
+            orden: infd[:registro],
+            fuente: infd[:fuente],
+            ffuente: infd[:ffuente],
+            ffuen_1: infd[:ffuen_1],
+            descripcion: infd[:memo])
+          if !depbd.valid?
+            ls.destroy
+            probact[filasact.keys.first] = depbd.errors.messages.values.join('. ')
+            salva_prob(probact, filasact, csverr, narchentbase)
+            return false
+          end
+          depbd.save!
+          if did
+            orden = 1
+            infd[:mun].each do |cod_municipio|
+              # Descartar departamento DIVIPOLA
+              munlocal = cod_municipio % 1000 
+              sipmun = Sip::Municipio.where(id_departamento: sipdep.id).
+                where(id_munlocal: munlocal).take
+              munbd = ::Lsmun.new(lsdep_id: depbd.id,
+                                  orden: orden,
+                                  municipio_id: sipmun.id)
+              if !munbd.valid?
+                ls.destroy
+                probact[filasact.keys.first] = munbd.errors.messages.values.join('. ')
+                salva_prob(probact, filasact, csverr, narchentbase)
+                return false
+              end
+              munbd.save!
+              orden += 1
             end
-            munbd.save!
-            orden += 1
           end
         end
-      end
+      end # if tiene departamento que no es nacional
     end
     return true
 
@@ -896,7 +898,7 @@ class LssController < Heb412Gen::ModelosController
               csv[cfila][enc[:memo]].strip.empty?)
             prob << 'Falta MEMO en registro 1. '
           end
-          memo = ver_long(csv, cfila, enc[:memo], 5000, prob)
+          memo = ver_long(csv, cfila, enc[:memo], 6000, prob)
           if !csv[cfila][enc[:memo]].nil? && depls.size > 0
             depls.last[:memo] = memo
           end
@@ -968,10 +970,10 @@ class LssController < Heb412Gen::ModelosController
       end #csvadv
     end #csverr
 
-
-    p1 = (csv.count-sinprob)*1000/csv.count
-    p2 = (sinprob)*1000/csv.count
-    s = (numls_sinp)*1000/numls
+    
+    p1 = csv.count > 0 ? (csv.count-sinprob)*1000/csv.count : 0
+    p2 = csv.count > 0 ? (sinprob)*1000/csv.count : 0
+    s = numls > 0 ? (numls_sinp)*1000/numls : 0
     puts "De los #{csv.count} registros, tienen problema #{csv.count-sinprob} (#{p1.round/10.0}%) y no tienen problema #{sinprob} (#{p2.round/10.0}%)"
     puts "De las #{numls} luchas sociales, no tienen problema #{numls_sinp} (#{s.round/10.0}%)"
 
