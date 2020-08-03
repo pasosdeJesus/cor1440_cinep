@@ -585,7 +585,7 @@ class LssController < Heb412Gen::ModelosController
           # Podria usarse ls para comparar con anterior en caso que registro>1
           if registro == 1
             if !csv[cfila][enc[:cobertura]]  || csv[cfila][enc[:cobertura]].strip.empty?
-              prob << "Se esperaba algún valor en #{enc[:cobertura]}"
+              prob << "Se esperaba algún valor en #{enc[:cobertura]}. "
             elsif !coberturas.include?(csv[cfila][enc[:cobertura]].strip.upcase)
               prob << "#{enc[:cobertura]} desconocido: #{csv[cfila][enc[:cobertura]]}. "
             else
