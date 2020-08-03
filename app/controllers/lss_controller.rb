@@ -21,7 +21,6 @@ class LssController < Heb412Gen::ModelosController
       "convocante_id",
       "orgconvocante",
       "dirig1",
-      "dirig1",
       "dirig2",
       "dirig3",
       "actor",
@@ -40,10 +39,15 @@ class LssController < Heb412Gen::ModelosController
       "entidad1",
       "entidad2",
       "entidad3",
-      "fuente",
-      "ffuente",
-      "ffuen_1",
-      "descripcion"
+      "departamentos",
+      "municipios",
+      "fuentes",
+      "ffuentes",
+      "ffuens_1",
+      "descripciones",
+      "arch_imp",
+      "filaini_imp",
+      "filafin_imp"
     ] 
   end
 
@@ -215,9 +219,9 @@ class LssController < Heb412Gen::ModelosController
     filasact.each do |l,c|
       lincsv = c.to_h.values
       if probact[l]
-        lincsv += ["#{narchentbase}:#{l+1}:Fila #{l+2} #{probact[l]}"]
+        lincsv += ["#{narchentbase}:#{l+1}:Fila #{l+2}: #{probact[l]}"]
       else
-        lincsv += ["Rechazada por problema con la lucha social"]
+        lincsv += ["Fila #{l+2}: Rechazada por problema en lucha social de varias filas"]
       end
       csverr << lincsv
     end
@@ -225,18 +229,23 @@ class LssController < Heb412Gen::ModelosController
 
 
   # Salvar anterior o reportar problemas en anterior
+  # Retorna verdadero si no tiene problema
   def self.salva_prob_o_registro(ls, probact, filasact, depls, csverr, importar, narchentbase)
     if probact.size > 0
       # Error. No puede guardarse registro de filasact
       # emitirlo a archivo de errores con problemas encontrados
       salva_prob(probact, filasact, csverr, narchentbase)
+      return false
     elsif importar
       # No hay error, puede salvarse siempre y cuando se haya elegido
       # y asociarse a la información por departamento
+      ls.arch_imp = narchentbase
+      ls.filaini_imp = filasact.keys.first+2
+      ls.filafin_imp = filasact.keys.last+2
       if !ls.valid?
         probact[filasact.keys.first] = ls.errors.messages.values.join('. ')
         salva_prob(probact, filasact, csverr, narchentbase)
-        return
+        return false
       end
       ls.save!
       depls.each do |infd|
@@ -260,7 +269,7 @@ class LssController < Heb412Gen::ModelosController
           ls.destroy
           probact[filasact.keys.first] = depbd.errors.messages.values.join('. ')
           salva_prob(probact, filasact, csverr, narchentbase)
-          return
+          return false
         end
         depbd.save!
         if did
@@ -277,15 +286,15 @@ class LssController < Heb412Gen::ModelosController
               ls.destroy
               probact[filasact.keys.first] = munbd.errors.messages.values.join('. ')
               salva_prob(probact, filasact, csverr, narchentbase)
-              return
+              return false
             end
             munbd.save!
             orden += 1
           end
         end
       end
-
     end
+    return true
 
   end
 
@@ -473,6 +482,7 @@ class LssController < Heb412Gen::ModelosController
 
     csal = 0
     numls = 0
+    numls_sinp = 0
     sinprob = 0
     ultregistro = 0 # 0 Indica que no hay anterior
     ultfecha = nil
@@ -526,8 +536,11 @@ class LssController < Heb412Gen::ModelosController
           end
 
           if registro == 1 && filasact.size > 0
+            numls += 1
             # Salvar o reportar problema porque se inicia nueva lucha
-            salva_prob_o_registro(ls, probact, filasact, depls, csverr, importar, narchentbase)
+            if salva_prob_o_registro(ls, probact, filasact, depls, csverr, importar, narchentbase)
+              numls_sinp += 1
+            end
             filasact = {}
             probact = {}
             ls = nil   # Lucha social que construye en filasact
@@ -847,8 +860,8 @@ class LssController < Heb412Gen::ModelosController
           elsif !fuente && ffuente
             prob << "Hay  #{enc[:ffuente]} pero no #{enc[:fuente]}. "
           elsif fuente && ffuente && depls.size > 0
-            depls.last[fuente] = fuente
-            depls.last[ffuente] = ffuente
+            depls.last[:fuente] = fuente
+            depls.last[:ffuente] = ffuente
           end
 
 
@@ -874,7 +887,7 @@ class LssController < Heb412Gen::ModelosController
           if !fuente && ffuen_1
             prob << "Hay  #{enc[:ffuen_1]} pero no #{enc[:fuente]}. "
           elsif fuente && ffuen_1 && depls.size > 0
-            depls.last[ffuen_1] = ffuen_1
+            depls.last[:ffuen_1] = ffuen_1
           end
 
 
@@ -946,7 +959,9 @@ class LssController < Heb412Gen::ModelosController
           yield(csv.count, cfila) if block_given?
         end
         if filasact.size > 0
-          salva_prob_o_registro(ls, probact, filasact, depls, csverr, importar, narchentbase)
+          if salva_prob_o_registro(ls, probact, filasact, depls, csverr, importar, narchentbase)
+            numls_sinp += 1
+          end
         end
       
 
@@ -956,7 +971,9 @@ class LssController < Heb412Gen::ModelosController
 
     p1 = (csv.count-sinprob)*1000/csv.count
     p2 = (sinprob)*1000/csv.count
+    s = (numls_sinp)*1000/numls
     puts "De los #{csv.count} registros, tienen problema #{csv.count-sinprob} (#{p1.round/10.0}%) y no tienen problema #{sinprob} (#{p2.round/10.0}%)"
+    puts "De las #{numls} luchas sociales, no tienen problema #{numls_sinp} (#{s.round/10.0}%)"
 
     n=File.join('/tmp', 'err-ls.csv')
 

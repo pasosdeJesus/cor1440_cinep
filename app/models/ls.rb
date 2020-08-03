@@ -12,7 +12,7 @@ class Ls < ActiveRecord::Base
   validates :fecha, presence: true
   validates :descripcion, presence: true, uniqueness: { 
     message: 'no puede haber dos luchas con la misma descripción' }, 
-    length: { maximum: 5000 }
+    length: { maximum: 6000 }
   validates :orgconvocante, length: { maximum: 512}
   validates :dirig1, length: { maximum: 512}
   validates :dirig2, length: { maximum: 512}
@@ -48,4 +48,119 @@ class Ls < ActiveRecord::Base
   def presenta_nombre
     "#{fini} #{descripcion[0..49]}"
   end
+
+  def presenta(atr)
+    case atr
+    when 'departamentos'
+      r=''
+      sep = ' '
+      if lsdep.count == 0
+        r << 'NACIONAL'
+      else
+        c = 1
+        sep = ' '
+        lsdep.each do |d|
+          if lsdep.size > 1
+            r << "#{sep}(#{c}) "
+          end
+          r << "#{d.departamento.nombre}"
+          sep = "; "
+          c += 1
+        end
+      end
+      r
+    when 'municipios'
+      r=''
+      sep = ' '
+      if lsdep.count > 0
+        c = 1
+        sepd = ''
+        lsdep.each do |d|
+          rm = ''
+          sepm = ' '
+          d.lsmun.each do |m|
+            rm << "#{sepm}#{m.municipio.nombre}"
+            sepm = ' - '
+          end
+          if rm != ''
+            r << "#{sepd}(#{c}) #{rm}"
+            sepd = '; '
+          end
+          c += 1
+        end
+      end
+      r
+    when 'fuentes'
+      r=''
+      if lsdep.count == 0
+        r << fuente
+      else
+        c = 1
+        sep = ' '
+        lsdep.each do |d|
+          if d.fuente
+            r << "#{sep}(#{c}) "
+            r << "#{d.fuente}"
+          end
+          sep = '; '
+          c += 1
+        end
+      end
+      r
+    when 'ffuentes'
+      r=''
+      if lsdep.count == 0
+        r << ffuente.to_s
+      else
+        c = 1
+        sep = ' '
+        lsdep.each do |d|
+          if d.ffuente
+            r << "#{sep}(#{c}) "
+            r << "#{d.ffuente.to_s}"
+            sep = '; '
+          end
+          c += 1
+        end
+      end
+      r
+    when 'ffuens_1'
+      r=''
+      if lsdep.count == 0
+        r << ffuen_1.to_s
+      else
+        c = 1
+        sep = ' '
+        lsdep.each do |d|
+          if d.ffuen_1
+            r << "#{sep}(#{c}) "
+            r << " #{d.ffuen_1.to_s}"
+            sep = '; '
+          end
+          c += 1
+        end
+      end
+      r
+    when 'descripciones'
+      r=''
+      if lsdep.count == 0
+        r << descripcion
+      else
+        c = 1
+        sep = ' '
+        lsdep.each do |d|
+          if d.descripcion
+            r << "#{sep}(#{c}) "
+            r << "#{d.descripcion}"
+            sep = '; '
+          end
+          c += 1
+        end
+      end
+      r
+    else
+      presenta_gen(atr)
+    end
+  end
+
 end

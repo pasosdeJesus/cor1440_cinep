@@ -15,7 +15,8 @@ class Lsdep < ActiveRecord::Base
 
   validates :descripcion, uniqueness: {
     message: 'no puede haber dos departamentos con la misma descripción' },
-    length: {maximum: 5000}
+    length: {maximum: 6000},
+    allow_blank: true
   validates :fuente, length: {maximum: 512}
 
 end
