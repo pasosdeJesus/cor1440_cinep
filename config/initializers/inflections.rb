@@ -7,6 +7,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'acpmotivo', 'acpmotivos'
   inflect.irregular 'actor', 'actores'
   inflect.irregular 'areaestudios', 'areasestudios'
+  inflect.irregular 'busqunif', 'busqsunif'
   inflect.irregular 'cajacompensacion', 'cajascompensacion'
   inflect.irregular 'comunicado', 'comunicados'
   inflect.irregular 'convenio', 'convenios'

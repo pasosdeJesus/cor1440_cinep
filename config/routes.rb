@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     resources :acps,
       path_names: { new: 'nueva', edit: 'edita' }
 
+    get 'busqunif' => 'busqunif#index', as: 'busqunif'
+
     resources :convenios,
       path_names: { new: 'nueva', edit: 'edita' }
  

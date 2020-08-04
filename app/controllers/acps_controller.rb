@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 class AcpsController < Heb412Gen::ModelosController
   helper ::ApplicationHelper
 

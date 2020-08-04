@@ -41,12 +41,18 @@ class Ls < ActiveRecord::Base
       where('fecha <= ?', f)
   }
 
-  scope :filtro_descripcion, lambda {|d|
-    where("unaccent(descripcion) ILIKE '%' || unaccent(?) || '%'", d)
+  scope :filtro_departamentos, lambda { |d|
+  
+    joins(:lsdep).where('lsdep.departamento_id = ?', d)
+  }
+
+
+  scope :filtro_descripciones, lambda {|d|
+    where("unaccent(ls.descripcion) ILIKE '%' || unaccent(?) || '%'", d)
   }
 
   def presenta_nombre
-    "#{fini} #{descripcion[0..49]}"
+    "#{fecha} #{descripcion[0..49]}"
   end
 
   def presenta(atr)
@@ -83,7 +89,10 @@ class Ls < ActiveRecord::Base
             sepm = ' - '
           end
           if rm != ''
-            r << "#{sepd}(#{c}) #{rm}"
+            if lsdep.size > 1
+              r << "#{sepd}(#{c}) "
+            end
+            r << "#{rm}"
             sepd = '; '
           end
           c += 1
@@ -99,7 +108,9 @@ class Ls < ActiveRecord::Base
         sep = ' '
         lsdep.each do |d|
           if d.fuente
-            r << "#{sep}(#{c}) "
+            if lsdep.size > 1
+              r << "#{sep}(#{c}) "
+            end
             r << "#{d.fuente}"
           end
           sep = '; '
@@ -116,7 +127,9 @@ class Ls < ActiveRecord::Base
         sep = ' '
         lsdep.each do |d|
           if d.ffuente
-            r << "#{sep}(#{c}) "
+            if lsdep.size > 1
+              r << "#{sep}(#{c}) "
+            end
             r << "#{d.ffuente.to_s}"
             sep = '; '
           end
@@ -133,7 +146,9 @@ class Ls < ActiveRecord::Base
         sep = ' '
         lsdep.each do |d|
           if d.ffuen_1
-            r << "#{sep}(#{c}) "
+            if lsdep.size > 1
+              r << "#{sep}(#{c}) "
+            end
             r << " #{d.ffuen_1.to_s}"
             sep = '; '
           end
@@ -150,7 +165,9 @@ class Ls < ActiveRecord::Base
         sep = ' '
         lsdep.each do |d|
           if d.descripcion
-            r << "#{sep}(#{c}) "
+            if lsdep.size > 1
+              r << "#{sep}(#{c}) "
+            end
             r << "#{d.descripcion}"
             sep = '; '
           end
