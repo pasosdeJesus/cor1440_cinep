@@ -65,6 +65,8 @@ es:
       "acpactor2":
         Acpactor2: Actor de nivel 2 (ACP)
         Acpactores2: Actores de nivel 2 (ACP)
+        actor1: Actor de nivel 1
+        actor1_id: Actor de nivel 1
       "acpcataccion":
         Acpcataccion: Categoria de acciones colectivas por la paz (ACP)
         Acpcatsaccion: Categorias de acciones colectivas por la paz (ACP)

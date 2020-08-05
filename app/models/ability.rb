@@ -74,6 +74,7 @@ class Ability  < Cor1440Gen::Ability
     ] + 
     [
         ['', 'acpactor1'],
+        ['', 'acpactor2'],
         ['', 'acpcataccion'],
         ['', 'acpcatmotivo'],
         ['', 'acpcobertura'],

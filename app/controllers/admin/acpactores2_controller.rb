@@ -18,6 +18,7 @@ module Admin
       [
         :id, 
         :nombre, 
+        :actor1, 
         :observaciones, 
         :fechacreacion_localizada, 
         :habilitado
@@ -29,7 +30,7 @@ module Admin
     end
 
     def acpactor2_params
-      params.require(:acpactor2).permit(*atributos_form)
+      params.require(:acpactor2).permit(*atributos_form-[:actor1]+[:actor1_id])
     end
 
   end
