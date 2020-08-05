@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-class Vinculacion < ActiveRecord::Base
+class Vinculacion < ActiveModel::Model
   include Sip::Modelo
   include Sip::Localizacion
 

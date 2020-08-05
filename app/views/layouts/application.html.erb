@@ -68,9 +68,9 @@
       <% end %>
 
       <%= despliega_abajo 'Datos' do %>
-        <% if can? :index, :busquedaunificada %>
-          <%= opcion_menu 'Búsqueda unificada', 
-            cor1440_gen.mindicadorespf_path,
+        <% if can? :read, ::Busqunif %>
+          <%= opcion_menu 'Consulta unificada', 
+            main_app.busqsunif_path,
             desplegable: true %>
         <% end %>
         <% if can? :index, :exploradordatosrel %>

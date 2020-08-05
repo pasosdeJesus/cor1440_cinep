@@ -73,11 +73,14 @@ class Ability  < Cor1440Gen::Ability
       ['Sip', 'perfilactorsocial'] ,
     ] + 
     [
+        ['', 'acpactor1'],
         ['', 'acpcataccion'],
         ['', 'acpcatmotivo'],
         ['', 'acpcobertura'],
         ['', 'acpestrategia'],
+        ['', 'acpformap'],
         ['', 'acpmotivo'],
+        ['', 'acppapel'],
         ['', 'areaestudios'],
         ['', 'cajacompensacion'],
         ['', 'cargo'],
@@ -418,6 +421,7 @@ class Ability  < Cor1440Gen::Ability
         can :read, Sip::Grupo # Directorio institucional
         #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
         
+        can :read, ::Busqunif
         can :read, ::Tasacambio
         can :read, ::Usuario # Directorio institucional
 
@@ -428,7 +432,6 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Efecto
           can :index, Cor1440Gen::Mindicadorpf
-          can :index, :busquedaunificada
           can :index, :exploradordatosrel
         end
 
@@ -497,11 +500,14 @@ class Ability  < Cor1440Gen::Ability
 
         if lgrupos.include?(GRUPO_INICIATIVASPAZ)
           can :manage, ::Acp
+          can :manage, ::Acpactor1
+          can :manage, ::Acpactor2
           can :manage, ::Acpcataccion
-          can :manage, ::Acpestrategia
-          can :manage, ::Acpcobertura
-          can :manage, ::Acpmotivo
           can :manage, ::Acpcatmotivo
+          can :manage, ::Acpestrategia
+          can :manage, ::Acpformap
+          can :manage, ::Acpmotivo
+          can :manage, ::Acppapel
         end
 
         if lgrupos.include?(GRUPO_CONFLICTOYESTADO)
@@ -570,7 +576,6 @@ class Ability  < Cor1440Gen::Ability
         end
       when Ability::ROLADMIN, Ability::ROLDIR
         can :dir, :aprobadoefecto
-        can :index, :busquedaunificada
         can :index, :exploradordatosrel
         can :index, :conflictividades
         can :edit, :contextoac
@@ -580,6 +585,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, :lineabase20182020
         can :dir, :vistobuenoactividad
 
+        can :read, ::Busqunif
         can :manage, ::Convenio
         can :manage, ::Tasacambio
         can :manage, ::Usuario

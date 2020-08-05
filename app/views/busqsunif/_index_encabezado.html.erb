@@ -1,0 +1,80 @@
+<div class="row filtro-fila">
+  <div class="col-md-3">
+    Ubicación
+  </div>
+  <div class="col-md-4">
+    <%= f.input :departamento_id,
+      collection: Sip::Departamento.habilitados.where(id_pais: 170),
+      label_method: :nombre,
+      value_method: :id,
+      selected: Sip::ModeloHelper.poromision(params, :departamento_id),
+      label: false,
+      include_blank: "-- Departamento"
+    %>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :municipio_id,
+      collection: Sip::Municipio.habilitados,
+      label_method: :nombre,
+      value_method: :id,
+      label: false,
+      include_blank: "-- Municipio",
+      input_html: {disabled: :disabled }
+    %>
+  </div>
+</div>
+<div class="row filtro-fila">
+  <div class="col-md-3">
+    Rango de fechas 
+  </div>
+  <div class="col-md-4">
+    <%= f.input :fechaini,
+      maxlength: 10, 
+      size: 10,
+      label: false,
+      placeholder: 'Desde',
+      input_html: {
+        "data-behaviour" => "datepicker"
+      }
+    %>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :fechafin,
+      maxlength: 10, 
+      size: 10,
+      label: false,
+      placeholder: 'Hasta',
+      input_html: {
+        "data-behaviour" => "datepicker"
+      }
+    %>
+  </div>
+</div>
+
+<div class="row filtro-fila">
+  <div class="col-md-3">
+    Sujeto colectivo
+  </div>
+  <div class="col-md-6">
+    <%= f.input :colectivo,
+      maxlength: 50, 
+      size: 50,
+      label: false
+    %>
+  </div>
+</div>
+<div class="row filtro-fila">
+  <div class="offset-md-5 col-md-1"> 
+    <%= f.button :submit, 'Buscar', class: 'btn btn-default' %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="offset-sm-4 col-sm-4">
+    <%= render partial: 'index_contadores', locals: {titulo: titulo, f: f} %>
+    <%= render partial: 'index_encabezado_complemento' %>
+  </div>
+</div> <!-- row -->
+
+

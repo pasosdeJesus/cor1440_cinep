@@ -197,6 +197,75 @@ ALTER SEQUENCE public.acp_id_seq OWNED BY public.acp.id;
 
 
 --
+-- Name: acpactor1; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpactor1 (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpactor1_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpactor1_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpactor1_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpactor1_id_seq OWNED BY public.acpactor1.id;
+
+
+--
+-- Name: acpactor2; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpactor2 (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    actor1_id integer NOT NULL,
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpactor2_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpactor2_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpactor2_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpactor2_id_seq OWNED BY public.acpactor2.id;
+
+
+--
 -- Name: acpcataccion; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -334,6 +403,103 @@ ALTER SEQUENCE public.acpestrategia_id_seq OWNED BY public.acpestrategia.id;
 
 
 --
+-- Name: acpformap; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpformap (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpformap_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpformap_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpformap_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpformap_id_seq OWNED BY public.acpformap.id;
+
+
+--
+-- Name: acpfuente; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpfuente (
+    id bigint NOT NULL,
+    acp_id integer,
+    fuente character varying(127),
+    pagina character varying(63),
+    ffuente date
+);
+
+
+--
+-- Name: acpfuente_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpfuente_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpfuente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpfuente_id_seq OWNED BY public.acpfuente.id;
+
+
+--
+-- Name: acplugar; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acplugar (
+    id bigint NOT NULL,
+    acp_id integer,
+    departamento_id integer,
+    municipio_id integer
+);
+
+
+--
+-- Name: acplugar_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acplugar_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acplugar_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acplugar_id_seq OWNED BY public.acplugar.id;
+
+
+--
 -- Name: acpmotivo; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -366,6 +532,40 @@ CREATE SEQUENCE public.acpmotivo_id_seq
 --
 
 ALTER SEQUENCE public.acpmotivo_id_seq OWNED BY public.acpmotivo.id;
+
+
+--
+-- Name: acppapel; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acppapel (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acppapel_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acppapel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acppapel_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acppapel_id_seq OWNED BY public.acppapel.id;
 
 
 --
@@ -818,6 +1018,41 @@ CREATE SEQUENCE public.areaestudios_id_seq
 --
 
 ALTER SEQUENCE public.areaestudios_id_seq OWNED BY public.areaestudios.id;
+
+
+--
+-- Name: busqunif; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.busqunif (
+    id bigint NOT NULL,
+    base character varying(5) NOT NULL,
+    idbase integer NOT NULL,
+    url character varying(1024) NOT NULL,
+    fecha date NOT NULL,
+    departamento character varying(1024),
+    municipio character varying(1024),
+    descripcion character varying(6000) NOT NULL
+);
+
+
+--
+-- Name: busqunif_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.busqunif_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: busqunif_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.busqunif_id_seq OWNED BY public.busqunif.id;
 
 
 --
@@ -5807,6 +6042,20 @@ ALTER TABLE ONLY public.acp ALTER COLUMN id SET DEFAULT nextval('public.acp_id_s
 
 
 --
+-- Name: acpactor1 id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor1 ALTER COLUMN id SET DEFAULT nextval('public.acpactor1_id_seq'::regclass);
+
+
+--
+-- Name: acpactor2 id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor2 ALTER COLUMN id SET DEFAULT nextval('public.acpactor2_id_seq'::regclass);
+
+
+--
 -- Name: acpcataccion id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5835,10 +6084,38 @@ ALTER TABLE ONLY public.acpestrategia ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
+-- Name: acpformap id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpformap ALTER COLUMN id SET DEFAULT nextval('public.acpformap_id_seq'::regclass);
+
+
+--
+-- Name: acpfuente id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpfuente ALTER COLUMN id SET DEFAULT nextval('public.acpfuente_id_seq'::regclass);
+
+
+--
+-- Name: acplugar id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acplugar ALTER COLUMN id SET DEFAULT nextval('public.acplugar_id_seq'::regclass);
+
+
+--
 -- Name: acpmotivo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.acpmotivo ALTER COLUMN id SET DEFAULT nextval('public.acpmotivo_id_seq'::regclass);
+
+
+--
+-- Name: acppapel id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acppapel ALTER COLUMN id SET DEFAULT nextval('public.acppapel_id_seq'::regclass);
 
 
 --
@@ -5895,6 +6172,13 @@ ALTER TABLE ONLY public.anexo_usuario ALTER COLUMN id SET DEFAULT nextval('publi
 --
 
 ALTER TABLE ONLY public.areaestudios ALTER COLUMN id SET DEFAULT nextval('public.areaestudios_id_seq'::regclass);
+
+
+--
+-- Name: busqunif id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.busqunif ALTER COLUMN id SET DEFAULT nextval('public.busqunif_id_seq'::regclass);
 
 
 --
@@ -6655,6 +6939,22 @@ ALTER TABLE ONLY public.acp
 
 
 --
+-- Name: acpactor1 acpactor1_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor1
+    ADD CONSTRAINT acpactor1_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpactor2 acpactor2_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor2
+    ADD CONSTRAINT acpactor2_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: acpcataccion acpcataccion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6687,11 +6987,43 @@ ALTER TABLE ONLY public.acpestrategia
 
 
 --
+-- Name: acpformap acpformap_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpformap
+    ADD CONSTRAINT acpformap_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpfuente acpfuente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpfuente
+    ADD CONSTRAINT acpfuente_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acplugar acplugar_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acplugar
+    ADD CONSTRAINT acplugar_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: acpmotivo acpmotivo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.acpmotivo
     ADD CONSTRAINT acpmotivo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acppapel acppapel_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acppapel
+    ADD CONSTRAINT acppapel_pkey PRIMARY KEY (id);
 
 
 --
@@ -6764,6 +7096,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.areaestudios
     ADD CONSTRAINT areaestudios_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: busqunif busqunif_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.busqunif
+    ADD CONSTRAINT busqunif_pkey PRIMARY KEY (id);
 
 
 --
@@ -9543,6 +9883,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividadpf_mindicadorpf
 
 
 --
+-- Name: acpactor2 fk_rails_d0c4fbe5b7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor2
+    ADD CONSTRAINT fk_rails_d0c4fbe5b7 FOREIGN KEY (actor1_id) REFERENCES public.acpactor1(id);
+
+
+--
 -- Name: cor1440_gen_proyectofinanciero fk_rails_d0ff83bfc6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -10460,6 +10808,13 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200728091746'),
 ('20200802112451'),
 ('20200803095317'),
-('20200803121409');
+('20200803121409'),
+('20200804230440'),
+('20200805080748'),
+('20200805082319'),
+('20200805095206'),
+('20200805130501'),
+('20200805141624'),
+('20200805151434');
 
 

@@ -59,6 +59,12 @@ es:
         cobertura: Cobertura geográfica
         motivo: Motivo ACP
         descripcion: Descripción
+      "acpactor1":
+        Acpactor1: Actor de nivel 1 (ACP)
+        Acpactores1: Actores de nivel 1 (ACP)
+      "acpactor2":
+        Acpactor2: Actor de nivel 2 (ACP)
+        Acpactores2: Actores de nivel 2 (ACP)
       "acpcataccion":
         Acpcataccion: Categoria de acciones colectivas por la paz (ACP)
         Acpcatsaccion: Categorias de acciones colectivas por la paz (ACP)
@@ -71,9 +77,15 @@ es:
       "acpestrategia":
         Acpestrategia: Estrategia (ACP)
         Acpestrategias: Estrategias (ACP)
+      "acpformap":
+        Acpformap: Forma de participación (ACP)
+        Acpformasp: Formas de participación (ACP)
       "acpmotivo":
         Acpmotivo: Motivo (ACP)
         Acpmotivos: Motivos (ACP)
+      "acppapel":
+        Acppapel: Papel del Actor (ACP)
+        Acppapeles: Papeles de Actor (ACP)
       "areaestudios":
         Areaestudios: Área de estudios
         Areasestudios: Áreas de estudios
