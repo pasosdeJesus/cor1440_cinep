@@ -17,7 +17,6 @@ class BusqsunifController < Heb412Gen::ModelosController
       :idurl,
       :fecha_localizada,
       :departamento,
-      :municipio,
       :descripcion
     ] 
   end
@@ -25,7 +24,6 @@ class BusqsunifController < Heb412Gen::ModelosController
   def index_reordenar(registros)
     return registros.reorder(fecha: :desc, 
                              departamento: :asc,
-                             municipio: :asc,
                              descripcion: :asc)
   end
 
@@ -61,9 +59,9 @@ class BusqsunifController < Heb412Gen::ModelosController
         finisivel = "&filtro%5Bfechaini%5D=#{fini}"
       end
       ffinsivel = ''
-      if params[:filtro][:fechafin] && params[:filtro][:fechafin].to_i > 0 && 
-          valida
-        ffin = params[:filtro][:fechafin]
+      if params[:filtro][:fechafin] && params[:filtro][:fechafin].to_i > 0
+        ffin= Sip::FormatoFechaHelper.fecha_local_estandar(
+          params[:filtro][:fechafin])
         cls = cls.where('fecha <= ?', ffin)
         cacp = cacp.where('fini <= ?', ffin)
         ffinsivel = "&filtro%5Bfechafin%5D=#{ffin}"
@@ -91,23 +89,26 @@ class BusqsunifController < Heb412Gen::ModelosController
           params[:filtro][:colectivo].strip.length > 0
         col = params[:filtro][:colectivo].strip
         cls = cls.where(
-          "unaccent(orgconvocante) LIKE '%' || unaccent(?) || '%' " +
-          "OR unaccent(dirig1) LIKE '%' || unaccent(?) || '%'" +
-          "OR unaccent(dirig2) LIKE '%' || unaccent(?) || '%'" +
-          "OR unaccent(dirig3) LIKE '%' || unaccent(?) || '%'" +
-          "OR unaccent(paritici1) LIKE '%' || unaccent(?) || '%'" +
-          "OR unaccent(paritici2) LIKE '%' || unaccent(?) || '%'" +
-          "OR unaccent(paritici3) LIKE '%' || unaccent(?) || '%'" +
-          "OR unaccent(entidad1) LIKE '%' || unaccent(?) || '%'" +
-          "OR unaccent(entidad2) LIKE '%' || unaccent(?) || '%'" +
-          "OR unaccent(entidad3) LIKE '%' || unaccent(?) || '%'",
+          "unaccent(orgconvocante) ILIKE '%' || unaccent(?) || '%' " +
+          "OR unaccent(dirig1) ILIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(dirig2) ILIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(dirig3) ILIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(partici1) ILIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(partici2) ILIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(partici3) ILIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(entidad1) ILIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(entidad2) ILIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(entidad3) ILIKE '%' || unaccent(?) || '%'",
           col, col, col, col, col,
           col, col, col, col, col)
-        cacp = cacp.joins(:actor).where('acpactor.actor3=?', did)
-        cacp = cls.where(
-          "unaccent(orgconvocante) LIKE '%' | unaccent(?) | '%' " +
-          "OR unaccent(dirig1) LIKE '%' | unaccent(?) | '%'" +
- 
+        cacp = cacp.joins(:actor).
+          joins('JOIN acpactor2 ON acpactor.actor2_id = acpactor2.id').
+          joins('JOIN acpactor1 ON acpactor2.actor1_id = acpactor1.id').
+          where(
+          "unaccent(acpactor.actor3) ILIKE '%' || unaccent(?) || '%' " +
+          "OR unaccent(acpactor2.nombre) ILIKE '%' || unaccent(?) || '%' " +
+          "OR unaccent(acpactor1.nombre) ILIKE '%' || unaccent(?) || '%' ",
+        col, col, col)
       end
       err = ""
       if cls.count > 2000 
@@ -130,18 +131,25 @@ class BusqsunifController < Heb412Gen::ModelosController
         if idsls.count > 0
           ::Busqunif.connection.execute(
             "INSERT INTO busqunif (base, idbase, url, " + 
-            "fecha, departamento, municipio, descripcion) " + 
-            "(SELECT 'LS', id, 'https://crecer.cinep.org.co/lss/' || id, " +
-            "fecha, '', '', descripcion " +
+            "fecha, departamento, descripcion) " + 
+            "(SELECT 'LS', id, '" + main_app.lss_url + "/' || id, " +
+            "fecha, ARRAY_TO_STRING(ARRAY(SELECT DISTINCT sip_departamento.nombre " +
+            "FROM lsdep JOIN sip_departamento " +
+            "ON lsdep.departamento_id=sip_departamento.id " +
+            "WHERE lsdep.ls_id=ls.id), '; '), " +
+            "descripcion " +
             "FROM ls WHERE id in (#{idsls.join(', ')}))")
         end
         idsacp = cacp.pluck(:id)
         if idsacp.count > 0
           ::Busqunif.connection.execute(
             "INSERT INTO busqunif (base, idbase, url, " +
-            "fecha, departamento, municipio, descripcion) " +
-            "(SELECT 'ACP', id, 'https://crecer.cinep.org.co/acps/' || id, " +
-            "fini, '', '', descripcion " +
+            "fecha, departamento, descripcion) " +
+            "(SELECT 'ACP', id, '" + main_app.acps_url + "/' || id, " +
+            "fini, ARRAY_TO_STRING(ARRAY(SELECT DISTINCT sip_departamento.nombre " +
+            "FROM acplugar JOIN sip_departamento " +
+            "ON acplugar.departamento_id=sip_departamento.id " +
+            "WHERE acplugar.acp_id=acp.id), '; '), descripcion " +
             "FROM acp WHERE id IN (#{idsacp.join(", ")}))")
         end
         # https://stackoverflow.com/questions/25785575/how-to-parse-json-using-json-populate-recordset-in-postgres#26742370
@@ -157,17 +165,15 @@ class BusqsunifController < Heb412Gen::ModelosController
         end
 
         c = ::Busqunif.all
-        byebug
         super(c)
         return
       else
-        byebug
+        flash.now[:notice] = err
         @registros = ::Busqunif.where('false')
-        render 'index', notice: err, layout: 'application'
+        render 'index', layout: 'application'
         return
       end
     end # params[:filtro]
-    byebug
     super(c)
   end
 

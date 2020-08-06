@@ -17,6 +17,7 @@
       collection: Sip::Municipio.habilitados,
       label_method: :nombre,
       value_method: :id,
+      selected: Sip::ModeloHelper.poromision(params, :departamento_id),
       label: false,
       include_blank: "-- Municipio",
       input_html: {disabled: :disabled }
@@ -34,7 +35,8 @@
       label: false,
       placeholder: 'Desde',
       input_html: {
-        "data-behaviour" => "datepicker"
+        "data-behaviour" => "datepicker",
+        value: Sip::ModeloHelper.poromision(params, :fechaini)
       }
     %>
   </div>
@@ -45,7 +47,8 @@
       label: false,
       placeholder: 'Hasta',
       input_html: {
-        "data-behaviour" => "datepicker"
+        "data-behaviour" => "datepicker",
+        value: Sip::ModeloHelper.poromision(params, :fechafin)
       }
     %>
   </div>
@@ -59,7 +62,10 @@
     <%= f.input :colectivo,
       maxlength: 50, 
       size: 50,
-      label: false
+      label: false,
+      input_html: {
+        value: Sip::ModeloHelper.poromision(params, :colectivo)
+      }
     %>
   </div>
 </div>

@@ -106,6 +106,10 @@ es:
         "{:grupo_ids=>[]}": Grupo(s)
       "anexo_proyectofinanciero":
         tipoanexo: Tipo de anexo
+      "busqunif":
+        busqunif: Consulta unificada
+        idurl: URL único
+        fecha_localizada: Fecha
       "cajacompensacion":
         Cajacompensacion: 'Caja de compensación'
         Cajascompensacion: 'Cajas de compensación'
