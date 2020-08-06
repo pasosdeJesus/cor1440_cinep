@@ -197,6 +197,21 @@ ALTER SEQUENCE public.acp_id_seq OWNED BY public.acp.id;
 
 
 --
+-- Name: acpactor; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpactor (
+    id bigint NOT NULL,
+    acp_id integer NOT NULL,
+    actor3 character varying(500),
+    actor2_id integer NOT NULL,
+    papel_id integer NOT NULL,
+    formap_id integer NOT NULL,
+    nump integer
+);
+
+
+--
 -- Name: acpactor1; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -266,12 +281,31 @@ ALTER SEQUENCE public.acpactor2_id_seq OWNED BY public.acpactor2.id;
 
 
 --
+-- Name: acpactor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpactor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpactor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpactor_id_seq OWNED BY public.acpactor.id;
+
+
+--
 -- Name: acpcataccion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.acpcataccion (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -306,7 +340,7 @@ ALTER SEQUENCE public.acpcataccion_id_seq OWNED BY public.acpcataccion.id;
 
 CREATE TABLE public.acpcatmotivo (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -340,7 +374,7 @@ ALTER SEQUENCE public.acpcatmotivo_id_seq OWNED BY public.acpcatmotivo.id;
 
 CREATE TABLE public.acpcobertura (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -374,7 +408,7 @@ ALTER SEQUENCE public.acpcobertura_id_seq OWNED BY public.acpcobertura.id;
 
 CREATE TABLE public.acpestrategia (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -408,7 +442,7 @@ ALTER SEQUENCE public.acpestrategia_id_seq OWNED BY public.acpestrategia.id;
 
 CREATE TABLE public.acpformap (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -442,10 +476,10 @@ ALTER SEQUENCE public.acpformap_id_seq OWNED BY public.acpformap.id;
 
 CREATE TABLE public.acpfuente (
     id bigint NOT NULL,
-    acp_id integer,
-    fuente character varying(127),
+    acp_id integer NOT NULL,
+    fuente character varying(127) NOT NULL,
     pagina character varying(63),
-    ffuente date
+    ffuente date NOT NULL
 );
 
 
@@ -474,8 +508,8 @@ ALTER SEQUENCE public.acpfuente_id_seq OWNED BY public.acpfuente.id;
 
 CREATE TABLE public.acplugar (
     id bigint NOT NULL,
-    acp_id integer,
-    departamento_id integer,
+    acp_id integer NOT NULL,
+    departamento_id integer NOT NULL,
     municipio_id integer
 );
 
@@ -505,7 +539,7 @@ ALTER SEQUENCE public.acplugar_id_seq OWNED BY public.acplugar.id;
 
 CREATE TABLE public.acpmotivo (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -540,7 +574,7 @@ ALTER SEQUENCE public.acpmotivo_id_seq OWNED BY public.acpmotivo.id;
 
 CREATE TABLE public.acppapel (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -6042,6 +6076,13 @@ ALTER TABLE ONLY public.acp ALTER COLUMN id SET DEFAULT nextval('public.acp_id_s
 
 
 --
+-- Name: acpactor id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor ALTER COLUMN id SET DEFAULT nextval('public.acpactor_id_seq'::regclass);
+
+
+--
 -- Name: acpactor1 id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -6952,6 +6993,14 @@ ALTER TABLE ONLY public.acpactor1
 
 ALTER TABLE ONLY public.acpactor2
     ADD CONSTRAINT acpactor2_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpactor acpactor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor
+    ADD CONSTRAINT acpactor_pkey PRIMARY KEY (id);
 
 
 --
@@ -8539,6 +8588,14 @@ ALTER TABLE ONLY public.cor1440_gen_efecto_respuestafor
 
 
 --
+-- Name: acpactor fk_rails_0c0da473b1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor
+    ADD CONSTRAINT fk_rails_0c0da473b1 FOREIGN KEY (actor2_id) REFERENCES public.acpactor2(id);
+
+
+--
 -- Name: cor1440_gen_financiador_proyectofinanciero fk_rails_0cd09d688c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8552,6 +8609,14 @@ ALTER TABLE ONLY public.cor1440_gen_financiador_proyectofinanciero
 
 ALTER TABLE ONLY public.informeevaluacion
     ADD CONSTRAINT fk_rails_0dc2f89fdb FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: acpactor fk_rails_0e70820cc7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor
+    ADD CONSTRAINT fk_rails_0e70820cc7 FOREIGN KEY (formap_id) REFERENCES public.acpformap(id);
 
 
 --
@@ -8776,6 +8841,14 @@ ALTER TABLE ONLY public.cor1440_gen_informe
 
 ALTER TABLE ONLY public.cor1440_gen_actividad
     ADD CONSTRAINT fk_rails_2983c828da FOREIGN KEY (redactor_id) REFERENCES public.redactor(id);
+
+
+--
+-- Name: acplugar fk_rails_29e94b70f3; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acplugar
+    ADD CONSTRAINT fk_rails_29e94b70f3 FOREIGN KEY (acp_id) REFERENCES public.acp(id);
 
 
 --
@@ -9227,6 +9300,14 @@ ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcm
 
 
 --
+-- Name: acpactor fk_rails_6e7c1bf061; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor
+    ADD CONSTRAINT fk_rails_6e7c1bf061 FOREIGN KEY (papel_id) REFERENCES public.acppapel(id);
+
+
+--
 -- Name: cor1440_gen_actividadpf_mindicadorpf fk_rails_6e9cbecf02; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9264,6 +9345,14 @@ ALTER TABLE ONLY public.tipomoneda
 
 ALTER TABLE ONLY public.cor1440_gen_actividad_actorsocial
     ADD CONSTRAINT fk_rails_70b1848d0a FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
+
+
+--
+-- Name: acpfuente fk_rails_72813dff94; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpfuente
+    ADD CONSTRAINT fk_rails_72813dff94 FOREIGN KEY (acp_id) REFERENCES public.acp(id);
 
 
 --
@@ -10043,6 +10132,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_valorcampotind
 
 
 --
+-- Name: acpactor fk_rails_ed8dab1f2c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor
+    ADD CONSTRAINT fk_rails_ed8dab1f2c FOREIGN KEY (acp_id) REFERENCES public.acp(id);
+
+
+--
 -- Name: sip_actorsocial_sectoractor fk_rails_f032bb21a6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -10815,6 +10912,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200805095206'),
 ('20200805130501'),
 ('20200805141624'),
-('20200805151434');
+('20200805151434'),
+('20200805160011'),
+('20200805160338');
 
 

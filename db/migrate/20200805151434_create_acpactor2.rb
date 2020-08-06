@@ -216,10 +216,6 @@ class CreateAcpactor2 < ActiveRecord::Migration[6.0]
       '2020-08-05', '2020-08-05', '2020-08-05');
       INSERT INTO acpactor2 (id, nombre, actor1_id,
       fechacreacion, created_at, updated_at) VALUES (
-      '51', 'Eln', '10',
-      '2020-08-05', '2020-08-05', '2020-08-05');
-      INSERT INTO acpactor2 (id, nombre, actor1_id,
-      fechacreacion, created_at, updated_at) VALUES (
       '52', 'Empresas privadas', '5',
       '2020-08-05', '2020-08-05', '2020-08-05');
       INSERT INTO acpactor2 (id, nombre, actor1_id,
@@ -252,7 +248,7 @@ class CreateAcpactor2 < ActiveRecord::Migration[6.0]
       '2020-08-05', '2020-08-05', '2020-08-05');
       INSERT INTO acpactor2 (id, nombre, actor1_id,
       fechacreacion, created_at, updated_at) VALUES (
-      '60', 'Exfuncionarios públicos', '8',
+      '60', 'Exfuncionarios públicos', '7',
       '2020-08-05', '2020-08-05', '2020-08-05');
       INSERT INTO acpactor2 (id, nombre, actor1_id,
       fechacreacion, created_at, updated_at) VALUES (
@@ -316,7 +312,7 @@ class CreateAcpactor2 < ActiveRecord::Migration[6.0]
       '2020-08-05', '2020-08-05', '2020-08-05');
       INSERT INTO acpactor2 (id, nombre, actor1_id,
       fechacreacion, created_at, updated_at) VALUES (
-      '76', 'Jurisdicciones especiales', '16',
+      '76', 'Justicia Penal Militar, Empleados de la Rama Judicial, Jurisdicciones especiales', '16',
       '2020-08-05', '2020-08-05', '2020-08-05');
       INSERT INTO acpactor2 (id, nombre, actor1_id,
       fechacreacion, created_at, updated_at) VALUES (

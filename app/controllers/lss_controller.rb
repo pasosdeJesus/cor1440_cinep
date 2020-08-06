@@ -156,7 +156,9 @@ class LssController < Heb412Gen::ModelosController
 
 
   def self.nombres_departamentos_equivalentes(cod_depto, nom, adivcod, depalternos, adv)
-    if adivcod[cod_depto][:departamento] == normaliza(nom)
+    nome  = adivcod[cod_depto][:departamento] 
+    nomnor = normaliza(nom)
+    if nome == nomnor
       return true
     end
 
@@ -169,6 +171,10 @@ class LssController < Heb412Gen::ModelosController
         end
       end
     end
+    if !alterno && levenshtein(nome, nomnor) < 3
+      return true
+    end
+
     return alterno
   end
 
@@ -185,7 +191,7 @@ class LssController < Heb412Gen::ModelosController
   end
 
 
-  def self.nombres_municipios_equivalentes(cod_depto, cod_muni, nom, adivcod)
+  def self.nombres_municipios_equivalentes(cod_depto, cod_muni, nom, adivcod, munalternos, adv)
     nofi = adivcod[cod_depto][:mun][cod_muni][:municipio]
     nomn = normaliza(nom)
     return true if nofi == nomn
@@ -207,6 +213,17 @@ class LssController < Heb412Gen::ModelosController
     # e.g LOPEZ (MICAY) y LOPEZ DE MICAY
     return true if nomn.gsub(/\(|\)/, "").gsub(/ de /, " ") == 
       nofi.gsub(/\(|\)/, "").gsub(/ de /, " ")
+
+    if munalternos[cod_muni]
+      munalternos[cod_muni].each do |an|
+        if nomn == normaliza(an)
+          adv << "Suponiendo municipio #{adivcod[cod_depto][:mun][cod_muni][:municipio].upcase}. "
+          return true
+        end
+      end
+    end
+
+
     if levenshtein(nomn, nofi) < 3
       return true
     end
@@ -339,6 +356,10 @@ class LssController < Heb412Gen::ModelosController
       76 => ['VALLE'],
       88 => ['SAN ANDRÉS'],
     }
+    munalternos={
+      13468 => ['Mompós'],
+    }
+
 
     coberturas = ['S', 'N', 'M', 'SR', 'I', 'D', 'R']
 
@@ -666,7 +687,7 @@ class LssController < Heb412Gen::ModelosController
                   cod_muni = nil
                   adivcod[cod_depto][:mun].each do |cm, r|
                     if nombres_municipios_equivalentes(cod_depto, cm, 
-                        csv[cfila][enc[mpio.to_sym]], adivcod)
+                        csv[cfila][enc[mpio.to_sym]], adivcod, munalternos, adv)
                       cod_muni = cm
                       break
                     end
@@ -688,7 +709,7 @@ class LssController < Heb412Gen::ModelosController
                   cod_muni = nil
                   adivcod[cod_depto][:mun].each do |cm, r|
                     if nombres_municipios_equivalentes(cod_depto, cm, 
-                        csv[cfila][enc[muni.to_sym]], adivcod)
+                        csv[cfila][enc[muni.to_sym]], adivcod, munalternos, adv)
                       cod_muni = cm
                       break
                     end
@@ -708,7 +729,7 @@ class LssController < Heb412Gen::ModelosController
                 if cod_muni >= 0 && cod_depto > 0 && 
                     !adivcod[cod_depto][:mun][cod_muni]
                   prob << "DIVIPOLA no tiene código de municipio #{cod_muni}. "
-                elsif !nombres_municipios_equivalentes(cod_depto, cod_muni, csv[cfila][enc[mpio.to_sym]], adivcod)
+                elsif !nombres_municipios_equivalentes(cod_depto, cod_muni, csv[cfila][enc[mpio.to_sym]], adivcod, munalternos, adv)
                   prob << "En campo #{enc[mpio.to_sym]} se esperaba algo como '#{adivcod[cod_depto][:mun][cod_muni][:municipio].upcase}' pero se encontró '#{csv[cfila][enc[mpio.to_sym]]}'. "
                 else
                   # Bien este municipio
