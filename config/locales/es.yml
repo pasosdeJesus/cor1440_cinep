@@ -301,7 +301,10 @@ es:
       "ls":
         Ls: Lucha social
         Lss: Luchas sociales
+        arch_imp: Archivo importación
         fecha_localizada: Fecha
+        filaini_imp: Fila inicial importación
+        filafin_imp: Fila final importación
       "lscobertura":
         Lscobertura: Cobertura - Ámbito (LS)
         Lscoberturas: Coberturas - Ámbitos (LS)
