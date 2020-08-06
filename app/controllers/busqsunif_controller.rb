@@ -56,7 +56,6 @@ class BusqsunifController < Heb412Gen::ModelosController
           
         fini = Sip::FormatoFechaHelper.fecha_local_estandar(
           params[:filtro][:fechaini])
-        byebug
         cls = cls.where('fecha >= ?', fini)
         cacp = cacp.where('ffin >= ?', fini)
         finisivel = "&filtro%5Bfechaini%5D=#{fini}"
@@ -70,39 +69,45 @@ class BusqsunifController < Heb412Gen::ModelosController
         ffinsivel = "&filtro%5Bfechafin%5D=#{ffin}"
       end
       depsivel = ''
+      munsivel = ''
       if params[:filtro][:departamento_id].to_i > 0 && Sip::Departamento.
           where(id: params[:filtro][:departamento_id].to_i).count > 0
         did = params[:filtro][:departamento_id].to_i
         cls = cls.joins(:lsdep).where('lsdep.departamento_id=?', did)
-        #cacp = cls.join(:lsdep).where('lsdep.departamento_id=?', did)
+        cacp = cacp.joins(:lugar).where('acplugar.departamento_id=?', did)
         depsivel = "&filtro%5Bdepartamento_id%5D=#{did}"
-      end
-      munsivel = ''
-      if params[:filtro][:municipio_id].to_i > 0 && Sip::Municipio.
-          where(id: params[:filtro][:municipio_id].to_i).count > 0
-        mid = params[:filtro][:municipio_id].to_i
-        cls = cls.joins(:lsdep).where('lsdep.departamento_id=?', did).
-          joins('JOIN lsmun ON lsmun.lsdep_id=lsdep.id').
-          where('lsmun.municipio_id=?',mid)
-        #cacp = cls.join(:lsdep).where('lsdep.departamento_id=?', did)
-        munsivel = "&filtro%5Bmunicipio_id%5D=#{mid}"
+        if params[:filtro][:municipio_id].to_i > 0 && Sip::Municipio.
+            where(id: params[:filtro][:municipio_id].to_i).count > 0
+          mid = params[:filtro][:municipio_id].to_i
+          cls = cls.joins(:lsdep).where('lsdep.departamento_id=?', did).
+            joins('JOIN lsmun ON lsmun.lsdep_id=lsdep.id').
+            where('lsmun.municipio_id=?',mid)
+          cacp = cacp.joins(:lugar).where('acplugar.departamento_id=?', did).
+            where('acplugar.municipio_id=?', mid)
+          munsivel = "&filtro%5Bmunicipio_id%5D=#{mid}"
+        end
       end
       if params[:filtro][:colectivo] && 
           params[:filtro][:colectivo].strip.length > 0
         col = params[:filtro][:colectivo].strip
         cls = cls.where(
-          "unaccent(orgconvocante) LIKE '%' | unaccent(?) | '%' " +
-          "OR unaccent(dirig1) LIKE '%' | unaccent(?) | '%'" +
-          "OR unaccent(dirig2) LIKE '%' | unaccent(?) | '%'" +
-          "OR unaccent(dirig3) LIKE '%' | unaccent(?) | '%'" +
-          "OR unaccent(paritici1) LIKE '%' | unaccent(?) | '%'" +
-          "OR unaccent(paritici2) LIKE '%' | unaccent(?) | '%'" +
-          "OR unaccent(paritici3) LIKE '%' | unaccent(?) | '%'" +
-          "OR unaccent(entidad1) LIKE '%' | unaccent(?) | '%'" +
-          "OR unaccent(entidad2) LIKE '%' | unaccent(?) | '%'" +
-          "OR unaccent(entidad3) LIKE '%' | unaccent(?) | '%'",
+          "unaccent(orgconvocante) LIKE '%' || unaccent(?) || '%' " +
+          "OR unaccent(dirig1) LIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(dirig2) LIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(dirig3) LIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(paritici1) LIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(paritici2) LIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(paritici3) LIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(entidad1) LIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(entidad2) LIKE '%' || unaccent(?) || '%'" +
+          "OR unaccent(entidad3) LIKE '%' || unaccent(?) || '%'",
           col, col, col, col, col,
           col, col, col, col, col)
+        cacp = cacp.joins(:actor).where('acpactor.actor3=?', did)
+        cacp = cls.where(
+          "unaccent(orgconvocante) LIKE '%' | unaccent(?) | '%' " +
+          "OR unaccent(dirig1) LIKE '%' | unaccent(?) | '%'" +
+ 
       end
       err = ""
       if cls.count > 2000 

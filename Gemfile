@@ -68,8 +68,8 @@ gem 'will_paginate' # Listados en páginas
 # bien vistas
 
 gem 'sip', # Motor generico
-  #git: 'https://github.com/pasosdeJesus/sip.git'
-  path: '../sip'
+  git: 'https://github.com/pasosdeJesus/sip.git'
+  #path: '../sip'
 
 gem 'jn316_gen', # LDAP
   git: 'https://github.com/pasosdeJesus/jn316_gen.git'
@@ -110,7 +110,7 @@ end
 
 group :test, :development, :ensayo do
 
-  gem 'byebug' #Depurar
+  #gem 'byebug' #Depurar
 
   gem 'colorize' # Color en terminal
 
