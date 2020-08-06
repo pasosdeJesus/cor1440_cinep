@@ -17,8 +17,15 @@ class AcpsController < Heb412Gen::ModelosController
       "confr",
       "cobertura_id",
       "motivo_id",
+      "lugares",
+      "actores",
+      "fuentes",
       "descripcion"
     ] 
+  end
+
+  def atributos_form
+    atributos_show - ['id', 'lugares', 'actores', 'fuentes']
   end
 
   def index_reordenar(registros)

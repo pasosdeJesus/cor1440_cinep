@@ -96,7 +96,7 @@ def importa_lugar(acp_id, fila, prob, adivcod, depalternos, munalternos)
     )
   end
   if !acplugar.valid?
-    prob = acplugar.errors.messages.values.join('. ')
+    prob << acplugar.errors.messages.values.join('. ')
     return false
   end
   acplugar.save!
@@ -180,7 +180,7 @@ def importa_actor(acp_id, fila, prob)
     nump: nump
   )
   if !acpactor.valid?
-    prob = acpactor.errors.messages.values.join('. ')
+    prob << acpactor.errors.messages.values.join('. ')
     return false
   end
   acpactor.save!
@@ -225,7 +225,7 @@ def importa_fuente(acp_id, fila, prob)
     ffuente: ffuente
   )
   if !acpfuente.valid?
-    prob = acpfuente.errors.messages.values.join('. ')
+    prob << acpfuente.errors.messages.values.join('. ')
     return false
   end
   acpfuente.save!

@@ -11,7 +11,7 @@ class Acpactor < ActiveRecord::Base
     foreign_key: 'formap_id'
 
   validates :actor3, length: {maximum: 500}
-  validates :nump, numericality: {greather_than: 0}
+  validates :nump, numericality: {greather_than: 0}, allow_blank: true
 
   def presenta_nombre
     "#{actor3} #{actor2.nombre} #{actor2.actor1.nombre}"
