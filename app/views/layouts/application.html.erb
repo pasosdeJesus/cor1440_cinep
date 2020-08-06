@@ -133,7 +133,7 @@
             desplegable: true %>
         <% end %>
       <% end %>
-    <% else %>
+    <% elsif !current_usuario.nil? %>
       <%= opcion_menu 'Documentos y Plantillas', heb412_gen.sisini_path %>
     <% end %>
     <% if !current_usuario.nil? %>
