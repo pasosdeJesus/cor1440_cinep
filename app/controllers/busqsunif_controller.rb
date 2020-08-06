@@ -48,7 +48,13 @@ class BusqsunifController < Heb412Gen::ModelosController
       ::Busqunif.all.delete_all
       cls = Ls.all
       cacp = Acp.all
-      finisivel = ''
+      parsivel = {
+        inc_ubicaciones: 2,
+        inc_fecha: 1,
+        orden: 'fecha',
+        inc_memo: 2,
+        disgenera: 'reprevista.json'
+      }
       if params[:filtro][:fechaini] && 
           params[:filtro][:fechaini].strip.length > 0 
           
@@ -56,24 +62,21 @@ class BusqsunifController < Heb412Gen::ModelosController
           params[:filtro][:fechaini])
         cls = cls.where('fecha >= ?', fini)
         cacp = cacp.where('ffin >= ?', fini)
-        finisivel = "&filtro%5Bfechaini%5D=#{fini}"
+        parsivel[:fechaini] = fini
       end
-      ffinsivel = ''
       if params[:filtro][:fechafin] && params[:filtro][:fechafin].to_i > 0
         ffin= Sip::FormatoFechaHelper.fecha_local_estandar(
           params[:filtro][:fechafin])
         cls = cls.where('fecha <= ?', ffin)
         cacp = cacp.where('fini <= ?', ffin)
-        ffinsivel = "&filtro%5Bfechafin%5D=#{ffin}"
+        parsivel[:fechafin] = ffin
       end
-      depsivel = ''
-      munsivel = ''
       if params[:filtro][:departamento_id].to_i > 0 && Sip::Departamento.
           where(id: params[:filtro][:departamento_id].to_i).count > 0
         did = params[:filtro][:departamento_id].to_i
         cls = cls.joins(:lsdep).where('lsdep.departamento_id=?', did)
         cacp = cacp.joins(:lugar).where('acplugar.departamento_id=?', did)
-        depsivel = "&filtro%5Bdepartamento_id%5D=#{did}"
+        parsivel[:departamento_id] = did
         if params[:filtro][:municipio_id].to_i > 0 && Sip::Municipio.
             where(id: params[:filtro][:municipio_id].to_i).count > 0
           mid = params[:filtro][:municipio_id].to_i
@@ -82,7 +85,7 @@ class BusqsunifController < Heb412Gen::ModelosController
             where('lsmun.municipio_id=?',mid)
           cacp = cacp.joins(:lugar).where('acplugar.departamento_id=?', did).
             where('acplugar.municipio_id=?', mid)
-          munsivel = "&filtro%5Bmunicipio_id%5D=#{mid}"
+          parsivel[:municipio_id] = mid
         end
       end
       if params[:filtro][:colectivo] && 
@@ -109,6 +112,7 @@ class BusqsunifController < Heb412Gen::ModelosController
           "OR unaccent(acpactor2.nombre) ILIKE '%' || unaccent(?) || '%' " +
           "OR unaccent(acpactor1.nombre) ILIKE '%' || unaccent(?) || '%' ",
         col, col, col)
+        parsivel[:q] = col
       end
       err = ""
       if cls.count > 2000 
@@ -118,14 +122,31 @@ class BusqsunifController < Heb412Gen::ModelosController
         err << "#{cacp.count} acciones colectivas por la paz, refinar para examinar en detalle menos de 2000. "
       end 
       rj = []
-      if err == ''
-        sivelcons = "https://base.nocheyniebla.org/casos.json?utf8=%E2%9C%93&filtro%5Bq%5D=#{depsivel}#{munsivel}&filtro%5Binc_ubicaciones%5D=2#{finisivel}#{ffinsivel}filtro%5Binc_fecha%5D=1&filtro%5Borden%5D=fecha&filtro%5Binc_memo%5D=2&filtro%5Bdisgenera%5D=reprevista.json&idplantilla=reprevista&commit=Enviar"
-        puts "* Solicitando #{sivelcons}"
-        uri = URI(sivelcons)
-        response = Net::HTTP.get(uri)
-        j = JSON.parse(response)
-        rj = j.to_a.map do |x|
-          x[1].merge({id: x[0]})
+      sivelcons = "https://base.nocheyniebla.org/casos.json?" +
+        "utf8=%E2%9C%93&" +
+        parsivel.to_param('filtro') + 
+        "&idplantilla=reprevista&commit=Enviar"
+      puts "* Solicitando #{sivelcons}"
+      uri = URI(sivelcons)
+      response = Net::HTTP.get(uri)
+      j = JSON.parse(response)
+      if j['status'] && j['status'] == 500
+        err << "Más de 2000 casos retornados por Banco de Datos"
+      end
+
+      if err == ""
+        j.each do |idbd, vs|
+          nr = ::Busqunif.new(
+            base: 'BD',
+            idbase: idbd.to_i,
+            url: 'https://base.nocheyniebla.org/casos/' + idbd.to_i.to_s,
+            fecha: vs['fecha'],
+            departamento: vs['departamento'],
+            municipio: vs['municipio'],
+            descripcion: vs['descripcion'])
+          if nr.valid?
+            nr.save!
+          end
         end
         idsls = cls.pluck(:id)
         if idsls.count > 0
@@ -153,27 +174,25 @@ class BusqsunifController < Heb412Gen::ModelosController
             "FROM acp WHERE id IN (#{idsacp.join(", ")}))")
         end
         # https://stackoverflow.com/questions/25785575/how-to-parse-json-using-json-populate-recordset-in-postgres#26742370
-        if rj.count > 0
-          ::Busqunif.connection.execute(
-            "INSERT INTO busqunif (base, idbase, url, "+
-            "fecha, departamento, municipio, descripcion) " +
-            "(SELECT 'BD', id, 'https://base.nocheyniebla.org/casos/' || id, " +
-            "fecha, departamento, municipio, descripcion " +
-            "FROM json_populate_recordset(null::record, " +
-            "'#{rj.to_json}') AS (id int, departamento varchar(256), " +
-            "municipio varchar(256), fecha date, descripcion varchar(6000)))")
-        end
-
-        c = ::Busqunif.all
-        super(c)
-        return
+        # Metodo interesante pero con problemas con ' pues no escapa
+        #if rj.count > 0
+        #  ::Busqunif.connection.execute(
+        #    "INSERT INTO busqunif (base, idbase, url, "+
+        #    "fecha, departamento, municipio, descripcion) " +
+        #    "(SELECT 'BD', id, 'https://base.nocheyniebla.org/casos/' || id, " +
+        #    "fecha, departamento, municipio, descripcion " +
+        #    "FROM json_populate_recordset(null::record, " +
+        #    "'#{rj.to_json}') AS (id int, departamento varchar(256), " +
+        #    "municipio varchar(256), fecha date, descripcion varchar(6000)))")
+        #end
       else
         flash.now[:notice] = err
         @registros = ::Busqunif.where('false')
         render 'index', layout: 'application'
         return
       end
-    end # params[:filtro]
+      c = ::Busqunif.all
+    end
     super(c)
   end
 
