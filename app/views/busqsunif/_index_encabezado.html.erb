@@ -17,7 +17,7 @@
       collection: Sip::Municipio.habilitados,
       label_method: :nombre,
       value_method: :id,
-      selected: Sip::ModeloHelper.poromision(params, :departamento_id),
+      selected: Sip::ModeloHelper.poromision(params, :municipio_id),
       label: false,
       include_blank: "-- Municipio",
       input_html: {disabled: :disabled }
