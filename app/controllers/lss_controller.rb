@@ -230,16 +230,18 @@ class LssController < Heb412Gen::ModelosController
     return false
   end
 
-  def self.salva_prob(probact, filasact, csverr, narchentbase)
+  def self.salva_prob(probact, filasact, csverr, narchentbase, frecerr)
     # Error. No puede guardarse registro de filasact
     # emitirlo a archivo de errores con problemas encontrados
     filasact.each do |l,c|
       lincsv = c.to_h.values
       if probact[l]
-        lincsv += ["#{narchentbase}:#{l+1}:Fila #{l+2}: #{probact[l]}"]
+        mens = probact[l]
       else
-        lincsv += ["Fila #{l+2}: Rechazada por problema en lucha social de varias filas"]
+        mens = "Rechazada por problema en lucha social de varias filas"
       end
+      lincsv += ["#{narchentbase}:#{l+1}:Fila #{l+2}", mens]
+      frecerr[mens] = frecerr[mens].nil? ? 1 : frecerr[mens] + 1
       csverr << lincsv
     end
   end
@@ -247,11 +249,12 @@ class LssController < Heb412Gen::ModelosController
 
   # Salvar anterior o reportar problemas en anterior
   # Retorna verdadero si no tiene problema
-  def self.salva_prob_o_registro(ls, probact, filasact, depls, csverr, importar, narchentbase)
+  def self.salva_prob_o_registro(ls, probact, filasact, depls, 
+                                 csverr, importar, narchentbase, frecerr)
     if probact.size > 0
       # Error. No puede guardarse registro de filasact
       # emitirlo a archivo de errores con problemas encontrados
-      salva_prob(probact, filasact, csverr, narchentbase)
+      salva_prob(probact, filasact, csverr, narchentbase, frecerr)
       return false
     elsif importar
       # No hay error, puede salvarse siempre y cuando se haya elegido
@@ -261,7 +264,7 @@ class LssController < Heb412Gen::ModelosController
       ls.filafin_imp = filasact.keys.last+2
       if !ls.valid?
         probact[filasact.keys.first] = ls.errors.messages.values.join('. ')
-        salva_prob(probact, filasact, csverr, narchentbase)
+        salva_prob(probact, filasact, csverr, narchentbase, frecerr)
         return false
       end
       ls.save!
@@ -286,7 +289,7 @@ class LssController < Heb412Gen::ModelosController
           if !depbd.valid?
             ls.destroy
             probact[filasact.keys.first] = depbd.errors.messages.values.join('. ')
-            salva_prob(probact, filasact, csverr, narchentbase)
+            salva_prob(probact, filasact, csverr, narchentbase, frecerr)
             return false
           end
           depbd.save!
@@ -303,7 +306,7 @@ class LssController < Heb412Gen::ModelosController
               if !munbd.valid?
                 ls.destroy
                 probact[filasact.keys.first] = munbd.errors.messages.values.join('. ')
-                salva_prob(probact, filasact, csverr, narchentbase)
+                salva_prob(probact, filasact, csverr, narchentbase, frecerr)
                 return false
               end
               munbd.save!
@@ -516,11 +519,12 @@ class LssController < Heb412Gen::ModelosController
     ls = nil   # Lucha social que construye en filasact
     depls = []   # Departamentos que lleva la lucha de filasact
 
+    frecerr = {} # Frecuencia de los errores reportados
 
     CSV.open(rutaerr, "wb") do |csverr|
-      csverr << (csv.headers + ['PROBLEMAS'])
+      csverr << (csv.headers + ['UBICACIONPROB', 'PROBLEMAS'])
       CSV.open(rutaadv, "wb") do |csvadv|
-        csvadv << (csv.headers + ['ADVERTENCIAS'])
+        csvadv << (csv.headers + ['UBICACIONADV', 'ADVERTENCIAS'])
         (0..csv.count-1).each do |cfila|
 
           prob = ''  # Problemas en la línea (por acumular probact al final de análisis de la línea)
@@ -529,7 +533,7 @@ class LssController < Heb412Gen::ModelosController
           if !csv[cfila][enc[:registro]]
             prob << "Se esperaba valor para REGISTRO. "
             if cfila > 0 
-              tprob << "Registro de fila #{cfila+2} pierde secuencia"
+              tprob = "Registro de fila #{cfila+2} pierde secuencia. "
               if probact[cfila -1]
                 probact[cfila-1] << tprob
               else
@@ -547,7 +551,7 @@ class LssController < Heb412Gen::ModelosController
           elsif cfila > 0 && registro != 1 
             if ultregistro + 1 != registro
               if cfila > 0
-                tprob << "Registro de fila #{cfila+2} pierde secuencia"
+                tprob = "Registro de fila #{cfila+2} pierde secuencia. "
                 if probact[cfila-1]
                   probact[cfila-1] << tprob
                 else
@@ -561,7 +565,8 @@ class LssController < Heb412Gen::ModelosController
           if registro == 1 && filasact.size > 0
             numls += 1
             # Salvar o reportar problema porque se inicia nueva lucha
-            if salva_prob_o_registro(ls, probact, filasact, depls, csverr, importar, narchentbase)
+            if salva_prob_o_registro(ls, probact, filasact, depls, 
+                csverr, importar, narchentbase, frecerr)
               numls_sinp += 1
             end
             filasact = {}
@@ -586,7 +591,7 @@ class LssController < Heb412Gen::ModelosController
               # Autocompleta fecha conn 15/Jun del año y mes_inexacto es verdadero
               fecha = Date.new(anio, 6, 15)
               mes_inexacto = true
-              adv << "Suponiendo que la fecha es 15/Jun/#{anio} con mes inexacto"
+              adv << "Suponiendo que la fecha es 15/Jun/#{anio} con mes inexacto. "
             end
           else
             me = ''
@@ -845,7 +850,7 @@ class LssController < Heb412Gen::ModelosController
 
           # Fuente
           if registro == 1 && (!csv[cfila][enc[:fuente]] || csv[cfila][enc[:fecha]].strip.empty?)
-            prob << "Falta #{enc[:fuente]}. "
+            adv << "Falta #{enc[:fuente]}. "
           elsif csv[cfila][enc[:fuente]] && csv[cfila][enc[:fuente]].length > 512
             prob << "Valor en campo #{enc[:fuente]} de más de 512 caracteres. "
           end
@@ -857,7 +862,7 @@ class LssController < Heb412Gen::ModelosController
 
           # Fecha fuente
           if registro == 1 && (!csv[cfila][enc[:ffuente]] || csv[cfila][enc[:ffuente]].strip.empty?)
-            prob << "Falta #{enc[:ffuente]}. "
+            adv << "Falta #{enc[:ffuente]}. "
           end
           if csv[cfila][enc[:ffuente]] && !csv[cfila][enc[:ffuente]].strip.empty?
             me = ''
@@ -879,9 +884,9 @@ class LssController < Heb412Gen::ModelosController
           end
 
           if fuente && !ffuente
-            prob << "Hay  #{enc[:fuente]} pero no #{enc[:ffuente]}. "
+            adv << "Hay  #{enc[:fuente]} pero no #{enc[:ffuente]}. "
           elsif !fuente && ffuente
-            prob << "Hay  #{enc[:ffuente]} pero no #{enc[:fuente]}. "
+            adv << "Hay  #{enc[:ffuente]} pero no #{enc[:fuente]}. "
           elsif fuente && ffuente && depls.size > 0
             depls.last[:fuente] = fuente
             depls.last[:ffuente] = ffuente
@@ -908,7 +913,7 @@ class LssController < Heb412Gen::ModelosController
           end
 
           if !fuente && ffuen_1
-            prob << "Hay  #{enc[:ffuen_1]} pero no #{enc[:fuente]}. "
+            adv << "Hay  #{enc[:ffuen_1]} pero no #{enc[:fuente]}. "
           elsif fuente && ffuen_1 && depls.size > 0
             depls.last[:ffuen_1] = ffuen_1
           end
@@ -929,7 +934,7 @@ class LssController < Heb412Gen::ModelosController
 
           if adv != ''
             csvadv << csv[cfila].to_h.values + 
-              ["#{narchentbase}:#{cfila+1}:Fila #{cfila+2} #{adv}"]
+              ["#{narchentbase}:#{cfila+1}:Fila #{cfila+2}","#{adv}"]
           end
 
           filasact[cfila] = csv[cfila]
@@ -982,11 +987,17 @@ class LssController < Heb412Gen::ModelosController
           yield(csv.count, cfila) if block_given?
         end
         if filasact.size > 0
-          if salva_prob_o_registro(ls, probact, filasact, depls, csverr, importar, narchentbase)
+          if salva_prob_o_registro(ls, probact, filasact, depls, 
+              csverr, importar, narchentbase, frecerr)
             numls_sinp += 1
           end
         end
-      
+     
+       # Frecuencia de problemas se deja al final del archivo de advertencias 
+        fblanco = csv.headers.map {|x| ''}
+        frecerr.sort_by(&:last).each do |p|
+          csvadv << fblanco + ['', p[0].chop, p[1]]
+        end
 
       end #csvadv
     end #csverr
