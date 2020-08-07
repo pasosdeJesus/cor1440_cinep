@@ -533,7 +533,7 @@ class LssController < Heb412Gen::ModelosController
           if !csv[cfila][enc[:registro]]
             prob << "Se esperaba valor para REGISTRO. "
             if cfila > 0 
-              tprob = "Registro de fila #{cfila+2} pierde secuencia"
+              tprob = "Registro de fila #{cfila+2} pierde secuencia. "
               if probact[cfila -1]
                 probact[cfila-1] << tprob
               else
@@ -551,7 +551,7 @@ class LssController < Heb412Gen::ModelosController
           elsif cfila > 0 && registro != 1 
             if ultregistro + 1 != registro
               if cfila > 0
-                tprob = "Registro de fila #{cfila+2} pierde secuencia"
+                tprob = "Registro de fila #{cfila+2} pierde secuencia. "
                 if probact[cfila-1]
                   probact[cfila-1] << tprob
                 else
@@ -591,7 +591,7 @@ class LssController < Heb412Gen::ModelosController
               # Autocompleta fecha conn 15/Jun del año y mes_inexacto es verdadero
               fecha = Date.new(anio, 6, 15)
               mes_inexacto = true
-              adv << "Suponiendo que la fecha es 15/Jun/#{anio} con mes inexacto"
+              adv << "Suponiendo que la fecha es 15/Jun/#{anio} con mes inexacto. "
             end
           else
             me = ''
