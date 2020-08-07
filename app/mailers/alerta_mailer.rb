@@ -66,7 +66,7 @@ class AlertaMailer < ApplicationMailer
     puts "OJO fechafin=#{@fechafin}"
     @complemento = params[:complemento]
     puts "OJO complemento=#{@complemento}"
-    @para = ['administrativa@cinep.org.co']
+    @para = ['administrativa@cinep.org.co', 'logisticati@cinep.org.co']
     Sip::GrupoUsuario.joins(:sip_grupo).
       where("sip_grupo.nombre ='Gestión Humana'").each do |gu|
       @para << gu.usuario.email
