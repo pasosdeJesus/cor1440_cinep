@@ -120,8 +120,8 @@ class Ls < ActiveRecord::Base
       r
     when 'ffuentes'
       r=''
-      if lsdep.count == 0
-        r << ffuente.to_s
+      if lsdep.count == 0 
+        r << (ffuente.nil? ? '' : ffuente.to_s)
       else
         c = 1
         sep = ' '
@@ -140,7 +140,7 @@ class Ls < ActiveRecord::Base
     when 'ffuens_1'
       r=''
       if lsdep.count == 0
-        r << ffuen_1.to_s
+        r << (ffuen_1.nil? ? '' : ffuen_1.to_s)
       else
         c = 1
         sep = ' '
