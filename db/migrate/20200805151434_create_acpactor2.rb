@@ -506,6 +506,7 @@ class CreateAcpactor2 < ActiveRecord::Migration[6.0]
       fechacreacion, created_at, updated_at) VALUES (
       '124', 'Viviendistas', '19',
       '2020-08-05', '2020-08-05', '2020-08-05');
+      SELECT setval('acpactor2_id_seq', 100);
     SQL
   end
 

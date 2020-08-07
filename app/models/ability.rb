@@ -60,6 +60,7 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_CONFLICTOYESTADO = "Línea Conflicto y Estado"
   GRUPO_LINEA = "Línea"
   GRUPO_OFICINATI = "Oficina TI"
+  GRUPO_STCIV = "STCIV"
   GRUPO_COORDINADOR = "Coordinador(a)"
   GRUPO_COORDINADORGP = GRUPO_COORDINADOR + " " + GRUPO_COMPROMISOS 
 
@@ -86,6 +87,9 @@ class Ability  < Cor1440Gen::Ability
         ['', 'cajacompensacion'],
         ['', 'cargo'],
         ['', 'comunicado'],
+        ['', 'csivinivelgeo'],
+        ['', 'csivinivelresp'],
+        ['', 'csivitema'],
         ['', 'empresaps'],
         ['', 'fondopensiones'],
         ['', 'lscobertura'],
@@ -460,7 +464,7 @@ class Ability  < Cor1440Gen::Ability
           can :manage, ::Publicacion
           can [:read], Mr519Gen::Encuestapersona
         else
-          # Investigador
+          # No coordinador (e.g investigador)
           lineasb = lineas.select { |nl| Sip::Grupo.where(nombre: nl).count > 0 }
           idlineas = lineasb.map { |nl| Sip::Grupo.where(nombre: nl).take.id }
 
@@ -472,7 +476,6 @@ class Ability  < Cor1440Gen::Ability
             where('grupo_id IN (?)', idlineas)
           puts "encper.ids=#{encper.map(&:id)}"
           can [:edit, :update], encper
-         
         end
  
         # Responsables de un proyecto también pueden editar marco lógico
@@ -485,38 +488,11 @@ class Ability  < Cor1440Gen::Ability
           can :manage, ::Publicacion
         end
 
-        # Contexto es para equipo derechos humanos 
-        if lgrupos.include?(GRUPO_DERECHOSHUMANOS)
-          can :edit, :contextoac
-        end
-
-        if lgrupos.include?(GRUPO_MEDIACION)
-          can :index, :conflictividades
-        end
-
-        if lgrupos.include?(GRUPO_MOVIMIENTOSSOCIALES)
-          can :manage, ::Ls
-          can :manage, ::Lscobertura
-        end
-
-        if lgrupos.include?(GRUPO_INICIATIVASPAZ)
-          can :manage, ::Acp
-          can :manage, ::Acpactor1
-          can :manage, ::Acpactor2
-          can :manage, ::Acpcataccion
-          can :manage, ::Acpcatmotivo
-          can :manage, ::Acpestrategia
-          can :manage, ::Acpformap
-          can :manage, ::Acpmotivo
-          can :manage, ::Acppapel
-        end
-
-        if lgrupos.include?(GRUPO_CONFLICTOYESTADO)
-          can :index, :dinamicas
-        end
-
-        if lgrupos.include?(GRUPO_OFICINATI)
-          can :manage, Mr519Gen::Formulario
+        # Control de acceso por grupo
+        ###############################
+        
+        if lgrupos.include?(GRUPO_ARCHIVOYCORRESPONDENCIA)
+          can [:edit, :update], ::Usuario
         end
 
         if lgrupos.include?(GRUPO_COMPROMISOS) || 
@@ -543,17 +519,30 @@ class Ability  < Cor1440Gen::Ability
           can :manage, ::Tipoconvenio
           can :manage, ::Tipomoneda
           can :manage, ::Tipoproductopf
-
         end
+
+        if lgrupos.include?(GRUPO_COMUNICACIONES)
+          can :manage, Sal7711Gen::Articulo
+          can :manage, ::Publicacion
+          can :manage, :tablasbasicas
+        end
+
+        if lgrupos.include?(GRUPO_CONFLICTOYESTADO)
+          can :index, :dinamicas
+        end
+
+        # Contexto es para equipo derechos humanos 
+        if lgrupos.include?(GRUPO_DERECHOSHUMANOS)
+          can :edit, :contextoac
+        end
+
         if lgrupos.include?(GRUPO_GESTIONDECALIDAD)
           can :manage, Heb412Gen::Doc
           can :manage, Heb412Gen::Plantilladoc
           can :manage, Heb412Gen::Plantillahcm
           can :manage, Heb412Gen::Plantillahcr
         end
-        if lgrupos.include?(GRUPO_ARCHIVOYCORRESPONDENCIA)
-          can [:edit, :update], ::Usuario
-        end
+
         if lgrupos.include?(GRUPO_GESTIONHUMANA)
           can [:edit, :update, :create], ::Usuario
           can :manage, ::Areaestudios
@@ -570,11 +559,39 @@ class Ability  < Cor1440Gen::Ability
           can :manage, ::Tiponomina
           can :manage, :tablasbasicas
         end
-        if lgrupos.include?(GRUPO_COMUNICACIONES)
-          can :manage, Sal7711Gen::Articulo
-          can :manage, ::Publicacion
-          can :manage, :tablasbasicas
+
+        if lgrupos.include?(GRUPO_INICIATIVASPAZ)
+          can :manage, ::Acp
+          can :manage, ::Acpactor1
+          can :manage, ::Acpactor2
+          can :manage, ::Acpcataccion
+          can :manage, ::Acpcatmotivo
+          can :manage, ::Acpestrategia
+          can :manage, ::Acpformap
+          can :manage, ::Acpmotivo
+          can :manage, ::Acppapel
         end
+
+        if lgrupos.include?(GRUPO_MEDIACION)
+          can :index, :conflictividades
+        end
+
+        if lgrupos.include?(GRUPO_MOVIMIENTOSSOCIALES)
+          can :manage, ::Ls
+          can :manage, ::Lscobertura
+        end
+
+        if lgrupos.include?(GRUPO_OFICINATI)
+          can :manage, Mr519Gen::Formulario
+        end
+
+        if lgrupos.include?(GRUPO_STCIV)
+          can :read, ::Csivinivelgeo
+          can :read, ::Csivinivelresp
+          can :read, ::Csivitema
+        end
+
+
       when Ability::ROLADMIN, Ability::ROLDIR
         can :dir, :aprobadoefecto
         can :index, :exploradordatosrel

@@ -25,6 +25,7 @@ class CreateAcpformap < ActiveRecord::Migration[6.0]
         fechacreacion, created_at, updated_at)
         VALUES (4, 'NO APLICA', 
         '2020-08-05', '2020-08-05', '2020-08-05');
+      SELECT setval('acpformap_id_seq', 100);
     SQL
   end
 

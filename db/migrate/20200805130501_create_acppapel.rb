@@ -25,6 +25,7 @@ class CreateAcppapel < ActiveRecord::Migration[6.0]
         fechacreacion, created_at, updated_at)
         VALUES (4, 'CONVOCANTE', 
         '2020-08-05', '2020-08-05', '2020-08-05');
+      SELECT setval('acppapel_id_seq', 100);
     SQL
   end
 

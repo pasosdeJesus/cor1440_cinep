@@ -9,18 +9,24 @@ module Sip
     Sip::Departamento.conf_presenta_nombre_con_origen = true
 
     def atributos_index
-      [ :id, 
+      r = [ :id, 
         :grupoper_id,
         :nivelrelacion_id
       ] +
       [ :sectoractor_ids =>  [] ] +
       [ :regiongrupo_ids =>  [] ] +
-      [ :grupo_ids =>  [] ] +
-      [ :actorsocial_persona =>  [] ] +
+      [ :grupo_ids =>  [] ] 
+      if can?(:read, ::Csivinivelgeo)
+        r += [:csivinivelgeo_id,
+              :csivitema_id,
+              :csivinivelresp_id]
+      end
+      r +=  [ :actorsocial_persona =>  [] ] +
       [ :lineabase20182020,
         :habilitado,
         :created_at_localizada
       ]
+      return r
     end
 
     def atributos_show
@@ -35,6 +41,11 @@ module Sip
       [ :departamentotrab_ids =>  [] ] +
       [ :municipiotrab_ids =>  [] ] +
       [ :grupo_ids =>  [] ] +
+      (can?(:read, ::Csivinivelgeo) ?
+       [:csivinivelgeo_id,
+        :csivitema_id,
+        :csivinivelresp_id] : []
+      ) +
       [ :actorsocial_persona =>  [] ] +
       [ 
         :lineabase20182020,

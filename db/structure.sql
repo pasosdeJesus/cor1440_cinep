@@ -2848,6 +2848,108 @@ ALTER SEQUENCE public.cor1440_gen_valorcampotind_id_seq OWNED BY public.cor1440_
 
 
 --
+-- Name: csivinivelgeo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.csivinivelgeo (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: csivinivelgeo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.csivinivelgeo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: csivinivelgeo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.csivinivelgeo_id_seq OWNED BY public.csivinivelgeo.id;
+
+
+--
+-- Name: csivinivelresp; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.csivinivelresp (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: csivinivelresp_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.csivinivelresp_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: csivinivelresp_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.csivinivelresp_id_seq OWNED BY public.csivinivelresp.id;
+
+
+--
+-- Name: csivitema; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.csivitema (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: csivitema_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.csivitema_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: csivitema_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.csivitema_id_seq OWNED BY public.csivitema.id;
+
+
+--
 -- Name: desembolso; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -4785,7 +4887,10 @@ CREATE TABLE public.sip_actorsocial (
     ciudad character varying(100),
     nivelrelacion_id integer,
     lineabase20182020 boolean,
-    fechadeshabilitacion date
+    fechadeshabilitacion date,
+    csivinivelgeo_id integer,
+    csivitema_id integer,
+    csivinivelresp_id integer
 );
 
 
@@ -6503,6 +6608,27 @@ ALTER TABLE ONLY public.cor1440_gen_valorcampotind ALTER COLUMN id SET DEFAULT n
 
 
 --
+-- Name: csivinivelgeo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivinivelgeo ALTER COLUMN id SET DEFAULT nextval('public.csivinivelgeo_id_seq'::regclass);
+
+
+--
+-- Name: csivinivelresp id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivinivelresp ALTER COLUMN id SET DEFAULT nextval('public.csivinivelresp_id_seq'::regclass);
+
+
+--
+-- Name: csivitema id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivitema ALTER COLUMN id SET DEFAULT nextval('public.csivitema_id_seq'::regclass);
+
+
+--
 -- Name: desembolso id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -7465,6 +7591,30 @@ ALTER TABLE ONLY public.cor1440_gen_valorcampoact
 
 ALTER TABLE ONLY public.cor1440_gen_valorcampotind
     ADD CONSTRAINT cor1440_gen_valorcampotind_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: csivinivelgeo csivinivelgeo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivinivelgeo
+    ADD CONSTRAINT csivinivelgeo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: csivinivelresp csivinivelresp_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivinivelresp
+    ADD CONSTRAINT csivinivelresp_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: csivitema csivitema_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivitema
+    ADD CONSTRAINT csivitema_pkey PRIMARY KEY (id);
 
 
 --
@@ -8500,6 +8650,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_valorcampotind
 
 
 --
+-- Name: sip_actorsocial fk_rails_015c235091; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_actorsocial
+    ADD CONSTRAINT fk_rails_015c235091 FOREIGN KEY (csivinivelgeo_id) REFERENCES public.csivinivelgeo(id);
+
+
+--
 -- Name: actor_sectoractor fk_rails_01abd767ad; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9244,6 +9402,14 @@ ALTER TABLE ONLY public.cor1440_gen_plantillahcm_proyectofinanciero
 
 
 --
+-- Name: sip_actorsocial fk_rails_6352234eea; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_actorsocial
+    ADD CONSTRAINT fk_rails_6352234eea FOREIGN KEY (csivitema_id) REFERENCES public.csivitema(id);
+
+
+--
 -- Name: mr519_gen_opcioncs fk_rails_656b4a3ca7; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9353,6 +9519,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_actorsocial
 
 ALTER TABLE ONLY public.acpfuente
     ADD CONSTRAINT fk_rails_72813dff94 FOREIGN KEY (acp_id) REFERENCES public.acp(id);
+
+
+--
+-- Name: sip_actorsocial fk_rails_72a3138a71; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_actorsocial
+    ADD CONSTRAINT fk_rails_72a3138a71 FOREIGN KEY (csivinivelresp_id) REFERENCES public.csivinivelresp(id);
 
 
 --
@@ -10914,6 +11088,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200805141624'),
 ('20200805151434'),
 ('20200805160011'),
-('20200805160338');
+('20200805160338'),
+('20200807152542'),
+('20200807154550'),
+('20200807154641'),
+('20200807154719');
 
 

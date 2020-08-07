@@ -8,6 +8,12 @@ module Sip
 
     belongs_to :nivelrelacion, class_name: "::Nivelrelacion",
       foreign_key: "nivelrelacion_id", validate: true, optional: true
+    belongs_to :csivinivelgeo, class_name: "::Csivinivelgeo",
+      foreign_key: "csivinivelgeo_id", validate: true, optional: true
+    belongs_to :csivitema, class_name: "::Csivitema",
+      foreign_key: "csivitema_id", validate: true, optional: true
+    belongs_to :csivinivelresp, class_name: "::Csivinivelresp",
+      foreign_key: "csivinivelresp_id", validate: true, optional: true
 
     has_many :actorsocial_departamento, dependent: :delete_all
     has_many :departamentotrab, through: :actorsocial_departamento,

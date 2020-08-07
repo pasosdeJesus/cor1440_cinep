@@ -113,6 +113,15 @@ es:
       "cajacompensacion":
         Cajacompensacion: 'Caja de compensación'
         Cajascompensacion: 'Cajas de compensación'
+      "csivinivelgeo":
+        Csivinivelgeo: 'Nivel geográfico (STCIV)'
+        Csivinivelesgeo: 'Niveles geográficos (STCIV)'
+      "csivinivelresp":
+        Csivinivelresp: 'Nivel de responsabilidad (STCIV)'
+        Csivinivelesresp: 'Niveles de responsabilidad (STCIV)'
+      "csivitema":
+        Csivitema: 'Tema (STCIV)'
+        Csivitemas: 'Temas (STCIV)'
       "comunicado":
         Comunicado: 'Comunicado'
         Comunicados: 'Comunicados'
@@ -372,11 +381,19 @@ es:
         Sectoresapc: Sectores APC
       "sip/actorsocial":
         "{:actorsocial_persona=>[]}": Contacto
+        actorsocial_persona: Contacto
+        csivinivelgeo_id: Nivel Geo. STCIV
+        csivinivelgeo: Nivel Geo. STCIV
+        csivinivelresp_id: Nivel Respo. STCIV
+        csivinivelresp: Nivel Respo. STCIV
+        csivitema_id: Tema STCIV
+        csivitema: Tema STCIV
         created_at: Registrado
         created_at_localizada: Registrado
         departamentotrab: Departamentos completos donde opera
         "{:departamentotrab_ids=>[]}": Departamentos completos donde opera
         grupo: Grupo(s)
+        grupo_ids: Grupo(s)
         "{:grupo_ids=>[]}": Grupo(s)
         lineabase20182020: Estado inicial 2018-2020
         municipiotrab: Municipios donde opera
@@ -385,7 +402,9 @@ es:
         nivelrelacion_id: Nivel de relación
         personacontacto: Persona contacto
         regiongrupo: Región(es)
+        regiongrupo_ids: Region(es)
         "{:regiongrupo_ids=>[]}": Región(es)
+        sectoractor_ids: Sector(es)
       "sip/grupo":
         procesogh: Proceso interno
         procesogh_id: Proceso interno

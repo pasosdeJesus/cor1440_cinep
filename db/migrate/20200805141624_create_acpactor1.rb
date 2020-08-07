@@ -88,6 +88,7 @@ class CreateAcpactor1 < ActiveRecord::Migration[6.0]
       fechacreacion, created_at, updated_at) VALUES (
       19,'Sectores y organizaciones sociales',
       '2020-08-05', '2020-08-05', '2020-08-05');
+      SELECT setval('acpactor1_id_seq', 100);
     SQL
   end
 
