@@ -11,7 +11,7 @@ class Ls < ActiveRecord::Base
 
   validates :fecha, presence: true
   validates :descripcion, presence: true, uniqueness: { 
-    message: 'no puede haber dos luchas con la misma descripción' }, 
+    message: 'No puede haber dos luchas con la misma descripción' }, 
     length: { maximum: 6000 }
   validates :orgconvocante, length: { maximum: 512}
   validates :dirig1, length: { maximum: 512}
