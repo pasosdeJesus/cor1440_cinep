@@ -996,7 +996,7 @@ class LssController < Heb412Gen::ModelosController
        # Frecuencia de problemas se deja al final del archivo de advertencias 
         fblanco = csv.headers.map {|x| ''}
         frecerr.sort_by(&:last).each do |p|
-          csvadv << fblanco + ['', p[0].chop, p[1]]
+          csvadv << fblanco + ['', p[0], p[1]]
         end
 
       end #csvadv
