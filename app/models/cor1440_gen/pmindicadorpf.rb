@@ -9,7 +9,7 @@ module Cor1440Gen
     validates :urlev1, length: {maximum: 1024}
     validates :urlev2, length: {maximum: 1024}
     validates :urlev3, length: {maximum: 1024}
-    validates :urlevrind, length: {maximum: 1024}
+    #validates :urlevrind, length: {maximum: 1024}
 
   end
 end

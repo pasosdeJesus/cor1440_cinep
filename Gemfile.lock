@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 6f192e0fcc4a7f1c54601ffb66892da663f09424
+  revision: 317a0be04ff4c1671a071f4c5031440b3b595f8e
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 84eeebe38ebfd3c53bc9f130803beb0d3f44df81
+  revision: dcd75f3e08525e7ecfba10c15d79e6759abc11db
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 22aa942fca1c0707540628fc921fc36dfdb7311d
+  revision: 504a4169bdc698d31a6d088ec06f1f5e37b75c3e
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 1aa77ec9d34e46a32087c567ee4693c885ba0068
+  revision: a70a7313aff37b819e617e660979b87ca4a23b86
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: c5283ee351468bca01aca6a72e29cd7e84cf4704
+  revision: d1e03faa7ee4fde2335914366e873cf19734bfcd
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: a8eda30da330fca3109131eb9805cc8f7a85c017
+  revision: abb35d4bff23b52392d623fd4e3237af901a0e42
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 82857c2c2290df3b1ceace07d700c07e0acdda70
+  revision: eced00f7b01ada4c6010abc950eaa3482751425e
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0c61eb11a709544c604e37ba793a2dbaedf381bb
+  revision: 90411f97d1bcded6493604730d17029c3d186ada
   specs:
     sip (2.0.b10)
       cancancan
@@ -178,7 +178,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     crass (1.0.6)
     csv (3.1.7)
     devise (4.7.2)

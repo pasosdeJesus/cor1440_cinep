@@ -129,9 +129,11 @@ class Ability  < Cor1440Gen::Ability
   def tablasbasicas_prio 
     super() + [
       ['', 'nivelrelacion'],
-      ['Sip', 'grupo'],
-      ['Sip', 'sectoractor'],
-      ['', 'tiponomina']
+      ['', 'procesogh'],
+      ['sip', 'grupo'],
+      ['sip', 'sectoractor'],
+      ['', 'tiponomina'],
+      ['', 'acpestrategia']
     ]
   end
 

@@ -6,6 +6,7 @@ class Acpactor2Test < ActiveSupport::TestCase
 
   PRUEBA_ACPACTOR2 = {
     nombre: "Acpactor2",
+    actor1_id: 1,
     fechacreacion: "2020-08-05",
     created_at: "2020-08-05"
   }
@@ -13,6 +14,7 @@ class Acpactor2Test < ActiveSupport::TestCase
   test "valido" do
     acpactor2 = ::Acpactor2.create(
       PRUEBA_ACPACTOR2)
+    byebug
     assert(acpactor2.valid?)
     acpactor2.destroy
   end

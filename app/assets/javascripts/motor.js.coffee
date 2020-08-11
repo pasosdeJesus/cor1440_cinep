@@ -84,20 +84,20 @@
   return
 
 
-@cor1440_gen_llena_medicion = (root, res) ->
-  hid = res.hmindicadorpf_id
-  $('[id$=_' + hid + '_fecha_localizada]').val(res.fechaloc)
-  $('[id$=_' + hid + '_dmed1]').val(res.dmed1)
-  $('[id$=_' + hid + '_urlev1]').val(res.urlev1)
-  $('[id$=_' + hid + '_dmed2]').val(res.dmed2)
-  $('[id$=_' + hid + '_urlev2]').val(res.urlev2)
-  $('[id$=_' + hid + '_dmed3]').val(res.dmed3)
-  $('[id$=_' + hid + '_urlev3]').val(res.urlev3)
-  $('[id$=_' + hid + '_rind]').val(res.rind)
-  $('[id$=_' + hid + '_urlevrind]').val(res.urlevrind)
-  meta = +$('[id$=_' + hid + '_meta]').val()
-  if ( meta > 0)
-    $('[id$=_' + hid + '_porcump]').val(res.rind*100/meta)
+#@cor1440_gen_llena_medicion = (root, res) ->
+#  hid = res.hmindicadorpf_id
+#  $('[id$=_' + hid + '_fecha_localizada]').val(res.fechaloc)
+#  $('[id$=_' + hid + '_dmed1]').val(res.dmed1)
+#  $('[id$=_' + hid + '_urlev1]').val(res.urlev1)
+#  $('[id$=_' + hid + '_dmed2]').val(res.dmed2)
+#  $('[id$=_' + hid + '_urlev2]').val(res.urlev2)
+#  $('[id$=_' + hid + '_dmed3]').val(res.dmed3)
+#  $('[id$=_' + hid + '_urlev3]').val(res.urlev3)
+#  $('[id$=_' + hid + '_rind]').val(res.rind)
+#  $('[id$=_' + hid + '_urlevrind]').val(res.urlevrind)
+#  meta = +$('[id$=_' + hid + '_meta]').val()
+#  if ( meta > 0)
+#    $('[id$=_' + hid + '_porcump]').val(res.rind*100/meta)
 
 
 @cor1440_gen_calcula_pmindicador = (elem, event) ->

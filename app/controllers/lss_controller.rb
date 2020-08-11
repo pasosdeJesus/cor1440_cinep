@@ -66,8 +66,8 @@ class LssController < Heb412Gen::ModelosController
   def verificacsv
     authorize! :update, ::Ls
     if params && params[:filtro] && params[:filtro][:archivo]
-      nombre = Heb412Gen::ApplicationHelper.
-        sanea_nombre(params[:filtro][:archivo].original_filename)
+      nombre = File.basename(Heb412Gen::ApplicationHelper.
+        sanea_nombre(params[:filtro][:archivo].original_filename))
 
       rr1 = Rails.application.config.x.heb412_ruta.join("./generados/")
       rr2 = rr1.join(nombre)

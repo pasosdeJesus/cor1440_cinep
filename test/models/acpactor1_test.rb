@@ -26,8 +26,7 @@ class Acpactor1Test < ActiveSupport::TestCase
   end
 
   test "existente" do
-    skip
-    acpactor1 = ::Acpactor1.where(id: 0).take
+    acpactor1 = ::Acpactor1.where(id: 1).take
     assert_equal(acpactor1.nombre, "SIN INFORMACIÓN")
   end
 
