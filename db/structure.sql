@@ -1066,7 +1066,9 @@ CREATE TABLE public.busqunif (
     fecha date NOT NULL,
     departamento character varying(1024),
     municipio character varying(1024),
-    descripcion character varying(6000) NOT NULL
+    descripcion character varying(6000) NOT NULL,
+    fuentes character varying(2048),
+    fechafuentes character varying(2048)
 );
 
 
@@ -11097,6 +11099,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200810153501'),
 ('20200810164753'),
 ('20200810165931'),
-('20200810224353');
+('20200810224353'),
+('20200811210232');
 
 

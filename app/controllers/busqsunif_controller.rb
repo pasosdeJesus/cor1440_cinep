@@ -17,7 +17,9 @@ class BusqsunifController < Heb412Gen::ModelosController
       :idurl,
       :fecha_localizada,
       :departamento,
-      :descripcion
+      :descripcion,
+      :fuentes,
+      :fechafuentes
     ] 
   end
 
@@ -144,7 +146,10 @@ class BusqsunifController < Heb412Gen::ModelosController
             fecha: vs['fecha'],
             departamento: vs['departamento'],
             municipio: vs['municipio'],
-            descripcion: vs['descripcion'])
+            descripcion: vs['descripcion'],
+            fuentes: '',
+            fechafuentes: nil
+          )
           if nr.valid?
             nr.save!
           end
@@ -154,13 +159,15 @@ class BusqsunifController < Heb412Gen::ModelosController
         if idsls.count > 0
           ::Busqunif.connection.execute(
             "INSERT INTO busqunif (base, idbase, url, " + 
-            "fecha, departamento, descripcion) " + 
+            "fecha, departamento, descripcion, fuentes, fechafuentes) " + 
             "(SELECT 'LS', id, '" + main_app.lss_url + "/' || id, " +
             "fecha, ARRAY_TO_STRING(ARRAY(SELECT DISTINCT sip_departamento.nombre " +
             "FROM lsdep JOIN sip_departamento " +
             "ON lsdep.departamento_id=sip_departamento.id " +
             "WHERE lsdep.ls_id=ls.id), '; '), " +
-            "descripcion " +
+            "descripcion, " +
+            "fuente, " +
+            "ffuente " +
             "FROM ls WHERE id in (#{idsls.join(', ')}))")
         end
         @acp_cuenta = cacp.count
@@ -168,12 +175,18 @@ class BusqsunifController < Heb412Gen::ModelosController
         if idsacp.count > 0
           ::Busqunif.connection.execute(
             "INSERT INTO busqunif (base, idbase, url, " +
-            "fecha, departamento, descripcion) " +
+            "fecha, departamento, descripcion, fuentes, fechafuentes) " +
             "(SELECT 'ACP', id, '" + main_app.acps_url + "/' || id, " +
-            "fini, ARRAY_TO_STRING(ARRAY(SELECT DISTINCT sip_departamento.nombre " +
-            "FROM acplugar JOIN sip_departamento " +
-            "ON acplugar.departamento_id=sip_departamento.id " +
-            "WHERE acplugar.acp_id=acp.id), '; '), descripcion " +
+            "fini, " +
+            "ARRAY_TO_STRING(ARRAY(SELECT DISTINCT sip_departamento.nombre " +
+            "  FROM acplugar JOIN sip_departamento " +
+            "  ON acplugar.departamento_id=sip_departamento.id " +
+            "  WHERE acplugar.acp_id=acp.id), '; ')," +
+            "descripcion, " +
+            "ARRAY_TO_STRING(ARRAY(SELECT fuente FROM acpfuente " +
+            "  WHERE acpfuente.acp_id=acp.id), '; ')," +
+            "ARRAY_TO_STRING(ARRAY(SELECT ffuente::text FROM acpfuente " +
+            "  WHERE acpfuente.acp_id=acp.id), '; ') " +
             "FROM acp WHERE id IN (#{idsacp.join(", ")}))")
         end
         # https://stackoverflow.com/questions/25785575/how-to-parse-json-using-json-populate-recordset-in-postgres#26742370

@@ -12,6 +12,8 @@ class Busqunif < ActiveRecord::Base
   validates :departamento, length: {maximum: 127}
   validates :municipio, length: {maximum: 127}
   validates :descripcion, length: {maximum: 6000}, presence: true
+  validates :fuentes, length: {maximum: 2048}
+  validates :fechafuentes, length: {maximum: 2048}
 
 
 end
