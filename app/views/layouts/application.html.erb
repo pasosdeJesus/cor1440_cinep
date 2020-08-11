@@ -75,12 +75,12 @@
         <% end %>
         <% if can? :index, :exploradordatosrel %>
           <%= opcion_menu 'Explorador visual de datos relacionados', 
-            cor1440_gen.mindicadorespf_path,
+            'http://181.143.184.115:2700/sivel2/casos/infomapa/',
             desplegable: true %>
         <% end %>
-        <% if can? :index, :conflictividades%>
+        <% if can? :index, :confytransf %>
           <%= opcion_menu 'Conflictividades y su transformación', 
-            cor1440_gen.mindicadorespf_path,
+            main_app.confytransf_path,
             desplegable: true %>
         <% end %>
         <% if can? :index, ::Ls %>
@@ -95,7 +95,7 @@
         <% end %>
         <% if can? :index, :dinamicas %>
            <%= opcion_menu 'Dinámicas del Conflicto', 
-             cor1440_gen.mindicadorespf_path,
+             main_app.dinamicasconflicto_path,
              desplegable: true %>
         <% end %>
         <%= opcion_menu 'Violencia Político Social', 

@@ -96,9 +96,7 @@ module Cor1440Gen
                 (fecha20>='#{fini}' AND fecha20<='#{ffin}') OR
                 (fecha>='#{fini}' AND fecha<='#{ffin}') 
               ) AND indicadorpf_id='22'"
-      ld1 = ActiveRecord::Base.connection.execute(base).to_a.map(&:values).
-      flatten
-      byebug
+      ld1 = ActiveRecord::Base.connection.execute(base).to_a.map(&:values).flatten
       d1 = ld1.count
       datosint << {valor: d1, rutaevidencia: d1 == 0 ? '#' :
                    cor1440_gen.efectos_path + '?filtro[busid]=' + 

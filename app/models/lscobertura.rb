@@ -5,7 +5,6 @@ class Lscobertura < ActiveRecord::Base
 
   validates :codigo, uniqueness: {
     message: 'no puede haber dos códigos iguales'
-  }
-  validates :codigo, length: { maximum: 3 }
+  }, length: { maximum: 3 }, presence: true
 
 end

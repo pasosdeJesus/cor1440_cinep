@@ -92,6 +92,13 @@ Rails.application.routes.draw do
       "cor1440_gen/mindicadorespf#mideindicador", 
       as: :mideindicador
 
+    get '/confytransf' => 
+      'sip/hogar#confytransf',
+      as: :confytransf
+
+    get '/dinamicasconflicto' => 
+      'sip/hogar#dinamicasconflicto',
+      as: :dinamicasconflicto
 
     get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :pf_fichaimp
     get "/proyectosfinancieros/:id/fichapdf" => "cor1440_gen/proyectosfinancieros#fichapdf", as: :pf_fichapdf

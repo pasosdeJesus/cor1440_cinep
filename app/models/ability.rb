@@ -439,7 +439,7 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Efecto
           can :index, Cor1440Gen::Mindicadorpf
-          can :index, :exploradordatosrel
+          #can :index, :exploradordatosrel
         end
 
         coords = lgrupos.select {|g| g.start_with?(GRUPO_COORDINADOR)}
@@ -575,7 +575,7 @@ class Ability  < Cor1440Gen::Ability
         end
 
         if lgrupos.include?(GRUPO_MEDIACION)
-          can :index, :conflictividades
+          can :index, :confytransf
         end
 
         if lgrupos.include?(GRUPO_MOVIMIENTOSSOCIALES)
@@ -597,7 +597,7 @@ class Ability  < Cor1440Gen::Ability
       when Ability::ROLADMIN, Ability::ROLDIR
         can :dir, :aprobadoefecto
         can :index, :exploradordatosrel
-        can :index, :conflictividades
+        can :index, :confytransf
         can :edit, :contextoac
         can :manage, ::Acp
         can :manage, ::Ls
