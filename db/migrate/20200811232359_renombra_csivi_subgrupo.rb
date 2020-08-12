@@ -1,6 +1,10 @@
 class RenombraCsiviSubgrupo < ActiveRecord::Migration[6.0]
   def up
     stcivcinep = Sip::Grupo.where(nombre:'CSIVI').take
+    if stcivcinep.nil?
+      puts "Falta grupo CSIVI"
+      exit 1
+    end
     stcivcinep.nombre='STCIV_CINEP'
     stcivcinep.cn='stciv_cinep'
     if stcivcinep.valid?
