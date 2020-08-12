@@ -21,7 +21,6 @@ class HomologaIntermedios < ActiveRecord::Migration[6.0]
            mindicadorpf_id IN (SELECT id FROM  cor1440_gen_mindicadorpf
            WHERE indicadorpf_id = #{ind}));"
         puts e
-        byebug
         execute <<-SQL
         #{e}
         SQL
