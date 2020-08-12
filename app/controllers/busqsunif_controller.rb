@@ -157,6 +157,11 @@ class BusqsunifController < Heb412Gen::ModelosController
         @ls_cuenta = cls.count
         idsls = cls.pluck(:id)
         if idsls.count > 0
+          if can? :edit, ::Ls
+            cdescripcion = 'descripcion'
+          else
+            cdescripcion = '\'\''
+          end
           ::Busqunif.connection.execute(
             "INSERT INTO busqunif (base, idbase, url, " + 
             "fecha, departamento, descripcion, fuentes, fechafuentes) " + 
@@ -165,7 +170,7 @@ class BusqsunifController < Heb412Gen::ModelosController
             "FROM lsdep JOIN sip_departamento " +
             "ON lsdep.departamento_id=sip_departamento.id " +
             "WHERE lsdep.ls_id=ls.id), '; '), " +
-            "descripcion, " +
+            "#{cdescripcion}, " +
             "fuente, " +
             "ffuente " +
             "FROM ls WHERE id in (#{idsls.join(', ')}))")

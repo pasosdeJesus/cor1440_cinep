@@ -19,8 +19,8 @@ module Sip
     has_many :departamentotrab, through: :actorsocial_departamento,
       class_name: 'Sip::Departamento'
 
-    has_many :actorsocial_grupo, validate: true, dependent: :delete_all
-      #class_name: '::ActorsocialGrupo', foreign_key: "actorsocial_id", 
+    has_many :actorsocial_grupo, dependent: :delete_all,
+      class_name: '::ActorsocialGrupo', foreign_key: "actorsocial_id"
     has_many :grupo, class_name: 'Sip::Grupo',
       through: :actorsocial_grupo
 
@@ -28,9 +28,8 @@ module Sip
     has_many :municipiotrab, through: :actorsocial_municipio,
       class_name: 'Sip::Municipio'
 
-    has_many :actorsocial_regiongrupo, validate: true, 
-      dependent: :delete_all
-      #class_name: '::ActorsocialRegiongrupo', foreign_key: "actorsocial_id"
+    has_many :actorsocial_regiongrupo, dependent: :delete_all,
+      class_name: '::ActorsocialRegiongrupo', foreign_key: "actorsocial_id"
     has_many :regiongrupo, class_name: '::Regiongrupo',
       through: :actorsocial_regiongrupo
 

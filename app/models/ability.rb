@@ -399,11 +399,22 @@ class Ability  < Cor1440Gen::Ability
         (lgrupos.count == 0 || lgrupos == ['Usuarios'])
         return
       end
-      can :descarga_anexo, Sip::Anexo
-      can :nuevo, Cor1440Gen::Actividad
-      can :new, Cor1440Gen::Actividad
+     
       case usuario.rol 
       when Ability::ROLOPERADOR
+
+        if (lgrupos - ['Usuarios']) == ['STCIV'] # Externo
+          can :read, [::Csivinivelgeo, ::Csivitema, ::Csivinivelresp, ::Regiongrupo, Sip::Grupo, Sip::Sectoractor]
+          can :read, ::Regiongrupo
+          can :read, Sip::Grupo
+          can [:create, :read, :index, :update], Sip::Actorsocial
+          return
+        end
+        can :read, ::Nivelrelacion
+        can :descarga_anexo, Sip::Anexo
+        can :nuevo, Cor1440Gen::Actividad
+        can :new, Cor1440Gen::Actividad
+
         can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
         #can :manage, Cor1440Gen::Informe # limitar a oficina?
         can :read, Cor1440Gen::Proyectofinanciero # Los de su grupo
@@ -595,6 +606,7 @@ class Ability  < Cor1440Gen::Ability
 
 
       when Ability::ROLADMIN, Ability::ROLDIR
+        can :descarga_anexo, Sip::Anexo
         can :dir, :aprobadoefecto
         can :index, :exploradordatosrel
         can :index, :confytransf
