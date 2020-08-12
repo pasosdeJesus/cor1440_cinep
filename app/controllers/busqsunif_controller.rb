@@ -132,7 +132,6 @@ class BusqsunifController < Heb412Gen::ModelosController
       uri = URI(sivelcons)
       response = Net::HTTP.get(uri)
       j = JSON.parse(response)
-      @bd_cuenta = j.count
       if j['status'] && j['status'] == 500
         err << "Más de 2000 casos retornados por Banco de Datos"
       end
@@ -154,7 +153,6 @@ class BusqsunifController < Heb412Gen::ModelosController
             nr.save!
           end
         end
-        @ls_cuenta = cls.count
         idsls = cls.pluck(:id)
         if idsls.count > 0
           if can? :edit, ::Ls
@@ -175,7 +173,6 @@ class BusqsunifController < Heb412Gen::ModelosController
             "ffuente " +
             "FROM ls WHERE id in (#{idsls.join(', ')}))")
         end
-        @acp_cuenta = cacp.count
         idsacp = cacp.pluck(:id)
         if idsacp.count > 0
           ::Busqunif.connection.execute(
@@ -214,6 +211,15 @@ class BusqsunifController < Heb412Gen::ModelosController
       end
       c = ::Busqunif.all
     end
+    @acp_cuenta = 0
+    @ls_cuenta = 0
+    @bd_cuenta = 0
+    if c.count > 0
+      @acp_cuenta = c.where(base: 'ACP').count
+      @ls_cuenta = c.where(base: 'LS').count
+      @bd_cuenta = c.where(base: 'BD').count
+    end
+
     super(c)
   end
 
