@@ -8,13 +8,19 @@ module Sip
 
     belongs_to :nivelrelacion, class_name: "::Nivelrelacion",
       foreign_key: "nivelrelacion_id", validate: true, optional: true
+    belongs_to :csivinivelgeo, class_name: "::Csivinivelgeo",
+      foreign_key: "csivinivelgeo_id", validate: true, optional: true
+    belongs_to :csivitema, class_name: "::Csivitema",
+      foreign_key: "csivitema_id", validate: true, optional: true
+    belongs_to :csivinivelresp, class_name: "::Csivinivelresp",
+      foreign_key: "csivinivelresp_id", validate: true, optional: true
 
     has_many :actorsocial_departamento, dependent: :delete_all
     has_many :departamentotrab, through: :actorsocial_departamento,
       class_name: 'Sip::Departamento'
 
-    has_many :actorsocial_grupo, validate: true, dependent: :delete_all
-      #class_name: '::ActorsocialGrupo', foreign_key: "actorsocial_id", 
+    has_many :actorsocial_grupo, dependent: :delete_all,
+      class_name: '::ActorsocialGrupo', foreign_key: "actorsocial_id"
     has_many :grupo, class_name: 'Sip::Grupo',
       through: :actorsocial_grupo
 
@@ -22,9 +28,8 @@ module Sip
     has_many :municipiotrab, through: :actorsocial_municipio,
       class_name: 'Sip::Municipio'
 
-    has_many :actorsocial_regiongrupo, validate: true, 
-      dependent: :delete_all
-      #class_name: '::ActorsocialRegiongrupo', foreign_key: "actorsocial_id"
+    has_many :actorsocial_regiongrupo, dependent: :delete_all,
+      class_name: '::ActorsocialRegiongrupo', foreign_key: "actorsocial_id"
     has_many :regiongrupo, class_name: '::Regiongrupo',
       through: :actorsocial_regiongrupo
 
@@ -131,6 +136,16 @@ module Sip
          self.actorsocial_grupo.inject('') do |memo, ag|
           (memo == '' ? '' : memo + '; ') + ag.grupo.nombre 
         end
+      when 'regiones'
+         self.regiongrupo.inject('') do |memo, rg|
+          (memo == '' ? '' : memo + '; ') + rg.nombre 
+        end
+      when 'nivelgeostciv'
+        self.csivinivelgeo_id ? self.csivinivelgeo.nombre : ''
+      when 'nivelrespstciv'
+        self.csivinivelresp_id ? self.csivinivelresp.nombre : ''
+      when 'temastciv'
+        self.csivitema_id ? self.csivitema.nombre : ''
 
       else
         presenta_sip(atr)

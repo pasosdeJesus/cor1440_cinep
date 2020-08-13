@@ -25,10 +25,10 @@ class CreateLs < ActiveRecord::Migration[6.0]
       t.string :entidad1, limit: 512
       t.string :entidad2, limit: 512
       t.string :entidad3, limit: 512
-      t.string :fuente, limit: 512
-      t.date :ffuente
-      t.date :ffuen_1
-      t.string :descripcion, limit: 5000
+      t.string :fuente, limit: 512 # Si departamento es nación no redunda
+      t.date :ffuente # Si departamento es nación no redunda con el de 1er ldep
+      t.date :ffuen_1 # Si departametno es nación no redunda con el de 1er ldep
+      t.string :descripcion, limit: 5000 # Si departametno es nación no redunda
     end
   end
 end

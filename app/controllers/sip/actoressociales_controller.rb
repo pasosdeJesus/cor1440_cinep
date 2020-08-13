@@ -9,39 +9,46 @@ module Sip
     Sip::Departamento.conf_presenta_nombre_con_origen = true
 
     def atributos_index
-      [ :id, 
-        :grupoper_id,
-        :nivelrelacion_id
-      ] +
-      [ :sectoractor_ids =>  [] ] +
+      r = [ :id, :grupoper_id ]
+      if can?(:read, ::Nivelrelacion)
+        r +=  [ :nivelrelacion_id ]
+      end
+      r += [ :sectoractor_ids =>  [] ] +
       [ :regiongrupo_ids =>  [] ] +
-      [ :grupo_ids =>  [] ] +
-      [ :actorsocial_persona =>  [] ] +
-      [ :lineabase20182020,
-        :habilitado,
-        :created_at_localizada
-      ]
+      [ :grupo_ids =>  [] ] 
+      if can?(:read, ::Csivinivelgeo)
+        r += [:csivinivelgeo_id, :csivitema_id, :csivinivelresp_id]
+      end
+      r +=  [ :actorsocial_persona =>  [] ] 
+      if can?(:read, ::Nivelrelacion)
+        r += [ :lineabase20182020 ]
+      end
+      r += [ :habilitado, :created_at_localizada ]
+      return r
     end
 
     def atributos_show
-      [
-        :id, 
-        :grupoper_id,
-        :nivelrelacion_id
-      ] +
+      [ :id, :grupoper_id] + (
+        can?(:read, ::Nivelrelacion) ?  [:nivelrelacion_id] : [] ) +
       [ :sectoractor_ids =>  [] ] +
       [:pais_id] +
       [ :regiongrupo_ids =>  [] ] +
       [ :departamentotrab_ids =>  [] ] +
       [ :municipiotrab_ids =>  [] ] +
-      [ :grupo_ids =>  [] ] +
-      [ :actorsocial_persona =>  [] ] +
+      [ :grupo_ids =>  [] ] + (
+        can?(:read, ::Csivinivelgeo) ?
+        [:csivinivelgeo_id,
+         :csivitema_id,
+         :csivinivelresp_id] : []
+      ) +
+      [ :actorsocial_persona =>  [] ] + (
+        can?(:read, ::Nivelrelacion) ?  [:lineabase20182020] : [] ) +
       [ 
-        :lineabase20182020,
+        :web,
+        :direccion,
         :telefono,
         :fax,
         :celular,
-        :direccion,
         :created_at,
         :fechadeshabilitacion_localizada
       ]

@@ -171,7 +171,7 @@
 <tr><td rowspan="1" colspan="3">fltro-actividad-grupo</td></tr>
 </thead>
 <tbody>
-<tr><td>select</td><td>id=filtro_busgrupo<datalist><option>id=filtro_busgrupo</option><option>name=filtro[busgrupo]</option><option>css=#filtro_busgrupo</option><option>//select[@id='filtro_busgrupo']</option><option>//td[6]/div/select</option></datalist></td><td>label=Oficina TI</td>
+<tr><td>select</td><td>id=filtro_busgrupo<datalist><option>id=filtro_busgrupo</option><option>name=filtro[busgrupo]</option><option>css=#filtro_busgrupo</option><option>//select[@id='filtro_busgrupo']</option><option>//td[6]/div/select</option></datalist></td><td>label=Comunicaciones</td>
 </tr>
 <tr><td>clickAt</td><td>id=filtro_busgrupo<datalist><option>id=filtro_busgrupo</option><option>name=filtro[busgrupo]</option><option>css=#filtro_busgrupo</option><option>//select[@id='filtro_busgrupo']</option><option>//td[6]/div/select</option></datalist></td><td>-854,-255</td>
 </tr>
@@ -237,6 +237,8 @@
 <tr><td rowspan="1" colspan="3">fltro-actividad-departamento</td></tr>
 </thead>
 <tbody>
+<tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
+</tr>
 <tr><td>select</td><td>id=filtro_busdepartamento<datalist><option>id=filtro_busdepartamento</option><option>name=filtro[busdepartamento]</option><option>css=#filtro_busdepartamento</option><option>//select[@id='filtro_busdepartamento']</option><option>//td[9]/div/select</option></datalist></td><td>label=CUNDINAMARCA</td>
 </tr>
 <tr><td>mouseDownAt</td><td>id=filtro_busdepartamento<datalist><option>id=filtro_busdepartamento</option><option>name=filtro[busdepartamento]</option><option>css=#filtro_busdepartamento</option><option>//select[@id='filtro_busdepartamento']</option><option>//td[9]/div/select</option></datalist></td><td>-445,-309</td>

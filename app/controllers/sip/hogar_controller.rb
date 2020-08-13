@@ -14,5 +14,14 @@ module Sip
       render layout: 'application'
     end
 
+    def confytransf
+      authorize! :index, :confytransf
+      render layout: 'application'
+    end
+
+    def dinamicasconflicto
+      authorize! :index, :dinamicas
+      render layout: 'application'
+    end
   end
 end

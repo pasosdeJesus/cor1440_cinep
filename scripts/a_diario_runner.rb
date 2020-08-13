@@ -1,9 +1,15 @@
 # encoding: utf-8
 # Ejecutar con bin/cron_diario
 
-DIAS=20
-def envia(pid, tiene, cuando, fecha, maslineas=[])
-    puts "Enviando por #{pid}, #{tiene}, #{cuando}, #{fecha}"
+#require 'byebug'
+
+if !ENV['CRECER_DIAS'] 
+  DIAS=20
+else
+  DIAS=ENV['CRECER_DIAS'].to_i
+end
+def envia_alertapf(pid, tiene, cuando, fecha, maslineas=[])
+    puts "Enviando alerta pf por #{pid}, #{tiene}, #{cuando}, #{fecha}"
     AlertaMailer.with(
       proyectofinanciero_id: pid,
       tiene: tiene,
@@ -13,22 +19,36 @@ def envia(pid, tiene, cuando, fecha, maslineas=[])
     alerta_proyectofinanciero.deliver_now
 end
 
+def envia_alerta_usuario_des(nusuario, nombres, apellidos, fechafin, maslineas=[])
+    puts "Enviando altera usuario por #{nusuario}, #{nombres}, #{apellidos}, #{fechafin}"
+    AlertaMailer.with(
+      nusuario: nusuario,
+      nombres: nombres,
+      apellidos: apellidos,
+      fechafin: fechafin,
+      complemento: maslineas
+    ).
+    alerta_usuario_des.deliver_now
+end
+
+
 def alertas
   puts "Inicio de verificacion alertas proyectofinanciero"
 
   hoy = Date.today
   hoymasveinte = hoy + DIAS
+  #byebug
   puts "Verifica cierre el #{hoymasveinte}"
   Cor1440Gen::Proyectofinanciero.
     where("estado NOT IN ('R', 'O')").
     where(fechacierre: hoymasveinte).each do |p|
-    envia(p.id, 'cierra', "en #{DIAS} días", p.fechacierre_localizada)
+    envia_alertapf(p.id, 'cierra', "en #{DIAS} días", p.fechacierre_localizada)
   end
   puts "Verifica liquidacion"
   Cor1440Gen::Proyectofinanciero.
     where("estado NOT IN ('R', 'O')").
     where(fechaliquidacion: hoymasveinte).each do |p|
-    envia(p.id, 'se liquida', "en #{DIAS} días", p.fechaliquidacion_localizada)
+    envia_alertapf(p.id, 'se liquida', "en #{DIAS} días", p.fechaliquidacion_localizada)
   end
   puts "Verifica desembolsos"
   ::Desembolso.
@@ -36,7 +56,7 @@ def alertas
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
     where(fechaplaneada: hoymasveinte).each do |d|
-    envia(d.proyectofinanciero_id, 'tiene un desembolso', 
+    envia_alertapf(d.proyectofinanciero_id, 'tiene un desembolso', 
           "en #{DIAS} días", d.fechaplaneada_localizada, 
           [ "Concepto: #{d.detalle}",
             "Valor planeado: #{d.valorplaneado_localizado}"])
@@ -47,7 +67,7 @@ def alertas
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
     where(fechaplaneada: hoymasveinte).each do |d|
-    envia(d.proyectofinanciero_id, 'tiene un informe narrativo', 
+    envia_alertapf(d.proyectofinanciero_id, 'tiene un informe narrativo', 
           "en #{DIAS} días", d.fechaplaneada_localizada,
           [ "Detalle: #{d.detalle}"])
   end
@@ -57,7 +77,7 @@ def alertas
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
     where(fechaplaneada: hoymasveinte).each do |d|
-    envia(d.proyectofinanciero_id, 'tiene un informe financiero', 
+    envia_alertapf(d.proyectofinanciero_id, 'tiene un informe financiero', 
           "en #{DIAS} días", d.fechaplaneada_localizada,
           [ "Detalle: #{d.detalle}"])
   end
@@ -68,7 +88,7 @@ def alertas
           estado NOT IN ('R', 'O'))").
     where(fechaplaneada: hoymasveinte).each do |d|
     puts "El proyecto #{d.proyectofinanciero_id} tiene una evaluación planeada en #{DIAS} días, el #{d.fechaplaneada}"
-    envia(d.proyectofinanciero_id, 'tiene una evaluación', 
+    envia_alertapf(d.proyectofinanciero_id, 'tiene una evaluación', 
           "en #{DIAS} días", d.fechaplaneada_localizada,
           [ "Detalle: #{d.detalle}"])
   end
@@ -78,7 +98,7 @@ def alertas
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
     where(fechaplaneada: hoymasveinte).each do |d|
-    envia(d.proyectofinanciero_id, 'tiene una auditoria', 
+    envia_alertapf(d.proyectofinanciero_id, 'tiene una auditoria', 
           "en #{DIAS} días", d.fechaplaneada_localizada,
           [ "Detalle: #{d.detalle}",
             "Presupuesto donante: #{d.presupuestodonante}",
@@ -91,7 +111,7 @@ def alertas
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
     where(fechaplaneada: hoymasveinte).each do |d|
-      envia(d.proyectofinanciero_id, 'tiene un producto', 
+      envia_alertapf(d.proyectofinanciero_id, 'tiene un producto', 
             "en #{DIAS} días", d.fechaplaneada_localizada,
             [ "Tipo: #{d.tipoproductopf.nombre if d.tipoproductopf_id}",
               "Costo previsto: #{d.costoprevisto}",
@@ -103,7 +123,7 @@ def alertas
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
     where(fechainiprod: hoymasveinte).each do |d|
-    envia(d.proyectofinanciero_id, 'inicia producción de un producto', 
+    envia_alertapf(d.proyectofinanciero_id, 'inicia producción de un producto', 
           "en #{DIAS} días", d.fechainiprod,
           [ "Tipo: #{d.tipoproductopf.nombre if d.tipoproductopf_id}",
             "Costo previsto: #{d.costoprevisto}",
@@ -117,7 +137,7 @@ def alertas
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
     where(fechafinprod: hoymasveinte).each do |d|
-    envia(d.proyectofinanciero_id, 'termina producción de un producto', 
+    envia_alertapf(d.proyectofinanciero_id, 'termina producción de un producto', 
           "en #{DIAS} días", d.fechafinprod,
           [ "Tipo: #{d.tipoproductopf.nombre if d.tipoproductopf_id}",
             "Costo previsto: #{d.costoprevisto}",
@@ -144,13 +164,71 @@ def elimina_generados
     puts res
 end
 
+def deshabilita_usuarios
+
+  mensaje = "".html_safe
+  ::Usuario.where(fechadeshabilitacion: nil).joins(:contrato).
+    where('contrato.fechafin <= ?',Date.today).each do |u|
+    #byebug
+    u.fechadeshabilitacion = Date.today
+    u.clave_ldap = ''
+    u.update(fechadeshabilitacion: u.fechadeshabilitacion,
+            encrypted_password: '')
+    if !u.valid?
+      mensaje = "No se pudo deshabilitar".html_safe
+    else
+      mensaje = "Fue deshabilitado en CRECER y en directorio LDAP".html_safe
+    end
+    puts "#{u.nusuario} #{mensaje}"
+    envia_alerta_usuario_des(u.nusuario, u.nombres, u.apellidos, 
+                             u.contrato.fechafin_localizada, [mensaje])
+  end
+
+end
+
+
+def elimina_actividades_en_blanco
+  ::Usuario.connection.execute <<-SQL
+  delete from cor1440_gen_actividad_proyectofinanciero where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+
+  delete from cor1440_gen_actividad_actividadpf where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+
+  update cor1440_gen_actividad set precedidapor=null where 
+    precedidapor in (select id from cor1440_gen_actividad where fecha is null);
+
+  delete from actividad_grupo where 
+    actividad_id in (select id from cor1440_gen_actividad where 
+      fecha is null);
+
+  delete from cor1440_gen_actividad_actorsocial where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+
+  delete from cor1440_gen_actividad_objetivopf where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+
+  delete from cor1440_gen_actividad where fecha is null;
+
+  SQL
+  
+end
+
 def run
   if !ENV['SMTP_MAQ']
     puts "No esta definida variable de ambiente SMTP_MAQ"
     exit 1
   end
-  alertas
-  elimina_generados
+  if !ENV['CRECERSINDES']
+    deshabilita_usuarios
+  end
+  if !ENV['CRECERSINALERTAS'] 
+    alertas
+  end
+  if !ENV['CRECERSINELIMGEN'] 
+    elimina_generados
+  end
+  elimina_actividades_en_blanco
 end
 
 run

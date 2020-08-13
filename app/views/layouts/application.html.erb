@@ -10,14 +10,16 @@
 <% content_for :menu do %>
   <%= grupo_menus do %>
     <% if !current_usuario.nil? %>
-      <% if can? :read, Cor1440Gen::Actividad %>
+      <% if can?(:read, Cor1440Gen::Actividad) || can?(:read, Sip::Actorsocial)  %>
         <%= despliega_abajo 'Actividades' do %>
-          <%= opcion_menu 'Listado', cor1440_gen.actividades_path,
-            desplegable: true %>
-          <%= opcion_menu 'Nueva Actividad', cor1440_gen.new_actividad_path,
-            desplegable: true %>
-          <%= opcion_menu 'Conteo de Actividades', 
-            cor1440_gen.contar_actividades_path, desplegable: true %>
+          <% if can?(:read, Cor1440Gen::Actividad) %>
+            <%= opcion_menu 'Listado', cor1440_gen.actividades_path,
+              desplegable: true %>
+            <%= opcion_menu 'Nueva Actividad', cor1440_gen.new_actividad_path,
+              desplegable: true %>
+            <%= opcion_menu 'Conteo de Actividades', 
+              cor1440_gen.contar_actividades_path, desplegable: true %>
+          <% end %>
           <% if can? :index, Sip::Actorsocial %>
             <%= opcion_menu 'Organizaciones Sociales', sip.actoressociales_path,
               desplegable: true %>
@@ -68,19 +70,19 @@
       <% end %>
 
       <%= despliega_abajo 'Datos' do %>
-        <% if can? :index, :busquedaunificada %>
-          <%= opcion_menu 'Búsqueda unificada', 
-            cor1440_gen.mindicadorespf_path,
+        <% if can? :read, ::Busqunif %>
+          <%= opcion_menu 'Consulta unificada', 
+            main_app.busqsunif_path,
             desplegable: true %>
         <% end %>
         <% if can? :index, :exploradordatosrel %>
           <%= opcion_menu 'Explorador visual de datos relacionados', 
-            cor1440_gen.mindicadorespf_path,
+            'http://181.143.184.115:2700/sivel2/casos/infomapa/',
             desplegable: true %>
         <% end %>
-        <% if can? :index, :conflictividades%>
+        <% if can? :index, :confytransf %>
           <%= opcion_menu 'Conflictividades y su transformación', 
-            cor1440_gen.mindicadorespf_path,
+            main_app.confytransf_path,
             desplegable: true %>
         <% end %>
         <% if can? :index, ::Ls %>
@@ -95,7 +97,7 @@
         <% end %>
         <% if can? :index, :dinamicas %>
            <%= opcion_menu 'Dinámicas del Conflicto', 
-             cor1440_gen.mindicadorespf_path,
+             main_app.dinamicasconflicto_path,
              desplegable: true %>
         <% end %>
         <%= opcion_menu 'Violencia Político Social', 
@@ -109,7 +111,7 @@
     <% end %>
   <% end %>
   <%= grupo_menus :pull => :right do %>
-    <% if can? :read, ::Heb412Gen::Doc %>
+    <% if can?(:read, Heb412Gen::Doc) %>
       <%= despliega_abajo 'Documentos y Plantillas' do %>
         <%= opcion_menu 'Nube', heb412_gen.sisini_path,
           desplegable: true %>
@@ -133,15 +135,13 @@
             desplegable: true %>
         <% end %>
       <% end %>
-    <% else %>
-      <%= opcion_menu 'Documentos y Plantillas', heb412_gen.sisini_path %>
     <% end %>
     <% if !current_usuario.nil? %>
       <%= despliega_abajo 'Administrar' do %>
         <%= opcion_menu 'Clave y tema', main_app.editar_registro_usuario_path,
           desplegable: true %>
         <%= opcion_menu 'Hacer solicitud TI', 
-          'https://ti.cinep.org.co:12443/ti',
+          'https://ti.cinep.org.co:12443/ti/',
           desplegable: true %>
         <% if can? :read, ::Usuario %>
           <%= opcion_menu 'Directorio/Organigrama', 

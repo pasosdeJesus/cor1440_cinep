@@ -21,7 +21,6 @@ class LssController < Heb412Gen::ModelosController
       "convocante_id",
       "orgconvocante",
       "dirig1",
-      "dirig1",
       "dirig2",
       "dirig3",
       "actor",
@@ -29,7 +28,7 @@ class LssController < Heb412Gen::ModelosController
       "partici2",
       "partici3",
       "tipo_lucha",
-      "accion",
+      #"accion",
       "motivopl",
       "motivopp",
       "motivo2",
@@ -40,10 +39,15 @@ class LssController < Heb412Gen::ModelosController
       "entidad1",
       "entidad2",
       "entidad3",
-      "fuente",
-      "ffuente",
-      "ffuen_1",
-      "descripcion"
+      "departamentos",
+      "municipios",
+      "fuentes",
+      "ffuentes",
+      "ffuens_1",
+      "descripciones",
+      "arch_imp",
+      "filaini_imp",
+      "filafin_imp"
     ] 
   end
 
@@ -62,8 +66,8 @@ class LssController < Heb412Gen::ModelosController
   def verificacsv
     authorize! :update, ::Ls
     if params && params[:filtro] && params[:filtro][:archivo]
-      nombre = Heb412Gen::ApplicationHelper.
-        sanea_nombre(params[:filtro][:archivo].original_filename)
+      nombre = File.basename(Heb412Gen::ApplicationHelper.
+        sanea_nombre(params[:filtro][:archivo].original_filename))
 
       rr1 = Rails.application.config.x.heb412_ruta.join("./generados/")
       rr2 = rr1.join(nombre)
@@ -152,7 +156,9 @@ class LssController < Heb412Gen::ModelosController
 
 
   def self.nombres_departamentos_equivalentes(cod_depto, nom, adivcod, depalternos, adv)
-    if adivcod[cod_depto][:departamento] == normaliza(nom)
+    nome  = adivcod[cod_depto][:departamento] 
+    nomnor = normaliza(nom)
+    if nome == nomnor
       return true
     end
 
@@ -165,6 +171,10 @@ class LssController < Heb412Gen::ModelosController
         end
       end
     end
+    if !alterno && levenshtein(nome, nomnor) < 3
+      return true
+    end
+
     return alterno
   end
 
@@ -181,7 +191,7 @@ class LssController < Heb412Gen::ModelosController
   end
 
 
-  def self.nombres_municipios_equivalentes(cod_depto, cod_muni, nom, adivcod)
+  def self.nombres_municipios_equivalentes(cod_depto, cod_muni, nom, adivcod, munalternos, adv)
     nofi = adivcod[cod_depto][:mun][cod_muni][:municipio]
     nomn = normaliza(nom)
     return true if nofi == nomn
@@ -203,89 +213,110 @@ class LssController < Heb412Gen::ModelosController
     # e.g LOPEZ (MICAY) y LOPEZ DE MICAY
     return true if nomn.gsub(/\(|\)/, "").gsub(/ de /, " ") == 
       nofi.gsub(/\(|\)/, "").gsub(/ de /, " ")
+
+    if munalternos[cod_muni]
+      munalternos[cod_muni].each do |an|
+        if nomn == normaliza(an)
+          adv << "Suponiendo municipio #{adivcod[cod_depto][:mun][cod_muni][:municipio].upcase}. "
+          return true
+        end
+      end
+    end
+
+
     if levenshtein(nomn, nofi) < 3
       return true
     end
     return false
   end
 
-  def self.salva_prob(probact, filasact, csverr, narchentbase)
+  def self.salva_prob(probact, filasact, csverr, narchentbase, frecerr)
     # Error. No puede guardarse registro de filasact
     # emitirlo a archivo de errores con problemas encontrados
     filasact.each do |l,c|
       lincsv = c.to_h.values
       if probact[l]
-        lincsv += ["#{narchentbase}:#{l+1}:Fila #{l+2} #{probact[l]}"]
+        mens = probact[l]
       else
-        lincsv += ["Rechazada por problema con la lucha social"]
+        mens = "Rechazada por problema en lucha social de varias filas"
       end
+      lincsv += ["#{narchentbase}:#{l+1}:Fila #{l+2}", mens]
+      frecerr[mens] = frecerr[mens].nil? ? 1 : frecerr[mens] + 1
       csverr << lincsv
     end
   end
 
 
   # Salvar anterior o reportar problemas en anterior
-  def self.salva_prob_o_registro(ls, probact, filasact, depls, csverr, importar, narchentbase)
+  # Retorna verdadero si no tiene problema
+  def self.salva_prob_o_registro(ls, probact, filasact, depls, 
+                                 csverr, importar, narchentbase, frecerr)
     if probact.size > 0
       # Error. No puede guardarse registro de filasact
       # emitirlo a archivo de errores con problemas encontrados
-      salva_prob(probact, filasact, csverr, narchentbase)
+      salva_prob(probact, filasact, csverr, narchentbase, frecerr)
+      return false
     elsif importar
       # No hay error, puede salvarse siempre y cuando se haya elegido
       # y asociarse a la información por departamento
+      ls.arch_imp = narchentbase
+      ls.filaini_imp = filasact.keys.first+2
+      ls.filafin_imp = filasact.keys.last+2
       if !ls.valid?
         probact[filasact.keys.first] = ls.errors.messages.values.join('. ')
-        salva_prob(probact, filasact, csverr, narchentbase)
-        return
+        salva_prob(probact, filasact, csverr, narchentbase, frecerr)
+        return false
       end
       ls.save!
-      depls.each do |infd|
-        if infd[:cod_depto].nil?
-          # Nacional ?
-          did = nil
-        else
-          sipdep = Sip::Departamento.where(id_pais: 170).
-           where(id_deplocal: infd[:cod_depto]).take
-          did = sipdep.id
-        end
-        depbd = ::Lsdep.new(
-          ls_id: ls.id,
-          departamento_id: did,
-          orden: infd[:registro],
-          fuente: infd[:fuente],
-          ffuente: infd[:ffuente],
-          ffuen_1: infd[:ffuen_1],
-          descripcion: infd[:memo])
-        if !depbd.valid?
-          ls.destroy
-          probact[filasact.keys.first] = depbd.errors.messages.values.join('. ')
-          salva_prob(probact, filasact, csverr, narchentbase)
-          return
-        end
-        depbd.save!
-        if did
-          orden = 1
-          infd[:mun].each do |cod_municipio|
-            # Descartar departamento DIVIPOLA
-            munlocal = cod_municipio % 1000 
-            sipmun = Sip::Municipio.where(id_departamento: sipdep.id).
-              where(id_munlocal: munlocal).take
-            munbd = ::Lsmun.new(lsdep_id: depbd.id,
-                                   orden: orden,
-                                   municipio_id: sipmun.id)
-            if !munbd.valid?
-              ls.destroy
-              probact[filasact.keys.first] = munbd.errors.messages.values.join('. ')
-              salva_prob(probact, filasact, csverr, narchentbase)
-              return
+      if depls.count > 0 && !depls[0][:cod_depto].nil?
+        depls.each do |infd|
+          if infd[:cod_depto].nil?
+            # Nacional ?
+            did = nil
+          else
+            sipdep = Sip::Departamento.where(id_pais: 170).
+              where(id_deplocal: infd[:cod_depto]).take
+            did = sipdep.id
+          end
+          depbd = ::Lsdep.new(
+            ls_id: ls.id,
+            departamento_id: did,
+            orden: infd[:registro],
+            fuente: infd[:fuente],
+            ffuente: infd[:ffuente],
+            ffuen_1: infd[:ffuen_1],
+            descripcion: infd[:memo])
+          if !depbd.valid?
+            ls.destroy
+            probact[filasact.keys.first] = depbd.errors.messages.values.join('. ')
+            salva_prob(probact, filasact, csverr, narchentbase, frecerr)
+            return false
+          end
+          depbd.save!
+          if did
+            orden = 1
+            infd[:mun].each do |cod_municipio|
+              # Descartar departamento DIVIPOLA
+              munlocal = cod_municipio % 1000 
+              sipmun = Sip::Municipio.where(id_departamento: sipdep.id).
+                where(id_munlocal: munlocal).take
+              munbd = ::Lsmun.new(lsdep_id: depbd.id,
+                                  orden: orden,
+                                  municipio_id: sipmun.id)
+              if !munbd.valid?
+                ls.destroy
+                probact[filasact.keys.first] = munbd.errors.messages.values.join('. ')
+                salva_prob(probact, filasact, csverr, narchentbase, frecerr)
+                return false
+              end
+              munbd.save!
+              orden += 1
             end
-            munbd.save!
-            orden += 1
           end
         end
-      end
-
+      end # if tiene departamento que no es nacional
     end
+    return true
 
   end
 
@@ -328,6 +359,10 @@ class LssController < Heb412Gen::ModelosController
       76 => ['VALLE'],
       88 => ['SAN ANDRÉS'],
     }
+    munalternos={
+      13468 => ['Mompós'],
+    }
+
 
     coberturas = ['S', 'N', 'M', 'SR', 'I', 'D', 'R']
 
@@ -473,6 +508,7 @@ class LssController < Heb412Gen::ModelosController
 
     csal = 0
     numls = 0
+    numls_sinp = 0
     sinprob = 0
     ultregistro = 0 # 0 Indica que no hay anterior
     ultfecha = nil
@@ -483,11 +519,12 @@ class LssController < Heb412Gen::ModelosController
     ls = nil   # Lucha social que construye en filasact
     depls = []   # Departamentos que lleva la lucha de filasact
 
+    frecerr = {} # Frecuencia de los errores reportados
 
     CSV.open(rutaerr, "wb") do |csverr|
-      csverr << (csv.headers + ['PROBLEMAS'])
+      csverr << (csv.headers + ['UBICACIONPROB', 'PROBLEMAS'])
       CSV.open(rutaadv, "wb") do |csvadv|
-        csvadv << (csv.headers + ['ADVERTENCIAS'])
+        csvadv << (csv.headers + ['UBICACIONADV', 'ADVERTENCIAS'])
         (0..csv.count-1).each do |cfila|
 
           prob = ''  # Problemas en la línea (por acumular probact al final de análisis de la línea)
@@ -496,7 +533,7 @@ class LssController < Heb412Gen::ModelosController
           if !csv[cfila][enc[:registro]]
             prob << "Se esperaba valor para REGISTRO. "
             if cfila > 0 
-              tprob = "Registro de fila #{cfila+2} pierde secuencia"
+              tprob = "Registro de fila #{cfila+2} pierde secuencia. "
               if probact[cfila -1]
                 probact[cfila-1] << tprob
               else
@@ -514,7 +551,7 @@ class LssController < Heb412Gen::ModelosController
           elsif cfila > 0 && registro != 1 
             if ultregistro + 1 != registro
               if cfila > 0
-                tprob = "Registro de fila #{cfila+2} pierde secuencia"
+                tprob = "Registro de fila #{cfila+2} pierde secuencia. "
                 if probact[cfila-1]
                   probact[cfila-1] << tprob
                 else
@@ -526,8 +563,12 @@ class LssController < Heb412Gen::ModelosController
           end
 
           if registro == 1 && filasact.size > 0
+            numls += 1
             # Salvar o reportar problema porque se inicia nueva lucha
-            salva_prob_o_registro(ls, probact, filasact, depls, csverr, importar, narchentbase)
+            if salva_prob_o_registro(ls, probact, filasact, depls, 
+                csverr, importar, narchentbase, frecerr)
+              numls_sinp += 1
+            end
             filasact = {}
             probact = {}
             ls = nil   # Lucha social que construye en filasact
@@ -550,7 +591,7 @@ class LssController < Heb412Gen::ModelosController
               # Autocompleta fecha conn 15/Jun del año y mes_inexacto es verdadero
               fecha = Date.new(anio, 6, 15)
               mes_inexacto = true
-              adv << "Suponiendo que la fecha es 15/Jun/#{anio} con mes inexacto"
+              adv << "Suponiendo que la fecha es 15/Jun/#{anio} con mes inexacto. "
             end
           else
             me = ''
@@ -572,7 +613,7 @@ class LssController < Heb412Gen::ModelosController
           # Podria usarse ls para comparar con anterior en caso que registro>1
           if registro == 1
             if !csv[cfila][enc[:cobertura]]  || csv[cfila][enc[:cobertura]].strip.empty?
-              prob << "Se esperaba algún valor en #{enc[:cobertura]}"
+              prob << "Se esperaba algún valor en #{enc[:cobertura]}. "
             elsif !coberturas.include?(csv[cfila][enc[:cobertura]].strip.upcase)
               prob << "#{enc[:cobertura]} desconocido: #{csv[cfila][enc[:cobertura]]}. "
             else
@@ -651,7 +692,7 @@ class LssController < Heb412Gen::ModelosController
                   cod_muni = nil
                   adivcod[cod_depto][:mun].each do |cm, r|
                     if nombres_municipios_equivalentes(cod_depto, cm, 
-                        csv[cfila][enc[mpio.to_sym]], adivcod)
+                        csv[cfila][enc[mpio.to_sym]], adivcod, munalternos, adv)
                       cod_muni = cm
                       break
                     end
@@ -673,7 +714,7 @@ class LssController < Heb412Gen::ModelosController
                   cod_muni = nil
                   adivcod[cod_depto][:mun].each do |cm, r|
                     if nombres_municipios_equivalentes(cod_depto, cm, 
-                        csv[cfila][enc[muni.to_sym]], adivcod)
+                        csv[cfila][enc[muni.to_sym]], adivcod, munalternos, adv)
                       cod_muni = cm
                       break
                     end
@@ -693,7 +734,7 @@ class LssController < Heb412Gen::ModelosController
                 if cod_muni >= 0 && cod_depto > 0 && 
                     !adivcod[cod_depto][:mun][cod_muni]
                   prob << "DIVIPOLA no tiene código de municipio #{cod_muni}. "
-                elsif !nombres_municipios_equivalentes(cod_depto, cod_muni, csv[cfila][enc[mpio.to_sym]], adivcod)
+                elsif !nombres_municipios_equivalentes(cod_depto, cod_muni, csv[cfila][enc[mpio.to_sym]], adivcod, munalternos, adv)
                   prob << "En campo #{enc[mpio.to_sym]} se esperaba algo como '#{adivcod[cod_depto][:mun][cod_muni][:municipio].upcase}' pero se encontró '#{csv[cfila][enc[mpio.to_sym]]}'. "
                 else
                   # Bien este municipio
@@ -809,7 +850,7 @@ class LssController < Heb412Gen::ModelosController
 
           # Fuente
           if registro == 1 && (!csv[cfila][enc[:fuente]] || csv[cfila][enc[:fecha]].strip.empty?)
-            prob << "Falta #{enc[:fuente]}. "
+            adv << "Falta #{enc[:fuente]}. "
           elsif csv[cfila][enc[:fuente]] && csv[cfila][enc[:fuente]].length > 512
             prob << "Valor en campo #{enc[:fuente]} de más de 512 caracteres. "
           end
@@ -821,7 +862,7 @@ class LssController < Heb412Gen::ModelosController
 
           # Fecha fuente
           if registro == 1 && (!csv[cfila][enc[:ffuente]] || csv[cfila][enc[:ffuente]].strip.empty?)
-            prob << "Falta #{enc[:ffuente]}. "
+            adv << "Falta #{enc[:ffuente]}. "
           end
           if csv[cfila][enc[:ffuente]] && !csv[cfila][enc[:ffuente]].strip.empty?
             me = ''
@@ -843,12 +884,12 @@ class LssController < Heb412Gen::ModelosController
           end
 
           if fuente && !ffuente
-            prob << "Hay  #{enc[:fuente]} pero no #{enc[:ffuente]}. "
+            adv << "Hay  #{enc[:fuente]} pero no #{enc[:ffuente]}. "
           elsif !fuente && ffuente
-            prob << "Hay  #{enc[:ffuente]} pero no #{enc[:fuente]}. "
+            adv << "Hay  #{enc[:ffuente]} pero no #{enc[:fuente]}. "
           elsif fuente && ffuente && depls.size > 0
-            depls.last[fuente] = fuente
-            depls.last[ffuente] = ffuente
+            depls.last[:fuente] = fuente
+            depls.last[:ffuente] = ffuente
           end
 
 
@@ -872,9 +913,9 @@ class LssController < Heb412Gen::ModelosController
           end
 
           if !fuente && ffuen_1
-            prob << "Hay  #{enc[:ffuen_1]} pero no #{enc[:fuente]}. "
+            adv << "Hay  #{enc[:ffuen_1]} pero no #{enc[:fuente]}. "
           elsif fuente && ffuen_1 && depls.size > 0
-            depls.last[ffuen_1] = ffuen_1
+            depls.last[:ffuen_1] = ffuen_1
           end
 
 
@@ -883,7 +924,7 @@ class LssController < Heb412Gen::ModelosController
               csv[cfila][enc[:memo]].strip.empty?)
             prob << 'Falta MEMO en registro 1. '
           end
-          memo = ver_long(csv, cfila, enc[:memo], 5000, prob)
+          memo = ver_long(csv, cfila, enc[:memo], 6000, prob)
           if !csv[cfila][enc[:memo]].nil? && depls.size > 0
             depls.last[:memo] = memo
           end
@@ -893,7 +934,7 @@ class LssController < Heb412Gen::ModelosController
 
           if adv != ''
             csvadv << csv[cfila].to_h.values + 
-              ["#{narchentbase}:#{cfila+1}:Fila #{cfila+2} #{adv}"]
+              ["#{narchentbase}:#{cfila+1}:Fila #{cfila+2}","#{adv}"]
           end
 
           filasact[cfila] = csv[cfila]
@@ -916,7 +957,7 @@ class LssController < Heb412Gen::ModelosController
                 partici2: partici2,
                 partici3: partici3,
                 tipo_lucha: tipo_lucha,
-                accion: accion,
+                #accion: accion,
                 motivopl: motivopl,
                 motivopp: motivopp,
                 motivo2: motivo2,
@@ -946,17 +987,27 @@ class LssController < Heb412Gen::ModelosController
           yield(csv.count, cfila) if block_given?
         end
         if filasact.size > 0
-          salva_prob_o_registro(ls, probact, filasact, depls, csverr, importar, narchentbase)
+          if salva_prob_o_registro(ls, probact, filasact, depls, 
+              csverr, importar, narchentbase, frecerr)
+            numls_sinp += 1
+          end
         end
-      
+     
+       # Frecuencia de problemas se deja al final del archivo de advertencias 
+        fblanco = csv.headers.map {|x| ''}
+        frecerr.sort_by(&:last).each do |p|
+          csvadv << fblanco + ['', p[0], p[1]]
+        end
 
       end #csvadv
     end #csverr
 
-
-    p1 = (csv.count-sinprob)*1000/csv.count
-    p2 = (sinprob)*1000/csv.count
+    
+    p1 = csv.count > 0 ? (csv.count-sinprob)*1000/csv.count : 0
+    p2 = csv.count > 0 ? (sinprob)*1000/csv.count : 0
+    s = numls > 0 ? (numls_sinp)*1000/numls : 0
     puts "De los #{csv.count} registros, tienen problema #{csv.count-sinprob} (#{p1.round/10.0}%) y no tienen problema #{sinprob} (#{p2.round/10.0}%)"
+    puts "De las #{numls} luchas sociales, no tienen problema #{numls_sinp} (#{s.round/10.0}%)"
 
     n=File.join('/tmp', 'err-ls.csv')
 

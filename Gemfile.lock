@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 2b38e199b755c183926703966b589ba4f85f8582
+  revision: 11f922bea4d9e7ae2676707557c2afa192dfd57b
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5b3fa62999481cb96956af96dd648e4901a67e05
+  revision: b3ed3af550b604c04e49d3a74806fa0c428bc364
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: baac9ff7bcc2eee0c19a3b99f6024bbd9774d2e6
+  revision: a3fdc1886d6e907aee2c1ad4728f3ca0fe560b3d
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 190270906c819e77e608ba7a54a23dd281ae69e2
+  revision: 2631b301cc0cd2f477cc5463db591cefce0181f3
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 4224752940f549b894b1bb992feb7dbf7ca48018
+  revision: af9e0969b3dd2cf0c7c4e222b2b7e64b6859ce76
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: a9d0d1617577874899e07fddf0eabbb392d7ea87
+  revision: 4a9da0939de7879505847dfb4bb9c970d4cfa244
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 3fc10e36adfdecf649d1f158d80c3ef40189d5bb
+  revision: d7ec7a5c0932bf98089d2226375bde46b26bc5f8
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 3e7090aaaa51bf9c6ca355c624df5c67cdab90c2
+  revision: 62275db3f129586589a79f6ca431dcfcf09be793
   specs:
     sip (2.0.b10)
       cancancan
@@ -150,7 +150,7 @@ GEM
     andand (1.3.3)
     bcrypt (3.1.15)
     bindex (0.8.1)
-    bootsnap (1.4.7)
+    bootsnap (1.4.8)
       msgpack (~> 1.0)
     builder (3.2.4)
     camertron-eprun (1.1.1)
@@ -178,10 +178,9 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     crass (1.0.6)
-    csv (3.1.6)
-      stringio (>= 0.1.3)
+    csv (3.1.7)
     devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -242,11 +241,11 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    pdf-core (0.7.0)
+    pdf-core (0.8.1)
     pg (1.2.3)
-    prawn (2.2.2)
-      pdf-core (~> 0.7.0)
-      ttfunk (~> 1.5)
+    prawn (2.3.0)
+      pdf-core (~> 0.8.1)
+      ttfunk (~> 1.6)
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
     prawnto_2 (0.3.0)
@@ -333,7 +332,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stringio (0.1.3)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.0.1)

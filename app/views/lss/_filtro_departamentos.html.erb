@@ -1,0 +1,13 @@
+<% col = Sip::Departamento.where(
+  'fechadeshabilitacion IS NULL') %>
+<%= f.input :busdepartamentos,
+  collection: col.where(id_pais: 170),
+  include_blank: true,
+  label_method: :presenta_nombre,
+  value_method: :id,
+  label: false,
+  selected: Sip::ModeloHelper.poromision(params, :busdepartamentos),
+  input_html: {
+    'data-enviarautomatico' => ''
+  }
+%>

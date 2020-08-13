@@ -124,7 +124,7 @@ module Cor1440Gen
       ln = @colgrupos.map(&:cn)
       nn = []
       ln.each do |n|
-        if n[0..4] == 'Linea'
+        if n && n[0..4] == 'Linea'
           nn << 'Coordinador' + n[5..-1]
           ng = Sip::Grupo.where(cn: nn).take
           if ng

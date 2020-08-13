@@ -1,0 +1,11 @@
+<% if registro.base == 'BD' ||
+  (registro.base == 'LS' && can?(:read, ::Ls)) ||
+  (registro.base == 'ACP' && can?(:read, ::Acp))
+%>
+  <a href="<%= registro.url %>">
+    <i class='fa fa-bolt'></i><%= registro.base %> <%= registro.idbase %>
+  </a>
+<% else %>
+  <%= registro.base %> <%= registro.idbase %>
+<% end %>
+

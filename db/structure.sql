@@ -171,7 +171,9 @@ CREATE TABLE public.acp (
     cobertura_id integer DEFAULT 1 NOT NULL,
     motivo_id integer DEFAULT 1 NOT NULL,
     descripcion character varying(5000) NOT NULL,
-    mesini_inexacto boolean DEFAULT false
+    mesini_inexacto boolean DEFAULT false,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -195,12 +197,115 @@ ALTER SEQUENCE public.acp_id_seq OWNED BY public.acp.id;
 
 
 --
+-- Name: acpactor; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpactor (
+    id bigint NOT NULL,
+    acp_id integer NOT NULL,
+    actor3 character varying(500),
+    actor2_id integer NOT NULL,
+    papel_id integer NOT NULL,
+    formap_id integer NOT NULL,
+    nump integer
+);
+
+
+--
+-- Name: acpactor1; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpactor1 (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpactor1_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpactor1_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpactor1_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpactor1_id_seq OWNED BY public.acpactor1.id;
+
+
+--
+-- Name: acpactor2; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpactor2 (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    actor1_id integer NOT NULL,
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpactor2_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpactor2_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpactor2_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpactor2_id_seq OWNED BY public.acpactor2.id;
+
+
+--
+-- Name: acpactor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpactor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpactor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpactor_id_seq OWNED BY public.acpactor.id;
+
+
+--
 -- Name: acpcataccion; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.acpcataccion (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -235,7 +340,7 @@ ALTER SEQUENCE public.acpcataccion_id_seq OWNED BY public.acpcataccion.id;
 
 CREATE TABLE public.acpcatmotivo (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -269,7 +374,7 @@ ALTER SEQUENCE public.acpcatmotivo_id_seq OWNED BY public.acpcatmotivo.id;
 
 CREATE TABLE public.acpcobertura (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -303,7 +408,7 @@ ALTER SEQUENCE public.acpcobertura_id_seq OWNED BY public.acpcobertura.id;
 
 CREATE TABLE public.acpestrategia (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -332,12 +437,109 @@ ALTER SEQUENCE public.acpestrategia_id_seq OWNED BY public.acpestrategia.id;
 
 
 --
+-- Name: acpformap; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpformap (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acpformap_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpformap_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpformap_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpformap_id_seq OWNED BY public.acpformap.id;
+
+
+--
+-- Name: acpfuente; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acpfuente (
+    id bigint NOT NULL,
+    acp_id integer NOT NULL,
+    fuente character varying(127) NOT NULL,
+    pagina character varying(63),
+    ffuente date NOT NULL
+);
+
+
+--
+-- Name: acpfuente_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acpfuente_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acpfuente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acpfuente_id_seq OWNED BY public.acpfuente.id;
+
+
+--
+-- Name: acplugar; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acplugar (
+    id bigint NOT NULL,
+    acp_id integer NOT NULL,
+    departamento_id integer NOT NULL,
+    municipio_id integer
+);
+
+
+--
+-- Name: acplugar_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acplugar_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acplugar_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acplugar_id_seq OWNED BY public.acplugar.id;
+
+
+--
 -- Name: acpmotivo; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.acpmotivo (
     id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     observaciones character varying(5000),
     fechacreacion date NOT NULL,
     fechadeshabilitacion date,
@@ -364,6 +566,40 @@ CREATE SEQUENCE public.acpmotivo_id_seq
 --
 
 ALTER SEQUENCE public.acpmotivo_id_seq OWNED BY public.acpmotivo.id;
+
+
+--
+-- Name: acppapel; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acppapel (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: acppapel_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.acppapel_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: acppapel_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.acppapel_id_seq OWNED BY public.acppapel.id;
 
 
 --
@@ -816,6 +1052,43 @@ CREATE SEQUENCE public.areaestudios_id_seq
 --
 
 ALTER SEQUENCE public.areaestudios_id_seq OWNED BY public.areaestudios.id;
+
+
+--
+-- Name: busqunif; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.busqunif (
+    id bigint NOT NULL,
+    base character varying(5) NOT NULL,
+    idbase integer NOT NULL,
+    url character varying(1024) NOT NULL,
+    fecha date NOT NULL,
+    departamento character varying(1024),
+    municipio character varying(1024),
+    descripcion character varying(6000) NOT NULL,
+    fuentes character varying(2048),
+    fechafuentes character varying(2048)
+);
+
+
+--
+-- Name: busqunif_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.busqunif_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: busqunif_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.busqunif_id_seq OWNED BY public.busqunif.id;
 
 
 --
@@ -2281,7 +2554,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    monto numeric DEFAULT 0.0,
+    monto numeric(20,2) DEFAULT 0.0,
     referencia character varying(1000),
     referenciacinep character varying(1000),
     fuentefinanciador character varying(1000),
@@ -2298,7 +2571,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric DEFAULT 0.0,
+    presupuestototal numeric(20,2) DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -2473,12 +2746,12 @@ ALTER SEQUENCE public.cor1440_gen_resultadopf_id_seq OWNED BY public.cor1440_gen
 CREATE TABLE public.cor1440_gen_tipoindicador (
     id bigint NOT NULL,
     nombre character varying(32),
+    medircon integer,
     espcampos character varying(1000),
     espvaloresomision character varying(1000),
     espvalidaciones character varying(1000),
     esptipometa character varying(32),
     espfuncionmedir character varying(1000),
-    medircon integer,
     desc20 character varying(128),
     desc40 character varying(128),
     desc60 character varying(128),
@@ -2574,6 +2847,108 @@ CREATE SEQUENCE public.cor1440_gen_valorcampotind_id_seq
 --
 
 ALTER SEQUENCE public.cor1440_gen_valorcampotind_id_seq OWNED BY public.cor1440_gen_valorcampotind.id;
+
+
+--
+-- Name: csivinivelgeo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.csivinivelgeo (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: csivinivelgeo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.csivinivelgeo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: csivinivelgeo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.csivinivelgeo_id_seq OWNED BY public.csivinivelgeo.id;
+
+
+--
+-- Name: csivinivelresp; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.csivinivelresp (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: csivinivelresp_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.csivinivelresp_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: csivinivelresp_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.csivinivelresp_id_seq OWNED BY public.csivinivelresp.id;
+
+
+--
+-- Name: csivitema; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.csivitema (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: csivitema_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.csivitema_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: csivitema_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.csivitema_id_seq OWNED BY public.csivitema.id;
 
 
 --
@@ -3324,7 +3699,6 @@ CREATE TABLE public.ls (
     partici2 character varying(512),
     partici3 character varying(512),
     tipo_lucha character varying(3),
-    accion integer,
     motivopl integer,
     motivopp character varying(512),
     motivo2 character varying(512),
@@ -3338,7 +3712,12 @@ CREATE TABLE public.ls (
     fuente character varying(512),
     ffuente date,
     ffuen_1 date,
-    descripcion character varying(5000)
+    descripcion character varying(6000),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    arch_imp character varying(512),
+    filaini_imp integer,
+    filafin_imp integer
 );
 
 
@@ -3408,7 +3787,7 @@ CREATE TABLE public.lsdep (
     fuente character varying(512),
     ffuente date,
     ffuen_1 date,
-    descripcion character varying(5000)
+    descripcion character varying(6000)
 );
 
 
@@ -4285,6 +4664,7 @@ CREATE TABLE public.sal7711_gen_articulo (
     pagina character varying(20),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
+    url character varying(5000),
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
@@ -4292,10 +4672,9 @@ CREATE TABLE public.sal7711_gen_articulo (
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
+    pais_id integer,
     titulo character varying(1024),
-    observaciones character varying(5000),
-    url character varying(5000),
-    pais_id integer
+    observaciones character varying(5000)
 );
 
 
@@ -4509,7 +4888,10 @@ CREATE TABLE public.sip_actorsocial (
     ciudad character varying(100),
     nivelrelacion_id integer,
     lineabase20182020 boolean,
-    fechadeshabilitacion date
+    fechadeshabilitacion date,
+    csivinivelgeo_id integer,
+    csivitema_id integer,
+    csivinivelresp_id integer
 );
 
 
@@ -5633,6 +6015,8 @@ CREATE TABLE public.usuario (
     updated_at timestamp without time zone,
     regionsjr_id integer,
     oficina_id integer DEFAULT 1,
+    nombres character varying(50) DEFAULT 'N'::character varying NOT NULL COLLATE public.es_co_utf_8,
+    apellidos character varying(50) DEFAULT 'N'::character varying NOT NULL COLLATE public.es_co_utf_8,
     ultimasincldap date,
     "uidNumber" integer,
     telefonos character varying(256),
@@ -5643,8 +6027,6 @@ CREATE TABLE public.usuario (
     numhijosmen12 integer DEFAULT 0,
     labdepartamento_id integer,
     labmunicipio_id integer,
-    apellidos character varying(127),
-    nombres character varying(127),
     perfilprofesional_id integer,
     cargo_id integer,
     contrato_id integer,
@@ -5732,7 +6114,7 @@ CREATE VIEW public.v_solicitud_informes AS
         END AS a_tiempo
    FROM (public.cor1440_gen_proyectofinanciero p
      JOIN public.v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[125, 129, 128, 161, 173, 193, 194, 196, 103, 102, 111, 127, 109, 130, 133, 134, 131, 123, 132, 136, 104, 293, 237, 238, 239, 240, 119, 164, 20, 174, 190, 163, 195, 197, 122, 141, 142, 143, 144, 145, 147, 152, 146, 155, 137, 101, 138, 175, 149, 167, 166, 18, 150, 156, 120, 236, 116, 158, 176, 177, 170, 178, 179, 106, 118, 115, 171, 180, 157, 159, 172, 198, 199, 200, 201, 202, 168, 206, 117, 126, 233, 234, 235, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 254, 255, 256, 257, 295, 260, 267, 272, 286, 276, 309, 278, 280, 288, 19, 162, 140]))
+  WHERE (p.id = ANY (ARRAY[18, 118, 120, 131, 139]))
   ORDER BY s.fechaplaneada;
 
 
@@ -5800,6 +6182,27 @@ ALTER TABLE ONLY public.acp ALTER COLUMN id SET DEFAULT nextval('public.acp_id_s
 
 
 --
+-- Name: acpactor id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor ALTER COLUMN id SET DEFAULT nextval('public.acpactor_id_seq'::regclass);
+
+
+--
+-- Name: acpactor1 id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor1 ALTER COLUMN id SET DEFAULT nextval('public.acpactor1_id_seq'::regclass);
+
+
+--
+-- Name: acpactor2 id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor2 ALTER COLUMN id SET DEFAULT nextval('public.acpactor2_id_seq'::regclass);
+
+
+--
 -- Name: acpcataccion id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -5828,10 +6231,38 @@ ALTER TABLE ONLY public.acpestrategia ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
+-- Name: acpformap id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpformap ALTER COLUMN id SET DEFAULT nextval('public.acpformap_id_seq'::regclass);
+
+
+--
+-- Name: acpfuente id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpfuente ALTER COLUMN id SET DEFAULT nextval('public.acpfuente_id_seq'::regclass);
+
+
+--
+-- Name: acplugar id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acplugar ALTER COLUMN id SET DEFAULT nextval('public.acplugar_id_seq'::regclass);
+
+
+--
 -- Name: acpmotivo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.acpmotivo ALTER COLUMN id SET DEFAULT nextval('public.acpmotivo_id_seq'::regclass);
+
+
+--
+-- Name: acppapel id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acppapel ALTER COLUMN id SET DEFAULT nextval('public.acppapel_id_seq'::regclass);
 
 
 --
@@ -5888,6 +6319,13 @@ ALTER TABLE ONLY public.anexo_usuario ALTER COLUMN id SET DEFAULT nextval('publi
 --
 
 ALTER TABLE ONLY public.areaestudios ALTER COLUMN id SET DEFAULT nextval('public.areaestudios_id_seq'::regclass);
+
+
+--
+-- Name: busqunif id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.busqunif ALTER COLUMN id SET DEFAULT nextval('public.busqunif_id_seq'::regclass);
 
 
 --
@@ -6168,6 +6606,27 @@ ALTER TABLE ONLY public.cor1440_gen_valorcampoact ALTER COLUMN id SET DEFAULT ne
 --
 
 ALTER TABLE ONLY public.cor1440_gen_valorcampotind ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_valorcampotind_id_seq'::regclass);
+
+
+--
+-- Name: csivinivelgeo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivinivelgeo ALTER COLUMN id SET DEFAULT nextval('public.csivinivelgeo_id_seq'::regclass);
+
+
+--
+-- Name: csivinivelresp id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivinivelresp ALTER COLUMN id SET DEFAULT nextval('public.csivinivelresp_id_seq'::regclass);
+
+
+--
+-- Name: csivitema id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivitema ALTER COLUMN id SET DEFAULT nextval('public.csivitema_id_seq'::regclass);
 
 
 --
@@ -6648,6 +7107,30 @@ ALTER TABLE ONLY public.acp
 
 
 --
+-- Name: acpactor1 acpactor1_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor1
+    ADD CONSTRAINT acpactor1_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpactor2 acpactor2_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor2
+    ADD CONSTRAINT acpactor2_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpactor acpactor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor
+    ADD CONSTRAINT acpactor_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: acpcataccion acpcataccion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -6680,11 +7163,43 @@ ALTER TABLE ONLY public.acpestrategia
 
 
 --
+-- Name: acpformap acpformap_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpformap
+    ADD CONSTRAINT acpformap_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acpfuente acpfuente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpfuente
+    ADD CONSTRAINT acpfuente_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acplugar acplugar_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acplugar
+    ADD CONSTRAINT acplugar_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: acpmotivo acpmotivo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.acpmotivo
     ADD CONSTRAINT acpmotivo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: acppapel acppapel_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acppapel
+    ADD CONSTRAINT acppapel_pkey PRIMARY KEY (id);
 
 
 --
@@ -6757,6 +7272,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.areaestudios
     ADD CONSTRAINT areaestudios_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: busqunif busqunif_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.busqunif
+    ADD CONSTRAINT busqunif_pkey PRIMARY KEY (id);
 
 
 --
@@ -7069,6 +7592,30 @@ ALTER TABLE ONLY public.cor1440_gen_valorcampoact
 
 ALTER TABLE ONLY public.cor1440_gen_valorcampotind
     ADD CONSTRAINT cor1440_gen_valorcampotind_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: csivinivelgeo csivinivelgeo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivinivelgeo
+    ADD CONSTRAINT csivinivelgeo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: csivinivelresp csivinivelresp_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivinivelresp
+    ADD CONSTRAINT csivinivelresp_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: csivitema csivitema_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.csivitema
+    ADD CONSTRAINT csivitema_pkey PRIMARY KEY (id);
 
 
 --
@@ -8104,6 +8651,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_valorcampotind
 
 
 --
+-- Name: sip_actorsocial fk_rails_015c235091; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_actorsocial
+    ADD CONSTRAINT fk_rails_015c235091 FOREIGN KEY (csivinivelgeo_id) REFERENCES public.csivinivelgeo(id);
+
+
+--
 -- Name: actor_sectoractor fk_rails_01abd767ad; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8192,6 +8747,14 @@ ALTER TABLE ONLY public.cor1440_gen_efecto_respuestafor
 
 
 --
+-- Name: acpactor fk_rails_0c0da473b1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor
+    ADD CONSTRAINT fk_rails_0c0da473b1 FOREIGN KEY (actor2_id) REFERENCES public.acpactor2(id);
+
+
+--
 -- Name: cor1440_gen_financiador_proyectofinanciero fk_rails_0cd09d688c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8205,6 +8768,14 @@ ALTER TABLE ONLY public.cor1440_gen_financiador_proyectofinanciero
 
 ALTER TABLE ONLY public.informeevaluacion
     ADD CONSTRAINT fk_rails_0dc2f89fdb FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: acpactor fk_rails_0e70820cc7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor
+    ADD CONSTRAINT fk_rails_0e70820cc7 FOREIGN KEY (formap_id) REFERENCES public.acpformap(id);
 
 
 --
@@ -8429,6 +9000,14 @@ ALTER TABLE ONLY public.cor1440_gen_informe
 
 ALTER TABLE ONLY public.cor1440_gen_actividad
     ADD CONSTRAINT fk_rails_2983c828da FOREIGN KEY (redactor_id) REFERENCES public.redactor(id);
+
+
+--
+-- Name: acplugar fk_rails_29e94b70f3; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acplugar
+    ADD CONSTRAINT fk_rails_29e94b70f3 FOREIGN KEY (acp_id) REFERENCES public.acp(id);
 
 
 --
@@ -8824,6 +9403,14 @@ ALTER TABLE ONLY public.cor1440_gen_plantillahcm_proyectofinanciero
 
 
 --
+-- Name: sip_actorsocial fk_rails_6352234eea; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_actorsocial
+    ADD CONSTRAINT fk_rails_6352234eea FOREIGN KEY (csivitema_id) REFERENCES public.csivitema(id);
+
+
+--
 -- Name: mr519_gen_opcioncs fk_rails_656b4a3ca7; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8880,6 +9467,14 @@ ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcm
 
 
 --
+-- Name: acpactor fk_rails_6e7c1bf061; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor
+    ADD CONSTRAINT fk_rails_6e7c1bf061 FOREIGN KEY (papel_id) REFERENCES public.acppapel(id);
+
+
+--
 -- Name: cor1440_gen_actividadpf_mindicadorpf fk_rails_6e9cbecf02; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8917,6 +9512,22 @@ ALTER TABLE ONLY public.tipomoneda
 
 ALTER TABLE ONLY public.cor1440_gen_actividad_actorsocial
     ADD CONSTRAINT fk_rails_70b1848d0a FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
+
+
+--
+-- Name: acpfuente fk_rails_72813dff94; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpfuente
+    ADD CONSTRAINT fk_rails_72813dff94 FOREIGN KEY (acp_id) REFERENCES public.acp(id);
+
+
+--
+-- Name: sip_actorsocial fk_rails_72a3138a71; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_actorsocial
+    ADD CONSTRAINT fk_rails_72a3138a71 FOREIGN KEY (csivinivelresp_id) REFERENCES public.csivinivelresp(id);
 
 
 --
@@ -9536,6 +10147,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividadpf_mindicadorpf
 
 
 --
+-- Name: acpactor2 fk_rails_d0c4fbe5b7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor2
+    ADD CONSTRAINT fk_rails_d0c4fbe5b7 FOREIGN KEY (actor1_id) REFERENCES public.acpactor1(id);
+
+
+--
 -- Name: cor1440_gen_proyectofinanciero fk_rails_d0ff83bfc6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9685,6 +10304,14 @@ ALTER TABLE ONLY public.lsdep
 
 ALTER TABLE ONLY public.cor1440_gen_actividad_valorcampotind
     ADD CONSTRAINT fk_rails_e8cd697f5d FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
+
+
+--
+-- Name: acpactor fk_rails_ed8dab1f2c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acpactor
+    ADD CONSTRAINT fk_rails_ed8dab1f2c FOREIGN KEY (acp_id) REFERENCES public.acp(id);
 
 
 --
@@ -10166,7 +10793,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026130000'),
 ('20171026144919'),
 ('20171026172501'),
-('20171114185712'),
 ('20171123212504'),
 ('20171128234148'),
 ('20171130125044'),
@@ -10253,7 +10879,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180501225617'),
 ('20180502083127'),
 ('20180509111948'),
-('20180509114933'),
 ('20180509125608'),
 ('20180519102415'),
 ('20180522102059'),
@@ -10450,6 +11075,30 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200727021707'),
 ('20200727224008'),
 ('20200728090902'),
-('20200728091746');
+('20200728091746'),
+('20200802112451'),
+('20200803095317'),
+('20200803121409'),
+('20200804230440'),
+('20200805080748'),
+('20200805082319'),
+('20200805095206'),
+('20200805130501'),
+('20200805141624'),
+('20200805151434'),
+('20200805160011'),
+('20200805160338'),
+('20200807152542'),
+('20200807154550'),
+('20200807154641'),
+('20200807154719'),
+('20200810110441'),
+('20200810153501'),
+('20200810164753'),
+('20200810165931'),
+('20200810224353'),
+('20200811210232'),
+('20200811232359'),
+('20200812000525');
 
 

@@ -11,8 +11,8 @@ class Ls < ActiveRecord::Base
 
   validates :fecha, presence: true
   validates :descripcion, presence: true, uniqueness: { 
-    message: 'no puede haber dos luchas con la misma descripción' }, 
-    length: { maximum: 5000 }
+    message: 'No puede haber dos luchas con la misma descripción' }, 
+    length: { maximum: 6000 }
   validates :orgconvocante, length: { maximum: 512}
   validates :dirig1, length: { maximum: 512}
   validates :dirig2, length: { maximum: 512}
@@ -41,11 +41,143 @@ class Ls < ActiveRecord::Base
       where('fecha <= ?', f)
   }
 
-  scope :filtro_descripcion, lambda {|d|
-    where("unaccent(descripcion) ILIKE '%' || unaccent(?) || '%'", d)
+  scope :filtro_departamentos, lambda { |d|
+  
+    joins(:lsdep).where('lsdep.departamento_id = ?', d)
+  }
+
+
+  scope :filtro_descripciones, lambda {|d|
+    where("unaccent(ls.descripcion) ILIKE '%' || unaccent(?) || '%'", d)
   }
 
   def presenta_nombre
-    "#{fini} #{descripcion[0..49]}"
+    "#{fecha} #{descripcion[0..49]}"
   end
+
+  def presenta(atr)
+    case atr
+    when 'departamentos'
+      r=''
+      sep = ' '
+      if lsdep.count == 0
+        r << 'NACIONAL'
+      else
+        c = 1
+        sep = ' '
+        lsdep.each do |d|
+          if lsdep.size > 1
+            r << "#{sep}(#{c}) "
+          end
+          r << "#{d.departamento.nombre}"
+          sep = "; "
+          c += 1
+        end
+      end
+      r
+    when 'municipios'
+      r=''
+      sep = ' '
+      if lsdep.count > 0
+        c = 1
+        sepd = ''
+        lsdep.each do |d|
+          rm = ''
+          sepm = ' '
+          d.lsmun.each do |m|
+            rm << "#{sepm}#{m.municipio.nombre}"
+            sepm = ' - '
+          end
+          if rm != ''
+            if lsdep.size > 1
+              r << "#{sepd}(#{c}) "
+            end
+            r << "#{rm}"
+            sepd = '; '
+          end
+          c += 1
+        end
+      end
+      r
+    when 'fuentes'
+      r=''
+      if lsdep.count == 0
+        r << fuente
+      else
+        c = 1
+        sep = ' '
+        lsdep.each do |d|
+          if d.fuente
+            if lsdep.size > 1
+              r << "#{sep}(#{c}) "
+            end
+            r << "#{d.fuente}"
+          end
+          sep = '; '
+          c += 1
+        end
+      end
+      r
+    when 'ffuentes'
+      r=''
+      if lsdep.count == 0 
+        r << (ffuente.nil? ? '' : ffuente.to_s)
+      else
+        c = 1
+        sep = ' '
+        lsdep.each do |d|
+          if d.ffuente
+            if lsdep.size > 1
+              r << "#{sep}(#{c}) "
+            end
+            r << "#{d.ffuente.to_s}"
+            sep = '; '
+          end
+          c += 1
+        end
+      end
+      r
+    when 'ffuens_1'
+      r=''
+      if lsdep.count == 0
+        r << (ffuen_1.nil? ? '' : ffuen_1.to_s)
+      else
+        c = 1
+        sep = ' '
+        lsdep.each do |d|
+          if d.ffuen_1
+            if lsdep.size > 1
+              r << "#{sep}(#{c}) "
+            end
+            r << " #{d.ffuen_1.to_s}"
+            sep = '; '
+          end
+          c += 1
+        end
+      end
+      r
+    when 'descripciones'
+      r=''
+      if lsdep.count == 0
+        r << descripcion
+      else
+        c = 1
+        sep = ' '
+        lsdep.each do |d|
+          if d.descripcion
+            if lsdep.size > 1
+              r << "#{sep}(#{c}) "
+            end
+            r << "#{d.descripcion}"
+            sep = '; '
+          end
+          c += 1
+        end
+      end
+      r
+    else
+      presenta_gen(atr)
+    end
+  end
+
 end

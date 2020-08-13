@@ -1,0 +1,96 @@
+<div class="row filtro-fila">
+  <div class="col-md-3">
+    Ubicación
+  </div>
+  <div class="col-md-4">
+    <%= f.input :departamento_id,
+      collection: Sip::Departamento.habilitados.where(id_pais: 170),
+      label_method: :nombre,
+      value_method: :id,
+      selected: Sip::ModeloHelper.poromision(params, :departamento_id),
+      label: false,
+      include_blank: "-- Departamento"
+    %>
+  </div>
+  <div class="col-md-4">
+    <% colm = Sip::Municipio.habilitados %>
+    <% if params[:filtro] && params[:filtro][:departamento_id] &&
+        params[:filtro][:departamento_id].to_i > 0 %>
+      <% colm = colm.where(
+        id_departamento: params[:filtro][:departamento_id].to_i)  %>
+      <% ih = { } %>
+    <% else %>
+      <% ih = { disabled: :disabled } %>
+    <% end %>
+
+    <%= f.input :municipio_id,
+      collection: colm,
+      label_method: :nombre,
+      value_method: :id,
+      selected: Sip::ModeloHelper.poromision(params, :municipio_id),
+      label: false,
+      include_blank: "-- Municipio",
+      input_html:  ih 
+    %>
+  </div>
+</div>
+<div class="row filtro-fila">
+  <div class="col-md-3">
+    Rango de fechas 
+  </div>
+  <div class="col-md-4">
+    <%= f.input :fechaini,
+      maxlength: 10, 
+      size: 10,
+      label: false,
+      placeholder: 'Desde',
+      input_html: {
+        "data-behaviour" => "datepicker",
+        value: Sip::ModeloHelper.poromision(params, :fechaini)
+      }
+    %>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :fechafin,
+      maxlength: 10, 
+      size: 10,
+      label: false,
+      placeholder: 'Hasta',
+      input_html: {
+        "data-behaviour" => "datepicker",
+        value: Sip::ModeloHelper.poromision(params, :fechafin)
+      }
+    %>
+  </div>
+</div>
+
+<div class="row filtro-fila">
+  <div class="col-md-3">
+    Sujeto colectivo
+  </div>
+  <div class="col-md-6">
+    <%= f.input :colectivo,
+      maxlength: 50, 
+      size: 50,
+      label: false,
+      input_html: {
+        value: Sip::ModeloHelper.poromision(params, :colectivo)
+      }
+    %>
+  </div>
+</div>
+<div class="row filtro-fila">
+  <div class="offset-md-5 col-md-1"> 
+    <%= f.button :submit, 'Buscar', class: 'btn btn-default' %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="offset-sm-4 col-sm-4">
+    <%= render partial: 'index_contadores', locals: {titulo: titulo, f: f} %>
+    <%= render partial: 'index_encabezado_complemento' %>
+  </div>
+</div> <!-- row -->
+
+
