@@ -4,11 +4,12 @@
 <%= f.input :busdepartamento,
   collection: col.where(id_pais: 170),
   include_blank: true,
-  label_method: :presenta_nombre,
+  label_method: :nombre,
   value_method: :id,
   label: false,
   selected: Sip::ModeloHelper.poromision(params, :busdepartamento),
   input_html: {
-    'data-enviarautomatico' => ''
+    'data-enviarautomatico' => '',
+    class: 'chosen-select'
   }
 %>
