@@ -136,6 +136,16 @@ module Sip
          self.actorsocial_grupo.inject('') do |memo, ag|
           (memo == '' ? '' : memo + '; ') + ag.grupo.nombre 
         end
+      when 'regiones'
+         self.regiongrupo.inject('') do |memo, rg|
+          (memo == '' ? '' : memo + '; ') + rg.nombre 
+        end
+      when 'nivelgeostciv'
+        self.csivinivelgeo_id ? self.csivinivelgeo.nombre : ''
+      when 'nivelrespstciv'
+        self.csivinivelresp_id ? self.csivinivelresp.nombre : ''
+      when 'temastciv'
+        self.csivitema_id ? self.csivitema.nombre : ''
 
       else
         presenta_sip(atr)
