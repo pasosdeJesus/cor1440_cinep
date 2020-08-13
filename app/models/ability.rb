@@ -403,12 +403,16 @@ class Ability  < Cor1440Gen::Ability
       case usuario.rol 
       when Ability::ROLOPERADOR
 
-        if (lgrupos - ['Usuarios']) == ['STCIV'] # Externo
-          can :read, [::Csivinivelgeo, ::Csivitema, ::Csivinivelresp, ::Regiongrupo, Sip::Grupo, Sip::Sectoractor]
+        if lgrupos.include?('STCIV') # CERAC o STCIV_CINEP
+          can :read, [::Csivinivelgeo, ::Csivitema, 
+                      ::Csivinivelresp, ::Regiongrupo, 
+                      Sip::Grupo, Sip::Sectoractor]
           can :read, ::Regiongrupo
           can :read, Sip::Grupo
           can [:create, :read, :index, :update], Sip::Actorsocial
-          return
+          if (lgrupos - ['Usuarios']) == ['STCIV'] # Externo, CERAC
+            return  # Nada más
+          end
         end
         can :read, ::Nivelrelacion
         can :descarga_anexo, Sip::Anexo
@@ -450,6 +454,7 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Efecto
           can :index, Cor1440Gen::Mindicadorpf
+          can :read, ::Acp
           #can :index, :exploradordatosrel
         end
 
