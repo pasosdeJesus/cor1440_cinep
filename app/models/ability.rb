@@ -390,6 +390,18 @@ class Ability  < Cor1440Gen::Ability
     return c
   end
 
+  def self.externo?(usuario)
+    if !usuario || usuario.fechadeshabilitacion || !usuario.rol
+      return true
+    end
+    lgrupos = ApplicationHelper.supergrupos_usuario(usuario) #nombres
+    if (lgrupos - ['Usuarios']) == ['STCIV'] # Externo, CERAC
+      return true
+    end
+    return false
+  end
+
+
   # Ver documentacion de este metodo en app/models/ability de sip
   def initialize(usuario = nil)
     # Sin autenticación puede consultarse información geográfica 
@@ -413,6 +425,7 @@ class Ability  < Cor1440Gen::Ability
                       Sip::Grupo, Sip::Sectoractor]
           can :read, ::Regiongrupo
           can :read, Sip::Grupo
+          can :read, Heb412Gen::Doc
           can [:create, :read, :index, :update], Sip::Actorsocial
           if (lgrupos - ['Usuarios']) == ['STCIV'] # Externo, CERAC
             return  # Nada más
