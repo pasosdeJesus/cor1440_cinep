@@ -111,7 +111,8 @@
     <% end %>
   <% end %>
   <%= grupo_menus :pull => :right do %>
-    <% if can?(:read, Heb412Gen::Doc) %>
+    <% if can?(:read, Heb412Gen::Doc) && 
+        !::Ability.externo?(current_usuario) %>
       <%= despliega_abajo 'Documentos y Plantillas' do %>
         <%= opcion_menu 'Nube', heb412_gen.sisini_path,
           desplegable: true %>

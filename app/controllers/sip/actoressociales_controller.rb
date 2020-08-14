@@ -44,10 +44,11 @@ module Sip
       [ :actorsocial_persona =>  [] ] + (
         can?(:read, ::Nivelrelacion) ?  [:lineabase20182020] : [] ) +
       [ 
+        :web,
+        :direccion,
         :telefono,
         :fax,
         :celular,
-        :direccion,
         :created_at,
         :fechadeshabilitacion_localizada
       ]
