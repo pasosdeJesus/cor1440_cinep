@@ -73,6 +73,18 @@ module Sip
       end
     end
 
+    scope :filtro_csivinivelgeo_id, lambda { |n|
+      where(csivinivelgeo_id: n)
+    }
+    
+    scope :filtro_csivinivelresp_id, lambda { |n|
+      where(csivinivelgeo_id: n)
+    }
+
+    scope :filtro_csivitema, lambda { |t|
+      joins(:csivitema).where('csivitema.id=?', t)
+    }
+
     scope :filtro_grupo_ids, lambda { |g|
       joins(:actorsocial_grupo).where('actorsocial_grupo.grupo_id=?', g)
     }
