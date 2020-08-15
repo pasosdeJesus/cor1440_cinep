@@ -17,7 +17,7 @@ module Sip
       [ :regiongrupo_ids =>  [] ] +
       [ :grupo_ids =>  [] ] 
       if can?(:read, ::Csivinivelgeo)
-        r += [:csivinivelgeo_id, :csivitema_id, :csivinivelresp_id]
+        r += [:csivinivelgeo_id, :csivitema, :csivinivelresp_id]
       end
       r +=  [ :actorsocial_persona =>  [] ] 
       if can?(:read, ::Nivelrelacion)
@@ -37,9 +37,9 @@ module Sip
       [ :municipiotrab_ids =>  [] ] +
       [ :grupo_ids =>  [] ] + (
         can?(:read, ::Csivinivelgeo) ?
-        [:csivinivelgeo_id,
-         :csivitema_id,
-         :csivinivelresp_id] : []
+        [:csivinivelgeo_id] +
+        [:csivitema_ids =>  [] ] +
+        [:csivinivelresp_id] : []
       ) +
       [ :actorsocial_persona =>  [] ] + (
         can?(:read, ::Nivelrelacion) ?  [:lineabase20182020] : [] ) +

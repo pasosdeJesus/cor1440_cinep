@@ -854,6 +854,16 @@ CREATE TABLE public.actor_sectoractor (
 
 
 --
+-- Name: actorsocial_csivitema; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.actorsocial_csivitema (
+    actorsocial_id bigint NOT NULL,
+    csivitema_id bigint NOT NULL
+);
+
+
+--
 -- Name: actorsocial_departamento; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -4891,7 +4901,6 @@ CREATE TABLE public.sip_actorsocial (
     lineabase20182020 boolean,
     fechadeshabilitacion date,
     csivinivelgeo_id integer,
-    csivitema_id integer,
     csivinivelresp_id integer
 );
 
@@ -9404,14 +9413,6 @@ ALTER TABLE ONLY public.cor1440_gen_plantillahcm_proyectofinanciero
 
 
 --
--- Name: sip_actorsocial fk_rails_6352234eea; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sip_actorsocial
-    ADD CONSTRAINT fk_rails_6352234eea FOREIGN KEY (csivitema_id) REFERENCES public.csivitema(id);
-
-
---
 -- Name: mr519_gen_opcioncs fk_rails_656b4a3ca7; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -10244,6 +10245,14 @@ ALTER TABLE ONLY public.desembolso
 
 
 --
+-- Name: actorsocial_csivitema fk_rails_e0761431e8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_csivitema
+    ADD CONSTRAINT fk_rails_e0761431e8 FOREIGN KEY (actorsocial_id) REFERENCES public.sip_actorsocial(id);
+
+
+--
 -- Name: actorsocial_grupo fk_rails_e0916fe46d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -10417,6 +10426,14 @@ ALTER TABLE ONLY public.sal7711_gen_articulo_categoriaprensa
 
 ALTER TABLE ONLY public.cor1440_gen_formulario_tipoindicador
     ADD CONSTRAINT fk_rails_fd2fbcd1b8 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
+
+
+--
+-- Name: actorsocial_csivitema fk_rails_fd6171afce; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_csivitema
+    ADD CONSTRAINT fk_rails_fd6171afce FOREIGN KEY (csivitema_id) REFERENCES public.csivitema(id);
 
 
 --
@@ -11103,6 +11120,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200811210232'),
 ('20200811232359'),
 ('20200812000525'),
-('20200813095903');
+('20200813095903'),
+('20200814191834');
 
 
