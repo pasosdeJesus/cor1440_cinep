@@ -19,6 +19,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'comunicado', 'comunicados'
   inflect.irregular 'convenio', 'convenios'
   inflect.irregular 'empresaps', 'empresasps'
+  inflect.irregular 'escalaindmuy', 'escalasindmuy'
   inflect.irregular 'fondopensiones', 'fondospensiones'
   inflect.irregular 'informeauditoria', 'informeauditorias'
   inflect.irregular 'ls', 'lss'

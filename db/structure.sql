@@ -3060,6 +3060,40 @@ ALTER SEQUENCE public.empresaps_id_seq OWNED BY public.empresaps.id;
 
 
 --
+-- Name: escalaindmuy; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.escalaindmuy (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: escalaindmuy_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.escalaindmuy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: escalaindmuy_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.escalaindmuy_id_seq OWNED BY public.escalaindmuy.id;
+
+
+--
 -- Name: escolaridad_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -6661,6 +6695,13 @@ ALTER TABLE ONLY public.empresaps ALTER COLUMN id SET DEFAULT nextval('public.em
 
 
 --
+-- Name: escalaindmuy id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaindmuy ALTER COLUMN id SET DEFAULT nextval('public.escalaindmuy_id_seq'::regclass);
+
+
+--
 -- Name: fondopensiones id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -7650,6 +7691,14 @@ ALTER TABLE ONLY public.efecto_valorcampotind
 
 ALTER TABLE ONLY public.empresaps
     ADD CONSTRAINT empresaps_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: escalaindmuy escalaindmuy_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaindmuy
+    ADD CONSTRAINT escalaindmuy_pkey PRIMARY KEY (id);
 
 
 --
@@ -11121,6 +11170,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200811232359'),
 ('20200812000525'),
 ('20200813095903'),
-('20200814191834');
+('20200814191834'),
+('20200819105135');
 
 

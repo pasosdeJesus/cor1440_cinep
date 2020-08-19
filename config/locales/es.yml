@@ -308,6 +308,9 @@ es:
       "empresaps":
         Empresaps: 'Empresa prestradora de salud'
         Empresasps: 'Empresas prestadoras de salud'
+      "escalaindmuy":
+        Escalaindmuy: 'Escala de Indiferente a Muy Importante'
+        Escalasindmuy: 'Escalas de Indiferente a Muy Importante'
       "fondopensiones":
         Fondopensiones: 'Fondo de pensiones'
         Fondospensiones: 'Fondos de pensiones'

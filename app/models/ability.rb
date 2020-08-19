@@ -91,6 +91,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'csivinivelresp'],
         ['', 'csivitema'],
         ['', 'empresaps'],
+        ['', 'escalaindmuy'],
         ['', 'fondopensiones'],
         ['', 'lscobertura'],
         ['', 'nivelrelacion'],
