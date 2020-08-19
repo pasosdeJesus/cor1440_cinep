@@ -3060,6 +3060,108 @@ ALTER SEQUENCE public.empresaps_id_seq OWNED BY public.empresaps.id;
 
 
 --
+-- Name: escalaaltura3; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.escalaaltura3 (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: escalaaltura3_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.escalaaltura3_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: escalaaltura3_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.escalaaltura3_id_seq OWNED BY public.escalaaltura3.id;
+
+
+--
+-- Name: escaladebilfuerte; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.escaladebilfuerte (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: escaladebilfuerte_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.escaladebilfuerte_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: escaladebilfuerte_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.escaladebilfuerte_id_seq OWNED BY public.escaladebilfuerte.id;
+
+
+--
+-- Name: escalaempeoramejora; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.escalaempeoramejora (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: escalaempeoramejora_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.escalaempeoramejora_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: escalaempeoramejora_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.escalaempeoramejora_id_seq OWNED BY public.escalaempeoramejora.id;
+
+
+--
 -- Name: escalaindmuy; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -6695,6 +6797,27 @@ ALTER TABLE ONLY public.empresaps ALTER COLUMN id SET DEFAULT nextval('public.em
 
 
 --
+-- Name: escalaaltura3 id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaaltura3 ALTER COLUMN id SET DEFAULT nextval('public.escalaaltura3_id_seq'::regclass);
+
+
+--
+-- Name: escaladebilfuerte id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escaladebilfuerte ALTER COLUMN id SET DEFAULT nextval('public.escaladebilfuerte_id_seq'::regclass);
+
+
+--
+-- Name: escalaempeoramejora id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaempeoramejora ALTER COLUMN id SET DEFAULT nextval('public.escalaempeoramejora_id_seq'::regclass);
+
+
+--
 -- Name: escalaindmuy id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -7691,6 +7814,30 @@ ALTER TABLE ONLY public.efecto_valorcampotind
 
 ALTER TABLE ONLY public.empresaps
     ADD CONSTRAINT empresaps_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: escalaaltura3 escalaaltura3_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaaltura3
+    ADD CONSTRAINT escalaaltura3_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: escaladebilfuerte escaladebilfuerte_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escaladebilfuerte
+    ADD CONSTRAINT escaladebilfuerte_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: escalaempeoramejora escalaempeoramejora_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaempeoramejora
+    ADD CONSTRAINT escalaempeoramejora_pkey PRIMARY KEY (id);
 
 
 --
@@ -11171,6 +11318,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200812000525'),
 ('20200813095903'),
 ('20200814191834'),
-('20200819105135');
+('20200819105135'),
+('20200819112644'),
+('20200819113558'),
+('20200819114143'),
+('20200819114755');
 
 
