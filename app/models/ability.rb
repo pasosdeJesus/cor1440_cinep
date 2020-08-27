@@ -61,6 +61,7 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_LINEA = "Línea"
   GRUPO_OFICINATI = "Oficina TI"
   GRUPO_STCIV = "STCIV"
+  GRUPO_SIG = "Sistema de Información General"
   GRUPO_COORDINADOR = "Coordinador(a)"
   GRUPO_COORDINADORGP = GRUPO_COORDINADOR + " " + GRUPO_COMPROMISOS 
 
@@ -613,6 +614,15 @@ class Ability  < Cor1440Gen::Ability
 
         if lgrupos.include?(GRUPO_MEDIACION)
           can :index, :confytransf
+          can :read, ::Ls
+          can :read, ::Lscobertura
+        end
+
+        if lgrupos.include?(GRUPO_SIG)
+          can :index, :confytransf
+          can :read, ::Ls
+          can :read, ::Lscobertura
+          can :read, ::Acp
         end
 
         if lgrupos.include?(GRUPO_MOVIMIENTOSSOCIALES)
