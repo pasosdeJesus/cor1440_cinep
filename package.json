@@ -78,10 +78,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-<<<<<<< HEAD
     "bable-loader": "^0.0.1-security",
-=======
->>>>>>> b1f1edc... Prepara para usar react
     "webpack-dev-server": "^3.11.0"
   }
 }
