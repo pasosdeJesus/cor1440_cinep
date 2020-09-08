@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: bd67c5cffedd010a260e7b830675b2d4d50b8fe5
+  revision: abcf623e6c1696f5f1cfc2fd67dc3714770810b1
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 07fc8cb5d28718150f848ee5438a3e636b3dc304
+  revision: 64fb20008b5943ae773dcc83656ba798e33d4772
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 79b4efd84c329583059bec3c81d9331b3fe3479e
+  revision: fc87861101812729e7245c284f9a20e561b30adc
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: e046cb75e36f62d5d24644ac383e4390efb68955
+  revision: 2dc27fd913116150a6980d60b1d40b7c9049e529
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 405b369bfb793fde575c8c0d995b6ccf40754b1f
+  revision: 0cca0758c482fdae41b5f716ee011a1a3c08f82a
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 04ca449639ab54874b0d5c44172f49a9020b097e
+  revision: 9c4eaa322ccc9bd36dc726ba648fb9510dc3b3e8
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 91c629b9846d3070138ca8891b125127e9764b16
+  revision: aa5cedd9d17157b4d5b0b555710d3f0196890960
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 86249f0cb87ab9ebc076c618e64da05891aed4ba
+  revision: 9e48233363e3552ea2e4eb64992fbbffd78c5ac5
   specs:
     sip (2.0.b10)
       cancancan
@@ -224,7 +224,7 @@ GEM
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.14.1)
+    minitest (5.14.2)
     msgpack (1.3.3)
     net-ldap (0.16.3)
     nio4r (2.5.2)
@@ -251,7 +251,7 @@ GEM
     prawnto_2 (0.3.0)
       prawn (>= 1.0.0)
       rails (>= 3.2)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.3)
