@@ -189,26 +189,31 @@ end
 
 def elimina_actividades_en_blanco
   ::Usuario.connection.execute <<-SQL
-  delete from cor1440_gen_actividad_proyectofinanciero where 
-    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+  DELETE FROM cor1440_gen_actividad_proyectofinanciero where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null
+    OR nombre IS NULL);
 
-  delete from cor1440_gen_actividad_actividadpf where 
-    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+  DELETE FROM cor1440_gen_actividad_actividadpf where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null
+    OR nombre IS NULL);
 
   update cor1440_gen_actividad set precedidapor=null where 
-    precedidapor in (select id from cor1440_gen_actividad where fecha is null);
+    precedidapor in (select id from cor1440_gen_actividad where fecha is null
+    OR nombre IS NULL);
 
-  delete from actividad_grupo where 
+  DELETE FROM actividad_grupo where 
     actividad_id in (select id from cor1440_gen_actividad where 
-      fecha is null);
+      fecha is null OR nombre IS NULL);
 
-  delete from cor1440_gen_actividad_actorsocial where 
-    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+  DELETE FROM cor1440_gen_actividad_actorsocial where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null
+    OR nombre IS NULL);
 
-  delete from cor1440_gen_actividad_objetivopf where 
-    actividad_id in (select id from cor1440_gen_actividad where fecha is null);
+  DELETE FROM cor1440_gen_actividad_objetivopf where 
+    actividad_id in (select id from cor1440_gen_actividad where fecha is null
+    OR nombre IS NULL);
 
-  delete from cor1440_gen_actividad where fecha is null;
+  DELETE FROM cor1440_gen_actividad where fecha is null OR nombre IS NULL;
 
   SQL
   
