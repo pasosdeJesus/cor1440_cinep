@@ -5072,7 +5072,8 @@ CREATE TABLE public.sip_actorsocial_persona (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     correo character varying(254),
-    cargo character varying(254)
+    cargo character varying(254),
+    stciv boolean DEFAULT false NOT NULL
 );
 
 
@@ -11322,6 +11323,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200819112644'),
 ('20200819113558'),
 ('20200819114143'),
-('20200819114755');
+('20200819114755'),
+('20200907174303'),
+('20200908182036');
 
 

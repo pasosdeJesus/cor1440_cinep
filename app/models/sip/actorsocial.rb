@@ -119,10 +119,11 @@ module Sip
     }
 
 
-    def presenta(atr)
+    def presenta(atr, stciv = false)
       case atr.to_s
       when '{:actorsocial_persona=>[]}', 'actorsocial_persona'
-        self.actorsocial_persona.inject('') do |memo, ap|
+        self.actorsocial_persona.where(stciv: stciv).
+          inject('') do |memo, ap|
           n = ap.persona.nombres ? ap.persona.nombres : 'N'
           a = ap.persona.apellidos ? ap.persona.apellidos : 'N'
           c = ap.cargo ? ap.cargo + '. ' : ''

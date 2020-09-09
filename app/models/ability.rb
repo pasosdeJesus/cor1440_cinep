@@ -431,6 +431,8 @@ class Ability  < Cor1440Gen::Ability
           can :read, ::Regiongrupo
           can :read, Sip::Grupo
           can :read, Heb412Gen::Doc
+          # Pueden manejar contactos STCIV (y no los de CINEP)
+          can :stciv, Sip::ActorsocialPersona
           can [:create, :read, :index, :update], Sip::Actorsocial
           if (lgrupos - ['Usuarios']) == ['STCIV'] # Externo, CERAC
             return  # Nada más

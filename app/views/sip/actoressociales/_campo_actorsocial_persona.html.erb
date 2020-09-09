@@ -14,7 +14,9 @@
       </tr>
     </thead>
     <tbody id='actorsocial_persona'>
-    <%= f.simple_fields_for :actorsocial_persona do |ap| %>
+      <%= f.simple_fields_for :actorsocial_persona, 
+        Sip::ActorsocialPersona.where(actorsocial_id: ao.id).where(
+          stciv: can?(:stciv, Sip::ActorsocialPersona)) do |ap| %>
       <%= render 'actorsocial_persona_campos', :f => ap %>
     <% end %>
     </tbody>
