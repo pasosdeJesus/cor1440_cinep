@@ -4440,6 +4440,44 @@ CREATE SEQUENCE public.personadesea_seq
 
 
 --
+<<<<<<< HEAD
+=======
+-- Name: planencuesta; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.planencuesta (
+    id bigint NOT NULL,
+    fechaini date,
+    fechafin date,
+    formulario_id integer,
+    plantillacorreoinv_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    adurl character varying(32)
+);
+
+
+--
+-- Name: planencuesta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.planencuesta_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: planencuesta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.planencuesta_id_seq OWNED BY public.planencuesta.id;
+
+
+--
+>>>>>>> 9c4f652... Resultados internos y externos a encuestas a usuarios CRECER
 -- Name: plantillacorreo; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -8683,10 +8721,17 @@ CREATE UNIQUE INDEX index_mr519_gen_encuestapersona_on_adurl ON public.mr519_gen
 
 
 --
+<<<<<<< HEAD
 -- Name: index_mr519_gen_planencuesta_on_adurl; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_mr519_gen_planencuesta_on_adurl ON public.mr519_gen_planencuesta USING btree (adurl);
+=======
+-- Name: index_planencuesta_on_adurl; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_planencuesta_on_adurl ON public.planencuesta USING btree (adurl);
+>>>>>>> 9c4f652... Resultados internos y externos a encuestas a usuarios CRECER
 
 
 --
@@ -11334,8 +11379,12 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200819114755'),
 ('20200907174303'),
 ('20200908182036'),
+<<<<<<< HEAD
 ('20200909195224'),
 ('20200921123831'),
 ('20201009004421');
+=======
+('20200909195224');
+>>>>>>> 9c4f652... Resultados internos y externos a encuestas a usuarios CRECER
 
 
