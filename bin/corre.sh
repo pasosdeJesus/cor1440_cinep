@@ -48,6 +48,8 @@ if (test "$JN316_CLAVE" = "") then {
 if (test "$RAILS_ENV" = "development") then {
   if (test "$SININD" = "") then {
     bundle exec rake sip:indices
+    rm -rf public/assets/* public/packs/*
+    bin/rails assets:precompile
   } fi;
   bin/rails s -p $PUERTODES -b $IPDES
 } 
