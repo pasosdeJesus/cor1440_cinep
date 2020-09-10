@@ -7,7 +7,9 @@ class Planencuesta < ActiveRecord::Base
   belongs_to :formulario, class_name: 'Mr519Gen::Formulario',
     foreign_key: :formulario_id
   belongs_to :plantillacorreoinv, class_name: '::Plantillacorreo',
-    foreign_key: :plantillacorreoinv_id
+    foreign_key: :plantillacorreoinv_id, optional: true
+
+  has_secure_token :adurl
 
   has_many :encuestapersona, dependent: :destroy,
     class_name: 'Mr519Gen::Encuestapersona',

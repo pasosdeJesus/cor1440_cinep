@@ -4415,7 +4415,8 @@ CREATE TABLE public.planencuesta (
     formulario_id integer,
     plantillacorreoinv_id integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    adurl character varying(32)
 );
 
 
@@ -8682,6 +8683,13 @@ CREATE UNIQUE INDEX index_mr519_gen_encuestapersona_on_adurl ON public.mr519_gen
 
 
 --
+-- Name: index_planencuesta_on_adurl; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_planencuesta_on_adurl ON public.planencuesta USING btree (adurl);
+
+
+--
 -- Name: index_sip_actorsocial_on_grupoper_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -11325,6 +11333,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200819114143'),
 ('20200819114755'),
 ('20200907174303'),
-('20200908182036');
+('20200908182036'),
+('20200909195224');
 
 

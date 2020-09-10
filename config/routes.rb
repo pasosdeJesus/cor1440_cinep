@@ -100,6 +100,12 @@ Rails.application.routes.draw do
       'sip/hogar#dinamicasconflicto',
       as: :dinamicasconflicto
 
+
+  get '/encuestasusuario/externoresultado/:adurl' => 
+    "mr519_gen/encuestasusuario#externoresultado",
+    as: :externoresultado_encuestausuario
+
+
     get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :pf_fichaimp
     get "/proyectosfinancieros/:id/fichapdf" => "cor1440_gen/proyectosfinancieros#fichapdf", as: :pf_fichapdf
 
