@@ -1,7 +1,7 @@
 <div class="row">
 
   <div class="col-sm-4">
-    <% if @registros.count > 0 %>
+    <% if @registros && @registros.count > 0 %>
       <%= will_paginate @registros, { 
         param_name: :pagina,
         class: 'page-link'}  %>
