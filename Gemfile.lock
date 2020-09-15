@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 7b1df23d682f6df9bca5bd4dca8f7b6ac831f2ec
+  revision: 3886625d22416ff2f112cd168bb6fa31720efd7d
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 17eea07c2c870d55486abee3a09521ad069e684a
+  revision: 48178c5c55e4b2605fc209953d2d51538c075788
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 50012e208aab3db7c575cb5b04fe0c9ddc04b501
+  revision: 152b1e9679a264218c6f85cd79bbbd59289245bd
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: a940d4bfcef3e4b2a6de4f8c7158436b52d2944a
+  revision: e802ca7c0921504c721e1a161e5661e8df3cc8ed
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: b08756c42fdb290c96bca5cccc0ecf8cacebb44a
+  revision: 1e581b924a52e294ae13c2626c51b284f72d5b92
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: c572bb0401dc6fb8b87405ddd26e70a6793a80cc
+  revision: 123548bc9f669da5b6dcb05d85367932338ceb27
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: fbbee76bd0f4ab24fbccf066376b2ab3f6f2972f
+  revision: 3041c322b395e33296f050cd7405ef99cd6dc67f
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 6a10b1a0cf07f81260da3222fa304746796b2bc7
+  revision: 6ed7e3e33e307621b052fbb629f0a47d392ae90a
   specs:
     sip (2.0.b10)
       cancancan
@@ -200,7 +200,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.10.0)
+    jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
@@ -328,7 +328,7 @@ GEM
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.2.1)
+    sprockets-rails (3.2.2)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)

@@ -14,7 +14,6 @@ class Acpactor2Test < ActiveSupport::TestCase
   test "valido" do
     acpactor2 = ::Acpactor2.create(
       PRUEBA_ACPACTOR2)
-    byebug
     assert(acpactor2.valid?)
     acpactor2.destroy
   end
