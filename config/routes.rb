@@ -48,9 +48,6 @@ Rails.application.routes.draw do
       controller: 'cor1440_gen/mindicadorespf', 
       path_names: { new: 'nuevo', edit: 'edita' }
 
-    resources :planesencuesta,
-      path_names: { new: 'nuevo', edit: 'edita' }
-
     resources :pprogstind, path_names: { new: 'nuevo', edit: 'edita' }
 
 #    resources :proyectosfinancieros, 

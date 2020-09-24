@@ -8,9 +8,8 @@
     input_html: { 
       class: 'chosen-select'
     } %>
-<% else %>
-  <% if can?(:update, Mr519Gen::Encuestausuario) || 
-      (f.object && can?(:update, f.object)) %>
-    <%= render partial: 'campo_respuestafor', locals: {f: f} %>
-  <% end %>
+<% end %>
+<% if can?(:update, Mr519Gen::Encuestausuario) || 
+    (f.object && can?(:update, f.object)) %>
+  <%= render partial: 'campo_respuestafor', locals: {f: f} %>
 <% end %>

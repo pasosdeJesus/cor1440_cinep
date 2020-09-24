@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 3886625d22416ff2f112cd168bb6fa31720efd7d
+  revision: cf27689c8a3d7c502cb6f5eb71b6d6982bf8a502
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 48178c5c55e4b2605fc209953d2d51538c075788
+  revision: 2bf9fb58ab459e9d28902fe4552755733ac0cab9
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 152b1e9679a264218c6f85cd79bbbd59289245bd
+  revision: a96b23a1c2b7bbc835d36189ee32593404fbb5a2
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: e802ca7c0921504c721e1a161e5661e8df3cc8ed
+  revision: a2114b6da79d7ebb876bc2aa3fa9526f15015baa
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 1e581b924a52e294ae13c2626c51b284f72d5b92
+  revision: fd3ef3674fe3ce41f6e94b2ff970113cb75e5e74
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 123548bc9f669da5b6dcb05d85367932338ceb27
+  revision: 5fbead446b174b0e16b1aca6d10240a80cfa9e1b
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 3041c322b395e33296f050cd7405ef99cd6dc67f
+  revision: 90b6eb78661b6242dbda986911df5debc6970531
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 6ed7e3e33e307621b052fbb629f0a47d392ae90a
+  revision: 9cb0829dc2a59726c26107c5e3dc07c0fa3be2de
   specs:
     sip (2.0.b10)
       cancancan
@@ -181,7 +181,7 @@ GEM
     concurrent-ruby (1.1.7)
     crass (1.0.6)
     csv (3.1.7)
-    devise (4.7.2)
+    devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -227,7 +227,7 @@ GEM
     minitest (5.14.2)
     msgpack (1.3.3)
     net-ldap (0.16.3)
-    nio4r (2.5.3)
+    nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     odf-report (0.7.2)
@@ -252,7 +252,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (4.3.6)
+    puma (5.0.0)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
@@ -295,7 +295,7 @@ GEM
     raindrops (0.19.1)
     rake (13.0.1)
     redcarpet (3.5.0)
-    regexp_parser (1.7.1)
+    regexp_parser (1.8.0)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
