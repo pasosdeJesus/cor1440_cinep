@@ -43,6 +43,8 @@ gem 'rails', '~> 6.0.0'
 
 gem 'rails-i18n'
 
+gem 'react-rails'
+
 gem 'redcarpet' # Reconoce y transforma Markdown
 
 gem 'rspreadsheet'
