@@ -1,6 +1,5 @@
 {
   "name": "cor1440_cinep",
-  "private": true,
   "dependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
@@ -11,7 +10,7 @@
     "@nivo/circle-packing": "^0.62.0",
     "@nivo/line": "^0.62.0",
     "@nivo/stream": "^0.62.0",
-    "@pasosdejesus/mapa_tiempo_yi_liu": "github:pasosdeJesus/mapa_tiempo_yi_liu",
+    "@pasosdejesus/mapa_tiempo_yi_liu": "0.1.4",
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/actiontext": "^6.0.0",
     "@rails/activestorage": "^6.0.0-alpha",
@@ -27,9 +26,10 @@
     "css-loader": "^4.2.2",
     "d3": "^6.1.1",
     "d3-drag": "^2.0.0",
-    "d3-force": "^2.1.1",
+    "d3-force": "^2.0.1",
     "d3-scale": "^3.2.2",
     "d3-scale-chromatic": "^2.0.0",
+    "d3-selection": "^2.0.0",
     "d3-time": "^2.0.0",
     "d3-zoom": "^2.0.0",
     "date-fns": "^2.16.1",
@@ -64,10 +64,11 @@
     "react-scripts": "^3.4.3",
     "react-select": "^3.1.0",
     "react-simple-maps": "^2.1.2",
-    "react-table": "^7.5.0",
+    "react-table": "^7.2.2",
     "react-text-transition": "^1.1.2",
     "react-toggle": "^4.1.1",
     "react-tooltip": "^4.2.9",
+    "react_ujs": "^2.6.1",
     "reactstrap": "^8.5.1",
     "serialize-javascript": "2.1.1",
     "style-loader": "^1.2.1",
@@ -78,7 +79,10 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "bable-loader": "^0.0.1-security",
+    "babel-loader": "^8.1.0",
+    "babel-preset-jest": "^26.3.0",
+    "find-cache-dir": "^3.3.1",
+    "node-libs-browser": "^2.2.1",
     "webpack-dev-server": "^3.11.0"
   }
 }
