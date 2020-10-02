@@ -86,6 +86,18 @@ module Sip
       return c
     end
 
+
+    def filtra_contenido_params
+      # Si el usuario es del grupo STCIV marcar el contacto
+      # con stciv para que no pueda ser visto por CINEP
+      # (Y los contactos de CINEP no pueden ser vistos por STCIV).
+      if can? :stciv, Sip::ActorsocialPersona
+        params[:actorsocial][:actorsocial_persona_attributes].each do |at|
+          at[1][:stciv] = true
+        end
+      end
+    end
+
     def validaciones(registro)
       if registro.actorsocial_persona
         registro.actorsocial_persona.each do |ap|
@@ -125,6 +137,7 @@ module Sip
             :anotaciones ],
           :actorsocial_persona_attributes => [
             :id,
+            :stciv,
             :cargo,
             :correo,
             :perfilactorsocial_id,
@@ -132,7 +145,8 @@ module Sip
             :persona_attributes => [
               :id,
               :nombres,
-              :apellidos
+              :apellidos,
+              :sexo
             ]
          ]
       ]) 
