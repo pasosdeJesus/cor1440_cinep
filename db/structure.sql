@@ -4170,6 +4170,41 @@ ALTER SEQUENCE public.mr519_gen_opcioncs_id_seq OWNED BY public.mr519_gen_opcion
 
 
 --
+-- Name: mr519_gen_planencuesta; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mr519_gen_planencuesta (
+    id bigint NOT NULL,
+    fechaini date,
+    fechafin date,
+    formulario_id integer,
+    plantillacorreoinv_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    adurl character varying(32)
+);
+
+
+--
+-- Name: mr519_gen_planencuesta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.mr519_gen_planencuesta_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: mr519_gen_planencuesta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.mr519_gen_planencuesta_id_seq OWNED BY public.mr519_gen_planencuesta.id;
+
+
+--
 -- Name: mr519_gen_respuestafor; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -4402,41 +4437,6 @@ CREATE SEQUENCE public.personadesea_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: planencuesta; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.planencuesta (
-    id bigint NOT NULL,
-    fechaini date,
-    fechafin date,
-    formulario_id integer,
-    plantillacorreoinv_id integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    adurl character varying(32)
-);
-
-
---
--- Name: planencuesta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.planencuesta_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: planencuesta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.planencuesta_id_seq OWNED BY public.planencuesta.id;
 
 
 --
@@ -6988,6 +6988,13 @@ ALTER TABLE ONLY public.mr519_gen_opcioncs ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
+-- Name: mr519_gen_planencuesta id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_planencuesta ALTER COLUMN id SET DEFAULT nextval('public.mr519_gen_planencuesta_id_seq'::regclass);
+
+
+--
 -- Name: mr519_gen_respuestafor id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -7027,13 +7034,6 @@ ALTER TABLE ONLY public.nucleoconflicto ALTER COLUMN id SET DEFAULT nextval('pub
 --
 
 ALTER TABLE ONLY public.perfilprofesional ALTER COLUMN id SET DEFAULT nextval('public.perfilprofesional_id_seq'::regclass);
-
-
---
--- Name: planencuesta id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.planencuesta ALTER COLUMN id SET DEFAULT nextval('public.planencuesta_id_seq'::regclass);
 
 
 --
@@ -8043,6 +8043,14 @@ ALTER TABLE ONLY public.mr519_gen_opcioncs
 
 
 --
+-- Name: mr519_gen_planencuesta mr519_gen_planencuesta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_planencuesta
+    ADD CONSTRAINT mr519_gen_planencuesta_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: mr519_gen_respuestafor mr519_gen_respuestafor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8096,14 +8104,6 @@ ALTER TABLE ONLY public.perfilprofesional
 
 ALTER TABLE ONLY public.sip_persona
     ADD CONSTRAINT persona_pkey PRIMARY KEY (id);
-
-
---
--- Name: planencuesta planencuesta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.planencuesta
-    ADD CONSTRAINT planencuesta_pkey PRIMARY KEY (id);
 
 
 --
@@ -8683,10 +8683,10 @@ CREATE UNIQUE INDEX index_mr519_gen_encuestapersona_on_adurl ON public.mr519_gen
 
 
 --
--- Name: index_planencuesta_on_adurl; Type: INDEX; Schema: public; Owner: -
+-- Name: index_mr519_gen_planencuesta_on_adurl; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_planencuesta_on_adurl ON public.planencuesta USING btree (adurl);
+CREATE UNIQUE INDEX index_mr519_gen_planencuesta_on_adurl ON public.mr519_gen_planencuesta USING btree (adurl);
 
 
 --
@@ -9062,7 +9062,7 @@ ALTER TABLE ONLY public.convenio
 --
 
 ALTER TABLE ONLY public.mr519_gen_encuestapersona
-    ADD CONSTRAINT fk_rails_13f8d66312 FOREIGN KEY (planencuesta_id) REFERENCES public.planencuesta(id);
+    ADD CONSTRAINT fk_rails_13f8d66312 FOREIGN KEY (planencuesta_id) REFERENCES public.mr519_gen_planencuesta(id);
 
 
 --
@@ -10138,10 +10138,10 @@ ALTER TABLE ONLY public.actividad_publicacion
 
 
 --
--- Name: planencuesta fk_rails_b3c9e4973a; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: mr519_gen_planencuesta fk_rails_b3c9e4973a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.planencuesta
+ALTER TABLE ONLY public.mr519_gen_planencuesta
     ADD CONSTRAINT fk_rails_b3c9e4973a FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
 
 
@@ -10402,10 +10402,10 @@ ALTER TABLE ONLY public.cor1440_gen_plantillahcm_proyectofinanciero
 
 
 --
--- Name: planencuesta fk_rails_d678e61758; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: mr519_gen_planencuesta fk_rails_d678e61758; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.planencuesta
+ALTER TABLE ONLY public.mr519_gen_planencuesta
     ADD CONSTRAINT fk_rails_d678e61758 FOREIGN KEY (plantillacorreoinv_id) REFERENCES public.plantillacorreo(id);
 
 
@@ -11334,6 +11334,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200819114755'),
 ('20200907174303'),
 ('20200908182036'),
-('20200909195224');
+('20200909195224'),
+('20200921123831'),
+('20201009004421');
 
 
