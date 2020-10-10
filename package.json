@@ -10,7 +10,7 @@
     "@nivo/circle-packing": "^0.62.0",
     "@nivo/line": "^0.62.0",
     "@nivo/stream": "^0.62.0",
-    "@pasosdejesus/mapa_tiempo_yi_liu": "0.1.4",
+    "@pasosdejesus/mapa_tiempo_yi_liu": "github:pasosdeJesus/mapa_tiempo_yi_liu#crecer1",
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/actiontext": "^6.0.0",
     "@rails/activestorage": "^6.0.0-alpha",
