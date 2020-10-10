@@ -4440,8 +4440,6 @@ CREATE SEQUENCE public.personadesea_seq
 
 
 --
-<<<<<<< HEAD
-=======
 -- Name: planencuesta; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -8721,17 +8719,10 @@ CREATE UNIQUE INDEX index_mr519_gen_encuestapersona_on_adurl ON public.mr519_gen
 
 
 --
-<<<<<<< HEAD
 -- Name: index_mr519_gen_planencuesta_on_adurl; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_mr519_gen_planencuesta_on_adurl ON public.mr519_gen_planencuesta USING btree (adurl);
-=======
--- Name: index_planencuesta_on_adurl; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_planencuesta_on_adurl ON public.planencuesta USING btree (adurl);
->>>>>>> 9c4f652... Resultados internos y externos a encuestas a usuarios CRECER
 
 
 --
@@ -11379,12 +11370,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200819114755'),
 ('20200907174303'),
 ('20200908182036'),
-<<<<<<< HEAD
 ('20200909195224'),
 ('20200921123831'),
 ('20201009004421');
-=======
-('20200909195224');
->>>>>>> 9c4f652... Resultados internos y externos a encuestas a usuarios CRECER
 
 
