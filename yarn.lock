@@ -1633,18 +1633,13 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@pasosdejesus/mapa_tiempo_yi_liu@0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@pasosdejesus/mapa_tiempo_yi_liu/-/mapa_tiempo_yi_liu-0.1.4.tgz#0d966e253d93d1071c041e31648d25ce1b080bc4"
-  integrity sha512-KG3CkBjrxIi/LctjxN5Lk49pwtAAcMFPsQLwTvnslRR6/kRdsOW255w4o1gwzYUzYcM7YHn6f7AazzU3ZpG1nQ==
+"@pasosdejesus/mapa_tiempo_yi_liu@github:pasosdeJesus/mapa_tiempo_yi_liu#crecer1":
+  version "0.1.5"
+  resolved "https://codeload.github.com/pasosdeJesus/mapa_tiempo_yi_liu/tar.gz/41ccb4e2d52e520b7bf9ee3262501dd783bdc999"
   dependencies:
     "@ctrl/tinycolor" "3.1.4"
-    d3 "^6.2.0"
-    d3-drag "^2.0.0"
-    d3-scale-chromatic "^2.0.0"
-    d3-time "^2.0.0"
-    d3-zoom "^2.0.0"
-    mapshaper "^0.5.21"
+    d3-force "^2.0.1"
+    react-table "^7.2.2"
 
 "@rails/actioncable@^6.0.0-alpha":
   version "6.0.3"
@@ -4654,7 +4649,7 @@ d3-zoom@^1.8.3:
     d3-selection "1"
     d3-transition "1"
 
-d3@^6.1.1, d3@^6.2.0:
+d3@^6.1.1:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/d3/-/d3-6.2.0.tgz#f19b0ecb16ca4ad2171ce8b37c63247e71c6f01d"
   integrity sha512-aH+kx55J8vRBh4K4k9GN4EbNO3QnZsXy4XBfrnr4fL2gQuszUAPQU3fV2oObO2iSpreRH/bG/wfvO+hDu2+e9w==
@@ -8287,7 +8282,7 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-mapshaper@^0.5.20, mapshaper@^0.5.21:
+mapshaper@^0.5.20:
   version "0.5.24"
   resolved "https://registry.yarnpkg.com/mapshaper/-/mapshaper-0.5.24.tgz#b4eab57244d18346a72b3b853061086c5075d6e2"
   integrity sha512-mCVIGCVBqL1BulEFqAha6wR0UTujtq3S+u8Ncykuwl1YHk6cpFB5fhn9i/sP/18fD0Vdk9OikLQrT3RMaFllqA==
@@ -11465,10 +11460,12 @@ send@0.17.1:
     range-parser "~1.2.1"
     statuses "~1.5.0"
 
-serialize-javascript@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-2.1.1.tgz#952907a04a3e3a75af7f73d92d15e233862048b2"
-  integrity sha512-MPLPRpD4FNqWq9tTIjYG5LesFouDhdyH0EPY3gVK4DRD5+g4aDqdNSzLIwceulo3Yj+PL1bPh6laE5+H6LTcrQ==
+serialize-javascript@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-3.1.0.tgz#8bf3a9170712664ef2561b44b691eafe399214ea"
+  integrity sha512-JIJT1DGiWmIKhzRsG91aS6Ze4sFUrYbltlkg2onR5OrnNM02Kl/hnY/T4FN2omvyeBbQmMJv+K4cPOpGzOTFBg==
+  dependencies:
+    randombytes "^2.1.0"
 
 serialize-javascript@^4.0.0:
   version "4.0.0"

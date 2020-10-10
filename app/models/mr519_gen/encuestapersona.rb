@@ -6,7 +6,7 @@ module Mr519Gen
   class Encuestapersona < ActiveRecord::Base
     include Mr519Gen::Concerns::Models::Encuestapersona
 
-    belongs_to :planencuesta, class_name: '::Planencuesta',
+    belongs_to :planencuesta, class_name: 'Mr519Gen::Planencuesta',
       foreign_key: :planencuesta_id
 
     belongs_to :sip_anexo, class_name: 'Sip::Anexo',

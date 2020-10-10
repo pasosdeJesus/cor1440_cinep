@@ -6,7 +6,7 @@
   <% acone = @registros.joins(
     'JOIN sip_actorsocial_persona AS ap ON ap.actorsocial_id=sip_actorsocial.id').joins(
     'JOIN mr519_gen_encuestapersona AS ep ON ep.persona_id=ap.persona_id').joins(
-    'JOIN planencuesta AS pe ON pe.id=ep.planencuesta_id').where(
+    'JOIN mr519_gen_planencuesta AS pe ON pe.id=ep.planencuesta_id').where(
       'pe.fechafin >= ?', Date.today); puts "acone=#{acone.to_sql}" %>
   <% aconer = acone.where(
     'ep.respuestafor_id IN (SELECT rf.id FROM mr519_gen_respuestafor AS rf ' +
