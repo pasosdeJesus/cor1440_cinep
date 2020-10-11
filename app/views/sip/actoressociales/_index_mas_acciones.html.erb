@@ -18,7 +18,7 @@
             e.id, 
             {actorsocial_id: registro.id}), :class => 'btn btn-sm', target: '_blank' 
           %>
-      <% elsif can?(:edit, e) %>
+      <% elsif can?(:edit, e) && e.planencuesta %>
         <% if acper.correo && acper.correo != '' && e.fechainv %>
           <% texto = "Encuesta externa ##{e.planencuesta.formulario_id}" %>
           <% url = mr519_gen.encuestaexterna_url(e.adurl) %>
