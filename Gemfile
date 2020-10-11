@@ -59,9 +59,7 @@ gem 'twitter_cldr' # ICU con CLDR
 
 gem 'tzinfo' # Zonas horarias
 
-gem 'uglifier' 
-
-gem 'webpacker', '~> 4.0'
+gem 'webpacker'
 
 gem 'will_paginate' # Listados en páginas
 
