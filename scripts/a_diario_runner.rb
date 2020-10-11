@@ -8,6 +8,9 @@ if !ENV['CRECER_DIAS']
 else
   DIAS=ENV['CRECER_DIAS'].to_i
 end
+$hoy = Date.today
+$hoymasdias = $hoy + DIAS
+$hoymasdiassobrecuatro = $hoy + DIAS/4
 def envia_alertapf(pid, tiene, cuando, fecha, maslineas=[])
     puts "Enviando alerta pf por #{pid}, #{tiene}, #{cuando}, #{fecha}"
     AlertaMailer.with(
@@ -35,19 +38,17 @@ end
 def alertas
   puts "Inicio de verificacion alertas proyectofinanciero"
 
-  hoy = Date.today
-  hoymasveinte = hoy + DIAS
   #byebug
-  puts "Verifica cierre el #{hoymasveinte}"
+  puts "Verifica cierre el #{$hoymasdias}"
   Cor1440Gen::Proyectofinanciero.
     where("estado NOT IN ('R', 'O')").
-    where(fechacierre: hoymasveinte).each do |p|
+    where(fechacierre: $hoymasdias).each do |p|
     envia_alertapf(p.id, 'cierra', "en #{DIAS} días", p.fechacierre_localizada)
   end
   puts "Verifica liquidacion"
   Cor1440Gen::Proyectofinanciero.
     where("estado NOT IN ('R', 'O')").
-    where(fechaliquidacion: hoymasveinte).each do |p|
+    where(fechaliquidacion: $hoymasdias).each do |p|
     envia_alertapf(p.id, 'se liquida', "en #{DIAS} días", p.fechaliquidacion_localizada)
   end
   puts "Verifica desembolsos"
@@ -55,7 +56,7 @@ def alertas
     where("proyectofinanciero_id IN 
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
-    where(fechaplaneada: hoymasveinte).each do |d|
+    where(fechaplaneada: $hoymasdias).each do |d|
     envia_alertapf(d.proyectofinanciero_id, 'tiene un desembolso', 
           "en #{DIAS} días", d.fechaplaneada_localizada, 
           [ "Concepto: #{d.detalle}",
@@ -66,7 +67,7 @@ def alertas
     where("proyectofinanciero_id IN 
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
-    where(fechaplaneada: hoymasveinte).each do |d|
+    where(fechaplaneada: $hoymasdias).each do |d|
     envia_alertapf(d.proyectofinanciero_id, 'tiene un informe narrativo', 
           "en #{DIAS} días", d.fechaplaneada_localizada,
           [ "Detalle: #{d.detalle}"])
@@ -76,7 +77,7 @@ def alertas
     where("proyectofinanciero_id IN 
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
-    where(fechaplaneada: hoymasveinte).each do |d|
+    where(fechaplaneada: $hoymasdias).each do |d|
     envia_alertapf(d.proyectofinanciero_id, 'tiene un informe financiero', 
           "en #{DIAS} días", d.fechaplaneada_localizada,
           [ "Detalle: #{d.detalle}"])
@@ -86,7 +87,7 @@ def alertas
     where("proyectofinanciero_id IN 
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
-    where(fechaplaneada: hoymasveinte).each do |d|
+    where(fechaplaneada: $hoymasdias).each do |d|
     puts "El proyecto #{d.proyectofinanciero_id} tiene una evaluación planeada en #{DIAS} días, el #{d.fechaplaneada}"
     envia_alertapf(d.proyectofinanciero_id, 'tiene una evaluación', 
           "en #{DIAS} días", d.fechaplaneada_localizada,
@@ -97,7 +98,7 @@ def alertas
     where("proyectofinanciero_id IN 
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
-    where(fechaplaneada: hoymasveinte).each do |d|
+    where(fechaplaneada: $hoymasdias).each do |d|
     envia_alertapf(d.proyectofinanciero_id, 'tiene una auditoria', 
           "en #{DIAS} días", d.fechaplaneada_localizada,
           [ "Detalle: #{d.detalle}",
@@ -110,7 +111,7 @@ def alertas
     where("proyectofinanciero_id IN 
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
-    where(fechaplaneada: hoymasveinte).each do |d|
+    where(fechaplaneada: $hoymasdias).each do |d|
       envia_alertapf(d.proyectofinanciero_id, 'tiene un producto', 
             "en #{DIAS} días", d.fechaplaneada_localizada,
             [ "Tipo: #{d.tipoproductopf.nombre if d.tipoproductopf_id}",
@@ -122,7 +123,7 @@ def alertas
     where("proyectofinanciero_id IN 
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
-    where(fechainiprod: hoymasveinte).each do |d|
+    where(fechainiprod: $hoymasdias).each do |d|
     envia_alertapf(d.proyectofinanciero_id, 'inicia producción de un producto', 
           "en #{DIAS} días", d.fechainiprod,
           [ "Tipo: #{d.tipoproductopf.nombre if d.tipoproductopf_id}",
@@ -136,7 +137,7 @@ def alertas
     where("proyectofinanciero_id IN 
           (SELECT id FROM cor1440_gen_proyectofinanciero WHERE 
           estado NOT IN ('R', 'O'))").
-    where(fechafinprod: hoymasveinte).each do |d|
+    where(fechafinprod: $hoymasdias).each do |d|
     envia_alertapf(d.proyectofinanciero_id, 'termina producción de un producto', 
           "en #{DIAS} días", d.fechafinprod,
           [ "Tipo: #{d.tipoproductopf.nombre if d.tipoproductopf_id}",
@@ -163,6 +164,20 @@ def elimina_generados
     res = `#{orden}`
     puts res
 end
+
+def alertas_deshabilita_usuarios
+
+  mensaje = "".html_safe
+  ::Usuario.where(fechadeshabilitacion: nil).joins(:contrato).
+    where('contrato.fechafin <= ?', $hoymasdiassobrecuatro).each do |u|
+    mensaje = "Se deshabilitará el #{u.contrato.fechafin}. Si no debe deshabilitarse cambie la fecha de terminación de contrato (si es a termino indefinido dejala en blaco)".html_safe
+    puts "#{u.nusuario} #{mensaje}"
+    envia_alerta_usuario_des(u.nusuario, u.nombres, u.apellidos, 
+                             u.contrato.fechafin_localizada, [mensaje])
+  end
+
+end
+
 
 def deshabilita_usuarios
 
@@ -223,6 +238,9 @@ def run
   if !ENV['SMTP_MAQ']
     puts "No esta definida variable de ambiente SMTP_MAQ"
     exit 1
+  end
+  if !ENV['CRECERSINDES']
+    alertas_deshabilita_usuarios
   end
   if !ENV['CRECERSINDES']
     deshabilita_usuarios
