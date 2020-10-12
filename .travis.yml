@@ -1,10 +1,15 @@
 language: ruby
 
 rvm:
-        - 2.6.1
+        - 2.7.1
 
 addons:
-        postgresql: '9.6'
+        postgresql: '10'
+
+apt:
+        packages:
+                - postgresql-10
+                - postgresql-client-10
 
 notifications:
         email: false

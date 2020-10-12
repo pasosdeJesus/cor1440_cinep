@@ -98,8 +98,8 @@ gem 'sal7711_web', # Motor para archivo de prensa web
   #path: '../sal7711_web'
 
 gem 'cor1440_gen',  # Motor de actividades y proyectos con marco lógico
-  #git: 'https://github.com/pasosdeJesus/cor1440_gen.git'
-  path: '../cor1440_gen'
+  git: 'https://github.com/pasosdeJesus/cor1440_gen.git'
+  #path: '../cor1440_gen'
 
 group :development do
 
@@ -112,7 +112,7 @@ end
 
 group :test, :development, :ensayo do
 
-  gem 'byebug' #Depurar
+  #gem 'byebug' #Depurar
 
   gem 'colorize' # Color en terminal
 
@@ -127,7 +127,7 @@ group :test do
 
   gem 'selenium-webdriver', '>=3.0'#, git: 'https://github.com/vtamara/selenium.git', branch: 'patch-2'
 
-  gem 'simplecov'
+  gem 'simplecov', '<0.18' # Debido a https://github.com/codeclimate/test-reporter/issues/418
 
   gem 'spring'
 

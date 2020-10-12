@@ -4475,7 +4475,6 @@ ALTER SEQUENCE public.planencuesta_id_seq OWNED BY public.planencuesta.id;
 
 
 --
->>>>>>> 9c4f652... Resultados internos y externos a encuestas a usuarios CRECER
 -- Name: plantillacorreo; Type: TABLE; Schema: public; Owner: -
 --
 

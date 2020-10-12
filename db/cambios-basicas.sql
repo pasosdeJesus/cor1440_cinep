@@ -1,3 +1,8 @@
+INSERT INTO public.procesogh (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (1, 'SIN INFORMACIÓN', NULL, '2018-04-24', NULL, '2018-04-24 00:00:00', '2018-04-24 00:00:00');
+INSERT INTO public.procesogh (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (2, 'APOYO', NULL, '2018-04-24', NULL, '2018-04-24 00:00:00', '2018-04-24 00:00:00');
+INSERT INTO public.procesogh (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (3, 'OPERATIVO', NULL, '2018-04-24', NULL, '2018-04-24 00:00:00', '2018-04-24 00:00:00');
+INSERT INTO public.procesogh (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (4, 'DIRECTIVO', NULL, '2018-04-24', NULL, '2018-04-24 00:00:00', '2018-04-24 00:00:00');
+
 --INSERT INTO public.sip_grupo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at, ultimasincldap, cn, "gidNumber", procesogh_id) VALUES (101, 'Archivo y Correspondencia', '', '2017-10-24', NULL, '2017-10-24 17:48:52.959481', '2018-08-06 07:12:06.883349', '2018-08-06', 'ArchivoYCorrespondencia', 513, 2);
 
 INSERT INTO public.sip_grupo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at, ultimasincldap, cn, "gidNumber", procesogh_id) VALUES (149, 'Coordinador(a) Línea Derechos Humanos y Derecho Internacional Humanitario', '', '2018-05-22', '2018-06-06', '2018-05-22 09:24:26.47145', '2018-06-06 11:03:23.631815', NULL, 'CoordinadorLíneaDerechosHumanosYDerechoInternacionalHumanitario', 544, 1);
