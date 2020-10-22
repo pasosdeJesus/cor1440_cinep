@@ -618,6 +618,7 @@ class Ability  < Cor1440Gen::Ability
           can :index, :confytransf
           can :read, ::Ls
           can :read, ::Lscobertura
+          can :index, :exploradordatosrel
         end
 
         if lgrupos.include?(GRUPO_SIG)
