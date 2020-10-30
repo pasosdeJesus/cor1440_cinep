@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 616dac98d64cbb366313560bb6cfcbe10b0a664c
+  revision: 648979ecde7dfe3429457f4426990ce718e95158
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: c6ee14c2a5d3c6d94f55cca9b33f2145b24e3297
+  revision: c1d0f1e756281b296efb3361fd47f07e190a884b
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 0452d0963f7ef5d7f4b5e8455b5778c87c011ca8
+  revision: 0d1230610a935841a29dd1eb063c97834ee9ea46
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: da83ac538a69bf4e2520985f7e16a9a17a513877
+  revision: 9fe4cf9a62a253aee8a8b85e1db90423cc1ecc6c
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: dd145cbe88b7e74146409dc92b78db383ced2140
+  revision: e5ce71589027abf670e67797fd920d0fcd7f1b1b
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: a24282b11826b66cd072095f4fd76594ee67ccf3
+  revision: c588ddb0dedafd1f16851f163db764fa899e5e10
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: cd384fbe0be13ab99f1ac19870a4295a2d3bc96d
+  revision: 9151066a8e916a188805fd1cd528f1f88348e08d
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 78cb44e701aba2f608219d30d8e7c230d02bb93a
+  revision: 3050aa4f2c5ac4ca0e3908ce3fa56a8fe5e80a34
   specs:
     sip (2.0.b10)
       cancancan
@@ -258,7 +258,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (5.0.3)
+    puma (5.0.4)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
@@ -352,7 +352,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     ttfunk (1.6.2.1)
-    twitter_cldr (6.2.0)
+    twitter_cldr (6.3.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
@@ -379,7 +379,7 @@ GEM
     will_paginate (3.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.0)
+    zeitwerk (2.4.1)
 
 PLATFORMS
   ruby
