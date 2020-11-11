@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 27b47529afa21110712d416996158a61b4f09d37
+  revision: 1dde654f3bfe0cf945f9e54475120bc7b5c94036
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: fddaac74a12f08fd8351244f59bb9f6c2a4eebb9
+  revision: a0a4be161fc5096add632f6bfa975ec3d20e8cc3
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 70dbc41cb74f49fb42719d5d86d23d7b1c6cfe11
+  revision: a39874a0c572b40fbb653dfad373d40acb9c2408
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 75074ac82382a4b10c1313443d52d28ebeb30871
+  revision: 2c6df84e87715940e0873c3dbc2a04befd0a6089
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 9c55b1ef875f630b464c6c6c3e87665528f195ef
+  revision: be2d07789cd61628bdc2158fe089c086e8bb0dee
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 2adb6fff980e56c9050485e32dcd50e1a9a7889d
+  revision: effbc2a2c385c5a24bffff2fb0dcd2aafeff276b
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 7f970b8bfbc242cbd3925aadd3fd893af32fa17b
+  revision: 7501e7c6b4e66a5343f46066adf10ca87c918753
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: e9fea25b32b41665f8e4c6c258004ab4cefd132e
+  revision: 1585a60b74e8eaf8f50114a05b866556ba7cdadb
   specs:
     sip (2.0.b10)
       cancancan
@@ -154,7 +154,7 @@ GEM
       execjs (~> 2.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.5.0)
+    bootsnap (1.5.1)
       msgpack (~> 1.0)
     builder (3.2.4)
     camertron-eprun (1.1.1)
@@ -356,7 +356,7 @@ GEM
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
-    tzinfo (1.2.7)
+    tzinfo (1.2.8)
       thread_safe (~> 0.1)
     unicorn (5.7.0)
       kgio (~> 2.6)
