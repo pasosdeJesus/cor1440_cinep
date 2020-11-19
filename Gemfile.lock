@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 199a287c2a0db3647a0939cb53425b26631bedb2
+  revision: 7029823a7bede9d45821f9583dc3a8179cc28351
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: d8453a31b848326acc5c04f82c263ae0355b7d69
+  revision: 679fb621d9ac431ef4b54869d8378b368fbd8915
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: d3bb8223589e21ed87f875295bfb82da5f3c8872
+  revision: bba79ea6c8f2dce204127ed5156b9b7ffb55b794
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 8bf49eb71e85e10c668459bb3a0fc8de6610d58a
+  revision: fb0d55782423c3dfcc96a39097cc2ef2c6ad7419
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 08220dba3bbe80e0d99da32320708d3efaf97a44
+  revision: e0671c51a484cf1669aa1540bdbae0f5624097b2
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 4c49379e2f90f3d0e0d460641b98b9fa78087544
+  revision: f5b82ce5a294b167a17bb6b63a2b02beeff8f394
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1a43a4a8b15e88608caebe1d3d5a1b92d4ed43c1
+  revision: 0c49d1ba522c5658b011e1d2e7b24e5b3642b47f
   specs:
     sip (2.0.b10)
       cancancan
@@ -185,7 +185,7 @@ GEM
     concurrent-ruby (1.1.7)
     connection_pool (2.2.3)
     crass (1.0.6)
-    csv (3.1.7)
+    csv (3.1.8)
     devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -195,7 +195,7 @@ GEM
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
     docile (1.3.2)
-    erd (0.7.0)
+    erd (0.8.0)
       nokogiri
       ruby-graphviz
     erubi (1.10.0)
