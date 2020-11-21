@@ -1,7 +1,10 @@
 <% if registro.persona && registro.grupo_ids %>
   <% r = Mr519Gen::Encuestapersona.
     where(persona_id: registro.persona.map(&:id)).
-    joins(:planencuesta).where('planencuesta.fechafin >= ?', Date.today) %>
+    joins('JOIN mr519_gen_planencuesta ON ' + 
+          'mr519_gen_encuestapersona.planencuesta_id='+
+          'mr519_gen_planencuesta.id').where(
+      'mr519_gen_planencuesta.fechafin >= ?', Date.today) %>
   <% r.each do |e| %>
     <% acper = Sip::ActorsocialPersona.where(
       actorsocial_id: registro.id, persona_id: e.persona_id) %>
@@ -15,7 +18,7 @@
             e.id, 
             {actorsocial_id: registro.id}), :class => 'btn btn-sm', target: '_blank' 
           %>
-      <% elsif can?(:edit, e) %>
+      <% elsif can?(:edit, e) && e.planencuesta %>
         <% if acper.correo && acper.correo != '' && e.fechainv %>
           <% texto = "Encuesta externa ##{e.planencuesta.formulario_id}" %>
           <% url = mr519_gen.encuestaexterna_url(e.adurl) %>

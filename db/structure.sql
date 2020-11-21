@@ -47,6 +47,17 @@ CREATE FUNCTION public.completa_obs(obs character varying, nuevaobs character va
 
 
 --
+-- Name: f_unaccent(text); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.f_unaccent(text) RETURNS text
+    LANGUAGE sql IMMUTABLE
+    AS $_$
+      SELECT public.unaccent('public.unaccent', $1)  
+      $_$;
+
+
+--
 -- Name: soundexesp(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -850,6 +861,16 @@ CREATE TABLE public.actor_regiongrupo (
 CREATE TABLE public.actor_sectoractor (
     actor_id integer NOT NULL,
     sectoractor_id integer NOT NULL
+);
+
+
+--
+-- Name: actorsocial_csivitema; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.actorsocial_csivitema (
+    actorsocial_id bigint NOT NULL,
+    csivitema_id bigint NOT NULL
 );
 
 
@@ -3050,6 +3071,142 @@ ALTER SEQUENCE public.empresaps_id_seq OWNED BY public.empresaps.id;
 
 
 --
+-- Name: escalaaltura3; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.escalaaltura3 (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: escalaaltura3_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.escalaaltura3_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: escalaaltura3_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.escalaaltura3_id_seq OWNED BY public.escalaaltura3.id;
+
+
+--
+-- Name: escaladebilfuerte; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.escaladebilfuerte (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: escaladebilfuerte_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.escaladebilfuerte_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: escaladebilfuerte_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.escaladebilfuerte_id_seq OWNED BY public.escaladebilfuerte.id;
+
+
+--
+-- Name: escalaempeoramejora; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.escalaempeoramejora (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: escalaempeoramejora_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.escalaempeoramejora_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: escalaempeoramejora_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.escalaempeoramejora_id_seq OWNED BY public.escalaempeoramejora.id;
+
+
+--
+-- Name: escalaindmuy; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.escalaindmuy (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: escalaindmuy_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.escalaindmuy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: escalaindmuy_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.escalaindmuy_id_seq OWNED BY public.escalaindmuy.id;
+
+
+--
 -- Name: escolaridad_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -4024,6 +4181,41 @@ ALTER SEQUENCE public.mr519_gen_opcioncs_id_seq OWNED BY public.mr519_gen_opcion
 
 
 --
+-- Name: mr519_gen_planencuesta; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mr519_gen_planencuesta (
+    id bigint NOT NULL,
+    fechaini date,
+    fechafin date,
+    formulario_id integer,
+    plantillacorreoinv_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    adurl character varying(32)
+);
+
+
+--
+-- Name: mr519_gen_planencuesta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.mr519_gen_planencuesta_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: mr519_gen_planencuesta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.mr519_gen_planencuesta_id_seq OWNED BY public.mr519_gen_planencuesta.id;
+
+
+--
 -- Name: mr519_gen_respuestafor; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -4256,40 +4448,6 @@ CREATE SEQUENCE public.personadesea_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: planencuesta; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.planencuesta (
-    id bigint NOT NULL,
-    fechaini date,
-    fechafin date,
-    formulario_id integer,
-    plantillacorreoinv_id integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: planencuesta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.planencuesta_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: planencuesta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.planencuesta_id_seq OWNED BY public.planencuesta.id;
 
 
 --
@@ -4891,7 +5049,6 @@ CREATE TABLE public.sip_actorsocial (
     lineabase20182020 boolean,
     fechadeshabilitacion date,
     csivinivelgeo_id integer,
-    csivitema_id integer,
     csivinivelresp_id integer
 );
 
@@ -4927,7 +5084,8 @@ CREATE TABLE public.sip_actorsocial_persona (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     correo character varying(254),
-    cargo character varying(254)
+    cargo character varying(254),
+    stciv boolean DEFAULT false NOT NULL
 );
 
 
@@ -5732,6 +5890,47 @@ CREATE TABLE public.sip_ubicacion (
     id_municipio integer,
     id_clase integer
 );
+
+
+--
+-- Name: sip_ubicacionpre; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_ubicacionpre (
+    id bigint NOT NULL,
+    nombre character varying(2000) NOT NULL COLLATE public.es_co_utf_8,
+    pais_id integer,
+    departamento_id integer,
+    municipio_id integer,
+    clase_id integer,
+    lugar character varying(500),
+    sitio character varying(500),
+    tsitio_id integer,
+    latitud double precision,
+    longitud double precision,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    nombre_sin_pais character varying(500)
+);
+
+
+--
+-- Name: sip_ubicacionpre_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_ubicacionpre_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_ubicacionpre_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sip_ubicacionpre_id_seq OWNED BY public.sip_ubicacionpre.id;
 
 
 --
@@ -6652,6 +6851,34 @@ ALTER TABLE ONLY public.empresaps ALTER COLUMN id SET DEFAULT nextval('public.em
 
 
 --
+-- Name: escalaaltura3 id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaaltura3 ALTER COLUMN id SET DEFAULT nextval('public.escalaaltura3_id_seq'::regclass);
+
+
+--
+-- Name: escaladebilfuerte id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escaladebilfuerte ALTER COLUMN id SET DEFAULT nextval('public.escaladebilfuerte_id_seq'::regclass);
+
+
+--
+-- Name: escalaempeoramejora id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaempeoramejora ALTER COLUMN id SET DEFAULT nextval('public.escalaempeoramejora_id_seq'::regclass);
+
+
+--
+-- Name: escalaindmuy id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaindmuy ALTER COLUMN id SET DEFAULT nextval('public.escalaindmuy_id_seq'::regclass);
+
+
+--
 -- Name: fondopensiones id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -6813,6 +7040,13 @@ ALTER TABLE ONLY public.mr519_gen_opcioncs ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
+-- Name: mr519_gen_planencuesta id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_planencuesta ALTER COLUMN id SET DEFAULT nextval('public.mr519_gen_planencuesta_id_seq'::regclass);
+
+
+--
 -- Name: mr519_gen_respuestafor id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -6852,13 +7086,6 @@ ALTER TABLE ONLY public.nucleoconflicto ALTER COLUMN id SET DEFAULT nextval('pub
 --
 
 ALTER TABLE ONLY public.perfilprofesional ALTER COLUMN id SET DEFAULT nextval('public.perfilprofesional_id_seq'::regclass);
-
-
---
--- Name: planencuesta id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.planencuesta ALTER COLUMN id SET DEFAULT nextval('public.planencuesta_id_seq'::regclass);
 
 
 --
@@ -7041,6 +7268,13 @@ ALTER TABLE ONLY public.sip_tema ALTER COLUMN id SET DEFAULT nextval('public.sip
 --
 
 ALTER TABLE ONLY public.sip_trivalente ALTER COLUMN id SET DEFAULT nextval('public.sip_trivalente_id_seq'::regclass);
+
+
+--
+-- Name: sip_ubicacionpre id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacionpre ALTER COLUMN id SET DEFAULT nextval('public.sip_ubicacionpre_id_seq'::regclass);
 
 
 --
@@ -7644,6 +7878,38 @@ ALTER TABLE ONLY public.empresaps
 
 
 --
+-- Name: escalaaltura3 escalaaltura3_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaaltura3
+    ADD CONSTRAINT escalaaltura3_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: escaladebilfuerte escaladebilfuerte_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escaladebilfuerte
+    ADD CONSTRAINT escaladebilfuerte_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: escalaempeoramejora escalaempeoramejora_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaempeoramejora
+    ADD CONSTRAINT escalaempeoramejora_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: escalaindmuy escalaindmuy_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.escalaindmuy
+    ADD CONSTRAINT escalaindmuy_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sip_etiqueta etiqueta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7836,6 +8102,14 @@ ALTER TABLE ONLY public.mr519_gen_opcioncs
 
 
 --
+-- Name: mr519_gen_planencuesta mr519_gen_planencuesta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_planencuesta
+    ADD CONSTRAINT mr519_gen_planencuesta_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: mr519_gen_respuestafor mr519_gen_respuestafor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7889,14 +8163,6 @@ ALTER TABLE ONLY public.perfilprofesional
 
 ALTER TABLE ONLY public.sip_persona
     ADD CONSTRAINT persona_pkey PRIMARY KEY (id);
-
-
---
--- Name: planencuesta planencuesta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.planencuesta
-    ADD CONSTRAINT planencuesta_pkey PRIMARY KEY (id);
 
 
 --
@@ -8196,6 +8462,14 @@ ALTER TABLE ONLY public.sip_trivalente
 
 
 --
+-- Name: sip_ubicacionpre sip_ubicacionpre_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacionpre
+    ADD CONSTRAINT sip_ubicacionpre_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: cor1440_gen_actividad sivel2_gen_actividad_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8476,6 +8750,13 @@ CREATE UNIQUE INDEX index_mr519_gen_encuestapersona_on_adurl ON public.mr519_gen
 
 
 --
+-- Name: index_mr519_gen_planencuesta_on_adurl; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_mr519_gen_planencuesta_on_adurl ON public.mr519_gen_planencuesta USING btree (adurl);
+
+
+--
 -- Name: index_sip_actorsocial_on_grupoper_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8571,6 +8852,13 @@ CREATE UNIQUE INDEX index_usuario_on_reset_password_token ON public.usuario USIN
 --
 
 CREATE INDEX sip_busca_mundep ON public.sip_mundep USING gin (mundep);
+
+
+--
+-- Name: sip_nombre_ubicacionpre_b; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX sip_nombre_ubicacionpre_b ON public.sip_ubicacionpre USING gin (to_tsvector('spanish'::regconfig, public.f_unaccent((nombre)::text)));
 
 
 --
@@ -8848,7 +9136,7 @@ ALTER TABLE ONLY public.convenio
 --
 
 ALTER TABLE ONLY public.mr519_gen_encuestapersona
-    ADD CONSTRAINT fk_rails_13f8d66312 FOREIGN KEY (planencuesta_id) REFERENCES public.planencuesta(id);
+    ADD CONSTRAINT fk_rails_13f8d66312 FOREIGN KEY (planencuesta_id) REFERENCES public.mr519_gen_planencuesta(id);
 
 
 --
@@ -9060,6 +9348,14 @@ ALTER TABLE ONLY public.actor_regiongrupo
 
 
 --
+-- Name: sip_ubicacionpre fk_rails_2e86701dfb; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacionpre
+    ADD CONSTRAINT fk_rails_2e86701dfb FOREIGN KEY (departamento_id) REFERENCES public.sip_departamento(id);
+
+
+--
 -- Name: cor1440_gen_valorcampoact fk_rails_3060a94455; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9137,6 +9433,14 @@ ALTER TABLE ONLY public.productopf
 
 ALTER TABLE ONLY public.anexo_proyectofinanciero
     ADD CONSTRAINT fk_rails_3b2f5808be FOREIGN KEY (tipoanexo_id) REFERENCES public.tipoanexo(id);
+
+
+--
+-- Name: sip_ubicacionpre fk_rails_3b59c12090; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacionpre
+    ADD CONSTRAINT fk_rails_3b59c12090 FOREIGN KEY (clase_id) REFERENCES public.sip_clase(id);
 
 
 --
@@ -9401,14 +9705,6 @@ ALTER TABLE ONLY public.actorsocial_municipio
 
 ALTER TABLE ONLY public.cor1440_gen_plantillahcm_proyectofinanciero
     ADD CONSTRAINT fk_rails_62c9243a43 FOREIGN KEY (plantillahcm_id) REFERENCES public.heb412_gen_plantillahcm(id);
-
-
---
--- Name: sip_actorsocial fk_rails_6352234eea; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sip_actorsocial
-    ADD CONSTRAINT fk_rails_6352234eea FOREIGN KEY (csivitema_id) REFERENCES public.csivitema(id);
 
 
 --
@@ -9932,10 +10228,10 @@ ALTER TABLE ONLY public.actividad_publicacion
 
 
 --
--- Name: planencuesta fk_rails_b3c9e4973a; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: mr519_gen_planencuesta fk_rails_b3c9e4973a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.planencuesta
+ALTER TABLE ONLY public.mr519_gen_planencuesta
     ADD CONSTRAINT fk_rails_b3c9e4973a FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
 
 
@@ -9977,6 +10273,14 @@ ALTER TABLE ONLY public.usuario
 
 ALTER TABLE ONLY public.cor1440_gen_informe
     ADD CONSTRAINT fk_rails_c02831dd89 FOREIGN KEY (filtroactividadarea) REFERENCES public.cor1440_gen_actividadarea(id);
+
+
+--
+-- Name: sip_ubicacionpre fk_rails_c08a606417; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacionpre
+    ADD CONSTRAINT fk_rails_c08a606417 FOREIGN KEY (municipio_id) REFERENCES public.sip_municipio(id);
 
 
 --
@@ -10065,6 +10369,14 @@ ALTER TABLE ONLY public.cor1440_gen_actorsocial_efecto
 
 ALTER TABLE ONLY public.tipocontrato
     ADD CONSTRAINT fk_rails_c7b9a3fdfa FOREIGN KEY (tiponomina_id) REFERENCES public.tiponomina(id);
+
+
+--
+-- Name: sip_ubicacionpre fk_rails_c8024a90df; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacionpre
+    ADD CONSTRAINT fk_rails_c8024a90df FOREIGN KEY (tsitio_id) REFERENCES public.sip_tsitio(id);
 
 
 --
@@ -10196,10 +10508,10 @@ ALTER TABLE ONLY public.cor1440_gen_plantillahcm_proyectofinanciero
 
 
 --
--- Name: planencuesta fk_rails_d678e61758; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: mr519_gen_planencuesta fk_rails_d678e61758; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.planencuesta
+ALTER TABLE ONLY public.mr519_gen_planencuesta
     ADD CONSTRAINT fk_rails_d678e61758 FOREIGN KEY (plantillacorreoinv_id) REFERENCES public.plantillacorreo(id);
 
 
@@ -10241,6 +10553,14 @@ ALTER TABLE ONLY public.anexo_convenio
 
 ALTER TABLE ONLY public.desembolso
     ADD CONSTRAINT fk_rails_df556dc8d1 FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: actorsocial_csivitema fk_rails_e0761431e8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_csivitema
+    ADD CONSTRAINT fk_rails_e0761431e8 FOREIGN KEY (actorsocial_id) REFERENCES public.sip_actorsocial(id);
 
 
 --
@@ -10305,6 +10625,14 @@ ALTER TABLE ONLY public.lsdep
 
 ALTER TABLE ONLY public.cor1440_gen_actividad_valorcampotind
     ADD CONSTRAINT fk_rails_e8cd697f5d FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
+
+
+--
+-- Name: sip_ubicacionpre fk_rails_eba8cc9124; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacionpre
+    ADD CONSTRAINT fk_rails_eba8cc9124 FOREIGN KEY (pais_id) REFERENCES public.sip_pais(id);
 
 
 --
@@ -10417,6 +10745,14 @@ ALTER TABLE ONLY public.sal7711_gen_articulo_categoriaprensa
 
 ALTER TABLE ONLY public.cor1440_gen_formulario_tipoindicador
     ADD CONSTRAINT fk_rails_fd2fbcd1b8 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
+
+
+--
+-- Name: actorsocial_csivitema fk_rails_fd6171afce; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.actorsocial_csivitema
+    ADD CONSTRAINT fk_rails_fd6171afce FOREIGN KEY (csivitema_id) REFERENCES public.csivitema(id);
 
 
 --
@@ -11103,6 +11439,20 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200811210232'),
 ('20200811232359'),
 ('20200812000525'),
-('20200813095903');
+('20200813095903'),
+('20200814191834'),
+('20200819105135'),
+('20200819112644'),
+('20200819113558'),
+('20200819114143'),
+('20200819114755'),
+('20200907165157'),
+('20200907174303'),
+('20200908182036'),
+('20200909195224'),
+('20200916022934'),
+('20200919003430'),
+('20200921123831'),
+('20201009004421');
 
 

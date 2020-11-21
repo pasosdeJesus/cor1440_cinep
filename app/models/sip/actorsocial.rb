@@ -10,8 +10,6 @@ module Sip
       foreign_key: "nivelrelacion_id", validate: true, optional: true
     belongs_to :csivinivelgeo, class_name: "::Csivinivelgeo",
       foreign_key: "csivinivelgeo_id", validate: true, optional: true
-    belongs_to :csivitema, class_name: "::Csivitema",
-      foreign_key: "csivitema_id", validate: true, optional: true
     belongs_to :csivinivelresp, class_name: "::Csivinivelresp",
       foreign_key: "csivinivelresp_id", validate: true, optional: true
 
@@ -32,6 +30,14 @@ module Sip
       class_name: '::ActorsocialRegiongrupo', foreign_key: "actorsocial_id"
     has_many :regiongrupo, class_name: '::Regiongrupo',
       through: :actorsocial_regiongrupo
+
+    has_and_belongs_to_many :csivitema, 
+      class_name: '::Csivitema',
+      foreign_key: 'actorsocial_id',
+      association_foreign_key: 'csivitema_id',
+      join_table: 'actorsocial_csivitema'
+
+
 
 
     campofecha_localizado :fechadeshabilitacion
@@ -67,6 +73,18 @@ module Sip
       end
     end
 
+    scope :filtro_csivinivelgeo_id, lambda { |n|
+      where(csivinivelgeo_id: n)
+    }
+    
+    scope :filtro_csivinivelresp_id, lambda { |n|
+      where(csivinivelgeo_id: n)
+    }
+
+    scope :filtro_csivitema, lambda { |t|
+      joins(:csivitema).where('csivitema.id=?', t)
+    }
+
     scope :filtro_grupo_ids, lambda { |g|
       joins(:actorsocial_grupo).where('actorsocial_grupo.grupo_id=?', g)
     }
@@ -101,10 +119,11 @@ module Sip
     }
 
 
-    def presenta(atr)
+    def presenta(atr, stciv = false)
       case atr.to_s
       when '{:actorsocial_persona=>[]}', 'actorsocial_persona'
-        self.actorsocial_persona.inject('') do |memo, ap|
+        self.actorsocial_persona.where(stciv: stciv).
+          inject('') do |memo, ap|
           n = ap.persona.nombres ? ap.persona.nombres : 'N'
           a = ap.persona.apellidos ? ap.persona.apellidos : 'N'
           c = ap.cargo ? ap.cargo + '. ' : ''
@@ -145,8 +164,9 @@ module Sip
       when 'nivelrespstciv'
         self.csivinivelresp_id ? self.csivinivelresp.nombre : ''
       when 'temastciv'
-        self.csivitema_id ? self.csivitema.nombre : ''
-
+         self.csivitema.inject('') do |memo, t|
+          (memo == '' ? '' : memo + '; ') + t.nombre 
+         end
       else
         presenta_sip(atr)
       end

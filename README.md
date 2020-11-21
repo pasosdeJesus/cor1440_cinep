@@ -1,5 +1,6 @@
 # Cor1440_cinep
-[![Estado Construcción](https://api.travis-ci.org/pasosdeJesus/cor1440_cinep.svg?branch=master)](https://travis-ci.org/pasosdeJesus/cor1440_cinep) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep) [![security](https://hakiri.io/github/pasosdeJesus/cor1440_cinep/master.svg)](https://hakiri.io/github/pasosdeJesus/cor1440_cinep/master) [![Dependencias](https://gemnasium.com/pasosdeJesus/cor1440_cinep.svg)](https://gemnasium.com/pasosdeJesus/cor1440_cinep) 
+
+[![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![Estado Construcción](https://api.travis-ci.org/pasosdeJesus/cor1440_cinep.svg?branch=master)](https://travis-ci.org/pasosdeJesus/cor1440_cinep) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/cor1440_cinep) [![security](https://hakiri.io/github/pasosdeJesus/cor1440_cinep/master.svg)](https://hakiri.io/github/pasosdeJesus/cor1440_cinep/master)
 
 Sistema de información de procesos en CINEP/PPP
 

@@ -48,9 +48,6 @@ Rails.application.routes.draw do
       controller: 'cor1440_gen/mindicadorespf', 
       path_names: { new: 'nuevo', edit: 'edita' }
 
-    resources :planesencuesta,
-      path_names: { new: 'nuevo', edit: 'edita' }
-
     resources :pprogstind, path_names: { new: 'nuevo', edit: 'edita' }
 
 #    resources :proyectosfinancieros, 
@@ -100,6 +97,12 @@ Rails.application.routes.draw do
       'sip/hogar#dinamicasconflicto',
       as: :dinamicasconflicto
 
+
+  get '/encuestasusuario/externoresultado/:adurl' => 
+    "mr519_gen/encuestasusuario#externoresultado",
+    as: :externoresultado_encuestausuario
+
+
     get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :pf_fichaimp
     get "/proyectosfinancieros/:id/fichapdf" => "cor1440_gen/proyectosfinancieros#fichapdf", as: :pf_fichapdf
 
@@ -124,6 +127,15 @@ Rails.application.routes.draw do
     # No poner mount aqui para evitar bug en tablas definidas en
     # la aplicación que desde sus vistas daran actividades_path en /actividades
     # en lugar de /act/actividades
+
+    get '/maps/WORLD' => 'infomapa#worldjson', 
+             :as => 'worldjson'
+    get '/maps/gadm36_COL_1' => 'infomapa#colombia', 
+             :as => 'colombia'
+    get '/casos/infomapa' => 'infomapa#infomapa', 
+             :as => 'infomapa'
+    get '/casos/infomapa/datoscovid' => 'infomapa#datoscovid', 
+             :as => 'infomapacovid'
 
     # Se define root aqui para que tras ingresos y salidas llegue a root
     root 'sip/hogar#index'

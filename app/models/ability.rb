@@ -61,6 +61,7 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_LINEA = "Línea"
   GRUPO_OFICINATI = "Oficina TI"
   GRUPO_STCIV = "STCIV"
+  GRUPO_SIG = "Sistema de Información General"
   GRUPO_COORDINADOR = "Coordinador(a)"
   GRUPO_COORDINADORGP = GRUPO_COORDINADOR + " " + GRUPO_COMPROMISOS 
 
@@ -91,6 +92,10 @@ class Ability  < Cor1440Gen::Ability
         ['', 'csivinivelresp'],
         ['', 'csivitema'],
         ['', 'empresaps'],
+        ['', 'escalaaltura3'],
+        ['', 'escaladebilfuerte'],
+        ['', 'escalaempeoramejora'],
+        ['', 'escalaindmuy'],
         ['', 'fondopensiones'],
         ['', 'lscobertura'],
         ['', 'nivelrelacion'],
@@ -426,6 +431,8 @@ class Ability  < Cor1440Gen::Ability
           can :read, ::Regiongrupo
           can :read, Sip::Grupo
           can :read, Heb412Gen::Doc
+          # Pueden manejar contactos STCIV (y no los de CINEP)
+          can :stciv, Sip::ActorsocialPersona
           can [:create, :read, :index, :update], Sip::Actorsocial
           if (lgrupos - ['Usuarios']) == ['STCIV'] # Externo, CERAC
             return  # Nada más
@@ -609,6 +616,16 @@ class Ability  < Cor1440Gen::Ability
 
         if lgrupos.include?(GRUPO_MEDIACION)
           can :index, :confytransf
+          can :read, ::Ls
+          can :read, ::Lscobertura
+          can :index, :exploradordatosrel
+        end
+
+        if lgrupos.include?(GRUPO_SIG)
+          can :index, :confytransf
+          can :read, ::Ls
+          can :read, ::Lscobertura
+          can :read, ::Acp
         end
 
         if lgrupos.include?(GRUPO_MOVIMIENTOSSOCIALES)

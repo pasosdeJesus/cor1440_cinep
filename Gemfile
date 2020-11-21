@@ -43,6 +43,8 @@ gem 'rails', '~> 6.0.0'
 
 gem 'rails-i18n'
 
+gem 'react-rails'
+
 gem 'redcarpet' # Reconoce y transforma Markdown
 
 gem 'rspreadsheet'
@@ -57,7 +59,7 @@ gem 'twitter_cldr' # ICU con CLDR
 
 gem 'tzinfo' # Zonas horarias
 
-gem 'webpacker', '~> 4.0'
+gem 'webpacker'
 
 gem 'will_paginate' # Listados en páginas
 
@@ -125,7 +127,7 @@ group :test do
 
   gem 'selenium-webdriver', '>=3.0'#, git: 'https://github.com/vtamara/selenium.git', branch: 'patch-2'
 
-  gem 'simplecov'
+  gem 'simplecov', '<0.18' # Debido a https://github.com/codeclimate/test-reporter/issues/418
 
   gem 'spring'
 

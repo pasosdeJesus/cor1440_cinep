@@ -308,6 +308,18 @@ es:
       "empresaps":
         Empresaps: 'Empresa prestradora de salud'
         Empresasps: 'Empresas prestadoras de salud'
+      "escalaaltura3":
+        Escalaaltura3: 'Escala Alto Medio Bajo'
+        Escalasaltura3: 'Escala Alto Medio Bajo'
+      "escaladebilfuerte":
+        Escaladebilfuerte: 'Escala de Muy débil a Muy fuerte'
+        Escalasdebilfuerte: 'Escala de Muy débil a Muy fuerte'
+      "escalaempeoramejora":
+        Escalaempeoramejora: 'Escala de Empeora mucho a Mejora mucho'
+        Escalasempeoramejora: 'Escala de Empeora mucho a Mejora mucho'
+      "escalaindmuy":
+        Escalaindmuy: 'Escala de Indiferente a Muy Importante'
+        Escalasindmuy: 'Escala de Indiferente a Muy Importante'
       "fondopensiones":
         Fondopensiones: 'Fondo de pensiones'
         Fondospensiones: 'Fondos de pensiones'

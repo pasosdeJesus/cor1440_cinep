@@ -77,7 +77,7 @@
         <% end %>
         <% if can? :index, :exploradordatosrel %>
           <%= opcion_menu 'Explorador visual de datos relacionados', 
-            'http://181.143.184.115:2700/sivel2/casos/infomapa/',
+            '/casos/infomapa/',
             desplegable: true %>
         <% end %>
         <% if can? :index, :confytransf %>
@@ -166,7 +166,7 @@
         <% end %>
         <% if can? :read, Mr519Gen::Encuestapersona %>
           <%= opcion_menu 'Planes de encuestas a Actores Sociales', 
-            main_app.planesencuesta_path,
+            mr519_gen.planesencuesta_path,
             desplegable: true %>
           <%= opcion_menu 'Encuestas a contactos de Actores Sociales', 
             mr519_gen.encuestaspersona_path,
@@ -185,9 +185,10 @@
   <% end %>
 <% end %>
 
-<% content_for :footer do %>
-  <p><span class='derechos'>Dominio Público de acuerdo a Legislación Colombiana<br/>
-    Personalización desarrollado para el <a href='http://www.nocheyniebla.org'>Banco de Datos del CINEP/PPP</a> por <a href='http://www.pasosdeJesus.org' target='_blank'>Pasos de Jesús</a>. 2015. 
+<% content_for :piedepagina do %>
+  <hr>
+  <p><span class='derechos'>
+    Sistema de información de <a href="https://github.com/pasosdeJesus/cor1440_cinep">código abierto</a>, desarrollado para <a href="http://www.cinep.org.co" target="_blank">CINEP/PPP</a> por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2015-2020. 
   </span></p>
 <% end %>
 
