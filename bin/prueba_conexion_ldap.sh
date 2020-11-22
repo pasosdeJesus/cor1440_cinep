@@ -44,5 +44,10 @@ if (test "$JN316_CLAVE" = "") then {
   echo "Falta JN316_CLAVE"
   exit 1;
 } fi;
+if (test "$PRC_USUARIO" = "") then {
+  echo "Falta PRC_USUARIO (e.g vtamara)"
+  exit 1;
+} fi;
+
 
 /usr/local/bin/ruby bin/rails runner -e ${RAILS_ENV} scripts/prueba_conexion_ldap.rb
