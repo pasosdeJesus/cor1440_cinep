@@ -2599,7 +2599,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    monto numeric(20,2) DEFAULT 0.0,
+    monto numeric DEFAULT 0.0,
     referencia character varying(1000),
     referenciacinep character varying(1000),
     fuentefinanciador character varying(1000),
@@ -2616,7 +2616,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric(20,2) DEFAULT 0.0,
+    presupuestototal numeric DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -2791,12 +2791,12 @@ ALTER SEQUENCE public.cor1440_gen_resultadopf_id_seq OWNED BY public.cor1440_gen
 CREATE TABLE public.cor1440_gen_tipoindicador (
     id bigint NOT NULL,
     nombre character varying(32),
-    medircon integer,
     espcampos character varying(1000),
     espvaloresomision character varying(1000),
     espvalidaciones character varying(1000),
     esptipometa character varying(32),
     espfuncionmedir character varying(1000),
+    medircon integer,
     desc20 character varying(128),
     desc40 character varying(128),
     desc60 character varying(128),
@@ -3880,6 +3880,7 @@ CREATE TABLE public.ls (
     partici2 character varying(512),
     partici3 character varying(512),
     tipo_lucha character varying(3),
+    accion integer,
     motivopl integer,
     motivopp character varying(512),
     motivo2 character varying(512),
@@ -3890,9 +3891,9 @@ CREATE TABLE public.ls (
     entidad1 character varying(512),
     entidad2 character varying(512),
     entidad3 character varying(512),
-    fuente character varying(512),
-    ffuente date,
     ffuen_1 date,
+    ffuente date,
+    fuente character varying(512),
     descripcion character varying(6000),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -4846,7 +4847,6 @@ CREATE TABLE public.sal7711_gen_articulo (
     pagina character varying(20),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    url character varying(5000),
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
@@ -4854,9 +4854,10 @@ CREATE TABLE public.sal7711_gen_articulo (
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
-    pais_id integer,
     titulo character varying(1024),
-    observaciones character varying(5000)
+    observaciones character varying(5000),
+    url character varying(5000),
+    pais_id integer
 );
 
 
@@ -6238,8 +6239,6 @@ CREATE TABLE public.usuario (
     updated_at timestamp without time zone,
     regionsjr_id integer,
     oficina_id integer DEFAULT 1,
-    nombres character varying(50) DEFAULT 'N'::character varying NOT NULL COLLATE public.es_co_utf_8,
-    apellidos character varying(50) DEFAULT 'N'::character varying NOT NULL COLLATE public.es_co_utf_8,
     ultimasincldap date,
     "uidNumber" integer,
     telefonos character varying(256),
@@ -6250,6 +6249,8 @@ CREATE TABLE public.usuario (
     numhijosmen12 integer DEFAULT 0,
     labdepartamento_id integer,
     labmunicipio_id integer,
+    apellidos character varying(127),
+    nombres character varying(127),
     perfilprofesional_id integer,
     cargo_id integer,
     contrato_id integer,
@@ -6337,7 +6338,7 @@ CREATE VIEW public.v_solicitud_informes AS
         END AS a_tiempo
    FROM (public.cor1440_gen_proyectofinanciero p
      JOIN public.v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[18, 19, 20, 101, 102, 103, 104, 106, 109, 111, 115, 116, 117, 118, 119, 120, 122, 123, 125, 126, 128, 129, 130, 131, 132, 133, 134, 135, 136, 138, 139, 140, 141, 145, 146, 147, 149, 150, 151, 152, 153, 154, 155, 156, 158, 159, 160, 161, 162, 163, 164, 165, 166, 168, 169, 170, 171, 172, 174, 180, 182, 187, 188, 189, 193, 195, 196, 200, 203, 205, 206, 207, 208, 209, 210, 211, 212, 213, 216, 217, 218, 219, 220, 221, 229, 235, 236, 237, 241, 242, 248, 249, 251, 255, 258, 263, 265, 273, 274, 276, 278, 287, 288, 289, 302, 303, 346, 358, 360, 363, 364, 365, 369, 370, 376, 378, 384, 413, 420, 422, 423, 430, 432, 433, 434, 452, 458, 459, 476, 482, 483, 484, 487, 488, 489, 491, 493, 496, 510, 516, 518, 519, 520, 522, 524, 525, 527, 529, 532, 537, 548, 549, 550, 551, 555, 560, 563, 564, 574, 578, 597, 598, 601, 602, 603, 606, 610, 611, 612, 616, 621, 627, 634, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 653, 654, 656, 659, 665, 672, 676, 677, 678, 682, 689, 693, 694, 697, 700, 701, 702, 703, 704, 705, 706, 707, 708, 711, 715, 716, 719, 723, 726, 729, 731, 732, 735, 736, 737, 738, 739, 740, 741, 743, 744, 746, 747, 748, 749, 750, 753, 755, 757, 760, 762, 767, 772, 785, 855, 856, 857, 858, 859, 895, 896, 897, 898, 929, 930, 931, 962, 963, 964, 1002, 1003, 1004, 1035, 1036, 1037, 1057, 1062, 1063, 1064, 1124, 1125, 1126, 1133, 1134, 1135, 1153, 1154, 1155, 1156, 1157, 1158, 1169, 1170, 1171, 1178, 1179, 1180, 1205, 1207, 1208, 1209, 1210, 1212, 1213, 1214, 1216, 1217, 1218, 1219, 1220, 1221, 1223, 1224, 1227, 1238, 1243, 1244, 1245, 1246, 1253, 1255, 1256, 1257, 1258, 1259, 1260, 1261, 1262, 1263, 1264, 1265, 1266, 1267, 1268, 1269, 1270, 1271, 1272, 1273, 1274, 1275, 1276, 1277, 1278, 1280, 1281, 1282, 1283, 1284, 1285, 1343, 1344, 1345, 1346, 1347, 1353, 1382, 1428, 1429, 1430, 1431, 1432, 1433, 1434, 1435, 1437, 1438, 1440, 1441, 1442, 1444, 1445, 1446, 1447, 1449, 1450, 1451, 1452, 1453, 1454, 1455, 1456, 1457, 1459, 1460, 1461, 1462, 1463, 1464, 1465, 1466, 1467, 1468, 1469, 1470, 1471, 1472, 1473, 1474, 1475, 1476, 1477, 1478, 1480, 1481, 1482, 1483, 1484, 1485, 1486, 1489, 1490, 1491, 1492, 1494, 1499, 1500, 1502, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 1513, 1514, 1515, 1524, 1526, 1529, 1530, 1531, 1533, 1534, 1535, 1537, 1538, 1539, 1540, 1541, 1542, 1543, 1544, 1545, 1546, 1547, 1549, 1551, 1561, 1572, 1573, 1574, 1575, 1576, 1578, 1579, 1580, 1581, 1582, 1583, 1584, 1585, 1586, 1587, 1589, 1591, 1592, 1593, 1594, 1595, 1596, 1597, 1599, 1600, 1601, 1602, 1603, 1604, 1605, 1606, 1607, 1608, 1609, 1610, 1611, 1613, 1614, 1615, 1616, 1617, 1618, 1619, 1620, 1621, 1622, 1623, 1624, 1625, 1626, 1627, 1628, 1629, 1630, 1631, 1632, 1633, 1634, 1635, 1636, 1637, 1638, 1639, 1640, 1641, 1642, 1643, 1644, 1645, 1646, 1647, 1648, 1649, 1650, 1651, 1652, 1653, 1654, 1655, 1656, 1657, 1658, 1659, 1660, 1661, 1662, 1663, 1664, 1665, 1666, 1667, 1668, 1669, 1670, 1671, 1672, 1673, 1674, 1675, 1676, 1677, 1678, 1679, 1681, 1682, 1683, 1688, 1690, 1691, 1692, 1694, 1695, 1698, 1701, 1707, 1708, 1709, 1711, 1712, 1714, 1715, 1716, 1718, 1719, 1720, 1721, 1722, 1723, 1724, 1725, 1726, 1727, 1728, 1729, 1730, 1733, 1734, 1736, 1737, 1738, 1739, 1740, 1741, 1742, 1743, 1744, 1745, 1746, 1748, 1749, 1750, 1751, 1752, 1753, 1754, 1756, 1757, 1759, 1763, 1764, 1765, 1767, 1768, 1769, 1770, 1771, 1772, 1773, 1774, 1775, 1777, 1780, 1781, 1782, 1784, 1785, 1786, 1787, 1788, 1789, 1790, 1791, 1792, 1793, 1794, 1795, 1796, 1797, 1798, 1799, 1800, 1802, 1803, 1804, 1805, 1806, 1807, 1808, 1809, 1812, 1813, 1816, 1818, 1819, 1821, 1822, 1823, 1826, 1828, 1829, 1830, 1834, 1836, 1843, 1844, 1845, 1846, 1847, 1848, 1849, 1850, 1851, 1852, 1859, 1860, 1861, 1862, 1863, 1864, 1865, 1866, 1867, 1868, 1873, 1874, 1875, 1876, 1877, 1878, 1879, 1880, 1881, 1882, 1883, 1884, 1885, 1886, 1887, 1888, 1889, 1890, 1891, 1892, 1894, 1895, 1896, 1897, 1899, 1900, 1901, 1903, 1904, 1905, 1906, 1908, 1909, 1910, 1911, 1912, 1914, 1915, 1916, 1917, 1918, 1919, 1920, 1926, 1927, 1928, 1929, 1930, 1931, 1932, 1933, 1934, 1935, 1936, 1940, 1941, 1942, 1943, 1944, 1945, 1946, 1947, 1948, 1950, 1951, 1952, 1953, 1954, 1956, 1957, 1959, 1960, 1961, 1965, 1966, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1979, 1981, 1982, 1984, 1989, 1990, 1991, 1995, 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2015, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2047, 2048, 2049, 2050, 2051, 2052, 2053, 2054, 2055, 2056, 2057, 2082, 2084, 2085, 2086, 2087, 2088, 2089, 2090, 2091, 2092, 2093, 2094, 2095, 2099, 2100, 2101, 2102, 2103, 2104, 2105, 2106, 2107, 2108, 2109, 2110, 2111, 2112, 2114, 2115, 2116]))
+  WHERE (p.id = ANY (ARRAY[125, 129, 128, 161, 173, 193, 194, 196, 103, 102, 111, 127, 109, 130, 133, 134, 131, 123, 132, 136, 104, 293, 237, 238, 239, 240, 119, 164, 20, 174, 190, 163, 195, 197, 122, 141, 142, 143, 144, 145, 147, 152, 146, 155, 137, 101, 138, 175, 149, 167, 166, 18, 150, 156, 120, 236, 116, 158, 176, 177, 170, 178, 179, 106, 118, 115, 171, 180, 157, 159, 172, 198, 199, 200, 201, 202, 168, 206, 117, 126, 233, 234, 235, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 254, 255, 256, 257, 295, 260, 267, 272, 286, 276, 309, 278, 280, 288, 19, 162, 140]))
   ORDER BY s.fechaplaneada;
 
 
@@ -9155,6 +9156,14 @@ ALTER TABLE ONLY public.convenio
 
 
 --
+-- Name: cor1440_gen_actividad_rangoedadac fk_rails_1366d14fb8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividad_rangoedadac
+    ADD CONSTRAINT fk_rails_1366d14fb8 FOREIGN KEY (rangoedadac_id) REFERENCES public.cor1440_gen_rangoedadac(id);
+
+
+--
 -- Name: mr519_gen_encuestapersona fk_rails_13f8d66312; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9376,6 +9385,14 @@ ALTER TABLE ONLY public.actor_regiongrupo
 
 ALTER TABLE ONLY public.sip_ubicacionpre
     ADD CONSTRAINT fk_rails_2e86701dfb FOREIGN KEY (departamento_id) REFERENCES public.sip_departamento(id);
+
+
+--
+-- Name: cor1440_gen_actividad_rangoedadac fk_rails_2f8fe7fdca; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividad_rangoedadac
+    ADD CONSTRAINT fk_rails_2f8fe7fdca FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
 
 
 --
@@ -11153,6 +11170,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026130000'),
 ('20171026144919'),
 ('20171026172501'),
+('20171114185712'),
 ('20171123212504'),
 ('20171128234148'),
 ('20171130125044'),
@@ -11239,6 +11257,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180501225617'),
 ('20180502083127'),
 ('20180509111948'),
+('20180509114933'),
 ('20180509125608'),
 ('20180519102415'),
 ('20180522102059'),
@@ -11475,6 +11494,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200919003430'),
 ('20200921123831'),
 ('20201009004421'),
-('20201119125643');
+('20201119125643'),
+('20201121162913');
 
 
