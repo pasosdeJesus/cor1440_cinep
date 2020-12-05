@@ -2785,6 +2785,40 @@ ALTER SEQUENCE public.cor1440_gen_resultadopf_id_seq OWNED BY public.cor1440_gen
 
 
 --
+-- Name: cor1440_gen_sectorapc; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_sectorapc (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: cor1440_gen_sectorapc_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.cor1440_gen_sectorapc_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cor1440_gen_sectorapc_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.cor1440_gen_sectorapc_id_seq OWNED BY public.cor1440_gen_sectorapc.id;
+
+
+--
 -- Name: cor1440_gen_tipoindicador; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -5005,40 +5039,6 @@ ALTER SEQUENCE public.sectoractor_id_seq OWNED BY public.sectoractor.id;
 
 
 --
--- Name: sectorapc; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sectorapc (
-    id bigint NOT NULL,
-    nombre character varying(500) NOT NULL,
-    observaciones character varying(5000),
-    fechacreacion date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: sectorapc_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sectorapc_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sectorapc_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.sectorapc_id_seq OWNED BY public.sectorapc.id;
-
-
---
 -- Name: sectorsocial_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -6812,6 +6812,13 @@ ALTER TABLE ONLY public.cor1440_gen_resultadopf ALTER COLUMN id SET DEFAULT next
 
 
 --
+-- Name: cor1440_gen_sectorapc id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_sectorapc ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_sectorapc_id_seq'::regclass);
+
+
+--
 -- Name: cor1440_gen_tipoindicador id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -7194,13 +7201,6 @@ ALTER TABLE ONLY public.sal7711_gen_categoriaprensa ALTER COLUMN id SET DEFAULT 
 --
 
 ALTER TABLE ONLY public.sectoractor ALTER COLUMN id SET DEFAULT nextval('public.sectoractor_id_seq'::regclass);
-
-
---
--- Name: sectorapc id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sectorapc ALTER COLUMN id SET DEFAULT nextval('public.sectorapc_id_seq'::regclass);
 
 
 --
@@ -7830,6 +7830,14 @@ ALTER TABLE ONLY public.cor1440_gen_resultadopf
 
 
 --
+-- Name: cor1440_gen_sectorapc cor1440_gen_sectorapc_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_sectorapc
+    ADD CONSTRAINT cor1440_gen_sectorapc_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: cor1440_gen_tipoindicador cor1440_gen_tipoindicador_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8291,14 +8299,6 @@ ALTER TABLE ONLY public.sal7711_gen_categoriaprensa
 
 ALTER TABLE ONLY public.sectoractor
     ADD CONSTRAINT sectoractor_pkey PRIMARY KEY (id);
-
-
---
--- Name: sectorapc sectorapc_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sectorapc
-    ADD CONSTRAINT sectorapc_pkey PRIMARY KEY (id);
 
 
 --
@@ -9432,7 +9432,7 @@ ALTER TABLE ONLY public.actorsocial_regiongrupo
 --
 
 ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero
-    ADD CONSTRAINT fk_rails_3792591d9e FOREIGN KEY (sectorapc_id) REFERENCES public.sectorapc(id);
+    ADD CONSTRAINT fk_rails_3792591d9e FOREIGN KEY (sectorapc_id) REFERENCES public.cor1440_gen_sectorapc(id);
 
 
 --
@@ -11495,6 +11495,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200921123831'),
 ('20201009004421'),
 ('20201119125643'),
-('20201121162913');
+('20201121162913'),
+('20201205041350');
 
 

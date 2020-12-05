@@ -16,7 +16,7 @@
   </div>
   <div class="col-sm-4">
     <%= f.association :sectorapc,
-      collection: ::Sectorapc.habilitados,
+      collection: Cor1440Gen::Sectorapc.habilitados,
       label_method: :nombre,
       value_method: :id
     %>

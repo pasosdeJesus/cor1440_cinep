@@ -108,7 +108,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'publicacion'],
         ['', 'redactor'],
         ['', 'regiongrupo'],
-        ['', 'sectorapc'],
+        ['Cor1440Gen', 'sectorapc'],
         ['', 'tipoanexo'],
         ['', 'tipocontrato'],
         ['', 'tipoconvenio'],
@@ -550,12 +550,12 @@ class Ability  < Cor1440Gen::Ability
             Cor1440Gen::Proyectofinanciero
           can [:manage, :validar], Cor1440Gen::Proyectofinanciero.where(
             'respgp_id IS NOT NULL')
+          can :manage, Cor1440Gen::Sectorapc
 
           can [:create, :read, :update], Sip::Actorsocial
 
           can :manage, :tablasbasicas
           can :manage, ::Convenio
-          can :manage, ::Sectorapc
           can :manage, ::Tasacambio
           can :manage, ::Tipoanexo
           can :manage, ::Tipoconvenio
