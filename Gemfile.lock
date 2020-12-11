@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 5851c840ce1b8ad0dd871d28efec3e219f0cdd67
+  revision: 20c09da4a0bd02fe732e8e38219e34ed0d0cbc04
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 527af8ee796247f84c8b96f739541392ec89a508
+  revision: 0506ef7da698201b453e6be64077d432a1491ca5
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: d3b9998ddeb6fc3a05a11557dd4079c0dfdebd4e
+  revision: 3316e2793670ca05574fcf7b6eb3bcc781455121
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 20477c13f6619987ed6a295f32b7d0152593d9b1
+  revision: 2d1f55b1456af9e71efe6c0bb4ab043890dfb341
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: ecf3a51124b9c933d1c2a9b46730ab0b5b4c9231
+  revision: cf4757917eb025ce7fe68abc2f33b7f0e53addeb
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 8a5c5d029fd61f6a779d9985cf6ae15397420688
+  revision: 0efd63e96c5f4897952c48c166a77d0bc6ab330e
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: bf881f4dd83695555e04beaf4e3b1456b98de475
+  revision: 4ae3c51687d24680117521b0265bd1c49f3db3a5
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f0d33b5974a7284e580619572338395763bcc137
+  revision: e8769dd4308a2ca5cfd2b718ca7d7261c158d274
   specs:
     sip (2.0.b10)
       cancancan
@@ -258,7 +258,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (5.1.0)
+    puma (5.1.1)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
