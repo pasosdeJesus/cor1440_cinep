@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: e8070c73a73502b436e23d4c3e921679d804fc93
+  revision: 1d34b3adc7fe53868362b1d0afddd4bc72309b5c
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: cb8a17131bc1aeea641ed8c86cad7c82450dacd5
+  revision: 34d16c2bc7fb656f08ad826c2eabed7105ddcec2
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 50a2b302492beb502eb32184a1c0129cf718eb5b
+  revision: 4cbdcf4c8debe882123ffa829d69565022dc51c8
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2e21ae08c3f8fd88590ddb7fad71f2f1716708c3
+  revision: b33f738d233af31b1d7c46a0dfb3221c87fff446
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 6d52626d5ff7c852266f6f702cc298f1451deb9f
+  revision: b6e128bcf741cdcb9b8b8d3cc41aa8440ecc5431
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 13f322ead13f002fda2cac345e96b2b2844f822e
+  revision: d1278dd713fb18a1aedb92419414da989c21f633
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 1eebcf1b9423d315272a4a1f9e2f3d8ca946313e
+  revision: ba18f06d2d8d99240248cd823dfa08095618e598
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f2690d5cce0c3a46d8686bac2ad29219d24a240a
+  revision: e19d3ccbd8f15987441bc38f7967bb8ad8be5834
   specs:
     sip (2.0.b10)
       cancancan
@@ -194,13 +194,13 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
-    docile (1.3.2)
+    docile (1.3.3)
     erd (0.8.0)
       nokogiri
       ruby-graphviz
     erubi (1.10.0)
     execjs (2.7.0)
-    ffi (1.13.1)
+    ffi (1.14.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.5)
@@ -213,7 +213,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.3.1)
+    json (2.4.1)
     kgio (2.11.3)
     libxml-ruby (3.2.1)
     loofah (2.8.0)
@@ -299,14 +299,14 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
     raindrops (0.19.1)
-    rake (13.0.1)
+    rake (13.0.2)
     react-rails (2.6.1)
       babel-transpiler (>= 0.7.0)
       connection_pool
       execjs
       railties (>= 3.2)
       tilt
-    redcarpet (3.5.0)
+    redcarpet (3.5.1)
     regexp_parser (1.8.2)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -356,7 +356,7 @@ GEM
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
-    tzinfo (1.2.8)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     unicorn (5.7.0)
       kgio (~> 2.6)
