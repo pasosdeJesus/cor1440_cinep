@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: d9c4b5d8347ad3f9f415ee11875c27c79cb74bcb
+  revision: c9b5c3b5422228d5fd72798c1cbdc06849032f06
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5b209ae5a5c9e648eb8a507d30337e8cec8ced5b
+  revision: e4b1992c7cf1dd44bf2558afdc90d550d88afe29
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: bad6210f1db273296b263a3adf418e8eeabcd4ff
+  revision: 1a1258bd1861ff411d6353475aed4873f68be8fd
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2806c701ca4b52199ad90f9a5fb6e8bd534017e0
+  revision: 473def9e234085d868ae867fee685cd9b383b8cf
   specs:
     mr519_gen (0.2.0)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: e4bb9b8c5ddd93f9c921ade21eb9ac88b412c5ed
+  revision: 342d1d09bceacd2a5c54124cce089cdc55d76872
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 4557c9e66fea831ff2fbecdfd5df175589348188
+  revision: e0f9beb8c148d40c35dc1fce46141cef7867a63b
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: b054f238749d90fbdb2e47de7c6e4e31968f7160
+  revision: 16fb364f8ba702287674a21d96551fdfc88d25e5
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: c825088f4d1be044e5b5bb5c30297fdef6a178ee
+  revision: a77f2e3b03edb45a9e3b46727c4ee131d41bdd44
   specs:
     sip (2.0.b10)
       cancancan
@@ -361,7 +361,7 @@ GEM
       tzinfo
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    unicorn (5.7.0)
+    unicorn (5.8.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.9)
