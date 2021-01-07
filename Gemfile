@@ -39,7 +39,7 @@ gem 'prawn-table'
 
 gem 'puma', '>= 4.3.2'
 
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.0.3.4'
 
 gem 'rails-i18n'
 
@@ -70,35 +70,35 @@ gem 'will_paginate' # Listados en páginas
 # bien vistas
 
 gem 'sip', # Motor generico
-  git: 'https://github.com/pasosdeJesus/sip.git'
+  git: 'https://github.com/pasosdeJesus/sip.git', branch: 'rails6.0'
   #path: '../sip'
 
 gem 'jn316_gen', # LDAP
-  git: 'https://github.com/pasosdeJesus/jn316_gen.git'
+  git: 'https://github.com/pasosdeJesus/jn316_gen.git', branch: 'rails6.0'
   #path: '../jn316_gen'
 
 gem 'mr519_gen', # Motor de gestion de formularios y encuestas
-  git: 'https://github.com/pasosdeJesus/mr519_gen.git'
+  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: 'rails6.0'
   #path: '../mr519_gen'
 
 gem 'heb412_gen',  # Motor de nube y llenado de plantillas
-  git: 'https://github.com/pasosdeJesus/heb412_gen.git'
+  git: 'https://github.com/pasosdeJesus/heb412_gen.git', branch: 'rails6.0'
   #path: '../heb412_gen'
 
 gem 'sal7711_gen', # Motor para archivo de prensa
-  git: 'https://github.com/pasosdeJesus/sal7711_gen.git'
+  git: 'https://github.com/pasosdeJesus/sal7711_gen.git', branch: 'rails6.0'
   #path: '../sal7711_gen'
 
 gem 'sal7711_ld', # Publicaciones sobre motor Sal7711_ld
-  git: 'https://github.com/pasosdeJesus/sal7711_ld.git'
-  #path: '../sal7711_ld'
+  git: 'https://github.com/pasosdeJesus/sal7711_ld.git', branch: 'rails6.0'
+  #path: '../sal7711_ld''
 
 gem 'sal7711_web', # Motor para archivo de prensa web
-  git: 'https://github.com/pasosdeJesus/sal7711_web.git'
+  git: 'https://github.com/pasosdeJesus/sal7711_web.git', branch: 'rails6.0'
   #path: '../sal7711_web'
 
 gem 'cor1440_gen',  # Motor de actividades y proyectos con marco lógico
-  git: 'https://github.com/pasosdeJesus/cor1440_gen.git'
+  git: 'https://github.com/pasosdeJesus/cor1440_gen.git', branch: 'rails6.0'
   #path: '../cor1440_gen'
 
 group :development do
