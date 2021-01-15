@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: fbd5929f68d391b3885da09b5e192be27d48ec85
+  revision: 7c10531cb02b961b1992924c9785a2723e8103ad
   specs:
     cor1440_gen (1.0b3)
       devise
@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: abdfe64037b9a1bc8effe002472131b4e3183416
+  revision: caead7711e24abc985936b09636f7c8901146781
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: a3b7677ed7be079e9f5619be8fca59b31abc352a
+  revision: 75581bef5e7b5dfe524c328ef0f8d4b7db8a6afa
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b6d34d0ddb118f3d6814b08f3ca63fc58b02f524
+  revision: 2203570761bbb5155af62daa67e6d62ef25a0adc
   specs:
     mr519_gen (0.2.0)
       rails
@@ -40,7 +40,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 47efd4b91557e6e587f2c4124332806f26d9bc60
+  revision: 3a60eb4cbeed5e06dba86cf60248452819aa9bfe
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 9e15964288bc3043a53ac62b4395502054ebf688
+  revision: fe7f109169df30a1f44be0813ffa63cb793e2dd6
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 159e66260d01699c17c174bd8f2cc9cb40070d72
+  revision: b690148f9c3358e8636a882028d8bbbb1162b263
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1fcf818f91196fcd6944067b963a032f5f5de444
+  revision: 35241f6728097c04ad6655c1702380896ce06352
   specs:
     sip (2.0.b10)
       cancancan
@@ -194,7 +194,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
-    docile (1.3.4)
+    docile (1.3.5)
     erd (0.8.0)
       nokogiri
       ruby-graphviz
@@ -216,7 +216,7 @@ GEM
     json (2.5.1)
     kgio (2.11.3)
     libxml-ruby (3.2.1)
-    loofah (2.8.0)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
