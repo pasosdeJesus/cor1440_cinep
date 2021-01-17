@@ -5,26 +5,6 @@
 #//= require cocoon
 
 
-@reconocer_decimal_locale_es_CO = (n) ->
-  if n == ""
-    return 0
-  i = 0
-  r = ""
-  while i<n.length
-    if n[i] == ','
-      r = r + '.'
-    if n[i] >= '0' && n[i] <='9'
-      r = r + n[i]
-    i++
-  return parseFloat(r)
-
-@recalcula_aemergente_pesos_localizado = (campo, tasa) ->
-  vc = $('#' + campo).val()
-  if typeof vc != 'undefined' && vc != '' && typeof tasa != 'undefined' && tasa > 0
-      vcp = reconocer_decimal_locale_es_CO(vc)*tasa
-      vcpl = new Intl.NumberFormat('es-CO').format(vcp)
-      $('#' + campo).attr('title', '$ ' + vcpl).tooltip('fixTitle').tooltip('show')
-
 @establece_duracion = (root, obdur) ->
   $('#proyectofinanciero_duracion').val(obdur.duracion)
 
@@ -42,13 +22,13 @@
 @cor1440_cinep_recalcula_montospesos_localizado = (root) ->
 
   tfl = $('#proyectofinanciero_tasa_localizado').val()
-  tf = reconocer_decimal_locale_es_CO(tfl)
+  tf = sip_reconocer_decimal_locale_es_CO(tfl)
   sum = 0
   sump = 0
   $.each [['monto', 'montopesos'], ['aportecinep', 'aportecinepp'],
           ['aotrosfin', 'aporteotrosp'], ['saldo', 'saldop']], (i, c) ->
     vl = $('#proyectofinanciero_' + c[0] + '_localizado').val()
-    v = reconocer_decimal_locale_es_CO(vl)
+    v = sip_reconocer_decimal_locale_es_CO(vl)
     sum += v
     vp = v * tf 
     vpl = new Intl.NumberFormat('es-CO').format(vp)
@@ -62,13 +42,13 @@
 
   # Repetimos para datos en ejecucion
   tel = $('#proyectofinanciero_tasaej_localizado').val()
-  te = reconocer_decimal_locale_es_CO(tel)
+  te = sip_reconocer_decimal_locale_es_CO(tel)
   sum = 0
   sump = 0
   $.each [['montoej', 'montoejp'], ['aportecinepej', 'aportecinepejp'],
           ['aporteotrosej', 'aporteotrosejp'], ['saldoej', 'saldoejp']], (i, c) ->
     vl = $('#proyectofinanciero_' + c[0] + '_localizado').val()
-    v = reconocer_decimal_locale_es_CO(vl)
+    v = sip_reconocer_decimal_locale_es_CO(vl)
     sum += v
     vp = v * te
     vpl = new Intl.NumberFormat('es-CO').format(vp)
