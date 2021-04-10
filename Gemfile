@@ -105,7 +105,7 @@ gem 'cor1440_gen',  # Motor de actividades y proyectos con marco lógico
 
 group :development do
 
-  gem 'erd'
+  gem 'erd', '>= 0.8.0'
 
   gem 'web-console', '>= 4.1.0'
 
