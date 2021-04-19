@@ -39,8 +39,6 @@ gem 'prawnto_2', '>= 0.3.1', :require => 'prawnto'
 
 gem 'prawn-table'
 
-gem 'puma', '>= 4.3.2'
-
 gem 'rails', '~> 6.0.3.5'
 
 gem 'rails-i18n', '>= 6.0.0'
@@ -72,52 +70,52 @@ gem 'will_paginate' # Listados en páginas
 # bien vistas
 
 gem 'sip', # Motor generico
-  git: 'https://github.com/pasosdeJesus/sip.git'
+  git: 'https://github.com/pasosdeJesus/sip.git', branch: :main
   #path: '../sip'
 
 gem 'jn316_gen', # LDAP
-  git: 'https://github.com/pasosdeJesus/jn316_gen.git'
+  git: 'https://github.com/pasosdeJesus/jn316_gen.git', branch: :main
   #path: '../jn316_gen'
 
 gem 'mr519_gen', # Motor de gestion de formularios y encuestas
-  git: 'https://github.com/pasosdeJesus/mr519_gen.git'
+  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: :main
   #path: '../mr519_gen'
 
 gem 'heb412_gen',  # Motor de nube y llenado de plantillas
-  git: 'https://github.com/pasosdeJesus/heb412_gen.git'
+  git: 'https://github.com/pasosdeJesus/heb412_gen.git', branch: :main
   #path: '../heb412_gen'
 
 gem 'sal7711_gen', # Motor para archivo de prensa
-  git: 'https://github.com/pasosdeJesus/sal7711_gen.git'
+  git: 'https://github.com/pasosdeJesus/sal7711_gen.git', branch: :main
   #path: '../sal7711_gen'
 
 gem 'sal7711_ld', # Publicaciones sobre motor Sal7711_ld
-  git: 'https://github.com/pasosdeJesus/sal7711_ld.git'
+  git: 'https://github.com/pasosdeJesus/sal7711_ld.git', branch: :main
   #path: '../sal7711_ld'
 
 gem 'sal7711_web', # Motor para archivo de prensa web
-  git: 'https://github.com/pasosdeJesus/sal7711_web.git'
+  git: 'https://github.com/pasosdeJesus/sal7711_web.git', branch: :main
   #path: '../sal7711_web'
 
 gem 'cor1440_gen',  # Motor de actividades y proyectos con marco lógico
-  git: 'https://github.com/pasosdeJesus/cor1440_gen.git'
+  git: 'https://github.com/pasosdeJesus/cor1440_gen.git', branch: :main
   #path: '../cor1440_gen'
 
 group :development do
-
   gem 'erd'
 
-  gem 'web-console', '>= 4.1.0'
+  gem 'puma', '>= 4.3.2'
 
+  gem 'web-console'
 end
 
 
 group :test, :development, :ensayo do
-
   #gem 'byebug' #Depurar
 
-  gem 'colorize' # Color en terminal
+  gem 'dotenv-rails'
 
+  gem 'colorize' # Color en terminal
 end
 
 

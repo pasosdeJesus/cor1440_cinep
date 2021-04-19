@@ -245,7 +245,7 @@ module Cor1440Gen
       r = atributos_show - [:proyectosfinancieros] + 
         [:proyectofinanciero] - [:id] - 
         [:vistobuenodir, :vistobuenopar, :observacionesdir, :observacionespar]
-      if current_usuario.id != @actividad.creadopor.id
+      if current_usuario && current_usuario.id != @actividad.creadopor.id
         r << :vistobuenpar
         r << :observacionespar
       end

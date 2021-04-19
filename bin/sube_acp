@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if (test -f ".env") then {
+  . .env
+} fi;
+if (test "$RAILS_ENV" = "") then {
+  echo "Falta RAILS_ENV en .env"
+  exit 1
+} fi;
+bin/rails runner -e ${RAILS_ENV} scripts/sube_acp.rb $1 $2 $3
