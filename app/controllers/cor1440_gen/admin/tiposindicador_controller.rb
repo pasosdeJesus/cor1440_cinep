@@ -17,7 +17,7 @@ module Cor1440Gen
           :nombre,
           :medircon,
           :esptipometa,
-          #campotind,
+          :campotind,
           :desc20,
           :desc40,
           :desc80,

@@ -24,6 +24,14 @@ module ApplicationHelper
                        ['NIVEL INTERINSTITUCIONAL', :I]]
 
 
+  # Debe remplazarse uso de campotind en tipoindicador por formulario
+  TIPO_CAMPODIN = [ ['Texto', 1],
+                    ['Texto largo', 2],
+                    ['Entero', 3],
+                    ['Booleano', 4],
+                    ['Flotante', 5]
+  ]
+
 
   def conv_proyecto_id(proyecto)
     if proyecto.is_a? Integer
