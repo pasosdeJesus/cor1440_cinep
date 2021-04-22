@@ -245,13 +245,19 @@ module Cor1440Gen
       r = atributos_show - [:proyectosfinancieros] + 
         [:proyectofinanciero] - [:id] - 
         [:vistobuenodir, :vistobuenopar, :observacionesdir, :observacionespar]
-      if current_usuario && current_usuario.id != @actividad.creadopor.id
-        r << :vistobuenpar
-        r << :observacionespar
-      end
-      if can?(:dir, :vistobuenoactividad)
-        r << :vistobuenodir
-        r << :observacionesdir
+      # Maneja excepcion en caso de migración que llame a esta
+      # función
+      begin
+        if current_usuario && @actividad &&
+            current_usuario.id != @actividad.creadopor.id
+          r << :vistobuenopar
+          r << :observacionespar
+        end
+        if can?(:dir, :vistobuenoactividad)
+          r << :vistobuenodir
+          r << :observacionesdir
+        end
+      rescue
       end
       r
     end

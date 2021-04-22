@@ -1791,7 +1791,9 @@ CREATE TABLE public.cor1440_gen_actividadpf (
     titulo character varying(255),
     descripcion character varying(5000),
     resultadopf_id integer,
-    actividadtipo_id integer
+    actividadtipo_id integer,
+    formulario_id integer,
+    heredade_id integer
 );
 
 
@@ -2657,7 +2659,8 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     skypefinanciador character varying(127),
     sectorapc_id integer,
     idtributariaextfinanciador character varying(511),
-    fechaaprobacion date
+    fechaaprobacion date,
+    titulo character varying(1000)
 );
 
 
@@ -5655,7 +5658,7 @@ CREATE TABLE public.sip_persona (
     anionac integer,
     mesnac integer,
     dianac integer,
-    sexo character(1) NOT NULL,
+    sexo character(1) DEFAULT 'S'::bpchar NOT NULL,
     numerodocumento character varying(100),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -9224,6 +9227,14 @@ ALTER TABLE ONLY public.mr519_gen_encuestapersona
 
 
 --
+-- Name: cor1440_gen_actividadpf fk_rails_16d8cc3b46; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividadpf
+    ADD CONSTRAINT fk_rails_16d8cc3b46 FOREIGN KEY (heredade_id) REFERENCES public.cor1440_gen_actividadpf(id);
+
+
+--
 -- Name: actor fk_rails_1a67af6964; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -10704,6 +10715,14 @@ ALTER TABLE ONLY public.actor_grupo
 
 
 --
+-- Name: cor1440_gen_actividadpf fk_rails_e69a8b5822; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividadpf
+    ADD CONSTRAINT fk_rails_e69a8b5822 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
+
+
+--
 -- Name: cor1440_gen_beneficiariopf fk_rails_e6ba73556e; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -11559,6 +11578,16 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201205041350'),
 ('20201214215209'),
 ('20210108202122'),
-('20210116090353');
+('20210116090353'),
+('20210117234541'),
+('20210201101144'),
+('20210308183041'),
+('20210308211112'),
+('20210308214507'),
+('20210401194637'),
+('20210401210102'),
+('20210414201956'),
+('20210417152053'),
+('20210419161145');
 
 
