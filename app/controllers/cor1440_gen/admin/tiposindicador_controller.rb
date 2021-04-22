@@ -13,18 +13,21 @@ module Cor1440Gen
       include Cor1440Gen::Concerns::Controllers::TiposindicadorController
 
       def atributos_index
-        [ "id", 
-          "nombre",
-          "medircon",
-          "esptipometa",
-          "campotind",
-          "desc20",
-          "desc40",
-          "desc80",
-          "desc100",
-          "espvaloresomision",
-          "espvalidaciones",
-          "espfuncionmedir" ]
+        [ :id, 
+          :nombre,
+          :medircon,
+          :esptipometa,
+          #campotind,
+          :desc20,
+          :desc40,
+          :desc80,
+          :desc100,
+          #espvaloresomision,
+          #espvalidaciones,
+          :espfuncionmedir,
+          :datointermedioti,
+          :formulario
+        ]
       end
 
       def lista_params
