@@ -24,6 +24,12 @@ class Regiongrupo < ActiveRecord::Base
     association_foreign_key: 'actorsocial_id',
     join_table: 'actorsocial_regiongrupo'
 
+  has_many :contextoinv,
+    class_name: '::Contextoinv',
+    foreign_key: 'regiongrupo_id',
+    dependent: :nullify
+
+
   def self.incluye_municipio(grupo_id, departamento_id, municipio_id)
     ::Regiongrupo.where(grupo_id: grupo_id).where(
       'id IN (SELECT regiongrupo_id FROM 
