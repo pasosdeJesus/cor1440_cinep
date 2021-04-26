@@ -1,0 +1,8 @@
+#!/bin/sh
+if (test ! -f ./.env) then {
+  pwd
+  echo "No se encuentra .env"
+  exit 1;
+} fi;
+. ./.env
+RAILS_ENV=ensayo bin/rails $@
