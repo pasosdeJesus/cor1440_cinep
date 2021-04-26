@@ -1694,9 +1694,9 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@pasosdejesus/mapa_tiempo_yi_liu@github:pasosdeJesus/mapa_tiempo_yi_liu#crecer1":
-  version "0.1.5"
-  resolved "https://codeload.github.com/pasosdeJesus/mapa_tiempo_yi_liu/tar.gz/41ccb4e2d52e520b7bf9ee3262501dd783bdc999"
+"@pasosdejesus/mapa_tiempo_yi_liu@github:pasosdeJesus/mapa_tiempo_yi_liu":
+  version "0.2.7"
+  resolved "https://codeload.github.com/pasosdeJesus/mapa_tiempo_yi_liu/tar.gz/6bfa7a462522e4330c4023183cbd2eb8eda775f7"
   dependencies:
     "@ctrl/tinycolor" "3.1.4"
     d3-force "^2.0.1"

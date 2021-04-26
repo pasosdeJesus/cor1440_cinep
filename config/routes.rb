@@ -128,14 +128,14 @@ Rails.application.routes.draw do
     # la aplicación que desde sus vistas daran actividades_path en /actividades
     # en lugar de /act/actividades
 
-    get '/maps/WORLD' => 'infomapa#worldjson', 
+    get '/maps/WORLD' => 'mapatiempo#worldjson', 
              :as => 'worldjson'
-    get '/maps/gadm36_COL_1' => 'infomapa#colombia', 
+    get '/maps/gadm36_COL_1' => 'mapatiempo#colombia', 
              :as => 'colombia'
-    get '/casos/infomapa' => 'infomapa#infomapa', 
-             :as => 'infomapa'
-    get '/casos/infomapa/datoscovid' => 'infomapa#datoscovid', 
-             :as => 'infomapacovid'
+    get '/casos/mapatiempo' => 'mapatiempo#mapatiempo', 
+             :as => 'mapatiempo'
+    get '/casos/mapatiempo/datoscovid' => 'mapatiempo#datoscovid', 
+             :as => 'mapatiempocovid'
 
     # Se define root aqui para que tras ingresos y salidas llegue a root
     root 'sip/hogar#index'
