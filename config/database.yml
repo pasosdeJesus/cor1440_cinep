@@ -20,7 +20,7 @@ test:
 
 ensayo:
   <<: *default
-  database: <%= ENV.fetch('BD_PRUEBA', 'cor1440cinep_ensayo') %>
+  database: <%= ENV.fetch('BD_ENSAYO', 'cor1440cinep_ensayo') %>
 
 production:
   <<: *default

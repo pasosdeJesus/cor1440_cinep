@@ -1,8 +1,7 @@
 class CreaActorsocialTema < ActiveRecord::Migration[6.0]
   def up
-    create_join_table :sip_actorsocial, :csivitema, {
-      table_name: 'actorsocial_csivitema'
-    }
+    create_join_table(:sip_actorsocial, :csivitema, 
+      table_name: 'actorsocial_csivitema')
     add_foreign_key :actorsocial_csivitema, :sip_actorsocial
     add_foreign_key :actorsocial_csivitema, :csivitema
     rename_column :actorsocial_csivitema, :sip_actorsocial_id,

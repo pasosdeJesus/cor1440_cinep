@@ -8,12 +8,12 @@ if (test "$RC" = "") then {
   echo "Falta RC en .env"
   exit 1
 } fi;
-if (test "$RAILS_ENV" = "production") then {
+if (test "$RAILS_ENV" = "production" -o "$RAILS_ENV" = "ensayo") then {
   if (test ! -f /etc/rc.d/$RC) then {
     echo "Falta script /etc/rc.d/$RC"
     exit 1;
   } fi;
 
-doas sh /etc/rc.d/$RC -d stop
+  doas sh /etc/rc.d/$RC -d stop
 } fi;
 
