@@ -12,6 +12,11 @@ if (test "$?" != "0") then {
   echo "Problema al detener"; 
   exit 1; 
 } fi;
+
+if (test -f bin/migra-antes) then {
+  . ./bin/migra-antes
+} fi;
+
 git pull
 if (test "$?" != "0") then { 
   echo "Problema con git pull"; 
@@ -32,6 +37,12 @@ if (test "$?" != "0") then {
   echo "Problema con db:migrate"; 
   exit 1; 
 } fi;
+
+if (test -f bin/migra-despues) then {
+  . ./bin/migra-despues
+} fi;
+
+
 bin/corre
 if (test "$?" != "0") then { 
   echo "Problema al volver a iniciar"; 
