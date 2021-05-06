@@ -5,6 +5,7 @@ if (test ! -f ".env") then {
   echo "Falta archivo .env"
   exit 1;
 } fi;
+
 . ./.env
 
 if (test "$RC" = "") then {

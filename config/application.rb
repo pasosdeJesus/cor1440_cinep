@@ -61,10 +61,19 @@ module Cor1440Cinep
     config.x.jn316_servidor = ENV.fetch('JN316_SERVIDOR', 'apbd2.cinep.org.co')
     config.x.jn316_gidgenerico = ENV.fetch('JN316_GIDGENERICO', 500)
     config.x.jn316_puerto = ENV.fetch('JN316_PUERTO', 636)
-    if ENV.fetch('JN316_TLS', 0) == 1
+    if ENV.fetch('JN316_TLS', '') == 'simple'
+      # Requiere puerto ya cifrado como 636
       config.x.jn316_opcon = {
         encryption: {
           method: :simple_tls,
+          tls_options: OpenSSL::SSL::SSLContext::DEFAULT_PARAMS
+        }
+      }
+    elsif ENV.fetch('JN316_TLS', '') == 'start'
+      # Requiere puerto no cifrado como 389
+      config.x.jn316_opcon = {
+        encryption: {
+          method: :start_tls,
           tls_options: OpenSSL::SSL::SSLContext::DEFAULT_PARAMS
         }
       }

@@ -15,7 +15,8 @@ def run
 
   prob = ''
   puts "PRUEBA 1. Consultar usuario"
-  Jn316Gen::LdapHelper.ldap_busca_como_admin(ENV['PRC_USUARIO'], prob)
+  print "JN316_SERVIDOR=#{ENV.fetch('JN316_SERVIDOR')}"
+  Jn316Gen::LdapHelper.ldap_busca_como_admin(ENV.fetch('PRC_USUARIO'), prob)
   if prob == ''
     puts"  Sin problema"
   else
