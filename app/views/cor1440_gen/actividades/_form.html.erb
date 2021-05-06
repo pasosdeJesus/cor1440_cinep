@@ -89,26 +89,12 @@
            include_blank: false,
            selected:  gd,
            input_html: { class: 'chosen-select' } %>
-       
        </div>
        <div class='col-sm-6'>
-         <%= render partial: 'campo_proyectosfinancieros', locals: {f: f} %>
        </div>
       </div> <!-- row -->
 
-      <div class='row'>
-        <div class='offset-sm-0 col-sm-6'>
-          <%= f.association :objetivopf, 
-            collection: ::Cor1440Gen::Objetivopf.where(
-              proyectofinanciero_id: f.object.proyectofinanciero.map(&:id)),
-            label_method: lambda { |t| t.numero + ': ' + t.objetivo}, 
-            value_method: :id,
-            input_html: { class: 'chosen-select' } %>
-        </div>
-        <div class='offset-sm-0 col-sm-6'>
-          <%= render partial: 'campo_actividadpf', locals: {f: f} %>
-        </div>
-      </div> <!-- row -->
+      <%= render partial: 'campo_proyectofinanciero', locals: {f: f} %>
 
       <div class='row'>
         <div class='offset-sm-0 col-sm-4'>
