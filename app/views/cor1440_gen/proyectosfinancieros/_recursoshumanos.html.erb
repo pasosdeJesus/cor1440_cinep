@@ -1,10 +1,12 @@
 <% 
   if current_usuario.rol == Ability::ROLADMIN || 
     current_usuario.rol == Ability::ROLDIR
-    cg = Sip::Grupo.habilitados
+    lg = Sip::Grupo.habilitados.map(&:id)
   else
-    cg = Sip::Grupo.investigacion
+    lg = Sip::Grupo.investigacion.map(&:id)
   end
+  lg = lg | f.object.grupo_ids if f.object.grupo_ids
+  cg = Sip::Grupo.where(id: lg).order(:nombre)
 %>
 <%= f.association :grupo,
   collection: cg,
