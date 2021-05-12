@@ -95,6 +95,13 @@ GIT
   specs:
     cocoon (1.2.11)
 
+GIT
+  remote: https://github.com/vtamara/execjs.git
+  revision: 9e59ac3de88b1f9580e937a54ee763b5f7e89893
+  branch: exec-reliable
+  specs:
+    execjs (2.8.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -215,7 +222,6 @@ GEM
       nokogiri
       ruby-graphviz
     erubi (1.10.0)
-    execjs (2.8.0)
     ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -417,6 +423,7 @@ DEPENDENCIES
   devise-i18n (>= 1.9.2)
   dotenv-rails
   erd
+  execjs!
   heb412_gen!
   jbuilder
   jn316_gen!

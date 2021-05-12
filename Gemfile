@@ -21,6 +21,10 @@ gem 'devise' , '>= 4.7.3' # Autenticación
 
 gem 'devise-i18n', '>= 1.9.2'
 
+gem 'execjs', 
+  git: 'https://github.com/vtamara/execjs.git',
+  branch: 'exec-reliable'
+
 gem 'jbuilder' # API JSON facil. Ver: https://github.com/rails/jbuilder
 
 gem 'libxml-ruby'
