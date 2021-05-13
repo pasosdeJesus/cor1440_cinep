@@ -1,7 +1,8 @@
 <% if can?(:edit, :contextoac) %>
   <% if f.object.contextoinv_id %>
-    <div class="panel panel-default">
-      <div class="panel-heading">Contexto</div><div class="panel-body">
+    <div class="card">
+      <h5 class="card-header text-center">Contexto</h5>
+      <div class="card-body">
   
         <!--%= f.input :contexto, as: :text %-->
         <%= f.simple_fields_for :contextoinv do |c| %>
@@ -34,7 +35,7 @@
           %>
           <%= c.input :contexto %>
         <% end %>
-      </div> <!-- panel-body -->
-    </div> <!-- panel panel-default -->
+      </div> <!-- card-body -->
+    </div> <!-- card -->
   <% end %>
 <% end %>

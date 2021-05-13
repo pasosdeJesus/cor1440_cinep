@@ -20,8 +20,10 @@
     <%= f.error_notification %>
   </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">Planeación</div><div class="panel-body">
+  <div class="card">
+    <h5 class="card-header text-center">Planeación</h5>
+    <div class="card-body">
+      <!--h5 class="card-title">Special title treatment</h5-->
       <div class='row'>
         <div class='offset-sm-0 col-sm-4'>
           <%= f.input :fecha_localizada, 
@@ -108,13 +110,12 @@
         </div>
       </div> <!-- row -->
 
+    </div> <!-- card-body -->
+  </div> <!-- card -->
 
-    
-    </div> <!-- panel-body -->
-  </div> <!-- panel panel-default -->
-
-  <div class="panel panel-default">
-    <div class="panel-heading">Desarrollo y Resultado</div><div class="panel-body">
+  <div class="card">
+    <h5 class="card-header text-center">Desarrollo y Resultado</h5>
+    <div class="card-body">
 
       <%= render partial: 'campo_respuestafor', locals: {f: f} %>
 
@@ -206,35 +207,42 @@
 
       <%= f.input :observaciones, as: :text %>
 
-    </div> <!-- panel-body -->
-  </div> <!-- panel panel-default -->
+    </div> <!-- card-body -->
+  </div> <!-- card -->
 
   <%= render partial: 'contexto', locals: {f: f, gruposids: gruposids} %>
 
   <%= render partial: 'campo_anexos', locals: {f: f} %>
 
-  <% if current_usuario && @actividad && @actividad.creadopor &&
-       current_usuario.id != @actividad.creadopor.id %>
-    <div class='row'>
-      <div class='offset-sm-0 col-sm-6'>
-        <%= f.input :vistobuenopar, as: :boolean %>
-      </div> 
-      <div class='offset-sm-0 col-sm-6'>
-        <%= f.input :observacionespar, as: :text %>
-      </div> 
-    </div> <!-- row -->
-  <% end %>
+  <div class="card">
+    <h5 class="card-header text-center">Revisión</h5>
+    <div class="card-body">
 
-  <% if can?(:dir, :vistobuenoactividad) %>
-    <div class='row'>
-      <div class='offset-sm-0 col-sm-6'>
-        <%= f.input :vistobuenodir, as: :boolean %>
-      </div> 
-      <div class='offset-sm-0 col-sm-6'>
-        <%= f.input :observacionesdir, as: :text %>
-      </div> 
-    </div> <!-- row -->
-  <% end %>
+      <% if current_usuario && @actividad && @actividad.creadopor &&
+          current_usuario.id != @actividad.creadopor.id %>
+        <div class='row'>
+          <div class='offset-sm-0 col-sm-6'>
+            <%= f.input :vistobuenopar, as: :boolean %>
+          </div> 
+          <div class='offset-sm-0 col-sm-6'>
+            <%= f.input :observacionespar, as: :text %>
+          </div> 
+        </div> <!-- row -->
+      <% end %>
+
+      <% if can?(:dir, :vistobuenoactividad) %>
+        <div class='row'>
+          <div class='offset-sm-0 col-sm-6'>
+            <%= f.input :vistobuenodir, as: :boolean %>
+          </div> 
+          <div class='offset-sm-0 col-sm-6'>
+            <%= f.input :observacionesdir, as: :text %>
+          </div> 
+        </div> <!-- row -->
+      <% end %>
+    <div> <!-- card-body -->
+  </div> <!-- card -->
+
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
