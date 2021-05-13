@@ -151,6 +151,7 @@ es:
         Convenios: "Convenios interinstitucionales marco"
       "cor1440_gen/actividad":
         actividadpf: Actividad de compromiso institucional
+        actividadespf: Relaciones con Marco Lógico
         actividadtipo: Tipo
         actorsocial: Organización social
         creadopor: "Creado por"
@@ -167,6 +168,7 @@ es:
         observacionespar: 'Observaciones de Par'
         precedidapor: 'Si es proceso, número de actividad que la precede:'
         proyecto: "Programa/Servicio/Producto"
+        proyectofinanciero: 'Compromiso Institucional'
         proyectos: "Programas/Servicios/Productos"
         publicacion: 'Producto CINEP/PPP'
         regionsjr: Dependencia

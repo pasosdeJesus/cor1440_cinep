@@ -127,7 +127,7 @@
   }
   sip_llena_select_con_AJAX2('actividadespf', params, 
     'actividad_actividadpf_ids', 'con Actividades de compromiso', root,
-    'id', 'nombre', cor1440_cinep_actividad_actualiza_camposdinamicos)
+    'id', 'nombre', cor1440_gen_actividad_actualiza_camposdinamicos2)
 
 
 @cor1440_cinep_actividad_actualiza_objetivopf =  (root) ->
@@ -148,17 +148,35 @@
   sip_llena_select_con_AJAX2('actoressociales', params, 
     'actividad_actorsocial_ids', 'con Actores', 
     root, 'id', 'presenta_nombre', 
-    cor1440_cinep_actividad_actualiza_objetivopf)
+    cor1440_gen_actividad_actualiza_camposdinamicos2)
+
+
+@cor1440_cinep_actividad_actualiza_pf2 =  (root, pfpend = null) ->
+  # Si hay listado de proyectos vigentes, limitar a esos
+  if pfpend != null
+    pfpendid = pfpend.map((e) => (e.id))
+    pfex = []
+    $('#actividad_proyectofinanciero tr').not(':hidden').each(() -> 
+      idex = $(this).find('select[id$=proyectofinanciero_id]').val()
+      if !(pfpendid.includes(+idex))
+        $(this).remove()
+    )
+  # Actualizar campos dinámicos
+  cor1440_cinep_actividad_actualiza_actoressociales(root)
+
 
 @cor1440_cinep_actividad_actualiza_pf = (root) ->
   params = {
     fecha: $('#actividad_fecha_localizada').val(),
     grupo_ids: $('#actividad_grupo_ids').val()
   }
-  sip_llena_select_con_AJAX2('proyectosfinancieros', params, 
-    'actividad_proyectofinanciero_ids', 'con Compromisos', 
-    root, 'id', 'referenciacinep', 
-    cor1440_cinep_actividad_actualiza_actoressociales)
+  sip_funcion_tras_AJAX('proyectosfinancieros', params, 
+    cor1440_cinep_actividad_actualiza_pf2, 'con Compromisos', 
+    root)
+#  sip_llena_select_con_AJAX2('proyectosfinancieros', params, 
+#    'actividad_proyectofinanciero_ids', 'con Compromisos', 
+#    root, 'id', 'referenciacinep', 
+#    cor1440_cinep_actividad_actualiza_actoressociales)
 
 @valent_id = (id) ->
   if $('#' + id).val() == ""
@@ -201,12 +219,12 @@
     cor1440_cinep_actividad_actualiza_pf(root)
   )
 
-  $("#actividad_proyectofinanciero_ids").chosen().change( (e) ->
-    cor1440_cinep_actividad_actualiza_objetivopf(root)
-  )
+#  $("#actividad_proyectofinanciero_ids").chosen().change( (e) ->
+#    cor1440_cinep_actividad_actualiza_objetivopf(root)
+#  )
 
   $('#actividad_actividadpf_ids').chosen().change( (e) ->
-    cor1440_cinep_actividad_actualiza_camposdinamicos(root)
+    cor1440_gen_actividad_actualiza_camposdinamicos2(root)
   )
 
   $('#actividad_mujeres').change( (e) ->

@@ -17,33 +17,33 @@
 //= require_tree .
 
 document.addEventListener('turbolinks:load', function() {
-	var root;
-  	root = typeof exports !== "undefined" && exports !== null ? 
-	  exports : window;
-	sip_prepara_eventos_comunes(root);
-	heb412_gen_prepara_eventos_comunes(root);
-	mr519_gen_prepara_eventos_comunes(root);
-	cor1440_gen_prepara_eventos_comunes(root, 
-            {'sin_eventos_cambia_proyecto': true});
-	cor1440_cinep_prepara_eventos_unicos(root);
+  var root;
+    root = typeof exports !== "undefined" && exports !== null ? 
+    exports : window;
+  sip_prepara_eventos_comunes(root);
+  heb412_gen_prepara_eventos_comunes(root);
+  mr519_gen_prepara_eventos_comunes(root);
+  cor1440_gen_prepara_eventos_comunes(root, 
+            {'sin_eventos_cambia_proyecto': false});
+  cor1440_cinep_prepara_eventos_unicos(root);
 
-	formato_fecha = 'dd/M/yyyy'
-	if ($('meta[name=formato_fecha]').length != 0) {
-		formato_fecha = $('meta[name=formato_fecha]').attr('content')
-	}
-	$('[data-behaviour~=datepicker]').datepicker({
-		format: formato_fecha,
-		autoclose: true,
-		todayHighlight: true,
-		language: 'es'	
-	});
-	$('.chosen-select').chosen({
-		allow_single_deselect: true,
-		no_results_text: 'No hay opciones',
-		placeholder_text_multiple: 'Elija una o más opciones',
-		placeholder_text_single: 'Elija una opción',
-		width: '200px'
-	});
+  formato_fecha = 'dd/M/yyyy'
+  if ($('meta[name=formato_fecha]').length != 0) {
+    formato_fecha = $('meta[name=formato_fecha]').attr('content')
+  }
+  $('[data-behaviour~=datepicker]').datepicker({
+    format: formato_fecha,
+    autoclose: true,
+    todayHighlight: true,
+    language: 'es'  
+  });
+  $('.chosen-select').chosen({
+    allow_single_deselect: true,
+    no_results_text: 'No hay opciones',
+    placeholder_text_multiple: 'Elija una o más opciones',
+    placeholder_text_single: 'Elija una opción',
+    width: '200px'
+  });
 
 });
 
