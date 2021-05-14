@@ -102,7 +102,7 @@ class PlanTrienal20212023 < ActiveRecord::Migration[6.1]
   end
 
   def down
-    excute <<-SQL
+    execute <<-SQL
       DELETE FROM public.grupo_proyectofinanciero 
         WHERE proyectofinanciero_id=21;
       DELETE FROM public.cor1440_gen_actividadpf
