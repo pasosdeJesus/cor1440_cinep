@@ -192,27 +192,13 @@ class TiposActividad < ActiveRecord::Migration[6.1]
         56, NULL, NULL, NULL);
 
 
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (101, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (1, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (61, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (69, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (4, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (9, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (10, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (103, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (105, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (62, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (74, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (64, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (66, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (72, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (70, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (63, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (75, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (65, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (67, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (73, 22);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (71, 22);
+      INSERT INTO public.grupo_proyectofinanciero 
+        (grupo_id, proyectofinanciero_id) 
+        (SELECT grupo_id, 22 FROM grupo_proyectofinanciero as sg JOIN
+          sip_grupo as g ON sg.grupo_id=g.id
+          WHERE sg.grupo_id=21 AND
+          g.fechadeshabilitacion IS NULL);
+
     SQL
   end
 

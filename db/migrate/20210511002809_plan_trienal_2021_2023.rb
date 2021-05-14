@@ -114,27 +114,17 @@ class PlanTrienal20212023 < ActiveRecord::Migration[6.1]
       INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id, formulario_id, heredade_id) VALUES (14, 21, 'A5', 'Producto de investigación sobre paz y educación', '', 49, NULL, NULL, NULL);
       INSERT INTO public.cor1440_gen_actividadpf (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, resultadopf_id, actividadtipo_id, formulario_id, heredade_id) VALUES (15, 21, 'A6', 'Producto de investigación sobre movimientos y organizaciones sociales', '', 50, NULL, NULL, NULL);
 
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (101, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (1, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (61, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (69, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (4, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (9, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (10, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (103, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (105, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (62, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (74, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (64, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (66, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (72, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (70, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (63, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (75, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (65, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (67, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (73, 21);
-      INSERT INTO public.grupo_proyectofinanciero (grupo_id, proyectofinanciero_id) VALUES (71, 21);
+      INSERT INTO public.grupo_proyectofinanciero 
+        (grupo_id, proyectofinanciero_id) 
+        (SELECT grupo_id, 21 FROM grupo_proyectofinanciero as sg JOIN
+          sip_grupo as g ON sg.grupo_id=g.id
+          WHERE sg.grupo_id=18 AND
+          g.fechadeshabilitacion IS NULL);
+
+      INSERT INTO public.grupo_proyectofinanciero 
+        (grupo_id, proyectofinanciero_id) 
+        (SELECT n, 21 FROM generate_series(60, 75, 1) gsn(n))
+      ;
     SQL
   end
 
