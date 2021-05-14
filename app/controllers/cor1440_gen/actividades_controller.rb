@@ -231,6 +231,8 @@ module Cor1440Gen
         :negros, 
         :indigenas, 
         :etnia_onr,
+        :campesinos,
+        :sectorsocial_onr,
         :observaciones, 
         :anexos,
         :vistobuenopar,
@@ -281,6 +283,8 @@ module Cor1440Gen
         :negros,
         :indigenas,
         :etnia_onr,
+        :campesinos,
+        :sectorsocial_onr,
         :anexos
       ]
     end
@@ -306,7 +310,9 @@ module Cor1440Gen
         :sexo_onr,
         :negros, 
         :indigenas, 
-        :etnia_onr
+        :etnia_onr,
+        :campesinos,
+        :sectorsocial_onr,
       ]
     end
 
@@ -373,6 +379,7 @@ module Cor1440Gen
         :accioncgenero,
         :accioncetnia,
         :alcance,
+        :campesinos,
         :convocante, 
         :contexto,
         :departamento_id,
@@ -411,6 +418,7 @@ module Cor1440Gen
         :proyecto, 
         :redactor_id,
         :resultado,
+        :sectorsocial_onr,
         :sexo_onr, 
         :sexo_onr_nobef, 
         :sexo_onr_proceso, 

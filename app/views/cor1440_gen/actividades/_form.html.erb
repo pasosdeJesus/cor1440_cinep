@@ -205,6 +205,34 @@
         </tbody>
       </table>
 
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Campesions</th>
+            <th scope="col">Otros/NR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= f.input :campesinos, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :sectorsocial_onr, 
+                label: false %>
+            </td>
+            <td id='tot_sectorsocial'>
+              <%=
+                s = f.object.campesinos ? f.object.campesinos : 0
+                s += f.object.sectorsocial_onr ? f.object.sectorsocial_onr : 0
+                s %>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+
+
       <%= f.input :observaciones, as: :text %>
 
     </div> <!-- card-body -->
