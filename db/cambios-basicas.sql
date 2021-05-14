@@ -59,3 +59,5 @@ INSERT INTO public.sip_grupo (id, nombre, observaciones, fechacreacion, fechades
 INSERT INTO public.sip_grupo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at, ultimasincldap, cn, "gidNumber", procesogh_id) VALUES (157, 'STCIV_CINEP', '', '2020-08-11', NULL, '2020-08-11 23:57:22.224929', '2020-08-12 00:00:06.613839', NULL, 'stciv_cinep', NULL, 2);
 INSERT INTO public.sip_grupo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at, ultimasincldap, cn, "gidNumber", procesogh_id) VALUES (156, 'STCIV', NULL, '2020-08-07', NULL, '2020-08-07 15:26:54.173912', '2020-08-12 00:00:06.662646', NULL, 'stciv', NULL, 1);
 
+
+SELECT setval('cor1440_gen_actividadpf_id_seq', 1000);
