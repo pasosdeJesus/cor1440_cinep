@@ -56,7 +56,7 @@ class TiposActividad < ActiveRecord::Migration[6.1]
       INSERT INTO public.cor1440_gen_actividadpf 
         (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, 
         resultadopf_id, actividadtipo_id, formulario_id, heredade_id) VALUES 
-        (302, 22, 'AA3', 'Acompañamiento: A actores de sentido en actividades de incidencia (movilización, cabildeo, mesas de negociación, etc)', '', 
+        (302, 22, 'AA3', 'Acompañamiento: Apoyo a actores de sentido para la producción de materiales para el desarrollo comunitario y educativo', '', 
         51, NULL, NULL, NULL);
       INSERT INTO public.cor1440_gen_actividadpf 
         (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, 
@@ -148,7 +148,7 @@ class TiposActividad < ActiveRecord::Migration[6.1]
       INSERT INTO public.cor1440_gen_actividadpf 
         (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, 
         resultadopf_id, actividadtipo_id, formulario_id, heredade_id) VALUES 
-        (321, 22, 'AD4', 'Incidencia: Propiciar espacios de dialogo sobre conflicto en los territorios', '', 
+        (321, 22, 'AD6', 'Incidencia: Propiciar espacios de dialogo sobre conflicto en los territorios', '', 
         54, NULL, NULL, NULL);
       INSERT INTO public.cor1440_gen_actividadpf 
         (id, proyectofinanciero_id, nombrecorto, titulo, descripcion, 
