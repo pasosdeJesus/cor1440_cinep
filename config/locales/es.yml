@@ -159,6 +159,7 @@ es:
         duracion_localizado: "Duración"
         duracionhoras_localizado: "Duración en horas"
         etnia_onr: 'Otra/NR'
+        rangoedad_onr: 'Otra/NR'
         fecha_localizada: Fecha inicio
         minutos: Horas
         mduracion: "Unidad de duración"
