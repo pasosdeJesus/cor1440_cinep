@@ -55,7 +55,7 @@ class UsuariosGrupos2021 < ActiveRecord::Migration[6.1]
 
   def down
     execute <<-SQL
-      DELETE FROM sip_grupo_usuario WHER sip_sip_grupo_id IN (62, 64, 66,
+      DELETE FROM sip_grupo_usuario WHER sip_grupo_id IN (62, 64, 66,
         70, 72, 74);
     SQL
   end
