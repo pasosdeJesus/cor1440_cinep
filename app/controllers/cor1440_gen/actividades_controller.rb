@@ -229,7 +229,8 @@ module Cor1440Gen
         :hombres, 
         :sexo_onr,
         :negros, 
-        :indigenas, 
+        :indigenas,
+        :mestizos,
         :etnia_onr,
         :jovenes,
         :rangoedad_onr,
@@ -282,9 +283,10 @@ module Cor1440Gen
         :sexo_onr,
         :negros,
         :indigenas,
+        :mestizos,
+        :etnia_onr,
         :jovenes,
         :rangoedad_onr,
-        :etnia_onr,
         :anexos
       ]
     end
@@ -309,7 +311,8 @@ module Cor1440Gen
         :hombres, 
         :sexo_onr,
         :negros, 
-        :indigenas, 
+        :indigenas,
+        :mestizos,
         :etnia_onr,
         :jovenes,
         :rangoedad_onr
@@ -396,7 +399,8 @@ module Cor1440Gen
         :indigenas_nobef, 
         :indigenas_proceso,
         :jovenes,
-        :lugar, 
+        :lugar,
+        :mestizos,
         :mduracion,
         :minutos, 
         :mujeres, 

@@ -177,6 +177,7 @@
           <tr>
             <th scope="col">Afros/Negros/Palenqueros/Raizales</th>
             <th scope="col">Indígenas</th>
+            <th scope="col">Mestizos</th>
             <th scope="col">Otros/NR</th>
           </tr>
         </thead>
@@ -188,6 +189,10 @@
             </td>
             <td>
               <%= f.input :indigenas, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :mestizos, 
                 label: false %>
             </td>
             <td>
