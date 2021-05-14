@@ -85,19 +85,19 @@ class PlanTrienal20212023 < ActiveRecord::Migration[6.1]
       INSERT INTO public.cor1440_gen_indicadorpf (id, proyectofinanciero_id, resultadopf_id, numero, indicador, tipoindicador_id, objetivopf_id) VALUES 
       (65, 21, NULL, 'I1.1', 'Tres (3) actualizaciones a la base de datos de luchas sociales.', 1, 40);
       INSERT INTO public.cor1440_gen_indicadorpf (id, proyectofinanciero_id, resultadopf_id, numero, indicador, tipoindicador_id, objetivopf_id) VALUES 
-      (66, 21, NULL, 'I1.2', 'Tres (3) artículos en revistas especializadas nacionales. ', NULL, 40);
+      (66, 21, NULL, 'I1.2', 'Tres (3) artículos en revistas especializadas nacionales. ', 1, 40);
       INSERT INTO public.cor1440_gen_indicadorpf (id, proyectofinanciero_id, resultadopf_id, numero, indicador, tipoindicador_id, objetivopf_id) VALUES 
-      (67, 21, NULL, 'I1.3', 'Tres (3) libros y/o capítulos de libro evaluados por pares que cubren las temáticas de interés. ', NULL, 40);
+      (67, 21, NULL, 'I1.3', 'Tres (3) libros y/o capítulos de libro evaluados por pares que cubren las temáticas de interés. ', 1, 40);
       INSERT INTO public.cor1440_gen_indicadorpf (id, proyectofinanciero_id, resultadopf_id, numero, indicador, tipoindicador_id, objetivopf_id) VALUES 
-      (68, 21, NULL, 'I1.4', 'Seis (6) números de la revista Institucional Controversia.', NULL, 40);
+      (68, 21, NULL, 'I1.4', 'Seis (6) números de la revista Institucional Controversia.', 1, 40);
       INSERT INTO public.cor1440_gen_indicadorpf (id, proyectofinanciero_id, resultadopf_id, numero, indicador, tipoindicador_id, objetivopf_id) VALUES 
-      (69, 21, NULL, 'I2.1', 'Dos (2) documentos de política pública con recomendaciones para garantizar el derecho a la tierra y al territorio y de derechos de las mujeres rurales. ', NULL, 40);
+      (69, 21, NULL, 'I2.1', 'Dos (2) documentos de política pública con recomendaciones para garantizar el derecho a la tierra y al territorio y de derechos de las mujeres rurales. ', 1, 40);
       INSERT INTO public.cor1440_gen_indicadorpf (id, proyectofinanciero_id, resultadopf_id, numero, indicador, tipoindicador_id, objetivopf_id) VALUES 
-      (70, 21, NULL, 'I2.2', 'Siete (7) documentos como cajas de herramientas de investigación local participativa por parte de indígenas, afros, pobladores urbano-populares, jóvenes, docentes, líderes y lideresas de Cartagena, Sierra Nevada y sur de La Guajira ', NULL, 40);
+      (70, 21, NULL, 'I2.2', 'Siete (7) documentos como cajas de herramientas de investigación local participativa por parte de indígenas, afros, pobladores urbano-populares, jóvenes, docentes, líderes y lideresas de Cartagena, Sierra Nevada y sur de La Guajira ', 1, 40);
       INSERT INTO public.cor1440_gen_indicadorpf (id, proyectofinanciero_id, resultadopf_id, numero, indicador, tipoindicador_id, objetivopf_id) VALUES 
-      (71, 21, NULL, 'I3.1', 'Una (1) estrategia propias y novedosas para la transformación no violenta de conflictos sociales en Colombia. ', NULL, 40);
+      (71, 21, NULL, 'I3.1', 'Una (1) estrategia propias y novedosas para la transformación no violenta de conflictos sociales en Colombia. ', 1, 40);
       INSERT INTO public.cor1440_gen_indicadorpf (id, proyectofinanciero_id, resultadopf_id, numero, indicador, tipoindicador_id, objetivopf_id) VALUES 
-      (72, 21, NULL, 'I3.2', 'Una (1) ruta de transformación no violenta de conflictos basada en el dialogo, la mediación y la negociación para promover narrativas despolarizadas e incidir en el debate público para el abordaje de conflictividades. ', NULL, 40);
+      (72, 21, NULL, 'I3.2', 'Una (1) ruta de transformación no violenta de conflictos basada en el dialogo, la mediación y la negociación para promover narrativas despolarizadas e incidir en el debate público para el abordaje de conflictividades. ', 1, 40);
 
 
       INSERT INTO public.cor1440_gen_resultadopf (id, proyectofinanciero_id, objetivopf_id, numero, resultado) VALUES (45, 21, 35, 'R1', 'Los pueblos indígenas, afrodescendientes y campesinos de las comunidades rurales, fortalecidos en su capacidad de diálogo intercultural con otras organizaciones de la sociedad, exigen ante la institucionalidad pública la protección, respeto y goce de los derechos a la tierra, territorio, medio ambiente sano y educación rural. ');
