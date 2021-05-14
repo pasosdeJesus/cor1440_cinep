@@ -10,7 +10,7 @@ class TiposActividad < ActiveRecord::Migration[6.1]
       referenciacinep: 'TIPOS DE ACTIVIDADES COMUNES',
       fechaformulacion: '2020-10-10',
       dificultad: 'M',
-      estado: 'E',
+      estado: 'J',
       monto: 0,
       anotacionesdb: ''
     )

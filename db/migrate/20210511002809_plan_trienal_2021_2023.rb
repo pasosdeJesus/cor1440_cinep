@@ -9,7 +9,7 @@ class PlanTrienal20212023 < ActiveRecord::Migration[6.1]
       referenciacinep: 'PLAN TRIENAL 2021-2023',
       fechaformulacion: '2020-10-10',
       dificultad: 'M',
-      estado: 'E',
+      estado: 'J',
       monto: 0,
       anotacionesdb: 'El CINEP/PPP, desde una opción preferencial por los excluidos, contribuye a la generación de condiciones para: (1) Un cierre histórico de brechas. (2) La ampliación de la democracia y la construcción de ciudadanías, en el marco de la implementación efectiva de los acuerdos y procesos de paz, desde un enfoque no polarizado de los conflictos que contribuyen en la reconciliación y la exigibilidad de derechos con enfoque diferenciado y de género. (3) Construir conocimiento de alta calidad científica orientado a la promoción de la paz, el diálogo democrático e intercultural y la protección de los derechos humanos por medio de investigaciones básicas aplicadas sobre las dinámicas territoriales y temporales de la violencia política; las interacciones entre movimientos sociales y de Estado en la red de conflictos sociales e injusticias que las motivan. Lo mismo que las brechas entre los diseños nacionales de las políticas de paz y su implementación efectiva en realidades territoriales y culturales que expresan una gran diversidad.'
     )
