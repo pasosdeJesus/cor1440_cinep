@@ -205,6 +205,35 @@
         </tbody>
       </table>
 
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Jóvenes</th>
+            <th scope="col">Otros/NR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= f.input :jovenes, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :rangoedad_onr, 
+                label: false %>
+            </td>
+            <td id='tot_rangoedad'>
+              <%=
+                s = f.object.jovenes ? f.object.jovenes : 0
+                s += f.object.rangoedad_onr ? f.object.rangoedad_onr : 0
+                s %>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <%= f.input :observaciones, as: :text %>
+
       <%= f.input :observaciones, as: :text %>
 
     </div> <!-- card-body -->
