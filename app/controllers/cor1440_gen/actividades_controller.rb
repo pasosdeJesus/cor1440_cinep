@@ -226,6 +226,8 @@ module Cor1440Gen
         :indigenas,
         :mestizos,
         :etnia_onr,
+        :campesinos,
+        :sectorsocial_onr,
         :jovenes,
         :rangoedad_onr,
         :observaciones, 
@@ -279,6 +281,8 @@ module Cor1440Gen
         :indigenas,
         :mestizos,
         :etnia_onr,
+        :campesinos,
+        :sectorsocial_onr,
         :jovenes,
         :rangoedad_onr,
         :anexos
@@ -308,6 +312,8 @@ module Cor1440Gen
         :indigenas,
         :mestizos,
         :etnia_onr,
+        :campesinos,
+        :sectorsocial_onr,
         :jovenes,
         :rangoedad_onr
       ]
@@ -376,6 +382,7 @@ module Cor1440Gen
         :accioncgenero,
         :accioncetnia,
         :alcance,
+        :campesinos,
         :convocante, 
         :contexto,
         :departamento_id,
@@ -417,6 +424,7 @@ module Cor1440Gen
         :rangoedad_onr,
         :redactor_id,
         :resultado,
+        :sectorsocial_onr,
         :sexo_onr, 
         :sexo_onr_nobef, 
         :sexo_onr_proceso, 

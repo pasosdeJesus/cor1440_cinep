@@ -192,6 +192,14 @@
     fe = tg - pe
   $('#actividad_etnia_onr').val(fe)
 
+@cor1440_cinep_actividad_sectorsocial_onr = (root) ->
+  tg = valent_id('actividad_hombres') + valent_id('actividad_mujeres') + valent_id('actividad_sexo_onr')
+  pe = valent_id('actividad_campesinos') 
+  fe = 0
+  if tg > pe
+    fe = tg - pe
+  $('#actividad_etnia_onr').val(fe)
+
 @cor1440_cinep_actividad_rangoedad_onr = (root) ->
   tg = valent_id('actividad_hombres') + valent_id('actividad_mujeres') + valent_id('actividad_sexo_onr')
   pe = valent_id('actividad_jovenes') 
@@ -199,13 +207,15 @@
   if tg > pe
     fe = tg - pe
   $('#actividad_rangoedad_onr').val(fe)
-
+  
 @cor1440_cinep_actividad_totales_part = (root) ->
   tg = valent_id('actividad_hombres') + valent_id('actividad_mujeres') + valent_id('actividad_sexo_onr')
-  te = valent_id('actividad_negros') + valent_id('actividad_indigenas')+ valent_id('actividad_mestizos') + valent_id('actividad_etnia_onr')
+  te = valent_id('actividad_negros') + valent_id('actividad_indigenas') + valent_id('actividad_mestizos') + valent_id('actividad_etnia_onr')
+  ts = valent_id('actividad_campesinos') + valent_id('actividad_sectorsocial_onr')
   tr = valent_id('actividad_jovenes') +  valent_id('actividad_rangoedad_onr')
   $('#tot_genero').html(tg)
   $('#tot_etnia').html(te)
+  $('#tot_sectorsocial').html(ts)
   $('#tot_rangoedad').html(tr)
 
 @cor1440_cinep_prepara_eventos_unicos = (root) ->
@@ -239,14 +249,20 @@
 
   $('#actividad_mujeres').change( (e) ->
     cor1440_cinep_actividad_etnia_onr (root)
+    cor1440_cinep_actividad_sectorsocial_onr (root)
+    cor1440_cinep_actividad_rangoedad_onr (root)
     cor1440_cinep_actividad_totales_part (root)
   )
   $('#actividad_hombres').change( (e) ->
     cor1440_cinep_actividad_etnia_onr (root)
+    cor1440_cinep_actividad_sectorsocial_onr (root)
+    cor1440_cinep_actividad_rangoedad_onr (root)
     cor1440_cinep_actividad_totales_part (root)
   )
   $('#actividad_sexo_onr').change( (e) ->
     cor1440_cinep_actividad_etnia_onr (root)
+    cor1440_cinep_actividad_sectorsocial_onr (root)
+    cor1440_cinep_actividad_rangoedad_onr (root)
     cor1440_cinep_actividad_totales_part (root)
   )
   $('#actividad_negros').change( (e) ->
@@ -264,7 +280,13 @@
   $('#actividad_etnia_onr').change( (e) ->
     cor1440_cinep_actividad_totales_part (root)
   )
-
+  $('#actividad_campesinos').change( (e) ->
+    cor1440_cinep_actividad_sectorsocial_onr (root)
+    cor1440_cinep_actividad_totales_part (root)
+  )
+  $('#actividad_sectorsocial_onr').change( (e) ->
+    cor1440_cinep_actividad_totales_part (root)
+  )
   $('#actividad_jovenes').change( (e) ->
     cor1440_cinep_actividad_rangoedad_onr (root)
     cor1440_cinep_actividad_totales_part (root)
