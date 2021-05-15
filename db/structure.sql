@@ -1488,7 +1488,9 @@ CREATE TABLE public.cor1440_gen_actividad (
     vistobuenodir boolean,
     observacionespar character varying(5000),
     observacionesdir character varying(5000),
-    precedidapor integer
+    precedidapor integer,
+    jovenes integer,
+    rangoedad_onr integer
 );
 
 
@@ -11651,6 +11653,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210511002809'),
 ('20210513214021'),
 ('20210514201449'),
+('20210514224426'),
 ('20210514230322');
 
 
