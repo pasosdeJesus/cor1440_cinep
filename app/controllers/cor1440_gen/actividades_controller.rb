@@ -19,19 +19,13 @@ module Cor1440Gen
     end
 
     def new
+      new_cor1440_gen
       @colgrupos = @misgrupos = 
         Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
-      @registro = @actividad = Actividad.new
-      @registro.current_usuario = current_usuario
       @registro.oficina_id = 1
       @registro.creadopor_id = current_usuario.id
-      @registro.usuario_id = current_usuario.id
-      @registro.fecha = Date.today
+      new_cor1440_gen_p2
       @registro.save!(validate: false)
-      @apf = ActividadProyectofinanciero.new
-      @apf.proyectofinanciero_id = 18  # Plan trienal 2018-2020
-      @apf.actividad_id = @registro.id
-      @apf.save!(validate: false)
       redirect_to cor1440_gen.edit_actividad_path(@registro)
     end
 

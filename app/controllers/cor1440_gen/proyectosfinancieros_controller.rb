@@ -164,18 +164,17 @@ module Cor1440Gen
     end
 
     def new
-      @registro = clase.constantize.new
-      @registro.monto = 1
+      new_cor1440_gen
       @registro.montopesos = 1
       @registro.presupuestototal = 1
       @registro.tipomoneda = ::Tipomoneda.where(codiso4217: 'COP').take
       #@registro.tasacambio = 1
       @registro.fechaformulacion = Date.today
-      @registro.nombre = 'N'
       @registro.dificultad = 'M'
       if can?(:creacomogp, ::Cor1440Gen::Proyectofinanciero)
         @registro.respgp_id = current_usuario.id
       end
+      new_cor1440_gen_p2
       @registro.save!
       redirect_to cor1440_gen.edit_proyectofinanciero_path(@registro)
       #render 'edit', layout: 'application'
@@ -689,28 +688,25 @@ module Cor1440Gen
 
       return n
     end
- 
-    
-    def index(c = nil)
-      authorize! :index, ::Cor1440Gen::Proyectofinanciero
-      if c == nil
-        c = ::Cor1440Gen::Proyectofinanciero.all
-      end
-      if params[:grupo_ids] && params[:grupo_ids] != ''
-        grupo_ids = params[:grupo_ids].map {|x| x.to_i}
-        c = c.where("cor1440_gen_proyectofinanciero.id IN 
+
+    # Retorna ids de proyectos que el usuario actual puede leer con
+    # las restricciones del filtro:
+    #   filtro[:fecha] limita a proyectos vigentes en la fecha
+    #   filtro[:grupo_ids] limita a proyectos vigentes en la fecha
+    # Usado en formulario actividad en lista de selección de proyectos
+    def self.disponibles(filtro, ability, c = nil)
+      c2 = Cor1440Gen::ProyectosfinancierosController::
+        disponibles_cor1440_gen(filtro, ability, c)
+      if filtro[:grupo_ids] && filtro[:grupo_ids] != ''
+        grupo_ids = filtro[:grupo_ids].map {|x| x.to_i}
+        c2 = c2.where("cor1440_gen_proyectofinanciero.id IN 
                      (SELECT proyectofinanciero_id 
                       FROM grupo_proyectofinanciero WHERE
                       grupo_id IN (#{grupo_ids.join(',')}))")
       end
-      if params[:fecha] && params[:fecha] != ''
-        fecha = fecha_local_estandar params[:fecha]
-        c = c.where('fechainicio <= ? AND ' +
-                    '(? <= fechacierre OR fechacierre IS NULL) ', 
-                    fecha, fecha)
-      end
-      super(c)
-    end   
+
+      return c2
+    end
 
     def self.vista_listado(plant, ids, modelo, narch, parsimp, extension,
                           campoid = :id)
@@ -1200,5 +1196,5 @@ module Cor1440Gen
         ] 
       )
     end
-  end
+  end 
 end
