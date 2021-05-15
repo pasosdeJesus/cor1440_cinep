@@ -162,9 +162,8 @@
             </td>
             <td id='tot_genero'>
               <%=
-                s = f.object.hombres ? f.object.hombres : 0
-                s += f.object.mujeres ? f.object.mujeres : 0
-                s += f.object.sexo_onr ? f.object.sexo_onr : 0
+                s = f.object.hombres.to_i + f.object.mujeres.to_i +
+                  f.object.sexo_onr.to_i
                 s %>
 
             </td>
@@ -177,6 +176,7 @@
           <tr>
             <th scope="col">Afros/Negros/Palenqueros/Raizales</th>
             <th scope="col">Indígenas</th>
+            <th scope="col">Mestizos</th>
             <th scope="col">Otros/NR</th>
           </tr>
         </thead>
@@ -191,14 +191,43 @@
                 label: false %>
             </td>
             <td>
+              <%= f.input :mestizos, 
+                label: false %>
+            </td>
+            <td>
               <%= f.input :etnia_onr, 
                 label: false %>
             </td>
             <td id='tot_etnia'>
               <%=
-                s = f.object.negros ? f.object.negros : 0
-                s += f.object.indigenas ? f.object.indigenas : 0
-                s += f.object.etnia_onr ? f.object.etnia_onr : 0
+                s = f.object.negros.to_i + f.object.indigenas.to_i +
+                  f.object.mestizos.to_i + f.object.etnia_onr.to_i
+                s %>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Jóvenes</th>
+            <th scope="col">Otros/NR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= f.input :jovenes, 
+                label: false %>
+            </td>
+            <td>
+              <%= f.input :rangoedad_onr, 
+                label: false %>
+            </td>
+            <td id='tot_rangoedad'>
+              <%=
+                s = f.object.jovenes.to_i + f.object.rangoedad_onr.to_i
                 s %>
           </td>
           </tr>

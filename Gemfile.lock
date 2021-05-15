@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: babbe2d2d866857b58054e9ba646a4d084957e7f
+  revision: 1ccc2d42c2a609657fef671e1bd4071cf76ca8c6
   branch: main
   specs:
     cor1440_gen (1.0b3)
@@ -257,7 +257,7 @@ GEM
     msgpack (1.4.2)
     net-ldap (0.17.0)
     nio4r (2.5.7)
-    nokogiri (1.11.3)
+    nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     odf-report (0.7.2)

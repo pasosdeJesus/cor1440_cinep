@@ -158,8 +158,7 @@ es:
         duracion: "Duración"
         duracion_localizado: "Duración"
         duracionhoras_localizado: "Duración en horas"
-        etnia_onr: 'Otra/NR'
-        sectorsocial_onr: 'Otra/NR'
+        etnia_onr: 'Otra Etnia/NR'
         fecha_localizada: Fecha inicio
         minutos: Horas
         mduracion: "Unidad de duración"
@@ -172,7 +171,9 @@ es:
         proyectofinanciero: 'Compromiso Institucional'
         proyectos: "Programas/Servicios/Productos"
         publicacion: 'Producto CINEP/PPP'
+        rangoedad_onr: 'Otro RE/NR'
         regionsjr: Dependencia
+        sectorsocial_onr: 'Otro SS/NR'
         sexo_onr: 'Otro/NR'
         usuario: 'Corresponsables'
         vistobuenodir: 'Aprobado Direccion'

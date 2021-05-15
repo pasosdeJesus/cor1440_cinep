@@ -19,19 +19,13 @@ module Cor1440Gen
     end
 
     def new
+      new_cor1440_gen
       @colgrupos = @misgrupos = 
         Cor1440Gen::GruposHelper.mis_grupos_sinus(current_usuario)
-      @registro = @actividad = Actividad.new
-      @registro.current_usuario = current_usuario
       @registro.oficina_id = 1
       @registro.creadopor_id = current_usuario.id
-      @registro.usuario_id = current_usuario.id
-      @registro.fecha = Date.today
+      new_cor1440_gen_p2
       @registro.save!(validate: false)
-      @apf = ActividadProyectofinanciero.new
-      @apf.proyectofinanciero_id = 18  # Plan trienal 2018-2020
-      @apf.actividad_id = @registro.id
-      @apf.save!(validate: false)
       redirect_to cor1440_gen.edit_actividad_path(@registro)
     end
 
@@ -229,10 +223,13 @@ module Cor1440Gen
         :hombres, 
         :sexo_onr,
         :negros, 
-        :indigenas, 
+        :indigenas,
+        :mestizos,
         :etnia_onr,
         :campesinos,
         :sectorsocial_onr,
+        :jovenes,
+        :rangoedad_onr,
         :observaciones, 
         :anexos,
         :vistobuenopar,
@@ -282,9 +279,12 @@ module Cor1440Gen
         :sexo_onr,
         :negros,
         :indigenas,
+        :mestizos,
         :etnia_onr,
         :campesinos,
         :sectorsocial_onr,
+        :jovenes,
+        :rangoedad_onr,
         :anexos
       ]
     end
@@ -309,10 +309,13 @@ module Cor1440Gen
         :hombres, 
         :sexo_onr,
         :negros, 
-        :indigenas, 
+        :indigenas,
+        :mestizos,
         :etnia_onr,
         :campesinos,
         :sectorsocial_onr,
+        :jovenes,
+        :rangoedad_onr
       ]
     end
 
@@ -395,8 +398,10 @@ module Cor1440Gen
         :hombres_proceso, 
         :indigenas, 
         :indigenas_nobef, 
-        :indigenas_proceso, 
-        :lugar, 
+        :indigenas_proceso,
+        :jovenes,
+        :lugar,
+        :mestizos,
         :mduracion,
         :minutos, 
         :mujeres, 
@@ -415,7 +420,8 @@ module Cor1440Gen
         :observacionespar,         
         :participantes, 
         :precedidapor,
-        :proyecto, 
+        :proyecto,
+        :rangoedad_onr,
         :redactor_id,
         :resultado,
         :sectorsocial_onr,
