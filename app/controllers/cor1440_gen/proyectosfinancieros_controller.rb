@@ -174,7 +174,6 @@ module Cor1440Gen
       if can?(:creacomogp, ::Cor1440Gen::Proyectofinanciero)
         @registro.respgp_id = current_usuario.id
       end
-      new_cor1440_gen_p2
       @registro.save!
       redirect_to cor1440_gen.edit_proyectofinanciero_path(@registro)
       #render 'edit', layout: 'application'
