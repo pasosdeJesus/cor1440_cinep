@@ -137,6 +137,12 @@ module Cor1440Gen
         errors.add(:sexo_onr, 'La suma de participantes por genero debería ' +
                    'ser la misma de participantes por rango de edad')
       end
+      if (hombres.to_i+mujeres.to_i+sexo_onr.to_i) != 
+          (campesinos.to_i+sectorsocial_onr.to_i)
+        errors.add(:sexo_onr, 'La suma de participantes por genero debería ' +
+                   'ser la misma de participantes por sector social')
+      end
+
     end
 
     # Deshabilita validacion con oficina que proviene de
