@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 1ccc2d42c2a609657fef671e1bd4071cf76ca8c6
+  revision: de19b0ae9272cdf1ad3476da6dee061979e4ff53
   branch: main
   specs:
     cor1440_gen (1.0b3)
@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: db2856b08b00337241295e9e8abc5a40fa698ed8
+  revision: a90ce2596ec3ee5cec69c3d29f309d0a4ec90666
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 9e2141fa9e745d567354300dbbead09ce1619528
+  revision: 9f761cde309fe2111ff1943e9872a8b588aaf02f
   branch: main
   specs:
     jn316_gen (1.0.a2)
@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 67897de80962b7b027962d7c15b16984e567a1ac
+  revision: bb5067a8f414443bdfca9a7c390a99c3287f9f1e
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 28cfb306b2d04feaf71e87b45a10ea502d0d33cb
+  revision: e9f1a12fa5d80f46bdd2246128675151f7637975
   branch: main
   specs:
     sal7711_gen (1.0.b3)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: a12640946e8328d5fbf2d612922a7c122e5591ad
+  revision: fa3331b363dd2df79d892266f0259750677b5a6f
   branch: main
   specs:
     sal7711_ld (1.0.a3)
@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: fe5b69d2397a77d659b1568325b992ee38740035
+  revision: d985d0a829960cb01c3827c473e953070bf93905
   branch: main
   specs:
     sal7711_web (1.0.a3)
@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 7d0d08dc21e11c15c5b84fb05c9bd71b6f511d76
+  revision: 0093e0b276fee91e64a2813936ec09386a1c8d58
   branch: main
   specs:
     sip (2.0.b11)
@@ -94,13 +94,6 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
-
-GIT
-  remote: https://github.com/vtamara/execjs.git
-  revision: 9e59ac3de88b1f9580e937a54ee763b5f7e89893
-  branch: exec-reliable
-  specs:
-    execjs (2.8.0)
 
 GEM
   remote: https://rubygems.org/
@@ -222,6 +215,7 @@ GEM
       nokogiri
       ruby-graphviz
     erubi (1.10.0)
+    execjs (2.8.1)
     ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -423,7 +417,7 @@ DEPENDENCIES
   devise-i18n (>= 1.9.2)
   dotenv-rails
   erd
-  execjs!
+  execjs
   heb412_gen!
   jbuilder
   jn316_gen!
