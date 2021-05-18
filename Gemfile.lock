@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: de19b0ae9272cdf1ad3476da6dee061979e4ff53
+  revision: 8e4efbe6e750e800e5a6c5c274f9010ad462a02f
   branch: main
   specs:
     cor1440_gen (1.0b3)
@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: a90ce2596ec3ee5cec69c3d29f309d0a4ec90666
+  revision: 942d9cb68898e6e29e3df2a540f244c4dd57fce6
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 9f761cde309fe2111ff1943e9872a8b588aaf02f
+  revision: 82678f15bffe42889e05260f45d069f5ea34d342
   branch: main
   specs:
     jn316_gen (1.0.a2)
@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: bb5067a8f414443bdfca9a7c390a99c3287f9f1e
+  revision: 7544b0660624e98aed230d7d37dbb8f1651b5bf0
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: e9f1a12fa5d80f46bdd2246128675151f7637975
+  revision: 14a7e052c60ad9f1f69dda9c7c9caf3d3d5e09f9
   branch: main
   specs:
     sal7711_gen (1.0.b3)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: fa3331b363dd2df79d892266f0259750677b5a6f
+  revision: 888a2603e6f34916dba4a30cc6b6a0f74b604428
   branch: main
   specs:
     sal7711_ld (1.0.a3)
@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: d985d0a829960cb01c3827c473e953070bf93905
+  revision: 7305975e2f575638cf1813c29ba35743c5545768
   branch: main
   specs:
     sal7711_web (1.0.a3)
@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0093e0b276fee91e64a2813936ec09386a1c8d58
+  revision: 842460b04fc9ffd7a79b7eb2bfc925c3a48ba2ee
   branch: main
   specs:
     sip (2.0.b11)
@@ -386,7 +386,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.3.0)
+    webpacker (5.4.0)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
