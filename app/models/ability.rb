@@ -36,7 +36,7 @@ class Ability  < Cor1440Gen::Ability
     'Grupo Gerencia de Proyectos: Administrar actividades de todos los grupos. ' +
     'Grupo Gerencia de Proyectos: Administrar convenios institucionales. ' +
     'Grupo Gerencia de Proyectos: Administrar algunas tablas básicas: tipos de anexos, tipos de convenios, tipos de moneda, financiadores y cargos. ' +
-    'Grupo Gestion de Calidad: Editar documentos en Nube y plantilas, asi como descripciones de cada carpeta. ' +
+    'Grupo Gestión de Calidad: Editar documentos en Nube y plantilas, asi como descripciones de cada carpeta. ' +
     'Grupo Archivo y Correspondencia: Editar usuarios pero sólo los campos extensión, oficina y teléfonos personales. ' +
     'Grupo Gestión Humana: Agregar y editar usuarios, campos privados de gestión humana, grupos y campos públicos. ' +
     'Grupo Gestión Humana: Maneja tablas básicas perfil profesional, cargos, tipos de contrato. ' +
@@ -53,17 +53,24 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_DESACTIVADOS = "Desactivados"
   GRUPOS_GENERICOS = [GRUPO_EXTERNOS, GRUPO_USUARIOS, GRUPO_DESACTIVADOS]
   GRUPO_COMUNICACIONES = "Comunicaciones"
-  GRUPO_DERECHOSHUMANOS = "Línea Derechos Humanos y Derecho Internacional Humanitario"
-  GRUPO_MEDIACION = "Línea Mediación y Reconciliación"
-  GRUPO_INICIATIVASPAZ = "Línea Iniciativas de Paz"
-  GRUPO_MOVIMIENTOSSOCIALES = "Línea Movimientos Sociales"
-  GRUPO_CONFLICTOYESTADO = "Línea Conflicto y Estado"
+  GRUPO_DERECHOSHUMANOS = "Línea Derechos Humanos y Violencia Política"
+  
+  #GRUPO_MEDIACION = "Línea Mediación y Reconciliación"
+  #GRUPO_CONFLICTOYESTADO = "Línea Conflicto y Estado"
+  #GRUPO_INICIATIVASPAZ = "Línea Iniciativas de Paz"
+
+  GRUPO_CONFLICTOYPAZ = 'Línea Conflicto y Paz'
+  
+  #GRUPO_MOVIMIENTOSSOCIALES = "Línea Movimientos Sociales"
+
+  GRUPO_MOVIMIENTOSSOCIALESTIERRA = 'Línea Movimientos Sociales Tierra y Territorio'
+ 
   GRUPO_LINEA = "Línea"
   GRUPO_OFICINATI = "Oficina TI"
   GRUPO_STCIV = "STCIV"
   GRUPO_SIG = "Sistema de Información General"
-  GRUPO_COORDINADOR = "Coordinador(a)"
-  GRUPO_COORDINADORGP = GRUPO_COORDINADOR + " " + GRUPO_COMPROMISOS 
+  GRUPO_RESPONSABLE= "Responsable de"
+  GRUPO_COORDINADORGP = "Coordinador(a) " + GRUPO_COMPROMISOS 
 
 
   def tablasbasicas 
@@ -482,7 +489,7 @@ class Ability  < Cor1440Gen::Ability
           #can :index, :exploradordatosrel
         end
 
-        coords = lgrupos.select {|g| g.start_with?(GRUPO_COORDINADOR)}
+        coords = lgrupos.select {|g| g.start_with?(GRUPO_RESPONSABLE)}
         # Posibilidad de editar Marco Logico para coordinadores
         if coords.length > 0
           lineas = coords.map { |gc| GRUPO_LINEA + ' ' + gc[15..-1] }
@@ -569,9 +576,6 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
         end
 
-        if lgrupos.include?(GRUPO_CONFLICTOYESTADO)
-          can :index, :dinamicas
-        end
 
         # Contexto es para equipo derechos humanos 
         if lgrupos.include?(GRUPO_DERECHOSHUMANOS)
@@ -602,7 +606,13 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
         end
 
-        if lgrupos.include?(GRUPO_INICIATIVASPAZ)
+        if lgrupos.include?(GRUPO_CONFLICTOYPAZ)
+          can :index, :confytransf
+          can :read, ::Ls
+          can :read, ::Lscobertura
+          can :index, :exploradordatosrel
+          can :index, :dinamicas  # Dinámicas del conflicto
+          #Acciones colectivas por la paz
           can :manage, ::Acp
           can :manage, ::Acpactor1
           can :manage, ::Acpactor2
@@ -614,13 +624,6 @@ class Ability  < Cor1440Gen::Ability
           can :manage, ::Acppapel
         end
 
-        if lgrupos.include?(GRUPO_MEDIACION)
-          can :index, :confytransf
-          can :read, ::Ls
-          can :read, ::Lscobertura
-          can :index, :exploradordatosrel
-        end
-
         if lgrupos.include?(GRUPO_SIG)
           can :index, :confytransf
           can :read, ::Ls
@@ -628,7 +631,7 @@ class Ability  < Cor1440Gen::Ability
           can :read, ::Acp
         end
 
-        if lgrupos.include?(GRUPO_MOVIMIENTOSSOCIALES)
+        if lgrupos.include?(GRUPO_MOVIMIENTOSSOCIALESTIERRA)
           can :manage, ::Ls
           can :manage, ::Lscobertura
         end
