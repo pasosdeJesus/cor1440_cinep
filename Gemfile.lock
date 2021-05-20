@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 8e4efbe6e750e800e5a6c5c274f9010ad462a02f
+  revision: 1e164f6c4784a7aa581d7225a5d9eb9ef4b7e965
   branch: main
   specs:
     cor1440_gen (1.0b3)
@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 942d9cb68898e6e29e3df2a540f244c4dd57fce6
+  revision: b054577d4aad494b53ababd2ba499a81d56a687c
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 82678f15bffe42889e05260f45d069f5ea34d342
+  revision: 58a8edcf5d59216b7b676f47843693dc056ae629
   branch: main
   specs:
     jn316_gen (1.0.a2)
@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 7544b0660624e98aed230d7d37dbb8f1651b5bf0
+  revision: ec21999bc5fafdf58defc9af92ad595c8566b851
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 14a7e052c60ad9f1f69dda9c7c9caf3d3d5e09f9
+  revision: 520dc95f771eedb8a0a09fe8c79b2b8396bde94b
   branch: main
   specs:
     sal7711_gen (1.0.b3)
@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 888a2603e6f34916dba4a30cc6b6a0f74b604428
+  revision: ad3ebf9b2983f73646ec600de4c53177cf6fd3fe
   branch: main
   specs:
     sal7711_ld (1.0.a3)
@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 7305975e2f575638cf1813c29ba35743c5545768
+  revision: df16a3fcf793b92f153e9982dfbce3f9a56bd4bb
   branch: main
   specs:
     sal7711_web (1.0.a3)
@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2b1f4e7e21e21198ec57ced74fceeefc360ec1f5
+  revision: d370cdbcaa1d226ded61549a2e75690996ab1d04
   branch: main
   specs:
     sip (2.0.b11)
@@ -251,7 +251,7 @@ GEM
     msgpack (1.4.2)
     net-ldap (0.17.0)
     nio4r (2.5.7)
-    nokogiri (1.11.4)
+    nokogiri (1.11.5)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     odf-report (0.7.2)
