@@ -746,6 +746,27 @@ module Cor1440Gen
       return registros.reorder([:estado, :referenciacinep, :id])
     end
 
+    def actualizaind
+      pf = params[:proyectofinanciero]
+      inds = []
+      if pf
+        indsobj = pf[:indicadorobjetivo_attributes] 
+        indsres = pf[:indicadorpf_attributes]
+        indsobj.each do |k, val|
+          inds.push([val[:id], val[:numero], val[:indicador]])
+        end
+        indsres.each do |k, val|
+          inds.push([val[:id], val[:numero], val[:indicador]])
+        end
+        @params = params
+      end
+      @params[:indicadores] = inds
+
+      respond_to do |format|
+        format.js { render 'refrescar_informes' }
+      end
+    end
+
     def genera_odt(plantilla_id, narchivo)
       plantilla = ::Heb412Gen::Plantilladoc.find(plantilla_id)
       if !plantilla
@@ -1145,6 +1166,7 @@ module Cor1440Gen
           :fechaplaneada_localizada,
           :fechareal_localizada,
           :id,
+          :indicadorpf_id,
           :seguimiento,
           :tipoproductopf_id,
           :_destroy

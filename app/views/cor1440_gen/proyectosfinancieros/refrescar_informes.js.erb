@@ -1,0 +1,13 @@
+<% inds =  @params[:indicadores] %>
+valor = $(".select_indicadores").val()
+$(".select_indicadores").empty()
+$(".select_indicadores").append('<option value label=""></option>')
+<% inds.each do |indicador| %>
+  div = document.createElement('option')
+  attributeDivider = document.createAttribute('value')
+  attributeDivider.value = <%= indicador[0] %>
+  div.setAttributeNode(attributeDivider)
+  $(div).html("<%=  indicador[1] + " | " +  indicador[2] %>")
+  $(".select_indicadores").append(div)
+<% end %>
+$(".select_indicadores").val(valor)

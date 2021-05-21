@@ -55,6 +55,15 @@
       label: false
     %>
   </td>
+  <td width="20%">
+    <%= f.association :indicadorpf, 
+      collection: @proyectofinanciero.indicadorpf,
+      label_method:  lambda { |ind| "#{ind.numero} | #{ind.indicador}"},
+      input_html: {class: 'select_indicadores'}, 
+      value_method: :id,
+      label: false
+    %>
+  </td>
   <td>
     <%= f.input :detalle, 
       label: false, 
