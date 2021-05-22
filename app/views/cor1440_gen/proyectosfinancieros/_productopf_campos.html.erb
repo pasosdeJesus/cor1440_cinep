@@ -55,7 +55,7 @@
       label: false
     %>
   </td>
-  <td width="20%">
+  <td>
     <%= f.association :indicadorpf, 
       collection: @proyectofinanciero.indicadorpf,
       label_method:  lambda { |ind| "#{ind.numero} | #{ind.indicador}"},

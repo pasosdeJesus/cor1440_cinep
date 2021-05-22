@@ -16,7 +16,7 @@ module Cor1440Gen
 
     load_and_authorize_resource  class: Cor1440Gen::Proyectofinanciero,
       only: [:new, :create, :destroy, :edit, :update, :index, :show,
-             :objetivospf]
+             :objetivospf, :actualizaind]
 
     include ::Sip::ConsultasHelper
 
