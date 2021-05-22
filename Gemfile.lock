@@ -1,20 +1,6 @@
 GIT
-  remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 1e164f6c4784a7aa581d7225a5d9eb9ef4b7e965
-  branch: main
-  specs:
-    cor1440_gen (1.0b3)
-      devise
-      heb412_gen
-      jquery-rails
-      mr519_gen
-      paperclip
-      rails
-      sip
-
-GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: b054577d4aad494b53ababd2ba499a81d56a687c
+  revision: 6413cce0eaa7362033f6a5257a8e33359c734ffc
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -25,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 58a8edcf5d59216b7b676f47843693dc056ae629
+  revision: ca7c491aea76534f47ef331796008dbbcc9c40ba
   branch: main
   specs:
     jn316_gen (1.0.a2)
@@ -35,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: ec21999bc5fafdf58defc9af92ad595c8566b851
+  revision: 68b951d6383155bc53cc138cde291950f18b1d3c
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -44,7 +30,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 520dc95f771eedb8a0a09fe8c79b2b8396bde94b
+  revision: bc2e29620d3a844c2011e41b8aa9278193c46555
   branch: main
   specs:
     sal7711_gen (1.0.b3)
@@ -53,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: ad3ebf9b2983f73646ec600de4c53177cf6fd3fe
+  revision: bc53da989459472f03725a7b12dbcd850de963e0
   branch: main
   specs:
     sal7711_ld (1.0.a3)
@@ -62,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: df16a3fcf793b92f153e9982dfbce3f9a56bd4bb
+  revision: 691ed35782231fce0a631e25ae0d7342e93cd06d
   branch: main
   specs:
     sal7711_web (1.0.a3)
@@ -71,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d370cdbcaa1d226ded61549a2e75690996ab1d04
+  revision: c89eb86f30c8ea4b541bedace02cd5bbd684e808
   branch: main
   specs:
     sip (2.0.b11)
@@ -94,6 +80,18 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
+
+PATH
+  remote: ../cor1440_gen
+  specs:
+    cor1440_gen (1.0b3)
+      devise
+      heb412_gen
+      jquery-rails
+      mr519_gen
+      paperclip
+      rails
+      sip
 
 GEM
   remote: https://rubygems.org/
@@ -216,7 +214,7 @@ GEM
       ruby-graphviz
     erubi (1.10.0)
     execjs (2.8.1)
-    ffi (1.15.0)
+    ffi (1.15.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)
@@ -276,7 +274,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.6)
-    puma (5.3.1)
+    puma (5.3.2)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -451,7 +449,7 @@ DEPENDENCIES
   tzinfo
   unicorn
   web-console
-  webpacker (>= 5.2.1)
+  webpacker
   will_paginate
 
 BUNDLED WITH

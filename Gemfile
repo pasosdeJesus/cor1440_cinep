@@ -61,7 +61,7 @@ gem 'twitter_cldr' # ICU con CLDR
 
 gem 'tzinfo' # Zonas horarias
 
-gem 'webpacker', '>= 5.2.1'
+gem 'webpacker'
 
 gem 'will_paginate' # Listados en páginas
 
@@ -100,8 +100,8 @@ gem 'sal7711_web', # Motor para archivo de prensa web
   #path: '../sal7711_web'
 
 gem 'cor1440_gen',  # Motor de actividades y proyectos con marco lógico
-  git: 'https://github.com/pasosdeJesus/cor1440_gen.git', branch: :main
-  #path: '../cor1440_gen'
+  #git: 'https://github.com/pasosdeJesus/cor1440_gen.git', branch: :main
+  path: '../cor1440_gen'
 
 group :development do
   gem 'erd'
