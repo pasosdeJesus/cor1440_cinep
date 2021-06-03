@@ -100,8 +100,8 @@ gem 'sal7711_web', # Motor para archivo de prensa web
   #path: '../sal7711_web'
 
 gem 'cor1440_gen',  # Motor de actividades y proyectos con marco lógico
-  #git: 'https://github.com/pasosdeJesus/cor1440_gen.git', branch: :main
-  path: '../cor1440_gen'
+  git: 'https://github.com/pasosdeJesus/cor1440_gen.git', branch: :main
+  #path: '../cor1440_gen'
 
 group :development do
   gem 'erd'
@@ -137,6 +137,8 @@ end
 
 
 group :production do
+
+  gem 'pledge'
 
   gem 'unicorn' # Para despliegue
 

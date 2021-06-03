@@ -1,5 +1,8 @@
 require "active_support/core_ext/integer/time"
 
+Pledge.pledge('chown cpath dns dpath error exec fattr flock getpw id inet mcast pf prot_exec proc ps recvfd rpath settime sendfd stdio tape tmppath unix vminfo wpath wroute video')
+#Pledge.pledge('audio bpf chown cpath dns dpath error exec fattr flock getpw id inet mcast pf prot_exec proc ps recvfd rpath settime sendfd stdio tape tmppath unix vminfo wpath wroute video')
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
