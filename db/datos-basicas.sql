@@ -4,8 +4,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -32,7 +32,7 @@ INSERT INTO public.nivelrelacion (id, nombre, observaciones, fechacreacion, fech
 -- Name: nivelrelacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.nivelrelacion_id_seq', 102, true);
+SELECT pg_catalog.setval('public.nivelrelacion_id_seq', 100, true);
 
 
 --
@@ -43,8 +43,8 @@ SELECT pg_catalog.setval('public.nivelrelacion_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -57,13 +57,21 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
--- procesogh en cambios-basicas porque es requerido por grupo
+--
+-- Data for Name: procesogh; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO public.procesogh (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (1, 'SIN INFORMACIÓN', NULL, '2018-04-24', NULL, '2018-04-24 00:00:00', '2018-04-24 00:00:00');
+INSERT INTO public.procesogh (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (2, 'APOYO', NULL, '2018-04-24', NULL, '2018-04-24 00:00:00', '2018-04-24 00:00:00');
+INSERT INTO public.procesogh (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (3, 'OPERATIVO', NULL, '2018-04-24', NULL, '2018-04-24 00:00:00', '2018-04-24 00:00:00');
+INSERT INTO public.procesogh (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (4, 'DIRECTIVO', NULL, '2018-04-24', NULL, '2018-04-24 00:00:00', '2018-04-24 00:00:00');
+
 
 --
 -- Name: procesogh_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.procesogh_id_seq', 102, true);
+SELECT pg_catalog.setval('public.procesogh_id_seq', 100, true);
 
 
 --
@@ -74,8 +82,8 @@ SELECT pg_catalog.setval('public.procesogh_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -103,7 +111,7 @@ INSERT INTO public.tiponomina (id, nombre, observaciones, fechacreacion, fechade
 -- Name: tiponomina_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.tiponomina_id_seq', 102, true);
+SELECT pg_catalog.setval('public.tiponomina_id_seq', 100, true);
 
 
 --
@@ -114,8 +122,8 @@ SELECT pg_catalog.setval('public.tiponomina_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -145,7 +153,7 @@ INSERT INTO public.acpestrategia (id, nombre, observaciones, fechacreacion, fech
 -- Name: acpestrategia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.acpestrategia_id_seq', 102, true);
+SELECT pg_catalog.setval('public.acpestrategia_id_seq', 100, true);
 
 
 --
@@ -156,8 +164,8 @@ SELECT pg_catalog.setval('public.acpestrategia_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -199,7 +207,7 @@ INSERT INTO public.acpactor1 (id, nombre, observaciones, fechacreacion, fechades
 -- Name: acpactor1_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.acpactor1_id_seq', 102, true);
+SELECT pg_catalog.setval('public.acpactor1_id_seq', 100, true);
 
 
 --
@@ -210,8 +218,8 @@ SELECT pg_catalog.setval('public.acpactor1_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -357,7 +365,7 @@ INSERT INTO public.acpactor2 (id, nombre, observaciones, actor1_id, fechacreacio
 -- Name: acpactor2_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.acpactor2_id_seq', 126, true);
+SELECT pg_catalog.setval('public.acpactor2_id_seq', 124, true);
 
 
 --
@@ -368,8 +376,8 @@ SELECT pg_catalog.setval('public.acpactor2_id_seq', 126, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -411,7 +419,7 @@ INSERT INTO public.acpcataccion (id, nombre, observaciones, fechacreacion, fecha
 -- Name: acpcataccion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.acpcataccion_id_seq', 102, true);
+SELECT pg_catalog.setval('public.acpcataccion_id_seq', 100, true);
 
 
 --
@@ -422,8 +430,8 @@ SELECT pg_catalog.setval('public.acpcataccion_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -450,7 +458,7 @@ INSERT INTO public.acpcatmotivo (id, nombre, observaciones, fechacreacion, fecha
 -- Name: acpcatmotivo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.acpcatmotivo_id_seq', 102, true);
+SELECT pg_catalog.setval('public.acpcatmotivo_id_seq', 100, true);
 
 
 --
@@ -461,8 +469,8 @@ SELECT pg_catalog.setval('public.acpcatmotivo_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -499,7 +507,7 @@ INSERT INTO public.acpcobertura (id, nombre, observaciones, fechacreacion, fecha
 -- Name: acpcobertura_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.acpcobertura_id_seq', 102, true);
+SELECT pg_catalog.setval('public.acpcobertura_id_seq', 100, true);
 
 
 --
@@ -510,8 +518,8 @@ SELECT pg_catalog.setval('public.acpcobertura_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -538,7 +546,7 @@ INSERT INTO public.acpformap (id, nombre, observaciones, fechacreacion, fechades
 -- Name: acpformap_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.acpformap_id_seq', 102, true);
+SELECT pg_catalog.setval('public.acpformap_id_seq', 100, true);
 
 
 --
@@ -549,8 +557,8 @@ SELECT pg_catalog.setval('public.acpformap_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -569,15 +577,16 @@ SET row_security = off;
 
 INSERT INTO public.acpmotivo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at, catmotivo_id) VALUES (1, 'SIN INFORMACIÓN', '', '2020-07-13', NULL, '2020-07-13 00:00:00', '2020-07-13 00:00:00', NULL);
 INSERT INTO public.acpmotivo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at, catmotivo_id) VALUES (2, 'Amenazas y extorsiones', '', '2020-07-13', NULL, '2020-07-13 00:00:00', '2020-07-16 10:06:38.889725', 1);
-INSERT INTO public.acpmotivo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at, catmotivo_id) VALUES (25, 'Secuestros y retenciones', 'a) Cuando el motivo de la acción colectiva es rechazar el que una de las organizaciones armadas ilegales retenga una persona con fines económicos o políticos (se incluyen los soldados o policías retenidos en enfrentamientos con la guerrilla). (García-Durán, 2006: 341). b) Es la privación de la libertad de una persona civil por parte de una organización insurgente, ya con el fin de obligarla a entregar una suma de dinero destinada a la financiación de dicha organización o de sus acciones bélicas, ya con el fin de enviar un mensaje, de producir un impacto en la opinión pública o impedir una determinada actividad de la víctima.', '2020-07-13', NULL, '2020-07-13 00:00:00', '2020-07-16 10:06:38.982524', 1);
+INSERT INTO public.acpmotivo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at, catmotivo_id) VALUES (25, 'Secuestros y retenciones', 'a) Cuando el motivo de la acción colectiva es rechazar el que una de las organizaciones armadas ilegales retenga una persona con fines económicos o políticos (se incluyen los soldados o policías retenidos en enfrentamientos con la guerrilla). (García-Durán, 2006: 341) 
 INSERT INTO public.acpmotivo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at, catmotivo_id) VALUES (7, 'Combates y disputa del territorio', 'Cuando el motivo de la acción colectiva es la reacción ante la situación crítica que se genera y afecta a la población civil en razón de enfrentamientos y acciones armadas entre la fuerza pública y un grupo ilegal.', '2020-07-13', NULL, '2020-07-13 00:00:00', '2020-07-16 10:06:38.923443', 1);
+b) Es la privación de la libertad de una persona civil por parte de una organización insurgente, ya con el fin de obligarla a entregar una suma de dinero destinada a la financiación de dicha organización o de sus acciones bélicas, ya con el fin de enviar un mensaje, de producir un impacto en la opinión pública o impedir una determinada actividad de la víctima.', '2020-07-13', NULL, '2020-07-13 00:00:00', '2020-07-16 10:06:38.982524', 1);
 
 
 --
 -- Name: acpmotivo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.acpmotivo_id_seq', 102, true);
+SELECT pg_catalog.setval('public.acpmotivo_id_seq', 100, true);
 
 
 --
@@ -588,8 +597,8 @@ SELECT pg_catalog.setval('public.acpmotivo_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -616,7 +625,7 @@ INSERT INTO public.acppapel (id, nombre, observaciones, fechacreacion, fechadesh
 -- Name: acppapel_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.acppapel_id_seq', 102, true);
+SELECT pg_catalog.setval('public.acppapel_id_seq', 100, true);
 
 
 --
@@ -627,8 +636,8 @@ SELECT pg_catalog.setval('public.acppapel_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -663,7 +672,7 @@ INSERT INTO public.areaestudios (id, nombre, observaciones, fechacreacion, fecha
 -- Name: areaestudios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.areaestudios_id_seq', 102, true);
+SELECT pg_catalog.setval('public.areaestudios_id_seq', 100, true);
 
 
 --
@@ -674,8 +683,8 @@ SELECT pg_catalog.setval('public.areaestudios_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -702,7 +711,7 @@ INSERT INTO public.cajacompensacion (id, nombre, observaciones, fechacreacion, f
 -- Name: cajacompensacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.cajacompensacion_id_seq', 102, true);
+SELECT pg_catalog.setval('public.cajacompensacion_id_seq', 100, true);
 
 
 --
@@ -713,8 +722,8 @@ SELECT pg_catalog.setval('public.cajacompensacion_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -735,7 +744,6 @@ INSERT INTO public.cargo (id, nombre, observaciones, fechacreacion, fechadeshabi
 INSERT INTO public.cargo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (10, 'ASESOR AUXILIAR 2', NULL, '2018-04-14', NULL, '2018-04-14 00:00:00', '2018-04-14 00:00:00');
 INSERT INTO public.cargo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (101, 'PROFESIONAL 1', '', '2016-04-22', '2018-04-16', '2016-04-22 16:37:42.454072', '2016-04-22 16:37:42.454072');
 INSERT INTO public.cargo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (102, 'PROFESIONAL 2', '', '2016-05-17', '2018-04-16', '2016-05-17 20:46:54.205211', '2016-05-17 20:46:54.205211');
-INSERT INTO public.cargo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (103, 'AAA', 'bbbb', '2020-07-09', NULL, '2020-07-09 16:09:48.70892', '2020-07-09 16:09:48.70892');
 INSERT INTO public.cargo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (11, 'ASESOR DE PROYECTO', NULL, '2018-04-14', NULL, '2018-04-14 00:00:00', '2018-04-14 00:00:00');
 INSERT INTO public.cargo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (12, 'ASESOR JUNIOR DE INF. POLITICA Y PEDAG.', NULL, '2018-04-14', NULL, '2018-04-14 00:00:00', '2018-04-14 00:00:00');
 INSERT INTO public.cargo (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (13, 'ASESORA ASISTENTE', NULL, '2018-04-14', NULL, '2018-04-14 00:00:00', '2018-04-14 00:00:00');
@@ -784,7 +792,7 @@ INSERT INTO public.cargo (id, nombre, observaciones, fechacreacion, fechadeshabi
 -- Name: cargo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.cargo_id_seq', 103, true);
+SELECT pg_catalog.setval('public.cargo_id_seq', 102, true);
 
 
 --
@@ -795,8 +803,8 @@ SELECT pg_catalog.setval('public.cargo_id_seq', 103, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -821,7 +829,7 @@ INSERT INTO public.comunicado (id, nombre, observaciones, contenido, fechacreaci
 -- Name: comunicado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.comunicado_id_seq', 103, true);
+SELECT pg_catalog.setval('public.comunicado_id_seq', 101, true);
 
 
 --
@@ -832,8 +840,8 @@ SELECT pg_catalog.setval('public.comunicado_id_seq', 103, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -860,7 +868,7 @@ INSERT INTO public.csivinivelgeo (id, nombre, observaciones, fechacreacion, fech
 -- Name: csivinivelgeo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.csivinivelgeo_id_seq', 102, true);
+SELECT pg_catalog.setval('public.csivinivelgeo_id_seq', 100, true);
 
 
 --
@@ -871,8 +879,8 @@ SELECT pg_catalog.setval('public.csivinivelgeo_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -898,7 +906,7 @@ INSERT INTO public.csivinivelresp (id, nombre, observaciones, fechacreacion, fec
 -- Name: csivinivelresp_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.csivinivelresp_id_seq', 102, true);
+SELECT pg_catalog.setval('public.csivinivelresp_id_seq', 100, true);
 
 
 --
@@ -909,8 +917,8 @@ SELECT pg_catalog.setval('public.csivinivelresp_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -953,8 +961,8 @@ SELECT pg_catalog.setval('public.csivitema_id_seq', 100, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -985,7 +993,7 @@ INSERT INTO public.empresaps (id, nombre, observaciones, fechacreacion, fechades
 -- Name: empresaps_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.empresaps_id_seq', 102, true);
+SELECT pg_catalog.setval('public.empresaps_id_seq', 100, true);
 
 
 --
@@ -996,8 +1004,8 @@ SELECT pg_catalog.setval('public.empresaps_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1034,8 +1042,8 @@ SELECT pg_catalog.setval('public.escalaaltura3_id_seq', 100, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1074,8 +1082,8 @@ SELECT pg_catalog.setval('public.escaladebilfuerte_id_seq', 100, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1114,8 +1122,8 @@ SELECT pg_catalog.setval('public.escalaempeoramejora_id_seq', 100, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1154,8 +1162,8 @@ SELECT pg_catalog.setval('public.escalaindmuy_id_seq', 100, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1183,7 +1191,7 @@ INSERT INTO public.fondopensiones (id, nombre, observaciones, fechacreacion, fec
 -- Name: fondopensiones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.fondopensiones_id_seq', 102, true);
+SELECT pg_catalog.setval('public.fondopensiones_id_seq', 100, true);
 
 
 --
@@ -1194,8 +1202,45 @@ SELECT pg_catalog.setval('public.fondopensiones_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
+
+SET statement_timeout = 0;
+
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Data for Name: lineabase; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO public.lineabase (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (1, 'PLAN TRIENAL 2018-2020', NULL, '2021-06-03', NULL, '2021-06-03 00:00:00', '2021-06-03 00:00:00');
+INSERT INTO public.lineabase (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (2, 'PLAN TRIENAL 2021-2023', NULL, '2021-06-03', NULL, '2021-06-03 00:00:00', '2021-06-03 00:00:00');
+
+
+--
+-- Name: lineabase_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.lineabase_id_seq', 100, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1237,8 +1282,8 @@ SELECT pg_catalog.setval('public.lscobertura_id_seq', 100, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1270,7 +1315,7 @@ INSERT INTO public.niveleducacion (id, nombre, observaciones, fechacreacion, fec
 -- Name: niveleducacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.niveleducacion_id_seq', 102, true);
+SELECT pg_catalog.setval('public.niveleducacion_id_seq', 100, true);
 
 
 --
@@ -1281,8 +1326,8 @@ SELECT pg_catalog.setval('public.niveleducacion_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1316,7 +1361,7 @@ INSERT INTO public.perfilprofesional (id, nombre, observaciones, fechacreacion, 
 -- Name: perfilprofesional_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.perfilprofesional_id_seq', 102, true);
+SELECT pg_catalog.setval('public.perfilprofesional_id_seq', 100, true);
 
 
 --
@@ -1327,8 +1372,8 @@ SELECT pg_catalog.setval('public.perfilprofesional_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1352,7 +1397,7 @@ INSERT INTO public.plantillacorreo (id, nombre, contenido, observaciones, fechac
 -- Name: plantillacorreo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.plantillacorreo_id_seq', 102, true);
+SELECT pg_catalog.setval('public.plantillacorreo_id_seq', 100, true);
 
 
 --
@@ -1363,8 +1408,8 @@ SELECT pg_catalog.setval('public.plantillacorreo_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1423,7 +1468,7 @@ INSERT INTO public.profesion (id, nombre, observaciones, areaestudios_id, fechac
 -- Name: profesion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.profesion_id_seq', 102, true);
+SELECT pg_catalog.setval('public.profesion_id_seq', 100, true);
 
 
 --
@@ -1434,8 +1479,8 @@ SELECT pg_catalog.setval('public.profesion_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1460,17 +1505,17 @@ INSERT INTO public.publicacion (id, nombre, observaciones, fechacreacion, fechad
 INSERT INTO public.publicacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (105, 'SIVEL BANCO DE DATOS', '', '2015-07-08', NULL, '2015-07-08 14:23:57.634467', '2015-07-08 14:23:57.634467');
 INSERT INTO public.publicacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (106, 'SISTEMA DE INFORMACIÓN PARA SEGUIMIENTO DE ACTIVIDADES DEL BANCO DE DATOS', '', '2015-07-08', NULL, '2015-07-08 14:24:24.397846', '2015-07-08 14:24:24.397846');
 INSERT INTO public.publicacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (107, 'ADJ BANCO DE DATOS', '', '2015-07-12', NULL, '2015-07-12 16:23:57.527215', '2015-07-12 17:22:53.439711');
-INSERT INTO public.publicacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (108, 'CONOCIENDO NUESTROS DERECHOS PARA GOBERNAR CORRECTAMENTE EN NUESTRO TERRITORIO', 'EL PRESENTE DOCUMENTO CONTIENE EL DESARROLLO TEMÁTICO DEL PRIMER TALLER DE FORMACIÓN DE NUEVOS LIDERAZGOS EN LA  SUBREGIÓN DEL BAJO ATRATO DEL EQUIPO CHOCÓ DEL CINEP-PROGRAMA POR LA PAZ. EN ESTE PRIMER MÓDULO, SE TRATARÁ EL TEMA  DE LEGISLACIÓN TERRITORIAL, NO SIN ANTES ECHAR UN VISTAZO A CONCEPTOS PREVIOS Y BÁSICOS PARA UN ADECUADO MANEJO DEL TEMA COMO: DERECHOS HUMANOS, DERECHOS  FUNDAMENTALES, CONSTITUCIÓN Y TIPOS DE NORMAS, QUE SON BASE PARA PODER  ENTENDER LA LEGISLACIÓN TERRITORIAL ACTUAL, SU SENTIDO Y SU ALCANCE.  A SU VEZ, SE BUSCA QUE EL TALLER NO SÓLO SIRVA PARA TRANSMITIR UN CONOCIMIENTO, SINO QUE LOS PARTICIPANTES LO ASUMAN DE UNA MANERA ANALÍTICA Y CRÍTICA. ES DECIR, QUE NO SE CONFORMEN CON SABER QUÉ DICE LA LEY, SINO QUE SEAN CAPACES DE CRITICARLA Y PROPONER ALTERNATIVAS DE ACUERDO CON SUS DINÁMICAS Y NECESIDADES COMUNITARIAS.  EL PROCESO DE FORMACIÓN QUE BRINDA EL TALLER ES INTEGRAL: SE RELACIONA CON EL ENTORNO SOCIAL COTIDIANO Y SE APOYA EN LA FORMACIÓN PERSONAL DE LOS PARTICIPANTES. ADEMÁS, BUSCA GENERAR CRÍTICA Y AUTOCRÍTICA, FORTALECIMIENTO ORGANIZATIVO, ASÍ COMO CONOCIMIENTO Y SENSIBILIZACIÓN PARA EMPRENDER LA EXIGIBILIDAD DE LOS DERECHOS. LA PUBLICACIÓN CONOCIENDO NUESTROS DERECHOS PARA GOBERNAR CORRECTAMENTE EN NUESTRO TERRITORIOPRETENDE DAR CUENTA DEL DESARROLLO TEMÁTICO DEL PRIMER TALLER, ASÍ COMO BRINDAR HERRAMIENTAS PARA QUE LOS PARTICIPANTES, COMO NUEVOS LÍDERES Y LIDERESAS QUE SERÁN, PUEDAN REPLICAR LO APRENDIDO EN SUS COMUNIDADES. ', '2015-12-07', NULL, '2015-12-07 18:04:33.682198', '2015-12-07 18:04:33.682198');
+INSERT INTO public.publicacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (108, 'CONOCIENDO NUESTROS DERECHOS PARA GOBERNAR CORRECTAMENTE EN NUESTRO TERRITORIO', 'EL PRESENTE DOCUMENTO CONTIENE EL DESARROLLO TEMÁTICO DEL PRIMER TALLER DE FORMACIÓN DE NUEVOS LIDERAZGOS EN LA  SUBREGIÓN DEL BAJO ATRATO DEL EQUIPO CHOCÓ DEL CINEP-PROGRAMA POR LA PAZ. EN ESTE PRIMER MÓDULO, SE TRATARÁ EL TEMA  DE LEGISLACIÓN TERRITORIAL, NO SIN ANTES ECHAR UN VISTAZO A CONCEPTOS PREVIOS Y BÁSICOS PARA UN ADECUADO MANEJO DEL TEMA COMO: DERECHOS HUMANOS, DERECHOS  FUNDAMENTALES, CONSTITUCIÓN Y TIPOS DE NORMAS, QUE SON BASE PARA PODER  ENTENDER LA LEGISLACIÓN TERRITORIAL ACTUAL, SU SENTIDO Y SU ALCANCE.  A SU VEZ, SE BUSCA QUE EL TALLER NO SÓLO SIRVA PARA TRANSMITIR UN CONOCIMIENTO, SINO QUE LOS PARTICIPANTES LO ASUMAN DE
 INSERT INTO public.publicacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (2, 'NOCHE Y NIEBLA 51', NULL, '2015-06-30', NULL, '2015-06-30 00:00:00', '2015-06-30 00:00:00');
 INSERT INTO public.publicacion (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (3, 'CASO TIPO TRUJILLO', NULL, '2015-06-30', NULL, '2015-06-30 00:00:00', '2015-06-30 00:00:00');
-
+ UNA MANERA ANALÍTICA Y CRÍTICA. ES DECIR, QUE NO SE CONFORMEN CON SABER QUÉ DICE LA LEY, SINO QUE SEAN CAPACES DE CRITICARLA Y PROPONER ALTERNATIVAS DE ACUERDO CON SUS DINÁMICAS Y NECESIDADES COMUNITARIAS.  EL PROCESO DE FORMACIÓN QUE BRINDA EL TALLER ES INTEGRAL: SE RELACIONA CON EL ENTORNO SOCIAL COTIDIANO Y SE APOYA EN LA FORMACIÓN PERSONAL DE LOS PARTICIPANTES. ADEMÁS, BUSCA GENERAR CRÍTICA Y AUTOCRÍTICA, FORTALECIMIENTO ORGANIZATIVO, ASÍ COMO CONOCIMIENTO Y SENSIBILIZACIÓN PARA EMPRENDER LA EXIGIBILIDAD DE LOS DERECHOS. LA PUBLICACIÓN CONOCIENDO NUESTROS DERECHOS PARA GOBERNAR CORRECTAMENTE EN NUESTRO TERRITORIOPRETENDE DAR CUENTA DEL DESARROLLO TEMÁTICO DEL PRIMER TALLER, ASÍ COMO BRINDAR HERRAMIENTAS PARA QUE LOS PARTICIPANTES, COMO NUEVOS LÍDERES Y LIDERESAS QUE SERÁN, PUEDAN REPLICAR LO APRENDIDO EN SUS COMUNIDADES. ', '2015-12-07', NULL, '2015-12-07 18:04:33.682198', '2015-12-07 18:04:33.682198');
 
 
 --
 -- Name: publicacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.publicacion_id_seq', 114, true);
+SELECT pg_catalog.setval('public.publicacion_id_seq', 112, true);
 
 
 --
@@ -1481,8 +1526,8 @@ SELECT pg_catalog.setval('public.publicacion_id_seq', 114, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1526,7 +1571,7 @@ INSERT INTO public.redactor (id, nombre, observaciones, fechacreacion, fechadesh
 -- Name: redactor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.redactor_id_seq', 153, true);
+SELECT pg_catalog.setval('public.redactor_id_seq', 152, true);
 
 
 --
@@ -1537,8 +1582,8 @@ SELECT pg_catalog.setval('public.redactor_id_seq', 153, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1556,14 +1601,13 @@ SET row_security = off;
 --
 
 INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (1, 'COSTA-DH', '', 122, '2017-05-09', NULL, '2017-05-09 14:00:00.752746', '2017-10-26 12:51:10.249883');
-INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (10, 'COSTA ATLÁNTICA', NULL, 148, '2018-06-04', NULL, '2018-06-04 00:00:00', '2018-06-04 00:00:00');
-INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (101, 'AAA', 'bbb', 111, '2020-07-07', NULL, '2020-07-07 13:27:04.702552', '2020-07-07 13:27:04.702552');
-INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (11, 'LLANOS', NULL, 148, '2018-06-04', NULL, '2018-06-04 00:00:00', '2018-06-04 00:00:00');
-INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (12, 'SUR OCCIDENTE', NULL, 148, '2018-06-04', NULL, '2018-06-04 00:00:00', '2018-06-04 00:00:00');
-INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (13, 'ANTIOQUIA', NULL, 148, '2018-06-04', NULL, '2018-06-04 00:00:00', '2018-06-04 00:00:00');
-INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (14, 'CENTRO', NULL, 148, '2018-06-04', NULL, '2018-06-04 00:00:00', '2018-06-04 00:00:00');
-INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (15, 'EJE CAFETERO', NULL, 148, '2018-06-04', NULL, '2018-06-04 00:00:00', '2018-06-04 00:00:00');
-INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (16, 'EXTERIOR', NULL, 148, '2018-06-04', NULL, '2018-06-04 00:00:00', '2018-06-04 00:00:00');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (10, 'COSTA ATLÁNTICA', NULL, 74, '2018-06-04', NULL, '2018-06-04 00:00:00', '2021-05-19 11:59:44.936265');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (11, 'LLANOS', NULL, 74, '2018-06-04', NULL, '2018-06-04 00:00:00', '2021-05-19 11:59:44.944566');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (12, 'SUR OCCIDENTE', NULL, 74, '2018-06-04', NULL, '2018-06-04 00:00:00', '2021-05-19 11:59:44.947103');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (13, 'ANTIOQUIA', NULL, 74, '2018-06-04', NULL, '2018-06-04 00:00:00', '2021-05-19 11:59:44.929363');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (14, 'CENTRO', NULL, 148, '2018-06-04', NULL, '2018-06-04 00:00:00', '2021-05-19 11:59:44.933382');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (15, 'EJE CAFETERO', NULL, 74, '2018-06-04', NULL, '2018-06-04 00:00:00', '2021-05-19 11:59:44.939147');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (16, 'EXTERIOR', NULL, 74, '2018-06-04', NULL, '2018-06-04 00:00:00', '2021-05-19 11:59:44.941677');
 INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (20, 'CARIBE', 'Plan quinquenal 2018-2022', NULL, '2017-10-25', NULL, '2017-10-25 00:00:00', '2017-10-25 00:00:00');
 INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (21, 'FRONTERA COLOMBO VENEZOLANA', 'Plan Quinquenal 2018-2022', NULL, '2017-10-26', NULL, '2017-10-26 12:54:14.72199', '2017-10-26 12:54:14.72199');
 INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (22, 'MAGDALENA MEDIO', 'Plan Quinquenal 2018-2022', 101, '2017-10-26', NULL, '2017-10-26 12:56:30.833328', '2017-10-26 12:56:30.833328');
@@ -1573,118 +1617,33 @@ INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreaci
 INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (26, 'ZONA PDET CATATUMBO', NULL, 156, '2020-08-11', NULL, '2020-08-11 00:00:00', '2020-08-11 00:00:00');
 INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (27, 'ZONA PDET PACÍFICO MEDIO', NULL, 156, '2020-08-11', NULL, '2020-08-11 00:00:00', '2020-08-11 00:00:00');
 INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (28, 'ZONA PDET SUR DE CÓRDOBA', NULL, 156, '2020-08-11', NULL, '2020-08-11 00:00:00', '2020-08-11 00:00:00');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (31, 'BOGOTÁ Y ALREDEDORES (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 11:15:58.127129', '2021-05-18 11:15:58.127129');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (32, 'CARIBE (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 11:29:36.510141', '2021-05-18 11:29:36.510141');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (33, 'ANDINA (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 11:54:10.350828', '2021-05-18 11:54:10.350828');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (34, 'ANDÉN PACÍFICO (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 11:56:55.289628', '2021-05-18 11:56:55.289628');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (35, 'AMAZONAS (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 11:59:40.97658', '2021-05-18 11:59:40.97658');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (36, 'FRONTERA COLOMBO VENEZOLANA (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 12:02:45.683991', '2021-05-18 12:02:45.683991');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (37, 'MAGDALENA MEDIO (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 12:03:33.611859', '2021-05-18 12:03:33.611859');
+INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (38, 'ORINOCO (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 12:03:56.809076', '2021-05-18 12:03:56.809076');
 
-      INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (31, 'BOGOTÁ Y ALREDEDORES (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 11:15:58.127129', '2021-05-18 11:15:58.127129');
-      INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (32, 'CARIBE (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 11:29:36.510141', '2021-05-18 11:29:36.510141');
-      INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (33, 'ANDINA (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 11:54:10.350828', '2021-05-18 11:54:10.350828');
-      INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (34, 'ANDÉN PACÍFICO (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 11:56:55.289628', '2021-05-18 11:56:55.289628');
-      INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (35, 'AMAZONAS (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 11:59:40.97658', '2021-05-18 11:59:40.97658');
-      INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (36, 'FRONTERA COLOMBO VENEZOLANA (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 12:02:45.683991', '2021-05-18 12:02:45.683991');
-      INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (37, 'MAGDALENA MEDIO (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 12:03:33.611859', '2021-05-18 12:03:33.611859');
-      INSERT INTO public.regiongrupo (id, nombre, observaciones, grupo_id, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (38, 'ORINOCO (TRIENAL 2021-2023)', '', NULL, '2021-05-18', NULL, '2021-05-18 12:03:56.809076', '2021-05-18 12:03:56.809076');
 
-
-      INSERT INTO public.regiongrupo_sip_departamento (regiongrupo_id, sip_departamento_id) VALUES (31, 4);
-
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (31, 469);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (31, 1216);
-      
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 22);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 31);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 41);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 53);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 337);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 361);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 396);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 418);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 431);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 640);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 718);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 720);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 759);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 784);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 793);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 859);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 886);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 963);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 1062);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 1066);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 1117);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 1122);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 1183);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 1336);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (32, 1424);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 19);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 27);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 28);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 38);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 42);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 44);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 46);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 243);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 478);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 805);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 823);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 929);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 1091);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 1196);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 1226);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 1315);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (33, 1422);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 48);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 86);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 213);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 256);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 566);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 723);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 733);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 766);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 799);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 1028);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 1307);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 1317);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 1345);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (34, 1348);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (35, 40);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (35, 51);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (35, 707);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (35, 940);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (35, 942);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (35, 1182);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (35, 1214);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (35, 1381);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (35, 1415);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (36, 18);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (36, 32);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (36, 481);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (36, 539);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (36, 602);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (36, 1056);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (36, 1058);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (36, 1193);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (36, 1257);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (36, 1320);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (37, 1204);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (37, 1319);
-      INSERT INTO public.regiongrupo_sip_municipio (regiongrupo_id, sip_municipio_id) VALUES (38, 57);
 --
 -- Name: regiongrupo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.regiongrupo_id_seq', 101, true);
+SELECT pg_catalog.setval('public.regiongrupo_id_seq', 100, true);
 
 
 --
 -- PostgreSQL database dump complete
 --
 
-
 --
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1712,7 +1671,7 @@ INSERT INTO public.tipoanexo (id, nombre, observaciones, fechacreacion, fechades
 -- Name: tipoanexo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.tipoanexo_id_seq', 101, true);
+SELECT pg_catalog.setval('public.tipoanexo_id_seq', 100, true);
 
 
 --
@@ -1723,8 +1682,8 @@ SELECT pg_catalog.setval('public.tipoanexo_id_seq', 101, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1756,7 +1715,7 @@ INSERT INTO public.tipocontrato (id, nombre, observaciones, fechacreacion, fecha
 -- Name: tipocontrato_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.tipocontrato_id_seq', 102, true);
+SELECT pg_catalog.setval('public.tipocontrato_id_seq', 100, true);
 
 
 --
@@ -1767,8 +1726,8 @@ SELECT pg_catalog.setval('public.tipocontrato_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1807,7 +1766,7 @@ INSERT INTO public.tipoconvenio (id, nombre, observaciones, fechacreacion, fecha
 -- Name: tipoconvenio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.tipoconvenio_id_seq', 102, true);
+SELECT pg_catalog.setval('public.tipoconvenio_id_seq', 100, true);
 
 
 --
@@ -1818,8 +1777,8 @@ SELECT pg_catalog.setval('public.tipoconvenio_id_seq', 102, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1849,7 +1808,7 @@ INSERT INTO public.tipomoneda (id, nombre, codiso4217, simbolo, pais_id, observa
 -- Name: tipomoneda_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.tipomoneda_id_seq', 103, true);
+SELECT pg_catalog.setval('public.tipomoneda_id_seq', 101, true);
 
 
 --
@@ -1860,8 +1819,8 @@ SELECT pg_catalog.setval('public.tipomoneda_id_seq', 103, true);
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 13.2
+-- Dumped by pg_dump version 13.2
 
 SET statement_timeout = 0;
 
@@ -1893,21 +1852,10 @@ INSERT INTO public.tipoproductopf (id, nombre, observaciones, fechacreacion, fec
 -- Name: tipoproductopf_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.tipoproductopf_id_seq', 102, true);
+SELECT pg_catalog.setval('public.tipoproductopf_id_seq', 100, true);
 
 
 --
 -- PostgreSQL database dump complete
 --
 
-
-INSERT INTO public.lineabase (id, nombre, 
-  fechacreacion, created_at, updated_at) VALUES (
-  1, 'PLAN TRIENAL 2018-2020',
-  '2021-06-03', '2021-06-03', '2021-06-03');
-INSERT INTO public.lineabase (id, nombre, 
-  fechacreacion, created_at, updated_at) VALUES (
-  2, 'PLAN TRIENAL 2021-2023',
-  '2021-06-03', '2021-06-03', '2021-06-03');
-
-SELECT pg_catalog.setval('public.lineabase_id_seq', 100, true);
