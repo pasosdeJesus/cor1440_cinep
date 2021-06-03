@@ -1,5 +1,6 @@
 <% inds =  @params[:indicadores] %>
-valor = $(".select_indicadores").val()
+selectores = $(".select_indicadores")
+valores = selectores.map(function(i, x){return x.value}).get()
 $(".select_indicadores").empty()
 $(".select_indicadores").append('<option value label=""></option>')
 <% inds.each do |indicador| %>
@@ -10,4 +11,4 @@ $(".select_indicadores").append('<option value label=""></option>')
   $(div).html("<%=  indicador[0] + indicador[2] + " " +  indicador[3] %>")
   $(".select_indicadores").append(div)
 <% end %>
-$(".select_indicadores").val(valor)
+  selectores.each(function(i, x){ $(x).val(valores[i])})
