@@ -8,6 +8,7 @@
     <th>Fecha planeada</th>
     <th>Fecha envio</th>
     <th>Devoluciones</th>
+    <th>Indicador al que aporta</th>
     <th>Detalle</th>
   </tr>
   <% @registro.productopf.each do |p| %>
@@ -27,6 +28,7 @@
       <td><%= p.fechaplaneada_localizada %></td>
       <td><%= p.fechareal_localizada %></td>
       <td><%= p.devoluciones ? 'Si' : 'No' %></td>
+      <td><%= p.indicadorpf ? p.indicadorpf.presenta_nombre : ''  %></td>
       <td><%= p.detalle%></td>
     </tr>
   <% end %>
