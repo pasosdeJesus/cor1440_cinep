@@ -2135,7 +2135,9 @@ CREATE TABLE public.cor1440_gen_caracterizacionpf (
 CREATE TABLE public.cor1440_gen_datointermedioti (
     id bigint NOT NULL,
     nombre character varying(1024) NOT NULL,
-    tipoindicador_id integer NOT NULL
+    tipoindicador_id integer NOT NULL,
+    nombreinterno character varying(127),
+    funcion character varying(5000)
 );
 
 
@@ -4683,7 +4685,8 @@ CREATE TABLE public.productopf (
     updated_at timestamp without time zone NOT NULL,
     fechainiprod date,
     fechafinprod date,
-    costoprevisto numeric
+    costoprevisto numeric,
+    indicadorpf_id integer
 );
 
 
@@ -9575,6 +9578,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_proyecto
 
 
 --
+-- Name: productopf fk_rails_39ea352624; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.productopf
+    ADD CONSTRAINT fk_rails_39ea352624 FOREIGN KEY (indicadorpf_id) REFERENCES public.cor1440_gen_indicadorpf(id);
+
+
+--
 -- Name: productopf fk_rails_3abca040a4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -11661,7 +11672,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210518100902'),
 ('20210518180145'),
 ('20210518204652'),
+('20210519012236'),
 ('20210519103132'),
-('20210520011319');
+('20210520011319'),
+('20210524121112');
 
 
