@@ -396,7 +396,7 @@ module Cor1440Gen
       hoja.name = "Tramitados #{anio}"
       reg = registros.where("fechaformulacion>='#{anio.to_i}-01-01' AND " +
                              "fechaformulacion<='#{anio.to_i}-12-31'").
-        reorder('EXTRACT(MONTH FROM fechaformulacion), referenciacinep')
+        reorder('fechaformulacion, referenciacinep')
       fila = 2
       cons = 1
       reg.each do |r|
@@ -670,8 +670,8 @@ module Cor1440Gen
       FileUtils.mv(narch + "#{extension}-90", narch + "#{extension}-99")
       # Hojas para tramitados en años anteriores
       anios = registros.where("fechaformulacion<'#{anio}-01-01'").
-        reorder(nil).pluck('DISTINCT EXTRACT(YEAR FROM fechaformulacion)').
-        map {|a| a.to_i}
+        reorder(nil).pluck('fechaformulacion').
+        map {|f| f.year.to_i}.uniq
       anios.sort!
       numhoja = 9
       anios.each do |a|
