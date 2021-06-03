@@ -25,6 +25,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'escalaindmuy', 'escalasindmuy'
   inflect.irregular 'fondopensiones', 'fondospensiones'
   inflect.irregular 'informeauditoria', 'informeauditorias'
+  inflect.irregular 'lineabase', 'lineasbase'
   inflect.irregular 'ls', 'lss'
   inflect.irregular 'lscobertura', 'lscoberturas'
   inflect.irregular 'mindicadorpf', 'mindicadorespf'

@@ -329,6 +329,9 @@ es:
       "fondopensiones":
         Fondopensiones: 'Fondo de pensiones'
         Fondospensiones: 'Fondos de pensiones'
+      "lineabase":
+        Lineabase: Línea base
+        Lineasbase: Líneas base
       "ls":
         Ls: Lucha social
         Lss: Luchas sociales
@@ -413,6 +416,9 @@ es:
         grupo: Grupo(s)
         grupo_ids: Grupo(s)
         "{:grupo_ids=>[]}": Grupo(s)
+        lineabase: Línea base
+        lineabase_ids: Línea base
+        "{:lineabase_ids=>[]}": Línea base
         lineabase20182020: Estado inicial 2018-2020
         municipiotrab: Municipios donde opera
         "{:municipiotrab_ids=>[]}": Municipios donde opera
