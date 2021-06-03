@@ -88,6 +88,8 @@ es:
       "acppapel":
         Acppapel: Papel del Actor (ACP)
         Acppapeles: Papeles de Actor (ACP)
+      "actividad_sip_anexo":
+        descripcion: Descripción
       "areaestudios":
         Areaestudios: Área de estudios
         Areasestudios: Áreas de estudios
@@ -164,7 +166,7 @@ es:
         mduracion: "Unidad de duración"
         objetivopf: Objetivo de compromiso institucional
         observaciones: Compromisos/Observaciones
-        observacionesdir: 'Observaciones de Direccion'
+        observacionesdir: 'Observaciones de Dirección'
         observacionespar: 'Observaciones de Par'
         precedidapor: 'Si es proceso, número de actividad que la precede:'
         proyecto: "Programa/Servicio/Producto"
@@ -176,7 +178,7 @@ es:
         sectorsocial_onr: 'Otro SS/NR'
         sexo_onr: 'Otro/NR'
         usuario: 'Corresponsables'
-        vistobuenodir: 'Aprobado Direccion'
+        vistobuenodir: 'Aprobado Dirección'
         vistobuenopar: 'Aprobado por Par'
       "cor1440_gen/actividadarea":
         Actividadarea: Componente plan trienal 
