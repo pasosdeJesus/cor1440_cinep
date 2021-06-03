@@ -8,5 +8,6 @@ module Cor1440Gen
 
         belongs_to :objetivopf, class_name: 'Cor1440Gen::Objetivopf', 
           foreign_key: 'objetivopf_id'
+
   end
 end

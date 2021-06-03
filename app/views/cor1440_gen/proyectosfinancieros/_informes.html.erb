@@ -57,35 +57,38 @@
 </p>
 
 <p>
-<table border=1 width="100%">
-  <thead>
-    <tr><th colspan='9'>Productos</th></tr>
-    <tr>
-      <th>Tipo de producto</th>
-      <th>Inicio de producción planeado</th>
-      <th>Fin de producción planeado</th>
-      <th>Costo previsto</th>
-      <th>Fecha entrega planeada</th>
-      <th>Fecha entrega real</th>
-      <th>Devoluciones</th>
-      <th>Detalle</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="productopf">
-    <%= f.simple_fields_for :productopf do |d| %>
-      <%= render 'productopf_campos', :f => d %>
-    <% end %>
-  </tbody>
-</table>
-<div class="links">
-  <%= link_to_add_association 'Añadir Producto', f, 
-    :productopf,
-    :"data-association-insertion-node" => "tbody#productopf", 
-    :"data-association-insertion-method" => "append", 
-    partial: 'productopf_campos',
-    :class => 'btn-primary'
-  %>
+<div class="panel-heading">Productos</div>
+<div class="panel-body table-responsive" style='max-height: 50vh; overflow-x:scroll; overflow-y:scroll;'>
+  <table border=1 width="100%">
+    <thead>
+      <tr>
+        <th style='min-width: 20rem'>Tipo de producto</th>
+        <th style='min-width: 12rem'>Inicio de producción planeado</th>
+        <th style='min-width: 12rem'>Fin de producción planeado</th>
+        <th style='min-width: 12rem'>Costo previsto</th>
+        <th style='min-width: 12rem'>Fecha entrega planeada</th>
+        <th style='min-width: 12rem'>Fecha entrega real</th>
+        <th style='min-width: 5rem'>Devoluciones</th>
+        <th style='min-width: 20rem'>Indicador al que aporta</th>
+        <th style='min-width: 20rem'>Detalle</th>
+        <th style='min-width: 5rem'></th>
+      </tr>
+    </thead>
+    <tbody id="productopf">
+      <%= f.simple_fields_for :productopf do |d| %>
+        <%= render 'productopf_campos', :f => d %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="links">
+    <%= link_to_add_association 'Añadir Producto', f, 
+      :productopf,
+      :"data-association-insertion-node" => "tbody#productopf", 
+      :"data-association-insertion-method" => "append", 
+      partial: 'productopf_campos',
+      :class => 'btn-primary'
+    %>
+  </div>
 </div>
 </p>
 

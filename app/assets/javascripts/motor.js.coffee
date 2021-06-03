@@ -530,5 +530,28 @@
     inserted.find('select[class*=chosen-select]').chosen()
   )
 
+
+  @actualiza_indicadorespf = (e) ->
+    # Actualizar select indicadores
+    e.preventDefault()
+    tn = Date.now()
+    d = -1
+    if (root.tactualiza) 
+      d = (tn - root.tactualiza)/1000
+    if (d == -1 || d>5) 
+      f=$('form')
+      a = root.puntomontaje + 'productospf/actualizaind'
+      $.post(a, f.serialize())
+      root.tactualiza= Date.now()
+    return
+ 
+  $(document).on('cocoon:after-insert', '#productopf', (e,inserted) ->
+    actualiza_indicadorespf(e)
+  )
+
+  $(document).on('click', 'a[href^="#informes"]', (e) ->
+    actualiza_indicadorespf(e)
+  )
+
   return
 

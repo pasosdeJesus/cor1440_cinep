@@ -10,6 +10,9 @@ class Productopf < ActiveRecord::Base
   belongs_to :tipoproductopf, class_name: '::Tipoproductopf',
     foreign_key: 'tipoproductopf_id', optional: true
 
+  belongs_to :indicadorpf, class_name: 'Cor1440Gen::Indicadorpf',
+    foreign_key: 'indicadorpf_id', optional: true
+
   validates :detalle, length: { maximum: 5000}
   validates :seguimiento, length: { maximum: 5000}
   validates :tipoproductopf, presence: true

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     post '/lss/verificacsv' => 'lss#verificacsv', 
       as: :lss_envia_verificacsv
 
+    patch "/productospf/actualizaind" => 'cor1440_gen/proyectosfinancieros#actualizaind'
     resources :lss,
       path_names: { new: 'nueva', edit: 'edita' }
 
