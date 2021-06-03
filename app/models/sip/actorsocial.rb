@@ -78,31 +78,29 @@ module Sip
     end
 
     scope :filtro_csivinivelgeo_id, lambda { |n|
-      where(csivinivelgeo_id: n)
+      where(csivinivelgeo_id: n.to_i)
     }
     
     scope :filtro_csivinivelresp_id, lambda { |n|
-      where(csivinivelgeo_id: n)
+      where(csivinivelgeo_id: n.to_i)
     }
 
     scope :filtro_csivitema, lambda { |t|
-      joins(:csivitema).where('csivitema.id=?', t)
+      joins(:csivitema).where('csivitema.id=?', t.to_i)
     }
 
     scope :filtro_grupo_ids, lambda { |g|
-      joins(:actorsocial_grupo).where('actorsocial_grupo.grupo_id=?', g)
+      joins(:actorsocial_grupo).where('actorsocial_grupo.grupo_id=?', g.to_i)
     }
 
-    scope :filtro_lineabase20182020, lambda {|o|
-      if o.upcase.strip == 'SI'
-        where(lineabase20182020: true)
-      elsif o.upcase.strip == 'NO'
-        where(lineabase20182020: false)
-      end 
+    scope :filtro_lineabase_ids, lambda {|l|
+      joins('JOIN lineabase_organizacionsocial ON '\
+      'lineabase_organizacionsocial.organizacionsocial_id=sip_actorsocial.id').
+      where('lineabase_organizacionsocial.lineabase_id' => l.to_i)
     }
 
     scope :filtro_nivelrelacion_id, lambda { |n|
-      where(nivelrelacion_id: n)
+      where(nivelrelacion_id: n.to_i)
     }
 
     scope :filtro_personacontacto, lambda { |p|
@@ -111,7 +109,7 @@ module Sip
 
     scope :filtro_regiongrupo_ids, lambda { |r|
       joins(:actorsocial_regiongrupo).where(
-        'actorsocial_regiongrupo.regiongrupo_id=?', r)
+        'actorsocial_regiongrupo.regiongrupo_id=?', r.to_i)
     }
 
     scope :filtro_actorsocial_persona, lambda { |c|
