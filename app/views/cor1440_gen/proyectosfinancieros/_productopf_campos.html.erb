@@ -58,7 +58,7 @@
   <td>
     <%= f.association :indicadorpf, 
       collection: @proyectofinanciero.indicadorpf,
-      label_method:  lambda { |ind| "#{ind.numero} | #{ind.indicador}"},
+      label_method:  :presenta_nombre,
       input_html: {class: 'select_indicadores'}, 
       value_method: :id,
       label: false

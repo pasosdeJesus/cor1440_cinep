@@ -5,9 +5,9 @@ $(".select_indicadores").append('<option value label=""></option>')
 <% inds.each do |indicador| %>
   div = document.createElement('option')
   attributeDivider = document.createAttribute('value')
-  attributeDivider.value = <%= indicador[0] %>
+  attributeDivider.value = <%= indicador[1] %>
   div.setAttributeNode(attributeDivider)
-  $(div).html("<%=  indicador[1] + " | " +  indicador[2] %>")
+  $(div).html("<%=  indicador[0] + indicador[2] + " " +  indicador[3] %>")
   $(".select_indicadores").append(div)
 <% end %>
 $(".select_indicadores").val(valor)

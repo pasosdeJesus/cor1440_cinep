@@ -752,16 +752,36 @@ module Cor1440Gen
       if pf
         indsobj = pf[:indicadorobjetivo_attributes] 
         indsres = pf[:indicadorpf_attributes]
-        indsobj.each do |k, val|
-          inds.push([val[:id], val[:numero], val[:indicador]])
+        objetivospf = pf[:objetivopf_attributes]
+        resultadospf = pf[:resultadopf_attributes]
+        if indsobj 
+          indsobj.each do |k, val|
+            objetivospf.each do |kk, val2|
+              if val2[:id] == val[:objetivopf_id]  
+                obj = val2[:numero] 
+                inds.push([obj ? obj : '', val[:id], val[:numero], val[:indicador]])
+              end
+            end
+          end
         end
-        indsres.each do |k, val|
-          inds.push([val[:id], val[:numero], val[:indicador]])
+        if indsres 
+          indsres.each do |k, val|
+            resultadospf.each do |kk, val2|
+              if val2[:id] == val[:resultadopf_id]  
+                res = val2[:numero] 
+                objetivospf.each do |kkk, val3|
+                  if val2[:objetivopf_id] == val3[:id]
+                    obj = val3[:numero]
+                    inds.push([(obj ? obj : '') + (res ? res : ''), val[:id], val[:numero], val[:indicador]])
+                  end
+                end
+              end
+            end
+          end
         end
         @params = params
       end
       @params[:indicadores] = inds
-
       respond_to do |format|
         format.js { render 'refrescar_informes' }
       end
