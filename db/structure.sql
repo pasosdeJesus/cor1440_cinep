@@ -3975,6 +3975,50 @@ CREATE SEQUENCE public.intervalo_seq
 
 
 --
+-- Name: lineabase; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.lineabase (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: lineabase_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.lineabase_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: lineabase_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.lineabase_id_seq OWNED BY public.lineabase.id;
+
+
+--
+-- Name: lineabase_organizacionsocial; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.lineabase_organizacionsocial (
+    lineabase_id bigint NOT NULL,
+    organizacionsocial_id bigint NOT NULL
+);
+
+
+--
 -- Name: ls; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -7102,6 +7146,13 @@ ALTER TABLE ONLY public.informenarrativo ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Name: lineabase id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lineabase ALTER COLUMN id SET DEFAULT nextval('public.lineabase_id_seq'::regclass);
+
+
+--
 -- Name: ls id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8169,6 +8220,14 @@ ALTER TABLE ONLY public.informefinanciero
 
 ALTER TABLE ONLY public.informenarrativo
     ADD CONSTRAINT informenarrativo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: lineabase lineabase_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lineabase
+    ADD CONSTRAINT lineabase_pkey PRIMARY KEY (id);
 
 
 --
@@ -9778,6 +9837,14 @@ ALTER TABLE ONLY public.sal7711_gen_bitacora
 
 
 --
+-- Name: lineabase_organizacionsocial fk_rails_537a442bf8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lineabase_organizacionsocial
+    ADD CONSTRAINT fk_rails_537a442bf8 FOREIGN KEY (lineabase_id) REFERENCES public.lineabase(id);
+
+
+--
 -- Name: mr519_gen_encuestapersona fk_rails_54b3e0ed5c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -10802,6 +10869,14 @@ ALTER TABLE ONLY public.lsdep
 
 
 --
+-- Name: lineabase_organizacionsocial fk_rails_e8c38a80f6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lineabase_organizacionsocial
+    ADD CONSTRAINT fk_rails_e8c38a80f6 FOREIGN KEY (organizacionsocial_id) REFERENCES public.sip_actorsocial(id);
+
+
+--
 -- Name: cor1440_gen_actividad_valorcampotind fk_rails_e8cd697f5d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -11675,6 +11750,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210519012236'),
 ('20210519103132'),
 ('20210520011319'),
-('20210524121112');
+('20210524121112'),
+('20210603104136'),
+('20210603111755'),
+('20210603122147');
 
 

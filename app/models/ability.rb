@@ -104,6 +104,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'escalaempeoramejora'],
         ['', 'escalaindmuy'],
         ['', 'fondopensiones'],
+        ['', 'lineabase'],
         ['', 'lscobertura'],
         ['', 'nivelrelacion'],
         ['', 'niveleducacion'],
@@ -295,7 +296,7 @@ class Ability  < Cor1440Gen::Ability
           'fax',
           'grupos',
           'id', 
-          'lineabase20182020',
+          'lineabase',
           'nivelrelacion',
           'nivelgeostciv',
           'nivelrespstciv',
@@ -656,7 +657,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, ::Acp
         can :manage, ::Ls
         can :index, :dinamicas
-        can :manage, :lineabase20182020
+        can :manage, :lineabase
         can :dir, :vistobuenoactividad
 
         can :read, ::Busqunif

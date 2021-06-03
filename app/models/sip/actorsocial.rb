@@ -37,7 +37,11 @@ module Sip
       association_foreign_key: 'csivitema_id',
       join_table: 'actorsocial_csivitema'
 
-
+    has_and_belongs_to_many :lineabase, 
+      class_name: '::Lineabase',
+      foreign_key: 'organizacionsocial_id',
+      association_foreign_key: 'lineabase_id',
+      join_table: 'lineabase_organizacionsocial'
 
 
     campofecha_localizado :fechadeshabilitacion

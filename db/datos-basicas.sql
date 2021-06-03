@@ -1900,3 +1900,14 @@ SELECT pg_catalog.setval('public.tipoproductopf_id_seq', 102, true);
 -- PostgreSQL database dump complete
 --
 
+
+INSERT INTO public.lineabase (id, nombre, 
+  fechacreacion, created_at, updated_at) VALUES (
+  1, 'PLAN TRIENAL 2018-2020',
+  '2021-06-03', '2021-06-03', '2021-06-03');
+INSERT INTO public.lineabase (id, nombre, 
+  fechacreacion, created_at, updated_at) VALUES (
+  2, 'PLAN TRIENAL 2021-2023',
+  '2021-06-03', '2021-06-03', '2021-06-03');
+
+SELECT pg_catalog.setval('public.lineabase_id_seq', 100, true);

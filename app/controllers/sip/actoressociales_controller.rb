@@ -21,7 +21,7 @@ module Sip
       end
       r +=  [ :actorsocial_persona =>  [] ] 
       if can?(:read, ::Nivelrelacion)
-        r += [ :lineabase20182020 ]
+        r += [ :lineabase_ids]
       end
       r += [ :habilitado, :created_at_localizada ]
       return r
@@ -42,8 +42,8 @@ module Sip
         [:csivinivelresp_id] : []
       ) +
       [ :actorsocial_persona =>  [] ] + (
-        can?(:read, ::Nivelrelacion) ?  [:lineabase20182020] : [] ) +
-      [ 
+        can?(:read, ::Nivelrelacion) ?  [:lineabase_ids => []] : [] 
+      ) + [ 
         :web,
         :direccion,
         :telefono,
@@ -56,8 +56,8 @@ module Sip
 
     def atributos_form
       a = atributos_show - ['id', :id, :created_at, :updated_at]
-      if cannot? :manage, :lineabase20182020
-        a = a - ["lineabase20182020", :lineabase20182020]
+      if cannot? :manage, :lineabase
+        a = a - ["lineabase_ids", :lineabase_ids]
       end
       a[a.index(:grupoper_id)] = :grupoper
       return a

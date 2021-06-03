@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 5d7a247f9c8b032c982be1913241d7c4e9893b4e
+  revision: bae55e0f8808d72e01827cd63d3bf258155d7f1a
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -251,7 +251,7 @@ GEM
     msgpack (1.4.2)
     net-ldap (0.17.0)
     nio4r (2.5.7)
-    nokogiri (1.11.6)
+    nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     odf-report (0.7.2)
