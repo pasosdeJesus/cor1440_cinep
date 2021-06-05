@@ -31,7 +31,10 @@ gem 'nokogiri', '>=1.11.1'
 
 gem 'odf-report'  # Genera ODT
 
-gem 'paperclip' # Maneja adjuntos
+gem 'parslet'
+
+gem 'kt-paperclip',                 # Anexos
+  git: 'https://github.com/kreeti/kt-paperclip.git'
 
 gem 'pg' # Postgresql
 

@@ -1,4 +1,15 @@
 GIT
+  remote: https://github.com/kreeti/kt-paperclip.git
+  revision: 94a0f39f3f2d4ac2b67e18e3931d7d70660636b8
+  specs:
+    kt-paperclip (7.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      marcel (~> 1.0.1)
+      mime-types
+      terrapin (~> 0.6.0)
+
+GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
   revision: 5a063f1aea504a4b434da1b888b99fb7db9a36cf
   branch: main
@@ -265,6 +276,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
+    parslet (2.0.0)
     pdf-core (0.9.0)
     pg (1.2.3)
     pledge (1.2.0)
@@ -422,11 +434,12 @@ DEPENDENCIES
   heb412_gen!
   jbuilder
   jn316_gen!
+  kt-paperclip!
   libxml-ruby
   mr519_gen!
   nokogiri (>= 1.11.1)
   odf-report
-  paperclip
+  parslet
   pg
   pledge
   prawn
