@@ -7,7 +7,9 @@ module Cor1440Gen
 
     belongs_to :contextoinv, class_name: '::Contextoinv', optional: true
     accepts_nested_attributes_for :contextoinv
-
+    
+    accepts_nested_attributes_for :actorsocial
+    
     belongs_to :creadopor, class_name: '::Usuario',
       foreign_key: 'creadopor_id', optional: true
 
