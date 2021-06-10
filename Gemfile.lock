@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 5a063f1aea504a4b434da1b888b99fb7db9a36cf
+  revision: b4bada0f3d640a96ed2f43a00fec7fbd95860964
   branch: main
   specs:
     cor1440_gen (1.0b3)
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: bae55e0f8808d72e01827cd63d3bf258155d7f1a
+  revision: 93a9e276ce826e86af71cf3928f558a2a47949f9
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 997e9d26a9e70451aeab91c1923e4f767799403a
+  revision: fbde3204a4e9bd307657c22e3fc1c40aabcf196a
   branch: main
   specs:
     jn316_gen (1.0.a2)
@@ -46,7 +46,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 860448840eb79bc6f3244ef23be1374d1aec2301
+  revision: f46fb0b78e763aaae18c4911651962b3aedc1456
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 40543f80065235aedaadae5facb6d6025ba07f03
+  revision: 5a00a4ed23d6c94c5d05c96f98dc004dfe6b8f03
   branch: main
   specs:
     sal7711_gen (1.0.b3)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: ada7e9d424582e407a1bb58ede7fdb9886e225fa
+  revision: 9b852edd054320df7d0839f455cee7bf6fd7c806
   branch: main
   specs:
     sal7711_ld (1.0.a3)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 82a83f1b414b360ee64fdb70bc6583a6d89f92b1
+  revision: 648a482a95aad4b2c4f5425c86f6d78b267df974
   branch: main
   specs:
     sal7711_web (1.0.a3)
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: c3c9c6ab7aa5f60f2d89522d28895510a1a50d43
+  revision: f611bc10c5a30b305b6e3f478baa3e0fb49f2ec9
   branch: main
   specs:
     sip (2.0.b11)
@@ -205,10 +205,10 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     crass (1.0.6)
-    csv (3.1.9)
+    csv (3.2.0)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -243,7 +243,7 @@ GEM
     json (2.5.1)
     kgio (2.11.4)
     libxml-ruby (3.2.1)
-    loofah (2.9.1)
+    loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)

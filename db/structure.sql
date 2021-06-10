@@ -2135,9 +2135,10 @@ CREATE TABLE public.cor1440_gen_caracterizacionpf (
 CREATE TABLE public.cor1440_gen_datointermedioti (
     id bigint NOT NULL,
     nombre character varying(1024) NOT NULL,
-    tipoindicador_id integer NOT NULL,
+    tipoindicador_id integer,
     nombreinterno character varying(127),
-    funcion character varying(5000)
+    funcion character varying(5000),
+    mindicadorpf_id integer
 );
 
 
@@ -2295,6 +2296,16 @@ CREATE TABLE public.cor1440_gen_financiador_proyectofinanciero (
 
 
 --
+-- Name: cor1440_gen_formulario_mindicadorpf; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_formulario_mindicadorpf (
+    formulario_id bigint NOT NULL,
+    mindicadorpf_id bigint NOT NULL
+);
+
+
+--
 -- Name: cor1440_gen_formulario_tipoindicador; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2402,7 +2413,9 @@ CREATE TABLE public.cor1440_gen_mindicadorpf (
     descd1 character varying(500),
     descd2 character varying(500),
     descd3 character varying(500),
-    meta double precision
+    meta double precision,
+    medircon integer,
+    funcionresultado character varying(5000)
 );
 
 
@@ -8929,6 +8942,13 @@ CREATE INDEX index_cor1440_gen_actividadpf_mindicadorpf_on_mindicadorpf_id ON pu
 
 
 --
+-- Name: index_cor1440_gen_datointermedioti_on_mindicadorpf_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_cor1440_gen_datointermedioti_on_mindicadorpf_id ON public.cor1440_gen_datointermedioti USING btree (mindicadorpf_id);
+
+
+--
 -- Name: index_heb412_gen_doc_on_tdoc_type_and_tdoc_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -9885,6 +9905,14 @@ ALTER TABLE ONLY public.cor1440_gen_objetivopf
 
 
 --
+-- Name: cor1440_gen_formulario_mindicadorpf fk_rails_590a6d182f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_formulario_mindicadorpf
+    ADD CONSTRAINT fk_rails_590a6d182f FOREIGN KEY (mindicadorpf_id) REFERENCES public.cor1440_gen_mindicadorpf(id);
+
+
+--
 -- Name: cor1440_gen_anexo_efecto fk_rails_5a3da48239; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9954,6 +9982,14 @@ ALTER TABLE ONLY public.mr519_gen_opcioncs
 
 ALTER TABLE ONLY public.sal7711_gen_articulo
     ADD CONSTRAINT fk_rails_65eae7449f FOREIGN KEY (departamento_id) REFERENCES public.sip_departamento(id);
+
+
+--
+-- Name: cor1440_gen_datointermedioti fk_rails_669ada0c54; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_datointermedioti
+    ADD CONSTRAINT fk_rails_669ada0c54 FOREIGN KEY (mindicadorpf_id) REFERENCES public.cor1440_gen_mindicadorpf(id);
 
 
 --
@@ -10802,6 +10838,14 @@ ALTER TABLE ONLY public.desembolso
 
 ALTER TABLE ONLY public.actorsocial_csivitema
     ADD CONSTRAINT fk_rails_e0761431e8 FOREIGN KEY (actorsocial_id) REFERENCES public.sip_actorsocial(id);
+
+
+--
+-- Name: cor1440_gen_formulario_mindicadorpf fk_rails_e07a0a8650; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_formulario_mindicadorpf
+    ADD CONSTRAINT fk_rails_e07a0a8650 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
 
 
 --
@@ -11754,6 +11798,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210603104136'),
 ('20210603111755'),
 ('20210603122147'),
-('20210603144532');
+('20210603144532'),
+('20210608180736'),
+('20210609024118');
 
 
