@@ -39,7 +39,7 @@
             <div class="modal-body">
               <%= f.fields_for :actorsocial, Sip::Actorsocial.new do |actorsocial|%>
                 <% @registro = actorsocial.object %>
-                <% @controlador = Sip::ActoressocialesController%>
+                <% @controlador = Sip::ActoressocialesController.new%>
                 <%= render partial: "sip/modelos/form_modal" %>
 
               <% end %>
