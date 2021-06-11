@@ -13,25 +13,33 @@ $hoymasdias = $hoy + DIAS
 $hoymasdiassobrecuatro = $hoy + DIAS/4
 def envia_alertapf(pid, tiene, cuando, fecha, maslineas=[])
     puts "Enviando alerta pf por #{pid}, #{tiene}, #{cuando}, #{fecha}"
-    AlertaMailer.with(
-      proyectofinanciero_id: pid,
-      tiene: tiene,
-      cuando: "#{cuando} (#{fecha})",
-      complemento: maslineas
-    ).
-    alerta_proyectofinanciero.deliver_now
+    begin
+      AlertaMailer.with(
+        proyectofinanciero_id: pid,
+        tiene: tiene,
+        cuando: "#{cuando} (#{fecha})",
+        complemento: maslineas
+      ).
+      alerta_proyectofinanciero.deliver_now
+    rescue => e
+      puts "** No se pudo enviar correo (#{e.to_s})"
+    end
 end
 
 def envia_alerta_usuario_des(nusuario, nombres, apellidos, fechafin, maslineas=[])
     puts "Enviando altera usuario por #{nusuario}, #{nombres}, #{apellidos}, #{fechafin}"
-    AlertaMailer.with(
-      nusuario: nusuario,
-      nombres: nombres,
-      apellidos: apellidos,
-      fechafin: fechafin,
-      complemento: maslineas
-    ).
-    alerta_usuario_des.deliver_now
+    begin
+      AlertaMailer.with(
+        nusuario: nusuario,
+        nombres: nombres,
+        apellidos: apellidos,
+        fechafin: fechafin,
+        complemento: maslineas
+      ).
+      alerta_usuario_des.deliver_now
+    rescue => e
+      puts "** No se pudo enviar correo (#{e.to_s})"
+    end
 end
 
 
