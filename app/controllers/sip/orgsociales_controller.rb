@@ -84,8 +84,22 @@ module Sip
 
       return c
     end
-
-
+    def nuevo_actorsocial_modal
+      nuevo_actorsocial = Sip::Actorsocial.create!(params[:actorsocial])
+      if !nuevo_actorsocial.save
+        respond_to do |format|
+          format.html { render inline: 'Actor social no pudo ser creado' }
+        end
+        return
+      else
+        nuevo_actorsocial.save!
+      end
+      params[:id_nuevoactor] = nuevo_actorsocial.id
+      @params = params
+      respond_to do |format|
+        format.js { render 'refrescaractor' }
+      end 
+    end
     def filtra_contenido_params
       # Si el usuario es del grupo STCIV marcar el contacto
       # con stciv para que no pueda ser visto por CINEP
@@ -150,6 +164,7 @@ module Sip
          ]
       ]) 
     end
-
+    helper_method :clase, :atributos_index, :atributos_form, 
+            :atributos_show
   end
 end
