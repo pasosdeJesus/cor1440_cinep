@@ -39,7 +39,7 @@
             <div class="modal-body">
               <%= f.fields_for :actorsocial, Sip::Actorsocial.new do |actorsocial|%>
                 <% @registro = actorsocial.object %>
-                <% @controlador = Sip::ActoressocialesController.new%>
+                <% @atributos_form = [:grupoper, :nivelrelacion_id, {:sectoractor_ids=>[]}, :pais_id, {:regiongrupo_ids=>[]}, {:departamentotrab_ids=>[]}, {:municipiotrab_ids=>[]}, {:grupo_ids=>[]}, :csivinivelgeo_id, {:csivitema_ids=>[]}, :csivinivelresp_id, {:actorsocial_persona=>[]}, {:lineabase_ids=>[]}, :web, :direccion, :telefono, :fax, :celular, :fechadeshabilitacion_localizada] %>
                 <%= render partial: "sip/modelos/form_modal" %>
 
               <% end %>

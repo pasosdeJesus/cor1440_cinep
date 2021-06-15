@@ -561,11 +561,6 @@
   ## Nuevo Actor social desde actividad
   $(document).on("click", ".boton_agregaras", (e) ->
     e.preventDefault()
-    desplazamiento = $(this).attr('data-desplazamiento')
-    if (desplazamiento == "")
-      if ($(this).closest(".actos_tabla").parent().attr("id") != "actos_tabla")
-        id_tabla = $(this).closest(".actos_tabla").parent().attr("id")
-        desplazamiento = id_tabla.split("_")[1]
     root =  window
     tn = Date.now()
     d = -1
@@ -573,7 +568,7 @@
       d = (tn - root.tagregapr)/1000
     if (d == -1 || d>5) 
       f=$('form')
-      a = root.puntomontaje + 'actos/agregarpr?desplazamiento=' + desplazamiento
+      a = root.puntomontaje + 'actoressociales/nuevo_actorsocial_modal'
       $.post(a, f.serialize())
       root.tagregapr= Date.now()
     
