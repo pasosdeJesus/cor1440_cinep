@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'cor1440_gen/concerns/models/actividad'
 
 module Cor1440Gen
@@ -156,8 +154,8 @@ module Cor1440Gen
         self.actividadpf.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + i.titulo
         }
-      when 'actorsocial'
-        self.actorsocial.inject("") { |memo, i| 
+      when 'orgsocial'
+        self.orgsocial.inject("") { |memo, i| 
           (memo == "" ? "" : memo + "; ") + 
             (i.grupoper ? i.grupoper.nombre : i.id.to_s)
         }
@@ -209,9 +207,9 @@ module Cor1440Gen
         WHERE actividadpf_id = ?)", aid)
     }
 
-    scope :filtro_actorsocial, lambda { |aid|
-      where("id IN (SELECT actividad_id FROM cor1440_gen_actividad_actorsocial
-        WHERE actorsocial_id = ?)", aid)
+    scope :filtro_orgsocial, lambda { |aid|
+      where("id IN (SELECT actividad_id FROM cor1440_gen_actividad_orgsocial
+        WHERE orgsocial_id = ?)", aid)
     }
 
     scope :filtro_creadopor, lambda { |uid|

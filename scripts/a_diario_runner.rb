@@ -220,7 +220,7 @@ def elimina_actividades_en_blanco
     actividad_id in (select id from cor1440_gen_actividad where 
       fecha is null OR nombre IS NULL);
 
-  DELETE FROM cor1440_gen_actividad_actorsocial where 
+  DELETE FROM cor1440_gen_actividad_orgsocial where 
     actividad_id in (select id from cor1440_gen_actividad where fecha is null
     OR nombre IS NULL);
 

@@ -1,6 +1,6 @@
 <% col = Sip::Grupo.where(
-  'id IN (SELECT DISTINCT sip_grupo_id FROM actorsocial_grupo)') %>
-<% puts "listado actores, grupos: #{col.count}" %>
+  'id IN (SELECT DISTINCT sip_grupo_id FROM grupo_orgsocial)') %>
+<% puts "listado organizaciones, grupos: #{col.count}" %>
 <%= f.input :busgrupo_ids,
   collection: col.order(:nombre),
   include_blank: true,

@@ -10,7 +10,7 @@
 <% content_for :menu do %>
   <%= grupo_menus do %>
     <% if !current_usuario.nil? %>
-      <% if can?(:read, Cor1440Gen::Actividad) || can?(:read, Sip::Actorsocial)  %>
+      <% if can?(:read, Cor1440Gen::Actividad) || can?(:read, Sip::Orgsocial)  %>
         <%= despliega_abajo 'Actividades' do %>
           <% if can?(:read, Cor1440Gen::Actividad) %>
             <%= opcion_menu 'Listado', cor1440_gen.actividades_path,
@@ -18,8 +18,8 @@
             <%= opcion_menu 'Conteo de Actividades', 
               cor1440_gen.contar_actividades_path, desplegable: true %>
           <% end %>
-          <% if can? :index, Sip::Actorsocial %>
-            <%= opcion_menu 'Organizaciones Sociales', sip.actoressociales_path,
+          <% if can? :index, Sip::Orgsocial %>
+            <%= opcion_menu 'Organizaciones Sociales', sip.orgsociales_path,
               desplegable: true %>
           <% end %>
           <% if can? :manage, Sip::Persona %>
@@ -163,10 +163,10 @@
             desplegable: true %>
         <% end %>
         <% if can? :read, Mr519Gen::Encuestapersona %>
-          <%= opcion_menu 'Planes de encuestas a Actores Sociales', 
+          <%= opcion_menu 'Planes de encuestas a Organizaciones Sociales', 
             mr519_gen.planesencuesta_path,
             desplegable: true %>
-          <%= opcion_menu 'Encuestas a contactos de Actores Sociales', 
+          <%= opcion_menu 'Encuestas a contactos de Organizaciones Sociales', 
             mr519_gen.encuestaspersona_path,
             desplegable: true %>
         <% end %>

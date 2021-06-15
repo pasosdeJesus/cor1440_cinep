@@ -13,9 +13,9 @@ class PlantillacorreoMailer < ApplicationMailer
     @cc = params[:cc] ? params[:cc] : []
     @idplantilla = params[:idplantilla].to_i
 
-    @actorsocial_nombre = params[:actorsocial_nombre]
+    @orgsocial_nombre = params[:orgsocial_nombre]
     @persona_nombre = params[:persona_nombre]
-    @actorsocialpersona_cargo = params[:actorsocialpersona_cargo]
+    @orgsocialpersona_cargo = params[:orgsocialpersona_cargo]
     @planencuesta_fechafin = params[:planencuesta_fechafin]
     @encuestapersona_url = "<a href='#{params[:encuestapersona_url]}' target=_blank>#{params[:encuestapersona_url]}</a>".html_safe
 

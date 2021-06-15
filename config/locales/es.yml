@@ -26,7 +26,7 @@ es:
     proyectosfinancieros: Compromisos institucionales
     proyectofinanciero: Compromiso institucional
     regionsjr: Dependencia
-    sectoractor: Sector de la organización social
+    sectororgsocial: Sector de la organización social
     tipocontrato: Tipo de contrato
     telefono: Teléfono
   activerecord:
@@ -93,19 +93,6 @@ es:
       "areaestudios":
         Areaestudios: Área de estudios
         Areasestudios: Áreas de estudios
-      "actor":
-        Actor: Organización social
-        Actores: Organizaciones sociales
-        grupo: Grupo(s)
-        lineabase20182020: Estado inicial 2018-2020
-        nivelrelacion: Nivel de relación
-        nivelrelacion_id: Nivel de relación
-        personacontacto: Persona contacto
-        pais_id: País
-        regiongrupo: Región(es)
-        sectoractor_id: Sector de la organización
-        "{:regiongrupo_ids=>[]}": Región(es)
-        "{:grupo_ids=>[]}": Grupo(s)
       "anexo_proyectofinanciero":
         tipoanexo: Tipo de anexo
       "busqunif":
@@ -155,7 +142,7 @@ es:
         actividadpf: Actividad de compromiso institucional
         actividadespf: Relaciones con Marco Lógico
         actividadtipo: Tipo
-        actorsocial: Organización social
+        orgsocial: Organización social
         creadopor: "Creado por"
         duracion: "Duración"
         duracion_localizado: "Duración"
@@ -393,16 +380,16 @@ es:
       "sal7711_gen/articulo":
         Articulo: Publicación 
         Articulos: Publicaciones
-      "sectoractor":
-        Sectoractor: Sector de una organización social
-        Sectoresactores: Sectores de organizaciones sociales
+      "sectororgsocial":
+        Sectororgsocial: Sector de una organización social
+        Sectoresorgsocial: Sectores de organizaciones sociales
         enplantrienal: En Glosario del plan trienal
       "cor1440_gen/sectorapc":
         Sectorapc: Sector APC
         Sectoresapc: Sectores APC
-      "sip/actorsocial":
-        "{:actorsocial_persona=>[]}": Contacto
-        actorsocial_persona: Contacto
+      "sip/orgsocial":
+        "{:orgsocial_persona=>[]}": Contacto
+        orgsocial_persona: Contacto
         csivinivelgeo_id: Nivel Geo. STCIV
         csivinivelgeo: Nivel Geo. STCIV
         csivinivelresp_id: Nivel Respo. STCIV
@@ -428,7 +415,7 @@ es:
         regiongrupo: Región(es)
         regiongrupo_ids: Region(es)
         "{:regiongrupo_ids=>[]}": Región(es)
-        sectoractor_ids: Sector(es)
+        sectororgsocial_ids: Sector(es)
       "sip/grupo":
         procesogh: Proceso interno
         procesogh_id: Proceso interno

@@ -19,38 +19,38 @@ module Cor1440Gen
     # ffin Es fecha final de medición
     def medir_indicador_efecto_tipo_19(idefs, mind, fini, ffin)
       datosint = []
-      base = "SELECT DISTINCT actorsocial_id FROM cor1440_gen_efecto
-               JOIN cor1440_gen_actorsocial_efecto 
-                ON cor1440_gen_efecto.id=cor1440_gen_actorsocial_efecto.efecto_id 
-               JOIN sip_actorsocial 
-                ON sip_actorsocial.id=cor1440_gen_actorsocial_efecto.actorsocial_id 
+      base = "SELECT DISTINCT orgsocial_id FROM cor1440_gen_efecto
+               JOIN cor1440_gen_efecto_orgsocial
+                ON cor1440_gen_efecto.id=cor1440_gen_efecto_orgsocial.efecto_id 
+               JOIN sip_orgsocial 
+                ON sip_orgsocial.id=cor1440_gen_efecto_orgsocial.orgsocial_id 
                WHERE ((fecha>='#{fini}' AND fecha<='#{ffin}') OR
                 (fecha20>='#{fini}' AND fecha20<='#{ffin}') OR
                 (fecha40>='#{fini}' AND fecha40<='#{ffin}') OR
                 (fecha60>='#{fini}' AND fecha60<='#{ffin}') OR
                 (fecha80>='#{fini}' AND fecha80<='#{ffin}') OR
                 (fecha100>='#{fini}' AND fecha100<='#{ffin}'))
-               AND sip_actorsocial.lineabase20182020
+               AND sip_orgsocial.lineabase20182020
                AND indicadorpf_id='19'"
       ld1 = ActiveRecord::Base.connection.execute(base).to_a.map(&:values).
       flatten
       d1 = ld1.count
       datosint << {valor: d1, rutaevidencia: d1 == 0 ? '#' :
-                   sip.actoressociales_path + '?filtro[busid]=' + 
+                   sip.orgsociales_path + '?filtro[busid]=' + 
                    ld1.join(',')}
       base = "SELECT DISTINCT regiongrupo_id FROM cor1440_gen_efecto 
-              JOIN cor1440_gen_actorsocial_efecto ON cor1440_gen_efecto.id=cor1440_gen_actorsocial_efecto.efecto_id 
-              JOIN actorsocial_regiongrupo 
-                ON actorsocial_regiongrupo.actorsocial_id=cor1440_gen_actorsocial_efecto.actorsocial_id 
-              JOIN sip_actorsocial 
-                ON sip_actorsocial.id=cor1440_gen_actorsocial_efecto.actorsocial_id 
+              JOIN cor1440_gen_efecto_orgsocial ON cor1440_gen_efecto.id=cor1440_gen_efecto_orgsocial.efecto_id 
+              JOIN orgsocial_regiongrupo 
+                ON orgsocial_regiongrupo.orgsocial_id=cor1440_gen_efecto_orgsocial.orgsocial_id 
+              JOIN sip_orgsocial 
+                ON sip_orgsocial.id=cor1440_gen_efecto_orgsocial.orgsocial_id 
               WHERE ((cor1440_gen_efecto.fecha>='#{fini}' AND cor1440_gen_efecto.fecha<='#{ffin}') OR
                 (cor1440_gen_efecto.fecha20>='#{fini}' AND cor1440_gen_efecto.fecha20<='#{ffin}') OR
                 (cor1440_gen_efecto.fecha40>='#{fini}' AND cor1440_gen_efecto.fecha40<='#{ffin}') OR
                 (cor1440_gen_efecto.fecha60>='#{fini}' AND cor1440_gen_efecto.fecha60<='#{ffin}') OR
                 (cor1440_gen_efecto.fecha80>='#{fini}' AND cor1440_gen_efecto.fecha80<='#{ffin}') OR
                 (cor1440_gen_efecto.fecha100>='#{fini}' AND cor1440_gen_efecto.fecha100<='#{ffin}'))
-              AND sip_actorsocial.lineabase20182020
+              AND sip_orgsocial.lineabase20182020
               AND cor1440_gen_efecto.indicadorpf_id='19'"
       ld2 = ActiveRecord::Base.connection.execute(base).to_a.map(&:values).flatten
       d2 = ld2.count
@@ -67,14 +67,14 @@ module Cor1440Gen
                 WHEN fecha20>='#{fini}' AND fecha20<='#{ffin}' THEN 0.2
                 ELSE 0
               END AS p FROM cor1440_gen_efecto
-              JOIN cor1440_gen_actorsocial_efecto 
-                ON cor1440_gen_efecto.id=cor1440_gen_actorsocial_efecto.efecto_id 
-              JOIN actorsocial_regiongrupo 
-                ON actorsocial_regiongrupo.actorsocial_id=cor1440_gen_actorsocial_efecto.actorsocial_id 
-              JOIN sip_actorsocial 
-                ON sip_actorsocial.id=cor1440_gen_actorsocial_efecto.actorsocial_id 
+              JOIN cor1440_gen_efecto_orgsocial
+                ON cor1440_gen_efecto.id=cor1440_gen_efecto_orgsocial.efecto_id 
+              JOIN orgsocial_regiongrupo 
+                ON orgsocial_regiongrupo.orgsocial_id=cor1440_gen_efecto_orgsocial.orgsocial_id 
+              JOIN sip_orgsocial 
+                ON sip_orgsocial.id=cor1440_gen_efecto_orgsocial.orgsocial_id 
               WHERE cor1440_gen_efecto.indicadorpf_id='19' 
-              AND sip_actorsocial.lineabase20182020
+              AND sip_orgsocial.lineabase20182020
             ) AS subcons GROUP BY regiongrupo_id) AS submax"
       resind = ActiveRecord::Base.connection.execute(res)
       resind = resind.first ? resind.first['suma'].to_i : 0
