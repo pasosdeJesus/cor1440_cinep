@@ -217,7 +217,7 @@ module Cor1440Gen
         :actividadpf,
         :objetivopf, 
         :precedidapor,
-        :actorsocial, 
+        :orgsocial, 
         :publicacion,
         :mujeres, 
         :hombres, 
@@ -272,7 +272,7 @@ module Cor1440Gen
         :actividadpf,
         :departamento,
         :municipio,
-        :actorsocial,
+        :orgsocial,
         :publicacion,
         :mujeres,
         :hombres,
@@ -303,7 +303,7 @@ module Cor1440Gen
         :proyectosfinancieros, 
         :actividadpf,
         :objetivopf, 
-        :actorsocial, 
+        :orgsocial, 
         :publicacion,
         :mujeres, 
         :hombres, 
@@ -336,7 +336,7 @@ module Cor1440Gen
 #        actividad.objetivopf.inject("") { |memo, i| 
 #          (memo == "" ? "" : memo + "; ") + i.numero
 #        },
-#        actividad.presenta('actorsocial'),
+#        actividad.presenta('orgsocial'),
 #        actividad.presenta('publicacion'),
 #        actividad.mujeres,
 #        actividad.hombres,
@@ -361,7 +361,7 @@ module Cor1440Gen
 #        convenios_financieros: a[9],
 #        actividad_de_convenio: a[10],
 #        objetivo_de_convenio: a[11],
-#        actorsocial: a[12],
+#        orgsocial: a[12],
 #        publicacion: a[13],
 #        mujeres: a[14],
 #        hombres: a[15],
@@ -451,7 +451,7 @@ module Cor1440Gen
           ]
         ],
         :actividadtipo_ids => [],
-        :actorsocial_ids => [],
+        :orgsocial_ids => [],
         :contextoinv_attributes => [
           :id, 
           :contexto

@@ -139,14 +139,14 @@
     'id', 'nombre', cor1440_cinep_actividad_actualiza_actividadpf)
 
 
-@cor1440_cinep_actividad_actualiza_actoressociales = (root) ->
+@cor1440_cinep_actividad_actualiza_orgsociales = (root) ->
   params = {
     fecha: $('#actividad_fecha_localizada').val(),
     grupo_ids: $('#actividad_grupo_ids').val(),
     presenta_nombre: '1'
   }
-  sip_llena_select_con_AJAX2('actoressociales', params, 
-    'actividad_actorsocial_ids', 'con Actores', 
+  sip_llena_select_con_AJAX2('orgsociales', params, 
+    'actividad_orgsocial_ids', 'con Actores', 
     root, 'id', 'presenta_nombre', 
     cor1440_gen_actividad_actualiza_camposdinamicos2)
 
@@ -162,7 +162,7 @@
         $(this).remove()
     )
   # Actualizar campos dinámicos
-  cor1440_cinep_actividad_actualiza_actoressociales(root)
+  cor1440_cinep_actividad_actualiza_orgsociales(root)
 
 
 @cor1440_cinep_actividad_actualiza_pf = (root) ->
@@ -176,7 +176,7 @@
 #  sip_llena_select_con_AJAX2('proyectosfinancieros', params, 
 #    'actividad_proyectofinanciero_ids', 'con Compromisos', 
 #    root, 'id', 'referenciacinep', 
-#    cor1440_cinep_actividad_actualiza_actoressociales)
+#    cor1440_cinep_actividad_actualiza_orgsociales)
 
 @valent_id = (id) ->
   if $('#' + id).val() == ""

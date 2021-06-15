@@ -1,10 +1,10 @@
-- Con contacto con correo: <%= @registros.where('sip_actorsocial.id IN 
-  (SELECT actorsocial_id 
-    FROM sip_actorsocial_persona AS sap 
+- Con contacto con correo: <%= @registros.where('sip_orgsocial.id IN 
+  (SELECT orgsocial_id 
+    FROM sip_orgsocial_persona AS sap 
     WHERE sap.correo IS NOT NULL
     AND TRIM(sap.correo) != \'\') ').count %>
   <% acone = @registros.joins(
-    'JOIN sip_actorsocial_persona AS ap ON ap.actorsocial_id=sip_actorsocial.id').joins(
+    'JOIN sip_orgsocial_persona AS ap ON ap.orgsocial_id=sip_orgsocial.id').joins(
     'JOIN mr519_gen_encuestapersona AS ep ON ep.persona_id=ap.persona_id').joins(
     'JOIN mr519_gen_planencuesta AS pe ON pe.id=ep.planencuesta_id').where(
       'pe.fechafin >= ?', Date.today); puts "acone=#{acone.to_sql}" %>
@@ -14,7 +14,7 @@
     'WHERE vc.valor IS NOT NULL AND vc.valor<>\'\')'); puts "aconer=#{aconer.to_sql}" %>
 
   - Con encuestas vigentes respondidas:
-  <%= aconer.count('DISTINCT sip_actorsocial.id') %> / 
-  <%= acone.count('DISTINCT sip_actorsocial.id') %>
+  <%= aconer.count('DISTINCT sip_orgsocial.id') %> / 
+  <%= acone.count('DISTINCT sip_orgsocial.id') %>
 
 

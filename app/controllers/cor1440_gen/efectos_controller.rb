@@ -12,7 +12,7 @@ module Cor1440Gen
     def atributos_index
       [ :id, 
         :indicadorpf_id] +
-        [ :actorsocial_ids=>[]] +
+        [ :orgsocial_ids=>[]] +
         [ :fecha_localizada,
           :nombre,
           :descripcion,
@@ -34,7 +34,7 @@ module Cor1440Gen
 
     def atributos_form
       [ :indicadorpf_id ] +
-        [ :actorsocial_ids=>[]] +
+        [ :orgsocial_ids=>[]] +
         [ :fecha_localizada,
           :nombre,
           :descripcion,

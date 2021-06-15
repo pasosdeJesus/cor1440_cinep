@@ -1,10 +1,8 @@
-# encoding: UTF-8
-
-require 'cor1440_gen/concerns/models/actorsocial'
+require 'cor1440_gen/concerns/models/orgsocial'
 
 module Sip
-  class Actorsocial < ActiveRecord::Base
-    include Cor1440Gen::Concerns::Models::Actorsocial
+  class Orgsocial < ActiveRecord::Base
+    include Cor1440Gen::Concerns::Models::Orgsocial
 
     belongs_to :nivelrelacion, class_name: "::Nivelrelacion",
       foreign_key: "nivelrelacion_id", validate: true, optional: true
@@ -13,29 +11,29 @@ module Sip
     belongs_to :csivinivelresp, class_name: "::Csivinivelresp",
       foreign_key: "csivinivelresp_id", validate: true, optional: true
 
-    has_many :actorsocial_departamento, dependent: :delete_all
-    has_many :departamentotrab, through: :actorsocial_departamento,
+    has_many :departamento_orgsocial, dependent: :delete_all
+    has_many :departamentotrab, through: :departamento_orgsocial,
       class_name: 'Sip::Departamento'
 
-    has_many :actorsocial_grupo, dependent: :delete_all,
-      class_name: '::ActorsocialGrupo', foreign_key: "actorsocial_id"
+    has_many :grupo_orgsocial, dependent: :delete_all,
+      class_name: '::GrupoOrgsocial', foreign_key: "orgsocial_id"
     has_many :grupo, class_name: 'Sip::Grupo',
-      through: :actorsocial_grupo
+      through: :grupo_orgsocial
 
-    has_many :actorsocial_municipio, dependent: :delete_all
-    has_many :municipiotrab, through: :actorsocial_municipio,
+    has_many :municipio_orgsocial, dependent: :delete_all
+    has_many :municipiotrab, through: :municipio_orgsocial,
       class_name: 'Sip::Municipio'
 
-    has_many :actorsocial_regiongrupo, dependent: :delete_all,
-      class_name: '::ActorsocialRegiongrupo', foreign_key: "actorsocial_id"
+    has_many :orgsocial_regiongrupo, dependent: :delete_all,
+      class_name: '::OrgsocialRegiongrupo', foreign_key: "orgsocial_id"
     has_many :regiongrupo, class_name: '::Regiongrupo',
-      through: :actorsocial_regiongrupo
+      through: :orgsocial_regiongrupo
 
     has_and_belongs_to_many :csivitema, 
       class_name: '::Csivitema',
-      foreign_key: 'actorsocial_id',
+      foreign_key: 'orgsocial_id',
       association_foreign_key: 'csivitema_id',
-      join_table: 'actorsocial_csivitema'
+      join_table: 'csivitema_orgsocial'
 
     has_and_belongs_to_many :lineabase, 
       class_name: '::Lineabase',
@@ -68,9 +66,9 @@ module Sip
     end
 
     def self.human_attribute_name(atr, options = {})
-      if (atr.to_s == "{:actorsocial_ids=>[]}")
+      if (atr.to_s == "{:orgsocial_ids=>[]}")
         "Actores"
-      elsif (atr.to_s == "{:sectoractor_ids=>[]}")
+      elsif (atr.to_s == "{:sectororgsocial_ids=>[]}")
         "Sectores"
       else
         super(atr, options)
@@ -90,12 +88,12 @@ module Sip
     }
 
     scope :filtro_grupo_ids, lambda { |g|
-      joins(:actorsocial_grupo).where('actorsocial_grupo.grupo_id=?', g.to_i)
+      joins(:grupo_orgsocial).where('grupo_orgsocial.grupo_id=?', g.to_i)
     }
 
     scope :filtro_lineabase_ids, lambda {|l|
       joins('JOIN lineabase_organizacionsocial ON '\
-      'lineabase_organizacionsocial.organizacionsocial_id=sip_actorsocial.id').
+      'lineabase_organizacionsocial.organizacionsocial_id=sip_orgsocial.id').
       where('lineabase_organizacionsocial.lineabase_id' => l.to_i)
     }
 
@@ -108,23 +106,23 @@ module Sip
     }
 
     scope :filtro_regiongrupo_ids, lambda { |r|
-      joins(:actorsocial_regiongrupo).where(
-        'actorsocial_regiongrupo.regiongrupo_id=?', r.to_i)
+      joins(:orgsocial_regiongrupo).where(
+        'orgsocial_regiongrupo.regiongrupo_id=?', r.to_i)
     }
 
-    scope :filtro_actorsocial_persona, lambda { |c|
+    scope :filtro_orgsocial_persona, lambda { |c|
       joins(:persona).
         where("(sip_persona.nombres || ' ' || sip_persona.apellidos 
-               || ' ' || COALESCE(sip_actorsocial_persona.cargo, '')
-               || ' ' || COALESCE(sip_actorsocial_persona.correo, '')
+               || ' ' || COALESCE(sip_orgsocial_persona.cargo, '')
+               || ' ' || COALESCE(sip_orgsocial_persona.correo, '')
               ) ILIKE ?", "%#{c}%")
     }
 
 
     def presenta(atr, stciv = false)
       case atr.to_s
-      when '{:actorsocial_persona=>[]}', 'actorsocial_persona'
-        self.actorsocial_persona.where(stciv: stciv).
+      when '{:orgsocial_persona=>[]}', 'orgsocial_persona'
+        self.orgsocial_persona.where(stciv: stciv).
           inject('') do |memo, ap|
           n = ap.persona.nombres ? ap.persona.nombres : 'N'
           a = ap.persona.apellidos ? ap.persona.apellidos : 'N'
@@ -136,25 +134,25 @@ module Sip
           (memo == '' ? '' : memo + '; ') + n + ' ' + a + com
         end
       when 'contactos_nombres'
-        self.actorsocial_persona.inject('') do |memo, ap|
+        self.orgsocial_persona.inject('') do |memo, ap|
           n = ap.persona.nombres ? ap.persona.nombres : 'N'
           a = ap.persona.apellidos ? ap.persona.apellidos : 'N'
           (memo == '' ? '' : memo + ', ') + n + ' ' + a
         end
       when 'contactos_correos'
-        self.actorsocial_persona.inject('') do |memo, ap|
+        self.orgsocial_persona.inject('') do |memo, ap|
           c = ap.correo ? ap.correo : ''
           (memo == '' ? '' : memo + ', ') + c 
         end
       when 'contactos_cargos'
-        self.actorsocial_persona.inject('') do |memo, ap|
+        self.orgsocial_persona.inject('') do |memo, ap|
           c = ap.cargo ? ap.cargo : ''
           (memo == '' ? '' : memo + ', ') + c 
         end
       when 'created_at_localizada'
         Sip::FormatoFechaHelper::fecha_estandar_local(self.created_at.utc.to_date)
       when 'grupos'
-         self.actorsocial_grupo.inject('') do |memo, ag|
+         self.grupo_orgsocial.inject('') do |memo, ag|
           (memo == '' ? '' : memo + '; ') + ag.grupo.nombre 
         end
       when 'regiones'

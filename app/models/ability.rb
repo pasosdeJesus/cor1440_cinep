@@ -14,7 +14,7 @@ class Ability  < Cor1440Gen::Ability
     'Administrar actividades de todos los grupos (con contexto). ' +
     'Administrar convenios institucionales. ' +
     'Administrar documentos en nube y plantillas. ' +
-    'Administrar tablas básicas (actores sociales, tipos de convenios, etc). ' +
+    'Administrar tablas básicas (tipos de convenios, etc). ' +
     'Administrar tasas de cambio. ' +
     'Administrar formularios y encuestas. ' +
     'Administrar usuarios. ', #ROLADMIN, 1
@@ -31,7 +31,7 @@ class Ability  < Cor1440Gen::Ability
     'Ver listado de usuarios y su información pública. ' +
     'Responder encuestas. ' +
     'Administrar actividades de su grupo. ' +
-    'Áreas de investigación: Ver, editar y agregar actores sociales. ' +
+    'Áreas de investigación: Ver, editar y agregar organizaciones sociales. ' +
     'Área Derechos Humanos: En formulario de actividades usan contexto. Ver reportes trienal 2015-2017 ' +
     'Grupo Gerencia de Proyectos: Administrar actividades de todos los grupos. ' +
     'Grupo Gerencia de Proyectos: Administrar convenios institucionales. ' +
@@ -79,7 +79,7 @@ class Ability  < Cor1440Gen::Ability
       ['Cor1440Gen', 'proyecto'] ,
       ['Cor1440Gen', 'proyectofinanciero'] ,
       ['Sip', 'etiqueta'] ,
-      ['Sip', 'perfilactorsocial'] ,
+      ['Sip', 'perfilorgsocial'] ,
     ] + 
     [
         ['', 'acpactor1'],
@@ -144,7 +144,7 @@ class Ability  < Cor1440Gen::Ability
       ['', 'nivelrelacion'],
       ['', 'procesogh'],
       ['sip', 'grupo'],
-      ['sip', 'sectoractor'],
+      ['sip', 'sectororgsocial'],
       ['', 'tiponomina'],
       ['', 'acpestrategia']
     ]
@@ -238,7 +238,7 @@ class Ability  < Cor1440Gen::Ability
       campos: [
         Cor1440Gen::Actividad.human_attribute_name(
           :actividadpf).downcase.gsub(' ', '_'), 
-        'actorsocial', 
+        'orgsocial', 
         'actualizacion', 
         'campos_dinamicos', 
         'cedula_responsable',
@@ -280,9 +280,9 @@ class Ability  < Cor1440Gen::Ability
       ruta: '/actividades'
     },
 
-    'Actorsocial' => { 
+    'Orgsocial' => { 
       campos: [
-          'actorsocial_persona',
+          'orgsocial_persona',
           'actualizado_en',
           'anotaciones',
           'celular',
@@ -308,8 +308,8 @@ class Ability  < Cor1440Gen::Ability
           'temastciv',
           'web'
       ],
-      controlador: 'Sip::Actorsocial',
-      ruta: '/actoressociales'
+      controlador: 'Sip::Orgsocial',
+      ruta: '/orgsociales'
     },
  
     'Cuadro General de Seguimiento' => { 
@@ -435,13 +435,13 @@ class Ability  < Cor1440Gen::Ability
         if lgrupos.include?('STCIV') # CERAC o STCIV_CINEP
           can :read, [::Csivinivelgeo, ::Csivitema, 
                       ::Csivinivelresp, ::Regiongrupo, 
-                      Sip::Grupo, Sip::Sectoractor]
+                      Sip::Grupo, Sip::Sectororgsocial]
           can :read, ::Regiongrupo
           can :read, Sip::Grupo
           can :read, Heb412Gen::Doc
           # Pueden manejar contactos STCIV (y no los de CINEP)
-          can :stciv, Sip::ActorsocialPersona
-          can [:create, :read, :index, :update], Sip::Actorsocial
+          can :stciv, Sip::OrgsocialPersona
+          can [:create, :read, :index, :update], Sip::Orgsocial
           if (lgrupos - ['Usuarios']) == ['STCIV'] # Externo, CERAC
             return  # Nada más
           end
@@ -471,7 +471,7 @@ class Ability  < Cor1440Gen::Ability
         can [:edit, :update], 
           Mr519Gen::Encuestausuario.where(usuario_id: usuario.id)
 
-        can [:read, :index], Sip::Actorsocial# Directorio institucional
+        can [:read, :index], Sip::Orgsocial# Directorio institucional
         can :read, Sip::Grupo # Directorio institucional
         #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
         
@@ -482,7 +482,7 @@ class Ability  < Cor1440Gen::Ability
         lineas = lgrupos.select {|g| g.start_with?(GRUPO_LINEA)}
         # Sólo investigadores
         if lineas.length > 0
-          can [:create, :read, :update], Sip::Actorsocial
+          can [:create, :read, :update], Sip::Orgsocial
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Efecto
           can :index, Cor1440Gen::Mindicadorpf
@@ -519,10 +519,10 @@ class Ability  < Cor1440Gen::Ability
           idlineas = lineasb.map { |nl| Sip::Grupo.where(nombre: nl).take.id }
 
           encper = Mr519Gen::Encuestapersona.joins(:persona).
-            joins('JOIN sip_actorsocial_persona ON 
-            sip_persona.id = sip_actorsocial_persona.persona_id').
-            joins( 'JOIN actorsocial_grupo ON actorsocial_grupo.actorsocial_id
-            =sip_actorsocial_persona.actorsocial_id').
+            joins('JOIN sip_orgsocial_persona ON 
+            sip_persona.id = sip_orgsocial_persona.persona_id').
+            joins( 'JOIN grupo_orgsocial ON grupo_orgsocial.orgsocial_id
+            =sip_orgsocial_persona.orgsocial_id').
             where('grupo_id IN (?)', idlineas)
           puts "encper.ids=#{encper.map(&:id)}"
           can [:edit, :update], encper
@@ -560,7 +560,7 @@ class Ability  < Cor1440Gen::Ability
             'respgp_id IS NOT NULL')
           can :manage, Cor1440Gen::Sectorapc
 
-          can [:create, :read, :update], Sip::Actorsocial
+          can [:create, :read, :update], Sip::Orgsocial
 
           can :manage, :tablasbasicas
           can :manage, ::Convenio
@@ -683,7 +683,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, Mr519Gen::Encuestapersona
         can :manage, ::Planencuesta
 
-        can :manage, Sip::Actorsocial
+        can :manage, Sip::Orgsocial
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|
           c = Ability.tb_clase(t)

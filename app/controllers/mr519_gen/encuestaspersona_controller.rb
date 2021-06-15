@@ -52,16 +52,16 @@ module Mr519Gen
       puts "Enviado correo para encuesta aplicada #{params[:id]}"
       @registro = ep = Mr519Gen::Encuestapersona.find(params[:id].to_i)
       antes_editar
-      ap = Sip::ActorsocialPersona.where(
-        actorsocial_id: params[:actorsocial_id].to_i,
+      ap = Sip::OrgsocialPersona.where(
+        orgsocial_id: params[:orgsocial_id].to_i,
         persona_id: @registro.persona_id).take
 
       para = [ap.correo]
 
-      # Copia a coordinadores de grupos relacionados con actor social
+      # Copia a coordinadores de grupos relacionados con organización social
       cc = []
-      ag = ::ActorsocialGrupo.where(
-        actorsocial_id: params[:actorsocial_id].to_i)
+      ag = ::GrupoOrgsocial.where(
+        orgsocial_id: params[:orgsocial_id].to_i)
       ag.each do |agi|
 
         ng = ::Ability::GRUPO_COORDINADOR + ' ' + 
@@ -95,9 +95,9 @@ module Mr519Gen
         bcc: bcc,
         idplantilla: @registro.planencuesta.plantillacorreoinv_id,
         
-        actorsocial_nombre: ap.actorsocial.presenta_nombre,
+        orgsocial_nombre: ap.orgsocial.presenta_nombre,
         persona_nombre: ap.persona.presenta_nombre,
-        actorsocialpersona_cargo: ap.cargo,
+        orgsocialpersona_cargo: ap.cargo,
         planencuesta_fechafin: @registro.planencuesta.fechafin,
         encuestapersona_url: u
       ).prepara_correo

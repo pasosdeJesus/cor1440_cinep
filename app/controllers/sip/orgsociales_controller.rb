@@ -1,5 +1,4 @@
-# encoding: UTF-8
-require_dependency "heb412_gen/concerns/controllers/actoressociales_controller"
+require_dependency "heb412_gen/concerns/controllers/orgsociales_controller"
 
 module Sip
   class ActoressocialesController < Heb412Gen::ModelosController
@@ -13,13 +12,13 @@ module Sip
       if can?(:read, ::Nivelrelacion)
         r +=  [ :nivelrelacion_id ]
       end
-      r += [ :sectoractor_ids =>  [] ] +
+      r += [ :sectororgsocial_ids =>  [] ] +
       [ :regiongrupo_ids =>  [] ] +
       [ :grupo_ids =>  [] ] 
       if can?(:read, ::Csivinivelgeo)
         r += [:csivinivelgeo_id, :csivitema, :csivinivelresp_id]
       end
-      r +=  [ :actorsocial_persona =>  [] ] 
+      r +=  [ :orgsocial_persona =>  [] ] 
       if can?(:read, ::Nivelrelacion)
         r += [ :lineabase_ids]
       end
@@ -30,7 +29,7 @@ module Sip
     def atributos_show
       [ :id, :grupoper_id] + (
         can?(:read, ::Nivelrelacion) ?  [:nivelrelacion_id] : [] ) +
-      [ :sectoractor_ids =>  [] ] +
+      [ :sectororgsocial_ids =>  [] ] +
       [:pais_id] +
       [ :regiongrupo_ids =>  [] ] +
       [ :departamentotrab_ids =>  [] ] +
@@ -41,7 +40,7 @@ module Sip
         [:csivitema_ids =>  [] ] +
         [:csivinivelresp_id] : []
       ) +
-      [ :actorsocial_persona =>  [] ] + (
+      [ :orgsocial_persona =>  [] ] + (
         can?(:read, ::Nivelrelacion) ?  [:lineabase_ids => []] : [] 
       ) + [ 
         :web,
@@ -65,7 +64,7 @@ module Sip
 
     def index_reordenar(registros)
       return registros.joins(:grupoper).reorder('sip_grupoper.nombre')
-        #'JOIN sip_grupoper ON sip_grupoper.id=sip_actorsocial.grupoper_id')
+        #'JOIN sip_grupoper ON sip_grupoper.id=sip_orgsocial.grupoper_id')
         #reorder('sip_grupoper.nombre')
     end
 
@@ -73,9 +72,9 @@ module Sip
       gid_dir = Sip::Grupo.where(nombre: 'Dirección').take
       gid_dir = gid_dir ? gid_dir.id : -1
       if grupo_ids && grupo_ids.length > 0 && !grupo_ids.include?(gid_dir)
-        c = c.where("sip_actorsocial.id IN 
-                     (SELECT actorsocial_id 
-                      FROM actorsocial_grupo WHERE
+        c = c.where("sip_orgsocial.id IN 
+                     (SELECT orgsocial_id 
+                      FROM grupo_orgsocial WHERE
                       grupo_id IN (#{grupo_ids.join(',')}))")
       end
       if fecha
@@ -91,16 +90,16 @@ module Sip
       # Si el usuario es del grupo STCIV marcar el contacto
       # con stciv para que no pueda ser visto por CINEP
       # (Y los contactos de CINEP no pueden ser vistos por STCIV).
-      if can? :stciv, Sip::ActorsocialPersona
-        params[:actorsocial][:actorsocial_persona_attributes].each do |at|
+      if can? :stciv, Sip::OrgsocialPersona
+        params[:orgsocial][:orgsocial_persona_attributes].each do |at|
           at[1][:stciv] = true
         end
       end
     end
 
     def validaciones(registro)
-      if registro.actorsocial_persona
-        registro.actorsocial_persona.each do |ap|
+      if registro.orgsocial_persona
+        registro.orgsocial_persona.each do |ap|
           if ap.persona && ap.persona.sexo.nil?
             ap.persona.sexo = 'S'
           end
@@ -109,9 +108,9 @@ module Sip
     end
 
     def index(c = nil)
-      authorize! :index, Sip::Actorsocial
+      authorize! :index, Sip::Orgsocial
       if c == nil
-        c = Sip::Actorsocial.all
+        c = Sip::Orgsocial.all
       end
       grupo_ids = nil
       if params[:grupo_ids] && params[:grupo_ids] != ''
@@ -126,8 +125,8 @@ module Sip
     end   
 
 
-    def actorsocial_params
-      params.require(:actorsocial).permit(
+    def orgsocial_params
+      params.require(:orgsocial).permit(
         atributos_form - [:grupoper] +
         [ :pais_id,
           :presenta_nombre,
@@ -135,12 +134,12 @@ module Sip
             :id,
             :nombre,
             :anotaciones ],
-          :actorsocial_persona_attributes => [
+          :orgsocial_persona_attributes => [
             :id,
             :stciv,
             :cargo,
             :correo,
-            :perfilactorsocial_id,
+            :perfilorgsocial_id,
             :_destroy,
             :persona_attributes => [
               :id,

@@ -1,7 +1,5 @@
-# encoding: UTF-8
-
 class Regiongrupo < ActiveRecord::Base
-	include Sip::Basica
+  include Sip::Basica
 
   belongs_to :grupo, class_name: 'Sip::Grupo',
     foreign_key: 'grupo_id', validate: true
@@ -18,11 +16,11 @@ class Regiongrupo < ActiveRecord::Base
     association_foreign_key: 'sip_municipio_id',
     join_table: 'regiongrupo_sip_municipio'
 
-  has_and_belongs_to_many :actorsocial, 
-    class_name: 'Sip::Actorsocial',
+  has_and_belongs_to_many :orgsocial, 
+    class_name: 'Sip::Orgsocial',
     foreign_key: 'regiongrupo_id',
-    association_foreign_key: 'actorsocial_id',
-    join_table: 'actorsocial_regiongrupo'
+    association_foreign_key: 'orgsocial_id',
+    join_table: 'orgsocial_regiongrupo'
 
   has_many :contextoinv,
     class_name: '::Contextoinv',

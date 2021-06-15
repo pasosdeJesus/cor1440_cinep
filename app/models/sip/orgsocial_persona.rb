@@ -1,10 +1,8 @@
-# encoding: UTF-8
-
-require 'sip/concerns/models/actorsocial_persona'
+require 'sip/concerns/models/orgsocial_persona'
 
 module Sip
-  class ActorsocialPersona < ActiveRecord::Base
-    include Sip::Concerns::Models::ActorsocialPersona
+  class OrgsocialPersona < ActiveRecord::Base
+    include Sip::Concerns::Models::OrgsocialPersona
 
     validates :correo, length: {maximum: 254}, allow_blank: true,
       format: { with: URI::MailTo::EMAIL_REGEXP, 

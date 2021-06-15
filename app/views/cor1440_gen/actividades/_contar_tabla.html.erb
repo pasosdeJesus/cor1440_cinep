@@ -11,7 +11,7 @@
       <th colspan='3'>Participaciones por genero</th>
       <th colspan='3'>Participaciones por etnia</th>
       <th rowspan='2'>
-        Sectores de los actores sociales
+        Sectores de las organizaciones sociales
       </th>
     </tr>
     <tr>
@@ -84,13 +84,13 @@
           <%= eonr %>
         </td>
         <td>
-          <%= consb.joins('JOIN cor1440_gen_actividad_actorsocial ON
-              cor1440_gen_actividad.id=cor1440_gen_actividad_actorsocial.actividad_id').
-              joins('JOIN sip_actorsocial_sectoractor ON
-              cor1440_gen_actividad_actorsocial.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
-              joins('JOIN sip_sectoractor 
-                    ON sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id').
-              select('sip_sectoractor.nombre').
+          <%= consb.joins('JOIN cor1440_gen_actividad_orgsocial ON
+              cor1440_gen_actividad.id=cor1440_gen_actividad_orgsocial.actividad_id').
+              joins('JOIN sip_orgsocial_sectororgsocial ON
+              cor1440_gen_actividad_orgsocial.orgsocial_id=sip_orgsocial_sectororgsocial.orgsocial_id').
+              joins('JOIN sip_sectororgsocial 
+                    ON sip_orgsocial_sectororgsocial.sectororgsocial_id=sip_sectororgsocial.id').
+              select('sip_sectororgsocial.nombre').
             distinct.map(&:nombre).join('; ') %>
       </tr>
     <% end %>
@@ -143,13 +143,13 @@
            <%= eonr %>
          </td>
          <td>
-           <%= consb.joins('JOIN cor1440_gen_actividad_actorsocial ON
-              cor1440_gen_actividad.id=cor1440_gen_actividad_actorsocial.actividad_id').
-              joins('JOIN sip_actorsocial_sectoractor ON
-              cor1440_gen_actividad_actorsocial.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
-              joins('JOIN sip_sectoractor 
-                    ON sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id').
-              select('sip_sectoractor.nombre').
+           <%= consb.joins('JOIN cor1440_gen_actividad_orgsocial ON
+              cor1440_gen_actividad.id=cor1440_gen_actividad_orgsocial.actividad_id').
+              joins('JOIN sip_orgsocial_sectororgsocial ON
+              cor1440_gen_actividad_orgsocial.orgsocial_id=sip_orgsocial_sectororgsocial.orgsocial_id').
+              joins('JOIN sip_sectororgsocial 
+                    ON sip_orgsocial_sectororgsocial.sectororgsocial_id=sip_sectororgsocial.id').
+              select('sip_sectororgsocial.nombre').
               distinct.map(&:nombre).join('; ') %>
        </td>
 
@@ -210,13 +210,13 @@
         <%= eonr %>
       </td>
       <td>
-        <%= consb.joins('JOIN cor1440_gen_actividad_actorsocial ON
-            cor1440_gen_actividad.id=cor1440_gen_actividad_actorsocial.actividad_id').
-            joins('JOIN sip_actorsocial_sectoractor ON
-            cor1440_gen_actividad_actorsocial.actorsocial_id=sip_actorsocial_sectoractor.actorsocial_id').
-            joins('JOIN sip_sectoractor 
-                    ON sip_actorsocial_sectoractor.sectoractor_id=sip_sectoractor.id').
-                    select('sip_sectoractor.nombre').
+        <%= consb.joins('JOIN cor1440_gen_actividad_orgsocial ON
+            cor1440_gen_actividad.id=cor1440_gen_actividad_orgsocial.actividad_id').
+            joins('JOIN sip_orgsocial_sectororgsocial ON
+            cor1440_gen_actividad_orgsocial.orgsocial_id=sip_orgsocial_sectororgsocial.orgsocial_id').
+            joins('JOIN sip_sectororgsocial 
+                    ON sip_orgsocial_sectororgsocial.sectororgsocial_id=sip_sectororgsocial.id').
+                    select('sip_sectororgsocial.nombre').
                     distinct.map(&:nombre).join('; ') %>
     </td>
     </tr>

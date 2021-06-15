@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'jn316_gen/concerns/models/grupo'
 
 module Sip
@@ -21,10 +19,10 @@ module Sip
     has_many :actividad, through: :actividad_grupo,
       class_name: 'Cor1440Gen::Actividad'
 
-    has_many :actorsocial_grupo, dependent: :delete_all,
-      class_name: '::ActorsocialGrupo', foreign_key: 'grupo_id'
-    has_many :actorsocial, through: :actorsocial_grupo,
-      class_name: 'Sip::Actorsocial'
+    has_many :grupo_orgsocial, dependent: :delete_all,
+      class_name: '::GrupoOrgsocial', foreign_key: 'grupo_id'
+    has_many :orgsocial, through: :grupo_orgsocial,
+      class_name: 'Sip::Orgsocial'
 
     has_many :grupo_proyectofinanciero, dependent: :delete_all,
       class_name: '::GrupoProyectofinanciero', foreign_key: 'grupo_id'

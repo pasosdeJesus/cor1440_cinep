@@ -1,14 +1,14 @@
-<% if !defined?(actoresdisp)  %>
-  <% actoresdisp = Sip::Actorsocial.habilitados %>
+<% if !defined?(orgsocialesdisp)  %>
+  <% orgsocialesdisp = Sip::Orgsocial.habilitados %>
 <% end %>
 
-<% a1 = Sip::Actorsocial.habilitados %>
+<% a1 = Sip::Orgsocial.habilitados %>
 <% lg = [] %>
 <% lg += f.object.grupo_ids if f.object.grupo_ids %>
-<% a1 = Sip::ActoressocialesController::filtra_grupos_fecha(
+<% a1 = Sip::OrgsocialesController::filtra_grupos_fecha(
   a1, lg, f.object.fecha) %>
-<% a1l = a1.map(&:id) + f.object.actorsocial_ids %>
-<% a2 = actoresdisp.joins(:grupoper).where(id: a1l).
+<% a1l = a1.map(&:id) + f.object.orgsocial_ids %>
+<% a2 = orgsocialesdisp.joins(:grupoper).where(id: a1l).
   order('sip_grupoper.nombre') %>
-<%= render partial: 'cor1440_gen/actividades/campo_actorsocial_p2',
-  locals: {f: f, actoresdisp: a2} %>
+<%= render partial: 'cor1440_gen/actividades/campo_orgsocial_p2',
+  locals: {f: f, orgsocialesdisp: a2} %>
