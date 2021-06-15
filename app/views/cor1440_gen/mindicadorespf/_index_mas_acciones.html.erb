@@ -1,9 +1,0 @@
-<% if registro.indicadorpf_id && registro.indicadorpf.objetivopf_id %>
-  <%= link_to 'Registrar avance',
-    cor1440_gen.new_efecto_path(indicadorpf_id: registro.indicadorpf_id), 
-    class: 'btn btn-sm' %>
-  <%= link_to 'Ver registros de avance', 
-    cor1440_gen.efectos_path('filtro[busindicadorpf_id]' => registro.indicadorpf_id), 
-    class: 'btn btn-sm' %>
-
-<% end %>

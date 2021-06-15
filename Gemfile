@@ -103,8 +103,8 @@ gem 'sal7711_web', # Motor para archivo de prensa web
   #path: '../sal7711_web'
 
 gem 'cor1440_gen',  # Motor de actividades y proyectos con marco lógico
-  git: 'https://github.com/pasosdeJesus/cor1440_gen.git', branch: :orgsocial
-  #path: '../cor1440_gen'
+  #git: 'https://github.com/pasosdeJesus/cor1440_gen.git', branch: :orgsocial
+  path: '../cor1440_gen'
 
 group :development do
   gem 'erd'
@@ -116,7 +116,7 @@ end
 
 
 group :test, :development, :ensayo do
-  #gem 'byebug' #Depurar
+  gem 'byebug' #Depurar
 
   gem 'dotenv-rails'
 
