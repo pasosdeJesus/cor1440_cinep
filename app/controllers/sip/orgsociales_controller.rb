@@ -1,8 +1,8 @@
 require_dependency "heb412_gen/concerns/controllers/orgsociales_controller"
 
 module Sip
-  class ActoressocialesController < Heb412Gen::ModelosController
-    include Heb412Gen::Concerns::Controllers::ActoressocialesController
+  class OrgsocialesController < Heb412Gen::ModelosController
+    include Heb412Gen::Concerns::Controllers::OrgsocialesController
 
     Sip::Municipio.conf_presenta_nombre_con_origen = true
     Sip::Departamento.conf_presenta_nombre_con_origen = true
@@ -120,7 +120,7 @@ module Sip
       if params[:fecha] && params[:fecha] != ''
         fecha = Sip::FormatoFechaHelper.fecha_local_estandar params[:fecha]
       end
-      c = Sip::ActoressocialesController::filtra_grupos_fecha(c, grupo_ids, fecha)
+      c = Sip::OrgsocialesController::filtra_grupos_fecha(c, grupo_ids, fecha)
       super(c)
     end   
 

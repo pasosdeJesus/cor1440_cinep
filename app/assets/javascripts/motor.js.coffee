@@ -146,7 +146,7 @@
     presenta_nombre: '1'
   }
   sip_llena_select_con_AJAX2('orgsociales', params, 
-    'actividad_orgsocial_ids', 'con Actores', 
+    'actividad_orgsocial_ids', 'con Organizaciones', 
     root, 'id', 'presenta_nombre', 
     cor1440_gen_actividad_actualiza_camposdinamicos2)
 
