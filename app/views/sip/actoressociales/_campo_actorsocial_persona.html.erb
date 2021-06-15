@@ -17,7 +17,7 @@
       <%= f.simple_fields_for :actorsocial_persona, 
         Sip::ActorsocialPersona.where(actorsocial_id: ao.id).where(
           stciv: can?(:stciv, Sip::ActorsocialPersona)) do |ap| %>
-      <%= render 'actorsocial_persona_campos', :f => ap %>
+      <%= render 'sip/actoressociales/actorsocial_persona_campos', :f => ap %>
     <% end %>
     </tbody>
   </table>
@@ -27,7 +27,7 @@
       :actorsocial_persona,
       :"data-association-insertion-node" => "tbody#actorsocial_persona", 
       :"data-association-insertion-method" => "append", 
-      partial: 'actorsocial_persona_campos',
+      partial: 'sip/actoressociales/actorsocial_persona_campos',
       :class => 'btn-primary'
     %>
   </div>
