@@ -37,9 +37,9 @@ module Sip
 
     has_and_belongs_to_many :lineabase, 
       class_name: '::Lineabase',
-      foreign_key: 'organizacionsocial_id',
+      foreign_key: 'orgsocial_id',
       association_foreign_key: 'lineabase_id',
-      join_table: 'lineabase_organizacionsocial'
+      join_table: 'lineabase_orgsocial'
 
 
     campofecha_localizado :fechadeshabilitacion
@@ -92,9 +92,9 @@ module Sip
     }
 
     scope :filtro_lineabase_ids, lambda {|l|
-      joins('JOIN lineabase_organizacionsocial ON '\
-      'lineabase_organizacionsocial.organizacionsocial_id=sip_orgsocial.id').
-      where('lineabase_organizacionsocial.lineabase_id' => l.to_i)
+      joins('JOIN lineabase_orgsocial ON '\
+      'lineabase_orgsocial.orgsocial_id=sip_orgsocial.id').
+      where('lineabase_orgsocial.lineabase_id' => l.to_i)
     }
 
     scope :filtro_nivelrelacion_id, lambda { |n|
