@@ -67,7 +67,7 @@ module Sip
 
     def self.human_attribute_name(atr, options = {})
       if (atr.to_s == "{:orgsocial_ids=>[]}")
-        "Actores"
+        "Orgsocial"
       elsif (atr.to_s == "{:sectororgsocial_ids=>[]}")
         "Sectores"
       else

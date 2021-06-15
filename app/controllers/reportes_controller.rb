@@ -163,8 +163,8 @@ class ReportesController < ::ApplicationController
 
     @cuerpotabla = ActiveRecord::Base.connection.select_all(cons)
 
-    @enctabla = ['Id', 'Responsable', 'Actores Acompañados',
-      'Municipio', 'Departamento', 'Tipos Actor', 
+    @enctabla = ['Id', 'Responsable', 'Organizaciones sociales Acompañadas',
+      'Municipio', 'Departamento', 'Tipos de Organización Social', 
       'Acción de Incidencia que Transforma Núcleos de Conflicto', 'Acción Colectiva', 'Vincula Derechos de Género', 'Víncula Derechos de Étnia', 
       'Principal núcleo que transforma', 
       'Otros núcleos que transforma'
