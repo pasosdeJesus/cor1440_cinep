@@ -344,5 +344,15 @@ module Cor1440Gen
     end
 
 
+    def amplia_contexto(contexto)
+      contexto['Municipios_pdet'] = Sip::Municipio.where(
+        'id IN (SELECT municipio_id FROM sip_etiqueta_municipio '\
+        'WHERE etiqueta_id=15)'
+      )
+
+      return contexto
+    end
+
+
   end
 end

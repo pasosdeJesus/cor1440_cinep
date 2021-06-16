@@ -56,6 +56,10 @@ module Cor1440Gen
       ]
     end
 
+    def edit
+      Sip::Municipio.conf_presenta_nombre_con_departamento = true
+      edit_cor1440_gen
+    end
   end
 
 end
