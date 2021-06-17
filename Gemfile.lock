@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: c11411c264ef33132aa6043bcea63d3b296128a1
+  revision: 675369b349bb0347057bcd3350658e632a18f7f2
   branch: orgsocial
   specs:
     cor1440_gen (1.0b4)
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 724260407be0e2c509cca0651be8c99d19a813ce
+  revision: 04afc987890c7be94c29c3370de073ee5413ee35
   branch: orgsocial
   specs:
     heb412_gen (1.0.b6)
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 4558af2eb540daf2ce6674c262769a7248d9efdb
+  revision: 74a89bebba726268caa57eee64836e3776027550
   branch: orgsocial
   specs:
     jn316_gen (1.0.a2)
@@ -46,7 +46,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: eca7e6327ccbf75038f94f0e31dcf9ee9077eb12
+  revision: c27bbcafb5460fa15f1b565d2f133c85d54cc904
   branch: orgsocial
   specs:
     mr519_gen (0.2.0)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 873b6569fa72211f3098f47ed5747070596ddc5c
+  revision: 24a5ea399d33c6ba33fb37196666b43e230535c0
   branch: orgsocial
   specs:
     sal7711_gen (1.0.b3)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 477ad077a5a806dc2c800678d030651b03bd5399
+  revision: 521bedddd280294f254f5e391f7e4192d016f549
   branch: orgsocial
   specs:
     sal7711_ld (1.0.a3)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: f98aef1b983bd07a1824d8327c8610b912d52d3f
+  revision: 194a31284de9b60fe66cf27900ec7364f321a97a
   branch: orgsocial
   specs:
     sal7711_web (1.0.a3)
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 53489070757b7cc166556d182df45caf2b28b212
+  revision: e2278cdd5263bca4f406d71ec4ce0cee368f8f15
   branch: orgsocial
   specs:
     sip (2.0.b11)
@@ -227,7 +227,7 @@ GEM
       ruby-graphviz
     erubi (1.10.0)
     execjs (2.8.1)
-    ffi (1.15.1)
+    ffi (1.15.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)

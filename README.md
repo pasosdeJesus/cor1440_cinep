@@ -5,10 +5,10 @@
 Sistema de información de procesos en CINEP/PPP
 
 ### Requerimientos
-* Ruby version >= 2.5
-* Ruby on Rails 5.1.x
-* PostgreSQL >= 10.1 con extensión unaccent disponible
-* Recomendado sobre adJ 6.2 (que incluye todos los componentes mencionados).  
+* Ruby version >= 3.0
+* Ruby on Rails >= 6.1.3
+* PostgreSQL >= 13 con extensión unaccent disponible
+* Recomendado sobre adJ 6.8 (que incluye todos los componentes mencionados).  
 
 Estas instrucciones suponen que opera en este ambiente, puedes ver más sobre
 la instalación de Ruby on Rails en adJ en 
