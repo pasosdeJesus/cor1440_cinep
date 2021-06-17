@@ -1,0 +1,21 @@
+<% if !defined?(orgsocialesdisp)  %>
+  <% orgsocialesdisp = Sip::Orgsocial.habilitados %>
+<% end %>
+<% a1 = Sip::Orgsocial.habilitados %>
+<% lg = [] %>
+<% lg += @params[:actividad][:grupo_ids] if @params[:actividad][:grupo_ids] %>
+<% a1 = Sip::OrgsocialesController::filtra_grupos_fecha(
+  a1, lg-[""], @params[:actividad][:fecha_localizada]) %>
+<% a1l = a1.map(&:id) + @params[:actividad][:orgsocial_ids] %>
+<% a2 = orgsocialesdisp.joins(:grupoper).where(id: a1l).
+  order('sip_grupoper.nombre') %>
+<% lids = orgsocialesdisp.map(&:id) %>
+<% a2 = Sip::Orgsocial.joins(:grupoper).where(id: lids).
+  order('sip_grupoper.nombre') %>
+  valores = $("#actividad_orgsocial_ids").val();
+<% if @params[:action] == "nueva_orgsocial_modal" %>
+  $("#actividad_orgsocial_ids").html('<%= escape_javascript options_from_collection_for_select(a2, "id", "presenta_nombre") %>');
+  valor = $.merge([<%= @params[:id_nuevaorgsocial]%>], valores); 
+  $("#actividad_orgsocial_ids").val(valor);
+  $("#actividad_orgsocial_ids").trigger("chosen:updated");
+<% end %>
