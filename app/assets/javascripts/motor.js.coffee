@@ -553,5 +553,25 @@
     actualiza_indicadorespf(e)
   )
 
-  return
 
+  $(document).on('click', '.toggleas', (e) ->
+    $(this).parent().siblings(".nuevoas").modal('toggle')
+  )
+
+  ## Nuevo Actor social desde actividad
+  $(document).on("click", ".boton_agregaros", (e) ->
+    e.preventDefault()
+    root =  window
+    tn = Date.now()
+    d = -1
+    if (root.tagregapr) 
+      d = (tn - root.tagregapr)/1000
+    if (d == -1 || d>5) 
+      f=$('form')
+      a = root.puntomontaje + 'orgsociales/nueva_orgsocial_modal'
+      $.post(a, f.serialize())
+      root.tagregapr= Date.now()
+    
+    return
+  )
+  return
