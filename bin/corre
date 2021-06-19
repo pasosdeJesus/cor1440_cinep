@@ -93,7 +93,7 @@ FileUtils.chdir RAIZ_AP do
       puts "\nFalta script /etc/rc.d/#{ENV['RC']}"
       exit 1
     end
-    puts "\n== Ejecutando en modo producción =="
+    puts "\n== Ejecutando en modo #{ENV['RAILS_ENV']} =="
     ord = "doas sh /etc/rc.d/#{ENV['RC']} -d start"
   end
   system!(ord)
