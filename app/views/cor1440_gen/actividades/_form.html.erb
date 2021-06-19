@@ -35,11 +35,12 @@
        </div>
        <div class='col-sm-4'>
          <%= f.input(:mduracion, collection: [
-           "Minutos",
             "Horas",
+            "Minutos",
             "Días",
             "Meses" ], 
             label: 'Unidad de duración',
+            include_blank: false,
             input_html: { class: 'chosen-select' }) %>
         </div>
       </div> <!-- row -->
