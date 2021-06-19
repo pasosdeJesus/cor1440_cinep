@@ -25,8 +25,6 @@ module Cor1440Gen
       @registro.oficina_id = 1
       @registro.creadopor_id = current_usuario.id
       new_cor1440_gen_p2
-      acs = Cor1440Gen::ActividadOrgsocial.new
-      acs.build_orgsocial
       @registro.save!(validate: false)
       redirect_to cor1440_gen.edit_actividad_path(@registro)
     end
