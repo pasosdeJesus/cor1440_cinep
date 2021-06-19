@@ -471,6 +471,7 @@ class Ability  < Cor1440Gen::Ability
         can [:edit, :update], 
           Mr519Gen::Encuestausuario.where(usuario_id: usuario.id)
 
+        can [:read, :index], Sip::Persona # Contactos
         can [:read, :index], Sip::Orgsocial# Directorio institucional
         can :read, Sip::Grupo # Directorio institucional
         #can [:read, :update, :create, :destroy], Cor1440Gen::Actividad, oficina_id: { id: usuario.oficina_id}
@@ -684,6 +685,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, ::Planencuesta
 
         can :manage, Sip::Orgsocial
+        can :manage, Sip::Persona
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|
           c = Ability.tb_clase(t)
