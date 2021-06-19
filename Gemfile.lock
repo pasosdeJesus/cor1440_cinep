@@ -11,8 +11,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 675369b349bb0347057bcd3350658e632a18f7f2
-  branch: orgsocial
+  revision: 34f1dacc599ba13e1cec9f132168c1e84a211b6c
+  branch: main
   specs:
     cor1440_gen (1.0b4)
       devise
@@ -25,8 +25,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 04afc987890c7be94c29c3370de073ee5413ee35
-  branch: orgsocial
+  revision: 34ba27cc317d5d0dc1d599df890b0baa3d9c74eb
+  branch: main
   specs:
     heb412_gen (1.0.b6)
       mr519_gen
@@ -36,8 +36,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 74a89bebba726268caa57eee64836e3776027550
-  branch: orgsocial
+  revision: 0de929242924e310c1bfbdfca5cbec92ee9426d7
+  branch: main
   specs:
     jn316_gen (1.0.a2)
       net-ldap
@@ -46,8 +46,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: c27bbcafb5460fa15f1b565d2f133c85d54cc904
-  branch: orgsocial
+  revision: 0686fc4bb71611e8231feb9a6ede1f58053416c0
+  branch: main
   specs:
     mr519_gen (0.2.0)
       rails
@@ -55,8 +55,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 24a5ea399d33c6ba33fb37196666b43e230535c0
-  branch: orgsocial
+  revision: b30076ecc8b3a1076154d444fdd911615727078a
+  branch: main
   specs:
     sal7711_gen (1.0.b3)
       rails
@@ -64,8 +64,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 521bedddd280294f254f5e391f7e4192d016f549
-  branch: orgsocial
+  revision: c90324e1c9b3f452cedd6f31ffdb5a9b032d87b2
+  branch: main
   specs:
     sal7711_ld (1.0.a3)
       rails
@@ -73,8 +73,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 194a31284de9b60fe66cf27900ec7364f321a97a
-  branch: orgsocial
+  revision: ca9f1292c51c6664c80c5ef17ed742a997c98ab9
+  branch: main
   specs:
     sal7711_web (1.0.a3)
       rails
@@ -82,10 +82,10 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: e2278cdd5263bca4f406d71ec4ce0cee368f8f15
-  branch: orgsocial
+  revision: be07c0d79e0f377086448b5d780bd506e42dc2bc
+  branch: main
   specs:
-    sip (2.0.b11)
+    sip (2.0.b12)
       cancancan
       chosen-rails
       devise
