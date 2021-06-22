@@ -56,7 +56,7 @@ module Sip
     def atributos_form
       a = atributos_show - ['id', :id, :created_at, :updated_at]
       if cannot? :manage, :lineabase
-        a = a - ["lineabase_ids", :lineabase_ids]
+      #  a = a - ["lineabase_ids", :lineabase_ids]
       end
       a[a.index(:grupoper_id)] = :grupoper
       return a
