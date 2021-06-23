@@ -8,60 +8,258 @@
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">usuario sin LDAP</td></tr>
+<tr><td rowspan="1" colspan="3">usuario-datos-de-contacto</td></tr>
 </thead>
 <tbody>
-<tr><td>clickAt</td><td>link=Administrar<datalist><option>link=Administrar</option><option>css=ul.nav.navbar-nav.navbar-right &gt; li.dropdown &gt; a.dropdown-toggle</option><option>//a[contains(text(),'Administrar')]</option><option>xpath=(//a[contains(@href, '#')])[4]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>51,20</td>
+<tr><td>clickAt</td><td>id=navbarDropdownAdministrar<datalist><option>id=navbarDropdownAdministrar</option><option>link=Administrar</option><option>css=#navbarDropdownAdministrar</option><option>//a[contains(text(),'Administrar')]</option><option>//a[@id='navbarDropdownAdministrar']</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/a</option><option>xpath=(//a[contains(@href, '#')])[5]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>48,16</td>
 </tr>
-<tr><td>clickAt</td><td>link=Usuarios<datalist><option>link=Usuarios</option><option>//a[contains(text(),'Usuarios')]</option><option>xpath=(//a[contains(@href, '/usuarios')])[2]</option><option>//li[2]/ul/li[6]/a</option></datalist></td><td>86,13</td>
+<tr><td>clickAt</td><td>link=Usuarios<datalist><option>link=Usuarios</option><option>//a[contains(text(),'Usuarios')]</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/div/a[4]</option><option>xpath=(//a[contains(@href, '/usuarios')])[2]</option><option>//ul[2]/li[2]/div/a[4]</option></datalist></td><td>51,14</td>
 </tr>
-<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nuevo')]</option><option>//a[contains(@href, '/usuarios/nuevo')]</option><option>//div[2]/div/a</option></datalist></td><td>32,24</td>
+<tr><td>clickAt</td><td>link=Nuevo<datalist><option>link=Nuevo</option><option>css=a.btn.btn-primary</option><option>//a[contains(text(),'Nuevo')]</option><option>//a[contains(@href, '/usuarios/nuevo.%23%3CUsuario::ActiveRecord_Relation:0x0000010a61e91508%3E')]</option><option>//div/div/a</option></datalist></td><td>37,18</td>
 </tr>
-<tr><td>clickAt</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//div[@id='contacto']/div[2]/div/div/input</option><option>//div[2]/div/div/input</option></datalist></td><td>108,14</td>
+<tr><td>clickAt</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//div[@id='contacto']/div[2]/div/div/input</option><option>//div[2]/div/div/input</option></datalist></td><td>116,0</td>
 </tr>
 <tr><td>type</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//div[@id='contacto']/div[2]/div/div/input</option><option>//div[2]/div/div/input</option></datalist></td><td>aaa</td>
 </tr>
-<tr><td>clickAt</td><td>id=usuario_persona_attributes_nombres<datalist><option>id=usuario_persona_attributes_nombres</option><option>name=usuario[persona_attributes][nombres]</option><option>css=#usuario_persona_attributes_nombres</option><option>//input[@id='usuario_persona_attributes_nombres']</option><option>//div[@id='contacto']/div[3]/div/div/input</option><option>//div[3]/div/div/input</option></datalist></td><td>66,19</td>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_nombres<datalist><option>id=usuario_persona_attributes_nombres</option><option>name=usuario[persona_attributes][nombres]</option><option>css=#usuario_persona_attributes_nombres</option><option>//input[@id='usuario_persona_attributes_nombres']</option><option>//div[@id='contacto']/div[3]/div/div/input</option><option>//div[3]/div/div/input</option></datalist></td><td>58,13</td>
 </tr>
-<tr><td>type</td><td>id=usuario_persona_attributes_nombres<datalist><option>id=usuario_persona_attributes_nombres</option><option>name=usuario[persona_attributes][nombres]</option><option>css=#usuario_persona_attributes_nombres</option><option>//input[@id='usuario_persona_attributes_nombres']</option><option>//div[@id='contacto']/div[3]/div/div/input</option><option>//div[3]/div/div/input</option></datalist></td><td>Arnol</td>
+<tr><td>type</td><td>id=usuario_persona_attributes_nombres<datalist><option>id=usuario_persona_attributes_nombres</option><option>name=usuario[persona_attributes][nombres]</option><option>css=#usuario_persona_attributes_nombres</option><option>//input[@id='usuario_persona_attributes_nombres']</option><option>//div[@id='contacto']/div[3]/div/div/input</option><option>//div[3]/div/div/input</option></datalist></td><td>Ana </td>
 </tr>
-<tr><td>clickAt</td><td>id=usuario_persona_attributes_apellidos<datalist><option>id=usuario_persona_attributes_apellidos</option><option>name=usuario[persona_attributes][apellidos]</option><option>css=#usuario_persona_attributes_apellidos</option><option>//input[@id='usuario_persona_attributes_apellidos']</option><option>//div[@id='contacto']/div[3]/div[2]/div/input</option><option>//div[3]/div[2]/div/input</option></datalist></td><td>67,16</td>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_apellidos<datalist><option>id=usuario_persona_attributes_apellidos</option><option>name=usuario[persona_attributes][apellidos]</option><option>css=#usuario_persona_attributes_apellidos</option><option>//input[@id='usuario_persona_attributes_apellidos']</option><option>//div[@id='contacto']/div[3]/div[2]/div/input</option><option>//div[3]/div[2]/div/input</option></datalist></td><td>30,19</td>
 </tr>
-<tr><td>type</td><td>id=usuario_persona_attributes_apellidos<datalist><option>id=usuario_persona_attributes_apellidos</option><option>name=usuario[persona_attributes][apellidos]</option><option>css=#usuario_persona_attributes_apellidos</option><option>//input[@id='usuario_persona_attributes_apellidos']</option><option>//div[@id='contacto']/div[3]/div[2]/div/input</option><option>//div[3]/div[2]/div/input</option></datalist></td><td>Acevedo</td>
+<tr><td>type</td><td>id=usuario_persona_attributes_apellidos<datalist><option>id=usuario_persona_attributes_apellidos</option><option>name=usuario[persona_attributes][apellidos]</option><option>css=#usuario_persona_attributes_apellidos</option><option>//input[@id='usuario_persona_attributes_apellidos']</option><option>//div[@id='contacto']/div[3]/div[2]/div/input</option><option>//div[3]/div[2]/div/input</option></datalist></td><td>Aguilar</td>
 </tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>addSelection</td><td>id=usuario_sip_grupo_ids<datalist><option>id=usuario_sip_grupo_ids</option><option>css=#usuario_sip_grupo_ids</option><option>//select[@id='usuario_sip_grupo_ids']</option><option>//div[@id='contacto']/div[4]/div/div/select</option><option>//select</option></datalist></td><td>label=Gestión Humana</td>
+<tr><td>select</td><td>id=usuario_oficina_id<datalist><option>id=usuario_oficina_id</option><option>name=usuario[oficina_id]</option><option>css=#usuario_oficina_id</option><option>//select[@id='usuario_oficina_id']</option><option>//div[@id='contacto']/div[5]/div/div/select</option><option>//div[5]/div/div/select</option></datalist></td><td>label=RECEPCIÓN PISO 2</td>
 </tr>
-<tr><td>clickAt</td><td>css=option[value="114"]<datalist><option>css=option[value="114"]</option><option>//option[@value='114']</option><option>//select[@id='usuario_sip_grupo_ids']/option[22]</option><option>//option[22]</option></datalist></td><td>108,-410</td>
+<tr><td>clickAt</td><td>id=usuario_oficina_id<datalist><option>id=usuario_oficina_id</option><option>name=usuario[oficina_id]</option><option>css=#usuario_oficina_id</option><option>//select[@id='usuario_oficina_id']</option><option>//div[@id='contacto']/div[5]/div/div/select</option><option>//div[5]/div/div/select</option></datalist></td><td>-51,-454</td>
 </tr>
-<tr><td>select</td><td>id=usuario_oficina_id<datalist><option>id=usuario_oficina_id</option><option>name=usuario[oficina_id]</option><option>css=#usuario_oficina_id</option><option>//select[@id='usuario_oficina_id']</option><option>//div[@id='contacto']/div[5]/div/div/select</option><option>//div[5]/div/div/select</option></datalist></td><td>label=PORTERÍA PISO 2</td>
+<tr><td>addSelection</td><td>id=usuario_sip_grupo_ids<datalist><option>id=usuario_sip_grupo_ids</option><option>css=#usuario_sip_grupo_ids</option><option>//select[@id='usuario_sip_grupo_ids']</option><option>//div[@id='contacto']/div[4]/div/div/select</option><option>//select</option></datalist></td><td>label=Comunicaciones</td>
 </tr>
-<tr><td>clickAt</td><td>id=usuario_oficina_id<datalist><option>id=usuario_oficina_id</option><option>name=usuario[oficina_id]</option><option>css=#usuario_oficina_id</option><option>//select[@id='usuario_oficina_id']</option><option>//div[@id='contacto']/div[5]/div/div/select</option><option>//div[5]/div/div/select</option></datalist></td><td>-83,-410</td>
+<tr><td>clickAt</td><td>css=option[value="1"]<datalist><option>css=option[value="1"]</option><option>//option[@value='1']</option><option>//select[@id='usuario_sip_grupo_ids']/option[2]</option><option>//option[2]</option></datalist></td><td>119,4</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_extension<datalist><option>id=usuario_extension</option><option>name=usuario[extension]</option><option>css=#usuario_extension</option><option>//input[@id='usuario_extension']</option><option>//div[@id='contacto']/div[5]/div[2]/div/input</option><option>//div[5]/div[2]/div/input</option></datalist></td><td>26,18</td>
+</tr>
+<tr><td>type</td><td>id=usuario_extension<datalist><option>id=usuario_extension</option><option>name=usuario[extension]</option><option>css=#usuario_extension</option><option>//input[@id='usuario_extension']</option><option>//div[@id='contacto']/div[5]/div[2]/div/input</option><option>//div[5]/div[2]/div/input</option></datalist></td><td>45634542-45</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_telefonos<datalist><option>id=usuario_telefonos</option><option>name=usuario[telefonos]</option><option>css=#usuario_telefonos</option><option>//input[@id='usuario_telefonos']</option><option>//div[@id='contacto']/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>85,24</td>
+</tr>
+<tr><td>type</td><td>id=usuario_telefonos<datalist><option>id=usuario_telefonos</option><option>name=usuario[telefonos]</option><option>css=#usuario_telefonos</option><option>//input[@id='usuario_telefonos']</option><option>//div[@id='contacto']/div[6]/div[2]/div/input</option><option>//div[6]/div[2]/div/input</option></datalist></td><td>4567456</td>
 </tr>
 <tr><td>runScript</td><td>$('[type=email]').removeAttr('type')<datalist><option>$('[type=email]').removeAttr('type')</option><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
 </tr>
-<tr><td>clickAt</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>css=#usuario_email</option><option>//input[@id='usuario_email']</option><option>//div[@id='contacto']/div[6]/div/div/input</option><option>//div[6]/div/div/input</option></datalist></td><td>82,16</td>
+<tr><td>clickAt</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>css=#usuario_email</option><option>//input[@id='usuario_email']</option><option>//div[@id='contacto']/div[6]/div/div/input</option><option>//div[6]/div/div/input</option></datalist></td><td>91,17</td>
 </tr>
-<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>css=#usuario_email</option><option>//input[@id='usuario_email']</option><option>//div[@id='contacto']/div[6]/div/div/input</option><option>//div[6]/div/div/input</option></datalist></td><td>aaace@aaa.org</td>
+<tr><td>type</td><td>id=usuario_email<datalist><option>id=usuario_email</option><option>name=usuario[email]</option><option>css=#usuario_email</option><option>//input[@id='usuario_email']</option><option>//div[@id='contacto']/div[6]/div/div/input</option><option>//div[6]/div/div/input</option></datalist></td><td>aaas@aaab.org</td>
 </tr>
-<tr><td>clickAt</td><td>link=Recursos TI<datalist><option>link=Recursos TI</option><option>//a[contains(text(),'Recursos TI')]</option><option>//form[@id='new_usuario']/article/div/div[2]/ul/li[6]/a</option><option>//a[contains(@href, '#ti')]</option><option>//div[2]/ul/li[6]/a</option></datalist></td><td>51,22</td>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">usuario-datos-personales</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_usuario']/article/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>79,20</td>
 </tr>
-<tr><td>clickAt</td><td>link=Datos de contacto<datalist><option>link=Datos de contacto</option><option>css=a.fichacambia</option><option>//a[contains(text(),'Datos de contacto')]</option><option>//form[@id='new_usuario']/article/div/div[2]/ul/li/a</option><option>//a[contains(@href, '#contacto')]</option><option>//article/div/div[2]/ul/li/a</option></datalist></td><td>90,27</td>
+<tr><td>clickAt</td><td>link=Datos personales<datalist><option>link=Datos personales</option><option>css=a.fichacambia.nav-link.active</option><option>//a[contains(text(),'Datos personales')]</option><option>//form[@id='new_usuario']/article/div/div[2]/ul/li[2]/a</option><option>//a[contains(@href, '#personales')]</option><option>//div[2]/ul/li[2]/a</option></datalist></td><td>80,26</td>
 </tr>
-<tr><td>clickAt</td><td>id=usuario_nusuario<datalist><option>id=usuario_nusuario</option><option>name=usuario[nusuario]</option><option>css=#usuario_nusuario</option><option>//input[@id='usuario_nusuario']</option><option>//div[@id='contacto']/div[2]/div/div/input</option><option>//div[2]/div/div/input</option></datalist></td><td>59,22</td>
+<tr><td>select</td><td>id=usuario_persona_attributes_tdocumento_id<datalist><option>id=usuario_persona_attributes_tdocumento_id</option><option>name=usuario[persona_attributes][tdocumento_id]</option><option>css=#usuario_persona_attributes_tdocumento_id</option><option>//select[@id='usuario_persona_attributes_tdocumento_id']</option><option>//div[@id='personales']/div/div/div/select</option><option>//div[2]/div/div/div/select</option></datalist></td><td>label=CÉDULA DE CIUDADANÍA</td>
 </tr>
-<tr><td>clickAt</td><td>link=Recursos TI<datalist><option>link=Recursos TI</option><option>//a[contains(text(),'Recursos TI')]</option><option>//form[@id='new_usuario']/article/div/div[2]/ul/li[6]/a</option><option>//a[contains(@href, '#ti')]</option><option>//div[2]/ul/li[6]/a</option></datalist></td><td>57,23</td>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_tdocumento_id<datalist><option>id=usuario_persona_attributes_tdocumento_id</option><option>name=usuario[persona_attributes][tdocumento_id]</option><option>css=#usuario_persona_attributes_tdocumento_id</option><option>//select[@id='usuario_persona_attributes_tdocumento_id']</option><option>//div[@id='personales']/div/div/div/select</option><option>//div[2]/div/div/div/select</option></datalist></td><td>-51,-230</td>
 </tr>
-<tr><td>clickAt</td><td>id=usuario_encrypted_password<datalist><option>id=usuario_encrypted_password</option><option>name=usuario[encrypted_password]</option><option>css=#usuario_encrypted_password</option><option>//input[@id='usuario_encrypted_password']</option><option>//div[@id='ti']/div/div/div/input</option><option>//div[6]/div/div/div/input</option></datalist></td><td>125,9</td>
+<tr><td>select</td><td>id=usuario_persona_attributes_anionac<datalist><option>id=usuario_persona_attributes_anionac</option><option>name=usuario[persona_attributes][anionac]</option><option>css=#usuario_persona_attributes_anionac</option><option>//select[@id='usuario_persona_attributes_anionac']</option><option>//div[@id='personales']/div[2]/div/div/select</option><option>//div[2]/div/div/select</option></datalist></td><td>label=1990</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_anionac<datalist><option>id=usuario_persona_attributes_anionac</option><option>name=usuario[persona_attributes][anionac]</option><option>css=#usuario_persona_attributes_anionac</option><option>//select[@id='usuario_persona_attributes_anionac']</option><option>//div[@id='personales']/div[2]/div/div/select</option><option>//div[2]/div/div/select</option></datalist></td><td>-51,-300</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_numerodocumento<datalist><option>id=usuario_persona_attributes_numerodocumento</option><option>name=usuario[persona_attributes][numerodocumento]</option><option>css=#usuario_persona_attributes_numerodocumento</option><option>//input[@id='usuario_persona_attributes_numerodocumento']</option><option>//div[@id='personales']/div/div[2]/div/input</option><option>//div[2]/div/div[2]/div/input</option></datalist></td><td>95,20</td>
+</tr>
+<tr><td>type</td><td>id=usuario_persona_attributes_numerodocumento<datalist><option>id=usuario_persona_attributes_numerodocumento</option><option>name=usuario[persona_attributes][numerodocumento]</option><option>css=#usuario_persona_attributes_numerodocumento</option><option>//input[@id='usuario_persona_attributes_numerodocumento']</option><option>//div[@id='personales']/div/div[2]/div/input</option><option>//div[2]/div/div[2]/div/input</option></datalist></td><td>43222243</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_lugardocumento<datalist><option>id=usuario_persona_attributes_lugardocumento</option><option>name=usuario[persona_attributes][lugardocumento]</option><option>css=#usuario_persona_attributes_lugardocumento</option><option>//input[@id='usuario_persona_attributes_lugardocumento']</option><option>//div[@id='personales']/div/div[3]/div/input</option><option>//div[3]/div/input</option></datalist></td><td>75,23</td>
+</tr>
+<tr><td>type</td><td>id=usuario_persona_attributes_lugardocumento<datalist><option>id=usuario_persona_attributes_lugardocumento</option><option>name=usuario[persona_attributes][lugardocumento]</option><option>css=#usuario_persona_attributes_lugardocumento</option><option>//input[@id='usuario_persona_attributes_lugardocumento']</option><option>//div[@id='personales']/div/div[3]/div/input</option><option>//div[3]/div/input</option></datalist></td><td>Bogota D.C</td>
+</tr>
+<tr><td>select</td><td>id=usuario_persona_attributes_mesnac<datalist><option>id=usuario_persona_attributes_mesnac</option><option>name=usuario[persona_attributes][mesnac]</option><option>css=#usuario_persona_attributes_mesnac</option><option>//select[@id='usuario_persona_attributes_mesnac']</option><option>//div[@id='personales']/div[2]/div[2]/div/select</option><option>//div[2]/div/select</option></datalist></td><td>label=ABRIL</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_mesnac<datalist><option>id=usuario_persona_attributes_mesnac</option><option>name=usuario[persona_attributes][mesnac]</option><option>css=#usuario_persona_attributes_mesnac</option><option>//select[@id='usuario_persona_attributes_mesnac']</option><option>//div[@id='personales']/div[2]/div[2]/div/select</option><option>//div[2]/div/select</option></datalist></td><td>-455,-300</td>
+</tr>
+<tr><td>select</td><td>id=usuario_persona_attributes_dianac<datalist><option>id=usuario_persona_attributes_dianac</option><option>name=usuario[persona_attributes][dianac]</option><option>css=#usuario_persona_attributes_dianac</option><option>//select[@id='usuario_persona_attributes_dianac']</option><option>//div[@id='personales']/div[2]/div[3]/div/select</option><option>//div[3]/div/select</option></datalist></td><td>label=12</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_dianac<datalist><option>id=usuario_persona_attributes_dianac</option><option>name=usuario[persona_attributes][dianac]</option><option>css=#usuario_persona_attributes_dianac</option><option>//select[@id='usuario_persona_attributes_dianac']</option><option>//div[@id='personales']/div[2]/div[3]/div/select</option><option>//div[3]/div/select</option></datalist></td><td>-860,-300</td>
+</tr>
+<tr><td>select</td><td>id=usuario_persona_attributes_sexo<datalist><option>id=usuario_persona_attributes_sexo</option><option>name=usuario[persona_attributes][sexo]</option><option>css=#usuario_persona_attributes_sexo</option><option>//select[@id='usuario_persona_attributes_sexo']</option><option>//div[@id='personales']/div[2]/div[4]/div/select</option><option>//div[4]/div/select</option></datalist></td><td>label=FEMENINO</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_sexo<datalist><option>id=usuario_persona_attributes_sexo</option><option>name=usuario[persona_attributes][sexo]</option><option>css=#usuario_persona_attributes_sexo</option><option>//select[@id='usuario_persona_attributes_sexo']</option><option>//div[@id='personales']/div[2]/div[4]/div/select</option><option>//div[4]/div/select</option></datalist></td><td>-51,-370</td>
+</tr>
+<tr><td>clickAt</td><td>//div[@id='personales']/div[3]<datalist><option>//div[@id='personales']/div[3]</option><option>//div[2]/div[3]</option></datalist></td><td>270,47</td>
+</tr>
+<tr><td>select</td><td>id=usuario_persona_attributes_id_pais<datalist><option>id=usuario_persona_attributes_id_pais</option><option>name=usuario[persona_attributes][id_pais]</option><option>css=#usuario_persona_attributes_id_pais</option><option>//select[@id='usuario_persona_attributes_id_pais']</option><option>//div[@id='personales']/div[3]/div/div/select</option><option>//div[3]/div/div/select</option></datalist></td><td>label=COLOMBIA</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_id_pais<datalist><option>id=usuario_persona_attributes_id_pais</option><option>name=usuario[persona_attributes][id_pais]</option><option>css=#usuario_persona_attributes_id_pais</option><option>//select[@id='usuario_persona_attributes_id_pais']</option><option>//div[@id='personales']/div[3]/div/div/select</option><option>//div[3]/div/div/select</option></datalist></td><td>252,18</td>
+</tr>
+<tr><td>select</td><td>id=usuario_persona_attributes_id_departamento<datalist><option>id=usuario_persona_attributes_id_departamento</option><option>name=usuario[persona_attributes][id_departamento]</option><option>css=#usuario_persona_attributes_id_departamento</option><option>//select[@id='usuario_persona_attributes_id_departamento']</option><option>//div[@id='personales']/div[3]/div[2]/div/select</option><option>//div[3]/div[2]/div/select</option></datalist></td><td>label=BOGOTÁ, D.C.</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_id_departamento<datalist><option>id=usuario_persona_attributes_id_departamento</option><option>name=usuario[persona_attributes][id_departamento]</option><option>css=#usuario_persona_attributes_id_departamento</option><option>//select[@id='usuario_persona_attributes_id_departamento']</option><option>//div[@id='personales']/div[3]/div[2]/div/select</option><option>//div[3]/div[2]/div/select</option></datalist></td><td>-354,-440</td>
+</tr>
+<tr><td>select</td><td>id=usuario_persona_attributes_id_municipio<datalist><option>id=usuario_persona_attributes_id_municipio</option><option>name=usuario[persona_attributes][id_municipio]</option><option>css=#usuario_persona_attributes_id_municipio</option><option>//select[@id='usuario_persona_attributes_id_municipio']</option><option>//div[@id='personales']/div[3]/div[3]/div/select</option><option>//div[3]/div[3]/div/select</option></datalist></td><td>label=BOGOTÁ, D.C.</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_id_municipio<datalist><option>id=usuario_persona_attributes_id_municipio</option><option>name=usuario[persona_attributes][id_municipio]</option><option>css=#usuario_persona_attributes_id_municipio</option><option>//select[@id='usuario_persona_attributes_id_municipio']</option><option>//div[@id='personales']/div[3]/div[3]/div/select</option><option>//div[3]/div[3]/div/select</option></datalist></td><td>-658,-440</td>
+</tr>
+<tr><td>select</td><td>id=usuario_persona_attributes_id_clase<datalist><option>id=usuario_persona_attributes_id_clase</option><option>name=usuario[persona_attributes][id_clase]</option><option>css=#usuario_persona_attributes_id_clase</option><option>//select[@id='usuario_persona_attributes_id_clase']</option><option>//div[@id='personales']/div[3]/div[4]/div/select</option><option>//div[3]/div[4]/div/select</option></datalist></td><td>label=BOGOTÁ, DISTRITO CAPITAL</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_persona_attributes_id_clase<datalist><option>id=usuario_persona_attributes_id_clase</option><option>name=usuario[persona_attributes][id_clase]</option><option>css=#usuario_persona_attributes_id_clase</option><option>//select[@id='usuario_persona_attributes_id_clase']</option><option>//div[@id='personales']/div[3]/div[4]/div/select</option><option>//div[3]/div[4]/div/select</option></datalist></td><td>-961,-440</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_direccionresidencia<datalist><option>id=usuario_direccionresidencia</option><option>name=usuario[direccionresidencia]</option><option>css=#usuario_direccionresidencia</option><option>//input[@id='usuario_direccionresidencia']</option><option>//div[@id='personales']/div[4]/div/div/input</option><option>//div[2]/div[4]/div/div/input</option></datalist></td><td>258,13</td>
+</tr>
+<tr><td>type</td><td>id=usuario_direccionresidencia<datalist><option>id=usuario_direccionresidencia</option><option>name=usuario[direccionresidencia]</option><option>css=#usuario_direccionresidencia</option><option>//input[@id='usuario_direccionresidencia']</option><option>//div[@id='personales']/div[4]/div/div/input</option><option>//div[2]/div[4]/div/div/input</option></datalist></td><td>calle 36 N. 45 -67</td>
+</tr>
+<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_numhijos<datalist><option>id=usuario_numhijos</option><option>name=usuario[numhijos]</option><option>css=#usuario_numhijos</option><option>//input[@id='usuario_numhijos']</option><option>//div[@id='personales']/div[4]/div[2]/div/input</option><option>//div[2]/div[4]/div[2]/div/input</option></datalist></td><td>33,19</td>
+</tr>
+<tr><td>type</td><td>id=usuario_numhijos<datalist><option>id=usuario_numhijos</option><option>name=usuario[numhijos]</option><option>css=#usuario_numhijos</option><option>//input[@id='usuario_numhijos']</option><option>//div[@id='personales']/div[4]/div[2]/div/input</option><option>//div[2]/div[4]/div[2]/div/input</option></datalist></td><td>5</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_numhijosmen12<datalist><option>id=usuario_numhijosmen12</option><option>name=usuario[numhijosmen12]</option><option>css=#usuario_numhijosmen12</option><option>//input[@id='usuario_numhijosmen12']</option><option>//div[@id='personales']/div[4]/div[3]/div/input</option><option>//div[4]/div[3]/div/input</option></datalist></td><td>34,24</td>
+</tr>
+<tr><td>type</td><td>id=usuario_numhijosmen12<datalist><option>id=usuario_numhijosmen12</option><option>name=usuario[numhijosmen12]</option><option>css=#usuario_numhijosmen12</option><option>//input[@id='usuario_numhijosmen12']</option><option>//div[@id='personales']/div[4]/div[3]/div/input</option><option>//div[4]/div[3]/div/input</option></datalist></td><td>3</td>
+</tr>
+<tr><td>select</td><td>id=usuario_niveleducacion_id<datalist><option>id=usuario_niveleducacion_id</option><option>name=usuario[niveleducacion_id]</option><option>css=#usuario_niveleducacion_id</option><option>//select[@id='usuario_niveleducacion_id']</option><option>//div[@id='personales']/div[5]/div/div/select</option><option>//div[2]/div[5]/div/div/select</option></datalist></td><td>label=ESPECIALIZACION</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_niveleducacion_id<datalist><option>id=usuario_niveleducacion_id</option><option>name=usuario[niveleducacion_id]</option><option>css=#usuario_niveleducacion_id</option><option>//select[@id='usuario_niveleducacion_id']</option><option>//div[@id='personales']/div[5]/div/div/select</option><option>//div[2]/div[5]/div/div/select</option></datalist></td><td>-51,-474</td>
+</tr>
+<tr><td>select</td><td>id=usuario_profesion_id<datalist><option>id=usuario_profesion_id</option><option>name=usuario[profesion_id]</option><option>css=#usuario_profesion_id</option><option>//select[@id='usuario_profesion_id']</option><option>//div[@id='personales']/div[5]/div[2]/div/select</option><option>//div[5]/div[2]/div/select</option></datalist></td><td>label=PERIODISMO</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_profesion_id<datalist><option>id=usuario_profesion_id</option><option>name=usuario[profesion_id]</option><option>css=#usuario_profesion_id</option><option>//select[@id='usuario_profesion_id']</option><option>//div[@id='personales']/div[5]/div[2]/div/select</option><option>//div[5]/div[2]/div/select</option></datalist></td><td>-455,-474</td>
+</tr>
+<tr><td>select</td><td>id=usuario_empresaps_id<datalist><option>id=usuario_empresaps_id</option><option>name=usuario[empresaps_id]</option><option>css=#usuario_empresaps_id</option><option>//select[@id='usuario_empresaps_id']</option><option>//div[@id='personales']/div[6]/div/div/select</option><option>//div[6]/div/div/select</option></datalist></td><td>label=FAMISANAR</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_empresaps_id<datalist><option>id=usuario_empresaps_id</option><option>name=usuario[empresaps_id]</option><option>css=#usuario_empresaps_id</option><option>//select[@id='usuario_empresaps_id']</option><option>//div[@id='personales']/div[6]/div/div/select</option><option>//div[6]/div/div/select</option></datalist></td><td>-51,-510</td>
+</tr>
+<tr><td>select</td><td>id=usuario_fondopensiones_id<datalist><option>id=usuario_fondopensiones_id</option><option>name=usuario[fondopensiones_id]</option><option>css=#usuario_fondopensiones_id</option><option>//select[@id='usuario_fondopensiones_id']</option><option>//div[@id='personales']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>label=COLFONDOS</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_fondopensiones_id<datalist><option>id=usuario_fondopensiones_id</option><option>name=usuario[fondopensiones_id]</option><option>css=#usuario_fondopensiones_id</option><option>//select[@id='usuario_fondopensiones_id']</option><option>//div[@id='personales']/div[6]/div[2]/div/select</option><option>//div[6]/div[2]/div/select</option></datalist></td><td>-455,-510</td>
+</tr>
+<tr><td>select</td><td>id=usuario_cajacompensacion_id<datalist><option>id=usuario_cajacompensacion_id</option><option>name=usuario[cajacompensacion_id]</option><option>css=#usuario_cajacompensacion_id</option><option>//select[@id='usuario_cajacompensacion_id']</option><option>//div[@id='personales']/div[6]/div[3]/div/select</option><option>//div[6]/div[3]/div/select</option></datalist></td><td>label=COLSUBSIDIO</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_cajacompensacion_id<datalist><option>id=usuario_cajacompensacion_id</option><option>name=usuario[cajacompensacion_id]</option><option>css=#usuario_cajacompensacion_id</option><option>//select[@id='usuario_cajacompensacion_id']</option><option>//div[@id='personales']/div[6]/div[3]/div/select</option><option>//div[6]/div[3]/div/select</option></datalist></td><td>-860,-510</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">usuario-contratacion-actual</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Contratación actual<datalist><option>link=Contratación actual</option><option>//a[contains(text(),'Contratación actual')]</option><option>//form[@id='new_usuario']/article/div/div[2]/ul/li[3]/a</option><option>//a[contains(@href, '#contactual')]</option><option>//div[2]/ul/li[3]/a</option></datalist></td><td>75,16</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_contrato_attributes_numero<datalist><option>id=usuario_contrato_attributes_numero</option><option>name=usuario[contrato_attributes][numero]</option><option>css=#usuario_contrato_attributes_numero</option><option>//input[@id='usuario_contrato_attributes_numero']</option><option>//div[@id='contactual']/div/div/div/input</option><option>//div[4]/div/div/div/input</option></datalist></td><td>123,14</td>
+</tr>
+<tr><td>type</td><td>id=usuario_contrato_attributes_numero<datalist><option>id=usuario_contrato_attributes_numero</option><option>name=usuario[contrato_attributes][numero]</option><option>css=#usuario_contrato_attributes_numero</option><option>//input[@id='usuario_contrato_attributes_numero']</option><option>//div[@id='contactual']/div/div/div/input</option><option>//div[4]/div/div/div/input</option></datalist></td><td>435643</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_contrato_attributes_fechaini_localizada<datalist><option>id=usuario_contrato_attributes_fechaini_localizada</option><option>name=usuario[contrato_attributes][fechaini_localizada]</option><option>css=#usuario_contrato_attributes_fechaini_localizada</option><option>//input[@id='usuario_contrato_attributes_fechaini_localizada']</option><option>//div[@id='contactual']/div/div[2]/div/input</option><option>//div[4]/div/div[2]/div/input</option></datalist></td><td>40,25</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>74,6</td>
+</tr>
+<tr><td>clickAt</td><td>css=span.month<datalist><option>css=span.month</option><option>//td/span</option></datalist></td><td>20,20</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[2]/td[2]<datalist><option>//tr[2]/td[2]</option></datalist></td><td>15,7</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_contrato_attributes_fechafin_localizada<datalist><option>id=usuario_contrato_attributes_fechafin_localizada</option><option>name=usuario[contrato_attributes][fechafin_localizada]</option><option>css=#usuario_contrato_attributes_fechafin_localizada</option><option>//input[@id='usuario_contrato_attributes_fechafin_localizada']</option><option>//div[@id='contactual']/div/div[3]/div/input</option><option>//div[4]/div/div[3]/div/input</option></datalist></td><td>43,2</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>68,13</td>
+</tr>
+<tr><td>clickAt</td><td>//span[12]<datalist><option>//span[12]</option></datalist></td><td>18,21</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[5]/td[5]<datalist><option>//tr[5]/td[5]</option></datalist></td><td>2,8</td>
+</tr>
+<tr><td>select</td><td>id=usuario_contrato_attributes_tipocontrato_id<datalist><option>id=usuario_contrato_attributes_tipocontrato_id</option><option>name=usuario[contrato_attributes][tipocontrato_id]</option><option>css=#usuario_contrato_attributes_tipocontrato_id</option><option>//select[@id='usuario_contrato_attributes_tipocontrato_id']</option><option>//div[@id='contactual']/div[2]/div/div/select</option><option>//div[4]/div[2]/div/div/select</option></datalist></td><td>label=CONTRATO DE APRENDIZAJE</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_contrato_attributes_tipocontrato_id<datalist><option>id=usuario_contrato_attributes_tipocontrato_id</option><option>name=usuario[contrato_attributes][tipocontrato_id]</option><option>css=#usuario_contrato_attributes_tipocontrato_id</option><option>//select[@id='usuario_contrato_attributes_tipocontrato_id']</option><option>//div[@id='contactual']/div[2]/div/div/select</option><option>//div[4]/div[2]/div/div/select</option></datalist></td><td>-51,-300</td>
+</tr>
+<tr><td>select</td><td>id=usuario_cargo_id<datalist><option>id=usuario_cargo_id</option><option>name=usuario[cargo_id]</option><option>css=#usuario_cargo_id</option><option>//select[@id='usuario_cargo_id']</option><option>//div[@id='contactual']/div[2]/div[2]/div/select</option><option>//div[4]/div[2]/div[2]/div/select</option></datalist></td><td>label=AUXILIAR DE CONTABILIDAD</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_cargo_id<datalist><option>id=usuario_cargo_id</option><option>name=usuario[cargo_id]</option><option>css=#usuario_cargo_id</option><option>//select[@id='usuario_cargo_id']</option><option>//div[@id='contactual']/div[2]/div[2]/div/select</option><option>//div[4]/div[2]/div[2]/div/select</option></datalist></td><td>-455,-300</td>
+</tr>
+<tr><td>select</td><td>id=usuario_perfilprofesional_id<datalist><option>id=usuario_perfilprofesional_id</option><option>name=usuario[perfilprofesional_id]</option><option>css=#usuario_perfilprofesional_id</option><option>//select[@id='usuario_perfilprofesional_id']</option><option>//div[@id='contactual']/div[2]/div[3]/div/select</option><option>//div[4]/div[2]/div[3]/div/select</option></datalist></td><td>label=ANALISTA 1</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_perfilprofesional_id<datalist><option>id=usuario_perfilprofesional_id</option><option>name=usuario[perfilprofesional_id]</option><option>css=#usuario_perfilprofesional_id</option><option>//select[@id='usuario_perfilprofesional_id']</option><option>//div[@id='contactual']/div[2]/div[3]/div/select</option><option>//div[4]/div[2]/div[3]/div/select</option></datalist></td><td>-860,-300</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_contrato_attributes_salario<datalist><option>id=usuario_contrato_attributes_salario</option><option>name=usuario[contrato_attributes][salario]</option><option>css=#usuario_contrato_attributes_salario</option><option>//input[@id='usuario_contrato_attributes_salario']</option><option>//div[@id='contactual']/div[3]/div/div/input</option><option>//div[4]/div[3]/div/div/input</option></datalist></td><td>191,20</td>
+</tr>
+<tr><td>runScript</td><td>$('[type=number]').removeAttr('type')<datalist><option>$('[type=number]').removeAttr('type')</option><option>$('#rangoedad_limiteinferior').removeAttr('type')</option><option>$('#pais_codiso').removeAttr('type')</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=usuario_contrato_attributes_salario<datalist><option>id=usuario_contrato_attributes_salario</option><option>name=usuario[contrato_attributes][salario]</option><option>css=#usuario_contrato_attributes_salario</option><option>//input[@id='usuario_contrato_attributes_salario']</option><option>//div[@id='contactual']/div[3]/div/div/input</option><option>//div[4]/div[3]/div/div/input</option></datalist></td><td>1000000</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_contrato_attributes_salarioanterior<datalist><option>id=usuario_contrato_attributes_salarioanterior</option><option>name=usuario[contrato_attributes][salarioanterior]</option><option>css=#usuario_contrato_attributes_salarioanterior</option><option>//input[@id='usuario_contrato_attributes_salarioanterior']</option><option>//div[@id='contactual']/div[3]/div[2]/div/input</option><option>//div[4]/div[3]/div[2]/div/input</option></datalist></td><td>39,15</td>
+</tr>
+<tr><td>type</td><td>id=usuario_contrato_attributes_salarioanterior<datalist><option>id=usuario_contrato_attributes_salarioanterior</option><option>name=usuario[contrato_attributes][salarioanterior]</option><option>css=#usuario_contrato_attributes_salarioanterior</option><option>//input[@id='usuario_contrato_attributes_salarioanterior']</option><option>//div[@id='contactual']/div[3]/div[2]/div/input</option><option>//div[4]/div[3]/div[2]/div/input</option></datalist></td><td>950000</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_contrato_attributes_ciudadresidencia<datalist><option>id=usuario_contrato_attributes_ciudadresidencia</option><option>name=usuario[contrato_attributes][ciudadresidencia]</option><option>css=#usuario_contrato_attributes_ciudadresidencia</option><option>//input[@id='usuario_contrato_attributes_ciudadresidencia']</option><option>//div[@id='contactual']/div[4]/div/div/input</option><option>//div[4]/div[4]/div/div/input</option></datalist></td><td>85,23</td>
+</tr>
+<tr><td>type</td><td>id=usuario_contrato_attributes_ciudadresidencia<datalist><option>id=usuario_contrato_attributes_ciudadresidencia</option><option>name=usuario[contrato_attributes][ciudadresidencia]</option><option>css=#usuario_contrato_attributes_ciudadresidencia</option><option>//input[@id='usuario_contrato_attributes_ciudadresidencia']</option><option>//div[@id='contactual']/div[4]/div/div/input</option><option>//div[4]/div[4]/div/div/input</option></datalist></td><td>Bogota</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_contrato_attributes_ciudadlabora<datalist><option>id=usuario_contrato_attributes_ciudadlabora</option><option>name=usuario[contrato_attributes][ciudadlabora]</option><option>css=#usuario_contrato_attributes_ciudadlabora</option><option>//input[@id='usuario_contrato_attributes_ciudadlabora']</option><option>//div[@id='contactual']/div[4]/div[2]/div/input</option><option>//div[4]/div[4]/div[2]/div/input</option></datalist></td><td>76,21</td>
+</tr>
+<tr><td>type</td><td>id=usuario_contrato_attributes_ciudadlabora<datalist><option>id=usuario_contrato_attributes_ciudadlabora</option><option>name=usuario[contrato_attributes][ciudadlabora]</option><option>css=#usuario_contrato_attributes_ciudadlabora</option><option>//input[@id='usuario_contrato_attributes_ciudadlabora']</option><option>//div[@id='contactual']/div[4]/div[2]/div/input</option><option>//div[4]/div[4]/div[2]/div/input</option></datalist></td><td>Bogota</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_contrato_attributes_tiponomina<datalist><option>id=usuario_contrato_attributes_tiponomina</option><option>name=usuario[contrato_attributes][tiponomina]</option><option>css=#usuario_contrato_attributes_tiponomina</option><option>//input[@id='usuario_contrato_attributes_tiponomina']</option><option>//div[@id='contactual']/div[5]/div[2]/div/input</option><option>//div[4]/div[5]/div[2]/div/input</option></datalist></td><td>148,19</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">usuario-vinculaciones-anteriores</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Vinculaciones anteriores<datalist><option>link=Vinculaciones anteriores</option><option>//a[contains(text(),'Vinculaciones anteriores')]</option><option>//form[@id='new_usuario']/article/div/div[2]/ul/li[4]/a</option><option>//a[contains(@href, '#vinculaciones')]</option><option>//li[4]/a</option></datalist></td><td>128,18</td>
+</tr>
+<tr><td>clickAt</td><td>link=Añadir Vinculación<datalist><option>link=Añadir Vinculación</option><option>css=a.btn-primary.add_fields</option><option>//a[contains(text(),'Añadir Vinculación')]</option><option>//div[@id='vinculaciones']/div/a</option><option>xpath=(//a[contains(@href, '#')])[12]</option><option>//div[3]/div/a</option></datalist></td><td>79,7</td>
+</tr>
+<tr><td>clickAt</td><td>//td/div/input<datalist><option>id=usuario_vinculacion_attributes_1623796574455_fechaini_localizada</option><option>name=usuario[vinculacion_attributes][1623796574455][fechaini_localizada]</option><option>css=#usuario_vinculacion_attributes_1623796574455_fechaini_localizada</option><option>//input[@id='usuario_vinculacion_attributes_1623796574455_fechaini_localizada']</option><option>//tbody[@id='vinculaciones']/tr/td/div/input</option><option>//td/div/input</option></datalist></td><td>145,17</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>47,1</td>
+</tr>
+<tr><td>clickAt</td><td>css=span.month<datalist><option>css=span.month</option><option>//td/span</option></datalist></td><td>32,30</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[2]/td[2]<datalist><option>//tr[2]/td[2]</option></datalist></td><td>21,14</td>
+</tr>
+<tr><td>clickAt</td><td>//td[2]/div/input<datalist><option>id=usuario_vinculacion_attributes_1623796574455_fechafin_localizada</option><option>name=usuario[vinculacion_attributes][1623796574455][fechafin_localizada]</option><option>css=#usuario_vinculacion_attributes_1623796574455_fechafin_localizada</option><option>//input[@id='usuario_vinculacion_attributes_1623796574455_fechafin_localizada']</option><option>//tbody[@id='vinculaciones']/tr/td[2]/div/input</option><option>//td[2]/div/input</option></datalist></td><td>92,28</td>
+</tr>
+<tr><td>clickAt</td><td>css=th.datepicker-switch<datalist><option>css=th.datepicker-switch</option><option>//tr[2]/th[2]</option></datalist></td><td>86,13</td>
+</tr>
+<tr><td>clickAt</td><td>//span[12]<datalist><option>//span[12]</option></datalist></td><td>20,32</td>
+</tr>
+<tr><td>clickAt</td><td>//tr[5]/td[5]<datalist><option>//tr[5]/td[5]</option></datalist></td><td>9,13</td>
+</tr>
+<tr><td>clickAt</td><td>//td[3]/div/input<datalist><option>id=usuario_vinculacion_attributes_1623796574455_observaciones</option><option>name=usuario[vinculacion_attributes][1623796574455][observaciones]</option><option>css=#usuario_vinculacion_attributes_1623796574455_observaciones</option><option>//input[@id='usuario_vinculacion_attributes_1623796574455_observaciones']</option><option>//tbody[@id='vinculaciones']/tr/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td>43,22</td>
+</tr>
+<tr><td>type</td><td>//td[3]/div/input<datalist><option>id=usuario_vinculacion_attributes_1623796574455_observaciones</option><option>name=usuario[vinculacion_attributes][1623796574455][observaciones]</option><option>css=#usuario_vinculacion_attributes_1623796574455_observaciones</option><option>//input[@id='usuario_vinculacion_attributes_1623796574455_observaciones']</option><option>//tbody[@id='vinculaciones']/tr/td[3]/div/input</option><option>//td[3]/div/input</option></datalist></td><td>Muy buena empleada</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">usuario-anexos</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_usuario']/article/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>79,20</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">usuario-recursos-ti</td></tr>
+</thead>
+<tbody>
+<tr><td>clickAt</td><td>link=Recursos TI<datalist><option>link=Recursos TI</option><option>//a[contains(text(),'Recursos TI')]</option><option>//form[@id='new_usuario']/article/div/div[2]/ul/li[6]/a</option><option>//a[contains(@href, '#ti')]</option><option>//li[6]/a</option></datalist></td><td>70,17</td>
+</tr>
+<tr><td>clickAt</td><td>id=usuario_encrypted_password<datalist><option>id=usuario_encrypted_password</option><option>name=usuario[encrypted_password]</option><option>css=#usuario_encrypted_password</option><option>//input[@id='usuario_encrypted_password']</option><option>//div[@id='ti']/div/div/div/input</option><option>//div[6]/div/div/div/input</option></datalist></td><td>110,9</td>
 </tr>
 <tr><td>type</td><td>id=usuario_encrypted_password<datalist><option>id=usuario_encrypted_password</option><option>name=usuario[encrypted_password]</option><option>css=#usuario_encrypted_password</option><option>//input[@id='usuario_encrypted_password']</option><option>//div[@id='ti']/div/div/div/input</option><option>//div[6]/div/div/div/input</option></datalist></td><td>aaa</td>
 </tr>
-<tr><td>clickAt</td><td>id=usuario_no_modificar_ldap<datalist><option>id=usuario_no_modificar_ldap</option><option>css=#usuario_no_modificar_ldap</option><option>//input[@id='usuario_no_modificar_ldap']</option><option>//div[@id='ti']/div[2]/div[2]/div/label/input</option><option>//label/input</option></datalist></td><td>278,4</td>
+<tr><td>select</td><td>id=usuario_rol<datalist><option>id=usuario_rol</option><option>name=usuario[rol]</option><option>css=#usuario_rol</option><option>//select[@id='usuario_rol']</option><option>//div[@id='ti']/div/div[2]/div/select</option><option>//div[6]/div/div[2]/div/select</option></datalist></td><td>label=Directivo</td>
 </tr>
-<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_usuario']/article/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>89,16</td>
+<tr><td>clickAt</td><td>id=usuario_rol<datalist><option>id=usuario_rol</option><option>name=usuario[rol]</option><option>css=#usuario_rol</option><option>//select[@id='usuario_rol']</option><option>//div[@id='ti']/div/div[2]/div/select</option><option>//div[6]/div/div[2]/div/select</option></datalist></td><td>-658,-405</td>
 </tr>
-<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuario</td>
+<tr><td>clickAt</td><td>id=usuario_no_modificar_ldap<datalist><option>id=usuario_no_modificar_ldap</option><option>css=#usuario_no_modificar_ldap</option><option>//input[@id='usuario_no_modificar_ldap']</option><option>//div[@id='ti']/div[2]/div[2]/div/label/input</option><option>//label/input</option></datalist></td><td>276,4</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_usuario']/article/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>93,30</td>
 </tr>
 </tbody></table>
 </body>
