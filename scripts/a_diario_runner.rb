@@ -180,8 +180,8 @@ def alertas_deshabilita_usuarios
     where('contrato.fechafin <= ?', $hoymasdiassobrecuatro).each do |u|
     mensaje = "Se deshabilitará el #{u.contrato.fechafin}. Si no debe deshabilitarse cambie la fecha de terminación de contrato (si es a termino indefinido dejala en blaco)".html_safe
     puts "#{u.nusuario} #{mensaje}"
-    envia_alerta_usuario_des(u.nusuario, u.nombres, u.apellidos, 
-                             u.contrato.fechafin_localizada, [mensaje])
+#    envia_alerta_usuario_des(u.nusuario, u.nombres, u.apellidos, 
+#                             u.contrato.fechafin_localizada, [mensaje])
   end
 
 end
