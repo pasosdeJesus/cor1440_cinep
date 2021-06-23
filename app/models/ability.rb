@@ -487,7 +487,7 @@ class Ability  < Cor1440Gen::Ability
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Efecto
           #can :index, Cor1440Gen::Mindicadorpf
-          can :manage, Cor1440Gen::Mindicadorpf
+          can :read, Cor1440Gen::Mindicadorpf
 
           can :read, ::Acp
           #can :index, :exploradordatosrel
