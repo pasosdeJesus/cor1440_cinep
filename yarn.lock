@@ -1333,8 +1333,8 @@
     d3-scale "^3.2.3"
 
 "@pasosdejesus/mapa_tiempo_yi_liu@github:pasosdeJesus/mapa_tiempo_yi_liu":
-  version "0.3.6"
-  resolved "https://codeload.github.com/pasosdeJesus/mapa_tiempo_yi_liu/tar.gz/4f73d4276446777a78e4bbecb6608bee78481732"
+  version "0.3.9"
+  resolved "https://codeload.github.com/pasosdeJesus/mapa_tiempo_yi_liu/tar.gz/467b75b40c5975e376776bf37b938dbf437ce8b1"
   dependencies:
     "@ctrl/tinycolor" "3.1.4"
     "@popperjs/core" "^2.9.2"
@@ -4983,12 +4983,7 @@ react-simple-maps@^2.3.0:
     d3-zoom "^2.0.0"
     topojson-client "^3.1.0"
 
-react-table@^7.2.2:
-  version "7.6.2"
-  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.6.2.tgz#b60932fa6d457c2bca0da49815cd6a8fe9451f77"
-  integrity sha512-urwNZTieb+xg/+BITUIrqdH5jZfJlw7rKVAAq25iXpBPwbQojLCEKJuGycLbVwn8fzU+Ovly3y8HHNaLNrPCvQ==
-
-react-table@^7.7.0:
+react-table@^7.2.2, react-table@^7.7.0:
   version "7.7.0"
   resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.7.0.tgz#e2ce14d7fe3a559f7444e9ecfe8231ea8373f912"
   integrity sha512-jBlj70iBwOTvvImsU9t01LjFjy4sXEtclBovl3mTiqjz23Reu0DKnRza4zlLtOPACx6j2/7MrQIthIK1Wi+LIA==
