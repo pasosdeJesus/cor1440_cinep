@@ -740,7 +740,8 @@ module Cor1440Gen
         current_usuario.rol != ::Ability::ROLDIR &&
         current_usuario.rol != ::Ability::ROLADMIN
         registros = registros.where(
-          "id IN (SELECT proyectofinanciero_id FROM grupo_proyectofinanciero " +
+          "cor1440_gen_proyectofinanciero.id IN (" +
+          "SELECT proyectofinanciero_id FROM grupo_proyectofinanciero " +
           " WHERE grupo_id IN (#{mgi}))")
       end
       return registros.reorder([:estado, :referenciacinep, :id])

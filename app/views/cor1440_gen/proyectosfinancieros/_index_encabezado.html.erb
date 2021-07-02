@@ -1,10 +1,9 @@
 <div class="row">
   <div class="col-sm-3">
-      <% ng = (!genclase.nil? && genclase == 'F') ? 'Nueva' : 'Nuevo' %>
-      <% if @registros.size > 5 && can?(:new, clase.constantize)%>
-        <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
-          new_modelo_path(@registros), class: 'btn btn-primary' 
-        %>
+    <% ng = (!genclase.nil? && genclase == 'F') ? 'Nueva' : 'Nuevo' %>
+    <% if @registros.size > 5 && can?(:new, clase.constantize) %>
+      <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
+        new_modelo_path(@registros), class: 'btn btn-primary' %>
     <% end %>
   </div>
   <div class="col-sm-3">

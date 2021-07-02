@@ -509,8 +509,8 @@ class Ability  < Cor1440Gen::Ability
               (SELECT proyectofinanciero_id FROM 
                 (SELECT proyectofinanciero_id, COUNT(grupo_id) FROM 
                   grupo_proyectofinanciero WHERE proyectofinanciero_id 
-                  IN (select proyectofinanciero_id from 
-                  grupo_proyectofinanciero where grupo_id IN (?)) GROUP BY 1) 
+                  IN (SELECT proyectofinanciero_id FROM 
+                  grupo_proyectofinanciero WHERE grupo_id IN (?)) GROUP BY 1) 
                 AS sub WHERE sub.count=1)', idlineas)
           can [:edit, :update], pc
           can [:edit], Cor1440Gen::Indicadorpf
@@ -532,7 +532,8 @@ class Ability  < Cor1440Gen::Ability
         end
  
         # Responsables de un proyecto también pueden editar marco lógico
-        pc = ::Cor1440Gen::Proyectofinanciero.where('id IN
+        pc = ::Cor1440Gen::Proyectofinanciero.where(
+          'cor1440_gen_proyectofinanciero.id IN
           (SELECT proyectofinanciero_id FROM proyectofinanciero_uresponsable
             WHERE uresponsable_id=?)', usuario.id)
         if pc.count > 0
