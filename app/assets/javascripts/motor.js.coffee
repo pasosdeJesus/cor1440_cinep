@@ -261,10 +261,8 @@ PUBLICACIONPRODUCTO_ID="322"
     )
     if acids.includes(PUBLICACIONPRODUCTO_ID)
       $('#tarjeta-publicacion-producto').show()
-      $('.actividad_publicacion').hide()
     else
       $('#tarjeta-publicacion-producto').hide()
-      $('.actividad_publicacion').show()
   )
 
   $('#actividad_mujeres').change( (e) ->
