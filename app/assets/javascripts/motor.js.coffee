@@ -5,6 +5,8 @@
 #//= require cocoon
 
 
+PUBLICACIONPRODUCTO_ID="322"
+
 @establece_duracion = (root, obdur) ->
   $('#proyectofinanciero_duracion').val(obdur.duracion)
 
@@ -245,6 +247,24 @@
 
   $('#actividad_actividadpf_ids').chosen().change( (e) ->
     cor1440_gen_actividad_actualiza_camposdinamicos2(root)
+  )
+
+  # Manejo especial de publicación de un producto
+  # Si tiene tipo de actividad publicación de un producto presenta
+  # campos de formulario de publicación y esconde publicaciones usadas
+  $(document).on('change', 'select[id^=actividad_actividad_proyectofinanciero_attributes_][id$=actividadpf_ids]', (e, res) ->
+    acids = ['']
+    $('select[id^=actividad_actividad_proyectofinanciero_attributes_][id$=_actividadpf_ids]').each( () -> 
+      t = $(this)
+      if t.parent().parent().parent().not(':hidden').length > 0
+        acids = acids.concat(t.val())
+    )
+    if acids.includes(PUBLICACIONPRODUCTO_ID)
+      $('#tarjeta-publicacion-producto').show()
+      $('.actividad_publicacion').hide()
+    else
+      $('#tarjeta-publicacion-producto').hide()
+      $('.actividad_publicacion').show()
   )
 
   $('#actividad_mujeres').change( (e) ->

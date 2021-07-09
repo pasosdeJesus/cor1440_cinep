@@ -162,12 +162,11 @@ module Cor1440Gen
           params[:actividad].delete(:observacionesdir)
         end
         params[:actividad][:oficina_id] = 1
-      end
-      if @registro.lanzapublicacion
-        if !@registro.lanzapublicacion.created_at
-          params[:actividad][:lanzapublicacion_attributes][:created_at] = Date.today
+        if params[:actividad][:publicacionproducto_attributes] &&
+            !params[:actividad][:publicacionproducto_attributes][:nombre].nil? &&
+            params[:actividad][:publicacionproducto_attributes][:nombre].strip == ''
+          params[:actividad].delete(:publicacionproducto_attributes)
         end
-        params[:actividad][:lanzapublicacion_attributes][:updated_at] = Date.today
       end
       recalcula_misgrupos(current_usuario, @registro)
       update_gen
@@ -464,7 +463,7 @@ module Cor1440Gen
           :contexto
         ],
         :grupo_ids => [],
-        :lanzapublicacion_attributes => lpub,
+        :publicacionproducto_attributes => lpub,
         :objetivopf_ids => [],
         :otronucleoconflicto_ids => [],
         :proyecto_ids => [],

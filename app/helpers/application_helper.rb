@@ -3,6 +3,12 @@
 module ApplicationHelper
   include Sip::ConsultasHelper
 
+  CLASIFICACIONCONV = [['EN EL MARCO DE UN CONVENIO', :E], 
+                       ['NIVEL INTERINSTITUCIONAL', :I]]
+  DIFICULTAD = [['BAJA', :B], ['MEDIA', :M], 
+                ['ALTA', :A], ['N/A', :N]]
+
+
   # Las letras escogidas para cada estado están en orden para facilitar presentar
   # en ese orden
   ESTADO = [
@@ -17,12 +23,8 @@ module ApplicationHelper
 
   ESTADOS_APROBADO = [:C, :J, :K, :M]
 
-  DIFICULTAD = [['BAJA', :B], ['MEDIA', :M], 
-                ['ALTA', :A], ['N/A', :N]]
-
-  CLASIFICACIONCONV = [['EN EL MARCO DE UN CONVENIO', :E], 
-                       ['NIVEL INTERINSTITUCIONAL', :I]]
-
+  # id en actividadpf que corresponde a publicación de un producto
+  PRODUCTOPUBLICACION_ID = 322
 
   # Debe remplazarse uso de campotind en tipoindicador por formulario
   TIPO_CAMPODIN = [ ['Texto', 1],

@@ -1443,7 +1443,7 @@ CREATE TABLE public.cor1440_gen_actividad (
     rangoedad_onr integer,
     campesinos integer,
     sectorsocial_onr integer,
-    lanzapublicacion_id integer
+    publicacionproducto_id integer
 );
 
 
@@ -8930,10 +8930,10 @@ CREATE UNIQUE INDEX index_comunicado_on_nombre ON public.comunicado USING btree 
 
 
 --
--- Name: index_cor1440_gen_actividad_on_lanzapublicacion_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_cor1440_gen_actividad_on_publicacionproducto_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_cor1440_gen_actividad_on_lanzapublicacion_id ON public.cor1440_gen_actividad USING btree (lanzapublicacion_id);
+CREATE INDEX index_cor1440_gen_actividad_on_publicacionproducto_id ON public.cor1440_gen_actividad USING btree (publicacionproducto_id);
 
 
 --
@@ -9190,14 +9190,6 @@ ALTER TABLE ONLY public.actor_sectoractor
 
 ALTER TABLE ONLY public.actor_efecto
     ADD CONSTRAINT fk_rails_043ee8d6b5 FOREIGN KEY (actor_id) REFERENCES public.actor(id);
-
-
---
--- Name: cor1440_gen_actividad fk_rails_0456ca7c9c; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.cor1440_gen_actividad
-    ADD CONSTRAINT fk_rails_0456ca7c9c FOREIGN KEY (lanzapublicacion_id) REFERENCES public.publicacion(id);
 
 
 --
@@ -10577,6 +10569,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_actividadpf
 
 
 --
+-- Name: cor1440_gen_actividad fk_rails_bb6ab743a2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividad
+    ADD CONSTRAINT fk_rails_bb6ab743a2 FOREIGN KEY (publicacionproducto_id) REFERENCES public.publicacion(id);
+
+
+--
 -- Name: usuario fk_rails_bc35a29f9e; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -11854,6 +11854,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210619191706'),
 ('20210622232007'),
 ('20210707173659'),
-('20210709020014');
+('20210709020014'),
+('20210709123645');
 
 

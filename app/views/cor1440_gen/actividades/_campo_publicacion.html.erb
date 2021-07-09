@@ -1,7 +1,15 @@
+<% estilopresenta = '' %>
+<% if f.object && f.object.actividadpf_ids &&  
+    f.object.actividadpf_ids.include?(ApplicationHelper::PRODUCTOPUBLICACION_ID) %>
+  <% estilopresenta = 'display: none' %>
+<% end %>
 <%= f.association :publicacion, 
   collection: ::Publicacion.order(:nombre),
   label: "Productos CINEP/PPP usados",
   label_method: :nombre, 
   value_method: :id,
-  input_html: { class: 'chosen-select' }
+  input_html: { 
+    class: 'chosen-select',
+    style: estilopresenta
+  }
 %>
