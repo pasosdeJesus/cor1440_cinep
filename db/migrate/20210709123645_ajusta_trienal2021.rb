@@ -65,7 +65,7 @@ class AjustaTrienal2021 < ActiveRecord::Migration[6.1]
 
         INSERT INTO cor1440_gen_indicadorpf (id, proyectofinanciero_id,
           numero, indicador, tipoindicador_id, objetivopf_id)
-          VALUES (73, 21, 'I2.3', 'Nuevo (9) revistas Cien Dias, que analizan la coyontura nacional y regional del país.', 1, 40);
+          VALUES (73, 21, 'I2.3', 'Nueve (9) revistas Cien Dias, que analizan la coyontura nacional y regional del país.', 1, 40);
 
 
     SQL
