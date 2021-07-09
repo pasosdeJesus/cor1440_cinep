@@ -12,9 +12,9 @@ class Publicacion < ActiveRecord::Base
   campofecha_localizado :updated_at
 
   # Actividad donde se lanza
-  has_one :actividadlanzamiento,
+  has_one :actividadpublicacionproducto,
     class_name: 'Cor1440Gen::Actividad',
-    foreign_key: 'lanzapublicacion_id'
+    foreign_key: 'publicacionproducto_id'
 
 
     # Actividades donde se usa

@@ -13,9 +13,9 @@ module Cor1440Gen
     belongs_to :creadopor, class_name: '::Usuario',
       foreign_key: 'creadopor_id', optional: true
 
-    belongs_to :lanzapublicacion, class_name: '::Publicacion', 
-      foreign_key: 'lanzapublicacion_id', optional: true
-    accepts_nested_attributes_for :lanzapublicacion
+    belongs_to :publicacionproducto, class_name: '::Publicacion', 
+      foreign_key: 'publicacionproducto_id', optional: true
+    accepts_nested_attributes_for :publicacionproducto
 
     belongs_to :departamento, class_name: 'Sip::Departamento', optional: true
     belongs_to :municipio, class_name: 'Sip::Municipio', optional: true

@@ -1,0 +1,24 @@
+<% estilopresenta = 'display: none' %> <% if f.object && f.object.actividadpf_ids &&  f.object.actividadpf_ids.include?(ApplicationHelper::PRODUCTOPUBLICACION_ID) %> <% estilopresenta = '' %>
+<% end %>
+<div class="card" id="tarjeta-publicacion-producto" 
+            style='<%= estilopresenta %>'>
+  <h6 class="card-header text-center">Publicación de un Producto</h5>
+  <div class="card-body">
+
+    <% if !f.object.publicacionproducto %>
+      <% f.object.publicacionproducto = ::Publicacion.new %>
+    <% end %>
+    <%= f.fields_for :publicacionproducto do |fpub|%>
+      <% @registro = fpub.object %>
+      <% tc = ::PublicacionesController.new %>
+      <% # f.template.controller es ActividadesController%>
+      <% @atributos_form = tc.atributos_form %>
+      <%= fpub.input :id, as: :hidden %>
+      <% @atributos_form.each do |atr| %>
+        <%= render partial: "sip/modelos/sip_campo_aut", 
+          locals: { f: fpub, atr: atr} %>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>
