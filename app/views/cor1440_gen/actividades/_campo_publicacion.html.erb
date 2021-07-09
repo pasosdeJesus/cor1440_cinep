@@ -1,5 +1,5 @@
 <%= f.association :publicacion, 
-  collection: ::Publicacion.habilitados,
+  collection: ::Publicacion.order(:nombre),
   label: "Productos CINEP/PPP usados",
   label_method: :nombre, 
   value_method: :id,

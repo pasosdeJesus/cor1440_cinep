@@ -28,6 +28,10 @@ Rails.application.routes.draw do
       controller: 'usuarios',
       path_names: { new: 'nuevo', edit: 'edita' }
 
+    resources :publicaciones, 
+      controller: 'publicaciones',
+      path_names: { new: 'nueva', edit: 'edita' }
+
     resources :acps,
       path_names: { new: 'nueva', edit: 'edita' }
 
@@ -143,7 +147,6 @@ Rails.application.routes.draw do
     root 'sip/hogar#index'
   end
   mount Cor1440Gen::Engine, at: "/", as: "cor1440_gen"
-  mount Sal7711Ld::Engine, at: "/", as: "sal7711_ld"
   mount Jn316Gen::Engine, at: "/", as: "jn316_gen"
   mount Mr519Gen::Engine, at: "/", as: "mr519_gen"
   mount Heb412Gen::Engine, at: "/", as: "heb412_gen"

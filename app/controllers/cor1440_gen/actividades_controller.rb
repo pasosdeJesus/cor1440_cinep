@@ -163,6 +163,12 @@ module Cor1440Gen
         end
         params[:actividad][:oficina_id] = 1
       end
+      if @registro.lanzapublicacion
+        if !@registro.lanzapublicacion.created_at
+          params[:actividad][:lanzapublicacion_attributes][:created_at] = Date.today
+        end
+        params[:actividad][:lanzapublicacion_attributes][:updated_at] = Date.today
+      end
       recalcula_misgrupos(current_usuario, @registro)
       update_gen
     end
@@ -376,6 +382,7 @@ module Cor1440Gen
 #    end
 #
     def lista_params
+      lpub = PublicacionesController.new.lista_params
       r = [
         :actividad, 
         :accionincidencia,
@@ -457,6 +464,7 @@ module Cor1440Gen
           :contexto
         ],
         :grupo_ids => [],
+        :lanzapublicacion_attributes => lpub,
         :objetivopf_ids => [],
         :otronucleoconflicto_ids => [],
         :proyecto_ids => [],

@@ -113,7 +113,6 @@ class Ability  < Cor1440Gen::Ability
         ['', 'plantillacorreo'],
         ['', 'procesogh'],
         ['', 'profesion'],
-        ['', 'publicacion'],
         ['', 'redactor'],
         ['', 'regiongrupo'],
         ['Cor1440Gen', 'sectorapc'],
@@ -484,6 +483,7 @@ class Ability  < Cor1440Gen::Ability
         # Sólo investigadores
         if lineas.length > 0
           can [:create, :read, :update], Sip::Orgsocial
+          can [:create, :read, :update], ::Publicacion
           can :manage, :tablasbasicas
           can :manage, Cor1440Gen::Efecto
           #can :index, Cor1440Gen::Mindicadorpf
@@ -564,7 +564,7 @@ class Ability  < Cor1440Gen::Ability
             'respgp_id IS NOT NULL')
           can :manage, Cor1440Gen::Sectorapc
 
-          can [:create, :read, :update], Sip::Orgsocial
+          can [:create, :read, :update], ::Publicacion
 
           can :manage, :tablasbasicas
           can :manage, ::Convenio
@@ -576,7 +576,7 @@ class Ability  < Cor1440Gen::Ability
         end
 
         if lgrupos.include?(GRUPO_COMUNICACIONES)
-          can :manage, Sal7711Gen::Articulo
+          can :manage, ::Publicacion
           can :manage, ::Publicacion
           can :manage, :tablasbasicas
         end
@@ -687,7 +687,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, Mr519Gen::Encuestapersona
         can :manage, ::Planencuesta
 
-        can :manage, Sip::Orgsocial
+        can :manage, ::Publicacion
         can :manage, Sip::Persona
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|

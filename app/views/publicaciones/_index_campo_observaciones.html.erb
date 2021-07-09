@@ -1,0 +1,8 @@
+<% if registro && registro.observaciones %>
+  <%= registro.observaciones.length > 50 ? 
+    registro.observaciones[0..50] + '...' :
+    registro.observaciones %>
+<% end %>
+
+
+
