@@ -91,18 +91,6 @@ gem 'heb412_gen',  # Motor de nube y llenado de plantillas
   git: 'https://github.com/pasosdeJesus/heb412_gen.git', branch: :main
   #path: '../heb412_gen'
 
-gem 'sal7711_gen', # Motor para archivo de prensa
-  git: 'https://github.com/pasosdeJesus/sal7711_gen.git', branch: :main
-  #path: '../sal7711_gen'
-
-gem 'sal7711_ld', # Publicaciones sobre motor Sal7711_ld
-  git: 'https://github.com/pasosdeJesus/sal7711_ld.git', branch: :main
-  #path: '../sal7711_ld'
-
-gem 'sal7711_web', # Motor para archivo de prensa web
-  git: 'https://github.com/pasosdeJesus/sal7711_web.git', branch: :main
-  #path: '../sal7711_web'
-
 gem 'cor1440_gen',  # Motor de actividades y proyectos con marco lógico
   git: 'https://github.com/pasosdeJesus/cor1440_gen.git', branch: :main
   #path: '../cor1440_gen'

@@ -54,33 +54,6 @@ GIT
       sip
 
 GIT
-  remote: https://github.com/pasosdeJesus/sal7711_gen.git
-  revision: 8884884e11ac5cad20bc87256614f3f19218a9d3
-  branch: main
-  specs:
-    sal7711_gen (1.0.b4)
-      rails
-      sip
-
-GIT
-  remote: https://github.com/pasosdeJesus/sal7711_ld.git
-  revision: 3d52235b2cf1dbba6856cf7feb9cafdd1de1654a
-  branch: main
-  specs:
-    sal7711_ld (1.0.a3)
-      rails
-      sal7711_gen
-
-GIT
-  remote: https://github.com/pasosdeJesus/sal7711_web.git
-  revision: 3561caebfbe04a2854b3192a15190dc55b2c8ac5
-  branch: main
-  specs:
-    sal7711_web (1.0.a3)
-      rails
-      sal7711_gen
-
-GIT
   remote: https://github.com/pasosdeJesus/sip.git
   revision: 4b2699a4ab215020cb92009bbbcbcad3fba7d879
   branch: main
@@ -458,9 +431,6 @@ DEPENDENCIES
   redcarpet
   rspreadsheet
   rubyzip (>= 2.0)
-  sal7711_gen!
-  sal7711_ld!
-  sal7711_web!
   sassc-rails (>= 2.1.2)
   selenium-webdriver (>= 3.0)
   simple_form (>= 5.0.3)

@@ -40,9 +40,6 @@ es:
       "cor1440_gen/proyecto": 
         one: "Programa/Servicio/Producto"
         other: "Programas/Servicios/Productos"
-      "sal7711_gen/articulo": 
-        one: "Publicación"
-        other: "Publicaciones"
       "tasacambio":
         one: Tasa de cambio
         other: Tasas de cambio
@@ -377,9 +374,6 @@ es:
         Regiongrupo: Regiones para un grupo
         "{:departamento_ids=>[]}": Departamentos completos
         "{:municipio_ids=>[]}": Otros municipios
-      "sal7711_gen/articulo":
-        Articulo: Publicación 
-        Articulos: Publicaciones
       "sectororgsocial":
         Sectororgsocial: Sector de una organización social
         Sectoresorgsocial: Sectores de organizaciones sociales
