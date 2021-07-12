@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 53657f31fa1c19f61ab72ba70e6274caef17fa6b
+  revision: ae3ebfbf890f56be4a7441e0d2f1babac32d9303
   branch: main
   specs:
     cor1440_gen (1.0b4)
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: 74e7e4b7fe0c62830521bf511039df481f4e1030
+  revision: fe4dc547be9812a4e241241312aca81bb6194155
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: c04755f5ebe34ff6be1361d4311d833064a54d81
+  revision: 8674c15f568a5ee2b5c9b4a9014824230ac695b4
   branch: main
   specs:
     jn316_gen (1.0.a2)
@@ -46,7 +46,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: bd9b30acdbb212abbc1cdeabb117ceec9f3ad912
+  revision: e66d92f7f0957021ce125dade830d2f14bf775dd
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 4b2699a4ab215020cb92009bbbcbcad3fba7d879
+  revision: 0ea4c134bb648fadfb92b99b953afcc90b08f3ac
   branch: main
   specs:
     sip (2.0.b12)
@@ -314,7 +314,7 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     raindrops (0.19.2)
-    rake (13.0.4)
+    rake (13.0.6)
     react-rails (2.6.1)
       babel-transpiler (>= 0.7.0)
       connection_pool
@@ -366,7 +366,7 @@ GEM
     thor (1.1.0)
     tilt (2.0.10)
     ttfunk (1.7.0)
-    twitter_cldr (6.6.1)
+    twitter_cldr (6.6.2)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo

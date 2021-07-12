@@ -220,6 +220,22 @@ PUBLICACIONPRODUCTO_ID="322"
   $('#tot_sectorsocial').html(ts)
   $('#tot_rangoedad').html(tr)
 
+
+# Muestra la sección de Publicación de Producto si 
+# se ha elegido la actividad de marco lógico PUBLICACIONPRODUCTO_ID
+@cor1440_cinep_muestra_tarjeta_publicacion_producto = () ->
+    acids = ['']
+    $('select[id^=actividad_actividad_proyectofinanciero_attributes_][id$=_actividadpf_ids]').each( () -> 
+      t = $(this)
+      if t.parent().parent().parent().not(':hidden').length > 0
+        acids = acids.concat(t.val())
+    )
+    if acids.includes(PUBLICACIONPRODUCTO_ID)
+      $('#tarjeta-publicacion-producto').show()
+    else
+      $('#tarjeta-publicacion-producto').hide()
+
+
 @cor1440_cinep_prepara_eventos_unicos = (root) ->
   sip_arregla_puntomontaje(root)
 
@@ -232,6 +248,9 @@ PUBLICACIONPRODUCTO_ID="322"
   }).on('changeDate', (ev) ->
     cor1440_cinep_actividad_actualiza_pf(root)
   )
+
+  # Activa agregar ancestros automáticamente
+  root.cor1440_gen_activa_autocompleta_conancestros = true
 
   $('#actividad_fecha_localizada').on('change', (ev) ->
     cor1440_cinep_actividad_actualiza_pf(root)
@@ -250,19 +269,15 @@ PUBLICACIONPRODUCTO_ID="322"
   )
 
   # Manejo especial de publicación de un producto
-  # Si tiene tipo de actividad publicación de un producto presenta
-  # campos de formulario de publicación y esconde publicaciones usadas
+  # Si tiene tipo de actividad publicación de un producto (bien porque
+  # el usuario lo selecciono directamente o indirectamente con una
+  # descendiente) presenta campos de formulario de publicación
   $(document).on('change', 'select[id^=actividad_actividad_proyectofinanciero_attributes_][id$=actividadpf_ids]', (e, res) ->
-    acids = ['']
-    $('select[id^=actividad_actividad_proyectofinanciero_attributes_][id$=_actividadpf_ids]').each( () -> 
-      t = $(this)
-      if t.parent().parent().parent().not(':hidden').length > 0
-        acids = acids.concat(t.val())
-    )
-    if acids.includes(PUBLICACIONPRODUCTO_ID)
-      $('#tarjeta-publicacion-producto').show()
-    else
-      $('#tarjeta-publicacion-producto').hide()
+    cor1440_cinep_muestra_tarjeta_publicacion_producto()
+  )
+
+  $(document).on('cor1440_gen:conancestros_actualizado', (e, res) ->
+    cor1440_cinep_muestra_tarjeta_publicacion_producto()
   )
 
   $('#actividad_mujeres').change( (e) ->
