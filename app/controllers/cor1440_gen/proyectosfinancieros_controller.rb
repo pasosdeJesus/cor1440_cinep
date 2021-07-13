@@ -1213,28 +1213,43 @@ module Cor1440Gen
           :_destroy
         ],
         :objetivopf_attributes =>  [
-              :id, :numero, :objetivo, :_destroy 
+          :id,
+          :numero, 
+          :objetivo, 
+          :_destroy 
         ],
         :indicadorobjetivo_attributes =>  [
-              :id, :objetivopf_id,
-              :numero, :indicador, 
-              :tipoindicador_id, :_destroy
+          :id,  
+          :indicador, 
+          :numero,
+          :objetivopf_id,
+          :tipoindicador_id, 
+          :_destroy
         ],
-
         :resultadopf_attributes =>  [
-              :id, :objetivopf_id,
-              :numero, :resultado, :_destroy 
+          :id, 
+          :numero, 
+          :objetivopf_id,
+          :resultado, 
+          :_destroy 
         ],
         :indicadorpf_attributes =>  [
-              :id, :resultadopf_id,
-              :numero, :indicador, 
-              :tipoindicador_id, :_destroy
+          :id, 
+          :indicador, 
+          :numero, 
+          :resultadopf_id,
+          :_destroy
         ],
         :actividadpf_attributes =>  [
-              :id, :resultadopf_id,
-              :nombrecorto, :titulo, 
-              :actividadtipo_id,
-              :descripcion, :_destroy
+          :descripcion, 
+          :formulario_id,
+          :heredade_id,
+          :id, 
+          :nombrecorto, 
+          :resultadopf_id,
+          :titulo, 
+          :_destroy,
+          :grupoexclusivo_ids => []
         ] 
       )
     end

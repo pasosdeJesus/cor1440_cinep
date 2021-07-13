@@ -38,6 +38,13 @@ module Sip
 #    has_many :supergrupo_inmediato, through: :grupo_supergrupo_inmediato,
 #      class_name: 'Sip::Grupo'
 
+
+    has_and_belongs_to_many :actividadpfexclusiva,
+      class_name: 'Cor1440Gen::Actividadpf',
+      foreign_key: 'grupo_id',
+      association_foreign_key: 'actividadpf_id',
+      join_table: 'cor1440_gen_actividadpf_grupoexclusivo'
+
     validate :subgrupos_sin_ciclos
     # Decide que los subgrupos de un grupo no tengan ciclos
     # Según https://managementmania.com/en/organigram si fuese un

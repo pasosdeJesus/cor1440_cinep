@@ -1753,6 +1753,16 @@ CREATE TABLE public.cor1440_gen_actividadpf (
 
 
 --
+-- Name: cor1440_gen_actividadpf_grupoexclusivo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cor1440_gen_actividadpf_grupoexclusivo (
+    actividadpf_id bigint NOT NULL,
+    grupo_id bigint NOT NULL
+);
+
+
+--
 -- Name: cor1440_gen_actividadpf_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -9649,6 +9659,14 @@ ALTER TABLE ONLY public.orgsocial_regiongrupo
 
 
 --
+-- Name: cor1440_gen_actividadpf_grupoexclusivo fk_rails_3706ce06ff; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividadpf_grupoexclusivo
+    ADD CONSTRAINT fk_rails_3706ce06ff FOREIGN KEY (actividadpf_id) REFERENCES public.cor1440_gen_actividadpf(id);
+
+
+--
 -- Name: cor1440_gen_proyectofinanciero fk_rails_3792591d9e; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -10030,6 +10048,14 @@ ALTER TABLE ONLY public.cor1440_gen_datointermedioti
 
 ALTER TABLE ONLY public.informeauditoria
     ADD CONSTRAINT fk_rails_67f52ffcf6 FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: cor1440_gen_actividadpf_grupoexclusivo fk_rails_6959a6a241; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividadpf_grupoexclusivo
+    ADD CONSTRAINT fk_rails_6959a6a241 FOREIGN KEY (grupo_id) REFERENCES public.sip_grupo(id);
 
 
 --
@@ -11855,6 +11881,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210622232007'),
 ('20210707173659'),
 ('20210709020014'),
-('20210709123645');
+('20210709123645'),
+('20210712205011'),
+('20210712221456');
 
 

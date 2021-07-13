@@ -136,8 +136,8 @@ es:
         Convenio: "Convenio interinstitucional marco"
         Convenios: "Convenios interinstitucionales marco"
       "cor1440_gen/actividad":
-        actividadpf: Actividad de compromiso institucional
-        actividadespf: Relaciones con Marco Lógico
+        actividadpf: Actividad delmarco lógico
+        actividadespf: Actividades del marco lógico
         actividadtipo: Tipo
         orgsocial: Organización social
         creadopor: "Creado por"
@@ -148,7 +148,7 @@ es:
         fecha_localizada: Fecha inicio
         minutos: Horas
         mduracion: "Unidad de duración"
-        objetivopf: Objetivo de compromiso institucional
+        objetivopf: Objetivo del marco lógico
         observaciones: Compromisos/Observaciones
         observacionesdir: 'Observaciones de Dirección'
         observacionespar: 'Observaciones de Par'
