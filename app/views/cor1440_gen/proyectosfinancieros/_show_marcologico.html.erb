@@ -4,13 +4,13 @@
     <th>Objetivos/Efectos</th>
     <th>Indicadores de Objetivo/Efecto</th>
   </tr>
-  <% @registro.objetivopf.each do |o| %>
+  <% @registro.objetivopf.order(:id).each do |o| %>
     <tr>
       <td><%= o.numero %> <%= o.objetivo %></td>
       <td>
         <ul>
-          <% o.indicadorpf.each do |io| %>
-            <li><%= io.numero %> <%= io.indicador%></li>
+          <% o.indicadorpf.order(:id).each do |io| %>
+            <li><%= o.numero + io.numero %> <%= io.indicador%></li>
           <% end %>
         </ul>
       </td>
@@ -22,27 +22,49 @@
   </tr>
   <% @registro.resultadopf.order(:id).each do |r| %>
     <tr>
-      <td><%= r.numero %> <%= r.resultado %></td>
+      <td><%= (r.objetivopf ? r.objetivopf.numero : '') + r.numero %> <%= r.resultado %></td>
       <td>
         <ul>
           <% r.indicadorpf.order(:id).each do |ir| %>
-            <li><%= ir.numero %> <%= ir.indicador%></li>
+            <li><%= (r.objetivopf ? r.objetivopf.numero : '') + r.numero + 
+              ir.numero %> <%= ir.indicador%></li>
           <% end %>
         </ul>
       </td>
     </tr>
   <% end %>
+</table>
+<table border="1">
   <tr>
-    <th colspan=2>Actividades</th>
+    <th>Resultado</th><th>Actividades de Marco Lógico</th>
   </tr>
-  <% @registro.actividadpf.order(:nombrecorto).each do |a| %>
+  <% @registro.resultadopf.order(:id).each do |r| %>
     <tr>
-      <td colspan=2>
-        <%= a.nombrecorto %> <%= a.titulo %>.
-        <% if a.actividadtipo_id %>
-          (Tipo: <%= a.actividadtipo.nombre %>)
-        <% end%>
-        <%= a.descripcion %>
+      <td>
+        <% cr = (r.objetivopf ? r.objetivopf.numero : '') + r.numero %>
+        <%= cr %>
+      </td>
+      <td>
+        <% r.actividadpf.order(:id).each do |a| %>
+          <li>
+            <%= cr + a.nombrecorto %> <%= a.titulo %>
+              <% if a.formulario_id || a.heredade_id || a.actividadtipo_id %>
+                (
+                <% if a.formulario_id then %>
+                  Formulario: <%= a.formulario.presenta_nombre %>.
+                <% end %>
+                <% if a.heredade_id then %>
+                  Hereda de: <%= a.heredade.presenta_nombre %>.
+                <% end %>
+                <% if a.grupoexclusivo_ids then %>
+                  Exclusivo para grupos: 
+                  <%= a.grupoexclusivo.map(&:nombre).join(", ") %>.
+                <% end %>
+                )
+              <% end %>
+            <%= a.descripcion %>
+          </li>
+        <% end %>
       </td>
     </tr>
   <% end %>

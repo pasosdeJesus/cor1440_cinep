@@ -1,0 +1,64 @@
+<tr class='nested-fields'>
+  <td>
+    <%= f.association :resultadopf, 
+      collection: Cor1440Gen::Resultadopf.joins(:objetivopf).
+      where(proyectofinanciero_id: f.object.proyectofinanciero_id).
+      order(["cor1440_gen_objetivopf.numero", "cor1440_gen_resultadopf.numero"]),
+      label: false,
+      label_method: lambda {
+        |t| (t.objetivopf ? t.objetivopf.numero : '') + t.numero} 
+      %>
+  </td>
+  <td>
+    <%= f.input :nombrecorto, label: false %>
+  </td>
+  <td>
+    <%= f.input :titulo, 
+      as: :text, 
+      input_html: { rows: 3 }, 
+      label: false %>
+  </td>
+  <td>
+    <%= f.input :descripcion, 
+      as: :text, 
+      input_html: { rows: 3 }, 
+      label: false %>
+  </td>
+  <td>
+    <%= f.association :formulario, 
+      collection: Mr519Gen::Formulario.all,
+      label_method: :presenta_nombre,
+      input_html: { class: 'chosen-select' },
+      wrapper_html: { style: 'width: 12rem' }
+    %>
+    <% col = Cor1440Gen::Actividadpf.where(
+      'proyectofinanciero_id IS NOT NULL') %>
+    <% if f.object.proyectofinanciero_id %>
+      <% col = col.where('proyectofinanciero_id<>?', 
+                         f.object.proyectofinanciero_id) %>
+    <% end %>
+    <%= f.association :heredade, 
+      collection: col.order(:proyectofinanciero_id),
+      label_method: lambda {|r| 
+        r.proyectofinanciero_id.to_s + ' ' + r.presenta_nombre 
+      },
+      input_html: { class: 'chosen-select' },
+      wrapper_html: { style: 'width: 12rem' } %>
+    <% colg1_ids = Sip::Grupo.habilitados.pluck(:id) %>
+    <% colg2_ids = f.object ? f.object.grupoexclusivo_ids : [] %>
+    <% colg = Sip::Grupo.where(id: colg1_ids | colg2_ids) %>
+    <%= f.association :grupoexclusivo, 
+      collection: colg,
+      label_method: :presenta_nombre,
+      input_html: { class: 'chosen-select' },
+      wrapper_html: { style: 'width: 12rem' }
+    %>
+  </td>
+  <td>
+    <%= f.input :id, as: :hidden %>
+    <%= link_to_remove_association "Eliminar", f, 
+      :class => 'btn-danger', "data-existing" => true %>
+    <div><%= f.error_notification %></div>
+  </td>
+</tr>
+

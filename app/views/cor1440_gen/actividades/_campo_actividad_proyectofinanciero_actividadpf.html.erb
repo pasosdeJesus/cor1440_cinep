@@ -1,0 +1,55 @@
+<% lp1 = Cor1440Gen::ActividadespfController::disponibles(
+  {proyectofinanciero_ids: [f.object.proyectofinanciero_id]}, current_ability)
+%>
+<% ids1 = lp1.pluck(:id) %>
+<% ids2 = f.object.actividadpf.pluck(:id) & (f.object.proyectofinanciero ? 
+  f.object.proyectofinanciero.actividadpf.pluck(:id) : []) %>
+<% # Si es uno nuevo excluimos los ya elegidos %>
+<% ids = ids1 | ids2 %>
+<% col = Cor1440Gen::Actividadpf.where(id: ids).
+  joins(:resultadopf).joins(:objetivopf).
+  reorder(['cor1440_gen_objetivopf.numero', 
+           'cor1440_gen_resultadopf.numero',
+           :nombrecorto, :titulo])
+         %>
+
+<%= f.association :actividadpf,
+  as: :grouped_select,
+  group_method: lambda { |r| col.where(id: r.actividadpf_ids) },
+  group_label_method: lambda { |t| truncate(t.codigo_completo + ' ' + 
+                               t.resultado, length: 40) },
+  label_method: lambda { |t| t.presenta_nombre },
+  value_method: :id,
+  label: false,
+  selected: f.object.actividadpf_ids, 
+  input_html: { 
+    class: 'chosen-select',
+    style: 'width-min: 30rem'
+  },
+  collection: Cor1440Gen::Resultadopf.
+    where( proyectofinanciero_id: f.object.proyectofinanciero_id).
+    joins(:objetivopf).
+    order(['cor1440_gen_objetivopf.numero', 
+           'cor1440_gen_resultadopf.numero'])
+%>
+
+
+<!--%= f.association :actividadpf, 
+  as: :grouped_multi_select_input,
+  scope: Cor1440Gen::Resultadopf,
+  label_method: lambda { |t| t.presenta_nombre},
+  value_method: :id,
+  label: false,
+  selected: f.object.actividadpf_ids, 
+  input_html: { 
+    class: 'chosen-select',
+    style: 'width-min: 30rem'
+  },
+  collection: ::Cor1440Gen::Actividadpf.
+    where( proyectofinanciero_id: f.object.proyectofinanciero_id).
+    joins(:resultadopf).joins(:objetivopf).
+    order(['cor1440_gen_objetivopf.numero', 
+           'cor1440_gen_resultadopf.numero', 
+           :nombrecorto, :titulo]
+         )
+%--->
