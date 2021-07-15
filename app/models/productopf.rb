@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 class Productopf < ActiveRecord::Base
   include Sip::Localizacion
 
@@ -10,8 +8,12 @@ class Productopf < ActiveRecord::Base
   belongs_to :tipoproductopf, class_name: '::Tipoproductopf',
     foreign_key: 'tipoproductopf_id', optional: true
 
-  belongs_to :indicadorpf, class_name: 'Cor1440Gen::Indicadorpf',
-    foreign_key: 'indicadorpf_id', optional: true
+  belongs_to :actividadpf, class_name: 'Cor1440Gen::Actividadpf',
+    foreign_key: 'actividadpf_id', optional: true
+
+  has_many :actividad, dependent: :nullify,
+    class_name: 'Cor1440Gen::Actividad',
+    foreign_key: 'productopf_id', validate: true
 
   validates :detalle, length: { maximum: 5000}
   validates :seguimiento, length: { maximum: 5000}
@@ -103,4 +105,11 @@ class Productopf < ActiveRecord::Base
 
   flotante_localizado :costoprevisto
 
+  def self.orden_presenta_nombre
+    :detalle
+  end
+
+  def presenta_nombre
+   detalle
+  end
 end

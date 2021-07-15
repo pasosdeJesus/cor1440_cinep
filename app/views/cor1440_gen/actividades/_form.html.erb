@@ -305,6 +305,7 @@
 
 
   <div class="form-actions">
+    <%= f.input :id, as: :hidden %>
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
       cor1440_gen.actividades_path, :class => 'btn' 

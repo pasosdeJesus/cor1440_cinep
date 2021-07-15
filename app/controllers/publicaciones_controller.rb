@@ -15,6 +15,8 @@ class PublicacionesController < Heb412Gen::ModelosController
     [
       :id, 
       :nombre, 
+      :tipoproductopf,
+      :descargaspublicacion,
       :observaciones, 
       :created_at_localizada, 
       :updated_at_localizada, 
@@ -24,6 +26,8 @@ class PublicacionesController < Heb412Gen::ModelosController
   def atributos_form
     [
       :nombre, 
+      :tipoproductopf,
+      :descargaspublicacion,
       :observaciones, 
     ]
   end
@@ -34,11 +38,22 @@ class PublicacionesController < Heb412Gen::ModelosController
   end
 
   def lista_params
-    atributos_form
+    [
+      :nombre, 
+      :observaciones, 
+      :tipoproductopf_id,
+      :descargaspublicacion_attributes => [
+        :anio,
+        :descargas,
+        :id,
+        :_destroy
+      ]
+    ]
   end
 
   def publicacion_params
-    params.require(:publicacion).permit(*lista_params)
+    l = lista_params
+    params.require(:publicacion).permit(l)
   end
 
 end

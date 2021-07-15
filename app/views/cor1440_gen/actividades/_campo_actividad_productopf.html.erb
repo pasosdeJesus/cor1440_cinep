@@ -1,0 +1,10 @@
+<div id='div-actividad-productopf'>
+  <% colp = Cor1440Gen::ActividadesController::coleccion_productopf(
+    f.object.id, f.object.actividadpf_ids) %>
+  <%= f.association :productopf, 
+    collection: colp,
+    label_method: :presenta_nombre,
+    input_html: {
+      class: 'chosen-select'
+    }%>
+</div>

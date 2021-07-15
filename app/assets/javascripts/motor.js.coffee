@@ -232,6 +232,12 @@ PUBLICACIONPRODUCTO_ID="322"
     )
     if acids.includes(PUBLICACIONPRODUCTO_ID)
       $('#tarjeta-publicacion-producto').show()
+      # Actualiza productopf y si acaso tipoproductopf
+      params = {
+        'actividadpf_ids': acids,
+        'actividad_id': $('#actividad_id').val()
+      }
+      sip_llena_select_con_AJAX2('actividades_productospf', params, 'actividad_productopf_id', 'No puedo actualizar plan de publicación', window, 'id', 'detalle', null, true)
     else
       $('#tarjeta-publicacion-producto').hide()
 

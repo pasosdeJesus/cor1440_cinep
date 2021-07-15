@@ -8,11 +8,12 @@
     <% if !f.object.publicacionproducto %>
       <% f.object.publicacionproducto = ::Publicacion.new %>
     <% end %>
+    <%= render partial: 'campo_actividad_productopf', locals: {f: f} %>
     <%= f.fields_for :publicacionproducto do |fpub|%>
       <% @registro = fpub.object %>
       <% tc = ::PublicacionesController.new %>
       <% # f.template.controller es ActividadesController%>
-      <% @atributos_form = tc.atributos_form %>
+      <% @atributos_form = [:nombre, :tipoproductopf, :observaciones] %>
       <%= fpub.input :id, as: :hidden %>
       <% @atributos_form.each do |atr| %>
         <%= render partial: "sip/modelos/sip_campo_aut", 

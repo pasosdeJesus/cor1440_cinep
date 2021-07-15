@@ -153,6 +153,7 @@ es:
         observacionesdir: 'Observaciones de Dirección'
         observacionespar: 'Observaciones de Par'
         precedidapor: 'Si es proceso, número de actividad que la precede:'
+        productopf: 'Planeación del producto'
         proyecto: "Programa/Servicio/Producto"
         proyectofinanciero: 'Compromiso Institucional'
         proyectos: "Programas/Servicios/Productos"
@@ -366,6 +367,9 @@ es:
       "publicacion":
         Publicacion: Producto CINEP/PPP
         Publicaciones: Productos CINEP/PPP
+        descargaspublicacion: Descargas
+        productopf: Plan para la publicación
+        tipoproductopf: Tipo de producto
       "redactor":
         Redactor: Red de organizaciones
         Redesactor: Redes de organizaciones

@@ -1443,7 +1443,8 @@ CREATE TABLE public.cor1440_gen_actividad (
     rangoedad_onr integer,
     campesinos integer,
     sectorsocial_onr integer,
-    publicacionproducto_id integer
+    publicacionproducto_id integer,
+    productopf_id integer
 );
 
 
@@ -3069,6 +3070,39 @@ CREATE TABLE public.departamento_orgsocial (
     orgsocial_id bigint NOT NULL,
     departamento_id bigint NOT NULL
 );
+
+
+--
+-- Name: descargaspublicacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.descargaspublicacion (
+    id bigint NOT NULL,
+    publicacion_id integer NOT NULL,
+    anio integer NOT NULL,
+    descargas integer,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: descargaspublicacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.descargaspublicacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: descargaspublicacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.descargaspublicacion_id_seq OWNED BY public.descargaspublicacion.id;
 
 
 --
@@ -4754,7 +4788,7 @@ CREATE TABLE public.productopf (
     fechainiprod date,
     fechafinprod date,
     costoprevisto numeric,
-    indicadorpf_id integer
+    actividadpf_id integer
 );
 
 
@@ -4866,7 +4900,8 @@ CREATE TABLE public.publicacion (
     nombre character varying(500) NOT NULL,
     observaciones character varying(5000),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    tipoproductopf_id integer
 );
 
 
@@ -7024,6 +7059,13 @@ ALTER TABLE ONLY public.csivitema ALTER COLUMN id SET DEFAULT nextval('public.cs
 
 
 --
+-- Name: descargaspublicacion id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.descargaspublicacion ALTER COLUMN id SET DEFAULT nextval('public.descargaspublicacion_id_seq'::regclass);
+
+
+--
 -- Name: desembolso id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -8068,6 +8110,14 @@ ALTER TABLE ONLY public.csivinivelresp
 
 ALTER TABLE ONLY public.csivitema
     ADD CONSTRAINT csivitema_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: descargaspublicacion descargaspublicacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.descargaspublicacion
+    ADD CONSTRAINT descargaspublicacion_pkey PRIMARY KEY (id);
 
 
 --
@@ -9291,6 +9341,14 @@ ALTER TABLE ONLY public.cor1440_gen_financiador_proyectofinanciero
 
 
 --
+-- Name: publicacion fk_rails_0d81ba0755; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.publicacion
+    ADD CONSTRAINT fk_rails_0d81ba0755 FOREIGN KEY (tipoproductopf_id) REFERENCES public.tipoproductopf(id);
+
+
+--
 -- Name: informeevaluacion fk_rails_0dc2f89fdb; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9403,6 +9461,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividadpf
 
 
 --
+-- Name: descargaspublicacion fk_rails_17e1f90fbc; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.descargaspublicacion
+    ADD CONSTRAINT fk_rails_17e1f90fbc FOREIGN KEY (publicacion_id) REFERENCES public.publicacion(id);
+
+
+--
 -- Name: actor fk_rails_1a67af6964; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -9480,6 +9546,14 @@ ALTER TABLE ONLY public.grupo_subgrupo
 
 ALTER TABLE ONLY public.actividad_grupo
     ADD CONSTRAINT fk_rails_214969d697 FOREIGN KEY (grupo_id) REFERENCES public.sip_grupo(id);
+
+
+--
+-- Name: cor1440_gen_actividad fk_rails_21eff4b8d2; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cor1440_gen_actividad
+    ADD CONSTRAINT fk_rails_21eff4b8d2 FOREIGN KEY (productopf_id) REFERENCES public.productopf(id);
 
 
 --
@@ -9696,14 +9770,6 @@ ALTER TABLE ONLY public.cor1440_gen_datointermedioti_pmindicadorpf
 
 ALTER TABLE ONLY public.cor1440_gen_actividad_proyecto
     ADD CONSTRAINT fk_rails_395faa0882 FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
-
-
---
--- Name: productopf fk_rails_39ea352624; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.productopf
-    ADD CONSTRAINT fk_rails_39ea352624 FOREIGN KEY (indicadorpf_id) REFERENCES public.cor1440_gen_indicadorpf(id);
 
 
 --
@@ -10696,6 +10762,14 @@ ALTER TABLE ONLY public.cor1440_gen_actividadpf
 
 ALTER TABLE ONLY public.cor1440_gen_proyectofinanciero_usuario
     ADD CONSTRAINT fk_rails_c719ad1d65 FOREIGN KEY (proyectofinanciero_id) REFERENCES public.cor1440_gen_proyectofinanciero(id);
+
+
+--
+-- Name: productopf fk_rails_c7aa134f8c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.productopf
+    ADD CONSTRAINT fk_rails_c7aa134f8c FOREIGN KEY (actividadpf_id) REFERENCES public.cor1440_gen_actividadpf(id);
 
 
 --
@@ -11883,6 +11957,11 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210709020014'),
 ('20210709123645'),
 ('20210712205011'),
-('20210712221456');
+('20210712221456'),
+('20210714013813'),
+('20210714025423'),
+('20210714111431'),
+('20210714131146'),
+('20210714152729');
 
 

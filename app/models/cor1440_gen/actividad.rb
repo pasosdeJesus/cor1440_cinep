@@ -17,6 +17,10 @@ module Cor1440Gen
       foreign_key: 'publicacionproducto_id', optional: true
     accepts_nested_attributes_for :publicacionproducto
 
+    # Plan de publicación
+    belongs_to :productopf, class_name: '::Productopf',
+      foreign_key: 'productopf_id', optional: true
+
     belongs_to :departamento, class_name: 'Sip::Departamento', optional: true
     belongs_to :municipio, class_name: 'Sip::Municipio', optional: true
     belongs_to :nucleoconflicto, class_name: '::Nucleoconflicto', 

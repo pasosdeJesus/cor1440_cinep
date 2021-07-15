@@ -720,6 +720,7 @@ class Ability  < Cor1440Gen::Ability
         can :manage, ::Planencuesta
 
         can :manage, ::Publicacion
+        can :manage, Sip::Orgsocial
         can :manage, Sip::Persona
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|

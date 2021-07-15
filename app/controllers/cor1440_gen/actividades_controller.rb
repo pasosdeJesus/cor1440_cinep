@@ -324,64 +324,38 @@ module Cor1440Gen
       ]
     end
 
-#    def fila_comun(actividad)
-#      return [actividad.id,
-#        actividad.fecha_localizada, 
-#        actividad.creadopor ? actividad.creadopor.nusuario : "",
-#        actividad.duracion ? actividad.duracion : "",
-#        actividad.mduracion ? actividad.mduracion : "",
-#        actividad.nombre ? actividad.nombre : "",
-#        actividad.departamento ? actividad.departamento.nombre : "",
-#        actividad.municipio ? actividad.municipio.nombre : "",
-#        actividad.presenta('grupo'),
-#        actividad.proyectofinanciero.inject("") { |memo, i| 
-#          (memo == "" ? "" : memo + "; ") + i.referenciacinep
-#        },
-#        actividad.presenta('actividadpf'),
-#        actividad.objetivopf.inject("") { |memo, i| 
-#          (memo == "" ? "" : memo + "; ") + i.numero
-#        },
-#        actividad.presenta('orgsocial'),
-#        actividad.presenta('publicacion'),
-#        actividad.mujeres,
-#        actividad.hombres,
-#        actividad.sexo_onr,
-#        actividad.negros,
-#        actividad.indigenas,
-#        actividad.etnia_onr
-#      ]
-#    end
-#
-#    def vector_a_registro(a, ac)
-#      {
-#        id: a[0],
-#        fecha: a[1],
-#        creadopor: a[2],
-#        duracion: a[3],
-#        mduracion: a[4],
-#        nombre: a[5],
-#        departamento: a[6],
-#        municipio: a[7],
-#        grupo: a[8],
-#        convenios_financieros: a[9],
-#        actividad_de_convenio: a[10],
-#        objetivo_de_convenio: a[11],
-#        orgsocial: a[12],
-#        publicacion: a[13],
-#        mujeres: a[14],
-#        hombres: a[15],
-#        sexo_onr: a[16],
-#        negros: a[17],
-#        indigenas: a[18],
-#        etnia_onr: a[19],
-#        observaciones: ac.observaciones,
-#        creacion: ac.created_at,
-#        actualizacion: ac.updated_at
-#      }
-#    end
-#
+    def self.coleccion_productopf(actividad_id, actividadpf_ids)
+      colpt = Productopf.where(actividadpf_id: actividadpf_ids) 
+      colp = colpt.where(
+        'productopf.id NOT IN (SELECT DISTINCT productopf_id FROM '\
+        'cor1440_gen_actividad WHERE cor1440_gen_actividad.id<>? AND '\
+        'productopf_id IS NOT NULL)', actividad_id) 
+      return colp
+    end
+
+    def productospf
+      if params[:actividadpf_ids] && params[:actividadpf_ids].count > 0 && 
+          params[:actividad_id] && params[:actividad_id].to_i > 0 && 
+          Cor1440Gen::Actividad.where(id: params[:actividad_id].to_i).count == 1
+        actividadpf_ids = params[:actividadpf_ids].map(&:to_i).select {|x| x>0}
+        colp = Cor1440Gen::ActividadesController::coleccion_productopf(
+          params[:actividad_id].to_i, actividadpf_ids)
+        p = colp.map {|p| {id: p.id, detalle: p.detalle}}
+        respond_to do |format|
+          format.json {
+            render json: p, status: :ok
+            return
+          }
+        end
+        render inline: 'No implementado', status: :unprocessable_entity
+        return
+      end
+      render inline: 'Faltan parametros actividadpf_ids y actividad_id', 
+        status: :unprocessable_entity
+      return
+    end
+
     def lista_params
-      lpub = PublicacionesController.new.lista_params
       r = [
         :actividad, 
         :accionincidencia,
@@ -426,6 +400,7 @@ module Cor1440Gen
         :observacionespar,
         :participantes, 
         :precedidapor,
+        :productopf_id, 
         :proyecto,
         :rangoedad_onr,
         :redactor_id,
@@ -442,18 +417,29 @@ module Cor1440Gen
         :actividadarea_ids => [],
         :actividadpf_ids => [],
         :actividad_proyectofinanciero_attributes => [
-          :id, :proyectofinanciero_id, :_destroy,
+          :id, 
+          :proyectofinanciero_id, 
+          :_destroy,
           :actividadpf_ids => []
         ],
         :actividad_rangoedadac_attributes => [
-          :id, :rangoedadac_id, :fl, :fr, :ml, :mr, :_destroy
+          :id, 
+          :rangoedadac_id, 
+          :fl, 
+          :fr, 
+          :ml, 
+          :mr, 
+          :_destroy
         ],
         :actividad_sip_anexo_attributes => [
           :id,
           :id_actividad, 
           :_destroy,
           :sip_anexo_attributes => [
-            :id, :descripcion, :adjunto, :_destroy
+            :id, 
+            :descripcion, 
+            :adjunto, 
+            :_destroy
           ]
         ],
         :actividadtipo_ids => [],
@@ -463,13 +449,17 @@ module Cor1440Gen
           :contexto
         ],
         :grupo_ids => [],
-        :publicacionproducto_attributes => lpub,
+        :publicacionproducto_attributes => 
+        [
+          :nombre, 
+          :observaciones, 
+          :tipoproductopf_id,
+        ],
         :objetivopf_ids => [],
         :otronucleoconflicto_ids => [],
         :proyecto_ids => [],
         :proyectofinanciero_ids => [],
         :publicacion_ids => [],
-
         :respuestafor_attributes => [
           :id,
           "valorcampo_attributes" => [
@@ -479,9 +469,7 @@ module Cor1440Gen
           ] + 
           [:valor_ids => []]
         ],
-
         :usuario_ids => [],
-
       ]
       r
     end

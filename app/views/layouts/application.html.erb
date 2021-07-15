@@ -26,7 +26,7 @@
             <%= opcion_menu 'Personas', sip.personas_path,
               desplegable: true %>
           <% end %>
-          <% if can? :manage, ::Publicacion%>
+          <% if can? :read, ::Publicacion%>
             <%= opcion_menu 'Publicaciones', main_app.publicaciones_path,
               desplegable: true %>
           <% end %>

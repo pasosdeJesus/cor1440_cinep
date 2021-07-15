@@ -46,7 +46,10 @@ Rails.application.routes.draw do
       as: :lss_envia_verificacsv
     patch "/orgsociales/nueva_orgsocial_modal" => 'sip/orgsociales#nueva_orgsocial_modal',
       as: :orgsociales_nueva_orgsocial_modal
-    patch "/productospf/actualizaind" => 'cor1440_gen/proyectosfinancieros#actualizaind'
+    patch "/productospf/actualizaact" => 'cor1440_gen/proyectosfinancieros#actualizaact'
+
+    get "/actividades_productospf/" => 'cor1440_gen/actividades#productospf'
+
     resources :lss,
       path_names: { new: 'nueva', edit: 'edita' }
 
