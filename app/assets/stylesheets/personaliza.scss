@@ -3,53 +3,53 @@
  * visual cedidos al dominio público */
 
 body {
-	background-color: #F6F6F6;
-	font-family: Helvetica;
-	color: #777777;	
+  background-color: #F6F6F6;
+  font-family: Helvetica;
+  color: #777777;	
 }
 
 /*pestañas */
 .nav-tabs > li > a {
-	padding: 10px 12px;
-	border-radius: 8px 8px 0 0;
-	margin-right: 2px;
-	background-color: #FFF;
-	border: 1px solid #E4E4E4;
-	border-bottom-color: transparent;
-	color: #239CD3;	
+  padding: 10px 12px;
+  border-radius: 8px 8px 0 0;
+  margin-right: 2px;
+  background-color: #FFF;
+  border: 1px solid #E4E4E4;
+  border-bottom-color: transparent;
+  color: #239CD3;	
 }
 
 /* letra titulos*/
 h1 {
-	color:#333;
-	font-size: 24px;
-	font-family: "Crete Round", serif; 
-	font-weight: bold;
+  color:#333;
+  font-size: 24px;
+  font-family: "Crete Round", serif; 
+  font-weight: bold;
 }
 
 
 .btn-primary {
-	background-color: #239CD3;	
-	background-image: linear-gradient(to bottom, #33ACE3, #138CC3);
-	background-repeat: repeat-x;
-/*	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); */
+  background-color: #239CD3;	
+  background-image: linear-gradient(to bottom, #33ACE3, #138CC3);
+  background-repeat: repeat-x;
+  /*	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); */
 }
 
 .alert-success {
-	background-color: #D6F3F0;
-	color: #316986; 
-	border-color: #316986; 
+  background-color: #D6F3F0;
+  color: #316986; 
+  border-color: #316986; 
 }
 
 
 .alert-info {
-	background-color: #DDD;
-	color: #777;
+  background-color: #DDD;
+  color: #777;
 }
 
 .disabled {
-	pointer-events: none;
-	cursor: default;
+  pointer-events: none;
+  cursor: default;
 }
 
 .breadcrumb {
@@ -137,7 +137,7 @@ label {
 }
 
 .body-externo > h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .pie-externo {
@@ -150,9 +150,20 @@ label {
 }
 
 .derechos a {
-	color: rgb(38, 109, 211);
+  color: rgb(38, 109, 211);
 }
 
+.div_centra {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.centra {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* Por solicitud de Juliana se deja 100% */
 @media (min-width: 1200px) {

@@ -1,0 +1,18 @@
+<p>
+<table border="1">
+  <tr>
+    <th>Año</th>
+    <th>Descargas</th>
+  </tr>
+  <% @registro.descargaspublicacion.each do |d| %>
+    <tr>
+      <td><%= d.anio %></td>
+      <td>
+        <%= d.descargas %>
+      </td>
+    </tr>
+  <% end %>
+  <th>Total</th>
+  <th><%= @registro.presenta(:descargaspublicacion) %></th>
+</table>
+</p>

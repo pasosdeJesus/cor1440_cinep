@@ -1,0 +1,25 @@
+<div class="div_centra">
+  <table class='centra table-sm table-striped table-bordered'>
+    <thead>
+      <tr>
+        <th scope='col' style='min-width: 10rem'>Año</th>
+        <th scope='col' style='min-width: 10rem'>Descargas</th>
+        <th style='min-width: 5rem'></th>
+      </tr>
+    </thead>
+    <tbody id="descargaspublicacion">
+      <%= f.simple_fields_for :descargaspublicacion do |d| %>
+        <%= render 'descargaspublicacion_campos', :f => d %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="centra">
+    <%= link_to_add_association 'Añadir Año', f, 
+      :descargaspublicacion,
+      :"data-association-insertion-node" => "tbody#descargaspublicacion", 
+      :"data-association-insertion-method" => "append", 
+      partial: 'descargaspublicacion_campos',
+      :class => 'btn-primary'
+    %>
+  </div>
+</div>
