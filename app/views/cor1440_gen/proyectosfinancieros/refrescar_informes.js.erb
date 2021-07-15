@@ -1,14 +1,14 @@
-<% inds =  @params[:indicadores] %>
-selectores = $(".select_indicadores")
+<% acs =  @params[:actividadespf] %>
+selectores = $(".select_actividadespf")
 valores = selectores.map(function(i, x){return x.value}).get()
-$(".select_indicadores").empty()
-$(".select_indicadores").append('<option value label=""></option>')
-<% inds.each do |indicador| %>
+$(".select_actividadespf").empty()
+$(".select_actividadespf").append('<option value label=""></option>')
+<% acs.each do |ac| %>
   div = document.createElement('option')
-  attributeDivider = document.createAttribute('value')
-  attributeDivider.value = <%= indicador[1] %>
-  div.setAttributeNode(attributeDivider)
-  $(div).html("<%=  indicador[0] + indicador[2] + " " +  indicador[3] %>")
-  $(".select_indicadores").append(div)
+  av = document.createAttribute('value')
+  av.value = <%= ac[1] %>
+  div.setAttributeNode(av)
+  $(div).html("<%=  ac[0] + ac[2] + " " +  ac[3] %>")
+  $(".select_actividadespf").append(div)
 <% end %>
   selectores.each(function(i, x){ $(x).val(valores[i])})

@@ -56,10 +56,10 @@
     %>
   </td>
   <td>
-    <%= f.association :indicadorpf, 
-      collection: @proyectofinanciero.indicadorpf,
+    <%= f.association :actividadpf, 
+      collection: @proyectofinanciero.actividadpf,
       label_method:  :presenta_nombre,
-      input_html: {class: 'select_indicadores'}, 
+      input_html: {class: 'select_actividadespf'}, 
       value_method: :id,
       label: false
     %>

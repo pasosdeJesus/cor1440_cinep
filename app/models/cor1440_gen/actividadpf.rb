@@ -12,5 +12,9 @@ module Cor1440Gen
       association_foreign_key: 'grupo_id',
       join_table: 'cor1440_gen_actividadpf_grupoexclusivo'
 
+    has_many :productopf,
+      class_name: '::Productopf',
+      foreign_key: 'actividadpf_id'
+
   end
 end

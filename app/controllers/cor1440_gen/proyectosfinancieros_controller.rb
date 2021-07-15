@@ -16,7 +16,7 @@ module Cor1440Gen
 
     load_and_authorize_resource  class: Cor1440Gen::Proyectofinanciero,
       only: [:new, :create, :destroy, :edit, :update, :index, :show,
-             :objetivospf, :actualizaind]
+             :objetivospf, :actualizaact]
 
     include ::Sip::ConsultasHelper
 
@@ -747,33 +747,23 @@ module Cor1440Gen
       return registros.reorder([:estado, :referenciacinep, :id])
     end
 
-    def actualizaind
+    def actualizaact
       pf = params[:proyectofinanciero]
-      inds = []
+      actividadesml = []
       if pf
-        indsobj = pf[:indicadorobjetivo_attributes] 
-        indsres = pf[:indicadorpf_attributes]
+        actividadesmlres = pf[:actividadpf_attributes]
         objetivospf = pf[:objetivopf_attributes]
         resultadospf = pf[:resultadopf_attributes]
-        if indsobj 
-          indsobj.each do |k, val|
-            objetivospf.each do |kk, val2|
-              if val2[:id] == val[:objetivopf_id]  
-                obj = val2[:numero] 
-                inds.push([obj ? obj : '', val[:id], val[:numero], val[:indicador]])
-              end
-            end
-          end
-        end
-        if indsres 
-          indsres.each do |k, val|
+        if actividadesmlres 
+          actividadesmlres.each do |k, val|
+            byebug
             resultadospf.each do |kk, val2|
               if val2[:id] == val[:resultadopf_id]  
                 res = val2[:numero] 
                 objetivospf.each do |kkk, val3|
                   if val2[:objetivopf_id] == val3[:id]
                     obj = val3[:numero]
-                    inds.push([(obj ? obj : '') + (res ? res : ''), val[:id], val[:numero], val[:indicador]])
+                    actividadesml.push([(obj ? obj : '') + (res ? res : ''), val[:id], val[:numero], val[:titulo]])
                   end
                 end
               end
@@ -782,7 +772,7 @@ module Cor1440Gen
         end
         @params = params
       end
-      @params[:indicadores] = inds
+      @params[:actividadespf] = actividadesml
       respond_to do |format|
         format.js { render 'refrescar_informes' }
       end
@@ -1177,6 +1167,7 @@ module Cor1440Gen
         ],
         :grupo_ids => [],
         :productopf_attributes => [
+          :actividadpf_id,
           :costoprevisto_localizado,
           :detalle,
           :devoluciones,
@@ -1187,7 +1178,6 @@ module Cor1440Gen
           :fechaplaneada_localizada,
           :fechareal_localizada,
           :id,
-          :indicadorpf_id,
           :seguimiento,
           :tipoproductopf_id,
           :_destroy
