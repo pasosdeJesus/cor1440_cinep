@@ -756,7 +756,6 @@ module Cor1440Gen
         resultadospf = pf[:resultadopf_attributes]
         if actividadesmlres 
           actividadesmlres.each do |k, val|
-            byebug
             resultadospf.each do |kk, val2|
               if val2[:id] == val[:resultadopf_id]  
                 res = val2[:numero] 
@@ -1009,6 +1008,25 @@ module Cor1440Gen
       report.generate(ngen.to_s)
       return ngen
     end
+
+
+    # Retornar tipo de producto de un producto planeado
+    # params[:id] es id de productopf
+    def tipoproductopf_de_productopf
+      if params[:id]  && params[:id].to_i>0 &&
+          Productopf.where(id: params[:id].to_i).count == 1
+        pr = Productopf.find(params[:id].to_i)
+        respond_to do |format|
+          format.js { render text: pr.tipoproductopf_id }
+          format.json { render json: pr.tipoproductopf_id, status: :created }
+          format.html { render inline: 'No implementado', 
+                        status: :unprocessable_entity }
+        end
+      else
+        render inline: 'Falta paŕametro', status: :unprocessable_entity 
+      end
+    end
+
 
     private
 

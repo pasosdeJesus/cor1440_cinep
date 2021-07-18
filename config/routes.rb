@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       as: :lss_envia_verificacsv
     patch "/orgsociales/nueva_orgsocial_modal" => 'sip/orgsociales#nueva_orgsocial_modal',
       as: :orgsociales_nueva_orgsocial_modal
+
     patch "/productospf/actualizaact" => 'cor1440_gen/proyectosfinancieros#actualizaact'
 
     get "/actividades_productospf/" => 'cor1440_gen/actividades#productospf'
@@ -111,6 +112,8 @@ Rails.application.routes.draw do
     "mr519_gen/encuestasusuario#externoresultado",
     as: :externoresultado_encuestausuario
 
+    get '/tipoproductopf_de_productopf/:id' => 'cor1440_gen/proyectosfinancieros#tipoproductopf_de_productopf',
+      as: :proyectofinanciero_tipoproductopf_de_productopf
 
     get "/proyectosfinancieros/:id/fichaimp" => "cor1440_gen/proyectosfinancieros#fichaimp", as: :pf_fichaimp
     get "/proyectosfinancieros/:id/fichapdf" => "cor1440_gen/proyectosfinancieros#fichapdf", as: :pf_fichapdf

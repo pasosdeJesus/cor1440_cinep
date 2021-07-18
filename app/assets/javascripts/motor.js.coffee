@@ -232,14 +232,33 @@ PUBLICACIONPRODUCTO_ID="322"
     )
     if acids.includes(PUBLICACIONPRODUCTO_ID)
       $('#tarjeta-publicacion-producto').show()
-      # Actualiza productopf y si acaso tipoproductopf
+      # Actualiza productopf 
       params = {
         'actividadpf_ids': acids,
         'actividad_id': $('#actividad_id').val()
       }
-      sip_llena_select_con_AJAX2('actividades_productospf', params, 'actividad_productopf_id', 'No puedo actualizar plan de publicación', window, 'id', 'detalle', null, true)
+      sip_llena_select_con_AJAX2('actividades_productospf', params, 'actividad_productopf_id', 'No puedo actualizar plan de publicación', window, 'id', 'detalle', cor1440_cinep_actualiza_tipoproductopf, true)
+
     else
       $('#tarjeta-publicacion-producto').hide()
+
+    
+@cor1440_cinep_llena_tiposproductopf = (root, res) ->
+  idsel = '#actividad_publicacionproducto_attributes_tipoproductopf_id'
+  if res == '' || (typeof res) == 'undefined'
+    $(idsel).val(null)
+    $(idsel).prop('disabled',false).trigger('chosen:updated')
+  else
+    $(idsel).val(res)
+    $(idsel).prop('disabled',true).trigger('chosen:updated').prop('disabled',false)
+
+@cor1440_cinep_actualiza_tipoproductopf = () ->
+  v = +$("#actividad_productopf_id").val()
+  if v > 0
+    params = {}
+    sip_funcion_tras_AJAX('tipoproductopf_de_productopf/' + v , params, cor1440_cinep_llena_tiposproductopf, 'No pudo cargar tipos de productos', window)
+  else
+    cor1440_cinep_llena_tiposproductopf('')
 
 
 @cor1440_cinep_prepara_eventos_unicos = (root) ->
@@ -612,5 +631,9 @@ PUBLICACIONPRODUCTO_ID="322"
       root.tagregapr= Date.now()
     
     return
+  )
+
+  $(document).on("change", '#actividad_productopf_id', (e) ->
+    cor1440_cinep_actualiza_tipoproductopf()
   )
   return
