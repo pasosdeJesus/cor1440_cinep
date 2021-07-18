@@ -15,6 +15,7 @@ class PublicacionesController < Heb412Gen::ModelosController
     [
       :id, 
       :nombre, 
+      :autor,
       :tipoproductopf,
       :descargaspublicacion,
       :observaciones, 
@@ -27,6 +28,10 @@ class PublicacionesController < Heb412Gen::ModelosController
     [
       :nombre, 
       :tipoproductopf,
+      :revista,
+      :categoriarevista_id,
+      :editorial,
+      :issn,
       :descargaspublicacion,
       :observaciones, 
     ]
@@ -39,8 +44,13 @@ class PublicacionesController < Heb412Gen::ModelosController
 
   def lista_params
     [
+      :autor,
+      :categoriarevista_id,
+      :editorial,
+      :issn,
       :nombre, 
       :observaciones, 
+      :revista,
       :tipoproductopf_id,
       :descargaspublicacion_attributes => [
         :anio,

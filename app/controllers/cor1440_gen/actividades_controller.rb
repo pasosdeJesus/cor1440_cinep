@@ -452,6 +452,10 @@ module Cor1440Gen
         :publicacionproducto_attributes => 
         [
           :nombre, 
+          :categoriarevista_id,
+          :editorial,
+          :issn,
+          :revista,
           :observaciones, 
           :tipoproductopf_id,
         ],

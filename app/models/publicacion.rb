@@ -4,6 +4,8 @@ class Publicacion < ActiveRecord::Base
   include Sip::Localizacion
   include Sip::Modelo
 
+  belongs_to :categoriarevista
+
   belongs_to :tipoproductopf
 
   # Actividad donde se lanza
@@ -27,6 +29,10 @@ class Publicacion < ActiveRecord::Base
   validates :nombre, presence: true, allow_blank: false, 
     length: { maximum: 500 }
   validates :observaciones, length: { maximum: 5000 }
+  validates :autor, length: { maximum: 500 }
+  validates :revista, length: { maximum: 500 }
+  validates :editorial, length: { maximum: 500 }
+  validates :issn, length: { maximum: 500 }
 
   campofecha_localizado :created_at
   campofecha_localizado :updated_at

@@ -4935,7 +4935,12 @@ CREATE TABLE public.publicacion (
     observaciones character varying(5000),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    tipoproductopf_id integer
+    tipoproductopf_id integer,
+    autor character varying(500),
+    revista character varying(500),
+    editorial character varying(500),
+    issn character varying(500),
+    categoriarevista_id integer
 );
 
 
@@ -10494,6 +10499,14 @@ ALTER TABLE ONLY public.regiongrupo
 
 
 --
+-- Name: publicacion fk_rails_9089464575; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.publicacion
+    ADD CONSTRAINT fk_rails_9089464575 FOREIGN KEY (categoriarevista_id) REFERENCES public.categoriarevista(id);
+
+
+--
 -- Name: sip_departamento fk_rails_92093de1a1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -12012,6 +12025,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210714111431'),
 ('20210714131146'),
 ('20210714152729'),
-('20210718170555');
+('20210718170555'),
+('20210718184354');
 
 

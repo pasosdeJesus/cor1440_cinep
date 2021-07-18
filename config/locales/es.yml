@@ -368,11 +368,15 @@ es:
         Profesion: Profesión
         Profesiones: Profesiones
       "publicacion":
-        Publicacion: Producto CINEP/PPP
-        Publicaciones: Productos CINEP/PPP
+        categoriarevista: Categoría de la revista (si se publicó artículo)
         descargaspublicacion: Descargas
+        editorial: Editorial
+        issn: ISSN
         nombre: Título
         productopf: Plan para la publicación
+        revista: Revista (si se publicó artículo)
+        Publicacion: Producto CINEP/PPP
+        Publicaciones: Productos CINEP/PPP
         tipoproductopf: Tipo de producto
       "redactor":
         Redactor: Red de organizaciones

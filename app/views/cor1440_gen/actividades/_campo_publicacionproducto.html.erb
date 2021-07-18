@@ -1,4 +1,8 @@
-<% estilopresenta = 'display: none' %> <% if f.object && f.object.actividadpf_ids &&  f.object.actividadpf_ids.include?(ApplicationHelper::PRODUCTOPUBLICACION_ID) %> <% estilopresenta = '' %>
+<% estilopresenta = 'display: none' %> 
+<% if f.object && f.object.actividadpf_ids &&  
+    f.object.actividadpf_ids.include?(
+      ApplicationHelper::PRODUCTOPUBLICACION_ID) %> 
+    <% estilopresenta = '' %>
 <% end %>
 <div class="card" id="tarjeta-publicacion-producto" 
             style='<%= estilopresenta %>'>
@@ -13,13 +17,19 @@
       <% @registro = fpub.object %>
       <% tc = ::PublicacionesController.new %>
       <% # f.template.controller es ActividadesController%>
-      <% @atributos_form = [:nombre, :tipoproductopf, :observaciones] %>
+      <% @atributos_form = [ :nombre, 
+                             :tipoproductopf, 
+                             :revista,
+                             :categoriarevista_id, 
+                             :editorial,
+                             :issn,
+                             :observaciones
+      ] %>
       <%= fpub.input :id, as: :hidden %>
       <% @atributos_form.each do |atr| %>
         <%= render partial: "sip/modelos/sip_campo_aut", 
           locals: { f: fpub, atr: atr} %>
       <% end %>
     <% end %>
-
   </div>
 </div>
