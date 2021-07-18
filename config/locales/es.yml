@@ -99,15 +99,9 @@ es:
       "cajacompensacion":
         Cajacompensacion: 'Caja de compensación'
         Cajascompensacion: 'Cajas de compensación'
-      "csivinivelgeo":
-        Csivinivelgeo: 'Nivel geográfico (STCIV)'
-        Csivinivelesgeo: 'Niveles geográficos (STCIV)'
-      "csivinivelresp":
-        Csivinivelresp: 'Nivel de responsabilidad (STCIV)'
-        Csivinivelesresp: 'Niveles de responsabilidad (STCIV)'
-      "csivitema":
-        Csivitema: 'Tema (STCIV)'
-        Csivitemas: 'Temas (STCIV)'
+      "categoriarevista":
+        Categoriarevista: 'Categoría de revista'
+        Categoriasrevista: 'Categorías de revista'
       "comunicado":
         Comunicado: 'Comunicado'
         Comunicados: 'Comunicados'
@@ -296,6 +290,15 @@ es:
         desc60: 'Descripción 60% (sólo si es indicador progresivo)'
         desc80: 'Descripción 80% (sólo si es indicador progresivo)'
         desc100: 'Descripción 100% (sólo si es indicador progresivo)'
+      "csivinivelgeo":
+        Csivinivelgeo: 'Nivel geográfico (STCIV)'
+        Csivinivelesgeo: 'Niveles geográficos (STCIV)'
+      "csivinivelresp":
+        Csivinivelresp: 'Nivel de responsabilidad (STCIV)'
+        Csivinivelesresp: 'Niveles de responsabilidad (STCIV)'
+      "csivitema":
+        Csivitema: 'Tema (STCIV)'
+        Csivitemas: 'Temas (STCIV)'
       "empresaps":
         Empresaps: 'Empresa prestradora de salud'
         Empresasps: 'Empresas prestadoras de salud'
@@ -368,6 +371,7 @@ es:
         Publicacion: Producto CINEP/PPP
         Publicaciones: Productos CINEP/PPP
         descargaspublicacion: Descargas
+        nombre: Título
         productopf: Plan para la publicación
         tipoproductopf: Tipo de producto
       "redactor":

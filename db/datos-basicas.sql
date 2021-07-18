@@ -1832,3 +1832,21 @@ SELECT pg_catalog.setval('public.tipoproductopf_id_seq', 100, true);
 -- PostgreSQL database dump complete
 --
 
+
+INSERT INTO public.categoriarevista (id, nombre, 
+  fechacreacion, created_at, updated_at) VALUES (1, 'SIN INFORMACIÓN',
+  '2021-07-18', '2021-07-18', '2021-07-18');
+INSERT INTO public.categoriarevista (id, nombre, 
+  fechacreacion, created_at, updated_at) VALUES (2, 'A',
+  '2021-07-18', '2021-07-18', '2021-07-18');
+INSERT INTO public.categoriarevista (id, nombre, 
+  fechacreacion, created_at, updated_at) VALUES (3, 'A1',
+  '2021-07-18', '2021-07-18', '2021-07-18');
+INSERT INTO public.categoriarevista (id, nombre, 
+  fechacreacion, created_at, updated_at) VALUES (4, 'B',
+  '2021-07-18', '2021-07-18', '2021-07-18');
+INSERT INTO public.categoriarevista (id, nombre, 
+  fechacreacion, created_at, updated_at) VALUES (5, 'C',
+  '2021-07-18', '2021-07-18', '2021-07-18');
+
+SELECT setval('public.categoriarevista_id_seq', 100);

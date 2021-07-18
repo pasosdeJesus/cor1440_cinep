@@ -94,6 +94,7 @@ class Ability  < Cor1440Gen::Ability
         ['', 'areaestudios'],
         ['', 'cajacompensacion'],
         ['', 'cargo'],
+        ['', 'categoriarevista'],
         ['', 'comunicado'],
         ['', 'csivinivelgeo'],
         ['', 'csivinivelresp'],

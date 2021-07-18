@@ -1191,6 +1191,40 @@ CREATE SEQUENCE public.caso_seq
 
 
 --
+-- Name: categoriarevista; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.categoriarevista (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: categoriarevista_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.categoriarevista_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: categoriarevista_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.categoriarevista_id_seq OWNED BY public.categoriarevista.id;
+
+
+--
 -- Name: comunicado; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -6758,6 +6792,13 @@ ALTER TABLE ONLY public.cargo ALTER COLUMN id SET DEFAULT nextval('public.cargo_
 
 
 --
+-- Name: categoriarevista id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.categoriarevista ALTER COLUMN id SET DEFAULT nextval('public.categoriarevista_id_seq'::regclass);
+
+
+--
 -- Name: comunicado id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -7774,6 +7815,14 @@ ALTER TABLE ONLY public.cajacompensacion
 
 ALTER TABLE ONLY public.cargo
     ADD CONSTRAINT cargo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: categoriarevista categoriarevista_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.categoriarevista
+    ADD CONSTRAINT categoriarevista_pkey PRIMARY KEY (id);
 
 
 --
@@ -11962,6 +12011,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210714025423'),
 ('20210714111431'),
 ('20210714131146'),
-('20210714152729');
+('20210714152729'),
+('20210718170555');
 
 

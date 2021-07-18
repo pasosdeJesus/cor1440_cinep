@@ -13,6 +13,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'areaestudios', 'areasestudios'
   inflect.irregular 'busqunif', 'busqsunif'
   inflect.irregular 'cajacompensacion', 'cajascompensacion'
+  inflect.irregular 'categoriarevista', 'categoriasrevista'
   inflect.irregular 'csivinivelgeo', 'csivinivelesgeo'
   inflect.irregular 'csivinivelresp', 'csivinivelesresp'
   inflect.irregular 'csivitema', 'csivitemas'
