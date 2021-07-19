@@ -1,0 +1,38 @@
+    <div>
+      <div>
+        <a type='button' 
+           class='btn data-toggle toggleas'
+           style="margin-top: 20px;"
+           data-toggle="collapse">
+          Agregar nueva
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="modal fade nuevoas" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1>Nueva Organizacion social</h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= f.fields_for :orgsocial, Sip::Orgsocial.new do |orgsocial|%>
+                <% @registro = orgsocial.object %>
+                <% @atributos_form = [:grupoper, :nivelrelacion_id, {:sectororgsocial_ids=>[]}, :pais_id, {:regiongrupo_ids=>[]}, {:departamentotrab_ids=>[]}, {:municipiotrab_ids=>[]}, {:grupo_ids=>[]}, :csivinivelgeo_id, {:csivitema_ids=>[]}, :csivinivelresp_id, {:orgsocial_persona=>[]}, {:lineabase_ids=>[]}, :web, :direccion, :telefono, :fax, :celular, :fechadeshabilitacion_localizada] %>
+                <%= render partial: "sip/modelos/form_modal" %>
+
+              <% end %>
+
+            </div>
+            <div class="modal-footer">
+              <%= link_to 'Crear', '#',
+                class: 'btn btn-primary boton_agregaros',
+                "data-dismiss": "modal"
+              %>
+            </div>
+          </div>
+        </div> <!-- modal-dialog -->
+      </div> <!-- role dialog -->
+    </div>
