@@ -104,7 +104,8 @@ module Sip
       # Si el usuario es del grupo STCIV marcar el contacto
       # con stciv para que no pueda ser visto por CINEP
       # (Y los contactos de CINEP no pueden ser vistos por STCIV).
-      if can? :stciv, Sip::OrgsocialPersona
+      if can? :stciv, Sip::OrgsocialPersona && 
+          params[:orgsocial][:orgsocial_persona_attributes] 
         params[:orgsocial][:orgsocial_persona_attributes].each do |at|
           at[1][:stciv] = true
         end
