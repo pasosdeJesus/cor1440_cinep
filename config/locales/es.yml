@@ -130,7 +130,7 @@ es:
         Convenio: "Convenio interinstitucional marco"
         Convenios: "Convenios interinstitucionales marco"
       "cor1440_gen/actividad":
-        actividadpf: Actividad delmarco lógico
+        actividadpf: Actividad del marco lógico
         actividadespf: Actividades del marco lógico
         actividadtipo: Tipo
         orgsocial: Organización social
@@ -369,6 +369,8 @@ es:
         Profesiones: Profesiones
       "publicacion":
         categoriarevista: Categoría de la revista (si se publicó artículo)
+        created_at_localizada: Registro
+        updated_at_localizada: Actualización
         descargaspublicacion: Descargas
         editorial: Editorial
         issn: ISSN
@@ -406,9 +408,9 @@ es:
         created_at_localizada: Registrado
         departamentotrab: Departamentos completos donde opera
         "{:departamentotrab_ids=>[]}": Departamentos completos donde opera
-        grupo: Grupo(s)
-        grupo_ids: Grupo(s)
-        "{:grupo_ids=>[]}": Grupo(s)
+        grupo: Grupo(s) del CINEP con los que se relacion
+        grupo_ids: Grupo(s) del CINEP con los que se relacion
+        "{:grupo_ids=>[]}": Grupo(s) del CINEP con los que se relacion
         lineabase: Línea base
         lineabase_ids: Línea base
         "{:lineabase_ids=>[]}": Línea base
