@@ -454,6 +454,7 @@ module Cor1440Gen
           :nombre, 
           :categoriarevista_id,
           :editorial,
+          :id,
           :issn,
           :revista,
           :observaciones, 
