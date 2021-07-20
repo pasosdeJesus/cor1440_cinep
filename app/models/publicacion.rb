@@ -37,6 +37,21 @@ class Publicacion < ActiveRecord::Base
   campofecha_localizado :created_at
   campofecha_localizado :updated_at
 
+  scope :filtro_nombre, lambda {|n|
+    where("unaccent(nombre) ILIKE '%' || unaccent(?) || '%'", n)
+  }
+
+  scope :filtro_autor, lambda {|a|
+    where("unaccent(autor) ILIKE '%' || unaccent(?) || '%'", n)
+  }
+
+  scope :filtro_observaciones, lambda {|o|
+    where("unaccent(observaciones) ILIKE '%' || unaccent(?) || '%'", o)
+  }
+
+  scope :filtro_tipoproductopf_id, lambda {|t|
+    where(tipoproductopf_id: t)
+  }
 
   def presenta(atr)
     case atr.to_s
