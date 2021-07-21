@@ -31,6 +31,7 @@ class PublicacionesController < Heb412Gen::ModelosController
       :revista,
       :categoriarevista_id,
       :editorial,
+      :isbn,
       :issn,
       :descargaspublicacion,
       :observaciones, 
@@ -42,11 +43,16 @@ class PublicacionesController < Heb412Gen::ModelosController
     'F'
   end
 
+  def index_reordenar(c)
+    c.reorder('id DESC')
+  end
+
   def lista_params
     [
       :autor,
       :categoriarevista_id,
       :editorial,
+      :isbn,
       :issn,
       :nombre, 
       :observaciones, 
