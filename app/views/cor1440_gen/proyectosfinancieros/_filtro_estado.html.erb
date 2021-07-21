@@ -2,6 +2,7 @@
   collection: ::ApplicationHelper::ESTADO,
   include_blank: true,
   label: false,
+  selected: Sip::ModeloHelper.poromision(params, :busestado),
   input_html: {
     value: Sip::ModeloHelper.poromision(params, :busestado),
     'data-enviarautomatico' => 'data-enviarautomatico'
