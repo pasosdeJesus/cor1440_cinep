@@ -55,14 +55,9 @@ class Ability  < Cor1440Gen::Ability
   GRUPO_COMUNICACIONES = "Comunicaciones"
   GRUPO_DERECHOSHUMANOS = "Línea Derechos Humanos y Violencia Política"
   
-  #GRUPO_MEDIACION = "Línea Mediación y Reconciliación"
-  #GRUPO_CONFLICTOYESTADO = "Línea Conflicto y Estado"
-  #GRUPO_INICIATIVASPAZ = "Línea Iniciativas de Paz"
 
   GRUPO_CONFLICTOYPAZ = 'Línea Conflicto y Paz'
   
-  #GRUPO_MOVIMIENTOSSOCIALES = "Línea Movimientos Sociales"
-
   GRUPO_MOVIMIENTOSSOCIALESTIERRA = 'Línea Movimientos Sociales Tierra y Territorio'
  
   GRUPO_LINEA = "Línea"
@@ -453,11 +448,11 @@ class Ability  < Cor1440Gen::Ability
 
         can :manage, Cor1440Gen::Actividad#, grupo.map(&:nombre).to_set <= grupos.to_set
         #can :manage, Cor1440Gen::Informe # limitar a oficina?
-        can :read, Cor1440Gen::Proyectofinanciero # Los de su grupo
+        can :listado, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichaimp, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :fichapdf, Cor1440Gen::Proyectofinanciero # Los de su grupo
         can :objetivospf, Cor1440Gen::Proyectofinanciero
-        can :actividadespf, Cor1440Gen::Proyectofinanciero
+        #can :actividadespf, Cor1440Gen::Proyectofinanciero
 
         can :read, Heb412Gen::Doc
         can :read, Heb412Gen::Plantilladoc
@@ -481,7 +476,81 @@ class Ability  < Cor1440Gen::Ability
         can :read, ::Usuario # Directorio institucional
 
         lineas = lgrupos.select {|g| g.start_with?(GRUPO_LINEA)}
-        # Sólo investigadores
+        coords = lgrupos.select {|g| g.start_with?(GRUPO_RESPONSABLE)}
+        # Coordinadores también están en su línea
+        if coords.length > 0
+          lineas |= coords.map { |gc| GRUPO_LINEA + ' ' + gc[15..-1] }
+          # Detección de problemas en nombres de líneas
+          lineasm = lineas.select { |nl| Sip::Grupo.where(nombre: nl).count == 0 }
+          if lineasm.count > 0
+              puts "OJO problemas en nombres #{lineasm}"
+              return
+          end
+        end
+
+        # Dejar en lineas solo nombres validos y en idlineas sus ids
+        lineas = lineas.select { |nl| Sip::Grupo.where(nombre: nl).count > 0 }
+        idlineas = lineas.map { |nl| Sip::Grupo.where(nombre: nl).take.id }
+
+        # Si hace fata agregar lineas a grupos
+        lgrupos |= lineas
+        lgrupos = lgrupos.select { |nl| Sip::Grupo.where(nombre: nl).count > 0 }
+        idlgrupos = lgrupos.map { |nl| Sip::Grupo.where(nombre: nl).take.id }
+
+
+        # Puede ver resumen de proyectos no exclusivos (i.e sin grupos),
+        # los que cubran sus grupos y aquellos en los que esté en
+        # el equipo de trabajo
+        pc1 = Cor1440Gen::Proyectofinanciero.
+          where(
+            'id NOT IN (SELECT proyectofinanciero_id 
+               FROM grupo_proyectofinanciero)'
+        ).pluck(:id)
+        pc2 = Cor1440Gen::Proyectofinanciero.
+          where('id IN (SELECT proyectofinanciero_id FROM 
+                  grupo_proyectofinanciero WHERE grupo_id IN (?))', idlineas).
+        pluck(:id)
+        pc3 = Cor1440Gen::Proyectofinanciero.
+          where('id IN (SELECT proyectofinanciero_id FROM 
+                  cor1440_gen_proyectofinanciero_usuario WHERE usuario_id=?)', 
+                  usuario.id).pluck(:id)
+
+        can [:read], Cor1440Gen::Proyectofinanciero, {id: pc1 | pc2 | pc3}
+
+        # Convención de control de acceso a actividadespf
+        # Las que no tengan control de acceso pueden usarlas todos los
+        # investigadores
+        # Las que tengan control de acceso son exclusivas para los grupos
+        # que indiquen
+        apf1 = Cor1440Gen::Actividadpf.
+          where(proyectofinanciero_id: pc1 | pc2).
+          where(
+            'id NOT IN (SELECT actividadpf_id 
+               FROM cor1440_gen_actividadpf_grupoexclusivo)'
+        ).pluck(:id)
+        apf2 = Cor1440Gen::Actividadpf.
+          where(proyectofinanciero_id: pc1 | pc2).
+          joins('JOIN cor1440_gen_actividadpf_grupoexclusivo ON
+                  cor1440_gen_actividadpf_grupoexclusivo.actividadpf_id=
+                  cor1440_gen_actividadpf.id ').
+                  where('cor1440_gen_actividadpf_grupoexclusivo.grupo_id IN (?)', 
+                        idlgrupos).
+                        pluck(:id)
+        apfper = apf1 | apf2
+        apfper.uniq!
+        can [:read], Cor1440Gen::Actividadpf, id: apfper
+
+        # Puede editar encuestas que ha respondido
+        encper = Mr519Gen::Encuestapersona.joins(:persona).
+          joins('JOIN sip_orgsocial_persona ON 
+            sip_persona.id = sip_orgsocial_persona.persona_id').
+            joins( 'JOIN grupo_orgsocial ON grupo_orgsocial.orgsocial_id
+            =sip_orgsocial_persona.orgsocial_id').
+            where('grupo_id IN (?)', idlgrupos)
+        puts "encper.ids=#{encper.map(&:id)}"
+        can [:edit, :update], encper
+
+        # Investigadores y coordinadores
         if lineas.length > 0
           can [:create, :read, :update], Sip::Orgsocial
           can [:create, :read, :update], ::Publicacion
@@ -494,18 +563,10 @@ class Ability  < Cor1440Gen::Ability
           #can :index, :exploradordatosrel
         end
 
-        coords = lgrupos.select {|g| g.start_with?(GRUPO_RESPONSABLE)}
-        # Posibilidad de editar Marco Logico para coordinadores
+        # Coordinadores de línea
         if coords.length > 0
-          lineas = coords.map { |gc| GRUPO_LINEA + ' ' + gc[15..-1] }
-          lineasm = lineas.select { |nl| Sip::Grupo.where(nombre: nl).count == 0 }
-          if lineasm.count > 0
-              puts "OJO problemas en nombres #{lineasm}"
-              return
-          end
-          lineasb = lineas.select { |nl| Sip::Grupo.where(nombre: nl).count > 0 }
-          idlineas = lineasb.map { |nl| Sip::Grupo.where(nombre: nl).take.id }
-          pc = ::Cor1440Gen::Proyectofinanciero.
+          # Posibilidad de editar Marco Lógico de proyectos exclusivos de su línea
+          pc = Cor1440Gen::Proyectofinanciero.
             where('cor1440_gen_proyectofinanciero.id IN
               (SELECT proyectofinanciero_id FROM 
                 (SELECT proyectofinanciero_id, COUNT(grupo_id) FROM 
@@ -513,69 +574,36 @@ class Ability  < Cor1440Gen::Ability
                   IN (SELECT proyectofinanciero_id FROM 
                   grupo_proyectofinanciero WHERE grupo_id IN (?)) GROUP BY 1) 
                 AS sub WHERE sub.count=1)', idlineas)
-          can [:edit, :update], pc
-          can [:edit, :update], Cor1440Gen::Actividadpf.where(
-            proyectofinanciero_id: pc.pluck(:id)
-          )
+          can [:read, :edit, :update], Cor1440Gen::Proyectofinanciero,
+            {id: pc.pluck(:id)}
+          can [:edit, :update], Cor1440Gen::Actividadpf,
+            {proyectofinanciero_id: pc.pluck(:id)}
           can [:edit], Cor1440Gen::Indicadorpf
-          can :manage, ::Publicacion
           can [:read], Mr519Gen::Encuestapersona
-        else
-          # No coordinador (e.g investigador)
-          lineasb = lineas.select { |nl| Sip::Grupo.where(nombre: nl).count > 0 }
-          idlineas = lineasb.map { |nl| Sip::Grupo.where(nombre: nl).take.id }
-          pc = ::Cor1440Gen::Proyectofinanciero.
-            where('id IN (SELECT proyectofinanciero_id FROM 
-                  grupo_proyectofinanciero WHERE grupo_id IN (?))', idlineas)
-          can [:read], pc
-          # Convención de control de acceso a actividadespf
-          # Las que no tengan control de acceso pueden usarlas todos los
-          # investigadores
-          # Las que tengan control de acceso son exclusivas para los grupos
-          # que indiquen
-          apf1 = Cor1440Gen::Actividadpf.
-            where(proyectofinanciero_id: pc.pluck(:id)).
-            where(
-                  'id NOT IN (SELECT actividadpf_id 
-               FROM cor1440_gen_actividadpf_grupoexclusivo)'
-          ).pluck(:id)
-          apf2 = Cor1440Gen::Actividadpf.
-            where(proyectofinanciero_id: pc.pluck(:id)).
-            joins('JOIN cor1440_gen_actividadpf_grupoexclusivo ON
-                  cor1440_gen_actividadpf_grupoexclusivo.actividadpf_id=
-                  cor1440_gen_actividadpf.id ').
-            where('cor1440_gen_actividadpf_grupoexclusivo.grupo_id IN (?)', 
-                  idlineas).
-            pluck(:id)
-          apfper = apf1 | apf2
-          apfper.uniq!
-          can [:read], Cor1440Gen::Actividadpf, id: apfper
-
-          encper = Mr519Gen::Encuestapersona.joins(:persona).
-            joins('JOIN sip_orgsocial_persona ON 
-            sip_persona.id = sip_orgsocial_persona.persona_id').
-            joins( 'JOIN grupo_orgsocial ON grupo_orgsocial.orgsocial_id
-            =sip_orgsocial_persona.orgsocial_id').
-            where('grupo_id IN (?)', idlineas)
-          puts "encper.ids=#{encper.map(&:id)}"
-          can [:edit, :update], encper
         end
  
-        # Responsables de un proyecto también pueden editar marco lógico
-        pc = ::Cor1440Gen::Proyectofinanciero.where(
+        # Si un usuario es coordinador o responsable de un proyecto
+        # puede editar su marco lógico.
+        pc1 = Cor1440Gen::Proyectofinanciero.where(
           'cor1440_gen_proyectofinanciero.id IN
           (SELECT proyectofinanciero_id FROM proyectofinanciero_uresponsable
-            WHERE uresponsable_id=?)', usuario.id)
+            WHERE uresponsable_id=?)', usuario.id).pluck(:id)
+        pc2 = Cor1440Gen::Proyectofinanciero.where(
+          'cor1440_gen_proyectofinanciero.id IN
+          (SELECT proyectofinanciero_id FROM coordinador_proyectofinanciero
+            WHERE coordinador_id=?)', usuario.id).pluck(:id)
+        pc = Cor1440Gen::Proyectofinanciero.where(id: pc1 | pc2)
+
         if pc.count > 0
-          can [:edit, :update], pc
+          can [:read, :edit, :update], Cor1440Gen::Proyectofinanciero,
+            {id: pc.pluck(:id)}
           can [:edit], Cor1440Gen::Indicadorpf
           can [:edit], Cor1440Gen::Actividadpf
-          can :manage, ::Publicacion
         end
 
         # Control de acceso por grupo
         ###############################
-        
+
         if lgrupos.include?(GRUPO_ARCHIVOYCORRESPONDENCIA)
           can [:edit, :update], ::Usuario
         end
@@ -592,8 +620,9 @@ class Ability  < Cor1440Gen::Ability
           can :manage, Cor1440Gen::Mindicadorpf
           can [:creacomogp, :read, :index, :show, :create, :validar], 
             Cor1440Gen::Proyectofinanciero
-          can [:manage, :validar], Cor1440Gen::Proyectofinanciero.where(
-            'respgp_id IS NOT NULL')
+          can [:manage, :validar], Cor1440Gen::Proyectofinanciero,
+            {id: Cor1440Gen::Proyectofinanciero.where(
+              'respgp_id IS NOT NULL').pluck(:id)}
           can :manage, Cor1440Gen::Sectorapc
 
           can [:create, :read, :update], ::Publicacion
@@ -608,7 +637,6 @@ class Ability  < Cor1440Gen::Ability
         end
 
         if lgrupos.include?(GRUPO_COMUNICACIONES)
-          can :manage, ::Publicacion
           can :manage, ::Publicacion
           can :manage, :tablasbasicas
         end

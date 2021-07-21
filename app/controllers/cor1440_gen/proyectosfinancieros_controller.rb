@@ -15,7 +15,7 @@ module Cor1440Gen
     skip_before_action :set_proyectofinanciero, only: [:validar]  
 
     load_and_authorize_resource  class: Cor1440Gen::Proyectofinanciero,
-      only: [:new, :create, :destroy, :edit, :update, :index, :show,
+      only: [:new, :create, :destroy, :edit, :update, :show,
              :objetivospf, :actualizaact]
 
     include ::Sip::ConsultasHelper
@@ -736,13 +736,13 @@ module Cor1440Gen
       if mgi == '' && current_usuario.rol != ::Ability::ROLDIR &&
         current_usuario.rol != ::Ability::ROLADMIN
         registros = registros.where('TRUE=FALSE')
-      elsif mg1.where(nombre: ::Ability::GRUPO_COMPROMISOS).count == 0 &&
-        current_usuario.rol != ::Ability::ROLDIR &&
-        current_usuario.rol != ::Ability::ROLADMIN
-        registros = registros.where(
-          "cor1440_gen_proyectofinanciero.id IN (" +
-          "SELECT proyectofinanciero_id FROM grupo_proyectofinanciero " +
-          " WHERE grupo_id IN (#{mgi}))")
+#      elsif mg1.where(nombre: ::Ability::GRUPO_COMPROMISOS).count == 0 &&
+#        current_usuario.rol != ::Ability::ROLDIR &&
+#        current_usuario.rol != ::Ability::ROLADMIN
+#        registros = registros.where(
+#          "cor1440_gen_proyectofinanciero.id IN (" +
+#          "SELECT proyectofinanciero_id FROM grupo_proyectofinanciero " +
+#          " WHERE grupo_id IN (#{mgi}))")
       end
       return registros.reorder([:estado, :referenciacinep, :id])
     end
