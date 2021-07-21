@@ -373,7 +373,8 @@ es:
         updated_at_localizada: Actualización
         descargaspublicacion: Descargas
         editorial: Editorial
-        issn: ISSN
+        isbn: ISBN (en caso de libros)
+        issn: ISSN (en caso de revistas)
         nombre: Título
         productopf: Plan para la publicación
         revista: Revista (si se publicó artículo)

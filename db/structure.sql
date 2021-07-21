@@ -4940,7 +4940,8 @@ CREATE TABLE public.publicacion (
     revista character varying(500),
     editorial character varying(500),
     issn character varying(500),
-    categoriarevista_id integer
+    categoriarevista_id integer,
+    isbn character varying(500)
 );
 
 
@@ -12028,6 +12029,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210718170555'),
 ('20210718184354'),
 ('20210721090934'),
-('20210721104221');
+('20210721104221'),
+('20210721123304');
 
 
