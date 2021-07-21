@@ -28,6 +28,7 @@ class PublicacionesController < Heb412Gen::ModelosController
     [
       :nombre, 
       :tipoproductopf,
+      :autor,
       :revista,
       :categoriarevista_id,
       :editorial,

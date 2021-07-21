@@ -368,19 +368,20 @@ es:
         Profesion: Profesión
         Profesiones: Profesiones
       "publicacion":
+        autor: Autor(es)
         categoriarevista: Categoría de la revista (si se publicó artículo)
         created_at_localizada: Registro
-        updated_at_localizada: Actualización
         descargaspublicacion: Descargas
         editorial: Editorial
         isbn: ISBN (en caso de libros)
         issn: ISSN (en caso de revistas)
         nombre: Título
         productopf: Plan para la publicación
-        revista: Revista (si se publicó artículo)
         Publicacion: Producto CINEP/PPP
         Publicaciones: Productos CINEP/PPP
+        revista: Revista (si se publicó artículo)
         tipoproductopf: Tipo de producto
+        updated_at_localizada: Actualización
       "redactor":
         Redactor: Red de organizaciones
         Redesactor: Redes de organizaciones
