@@ -32,15 +32,15 @@ class Grupos20212023 < ActiveRecord::Migration[6.1]
     SQL
 
 
-    # Programa Conflicto, Estado y Paz
-    #   Línea Conflicto y Paz 
+    # Programa Conflicto, Estado y Paz (60)
+    #   Línea Conflicto y Paz (62)
     #     antes:Líneas Conflicto y Estado 
     #       Iniciativas de Paz(?) 
     #       Mediación y Reconciliación
-    #   Línea Educación para la Ciudadanía y la Paz
+    #   Línea Educación para la Ciudadanía y la Paz (64)
     #     antes: Culturas de Paz y Ciudadanías 
     #       Escuela de Paz y Convivencia Ciudadana
-    #   Línea Gestión del Territorio
+    #   Línea Gestión del Territorio (66)
     #     antes: Gestión del Territorio en el Pacifico
     #
 
@@ -154,14 +154,14 @@ class Grupos20212023 < ActiveRecord::Migration[6.1]
     )
 
 
-    # Programa Movilización, DDHH e Interculturalidad
-    #   Línea Movimientos Sociales Tierra y Territorio
+    # Programa Movilización, DDHH e Interculturalidad (68)
+    #   Línea Movimientos Sociales Tierra y Territorio (70)
     #     antes: Movimientos Sociales 
     #       Derecho a la tierra y el territorio
-    #   Línea Interculturalidad
+    #   Línea Interculturalidad (72)
     #     antes: 
-    #       Educación Intercultural
-    #   Línea Derechos Humanos
+    #       Educación Intercultural 
+    #   Línea Derechos Humanos (74)
     #     antes: Derechos Humanos y Derecho Internacional Humanitario
 
     Sip::Grupo.create(
