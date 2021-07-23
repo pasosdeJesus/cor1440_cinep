@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'apexcharts'
 
 gem 'actiontext', '>= 6.0.3.5'
 

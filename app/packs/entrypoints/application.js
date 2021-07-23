@@ -7,6 +7,7 @@ require('turbolinks').start()   // Acelera carga de paginas
 require("trix")
 
 import $ from "expose-loader?exposes=$,jQuery!jquery"
+import ApexCharts from 'apexcharts'
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import 'bootstrap'              // Maquetacion y elementos de diseño
 import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
