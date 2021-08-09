@@ -16,6 +16,9 @@ module Admin
     include Devise::Test::IntegrationHelpers
 
     setup  do
+      if ENV['CONFIG_HOSTS'] != 'www.example.com'
+        raise 'CONFIG_HOSTS debe ser www.example.com'
+      end
       @current_usuario = ::Usuario.find(1)
       sign_in @current_usuario
     end
@@ -24,7 +27,7 @@ module Admin
     # que después de la prueba se revierte
    
     test "debe presentar listado" do
-      get admin_categoriasrevista_path
+      get main_app.admin_categoriasrevista_path
       assert_response :success
       assert_template :index
     end
