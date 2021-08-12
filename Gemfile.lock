@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 6a312a0db6d3e51006d66e6351b54a0314137ecb
+  revision: 46f14e76f537088a386ff4a506ddf1245453fab6
   branch: main
   specs:
     cor1440_gen (1.0b4)
@@ -154,6 +154,8 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     andand (1.3.3)
+    apexcharts (0.1.10)
+      smart_kv (~> 0.2.8)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -353,6 +355,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    smart_kv (0.2.8.1)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -395,6 +398,7 @@ PLATFORMS
 
 DEPENDENCIES
   actiontext (>= 6.0.3.5)
+  apexcharts
   bcrypt
   bootsnap
   cancancan

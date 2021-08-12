@@ -4,7 +4,6 @@ SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
-SET default_toast_compression = 'pglz';
 SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
@@ -56,6 +55,25 @@ CREATE FUNCTION public.f_unaccent(text) RETURNS text
     AS $_$
       SELECT public.unaccent('public.unaccent', $1)  
       $_$;
+
+
+--
+-- Name: range(integer, integer, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.range(integer, integer, integer) RETURNS SETOF integer
+    LANGUAGE plpgsql
+    AS $_$
+declare
+i int;
+begin
+i := $1;
+while (i <= $2) loop
+return next i;
+i := i + $3;
+end loop;
+return;
+end;$_$;
 
 
 --
@@ -2124,6 +2142,7 @@ CREATE TABLE public.cor1440_gen_datointermedioti (
     nombre character varying(1024) NOT NULL,
     tipoindicador_id integer,
     nombreinterno character varying(127),
+    filtro character varying(5000),
     funcion character varying(5000),
     mindicadorpf_id integer
 );
@@ -2634,7 +2653,7 @@ CREATE TABLE public.cor1440_gen_proyectofinanciero (
     contrapartida boolean,
     anotacionescontab character varying(5000),
     gestiones character varying(5000),
-    presupuestototal numeric DEFAULT 0.0,
+    presupuestototal numeric(20,2) DEFAULT 0.0,
     aportecinep numeric(20,2),
     otrosaportescinep character varying(500),
     empresaauditoria character varying(500),
@@ -2845,12 +2864,12 @@ ALTER SEQUENCE public.cor1440_gen_sectorapc_id_seq OWNED BY public.cor1440_gen_s
 CREATE TABLE public.cor1440_gen_tipoindicador (
     id bigint NOT NULL,
     nombre character varying(32),
+    medircon integer,
     espcampos character varying(1000),
     espvaloresomision character varying(1000),
     espvalidaciones character varying(1000),
     esptipometa character varying(32),
     espfuncionmedir character varying(1000),
-    medircon integer,
     desc20 character varying(128),
     desc40 character varying(128),
     desc60 character varying(128),
@@ -2922,37 +2941,6 @@ CREATE SEQUENCE public.cor1440_gen_tipomoneda_id_seq
 --
 
 ALTER SEQUENCE public.cor1440_gen_tipomoneda_id_seq OWNED BY public.cor1440_gen_tipomoneda.id;
-
-
---
--- Name: cor1440_gen_valorcampoact; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.cor1440_gen_valorcampoact (
-    id bigint NOT NULL,
-    actividad_id integer,
-    campoact_id integer,
-    valor character varying(5000)
-);
-
-
---
--- Name: cor1440_gen_valorcampoact_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.cor1440_gen_valorcampoact_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: cor1440_gen_valorcampoact_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.cor1440_gen_valorcampoact_id_seq OWNED BY public.cor1440_gen_valorcampoact.id;
 
 
 --
@@ -4110,7 +4098,6 @@ CREATE TABLE public.ls (
     partici2 character varying(512),
     partici3 character varying(512),
     tipo_lucha character varying(3),
-    accion integer,
     motivopl integer,
     motivopp character varying(512),
     motivo2 character varying(512),
@@ -4121,9 +4108,9 @@ CREATE TABLE public.ls (
     entidad1 character varying(512),
     entidad2 character varying(512),
     entidad3 character varying(512),
-    ffuen_1 date,
-    ffuente date,
     fuente character varying(512),
+    ffuente date,
+    ffuen_1 date,
     descripcion character varying(6000),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -5103,6 +5090,7 @@ CREATE TABLE public.sal7711_gen_articulo (
     pagina character varying(20),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
+    url character varying(5000),
     texto text,
     adjunto_file_name character varying,
     adjunto_content_type character varying,
@@ -5110,10 +5098,9 @@ CREATE TABLE public.sal7711_gen_articulo (
     adjunto_updated_at timestamp without time zone,
     anexo_id_antiguo integer,
     adjunto_descripcion character varying(1500),
+    pais_id integer,
     titulo character varying(1024),
-    observaciones character varying(5000),
-    url character varying(5000),
-    pais_id integer
+    observaciones character varying(5000)
 );
 
 
@@ -5546,7 +5533,7 @@ CREATE TABLE public.sip_grupoper (
 -- Name: TABLE sip_grupoper; Type: COMMENT; Schema: public; Owner: -
 --
 
-COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en cor1440cinep_desarrollo';
+COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en cor1440cinep_produccion';
 
 
 --
@@ -6471,6 +6458,8 @@ CREATE TABLE public.usuario (
     updated_at timestamp without time zone,
     regionsjr_id integer,
     oficina_id integer DEFAULT 1,
+    nombres character varying(50) DEFAULT 'N'::character varying NOT NULL COLLATE public.es_co_utf_8,
+    apellidos character varying(50) DEFAULT 'N'::character varying NOT NULL COLLATE public.es_co_utf_8,
     ultimasincldap date,
     "uidNumber" integer,
     telefonos character varying(256),
@@ -6481,8 +6470,6 @@ CREATE TABLE public.usuario (
     numhijosmen12 integer DEFAULT 0,
     labdepartamento_id integer,
     labmunicipio_id integer,
-    apellidos character varying(127),
-    nombres character varying(127),
     perfilprofesional_id integer,
     cargo_id integer,
     contrato_id integer,
@@ -6570,7 +6557,7 @@ CREATE VIEW public.v_solicitud_informes AS
         END AS a_tiempo
    FROM (public.cor1440_gen_proyectofinanciero p
      JOIN public.v_solicitud_informes1 s ON ((p.id = s.proyectofinanciero_id)))
-  WHERE (p.id = ANY (ARRAY[125, 129, 128, 161, 173, 193, 194, 196, 103, 102, 111, 127, 109, 130, 133, 134, 131, 123, 132, 136, 104, 293, 237, 238, 239, 240, 119, 164, 20, 174, 190, 163, 195, 197, 122, 141, 142, 143, 144, 145, 147, 152, 146, 155, 137, 101, 138, 175, 149, 167, 166, 18, 150, 156, 120, 236, 116, 158, 176, 177, 170, 178, 179, 106, 118, 115, 171, 180, 157, 159, 172, 198, 199, 200, 201, 202, 168, 206, 117, 126, 233, 234, 235, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 254, 255, 256, 257, 295, 260, 267, 272, 286, 276, 309, 278, 280, 288, 19, 162, 140]))
+  WHERE (p.id = ANY (ARRAY[18, 19, 20, 21, 22, 103, 109, 115, 116, 117, 118, 119, 120, 122, 123, 125, 126, 127, 128, 129, 130, 131, 134, 137, 138, 139, 140, 141, 142, 143, 144, 145, 147, 148, 149, 151, 152, 153, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 170, 174, 175, 176, 181, 182, 193, 197, 198, 200, 201, 202, 203, 204, 210, 215, 216, 217, 218, 219, 220, 221, 226, 230, 231, 232, 236, 240, 241, 242, 244, 247, 248, 252, 263, 264, 265, 266, 267, 283, 286, 288, 289, 290, 291, 295, 331, 332, 334, 337, 338, 340, 341, 342, 349, 353, 354, 355, 356, 357, 358, 359, 360, 362, 363, 365, 366, 367, 368, 369, 372, 375, 376, 381, 382, 383, 385, 386, 388, 389, 394, 398, 399, 400, 402, 404, 406, 408, 409, 411, 418, 420, 423, 424, 425, 428, 429, 433, 435, 436, 437, 438, 439, 441, 443, 450, 451, 453, 455, 457, 464, 465, 466, 468, 470, 471, 472, 473, 474, 475, 477, 481, 483, 486, 487, 488, 490, 493, 494, 497, 498, 499, 501, 502, 503, 505, 507, 509, 512, 513, 515, 518, 520, 522, 523, 524, 525, 526, 527, 533, 536, 538, 539, 541, 543, 544, 549, 550, 551, 552, 554, 557, 558, 559, 561, 562, 564, 566]))
   ORDER BY s.fechaplaneada;
 
 
@@ -7069,13 +7056,6 @@ ALTER TABLE ONLY public.cor1440_gen_tipoindicador ALTER COLUMN id SET DEFAULT ne
 --
 
 ALTER TABLE ONLY public.cor1440_gen_tipomoneda ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_tipomoneda_id_seq'::regclass);
-
-
---
--- Name: cor1440_gen_valorcampoact id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.cor1440_gen_valorcampoact ALTER COLUMN id SET DEFAULT nextval('public.cor1440_gen_valorcampoact_id_seq'::regclass);
 
 
 --
@@ -8126,14 +8106,6 @@ ALTER TABLE ONLY public.cor1440_gen_tipoindicador
 
 ALTER TABLE ONLY public.cor1440_gen_tipomoneda
     ADD CONSTRAINT cor1440_gen_tipomoneda_pkey PRIMARY KEY (id);
-
-
---
--- Name: cor1440_gen_valorcampoact cor1440_gen_valorcampoact_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.cor1440_gen_valorcampoact
-    ADD CONSTRAINT cor1440_gen_valorcampoact_pkey PRIMARY KEY (id);
 
 
 --
@@ -9757,14 +9729,6 @@ ALTER TABLE ONLY public.cor1440_gen_actividad_rangoedadac
 
 
 --
--- Name: cor1440_gen_valorcampoact fk_rails_3060a94455; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.cor1440_gen_valorcampoact
-    ADD CONSTRAINT fk_rails_3060a94455 FOREIGN KEY (campoact_id) REFERENCES public.cor1440_gen_campoact(id);
-
-
---
 -- Name: contrato fk_rails_31397bfaea; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -10050,14 +10014,6 @@ ALTER TABLE ONLY public.actividad_nucleoconflicto
 
 ALTER TABLE ONLY public.sip_etiqueta_municipio
     ADD CONSTRAINT fk_rails_5672729520 FOREIGN KEY (municipio_id) REFERENCES public.sip_municipio(id);
-
-
---
--- Name: actividad_actor_porborrar fk_rails_56bdc49b83; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.actividad_actor_porborrar
-    ADD CONSTRAINT fk_rails_56bdc49b83 FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
 
 
 --
@@ -11077,14 +11033,6 @@ ALTER TABLE ONLY public.grupo_proyectofinanciero
 
 
 --
--- Name: cor1440_gen_valorcampoact fk_rails_e36cf046d1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.cor1440_gen_valorcampoact
-    ADD CONSTRAINT fk_rails_e36cf046d1 FOREIGN KEY (actividad_id) REFERENCES public.cor1440_gen_actividad(id);
-
-
---
 -- Name: actor_grupo fk_rails_e37d7223f1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -11643,7 +11591,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171026130000'),
 ('20171026144919'),
 ('20171026172501'),
-('20171114185712'),
 ('20171123212504'),
 ('20171128234148'),
 ('20171130125044'),
@@ -11730,7 +11677,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180501225617'),
 ('20180502083127'),
 ('20180509111948'),
-('20180509114933'),
 ('20180509125608'),
 ('20180519102415'),
 ('20180522102059'),
@@ -11999,7 +11945,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210519103132'),
 ('20210520011319'),
 ('20210524121112'),
-('20210603104136'),
 ('20210603111755'),
 ('20210603122147'),
 ('20210603144532'),
@@ -12032,6 +11977,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210721090934'),
 ('20210721104221'),
 ('20210721123304'),
-('20210728214424');
+('20210728214424'),
+('20210812101717');
 
 

@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 gem 'actiontext', '>= 6.0.3.5'
 
+gem 'apexcharts'
+
 gem 'bcrypt'
 
 gem 'bootsnap'
@@ -92,7 +94,7 @@ gem 'heb412_gen',  # Motor de nube y llenado de plantillas
   #path: '../heb412_gen'
 
 gem 'cor1440_gen',  # Motor de actividades y proyectos con marco lógico
-  git: 'https://github.com/pasosdeJesus/cor1440_gen.git', branch: :main
+  git: 'https://github.com/pasosdeJesus/cor1440_gen.git', branch: 'main'
   #path: '../cor1440_gen'
 
 group :development do
