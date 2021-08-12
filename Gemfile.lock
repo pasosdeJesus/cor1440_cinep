@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 3ebc42fee520f09e9e000baf9b5f3eb00294ead7
+  revision: b9b7d8d3ca71ddcd81088682f879e282b826884e
   branch: main
   specs:
     sip (2.0.b12)
@@ -228,7 +228,7 @@ GEM
     json (2.5.1)
     kgio (2.11.4)
     libxml-ruby (3.2.1)
-    loofah (2.11.0)
+    loofah (2.12.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -247,7 +247,7 @@ GEM
     msgpack (1.4.2)
     net-ldap (0.17.0)
     nio4r (2.5.8)
-    nokogiri (1.12.2)
+    nokogiri (1.12.3)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     odf-report (0.7.2)
@@ -388,7 +388,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.3.0)
+    will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
