@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 379d3a8ca990ce91baef7498bd74c8680c181c3c
+  revision: 8e4a154ae0c7b8ca1e17daec768d6b211186ca63
   specs:
     kt-paperclip (7.0.0)
       activemodel (>= 4.2.0)
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/cor1440_gen.git
-  revision: 46f14e76f537088a386ff4a506ddf1245453fab6
+  revision: f98342468bff578684291926c267be3aeff57baa
   branch: main
   specs:
     cor1440_gen (1.0b4)
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/heb412_gen.git
-  revision: ef7020ef95c6f34ca96619b1725aaeff035584bb
+  revision: 0bc6c840bc0ba8bf4a2709dcd98c500b8c7865e4
   branch: main
   specs:
     heb412_gen (1.0.b6)
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/jn316_gen.git
-  revision: 4848fe9db56d019c5a72e390233ba5d2329e3fe6
+  revision: 79fb87c2d80bc801fd24296d2aead3b42e2e90b8
   branch: main
   specs:
     jn316_gen (1.0.a2)
@@ -46,7 +46,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 5a64af9ac2809c83eba4ee933b69005ad004e8e8
+  revision: fdf640fe95409e0598ad0b2440c906e8a816b47e
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -55,7 +55,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b9b7d8d3ca71ddcd81088682f879e282b826884e
+  revision: 2eb471d25c3b9c9ffb33f5258b6306cfd38e55d2
   branch: main
   specs:
     sip (2.0.b12)
