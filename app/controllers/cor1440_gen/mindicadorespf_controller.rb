@@ -354,5 +354,85 @@ module Cor1440Gen
     end
 
 
+    # Avance en O1I2 de Plan Trienal 2021-2023
+    # idefs lista con identificación de efectos que aportan en el avance
+    # mind Es objeto Cor1440Gen::Mindicadorpf con medición
+    # fini Es fecha inicial de medición
+    # ffin Es fecha final de medición
+    def medir_indicador_efecto_tipo_42(idefs, mind, fini, ffin)
+      datosint = []
+      # Escuelas rurales
+      base = "SELECT DISTINCT id FROM sip_orgsocial AS o
+              JOIN public.lineabase_orgsocial AS lo ON o.id=lo.orgsocial_id
+              JOIN sip_orgsocial_sectororgsocial AS so ON o.id=so.orgsocial_id
+              WHERE lo.lineabase_id=2
+              AND o.fechadeshabilitacion IS NULL
+              AND so.sectororgsocial_id=22"
+      ld1 = ActiveRecord::Base.connection.execute(base).to_a.map(&:values).
+        flatten
+      d1 = ld1.count
+      datosint << {valor: d1, rutaevidencia: d1 == 0 ? '#' :
+                   sip.orgsociales_path + '?filtro[busid]=' + 
+                   ld1.join(',')}
+      # Escuelas rurales donde se implementaron planes
+      if idefs.count > 0
+        base = "SELECT DISTINCT orgsocial_id FROM cor1440_gen_efecto_orgsocial
+              WHERE efecto_id IN (#{idefs.join(',')})
+              AND orgsocial_id IN (#{ld1.join(',')})"
+        ld2 = ActiveRecord::Base.connection.execute(base).to_a.map(&:values).
+          flatten
+        d2 = ld2.count
+      else
+        d2 = 0
+      end
+      datosint << {valor: d2, rutaevidencia: d2 == 0 ? '#' :
+                   sip.orgsociales_path + '?filtro[busid]=' + 
+                   ld2.join(',')}
+      resind = d1 > 0 ? d2*100/d1 : 0
+
+      return {resind: resind, datosint: datosint}
+    end
+
+    # Avance en O3I2 de Plan Trienal 2021-2023
+    # idacs lista con identificación de actividades que aportan en el avance
+    # mind Es objeto Cor1440Gen::Mindicadorpf con medición
+    # fini Es fecha inicial de medición
+    # ffin Es fecha final de medición
+    def medir_indicador_res_tipo_46(idacs, mind, fini, ffin)
+      datosint=[]
+      # Municipios PDET
+      base = "SELECT DISTINCT id FROM sip_municipio AS m
+              JOIN sip_etiqueta_municipio AS em ON m.id=em.municipio_id
+              WHERE em.etiqueta_id=15
+              AND m.fechadeshabilitacion IS NULL"
+      ld1 = ActiveRecord::Base.connection.execute(base).to_a.map(&:values).
+        flatten
+      d1 = ld1.count
+      datosint << {valor: d1, rutaevidencia: d1 == 0 ? '#' :
+                   sip.admin_municipios_path + '?filtro[busid]=' + 
+                   ld1.join(',')}
+
+      # Municipios PDET donde se implementan estrategias
+      base = "SELECT DISTINCT municipio_id FROM cor1440_gen_actividad AS a
+              JOIN cor1440_gen_actividad_actividadpf AS aa
+                ON aa.actividad_id=a.id
+              WHERE aa.actividadpf_id=12
+              AND a.id IN (#{idacs.join(',')})
+      "
+      if idacs.count > 0
+        ld2 = ActiveRecord::Base.connection.execute(base).to_a.map(&:values).
+          flatten
+        d2 = ld2.count
+      else
+        d2 = 0
+      end
+      datosint << {valor: d2, rutaevidencia: d2 == 0 ? '#' :
+                   sip.admin_municipios_path + '?filtro[busid]=' + 
+                   ld2.join(',')}
+      resind = d1 > 0 ? d2*100/d1 : 0
+
+      return {resind: resind, datosint: datosint}
+    end
+
   end
 end
