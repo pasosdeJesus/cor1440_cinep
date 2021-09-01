@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>crecer-18-admin-elimina-tasas-de-cambio</title>
+	<title>crecer-06-03-admin-elimina-tasas-de-cambio</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -11,6 +11,10 @@
 <tr><td rowspan="1" colspan="3">filtro-tasas-de-cambio-tipo-de-moneda</td></tr>
 </thead>
 <tbody>
+<tr><td>clickAt</td><td>id=navbarDropdownCompromisos_y_Convenios<datalist><option>id=navbarDropdownCompromisos_y_Convenios</option><option>link=Compromisos y Convenios</option><option>css=#navbarDropdownCompromisos_y_Convenios</option><option>//a[contains(text(),'Compromisos y Convenios')]</option><option>//a[@id='navbarDropdownCompromisos_y_Convenios']</option><option>//div[@id='navbarSupportedContent']/ul/li[2]/a</option><option>xpath=(//a[contains(@href, '#')])[2]</option><option>//li[2]/a</option></datalist></td><td>123,25</td>
+</tr>
+<tr><td>clickAt</td><td>link=Tasas de cambio<datalist><option>link=Tasas de cambio</option><option>//a[contains(text(),'Tasas de cambio')]</option><option>//div[@id='navbarSupportedContent']/ul/li[2]/div/a[5]</option><option>//a[contains(@href, '/tasascambio')]</option><option>//li[2]/div/a[5]</option></datalist></td><td>127,18</td>
+</tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
 <tr><td>select</td><td>id=filtro_bustipomoneda_id<datalist><option>id=filtro_bustipomoneda_id</option><option>name=filtro[bustipomoneda_id]</option><option>css=#filtro_bustipomoneda_id</option><option>//select[@id='filtro_bustipomoneda_id']</option><option>//select</option></datalist></td><td>label=EURO</td>
@@ -24,6 +28,8 @@
 <tr><td>clickAt</td><td>link=Eliminar<datalist><option>link=Eliminar</option><option>css=a.btn.btn-sm.btn-danger</option><option>//a[contains(text(),'Eliminar')]</option><option>xpath=(//a[contains(@href, '/tasascambio/21')])[3]</option><option>//td[6]/a[2]</option></datalist></td><td>50,15</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tasas de cambio</td>
+</tr>
+<tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div/span</option></datalist></td><td>::Tasacambio eliminada.</td>
 </tr>
 </tbody></table>
 </body>

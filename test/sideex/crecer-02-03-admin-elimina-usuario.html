@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>crecer-04-admin-elimina-usuario</title>
+	<title>crecer-02-03-admin-elimina-usuario</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -11,6 +11,10 @@
 <tr><td rowspan="1" colspan="3">elimina-usuario</td></tr>
 </thead>
 <tbody>
+<tr><td>clickAt</td><td>id=navbarDropdownAdministrar<datalist><option>id=navbarDropdownAdministrar</option><option>link=Administrar</option><option>css=#navbarDropdownAdministrar</option><option>//a[contains(text(),'Administrar')]</option><option>//a[@id='navbarDropdownAdministrar']</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/a</option><option>xpath=(//a[contains(@href, '#')])[5]</option><option>//ul[2]/li[2]/a</option></datalist></td><td>40,16</td>
+</tr>
+<tr><td>clickAt</td><td>link=Usuarios<datalist><option>link=Usuarios</option><option>//a[contains(text(),'Usuarios')]</option><option>//div[@id='navbarSupportedContent']/ul[2]/li[2]/div/a[4]</option><option>xpath=(//a[contains(@href, '/usuarios')])[2]</option><option>//ul[2]/li[2]/div/a[4]</option></datalist></td><td>75,8</td>
+</tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
 <tr><td>clickAt</td><td>id=filtro_busnusuario<datalist><option>id=filtro_busnusuario</option><option>name=filtro[busnusuario]</option><option>css=#filtro_busnusuario</option><option>//select[@id='filtro_busnusuario']</option><option>//select</option></datalist></td><td>111,16</td>
@@ -20,8 +24,6 @@
 <tr><td>clickAt</td><td>id=filtro_busnusuario<datalist><option>id=filtro_busnusuario</option><option>name=filtro[busnusuario]</option><option>css=#filtro_busnusuario</option><option>//select[@id='filtro_busnusuario']</option><option>//select</option></datalist></td><td>-157,-272</td>
 </tr>
 <tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>css=a.btn.btn-sm</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/usuarios/1184/edita')]</option><option>//td[10]/a</option></datalist></td><td>25,17</td>
-</tr>
-<tr><td>clickAt</td><td>link=Datos personales<datalist><option>link=Datos personales</option><option>//a[contains(text(),'Datos personales')]</option><option>//form[@id='edit_usuario_1184']/article/div/div[2]/ul/li[2]/a</option><option>//a[contains(@href, '#personales')]</option><option>//div[2]/ul/li[2]/a</option></datalist></td><td>88,28</td>
 </tr>
 <tr><td>clickAt</td><td>css=a.search-choice-close<datalist><option>css=a.search-choice-close</option><option>//div[@id='usuario_sip_grupo_ids_chosen']/ul/li/a</option><option>//div/div/div/ul/li/a</option></datalist></td><td>4,4</td>
 </tr>
@@ -36,6 +38,10 @@
 <tr><td>clickAt</td><td>link=Eliminar de base<datalist><option>link=Eliminar de base</option><option>css=a.btn.btn-danger</option><option>//a[contains(text(),'Eliminar de base')]</option><option>xpath=(//a[contains(@href, '/usuarios/1208')])[2]</option><option>//div[4]/a</option></datalist></td><td>76,22</td>
 </tr>
 <tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuarios</td>
+</tr>
+<tr><td>clickAt</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div/span</option></datalist></td><td>::Usuario eliminado.</td>
+</tr>
+<tr><td>clickAt</td><td>link=Datos personales<datalist><option>link=Datos personales</option><option>//a[contains(text(),'Datos personales')]</option><option>//form[@id='edit_usuario_1184']/article/div/div[2]/ul/li[2]/a</option><option>//a[contains(@href, '#personales')]</option><option>//div[2]/ul/li[2]/a</option></datalist></td><td>88,28</td>
 </tr>
 </tbody></table>
 </body>

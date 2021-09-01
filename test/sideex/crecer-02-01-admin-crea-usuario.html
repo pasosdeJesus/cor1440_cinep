@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>crecer-02-admin-crea-usuario</title>
+	<title>crecer-02-01-admin-crea-usuario</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -31,7 +31,7 @@
 </tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
-<tr><td>select</td><td>id=usuario_oficina_id<datalist><option>id=usuario_oficina_id</option><option>name=usuario[oficina_id]</option><option>css=#usuario_oficina_id</option><option>//select[@id='usuario_oficina_id']</option><option>//div[@id='contacto']/div[5]/div/div/select</option><option>//div[5]/div/div/select</option></datalist></td><td>label=RECEPCIÓN PISO 2</td>
+<tr><td>select</td><td>id=usuario_oficina_id<datalist><option>id=usuario_oficina_id</option><option>name=usuario[oficina_id]</option><option>css=#usuario_oficina_id</option><option>//select[@id='usuario_oficina_id']</option><option>//div[@id='contacto']/div[5]/div/div/select</option><option>//div[5]/div/div/select</option></datalist></td><td>label=SIN INFORMACIÓN</td>
 </tr>
 <tr><td>clickAt</td><td>id=usuario_oficina_id<datalist><option>id=usuario_oficina_id</option><option>name=usuario[oficina_id]</option><option>css=#usuario_oficina_id</option><option>//select[@id='usuario_oficina_id']</option><option>//div[@id='contacto']/div[5]/div/div/select</option><option>//div[5]/div/div/select</option></datalist></td><td>-51,-454</td>
 </tr>
@@ -252,6 +252,10 @@
 <tr><td>clickAt</td><td>id=usuario_no_modificar_ldap<datalist><option>id=usuario_no_modificar_ldap</option><option>css=#usuario_no_modificar_ldap</option><option>//input[@id='usuario_no_modificar_ldap']</option><option>//div[@id='ti']/div[2]/div[2]/div/label/input</option><option>//label/input</option></datalist></td><td>276,4</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_usuario']/article/div[2]/input</option><option>//div[2]/input</option></datalist></td><td>93,30</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Usuario</td>
+</tr>
+<tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div/span</option></datalist></td><td>::Usuario creado.</td>
 </tr>
 </tbody></table>
 </body>

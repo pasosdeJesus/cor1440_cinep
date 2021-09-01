@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-	<title>crecer-16-admin-crea-tasas-de-cambio</title>
+	<title>crecer-06-01-admin-crea-tasas-de-cambio</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -21,17 +21,31 @@
 </tr>
 <tr><td>clickAt</td><td>//div[2]/div/table/tbody/tr[4]/td<datalist><option>//div[2]/div/table/tbody/tr[4]/td</option></datalist></td><td>6,6</td>
 </tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_tasacambio']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>15,14</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tasa de cambio</td>
+</tr>
+<tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div/span</option></datalist></td><td>::Tasacambio creada.</td>
+</tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
 <tr><td rowspan="1" colspan="3">tasas-de-cambio-tipo-de-moneda</td></tr>
 </thead>
 <tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/tasascambio/1/edita')]</option><option>//div/div/a[2]</option></datalist></td><td>43,27</td>
+</tr>
 <tr><td>runScript</td><td>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')<datalist><option>$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')</option></datalist></td><td></td>
 </tr>
 <tr><td>select</td><td>id=tasacambio_tipomoneda_id<datalist><option>id=tasacambio_tipomoneda_id</option><option>name=tasacambio[tipomoneda_id]</option><option>css=#tasacambio_tipomoneda_id</option><option>//select[@id='tasacambio_tipomoneda_id']</option><option>//form[@id='new_tasacambio']/div[3]/select</option><option>//select</option></datalist></td><td>label=EURO</td>
 </tr>
 <tr><td>clickAt</td><td>id=tasacambio_tipomoneda_id<datalist><option>id=tasacambio_tipomoneda_id</option><option>name=tasacambio[tipomoneda_id]</option><option>css=#tasacambio_tipomoneda_id</option><option>//select[@id='tasacambio_tipomoneda_id']</option><option>//form[@id='new_tasacambio']/div[3]/select</option><option>//select</option></datalist></td><td>-83,-244</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_tasacambio']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>15,14</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tasa de cambio</td>
+</tr>
+<tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div/span</option></datalist></td><td>::Tasacambio creada.</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -39,9 +53,17 @@
 <tr><td rowspan="1" colspan="3">tasas-de-cambio-tasa-en-pesos</td></tr>
 </thead>
 <tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/tasascambio/1/edita')]</option><option>//div/div/a[2]</option></datalist></td><td>43,27</td>
+</tr>
 <tr><td>clickAt</td><td>id=tasacambio_enpesos_localizado<datalist><option>id=tasacambio_enpesos_localizado</option><option>name=tasacambio[enpesos_localizado]</option><option>css=#tasacambio_enpesos_localizado</option><option>//input[@id='tasacambio_enpesos_localizado']</option><option>//form[@id='new_tasacambio']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>49,15</td>
 </tr>
 <tr><td>type</td><td>id=tasacambio_enpesos_localizado<datalist><option>id=tasacambio_enpesos_localizado</option><option>name=tasacambio[enpesos_localizado]</option><option>css=#tasacambio_enpesos_localizado</option><option>//input[@id='tasacambio_enpesos_localizado']</option><option>//form[@id='new_tasacambio']/div[4]/input</option><option>//div[4]/input</option></datalist></td><td>3625.1440061048356</td>
+</tr>
+<tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_tasacambio']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>15,14</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tasa de cambio</td>
+</tr>
+<tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div/span</option></datalist></td><td>::Tasacambio creada.</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">
@@ -49,11 +71,17 @@
 <tr><td rowspan="1" colspan="3">tasas-de-cambio-observaciones</td></tr>
 </thead>
 <tbody>
+<tr><td>clickAt</td><td>link=Editar<datalist><option>link=Editar</option><option>//a[contains(text(),'Editar')]</option><option>//a[contains(@href, '/tasascambio/1/edita')]</option><option>//div/div/a[2]</option></datalist></td><td>43,27</td>
+</tr>
 <tr><td>clickAt</td><td>id=tasacambio_observaciones<datalist><option>id=tasacambio_observaciones</option><option>name=tasacambio[observaciones]</option><option>css=#tasacambio_observaciones</option><option>//textarea[@id='tasacambio_observaciones']</option><option>//form[@id='new_tasacambio']/div[5]/textarea</option><option>//textarea</option></datalist></td><td>200,14</td>
 </tr>
 <tr><td>type</td><td>id=tasacambio_observaciones<datalist><option>id=tasacambio_observaciones</option><option>name=tasacambio[observaciones]</option><option>css=#tasacambio_observaciones</option><option>//textarea[@id='tasacambio_observaciones']</option><option>//form[@id='new_tasacambio']/div[5]/textarea</option><option>//textarea</option></datalist></td><td>Valores de http://www.apilayer.net/</td>
 </tr>
 <tr><td>clickAt</td><td>name=commit<datalist><option>name=commit</option><option>css=input[name="commit"]</option><option>//input[@name='commit']</option><option>//form[@id='new_tasacambio']/div[6]/input</option><option>//div[6]/input</option></datalist></td><td>15,14</td>
+</tr>
+<tr><td>assertText</td><td>css=h1<datalist><option>css=h1</option><option>//h1</option></datalist></td><td>Tasa de cambio</td>
+</tr>
+<tr><td>assertText</td><td>css=div.alert.alert-success &gt; span<datalist><option>css=div.alert.alert-success &gt; span</option><option>//div/span</option></datalist></td><td>::Tasacambio creada.</td>
 </tr>
 </tbody></table>
 </body>
